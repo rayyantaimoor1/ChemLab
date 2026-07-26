@@ -1,0 +1,112 @@
+[
+  {
+    "id": "rxn_neutralisation_hcl_naoh",
+    "reactants": ["hcl_1m", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nacl_aq", "water"],
+    "equation": "HCl + NaOH → NaCl + H₂O",
+    "type": "neutralisation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 7,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": "anim_neutralisation",
+    "explanation": "H⁺ ions from the acid combine with OH⁻ ions from the base to form water. Na⁺ and Cl⁻ stay dissolved as spectator ions, so the mixture ends up as ordinary salt water. Nothing changes colour and no gas is given off, but the tube becomes noticeably warm because the reaction releases heat.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — acids, bases and salts; CRC Handbook of Chemistry and Physics, 97th ed. (standard enthalpy of neutralisation, about −57 kJ per mole)"
+  },
+  {
+    "id": "rxn_precipitation_pbno3_ki",
+    "reactants": ["ki_0_1m", "pbno3_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["pbi2_s", "kno3_aq"],
+    "equation": "Pb(NO₃)₂ + 2KI → PbI₂ + 2KNO₃",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F2CC0C",
+      "precipitate": "bright yellow lead(II) iodide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 5.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_heavy_metal",
+      "title": "Lead compounds are poisonous",
+      "warning": "Both the lead(II) nitrate solution and the yellow lead(II) iodide formed are poisonous. Lead builds up in the body over time rather than being cleared out, so even small repeated exposures matter. It must never be touched with bare hands, tasted, or washed down the sink.",
+      "visualEffect": null,
+      "whatToDoInstead": "Handle lead solutions with gloves and wash your hands afterwards. Collect all lead waste in the labelled heavy-metal waste container so it can be disposed of properly instead of entering the water supply."
+    },
+    "molecularAnimation": "anim_precipitation_pbi2",
+    "explanation": "Two solutions that were both clear produce a bright yellow solid. Pb²⁺ ions from the lead nitrate meet I⁻ ions from the potassium iodide and join together as lead(II) iodide, which is insoluble in water and so drops out as a precipitate. K⁺ and NO₃⁻ take no part and stay dissolved as spectator ions. This is often demonstrated as the golden rain experiment.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — solubility rules and double displacement reactions; CRC Handbook of Chemistry and Physics, 97th ed. (solubility of lead(II) iodide)"
+  },
+  {
+    "id": "rxn_precipitation_agno3_nacl",
+    "reactants": ["agno3_0_1m", "nacl_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["agcl_s", "nano3_aq"],
+    "equation": "AgNO₃ + NaCl → AgCl + NaNO₃",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#E9EBEC",
+      "precipitate": "white curdy silver chloride",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 6.0
+    },
+    "hazard": null,
+    "molecularAnimation": "anim_precipitation_agcl",
+    "explanation": "Ag⁺ ions from the silver nitrate meet Cl⁻ ions from the sodium chloride and form silver chloride, which is insoluble and appears as a white curdy precipitate. Na⁺ and NO₃⁻ remain in solution as spectator ions. This is the standard laboratory test for chloride ions. If the precipitate is left in sunlight it slowly darkens to grey or purple, because light breaks silver chloride down into silver metal.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — tests for anions and solubility rules; CRC Handbook of Chemistry and Physics, 97th ed. (solubility and photosensitivity of silver chloride)"
+  },
+  {
+    "id": "rxn_displacement_zn_hcl",
+    "reactants": ["hcl_1m", "zn_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["zncl2_aq", "h2_g"],
+    "equation": "Zn + 2HCl → ZnCl₂ + H₂",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 9,
+      "resultPH": 5.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Flammable hydrogen gas is released",
+      "warning": "The bubbles coming off the zinc are hydrogen, which burns very easily and forms an explosive mixture with the air. A naked flame brought near a large amount of collected hydrogen is dangerous.",
+      "visualEffect": null,
+      "whatToDoInstead": "Keep flames and hot surfaces away from the apparatus while gas is being given off, and work in a well ventilated room so the hydrogen can disperse."
+    },
+    "molecularAnimation": "anim_gas_evolution_h2",
+    "explanation": "Zinc sits above hydrogen in the reactivity series, so it can push hydrogen out of the acid. Each zinc atom gives up two electrons and enters the solution as a Zn²⁺ ion, while H⁺ ions from the acid pick up those electrons and pair off as hydrogen gas. You see a steady stream of bubbles on the surface of the metal and the tube warms up. The zinc slowly gets smaller as it dissolves. The pH shown assumes the acid is fully used up, leaving a zinc chloride solution that is still mildly acidic.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — reactivity series and reactions of metals with acids; CRC Handbook of Chemistry and Physics, 97th ed. (standard enthalpy of formation data)"
+  },
+  {
+    "id": "rxn_none_nacl_ki",
+    "reactants": ["ki_0_1m", "nacl_1m"],
+    "noReaction": true,
+    "explanation": "No observable change. The only products that could possibly form are sodium iodide and potassium chloride, and both of those are soluble in water. Since nothing insoluble can form, no precipitate appears, no gas is given off and the mixture stays clear and colourless. All four ions simply stay dissolved and move about independently. This is still a real chemical result and worth knowing: mixing two salt solutions does not automatically produce a reaction.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — solubility rules for common salts"
+  }
+]
