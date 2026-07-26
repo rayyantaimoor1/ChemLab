@@ -1,0 +1,427 @@
+/**
+ * engine.js — works out what happens when chemicals are combined.
+ *
+ * WHY THIS FILE EXISTS
+ * This is the part of the app that answers one question: "the student has put
+ * these substances together — what happens?" It is deliberately the dumbest
+ * possible answer to that question. It does not know any chemistry of its own.
+ * It only looks things up in reactions.json. If there is no entry, it says so
+ * honestly instead of guessing.
+ *
+ * That rule comes from CLAUDE.md section 6 and it is the most important rule in
+ * the project: a confidently wrong result is worse than no result, because this
+ * app is used to teach.
+ *
+ * THREE POSSIBLE ANSWERS, NEVER BLURRED TOGETHER
+ *   1. "reaction"     — a rule matched, so run it and report what is observed.
+ *   2. "no_reaction"  — a rule exists that says these two genuinely do nothing.
+ *                       That is real chemistry and worth teaching.
+ *   3. "unknown"      — we have no rule at all. Say so plainly and write the
+ *                       combination down so it can be added later.
+ *
+ * WHAT THIS FILE MUST NEVER DO
+ *   - No DOM. No document, no window, no HTML. This folder is pure logic.
+ *   - No writing files. If an unknown combination needs saving to disk, this
+ *     file just hands it to whoever asked; the Electron main process does the
+ *     actual saving. That keeps the engine testable and portable.
+ *   - No calculating pH or temperature from scratch. Those numbers are curated
+ *     by a human and read straight out of the data files (section 6.6).
+ *
+ * A NOTE ON "SPECIES" VS "AMOUNTS"
+ * This engine works with a plain list of what is present, e.g. ["hcl_1m",
+ * "zn_metal"]. It does not track how much of each. Volumes and amounts belong
+ * to container.js. This file answers "what happens", the container answers
+ * "how much of it".
+ */
+
+import chemicalData from '../data/chemicals.json' with { type: 'json' };
+import reactionData from '../data/reactions.json' with { type: 'json' };
+
+/** The three outcomes from CLAUDE.md section 6.2. Never add a fourth. */
+export const OUTCOME = {
+  REACTION: 'reaction',
+  NO_REACTION: 'no_reaction',
+  UNKNOWN: 'unknown',
+};
+
+/**
+ * Exact wording required by CLAUDE.md section 6.2. These are shown to students,
+ * so do not reword them without the project owner agreeing.
+ */
+export const MESSAGES = {
+  NO_REACTION: 'No observable change.',
+  UNKNOWN: "This combination isn't available in this version of the lab yet.",
+};
+
+/** Ordinary room temperature in degrees Celsius, used when nobody says otherwise. */
+export const ROOM_TEMPERATURE_C = 25;
+
+/** Safety limit on cascading reactions, from CLAUDE.md section 7. */
+export const DEFAULT_MAX_CASCADE = 10;
+
+/**
+ * Stops anything handing out the loaded data from accidentally editing it.
+ * The data files are the source of truth and should be read-only at runtime.
+ */
+function deepFreeze(value) {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    Object.freeze(value);
+    for (const key of Object.keys(value)) deepFreeze(value[key]);
+  }
+  return value;
+}
+
+/**
+ * Puts a list of substance ids into one canonical form: duplicates removed and
+ * sorted alphabetically.
+ *
+ * This is what makes matching order-independent (CLAUDE.md section 7). Dropping
+ * acid into base and dropping base into acid are the same mixture, so both must
+ * end up looking identical before we go looking for a rule.
+ */
+export function normaliseSpecies(ids = []) {
+  return [...new Set(ids.filter((id) => typeof id === 'string' && id.length > 0))].sort();
+}
+
+/** A single string that stands for one set of substances, e.g. "hcl_1m+naoh_1m". */
+export function speciesKey(ids = []) {
+  return normaliseSpecies(ids).join('+');
+}
+
+/**
+ * Checks whether a rule's stated conditions are satisfied right now.
+ *
+ * CLAUDE.md section 7: "Conditions gate reactions. A rule requiring heat must
+ * not fire at room temperature." Returns null when the rule is free to run, or
+ * a short reason string when something is holding it back.
+ */
+function blockingCondition(reaction, state) {
+  const conditions = reaction.conditions;
+  if (!conditions) return null;
+
+  const { requiresHeat, minTempC, catalyst } = conditions;
+
+  // A minimum temperature is checked first because it is the more specific test.
+  if (typeof minTempC === 'number' && state.tempC < minTempC) {
+    return `needs to reach about ${minTempC} °C`;
+  }
+
+  // "Requires heat" with no specific temperature means the student has to
+  // actually be heating the container.
+  if (requiresHeat === true && typeof minTempC !== 'number' && !state.heating) {
+    return 'needs to be heated';
+  }
+
+  if (catalyst) {
+    const catalystPresent =
+      state.species.includes(catalyst) || state.catalysts.includes(catalyst);
+    if (!catalystPresent) return 'needs a catalyst that is not present';
+  }
+
+  return null;
+}
+
+/**
+ * Turns the curated "effects" block into one plain-English sentence for the lab
+ * notebook (CLAUDE.md section 7: every action produces a notebook entry in plain
+ * English).
+ *
+ * Everything here is read straight from the data file. The engine is only
+ * arranging curated facts into a sentence, never inventing an observation.
+ */
+function describeEffects(reaction) {
+  const effects = reaction.effects || {};
+  const observations = [];
+
+  if (effects.precipitate) {
+    observations.push(`A precipitate formed: ${effects.precipitate}.`);
+  }
+
+  if (effects.gas) {
+    observations.push(
+      effects.bubbles
+        ? `Bubbles of ${effects.gas} gas were given off.`
+        : `${effects.gas.charAt(0).toUpperCase()}${effects.gas.slice(1)} gas was given off.`
+    );
+  } else if (effects.bubbles) {
+    observations.push('Bubbles were given off.');
+  }
+
+  if (effects.smoke) observations.push('A cloud of smoke or vapour appeared.');
+
+  if (typeof effects.tempDeltaC === 'number' && effects.tempDeltaC !== 0) {
+    observations.push(
+      effects.tempDeltaC > 0
+        ? `The mixture warmed by about ${effects.tempDeltaC} °C.`
+        : `The mixture cooled by about ${Math.abs(effects.tempDeltaC)} °C.`
+    );
+  }
+
+  if (observations.length === 0) {
+    observations.push('There was no visible change, but a reaction did take place.');
+  }
+
+  return `${reaction.equation ? `${reaction.equation}. ` : ''}${observations.join(' ')}`;
+}
+
+/**
+ * Builds an engine.
+ *
+ * Pass your own data in to test it against made-up chemicals; leave the
+ * arguments out and it uses the real data files.
+ *
+ * @param {object}   [options]
+ * @param {Array}    [options.chemicals]   chemical records
+ * @param {Array}    [options.reactions]   reaction rules
+ * @param {number}   [options.maxCascade]  hard cap on chained reactions
+ * @param {Function} [options.onUnknownCombination] called when a combination has
+ *   no rule at all. This is how the unknown-pair log from CLAUDE.md section 6.3
+ *   gets written without this file touching the filesystem itself.
+ */
+export function createEngine({
+  chemicals = chemicalData,
+  reactions = reactionData,
+  maxCascade = DEFAULT_MAX_CASCADE,
+  onUnknownCombination = null,
+} = {}) {
+  deepFreeze(chemicals);
+  deepFreeze(reactions);
+
+  const chemicalsById = new Map(chemicals.map((chemical) => [chemical.id, chemical]));
+  const reactionsById = new Map(reactions.map((reaction) => [reaction.id, reaction]));
+
+  // Every rule's reactant list, pre-sorted once so we never re-sort during lookup.
+  const rules = reactions.map((reaction) => ({
+    reaction,
+    reactants: normaliseSpecies(reaction.reactants),
+  }));
+
+  // Combinations students tried that we have no data for. This is the content
+  // roadmap described in CLAUDE.md section 6.3.
+  const unknownCombinations = new Map();
+
+  function recordUnknown(species) {
+    const key = speciesKey(species);
+    const existing = unknownCombinations.get(key);
+    if (existing) {
+      existing.count += 1;
+    } else {
+      const entry = { key, species: normaliseSpecies(species), count: 1 };
+      unknownCombinations.set(key, entry);
+      if (typeof onUnknownCombination === 'function') onUnknownCombination(entry);
+    }
+  }
+
+  /**
+   * Finds the rule that applies to what is currently in the container.
+   *
+   * A rule matches when everything it needs is present. The container is allowed
+   * to hold extra substances that the rule does not mention — that is what makes
+   * cascading possible, because after one reaction runs the leftovers are still
+   * sitting there alongside the new products.
+   *
+   * When more than one rule could apply, the one needing the most substances
+   * wins, because it is the more specific description of what is in the vessel.
+   */
+  function findRule(species, state) {
+    const present = new Set(species);
+
+    const candidates = rules
+      .filter(({ reactants }) => reactants.length > 0 && reactants.every((id) => present.has(id)))
+      .sort(
+        (a, b) =>
+          b.reactants.length - a.reactants.length ||
+          String(a.reaction.id).localeCompare(String(b.reaction.id))
+      );
+
+    if (candidates.length === 0) return { rule: null, blocked: null };
+
+    // Prefer a rule that can actually run. If every candidate is held back by a
+    // condition, report the first one so we can explain what is missing.
+    for (const candidate of candidates) {
+      if (candidate.reaction.noReaction === true) return { rule: candidate, blocked: null };
+      if (!blockingCondition(candidate.reaction, state)) return { rule: candidate, blocked: null };
+    }
+
+    const first = candidates[0];
+    return { rule: null, blocked: { rule: first, reason: blockingCondition(first.reaction, state) } };
+  }
+
+  /** Normalises the optional bench conditions the caller passes in. */
+  function readState(species, options = {}) {
+    return {
+      species,
+      tempC: typeof options.tempC === 'number' ? options.tempC : ROOM_TEMPERATURE_C,
+      heating: options.heating === true,
+      catalysts: Array.isArray(options.catalysts) ? options.catalysts : [],
+    };
+  }
+
+  /**
+   * Works out the single next thing that happens, without chaining.
+   *
+   * Set `options.log` to false to look ahead without adding anything to the
+   * unknown-combination log — used internally while cascading, so that the
+   * natural end of a cascade is not mistaken for a gap in our data.
+   */
+  function resolve(speciesIds, options = {}) {
+    const species = normaliseSpecies(speciesIds);
+    const state = readState(species, options);
+    const shouldLog = options.log !== false;
+
+    const base = {
+      species,
+      reaction: null,
+      effects: null,
+      blockedBy: null,
+    };
+
+    // An empty vessel has nothing to look up.
+    if (species.length === 0) {
+      return { ...base, outcome: OUTCOME.NO_REACTION, message: MESSAGES.NO_REACTION };
+    }
+
+    const { rule, blocked } = findRule(species, state);
+
+    // A rule exists but a condition is holding it back. We do have data for this
+    // mixture, so this is not an "unknown" and must not go in the roadmap log.
+    if (!rule && blocked) {
+      return {
+        ...base,
+        outcome: OUTCOME.NO_REACTION,
+        message: `${MESSAGES.NO_REACTION} This mixture ${blocked.reason} before anything happens.`,
+        reaction: blocked.rule.reaction,
+        blockedBy: blocked.reason,
+      };
+    }
+
+    if (!rule) {
+      // One lone substance sitting in a vessel is not a gap in our data, it is
+      // just a substance sitting in a vessel. (A rule with a single reactant,
+      // such as a decomposition on heating, is still allowed to match above.)
+      if (species.length < 2) {
+        return { ...base, outcome: OUTCOME.NO_REACTION, message: MESSAGES.NO_REACTION };
+      }
+
+      // Nothing in the data files covers this combination at all.
+      if (shouldLog) recordUnknown(species);
+      return { ...base, outcome: OUTCOME.UNKNOWN, message: MESSAGES.UNKNOWN };
+    }
+
+    // A rule that deliberately says "these two do nothing". Real chemistry.
+    if (rule.reaction.noReaction === true) {
+      return {
+        ...base,
+        outcome: OUTCOME.NO_REACTION,
+        message: MESSAGES.NO_REACTION,
+        reaction: rule.reaction,
+      };
+    }
+
+    // A real reaction. Remove what was used up, add what was made.
+    const leftovers = species.filter((id) => !rule.reactants.includes(id));
+    const products = Array.isArray(rule.reaction.products) ? rule.reaction.products : [];
+
+    return {
+      outcome: OUTCOME.REACTION,
+      message: describeEffects(rule.reaction),
+      reaction: rule.reaction,
+      effects: rule.reaction.effects || null,
+      species: normaliseSpecies([...leftovers, ...products]),
+      blockedBy: null,
+    };
+  }
+
+  /**
+   * Runs a reaction and then keeps checking whether the new contents can react
+   * again, as required by CLAUDE.md section 7.
+   *
+   * The loop is hard-capped so a badly written pair of rules that feed each
+   * other can never hang the app. If the cap is hit, `capReached` comes back
+   * true — that is a signal the data files need looking at, not a normal result.
+   */
+  function react(speciesIds, options = {}) {
+    const startingSpecies = normaliseSpecies(speciesIds);
+    const cap = Number.isInteger(options.maxCascade) ? options.maxCascade : maxCascade;
+
+    let species = startingSpecies;
+    let tempC = typeof options.tempC === 'number' ? options.tempC : ROOM_TEMPERATURE_C;
+    const steps = [];
+    let capReached = false;
+    let last = null;
+
+    for (let iteration = 0; ; iteration += 1) {
+      if (iteration >= cap) {
+        capReached = true;
+        break;
+      }
+
+      // Only the very first look-up counts towards the unknown-combination log.
+      // Later ones are just the cascade running out of things to do.
+      const step = resolve(species, { ...options, tempC, log: iteration === 0 });
+      last = step;
+
+      if (step.outcome !== OUTCOME.REACTION) break;
+
+      steps.push(step);
+      species = step.species;
+
+      // Apply the curated temperature change so that any follow-on rule with a
+      // temperature condition is judged against the new, hotter mixture.
+      const delta = step.effects && typeof step.effects.tempDeltaC === 'number'
+        ? step.effects.tempDeltaC
+        : 0;
+      tempC += delta;
+    }
+
+    // The overall outcome is "a reaction happened" if anything at all happened.
+    // Otherwise it is whatever the single look-up concluded.
+    const outcome = steps.length > 0 ? OUTCOME.REACTION : last ? last.outcome : OUTCOME.NO_REACTION;
+    const message =
+      steps.length > 0
+        ? steps.map((step) => step.message).join(' ')
+        : last
+          ? last.message
+          : MESSAGES.NO_REACTION;
+
+    return {
+      outcome,
+      message,
+      steps,
+      species,
+      startingSpecies,
+      tempC,
+      capReached,
+      finalStep: last,
+    };
+  }
+
+  return {
+    resolve,
+    react,
+
+    /** Look up one chemical record. Returns null rather than throwing. */
+    getChemical: (id) => chemicalsById.get(id) || null,
+
+    /** Look up one reaction rule by its id. */
+    getReaction: (id) => reactionsById.get(id) || null,
+
+    /** Everything currently loaded, for panels that list the shelf. */
+    getAllChemicals: () => chemicals,
+    getAllReactions: () => reactions,
+
+    /**
+     * The combinations students tried that we have no data for, most-tried
+     * first. Whoever owns the filesystem writes this out; see section 6.3.
+     */
+    getUnknownCombinations: () =>
+      [...unknownCombinations.values()].sort((a, b) => b.count - a.count),
+
+    clearUnknownCombinations: () => unknownCombinations.clear(),
+  };
+}
+
+/** A ready-made engine using the real data files, for the app to import. */
+export const engine = createEngine();
+
+export default engine;
