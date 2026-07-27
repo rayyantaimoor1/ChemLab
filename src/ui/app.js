@@ -23,6 +23,7 @@ import { engine, ROOM_TEMPERATURE_C } from '../core/engine.js';
 import { createContainer } from '../core/container.js';
 import { createActions } from '../core/actions.js';
 import { createNotebook } from '../core/notebook.js';
+import { createTools } from '../core/tools.js';
 import { mountShelf } from './shelf.js';
 import { mountBench } from './bench.js';
 import { mountPanels } from './panels.js';
@@ -53,11 +54,17 @@ const containers = [
 const containersById = new Map(containers.map((container) => [container.id, container]));
 
 const notebook = createNotebook();
+const tools = createTools({ getChemical: engine.getChemical });
 const actions = createActions({
   getContainer: (id) => containersById.get(id),
   engine,
+  tools,
   onNotebookEntry: notebook.logAction,
 });
+
+// Which tool the student has picked up, if any. This is pure interface state -
+// which button is highlighted - so it lives here rather than in src/core/.
+let selectedToolId = null;
 
 // The most recent hazard, if the last reaction anywhere on the bench carried
 // one. There is no hazard modal built yet (that is Phase 5's effects layer),
@@ -146,12 +153,32 @@ function getState() {
     notebook: notebook.getEntries(),
     mode: 'free',
     guided: null,
+    // Beyond UI.md section 1's shape: the tool tray needs to know what tools
+    // exist and which one is currently picked up. Kept separate from the
+    // section 1 fields above so the contract stays recognisable.
+    tools: tools.listTools(),
+    selectedToolId,
   };
 }
 
+/**
+ * What the instrument would say right now, used as the true value when a
+ * student records an estimate. This reads through tools.js rather than
+ * reaching into the container directly, so an estimate is always compared
+ * against exactly what the tool would have shown - including its precision.
+ */
+function currentReadingFor(containerId, toolId) {
+  const container = containersById.get(containerId);
+  if (!container) return null;
+  return tools.dip(toolId, container.snapshot());
+}
+
 /* ------------------------------------------------------------------ *
- * The fixed dispatch names from UI.md section 1. dipTool is left out
- * rather than faked - tools.js (Phase 4) does not exist yet.
+ * The fixed dispatch names from UI.md section 1, plus two additions:
+ * selectTool (pure interface state - which tool is picked up) and
+ * recordEstimate (the numeric half of compare-with-reference; see the
+ * note above recordEstimate in notebook.js for why section 1's
+ * recordObservation(text) could not carry it).
  * ------------------------------------------------------------------ */
 
 const dispatch = {
@@ -159,8 +186,36 @@ const dispatch = {
   pour: wrap(actions.pour),
   setHeat: wrap(actions.setHeat),
   stir: wrap(actions.stir),
+  dipTool: wrap(actions.dipTool),
   recordObservation: wrap(notebook.recordObservation),
   revealReference: wrap(notebook.revealReference),
+
+  selectTool: wrap((toolId) => {
+    // Clicking the tool you are already holding puts it back down.
+    selectedToolId = selectedToolId === toolId ? null : toolId;
+  }),
+
+  /**
+   * Records a student's estimate, capturing what the instrument actually says
+   * right now as the hidden true value. The comparison itself happens in
+   * notebook.js; this only supplies the two numbers and the tool's precision.
+   */
+  recordEstimate: wrap(({ containerId, toolId, value }) => {
+    const reading = currentReadingFor(containerId, toolId);
+    const container = containersById.get(containerId);
+    return notebook.recordEstimate({
+      value,
+      // hasReading is false for a mixture with no curated pH. Passing null
+      // through means the student is told "no reference available" rather
+      // than being marked wrong against a value that does not exist.
+      expected: reading && reading.hasReading ? reading.value : null,
+      quantity: reading ? reading.quantity : null,
+      unit: reading ? reading.unit : null,
+      tolerance: reading ? reading.tolerance : null,
+      containerId,
+      containerName: container ? container.name : null,
+    });
+  }),
   resetBench: wrap(() => {
     // container.empty() deliberately leaves temperature and the burner alone
     // (see its comment in container.js: "the glassware leaves the glassware
@@ -174,6 +229,7 @@ const dispatch = {
     }
     notebook.clear();
     activeHazard = null;
+    selectedToolId = null;
   }),
 };
 

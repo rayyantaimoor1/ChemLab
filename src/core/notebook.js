@@ -49,15 +49,18 @@
  * NO DOM AND NO FILES. This folder is pure logic.
  */
 
-/** How sure a comparison is, from revealReference(). */
+/**
+ * How close a comparison came, from revealReference(). The three words are
+ * the ones UI.md section 4 uses: "marked as a match, a near-miss, or a miss".
+ */
 export const MATCH = {
   MATCH: 'match',
-  PARTIAL: 'partial',
+  NEAR_MISS: 'near-miss',
   MISS: 'miss',
 };
 
 const MATCH_THRESHOLD = 0.6;
-const PARTIAL_THRESHOLD = 0.25;
+const NEAR_MISS_THRESHOLD = 0.25;
 
 // Common connecting words, stripped out before comparing text so that two
 // sentences are judged on their chemistry, not their grammar.
@@ -100,7 +103,29 @@ function classifyMatch(measured, expected) {
   const coverage = hits.length / expectedWords.length;
 
   if (coverage >= MATCH_THRESHOLD) return MATCH.MATCH;
-  if (coverage >= PARTIAL_THRESHOLD) return MATCH.PARTIAL;
+  if (coverage >= NEAR_MISS_THRESHOLD) return MATCH.NEAR_MISS;
+  return MATCH.MISS;
+}
+
+/**
+ * Rates a numeric estimate against the real measured value.
+ *
+ * Unlike the text version above, this one IS trustworthy: two numbers and a
+ * tolerance leave nothing to interpret. The tolerance comes from the
+ * instrument itself (see tools.js TOLERANCE) - it is how precisely that tool
+ * can actually be read, not an arbitrary marking scheme. Estimating pH 7.2
+ * when the answer is 7.0 is a match because pH paper genuinely cannot tell
+ * those apart.
+ */
+function classifyNumeric(measured, expected, tolerance) {
+  if (typeof measured !== 'number' || typeof expected !== 'number') return null;
+  if (!tolerance || typeof tolerance.match !== 'number' || typeof tolerance.near !== 'number') {
+    return null;
+  }
+
+  const difference = Math.abs(measured - expected);
+  if (difference <= tolerance.match) return MATCH.MATCH;
+  if (difference <= tolerance.near) return MATCH.NEAR_MISS;
   return MATCH.MISS;
 }
 
@@ -122,6 +147,10 @@ function toPublicEntry(entry) {
     expected: entry.revealed ? entry.expected : null,
     matched: entry.revealed ? entry.matched : null,
     revealed: entry.revealed,
+    // Present only on numeric estimates, so the UI can print "pH" or "°C"
+    // next to the two values without having to work out what was measured.
+    quantity: entry.quantity ?? null,
+    unit: entry.unit ?? null,
   };
 }
 
@@ -208,11 +237,74 @@ export function createNotebook({ save = null, load = null } = {}) {
   }
 
   /**
+   * Writes down a student's numeric estimate of something measurable, so it
+   * can be checked against what the instrument actually says.
+   *
+   * This is the trustworthy half of compare-with-reference. recordObservation
+   * above compares free text and can only ever give a rough steer;
+   * this compares two numbers against the instrument's own precision, so
+   * match / near-miss / miss genuinely means something.
+   *
+   * NOT one of UI.md section 1's dispatch names. That list has
+   * recordObservation(text) and nothing for a numeric reading, and text
+   * matching is too weak to build the compare-with-reference feature on. The
+   * entry it produces still fits section 1's notebook shape exactly
+   * (measured / expected / matched), so nothing downstream has to change.
+   *
+   * The true value is passed in rather than looked up, because this file has
+   * no access to containers or tools and should not grow one - see the
+   * boundary note in the file header.
+   *
+   * @param {object} details
+   * @param {number} details.value      what the student thinks it is
+   * @param {number|null} details.expected  what the instrument actually says
+   * @param {string} details.quantity   'pH', 'temperature', ...
+   * @param {string} [details.unit]     '°C' and so on, or none for pH
+   * @param {object} [details.tolerance] { match, near } from tools.js
+   * @param {string} [details.containerId]
+   * @param {string} [details.containerName]
+   */
+  function recordEstimate({
+    value,
+    expected = null,
+    quantity,
+    unit = null,
+    tolerance = null,
+    containerId = null,
+    containerName = null,
+  } = {}) {
+    if (typeof value !== 'number' || Number.isNaN(value)) {
+      throw new TypeError(`recordEstimate() needs a numeric value, got ${value}`);
+    }
+    if (typeof quantity !== 'string' || quantity.length === 0) {
+      throw new TypeError('recordEstimate() needs to know which quantity was estimated');
+    }
+
+    const where = containerName ? ` in ${containerName}` : '';
+    const printed = unit ? `${value} ${unit}` : `${value}`;
+
+    const entry = addEntry({
+      type: 'observation',
+      timestamp: Date.now(),
+      text: `Estimated ${quantity}${where}: ${printed}.`,
+      measured: value,
+      expected,
+      quantity,
+      unit,
+      tolerance,
+      containerId,
+    });
+
+    return toPublicEntry(entry);
+  }
+
+  /**
    * revealReference(notebookEntryId) — UI.md section 1's exact signature.
    *
-   * Reveals the reference text for one observation and rates how closely the
-   * student's own words matched it. See the file header for what that rating
-   * does and does not mean.
+   * Reveals the true value beside what the student wrote, and rates how close
+   * they were. A numeric estimate is compared against the instrument's own
+   * precision and the rating can be trusted; a free-text observation gets the
+   * rough keyword steer described in the file header.
    */
   function revealReference(notebookEntryId) {
     const entry = entries.find((candidate) => candidate.id === notebookEntryId);
@@ -224,7 +316,10 @@ export function createNotebook({ save = null, load = null } = {}) {
     }
 
     entry.revealed = true;
-    entry.matched = classifyMatch(entry.measured, entry.expected);
+    entry.matched =
+      typeof entry.measured === 'number'
+        ? classifyNumeric(entry.measured, entry.expected, entry.tolerance)
+        : classifyMatch(entry.measured, entry.expected);
     return toPublicEntry(entry);
   }
 
@@ -293,6 +388,7 @@ export function createNotebook({ save = null, load = null } = {}) {
   return {
     logAction,
     recordObservation,
+    recordEstimate,
     revealReference,
     getEntries,
     getEntry,

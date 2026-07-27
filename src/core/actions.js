@@ -44,8 +44,15 @@ import { engine as defaultEngine } from './engine.js';
  * @param {Function} [options.onNotebookEntry] called with { text, containerId,
  *   action, timestamp } after every action. This is how notebook.js will plug
  *   in once it exists, without this file needing to know its internals.
+ * @param {object}   [options.tools]        a tool set from tools.js. Without
+ *   it dipTool has nothing to dip and will say so rather than fail quietly.
  */
-export function createActions({ getContainer, engine = defaultEngine, onNotebookEntry = null } = {}) {
+export function createActions({
+  getContainer,
+  engine = defaultEngine,
+  onNotebookEntry = null,
+  tools = null,
+} = {}) {
   if (typeof getContainer !== 'function') {
     throw new TypeError('createActions() needs a getContainer(id) function');
   }
@@ -230,7 +237,34 @@ export function createActions({ getContainer, engine = defaultEngine, onNotebook
     };
   }
 
-  return { addChemical, pour, setHeat, stir };
+  /* ------------------------------------------------------------------ *
+   * dipTool(toolId, containerId)
+   * ------------------------------------------------------------------ */
+
+  function dipTool(toolId, containerId) {
+    const container = findContainer(containerId, 'dipTool');
+    if (!tools) {
+      throw new Error('dipTool: createActions() was not given a tools set');
+    }
+
+    // Deliberately NOT followed by an engine check. CLAUDE.md section 7:
+    // "Tools read state, never modify it." Dipping pH paper cannot start a
+    // reaction, so unlike the four actions above this one only reads. It is
+    // handed the container's frozen snapshot, so tools.js could not change
+    // anything even if it tried.
+    const reading = tools.dip(toolId, container.snapshot());
+
+    return {
+      action: 'dipTool',
+      toolId,
+      containerId,
+      reading,
+      notebookText: reading.text,
+      notebookEntry: emitNotebookEntry('dipTool', containerId, reading.text),
+    };
+  }
+
+  return { addChemical, pour, setHeat, stir, dipTool };
 }
 
 export default createActions;

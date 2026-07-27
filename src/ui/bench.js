@@ -23,11 +23,52 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     root.appendChild(heading);
 
     for (const container of state.containers) {
-      root.appendChild(renderContainer(container));
+      root.appendChild(renderContainer(container, state));
     }
+
+    root.appendChild(renderToolTray(state));
   }
 
-  function renderContainer(container) {
+  /**
+   * The tool tray from UI.md section 3's layout. Picking a tool up and then
+   * dipping it is two clicks rather than a drag, which keeps it usable from
+   * the keyboard - UI.md section 8 requires full keyboard operation, and drag
+   * and drop cannot give that.
+   */
+  function renderToolTray(state) {
+    const tray = document.createElement('section');
+    tray.className = 'tool-tray';
+
+    const heading = document.createElement('h3');
+    heading.textContent = 'Tool tray';
+    tray.appendChild(heading);
+
+    for (const tool of state.tools) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'tool';
+      button.dataset.toolId = tool.id;
+      button.textContent = tool.name;
+
+      const held = state.selectedToolId === tool.id;
+      button.classList.toggle('tool--selected', held);
+      button.setAttribute('aria-pressed', String(held));
+
+      button.addEventListener('click', () => dispatch.selectTool(tool.id));
+      tray.appendChild(button);
+    }
+
+    const hint = document.createElement('p');
+    hint.className = 'tool-tray__hint';
+    hint.textContent = state.selectedToolId
+      ? 'Now press Dip on a container.'
+      : 'Pick up a tool, then press Dip on a container.';
+    tray.appendChild(hint);
+
+    return tray;
+  }
+
+  function renderContainer(container, state) {
     const el = document.createElement('div');
     el.className = 'container';
     el.dataset.containerId = container.id;
@@ -58,6 +99,18 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       ` · Temp: ${container.temperatureC} °C` +
       ` · pH: ${container.pH === null ? 'unknown' : container.pH}`;
     el.appendChild(readout);
+
+    const dip = document.createElement('button');
+    dip.type = 'button';
+    dip.className = 'container__dip';
+    dip.textContent = 'Dip';
+    dip.disabled = !state.selectedToolId;
+    dip.title = state.selectedToolId ? 'Dip the tool you are holding' : 'Pick up a tool first';
+    dip.addEventListener('click', () => {
+      if (!state.selectedToolId) return;
+      dispatch.dipTool(state.selectedToolId, container.id);
+    });
+    el.appendChild(dip);
 
     el.addEventListener('dragover', (event) => {
       event.preventDefault();

@@ -191,7 +191,7 @@ test('wording that shares nothing with the reference rates as a miss', () => {
   assert.equal(revealed.matched, MATCH.MISS);
 });
 
-test('wording that shares some but not most of the vocabulary rates as partial', () => {
+test('wording that shares some but not most of the vocabulary rates as a near-miss', () => {
   const notebook = createNotebook();
   notebook.logAction(
     fakeActionEntry({ text: 'A bright yellow precipitate formed and bubbles of hydrogen appeared.' })
@@ -199,7 +199,7 @@ test('wording that shares some but not most of the vocabulary rates as partial',
   const written = notebook.recordObservation('I think some yellow stuff appeared.');
 
   const revealed = notebook.revealReference(written.id);
-  assert.equal(revealed.matched, MATCH.PARTIAL);
+  assert.equal(revealed.matched, MATCH.NEAR_MISS);
 });
 
 test('the match rating is symmetric under harmless case and punctuation changes', () => {
@@ -209,6 +209,130 @@ test('the match rating is symmetric under harmless case and punctuation changes'
 
   const revealed = notebook.revealReference(written.id);
   assert.equal(revealed.matched, MATCH.MATCH);
+});
+
+/* ------------------------------------------------------------------ *
+ * Compare with reference, the numeric version
+ *
+ * This is the trustworthy half of the feature: two numbers and the
+ * instrument's own precision, so match / near-miss / miss actually means
+ * something (unlike the keyword steer used for free text above).
+ * ------------------------------------------------------------------ */
+
+const phTolerance = { match: 0.5, near: 1.5 };
+
+test('recordEstimate writes down the student number', () => {
+  const notebook = createNotebook();
+  const entry = notebook.recordEstimate({
+    value: 6.5,
+    expected: 7.0,
+    quantity: 'pH',
+    tolerance: phTolerance,
+    containerName: 'Beaker',
+  });
+
+  assert.equal(entry.type, 'observation');
+  assert.equal(entry.measured, 6.5);
+  assert.equal(entry.quantity, 'pH');
+  assert.match(entry.text, /Estimated pH in Beaker: 6.5/);
+});
+
+test('an estimate hides the true value until compare is pressed', () => {
+  const notebook = createNotebook();
+  const entry = notebook.recordEstimate({ value: 6.5, expected: 7.0, quantity: 'pH', tolerance: phTolerance });
+
+  assert.equal(entry.expected, null);
+  assert.equal(entry.matched, null);
+  assert.equal(entry.revealed, false);
+});
+
+test('an estimate inside the instrument precision is a match', () => {
+  const notebook = createNotebook();
+  const entry = notebook.recordEstimate({ value: 7.4, expected: 7.0, quantity: 'pH', tolerance: phTolerance });
+
+  const revealed = notebook.revealReference(entry.id);
+
+  assert.equal(revealed.matched, MATCH.MATCH);
+  assert.equal(revealed.measured, 7.4);
+  assert.equal(revealed.expected, 7.0);
+});
+
+test('an estimate a little way out is a near-miss', () => {
+  const notebook = createNotebook();
+  const entry = notebook.recordEstimate({ value: 8.2, expected: 7.0, quantity: 'pH', tolerance: phTolerance });
+
+  assert.equal(notebook.revealReference(entry.id).matched, MATCH.NEAR_MISS);
+});
+
+test('an estimate well out is a miss', () => {
+  const notebook = createNotebook();
+  const entry = notebook.recordEstimate({ value: 2.0, expected: 7.0, quantity: 'pH', tolerance: phTolerance });
+
+  assert.equal(notebook.revealReference(entry.id).matched, MATCH.MISS);
+});
+
+test('the tolerance boundaries are inclusive, so exactly on the edge counts', () => {
+  const notebook = createNotebook();
+
+  const onMatchEdge = notebook.recordEstimate({ value: 7.5, expected: 7.0, quantity: 'pH', tolerance: phTolerance });
+  assert.equal(notebook.revealReference(onMatchEdge.id).matched, MATCH.MATCH);
+
+  const onNearEdge = notebook.recordEstimate({ value: 8.5, expected: 7.0, quantity: 'pH', tolerance: phTolerance });
+  assert.equal(notebook.revealReference(onNearEdge.id).matched, MATCH.NEAR_MISS);
+});
+
+test('being wrong in either direction is judged the same', () => {
+  const notebook = createNotebook();
+  const under = notebook.recordEstimate({ value: 5.8, expected: 7.0, quantity: 'pH', tolerance: phTolerance });
+  const over = notebook.recordEstimate({ value: 8.2, expected: 7.0, quantity: 'pH', tolerance: phTolerance });
+
+  assert.equal(notebook.revealReference(under.id).matched, notebook.revealReference(over.id).matched);
+});
+
+test('a temperature estimate uses the thermometer wider tolerance', () => {
+  const notebook = createNotebook();
+  const tolerance = { match: 2, near: 5 };
+  const entry = notebook.recordEstimate({
+    value: 33,
+    expected: 32,
+    quantity: 'temperature',
+    unit: '°C',
+    tolerance,
+  });
+
+  const revealed = notebook.revealReference(entry.id);
+  assert.equal(revealed.matched, MATCH.MATCH); // 1 degree out is within a school thermometer's precision
+  assert.equal(revealed.unit, '°C');
+});
+
+test('estimating against a vessel with no known value gives no rating rather than a miss', () => {
+  const notebook = createNotebook();
+  const entry = notebook.recordEstimate({ value: 7.0, expected: null, quantity: 'pH', tolerance: phTolerance });
+
+  const revealed = notebook.revealReference(entry.id);
+
+  assert.equal(revealed.revealed, true);
+  // Not knowing the answer is not the same as the student being wrong.
+  assert.equal(revealed.matched, null);
+});
+
+test('recordEstimate refuses anything that is not a number', () => {
+  const notebook = createNotebook();
+
+  assert.throws(() => notebook.recordEstimate({ value: 'seven', quantity: 'pH' }), TypeError);
+  assert.throws(() => notebook.recordEstimate({ value: Number.NaN, quantity: 'pH' }), TypeError);
+  assert.throws(() => notebook.recordEstimate({ value: 7 }), TypeError);
+});
+
+test('text observations and numeric estimates can sit in the same notebook', () => {
+  const notebook = createNotebook();
+  notebook.logAction(fakeActionEntry({ text: 'A yellow precipitate formed.' }));
+  const written = notebook.recordObservation('A yellow precipitate formed in the tube.');
+  const estimated = notebook.recordEstimate({ value: 7.2, expected: 7.0, quantity: 'pH', tolerance: phTolerance });
+
+  assert.equal(notebook.revealReference(written.id).matched, MATCH.MATCH);
+  assert.equal(notebook.revealReference(estimated.id).matched, MATCH.MATCH);
+  assert.equal(notebook.getEntries().length, 3);
 });
 
 /* ------------------------------------------------------------------ *

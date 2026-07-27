@@ -116,3 +116,62 @@ body {
 .observation-form input {
   flex: 1;
 }
+
+.tool-tray {
+  border-top: 1px solid #ccc;
+  margin-top: 16px;
+  padding-top: 10px;
+}
+
+.tool {
+  margin: 0 6px 6px 0;
+  padding: 8px 10px;
+  border: 1px solid #999;
+  background: #fafafa;
+  cursor: pointer;
+}
+
+.tool--selected {
+  border-color: #333;
+  border-width: 2px;
+  font-weight: bold;
+  background: #e8eefc;
+}
+
+.tool-tray__hint {
+  margin: 4px 0 0;
+  font-size: 0.9em;
+}
+
+.container__dip {
+  margin-top: 6px;
+  padding: 6px 12px;
+}
+
+.estimate-form {
+  border-top: 1px solid #ccc;
+  margin-top: 12px;
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.estimate-form h3 {
+  width: 100%;
+  margin: 0;
+}
+
+.estimate-form input {
+  width: 90px;
+}
+
+.notebook-entry__yours,
+.notebook-entry__reference {
+  margin: 4px 0 0;
+}
+
+.notebook-entry__rating {
+  margin: 4px 0 0;
+  font-weight: bold;
+}

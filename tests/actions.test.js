@@ -346,6 +346,62 @@ test('stir on an empty vessel is harmless', () => {
 });
 
 /* ------------------------------------------------------------------ *
+ * dipTool(toolId, containerId) — a read, never a change
+ * ------------------------------------------------------------------ */
+
+test('dipTool returns a reading and logs it to the notebook', async () => {
+  const { createTools, TOOL } = await import('../src/core/tools.js');
+  const { register, actions: _ignored, engine, containers } = makeWorld();
+  const b1 = register(beaker('b1'));
+  b1.add('acid', 25);
+
+  const notebookEntries = [];
+  const actions = createActions({
+    getContainer: (id) => containers.get(id),
+    engine,
+    tools: createTools({ getChemical: engine.getChemical }),
+    onNotebookEntry: (entry) => notebookEntries.push(entry),
+  });
+
+  const result = actions.dipTool(TOOL.PH_PAPER, 'b1');
+
+  assert.equal(result.action, 'dipTool');
+  assert.equal(result.reading.value, 1.0);
+  assert.equal(notebookEntries.length, 1);
+  assert.equal(notebookEntries[0].action, 'dipTool');
+  assert.match(notebookEntries[0].text, /pH paper/);
+});
+
+test('dipTool does not change the container or trigger a reaction', async () => {
+  const { createTools, TOOL } = await import('../src/core/tools.js');
+  const { register, engine, containers } = makeWorld();
+  const b1 = register(beaker('b1'));
+  // Both halves of a reaction present, but dipping must not set it off.
+  b1.add('acid', 25);
+  b1.add('alkali', 25);
+  const before = b1.snapshot();
+
+  const actions = createActions({
+    getContainer: (id) => containers.get(id),
+    engine,
+    tools: createTools({ getChemical: engine.getChemical }),
+  });
+
+  const result = actions.dipTool(TOOL.THERMOMETER, 'b1');
+
+  assert.equal(result.engineResult, undefined); // no engine check at all
+  assert.deepEqual(b1.getSpeciesIds(), before.speciesIds);
+  assert.equal(b1.getTemperatureC(), before.temperatureC);
+});
+
+test('dipTool without a tools set fails loudly rather than quietly', () => {
+  const { register, actions } = makeWorld();
+  register(beaker('b1'));
+
+  assert.throws(() => actions.dipTool('ph_paper', 'b1'), /not given a tools set/);
+});
+
+/* ------------------------------------------------------------------ *
  * Each action really does produce a notebook entry (CLAUDE.md section 7)
  * ------------------------------------------------------------------ */
 
