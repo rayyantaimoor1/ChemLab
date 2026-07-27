@@ -25,11 +25,7 @@ import { createActions } from '../core/actions.js';
 import { createNotebook } from '../core/notebook.js';
 import { mountShelf } from './shelf.js';
 import { mountBench } from './bench.js';
-// panels.js (the notebook panel) is still an empty placeholder - it is
-// wired in here once it is built. Notebook logging itself already works
-// without it: actions.js's onNotebookEntry -> notebook.logAction runs
-// regardless of whether anything renders the result yet (CLAUDE.md section
-// 7 requires the automatic log, not that a panel exists to show it).
+import { mountPanels } from './panels.js';
 
 /* ------------------------------------------------------------------ *
  * The bench. Free Lab mode has no experiment telling it what apparatus
@@ -187,6 +183,7 @@ const dispatch = {
 
 mountShelf({ root: document.getElementById('shelf') });
 mountBench({ root: document.getElementById('bench'), getState, dispatch, subscribe });
+mountPanels({ root: document.getElementById('notebook'), getState, dispatch, subscribe });
 
 document.getElementById('reset-bench').addEventListener('click', () => dispatch.resetBench());
 
