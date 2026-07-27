@@ -616,6 +616,51 @@ test('no two real reactions claim the same set of reactants', async () => {
   assert.equal(new Set(keys).size, keys.length, 'two reactions would match the same mixture');
 });
 
+test('every substance a reaction names actually exists in chemicals.json', async () => {
+  const { engine } = await import('../src/core/engine.js');
+  const known = new Set(engine.getAllChemicals().map((chemical) => chemical.id));
+
+  for (const reaction of engine.getAllReactions()) {
+    for (const id of reaction.reactants || []) {
+      assert.ok(known.has(id), `reaction ${reaction.id} needs unknown reactant '${id}'`);
+    }
+    // Products used to dangle: reactions named things like 'pbi2_s' that
+    // nothing could look up, so a vessel could not tell a precipitate from a
+    // liquid and no tool could read it. This is the guard against that
+    // coming back.
+    for (const id of reaction.products || []) {
+      assert.ok(known.has(id), `reaction ${reaction.id} produces unknown substance '${id}'`);
+    }
+  }
+});
+
+test('every real chemical says whether it belongs on the shelf', async () => {
+  const { engine } = await import('../src/core/engine.js');
+
+  for (const chemical of engine.getAllChemicals()) {
+    assert.equal(
+      typeof chemical.onShelf,
+      'boolean',
+      `chemical ${chemical.id} is missing an onShelf flag`
+    );
+  }
+});
+
+test('the shelf offers reagents only, never something you can only make', async () => {
+  const { engine } = await import('../src/core/engine.js');
+  const shelf = engine.getShelfChemicals();
+  const shelfIds = new Set(shelf.map((chemical) => chemical.id));
+
+  assert.ok(shelf.length > 0);
+  assert.ok(shelf.length < engine.getAllChemicals().length, 'products should be held back');
+
+  // A precipitate and a gas are things a student makes, not things they pick
+  // off a bottle rack.
+  assert.equal(shelfIds.has('pbi2_s'), false);
+  assert.equal(shelfIds.has('h2_g'), false);
+  assert.equal(shelfIds.has('hcl_1m'), true);
+});
+
 test('acid and alkali neutralise, whichever way round they are added', async () => {
   const { engine } = await import('../src/core/engine.js');
 

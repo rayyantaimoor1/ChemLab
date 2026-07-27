@@ -367,6 +367,46 @@ test('real hydrochloric acid reads red on pH paper and lights the bulb', async (
   assert.equal(conductivity.value, 'strong');
 });
 
+test('the tools can read a vessel after a real precipitation', async () => {
+  const { engine } = await import('../src/core/engine.js');
+  const tools = createTools({ getChemical: engine.getChemical });
+  const beaker = createContainer({
+    id: 'beaker_1',
+    name: 'Beaker',
+    capacityMl: 250,
+    getChemical: engine.getChemical,
+  });
+  beaker.add('pbno3_0_1m', 25);
+  beaker.add('ki_0_1m', 25);
+
+  const result = engine.react(beaker.getSpeciesIds(), { tempC: beaker.getTemperatureC() });
+  for (const step of result.steps) beaker.applyReaction(step.reaction);
+
+  // While the products had no chemicals.json entries, this vessel was
+  // unreadable: the tester had nothing to look up and reported no reading.
+  const conductivity = tools.dip(TOOL.CONDUCTIVITY, beaker.snapshot());
+  assert.equal(conductivity.hasReading, true);
+  assert.equal(conductivity.value, 'strong'); // the potassium nitrate left in solution
+  assert.doesNotMatch(conductivity.text, /covers only what is known/);
+
+  const ph = tools.dip(TOOL.PH_PAPER, beaker.snapshot());
+  assert.equal(ph.hasReading, true);
+  assert.ok(ph.colorName);
+});
+
+test('the precipitate itself is a named colour, ready for the UI to show', async () => {
+  const { engine } = await import('../src/core/engine.js');
+
+  // UI.md section 5: a colour is never allowed on screen without its name.
+  for (const id of ['pbi2_s', 'agcl_s']) {
+    const solid = engine.getChemical(id);
+    assert.ok(solid, `${id} should exist`);
+    assert.match(solid.colorHex, /^#[0-9A-F]{6}$/i);
+    assert.ok(solid.colorName && solid.colorName.length > 0, `${id} needs a colour name`);
+    assert.equal(solid.state, 'solid');
+  }
+});
+
 test('real distilled water is neutral on litmus and does not conduct', async () => {
   const { engine } = await import('../src/core/engine.js');
   const tools = createTools({ getChemical: engine.getChemical });

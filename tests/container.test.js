@@ -598,6 +598,30 @@ test('a real vessel and the real engine agree on a neutralisation', async () => 
   assert.equal(beaker.getVolumeMl(), 50);
 });
 
+test('a real precipitate settles as a solid and does not inflate the volume', async () => {
+  const { engine } = await import('../src/core/engine.js');
+
+  const beaker = createContainer({ capacityMl: 250, getChemical: engine.getChemical });
+  beaker.add('pbno3_0_1m', 25);
+  beaker.add('ki_0_1m', 25);
+  assert.equal(beaker.getVolumeMl(), 50);
+
+  const result = engine.react(beaker.getSpeciesIds(), { tempC: beaker.getTemperatureC() });
+  for (const step of result.steps) beaker.applyReaction(step.reaction);
+
+  const solid = beaker.getContents().find((entry) => entry.id === 'pbi2_s');
+  // Lead(II) iodide is a solid. Before its chemicals.json entry existed the
+  // vessel had no way to know that, so it was filed as a liquid and handed
+  // half the volume - 25 mL of "liquid precipitate" that does not exist.
+  assert.equal(solid.unit, UNIT.GRAM);
+  assert.equal(solid.amount, null);
+
+  // All the liquid is the potassium nitrate solution left behind.
+  const liquid = beaker.getContents().find((entry) => entry.id === 'kno3_aq');
+  assert.equal(liquid.unit, UNIT.ML);
+  assert.equal(beaker.getVolumeMl(), 50);
+});
+
 test('zinc dropped into real acid keeps the acid pH showing', async () => {
   const { engine } = await import('../src/core/engine.js');
 

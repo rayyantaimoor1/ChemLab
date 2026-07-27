@@ -406,8 +406,20 @@ export function createEngine({
     /** Look up one reaction rule by its id. */
     getReaction: (id) => reactionsById.get(id) || null,
 
-    /** Everything currently loaded, for panels that list the shelf. */
+    /** Everything currently loaded, products included. */
     getAllChemicals: () => chemicals,
+
+    /**
+     * Only the reagents a student can actually pick up, for the shelf.
+     *
+     * chemicals.json also holds the substances that reactions PRODUCE - a
+     * precipitate, a gas, a salt left in solution. Those need full records so
+     * the vessel knows a precipitate is a solid and the tools can read it,
+     * but they are not things you take off a bottle rack. They are marked
+     * "onShelf": false and filtered out here.
+     */
+    getShelfChemicals: () => chemicals.filter((chemical) => chemical.onShelf !== false),
+
     getAllReactions: () => reactions,
 
     /**

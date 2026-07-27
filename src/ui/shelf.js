@@ -23,7 +23,10 @@ export function mountShelf({ root }) {
   const list = document.createElement('ul');
   list.className = 'shelf-list';
 
-  for (const chemical of engine.getAllChemicals()) {
+  // Reagents only. chemicals.json also describes what reactions produce
+  // (precipitates, gases, salts in solution) and those are not things a
+  // student can take off the shelf - see engine.getShelfChemicals.
+  for (const chemical of engine.getShelfChemicals()) {
     const item = document.createElement('li');
     item.className = 'reagent-bottle';
     item.draggable = true;

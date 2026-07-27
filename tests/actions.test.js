@@ -450,18 +450,13 @@ test('a real bench: HCl added to a flask already holding NaOH neutralises', asyn
   assert.equal(result.engineResult.outcome, OUTCOME.REACTION);
   assert.match(result.notebookText, /warmed/);
 
-  // KNOWN DATA GAP, not an actions.js bug: reactions.json's products are
-  // 'nacl_aq' and 'water', which do not match chemicals.json's real ids
-  // ('nacl_1m', 'water_distilled'). The flask now genuinely holds species
-  // with no chemicals.json entry, so container.js cannot tell they are
-  // liquids and falls back to treating them as liquid, and cannot report a
-  // pH or colour for them. This test pins today's real, if unfortunate,
-  // behaviour rather than the corrected one, so it will rightly fail the
-  // day someone reconciles the two id schemes - that failure is the signal
-  // to update this assertion, not a regression.
+  // The products of a reaction are now real, described substances rather
+  // than bare ids nothing could look up. This assertion used to pin the
+  // opposite - that getChemical('nacl_aq') returned null - as a known gap.
   assert.deepEqual(flask.getSpeciesIds(), ['nacl_aq', 'water']);
-  assert.equal(engine.getChemical('nacl_aq'), null);
-  assert.equal(flask.getPH(), 7.0); // only correct because resultPH overrides it
+  assert.ok(engine.getChemical('nacl_aq'), 'the salt formed should be a known substance');
+  assert.equal(engine.getChemical('nacl_aq').name, 'Sodium chloride solution');
+  assert.equal(flask.getPH(), 7.0);
 });
 
 test('a real bench: an unknown combination is reported honestly, not guessed', async () => {
