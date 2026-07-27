@@ -26,7 +26,8 @@ import { createNotebook } from '../core/notebook.js';
 import { createTools } from '../core/tools.js';
 import { mountShelf } from './shelf.js';
 import { mountBench } from './bench.js';
-import { mountPanels } from './panels.js';
+import { mountPanels, mountHazardAlert } from './panels.js';
+import { setReduceAnimation } from './effects.js';
 
 /* ------------------------------------------------------------------ *
  * The bench. Free Lab mode has no experiment telling it what apparatus
@@ -66,15 +67,34 @@ const actions = createActions({
 // which button is highlighted - so it lives here rather than in src/core/.
 let selectedToolId = null;
 
-// The most recent hazard, if the last reaction anywhere on the bench carried
-// one. There is no hazard modal built yet (that is Phase 5's effects layer),
-// so this is read by nothing yet - it exists so the state shape is already
-// correct and complete for when that modal is built.
+// UI.md section 6's in-app "Reduce animation" toggle. Starts off: unchecked
+// does not mean "force motion on" - the OS's own prefers-reduced-motion, if
+// set, still wins regardless of this. This is only the extra override for a
+// shared machine where nobody has touched the OS setting, or a teacher who
+// wants the projector still without changing Windows settings on a PC that
+// is not theirs. Deliberately not reset by resetBench(): it is a display
+// preference, not lab state.
+let reduceAnimationEnabled = false;
+
+// The hazard currently being warned about, rendered by the alert overlay in
+// panels.js. The whole hazard object from reactions.json is kept, not just
+// the four fields UI.md section 1's example lists - CLAUDE.md section 5's
+// schema also carries whatToDoInstead, and that is the half that makes the
+// warning teach rather than only frighten.
 let activeHazard = null;
 
+/**
+ * Records a hazard when a reaction carries one.
+ *
+ * This only ever SETS. It deliberately does not clear the hazard when a
+ * later, harmless reaction happens: UI.md section 6 says a hazard alert
+ * holds its written warning, and a warning that quietly disappeared the
+ * moment the student did something else would not be held at all. It is
+ * cleared only by acknowledging it, or by resetting the bench.
+ */
 function trackHazard(engineResult) {
   const hazardStep = engineResult?.steps?.find((step) => step.reaction?.hazard);
-  activeHazard = hazardStep ? hazardStep.reaction.hazard : null;
+  if (hazardStep) activeHazard = hazardStep.reaction.hazard;
 }
 
 /* ------------------------------------------------------------------ *
@@ -163,6 +183,7 @@ function getState() {
     // section 1 fields above so the contract stays recognisable.
     tools: tools.listTools(),
     selectedToolId,
+    reduceAnimationEnabled,
   };
 }
 
@@ -198,6 +219,24 @@ const dispatch = {
   selectTool: wrap((toolId) => {
     // Clicking the tool you are already holding puts it back down.
     selectedToolId = selectedToolId === toolId ? null : toolId;
+  }),
+
+  // Not one of UI.md section 1's dispatch names. Section 1 has no action for
+  // clearing activeHazard, but section 6 requires the warning to be held on
+  // screen rather than timed out, so something has to end that hold - this
+  // is the student saying they have read it.
+  dismissHazard: wrap(() => {
+    activeHazard = null;
+  }),
+
+  // Also not a section 1 name: the in-app "Reduce animation" toggle section
+  // 6 asks for. setReduceAnimation (effects.js) is called directly here
+  // rather than through a container/notebook action, because there is
+  // nothing for the engine to decide - it only ever affects how a change is
+  // shown, never what happened.
+  setReduceAnimation: wrap((enabled) => {
+    reduceAnimationEnabled = Boolean(enabled);
+    setReduceAnimation(reduceAnimationEnabled);
   }),
 
   /**
@@ -245,7 +284,29 @@ const dispatch = {
 mountShelf({ root: document.getElementById('shelf') });
 mountBench({ root: document.getElementById('bench'), getState, dispatch, subscribe });
 mountPanels({ root: document.getElementById('notebook'), getState, dispatch, subscribe });
+mountHazardAlert({
+  root: document.getElementById('hazard-alert'),
+  getState,
+  dispatch,
+  subscribe,
+  edgeEl: document.getElementById('hazard-edge'),
+  // The bench is what shakes, not the whole window - see shakeElement in
+  // effects.js for why the warning text is deliberately left still.
+  shakeEl: document.getElementById('bench'),
+});
 
 document.getElementById('reset-bench').addEventListener('click', () => dispatch.resetBench());
+
+const reduceAnimationCheckbox = document.getElementById('reduce-animation');
+reduceAnimationCheckbox.addEventListener('change', (event) => {
+  dispatch.setReduceAnimation(event.target.checked);
+});
+// Kept in sync on every render rather than only set once, the same way
+// bench.js and panels.js re-read getState() rather than trusting their own
+// last-known value - this is the one piece of topbar chrome that reflects
+// state rather than being fire-and-forget like Reset.
+subscribe(() => {
+  reduceAnimationCheckbox.checked = getState().reduceAnimationEnabled;
+});
 
 notify();

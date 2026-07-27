@@ -634,6 +634,38 @@ test('every substance a reaction names actually exists in chemicals.json', async
   }
 });
 
+test('every hazard carries both the danger and the correct response', async () => {
+  const { engine } = await import('../src/core/engine.js');
+
+  for (const reaction of engine.getAllReactions()) {
+    const hazard = reaction.hazard;
+    if (!hazard) continue;
+
+    // The alert overlay renders each of these. A hazard missing one would
+    // still open an alert, just a quieter or emptier one, which is the kind
+    // of failure nobody notices until a student is looking at it.
+    for (const field of ['severity', 'type', 'title', 'warning']) {
+      assert.ok(
+        typeof hazard[field] === 'string' && hazard[field].trim().length > 0,
+        `hazard on ${reaction.id} is missing ${field}`
+      );
+    }
+
+    // CLAUDE.md section 5: hazard entries "present the danger and the
+    // correct response". Without whatToDoInstead the panel only frightens -
+    // it never tells the student what they should have done instead.
+    assert.ok(
+      typeof hazard.whatToDoInstead === 'string' && hazard.whatToDoInstead.trim().length > 0,
+      `hazard on ${reaction.id} says what is dangerous but not what to do instead`
+    );
+
+    assert.ok(
+      ['low', 'moderate', 'high'].includes(hazard.severity),
+      `hazard on ${reaction.id} has an unrecognised severity '${hazard.severity}'`
+    );
+  }
+});
+
 test('every real chemical says whether it belongs on the shelf', async () => {
   const { engine } = await import('../src/core/engine.js');
 

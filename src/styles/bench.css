@@ -29,6 +29,23 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
+.topbar__reduce-motion {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  cursor: pointer;
+}
+
+.topbar__reduce-motion input {
+  /* UI.md section 8: click targets at least 40x40px. The native checkbox
+     square is much smaller than that; the label text is part of the same
+     click target via <label>, so the whole row - not just the box - is
+     what needs to clear 40px tall. */
+  width: 18px;
+  height: 18px;
+}
+
 .layout {
   display: flex;
   align-items: stretch;
@@ -314,12 +331,23 @@ body {
   50% { transform: rotate(-45deg) scale(1.18); }
 }
 
+/* Two ways to silence the flicker: the OS setting, and the in-app "Reduce
+   animation" toggle (html.reduce-motion, set by effects.js's
+   setReduceAnimation). Every animate()-driven effect already checks both the
+   same way in JS; this is that same OR, written for a CSS animation that
+   never goes through animate() at all. */
 @media (prefers-reduced-motion: reduce) {
   .fx-flame--1,
   .fx-flame--2,
   .fx-flame--3 {
     animation: none;
   }
+}
+
+html.reduce-motion .fx-flame--1,
+html.reduce-motion .fx-flame--2,
+html.reduce-motion .fx-flame--3 {
+  animation: none;
 }
 
 .heat-level {
@@ -334,4 +362,120 @@ body {
   border-width: 2px;
   font-weight: bold;
   background: #ffe8d1;
+}
+
+/* ------------------------------------------------------------------ *
+ * Hazard alert.
+ *
+ * #D0342C is UI.md section 4's hazard red, and section 4 reserves it
+ * exclusively for danger: "It never appears as a button colour, an accent,
+ * a highlight, or decoration." These rules are the only place in this
+ * stylesheet that colour appears, and the pH-paper red in tools.js is
+ * deliberately a different hex (#C0392B) so the two can never be confused.
+ *
+ * Nothing here is animated by CSS. The flash and shake are one-shot
+ * animations driven from effects.js, which respects prefers-reduced-motion
+ * for both - so there is no ambient pulsing or throbbing to turn a warning
+ * into a spectacle.
+ * ------------------------------------------------------------------ */
+
+.hazard-edge {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  border: 14px solid #D0342C;
+  opacity: 0;
+}
+
+#hazard-alert[hidden] {
+  display: none;
+}
+
+.hazard-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.hazard-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 26, 25, 0.55);
+}
+
+.hazard-panel {
+  position: relative;
+  max-width: 540px;
+  padding: 20px 24px 24px;
+  background: #EDEAE3;
+  border: 2px solid #161A19;
+  border-top: 10px solid #D0342C;
+  color: #161A19;
+}
+
+.hazard-panel__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hazard-icon {
+  flex: none;
+}
+
+.hazard-panel__label {
+  margin: 0;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+}
+
+.hazard-panel__severity {
+  margin: 2px 0 0;
+  font-size: 0.95em;
+}
+
+.hazard-panel__title {
+  margin: 14px 0 0;
+  font-size: 1.35em;
+}
+
+.hazard-panel__warning {
+  margin: 10px 0 0;
+  line-height: 1.5;
+}
+
+.hazard-panel__advice-heading {
+  margin: 18px 0 0;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hazard-panel__advice {
+  margin: 6px 0 0;
+  line-height: 1.5;
+  padding-left: 12px;
+  border-left: 3px solid #161A19;
+}
+
+.hazard-panel__acknowledge {
+  margin-top: 22px;
+  /* UI.md section 8: click targets at least 40x40px. */
+  min-height: 40px;
+  padding: 8px 20px;
+  font-size: 1em;
+  border: 2px solid #161A19;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+
+.hazard-panel__acknowledge:focus-visible {
+  /* Section 8 again: a visible focus ring, not the browser default. */
+  outline: 3px solid #161A19;
+  outline-offset: 2px;
 }

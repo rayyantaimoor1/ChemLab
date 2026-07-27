@@ -30,15 +30,43 @@
  * REDUCED MOTION
  * Every animation in this file goes through animate(), which checks
  * prefers-reduced-motion and, when set, jumps straight to the final state
- * instead of playing anything. There is no in-app "Reduce animation"
- * toggle yet (UI.md section 6 asks for one, for shared machines where the
- * OS setting is rarely touched) - that needs a settings surface that does
- * not exist yet and is left for whoever builds one.
+ * instead of playing anything. setReduceAnimation() below adds the second
+ * half UI.md section 6 asks for: an in-app toggle, independent of the OS
+ * setting, for shared machines where that setting is rarely touched and for
+ * a teacher who wants motion off on a projector without changing Windows
+ * settings on a lab PC that is not theirs.
+ *
+ * The app toggle also sets a class on <html> so bench.css's ambient flame
+ * animation (a CSS @keyframes loop, not something animate() below ever
+ * touches) is silenced by the same switch - see bench.css's
+ * .fx-flame--1/2/3 rules, which match the class exactly the way they
+ * already match the OS media query.
  */
 
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+const APP_REDUCE_MOTION_CLASS = 'reduce-motion';
+
+let appReduceMotionEnabled = false;
+
+/**
+ * The in-app "Reduce animation" toggle from UI.md section 6. This is an
+ * override on TOP of the OS setting, not a replacement for it - turning
+ * this off does not force animation on for someone whose OS already asked
+ * for less motion.
+ */
+export function setReduceAnimation(enabled) {
+  appReduceMotionEnabled = Boolean(enabled);
+  if (typeof document !== 'undefined' && document.documentElement) {
+    document.documentElement.classList.toggle(APP_REDUCE_MOTION_CLASS, appReduceMotionEnabled);
+  }
+}
+
+export function isReduceAnimationEnabled() {
+  return appReduceMotionEnabled;
+}
 
 function reducedMotionPreferred() {
+  if (appReduceMotionEnabled) return true;
   return typeof window !== 'undefined'
     && typeof window.matchMedia === 'function'
     && window.matchMedia(REDUCED_MOTION_QUERY).matches;
@@ -312,6 +340,87 @@ export function setFlameLevel(flameEl, level) {
 }
 
 /* ------------------------------------------------------------------ *
+ * Hazard alert — UI.md section 6: "200ms in. Screen edge flash + shake,
+ * then hold the written warning."
+ *
+ * The two functions below are only the "200ms in" half: the flash and the
+ * shake that get a student's eyes onto the screen. The warning itself is
+ * held by the alert panel in panels.js and is never on a timer - it stays
+ * until it is acknowledged.
+ *
+ * DELIBERATELY RESTRAINED. UI.md section 6 closes with: "Hazard visuals
+ * stop at conveying danger and consequence. They do not glorify the
+ * disaster or turn it into a reward for misbehaving." So there is no
+ * explosion, no fire, no particle spectacle, and no sound here - a brief
+ * flash, a small shake, and then the screen goes still so the writing can
+ * be read. Anything more would make triggering a hazard feel like winning
+ * something.
+ *
+ * Both go through animate(), so prefers-reduced-motion turns the flash and
+ * the shake off entirely. The written warning is never motion-gated: it
+ * appears either way, because safety information is not decoration.
+ * ------------------------------------------------------------------ */
+
+export function flashHazardEdge(edgeEl, { inMs = 200, holdMs = 500, outMs = 700 } = {}) {
+  if (!edgeEl) return;
+
+  // Clear any previous flash still attached. Every animation here uses
+  // fill: 'forwards' so that it holds its final frame, which also means a
+  // finished one keeps overriding the element's own style until it is
+  // cancelled. Without this, triggering hazard after hazard in one session
+  // would pile up dead animations on this element. Nothing else ever
+  // animates the edge, so cancelling everything on it is safe.
+  for (const previous of edgeEl.getAnimations()) previous.cancel();
+
+  const total = inMs + holdMs + outMs;
+  const animation = animate(
+    edgeEl,
+    [
+      { opacity: 0 },
+      { opacity: 1, offset: inMs / total },
+      { opacity: 1, offset: (inMs + holdMs) / total },
+      { opacity: 0 },
+    ],
+    { duration: total, easing: 'ease-in-out' }
+  );
+
+  whenDone(animation, () => {
+    edgeEl.style.opacity = '0';
+  });
+}
+
+/**
+ * A short, small-amplitude shake. Applied to the bench rather than the
+ * whole window on purpose: it localises the alarm to where the reaction
+ * actually happened, and it leaves the warning panel perfectly still and
+ * readable rather than shaking the text a student is meant to read.
+ */
+export function shakeElement(el, { duration = 200, amplitude = 6 } = {}) {
+  if (!el) return;
+
+  // Same reason as flashHazardEdge: drop any previous shake rather than
+  // stacking held final frames. The bench zone itself is never animated by
+  // anything else - the vessel effects all animate elements inside it.
+  for (const previous of el.getAnimations()) previous.cancel();
+
+  const animation = animate(
+    el,
+    [
+      { transform: 'translateX(0)' },
+      { transform: `translateX(-${amplitude}px)` },
+      { transform: `translateX(${amplitude}px)` },
+      { transform: `translateX(-${amplitude * 0.5}px)` },
+      { transform: 'translateX(0)' },
+    ],
+    { duration, easing: 'ease-in-out' }
+  );
+
+  whenDone(animation, () => {
+    el.style.transform = '';
+  });
+}
+
+/* ------------------------------------------------------------------ *
  * Pour — UI.md section 6: "700-1000ms. Stream from lip; receiving level
  * rises." The level rise is riseLiquidLevel above, called on the
  * receiving vessel. This is the stream itself: a brief droplet appearing
@@ -346,3 +455,4 @@ export function playPourStream(mouthLayerEl, { duration = 850 } = {}) {
 }
 
 export const __internal = { reducedMotionPreferred, animate, whenDone };
+
