@@ -144,7 +144,12 @@ function getState() {
         position: { slot: index },
         contents: snapshot.contents.map((item) => ({ chemicalId: item.id, amount: item.amount })),
         volumeMl: snapshot.volumeMl,
+        // Not in UI.md section 1's example, but needed to draw a liquid
+        // level: volumeMl alone cannot say how full a vessel looks without
+        // knowing what full means for it.
+        capacityMl: snapshot.capacityMl,
         temperatureC: snapshot.temperatureC,
+        heatLevel: snapshot.heatLevel,
         pH: snapshot.pH,
         appearance: appearanceFor(snapshot),
       };
