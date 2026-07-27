@@ -1,0 +1,118 @@
+/*
+ * bench.css — deliberately plain. This is the Phase 3 placeholder from
+ * CLAUDE.md's build phases, not the real design (that is Phase 9, in
+ * Claude Design, against UI.md). Just enough layout to make the three
+ * zones from UI.md section 3 usable: reagent shelf, bench, lab notebook.
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color: #222;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+.layout {
+  display: flex;
+  align-items: stretch;
+  height: calc(100vh - 41px);
+}
+
+.zone {
+  overflow-y: auto;
+  padding: 12px;
+}
+
+.zone--shelf {
+  width: 22%;
+  border-right: 1px solid #ccc;
+}
+
+.zone--bench {
+  width: 52%;
+}
+
+.zone--notebook {
+  width: 26%;
+  border-left: 1px solid #ccc;
+}
+
+.shelf-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reagent-bottle {
+  padding: 6px 8px;
+  margin-bottom: 6px;
+  border: 1px solid #999;
+  cursor: grab;
+  background: #fafafa;
+}
+
+.reagent-bottle:active {
+  cursor: grabbing;
+}
+
+.container {
+  border: 1px solid #999;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.container--drag-over {
+  border-color: #333;
+  border-style: dashed;
+  background: #f0f4ff;
+}
+
+.container__contents {
+  margin: 6px 0;
+  padding-left: 18px;
+}
+
+.container__readout {
+  font-family: monospace;
+  margin: 6px 0 0;
+}
+
+.notebook-entries {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+
+.notebook-entry {
+  border-bottom: 1px solid #eee;
+  padding: 6px 0;
+}
+
+.notebook-entry--observation {
+  background: #fafafa;
+}
+
+.notebook-entry__reference {
+  font-style: italic;
+  margin: 4px 0 0;
+}
+
+.observation-form {
+  display: flex;
+  gap: 6px;
+}
+
+.observation-form input {
+  flex: 1;
+}
