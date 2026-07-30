@@ -25,9 +25,16 @@
  * manual z-sorting.
  *
  * Dragging updates two rotation angles and writes them straight onto
- * `.scene`'s transform - one line, no interpolation, no easing. That is
- * "lightweight" taken literally, and it is also what makes the next
- * paragraph true.
+ * `.scene`'s transform, no interpolation, no easing. Each atom sphere is
+ * then billboarded: it gets the *inverse* of that same rotation appended
+ * after its own translate3d, so it keeps facing the camera instead of
+ * rotating edge-on into a flat ellipse (a `border-radius: 50%` div is a
+ * flat disc, not a real sphere - without this it looks round only from
+ * the angle it was built at). Every atom's position still moves correctly
+ * in 3D; only its own face-on orientation is held fixed. That is still a
+ * handful of direct style writes per pointermove, not a render loop - the
+ * "lightweight" claim in the next paragraph still holds for molecules
+ * this small (2 to 9 atoms).
  *
  * WHY IT NEVER RUNS WHILE THE BENCH IS ANIMATING
  * This file has no requestAnimationFrame loop anywhere and never has one
@@ -123,8 +130,14 @@ function buildScene(stage, molecule) {
     sphere.style.marginTop = `${-radius}px`;
     sphere.style.background =
       `radial-gradient(circle at 35% 30%, #ffffff 0%, ${colorFor(atom.element)} 55%, #00000055 100%)`;
+    // Base position only, no rotation - wireDrag's apply() appends the
+    // camera-facing billboard rotation on top of this every time the
+    // scene turns, including once immediately for the resting pose.
+    sphere.dataset.tx = String(atom.x * UNIT_PX);
+    sphere.dataset.ty = String(-atom.y * UNIT_PX);
+    sphere.dataset.tz = String(atom.z * UNIT_PX);
     sphere.style.transform =
-      `translate3d(${atom.x * UNIT_PX}px, ${-atom.y * UNIT_PX}px, ${atom.z * UNIT_PX}px)`;
+      `translate3d(${sphere.dataset.tx}px, ${sphere.dataset.ty}px, ${sphere.dataset.tz}px)`;
 
     if (atom.element !== 'group') {
       const label = el('span', 'molecular3d__label');
@@ -171,8 +184,21 @@ function wireDrag(stage, scene) {
   let lastX = 0;
   let lastY = 0;
 
+  // Snapshot once: buildScene has already populated the scene by the time
+  // wireDrag is called, and the atom list never changes after that.
+  const atomEls = Array.from(scene.querySelectorAll('.molecular3d__atom'));
+
   function apply() {
     scene.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    // Billboard every sphere: undo the scene's rotation, in reverse order,
+    // on top of each atom's own translate3d, so a flat circular div keeps
+    // presenting its round face to the camera instead of turning edge-on
+    // into an ellipse as the molecule rotates.
+    for (const atom of atomEls) {
+      atom.style.transform =
+        `translate3d(${atom.dataset.tx}px, ${atom.dataset.ty}px, ${atom.dataset.tz}px) ` +
+        `rotateY(${-rotateY}deg) rotateX(${-rotateX}deg)`;
+    }
   }
   apply();
 
