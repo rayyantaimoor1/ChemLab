@@ -1,0 +1,184 @@
+[
+  {
+    "id": "exp_acid_base_titration",
+    "title": "Acid–base titration",
+    "level": "matric",
+    "objective": "Neutralise a measured volume of sodium hydroxide with hydrochloric acid, and use pH paper to find the point where the mixture is neither acidic nor alkaline.",
+    "apparatus": ["beaker", "stirring_rod", "ph_paper", "thermometer"],
+    "reagents": ["naoh_1m", "hcl_1m"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 25 mL of sodium hydroxide solution into the beaker.",
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "naoh_1m",
+          "minAmountMl": 15,
+          "maxAmountMl": 40
+        },
+        "hint": "The alkali goes in first, because it is the solution you are testing. Take sodium hydroxide from the shelf and dispense it into the beaker.",
+        "onWrongAction": "Start by putting the alkali in the beaker. Sodium hydroxide is the solution being neutralised, so it goes in first and the acid is added to it afterwards."
+      },
+      {
+        "n": 2,
+        "instruction": "Dip the pH paper into the beaker and note the starting reading.",
+        "requiredAction": {
+          "type": "dipTool",
+          "toolId": "ph_paper",
+          "containerType": "beaker"
+        },
+        "hint": "Pick up the pH paper from the tool tray, then press Dip on the beaker. Sodium hydroxide is a strong alkali, so expect a reading near the top of the scale.",
+        "onWrongAction": "Measure what you are starting from before you change it. Dip the pH paper into the sodium hydroxide and read the colour against the chart."
+      },
+      {
+        "n": 3,
+        "instruction": "Add about 25 mL of hydrochloric acid to the same beaker.",
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "hcl_1m",
+          "minAmountMl": 15,
+          "maxAmountMl": 40
+        },
+        "hint": "The acid is added to the alkali, not the other way round. Both solutions are the same strength here, so a similar volume will neutralise it.",
+        "onWrongAction": "This step needs hydrochloric acid added to the beaker that already holds the sodium hydroxide. Adding it to a different vessel keeps the two apart, so no neutralisation can happen."
+      },
+      {
+        "n": 4,
+        "instruction": "Stir the mixture so the acid and alkali meet properly.",
+        "requiredAction": {
+          "type": "stir",
+          "containerType": "beaker"
+        },
+        "hint": "Press Stir on the beaker. In a real titration you swirl the flask constantly for the same reason.",
+        "onWrongAction": "Stir the beaker before you take a reading. Without mixing, part of the solution may still be unreacted and any measurement you take is of one patch rather than the whole."
+      },
+      {
+        "n": 5,
+        "instruction": "Dip the pH paper again to find the pH after neutralisation.",
+        "requiredAction": {
+          "type": "dipTool",
+          "toolId": "ph_paper",
+          "containerType": "beaker"
+        },
+        "hint": "Dip the pH paper into the beaker a second time. If the acid has neutralised the alkali the paper should read close to the middle of the scale, in the green band.",
+        "onWrongAction": "Take the reading that shows whether the neutralisation worked. Dip the pH paper into the beaker and compare it with the strongly alkaline reading you took in step 2."
+      },
+      {
+        "n": 6,
+        "instruction": "Dip the thermometer into the beaker.",
+        "requiredAction": {
+          "type": "dipTool",
+          "toolId": "thermometer",
+          "containerType": "beaker"
+        },
+        "hint": "Neutralisation gives out heat. Pick up the thermometer and dip it into the beaker to see how much warmer the mixture became.",
+        "onWrongAction": "There is a second thing to observe besides the pH. Dip the thermometer into the beaker to measure the heat the reaction gave out."
+      },
+      {
+        "n": 7,
+        "instruction": "Write down what you observed in the lab notebook.",
+        "requiredAction": {
+          "type": "recordObservation"
+        },
+        "hint": "Type what you saw into the notebook box and press Record. Mention the pH before and after, and whether the beaker felt warmer.",
+        "onWrongAction": "Finish by recording your own observation in the notebook, then compare it with the reference answer."
+      }
+    ],
+    "expectedResult": {
+      "endpointPH": 7.0,
+      "indicatorColour": "green on pH paper",
+      "temperatureRiseC": 7,
+      "observation": "The strongly alkaline solution became neutral, and the beaker grew noticeably warmer. Nothing changed colour and no gas was given off."
+    },
+    "theory": "An acid and an alkali neutralise each other. The H⁺ ions from the hydrochloric acid and the OH⁻ ions from the sodium hydroxide join to form water, while the Na⁺ and Cl⁻ ions stay dissolved as spectator ions, leaving ordinary salt water behind. Because bonds are formed as the water is made, the reaction gives out heat, which is why the beaker warms up. The end point is where neither acid nor alkali is left in excess, and for a strong acid with a strong alkali that point is at pH 7.",
+    "note": "This version of the lab does not calculate concentration from the volumes used. The neutralised mixture is shown at its curated pH of 7 whatever volume of acid you add, so treat this as a demonstration of the technique and of what neutralisation looks like, not as a quantitative titration. A real titration measures the exact volume of acid needed and uses it to work out the unknown concentration.",
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — acids, bases and salts; reaction data from rxn_neutralisation_hcl_naoh in reactions.json"
+  },
+  {
+    "id": "exp_precipitation_lead_iodide",
+    "title": "Precipitation — the golden rain reaction",
+    "level": "matric",
+    "objective": "Mix two clear, colourless solutions and show that a bright yellow insoluble solid forms, then work out which ions joined together to make it.",
+    "apparatus": ["test_tube", "stirring_rod", "conductivity"],
+    "reagents": ["pbno3_0_1m", "ki_0_1m"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 10 mL of lead(II) nitrate solution into the test tube.",
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "pbno3_0_1m",
+          "minAmountMl": 5,
+          "maxAmountMl": 20
+        },
+        "hint": "Take lead(II) nitrate from the shelf and dispense it into the test tube. Notice that it is completely clear and colourless before you add anything to it.",
+        "onWrongAction": "This experiment starts with lead(II) nitrate solution in the test tube. Both starting solutions are colourless, which is what makes the change you are about to see worth watching."
+      },
+      {
+        "n": 2,
+        "instruction": "Write down what the lead(II) nitrate solution looks like before you mix anything.",
+        "requiredAction": {
+          "type": "recordObservation"
+        },
+        "hint": "Record what you can see now, while there is only one solution in the tube. Having the 'before' written down is what makes the 'after' mean something.",
+        "onWrongAction": "Record your observation of the starting solution first. A precipitation experiment only proves something if you noted that both solutions were clear beforehand."
+      },
+      {
+        "n": 3,
+        "instruction": "Add about 10 mL of potassium iodide solution to the same test tube.",
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "ki_0_1m",
+          "minAmountMl": 5,
+          "maxAmountMl": 20
+        },
+        "hint": "Add the potassium iodide to the tube that already holds the lead(II) nitrate. Watch the tube as it goes in.",
+        "onWrongAction": "The potassium iodide needs to go into the same test tube as the lead(II) nitrate. Kept in separate vessels the two sets of ions never meet, so no precipitate can form."
+      },
+      {
+        "n": 4,
+        "instruction": "Stir the tube to mix the two solutions fully.",
+        "requiredAction": {
+          "type": "stir",
+          "containerType": "test_tube"
+        },
+        "hint": "Press Stir on the test tube so all of the lead ions get a chance to meet the iodide ions.",
+        "onWrongAction": "Stir the test tube so the two solutions mix completely. Any lead(II) nitrate left in an unmixed layer has nothing to react with."
+      },
+      {
+        "n": 5,
+        "instruction": "Dip the conductivity tester into the tube.",
+        "requiredAction": {
+          "type": "dipTool",
+          "toolId": "conductivity",
+          "containerType": "test_tube"
+        },
+        "hint": "Pick up the conductivity tester and dip it in. The solid that formed cannot carry a current, but the potassium and nitrate ions left in the solution still can.",
+        "onWrongAction": "Dip the conductivity tester into the tube. It shows that even though a solid has dropped out, there are still dissolved ions left behind in the liquid."
+      },
+      {
+        "n": 6,
+        "instruction": "Write down what you observed after mixing.",
+        "requiredAction": {
+          "type": "recordObservation"
+        },
+        "hint": "Describe the colour of the solid and say whether the liquid above it is still clear. Then compare your words with the reference answer.",
+        "onWrongAction": "Finish by recording what you saw after mixing, so you can compare your own description with the reference one."
+      }
+    ],
+    "expectedResult": {
+      "precipitateColour": "bright yellow",
+      "precipitateName": "lead(II) iodide",
+      "endpointPH": 5.0,
+      "conductivity": "strong",
+      "observation": "Two clear colourless solutions produced a bright yellow solid that settled through the liquid. The solution left above it still conducts electricity because the potassium and nitrate ions took no part in the reaction."
+    },
+    "theory": "This is a double displacement reaction. The lead(II) nitrate provides Pb²⁺ ions and the potassium iodide provides I⁻ ions. Lead(II) iodide is insoluble in cold water, so as soon as those two ions meet they join and drop out of the solution as a bright yellow solid. The K⁺ and NO₃⁻ ions are spectators — they were dissolved before and stay dissolved afterwards, which is why the liquid still conducts electricity. Warming the tube and letting it cool slowly makes the solid reappear as glittering flakes, which is where the name golden rain comes from.",
+    "safety": "Lead compounds are cumulative poisons: the body stores them rather than clearing them out, so even small repeated exposures matter. Do not touch the solutions or the yellow solid with bare hands, never taste anything, and put all lead waste in the labelled heavy-metal waste container rather than down the sink.",
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — solubility rules and double displacement reactions; reaction data from rxn_precipitation_pbno3_ki in reactions.json"
+  }
+]
