@@ -65,12 +65,23 @@ export function isReduceAnimationEnabled() {
   return appReduceMotionEnabled;
 }
 
-function reducedMotionPreferred() {
+/**
+ * True when motion should be suppressed, for EITHER reason: the OS's
+ * prefers-reduced-motion, or the in-app toggle. Exported so anything that
+ * animates outside animate() below - molecular.js runs its own timed loop,
+ * because a molecule's bonds have to be redrawn from wherever its atoms
+ * currently are - asks the same single question rather than re-implementing
+ * half of it and drifting out of step.
+ */
+export function prefersReducedMotion() {
   if (appReduceMotionEnabled) return true;
   return typeof window !== 'undefined'
     && typeof window.matchMedia === 'function'
     && window.matchMedia(REDUCED_MOTION_QUERY).matches;
 }
+
+// Kept as a local alias so the rest of this file reads unchanged.
+const reducedMotionPreferred = prefersReducedMotion;
 
 /**
  * The one place every animation in this file goes through. Reduced motion

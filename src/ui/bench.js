@@ -158,11 +158,24 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     });
     el.appendChild(dip);
 
+    // Appears only once a reaction with a scripted animation has actually
+    // happened in THIS vessel - see lastAnimatedReactionId in app.js.
+    const molecularView = document.createElement('button');
+    molecularView.type = 'button';
+    molecularView.className = 'container__molecular';
+    molecularView.textContent = 'Molecular view';
+    molecularView.hidden = true;
+    molecularView.addEventListener('click', () => {
+      const reactionId = molecularView.dataset.reactionId;
+      if (reactionId) dispatch.viewReactionAnimation(reactionId);
+    });
+    el.appendChild(molecularView);
+
     wireDragAndDrop(el, container.id);
 
     const refs = {
       el, liquidBase, liquidIncoming, precipitateLayer, bubbleLayer, gasLayer, pourMouth,
-      contentsList, volumeEl, tempEl, phEl, colorLabel, flame, heatButtons, dip,
+      contentsList, volumeEl, tempEl, phEl, colorLabel, flame, heatButtons, dip, molecularView,
       lastCapacityMl: container.capacityMl,
     };
     containerEls.set(container.id, refs);
@@ -219,6 +232,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     refs.dip.disabled = !state.selectedToolId;
     refs.dip.title = state.selectedToolId ? 'Dip the tool you are holding' : 'Pick up a tool first';
+
+    const animatedReactionId = container.lastAnimatedReactionId;
+    refs.molecularView.hidden = !animatedReactionId;
+    if (animatedReactionId) refs.molecularView.dataset.reactionId = animatedReactionId;
   }
 
   /* ------------------------------------------------------------------ *

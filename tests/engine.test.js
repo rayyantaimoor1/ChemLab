@@ -671,6 +671,106 @@ test('every hazard carries both the danger and the correct response', async () =
   }
 });
 
+test('every molecularAnimation a reaction names actually exists', async () => {
+  const { engine } = await import('../src/core/engine.js');
+  const { default: animations } = await import('../src/data/animations.json', {
+    with: { type: 'json' },
+  });
+
+  for (const reaction of engine.getAllReactions()) {
+    if (!reaction.molecularAnimation) continue;
+    assert.ok(
+      animations[reaction.molecularAnimation],
+      `reaction ${reaction.id} names animation '${reaction.molecularAnimation}', which does not exist`
+    );
+  }
+});
+
+test('every animation script is internally consistent', async () => {
+  const { default: animations } = await import('../src/data/animations.json', {
+    with: { type: 'json' },
+  });
+
+  for (const [id, animation] of Object.entries(animations)) {
+    assert.ok(Array.isArray(animation.steps) && animation.steps.length > 0, `${id} has no steps`);
+    assert.equal(animation.viewBox?.length, 4, `${id} needs a four-number viewBox`);
+
+    const known = new Set(animation.particles.map((particle) => particle.id));
+
+    for (const [index, step] of animation.steps.entries()) {
+      const where = `${id} step ${index + 1}`;
+
+      // Every step carries the sentence the panel shows. Without it a
+      // student on reduced motion, who gets the captions INSTEAD of the
+      // animation, would be handed a blank line.
+      assert.ok(
+        typeof step.caption === 'string' && step.caption.trim().length > 0,
+        `${where} has no caption`
+      );
+
+      // Every particle needs a position in every step - the player tweens
+      // between consecutive steps, so a gap would make something jump to
+      // the top-left corner rather than move.
+      for (const particleId of known) {
+        assert.ok(step.positions?.[particleId], `${where} has no position for '${particleId}'`);
+      }
+
+      for (const particleId of Object.keys(step.positions || {})) {
+        assert.ok(known.has(particleId), `${where} positions unknown particle '${particleId}'`);
+      }
+      for (const particleId of step.hidden || []) {
+        assert.ok(known.has(particleId), `${where} hides unknown particle '${particleId}'`);
+      }
+      for (const particleId of Object.keys(step.charges || {})) {
+        assert.ok(known.has(particleId), `${where} charges unknown particle '${particleId}'`);
+      }
+      for (const bond of step.bonds || []) {
+        assert.ok(known.has(bond.from), `${where} bonds from unknown particle '${bond.from}'`);
+        assert.ok(known.has(bond.to), `${where} bonds to unknown particle '${bond.to}'`);
+      }
+    }
+  }
+});
+
+test('every 3D molecule entry is internally consistent', async () => {
+  const { default: molecules3d } = await import('../src/data/molecules3d.json', {
+    with: { type: 'json' },
+  });
+
+  for (const [id, molecule] of Object.entries(molecules3d)) {
+    assert.ok(
+      Array.isArray(molecule.atoms) && molecule.atoms.length > 0,
+      `${id} has no atoms`
+    );
+
+    const known = new Set(molecule.atoms.map((atom) => atom.id));
+    assert.equal(known.size, molecule.atoms.length, `${id} has a duplicate atom id`);
+
+    for (const atom of molecule.atoms) {
+      assert.ok(typeof atom.element === 'string' && atom.element.length > 0, `${id} atom '${atom.id}' has no element`);
+      for (const axis of ['x', 'y', 'z']) {
+        assert.equal(typeof atom[axis], 'number', `${id} atom '${atom.id}' is missing coordinate '${axis}'`);
+      }
+    }
+
+    for (const bond of molecule.bonds || []) {
+      assert.ok(known.has(bond.from), `${id} bonds from unknown atom '${bond.from}'`);
+      assert.ok(known.has(bond.to), `${id} bonds to unknown atom '${bond.to}'`);
+    }
+  }
+});
+
+test('every real chemical has a 3D structure entry that resolves', async () => {
+  const { engine } = await import('../src/core/engine.js');
+  const { default: molecules3d } = await import('../src/data/molecules3d.json', {
+    with: { type: 'json' },
+  });
+
+  for (const chemical of engine.getAllChemicals()) {
+    assert.ok(molecules3d[chemical.id], `chemical ${chemical.id} has no 3D structure entry`);
+  }
+});
+
 test('every real chemical points its structure field at an image that actually exists', async () => {
   const { engine } = await import('../src/core/engine.js');
 

@@ -622,3 +622,277 @@ html.reduce-motion .fx-flame--3 {
   font-style: italic;
   color: #4A4A4A;
 }
+
+/* ------------------------------------------------------------------ *
+ * The molecular view.
+ *
+ * Same overlay/backdrop/panel shape as the properties card, so a student
+ * meets one visual language for "a modal opened" rather than several. The
+ * stage itself is plain SVG positioned entirely by transform from
+ * molecular.js - there is no CSS animation here at all, so nothing needs a
+ * prefers-reduced-motion rule: molecular.js decides whether to play, and
+ * draws the final frame plus the written steps when it should not.
+ * ------------------------------------------------------------------ */
+
+.container__molecular {
+  margin-top: 6px;
+  margin-left: 6px;
+  min-height: 40px;
+  padding: 6px 12px;
+  border: 1px solid #999;
+  background: #fff;
+  cursor: pointer;
+}
+
+.container__molecular:focus-visible {
+  outline: 3px solid #161A19;
+  outline-offset: 2px;
+}
+
+.molecular-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.molecular-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 26, 25, 0.5);
+}
+
+.molecular-panel {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  padding: 20px 24px 24px;
+  background: #EDEAE3;
+  border: 2px solid #161A19;
+  color: #161A19;
+}
+
+.molecular-panel__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 6px 10px;
+  border: 1px solid #161A19;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+
+.molecular-panel__close:focus-visible,
+.molecular-panel__replay:focus-visible {
+  outline: 3px solid #161A19;
+  outline-offset: 2px;
+}
+
+.molecular-panel__title {
+  margin: 0 60px 4px 0;
+  font-size: 1.2em;
+}
+
+.molecular-panel__equation {
+  margin: 0 0 10px;
+  font-family: monospace;
+  font-size: 1.05em;
+}
+
+.molecular-panel__stage {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #FFFFFF;
+  border: 1px solid #ccc;
+}
+
+.molecular-panel__caption {
+  /* Reserves room for two lines so the panel does not jump about as the
+     caption changes length between steps. */
+  min-height: 3em;
+  margin: 10px 0 0;
+  line-height: 1.5;
+}
+
+.molecular-panel__steps {
+  margin: 10px 0 0;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+
+.molecular-panel__replay {
+  margin-top: 12px;
+  min-height: 40px;
+  padding: 8px 20px;
+  border: 2px solid #161A19;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------ *
+ * "View in 3D" button on the properties card.
+ * ------------------------------------------------------------------ */
+
+.properties-panel__view-3d {
+  display: block;
+  margin: 0 0 14px;
+  min-height: 40px;
+  padding: 6px 16px;
+  border: 1px solid #999;
+  background: #fff;
+  cursor: pointer;
+}
+
+.properties-panel__view-3d:focus-visible {
+  outline: 3px solid #161A19;
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------------ *
+ * The 3D ball-and-stick view.
+ *
+ * Same overlay/backdrop/panel shape as the other two molecular modals.
+ * `perspective` on the stage and `transform-style: preserve-3d` on the
+ * scene are what turn plain translate3d/rotateX/rotateY into an actual 3D
+ * scene - everything else here is the same flat CSS as the rest of the
+ * app. No WebGL, no canvas, no filter, no box-shadow.
+ * ------------------------------------------------------------------ */
+
+.molecular3d-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.molecular3d-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 26, 25, 0.5);
+}
+
+.molecular3d-panel {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  padding: 20px 24px 24px;
+  background: #EDEAE3;
+  border: 2px solid #161A19;
+  color: #161A19;
+}
+
+.molecular3d-panel__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 6px 10px;
+  border: 1px solid #161A19;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+
+.molecular3d-panel__close:focus-visible {
+  outline: 3px solid #161A19;
+  outline-offset: 2px;
+}
+
+.molecular3d-panel__title {
+  margin: 0 60px 10px 0;
+  font-size: 1.15em;
+}
+
+.molecular3d-panel__note {
+  margin: 0 0 12px;
+  font-size: 0.85em;
+  font-style: italic;
+  color: #4A4A4A;
+}
+
+.molecular3d__stage {
+  position: relative;
+  height: 260px;
+  /* How dramatic the 3D perspective looks - closer atoms appear larger. A
+     small value would exaggerate foreshortening; this keeps it subtle. */
+  perspective: 700px;
+  background: #FFFFFF;
+  border: 1px solid #ccc;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.molecular3d__stage--dragging {
+  cursor: grabbing;
+}
+
+.molecular3d__scene {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+}
+
+.molecular3d__atom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.molecular3d__label {
+  font-family: sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #161A19;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+}
+
+.molecular3d__bond {
+  position: absolute;
+  top: 0;
+  left: -3px;
+  width: 6px;
+  transform-origin: top center;
+}
+
+.molecular3d__bond--covalent {
+  background: #7f8c8d;
+}
+
+.molecular3d__bond--ionic {
+  background: repeating-linear-gradient(
+    to bottom,
+    #8A8A8A 0,
+    #8A8A8A 5px,
+    transparent 5px,
+    transparent 9px
+  );
+}
+
+.molecular3d-panel__hint {
+  margin: 10px 0 0;
+  font-size: 0.85em;
+  color: #4A4A4A;
+  text-align: center;
+}

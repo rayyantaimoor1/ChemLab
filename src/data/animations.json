@@ -1,0 +1,310 @@
+{
+  "anim_neutralisation": {
+    "equation": "HCl + NaOH → NaCl + H₂O",
+    "viewBox": [0, 0, 340, 190],
+    "particles": [
+      { "id": "h_acid", "label": "H", "element": "H", "r": 15 },
+      { "id": "cl", "label": "Cl", "element": "Cl", "r": 20 },
+      { "id": "na", "label": "Na", "element": "Na", "r": 19 },
+      { "id": "o", "label": "O", "element": "O", "r": 19 },
+      { "id": "h_base", "label": "H", "element": "H", "r": 14 }
+    ],
+    "steps": [
+      {
+        "durationMs": 1400,
+        "caption": "Both are already split up in water. The acid is H⁺ and Cl⁻ ions; the alkali is Na⁺ and OH⁻ ions. Nothing is joined to anything yet.",
+        "positions": {
+          "h_acid": [60, 60],
+          "cl": [60, 140],
+          "na": [280, 140],
+          "o": [270, 60],
+          "h_base": [305, 42]
+        },
+        "charges": { "h_acid": "+", "cl": "−", "na": "+", "o": "−" },
+        "bonds": [{ "from": "o", "to": "h_base", "type": "covalent" }]
+      },
+      {
+        "durationMs": 1400,
+        "caption": "Opposite charges pull together, so the H⁺ ion and the OH⁻ ion move towards each other.",
+        "positions": {
+          "h_acid": [120, 62],
+          "cl": [58, 142],
+          "na": [283, 142],
+          "o": [230, 66],
+          "h_base": [265, 48]
+        },
+        "charges": { "h_acid": "+", "cl": "−", "na": "+", "o": "−" },
+        "bonds": [{ "from": "o", "to": "h_base", "type": "covalent" }]
+      },
+      {
+        "durationMs": 1600,
+        "caption": "They join. One molecule of water forms — and that is the whole reaction. The charges cancel, so the water is neutral.",
+        "positions": {
+          "h_acid": [145, 48],
+          "cl": [55, 145],
+          "na": [285, 145],
+          "o": [175, 70],
+          "h_base": [205, 48]
+        },
+        "charges": { "cl": "−", "na": "+" },
+        "bonds": [
+          { "from": "o", "to": "h_base", "type": "covalent" },
+          { "from": "o", "to": "h_acid", "type": "covalent" }
+        ]
+      },
+      {
+        "durationMs": 1600,
+        "caption": "The Na⁺ and Cl⁻ ions never took part. They stay dissolved and unchanged — that is what a spectator ion is.",
+        "positions": {
+          "h_acid": [145, 50],
+          "cl": [45, 155],
+          "na": [295, 155],
+          "o": [175, 72],
+          "h_base": [205, 50]
+        },
+        "charges": { "cl": "−", "na": "+" },
+        "bonds": [
+          { "from": "o", "to": "h_base", "type": "covalent" },
+          { "from": "o", "to": "h_acid", "type": "covalent" }
+        ]
+      }
+    ]
+  },
+
+  "anim_precipitation_pbi2": {
+    "equation": "Pb(NO₃)₂ + 2KI → PbI₂ + 2KNO₃",
+    "viewBox": [0, 0, 340, 200],
+    "particles": [
+      { "id": "pb", "label": "Pb", "element": "Pb", "r": 21 },
+      { "id": "i1", "label": "I", "element": "I", "r": 17 },
+      { "id": "i2", "label": "I", "element": "I", "r": 17 },
+      { "id": "k1", "label": "K", "element": "K", "r": 18 },
+      { "id": "k2", "label": "K", "element": "K", "r": 18 },
+      { "id": "no3a", "label": "NO₃", "element": "group", "w": 48, "h": 28 },
+      { "id": "no3b", "label": "NO₃", "element": "group", "w": 48, "h": 28 }
+    ],
+    "steps": [
+      {
+        "durationMs": 1400,
+        "caption": "Two clear solutions. Every ion is dissolved and moving about on its own.",
+        "positions": {
+          "pb": [70, 55],
+          "no3a": [150, 35],
+          "no3b": [150, 82],
+          "i1": [80, 155],
+          "i2": [142, 160],
+          "k1": [268, 50],
+          "k2": [272, 112]
+        },
+        "charges": { "pb": "2+", "i1": "−", "i2": "−", "k1": "+", "k2": "+", "no3a": "−", "no3b": "−" },
+        "bonds": []
+      },
+      {
+        "durationMs": 1500,
+        "caption": "The Pb²⁺ ions and the I⁻ ions are drawn to each other and meet in the middle.",
+        "positions": {
+          "pb": [152, 98],
+          "no3a": [268, 32],
+          "no3b": [280, 78],
+          "i1": [108, 124],
+          "i2": [196, 126],
+          "k1": [48, 45],
+          "k2": [44, 108]
+        },
+        "charges": { "pb": "2+", "i1": "−", "i2": "−", "k1": "+", "k2": "+", "no3a": "−", "no3b": "−" },
+        "bonds": []
+      },
+      {
+        "durationMs": 1500,
+        "caption": "They lock together as lead(II) iodide. Unlike everything else here, it cannot dissolve.",
+        "positions": {
+          "pb": [152, 100],
+          "no3a": [268, 32],
+          "no3b": [280, 78],
+          "i1": [112, 100],
+          "i2": [192, 100],
+          "k1": [48, 45],
+          "k2": [44, 108]
+        },
+        "charges": { "pb": "2+", "i1": "−", "i2": "−", "k1": "+", "k2": "+", "no3a": "−", "no3b": "−" },
+        "bonds": [
+          { "from": "pb", "to": "i1", "type": "ionic" },
+          { "from": "pb", "to": "i2", "type": "ionic" }
+        ]
+      },
+      {
+        "durationMs": 1700,
+        "caption": "The solid sinks — this is the bright yellow precipitate. The K⁺ and NO₃⁻ ions stay dissolved as spectator ions.",
+        "positions": {
+          "pb": [152, 168],
+          "no3a": [270, 36],
+          "no3b": [282, 84],
+          "i1": [112, 168],
+          "i2": [192, 168],
+          "k1": [48, 42],
+          "k2": [44, 104]
+        },
+        "charges": { "pb": "2+", "i1": "−", "i2": "−", "k1": "+", "k2": "+", "no3a": "−", "no3b": "−" },
+        "bonds": [
+          { "from": "pb", "to": "i1", "type": "ionic" },
+          { "from": "pb", "to": "i2", "type": "ionic" }
+        ]
+      }
+    ]
+  },
+
+  "anim_precipitation_agcl": {
+    "equation": "AgNO₃ + NaCl → AgCl + NaNO₃",
+    "viewBox": [0, 0, 340, 200],
+    "particles": [
+      { "id": "ag", "label": "Ag", "element": "Ag", "r": 20 },
+      { "id": "cl", "label": "Cl", "element": "Cl", "r": 21 },
+      { "id": "na", "label": "Na", "element": "Na", "r": 19 },
+      { "id": "no3", "label": "NO₃", "element": "group", "w": 48, "h": 28 }
+    ],
+    "steps": [
+      {
+        "durationMs": 1400,
+        "caption": "Silver nitrate and salt solution. Both are clear, and all four ions are dissolved.",
+        "positions": {
+          "ag": [70, 55],
+          "no3": [152, 38],
+          "na": [272, 58],
+          "cl": [200, 150]
+        },
+        "charges": { "ag": "+", "cl": "−", "na": "+", "no3": "−" },
+        "bonds": []
+      },
+      {
+        "durationMs": 1500,
+        "caption": "The Ag⁺ ion and the Cl⁻ ion find each other.",
+        "positions": {
+          "ag": [138, 102],
+          "no3": [58, 36],
+          "na": [284, 46],
+          "cl": [212, 108]
+        },
+        "charges": { "ag": "+", "cl": "−", "na": "+", "no3": "−" },
+        "bonds": []
+      },
+      {
+        "durationMs": 1500,
+        "caption": "They join as silver chloride, which is very nearly insoluble in water.",
+        "positions": {
+          "ag": [152, 102],
+          "no3": [56, 34],
+          "na": [286, 44],
+          "cl": [208, 102]
+        },
+        "charges": { "ag": "+", "cl": "−", "na": "+", "no3": "−" },
+        "bonds": [{ "from": "ag", "to": "cl", "type": "ionic" }]
+      },
+      {
+        "durationMs": 1700,
+        "caption": "It settles out as the white curdy precipitate that shows chloride is present. Na⁺ and NO₃⁻ are only spectators.",
+        "positions": {
+          "ag": [152, 168],
+          "no3": [56, 38],
+          "na": [288, 48],
+          "cl": [208, 168]
+        },
+        "charges": { "ag": "+", "cl": "−", "na": "+", "no3": "−" },
+        "bonds": [{ "from": "ag", "to": "cl", "type": "ionic" }]
+      }
+    ]
+  },
+
+  "anim_gas_evolution_h2": {
+    "equation": "Zn + 2HCl → ZnCl₂ + H₂",
+    "viewBox": [0, 0, 340, 200],
+    "particles": [
+      { "id": "zn", "label": "Zn", "element": "Zn", "r": 24 },
+      { "id": "h1", "label": "H", "element": "H", "r": 15 },
+      { "id": "h2", "label": "H", "element": "H", "r": 15 },
+      { "id": "cl1", "label": "Cl", "element": "Cl", "r": 20 },
+      { "id": "cl2", "label": "Cl", "element": "Cl", "r": 20 },
+      { "id": "e1", "label": "e⁻", "element": "electron", "r": 10 },
+      { "id": "e2", "label": "e⁻", "element": "electron", "r": 10 }
+    ],
+    "steps": [
+      {
+        "durationMs": 1400,
+        "caption": "A piece of zinc metal sits in the acid. The acid is already split into H⁺ and Cl⁻ ions.",
+        "positions": {
+          "zn": [70, 152],
+          "h1": [190, 62],
+          "h2": [246, 92],
+          "cl1": [158, 136],
+          "cl2": [270, 150],
+          "e1": [70, 152],
+          "e2": [70, 152]
+        },
+        "charges": { "h1": "+", "h2": "+", "cl1": "−", "cl2": "−" },
+        "hidden": ["e1", "e2"],
+        "bonds": []
+      },
+      {
+        "durationMs": 1600,
+        "caption": "Zinc is more reactive than hydrogen, so each zinc atom gives up two electrons and moves into the solution as a Zn²⁺ ion.",
+        "positions": {
+          "zn": [96, 138],
+          "h1": [190, 62],
+          "h2": [246, 92],
+          "cl1": [156, 140],
+          "cl2": [272, 150],
+          "e1": [138, 118],
+          "e2": [142, 142]
+        },
+        "charges": { "zn": "2+", "h1": "+", "h2": "+", "cl1": "−", "cl2": "−" },
+        "bonds": []
+      },
+      {
+        "durationMs": 1500,
+        "caption": "The H⁺ ions take those two electrons.",
+        "positions": {
+          "zn": [98, 136],
+          "h1": [192, 66],
+          "h2": [240, 82],
+          "cl1": [154, 146],
+          "cl2": [274, 152],
+          "e1": [180, 72],
+          "e2": [230, 88]
+        },
+        "charges": { "zn": "2+", "h1": "+", "h2": "+", "cl1": "−", "cl2": "−" },
+        "bonds": []
+      },
+      {
+        "durationMs": 1500,
+        "caption": "Now neutral, the two hydrogen atoms pair up into a molecule of hydrogen gas.",
+        "positions": {
+          "zn": [100, 134],
+          "h1": [196, 62],
+          "h2": [236, 62],
+          "cl1": [152, 148],
+          "cl2": [276, 152],
+          "e1": [196, 62],
+          "e2": [236, 62]
+        },
+        "charges": { "zn": "2+", "cl1": "−", "cl2": "−" },
+        "hidden": ["e1", "e2"],
+        "bonds": [{ "from": "h1", "to": "h2", "type": "covalent" }]
+      },
+      {
+        "durationMs": 1700,
+        "caption": "The gas bubbles away and leaves. The Zn²⁺ and Cl⁻ ions stay behind in solution — that is the zinc chloride.",
+        "positions": {
+          "zn": [100, 140],
+          "h1": [198, 22],
+          "h2": [238, 22],
+          "cl1": [158, 154],
+          "cl2": [272, 156],
+          "e1": [198, 22],
+          "e2": [238, 22]
+        },
+        "charges": { "zn": "2+", "cl1": "−", "cl2": "−" },
+        "hidden": ["e1", "e2"],
+        "bonds": [{ "from": "h1", "to": "h2", "type": "covalent" }]
+      }
+    ]
+  }
+}

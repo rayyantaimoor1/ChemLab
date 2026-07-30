@@ -27,6 +27,8 @@ import { createTools } from '../core/tools.js';
 import { mountShelf } from './shelf.js';
 import { mountBench } from './bench.js';
 import { mountPanels, mountHazardAlert, mountPropertiesCard } from './panels.js';
+import { mountMolecularView } from './molecular.js';
+import { mountMolecular3DView } from './molecular3d.js';
 import { setReduceAnimation } from './effects.js';
 
 /* ------------------------------------------------------------------ *
@@ -103,6 +105,36 @@ function trackHazard(engineResult) {
   if (hazardStep) activeHazard = hazardStep.reaction.hazard;
 }
 
+// The most recent reaction in each vessel that has a molecular animation, so
+// the "Molecular view" button appears on the vessel where it actually
+// happened rather than somewhere general. Keyed by container id.
+const lastAnimatedReactionByContainer = new Map();
+
+// Which reaction's animation is open, if any.
+let viewingReactionId = null;
+
+// Which chemical's 3D ball-and-stick view is open, if any - reachable from
+// the properties card for either a reagent or a formed product, the same
+// way its 2D structure already is.
+let viewing3DChemicalId = null;
+
+/**
+ * Notes which vessel just ran a reaction worth animating.
+ *
+ * The last matching step wins, not the first: a cascade ends on whatever
+ * happened most recently, and that is what a student just watched.
+ */
+function trackAnimatedReaction(result) {
+  // addChemical/setHeat/stir report containerId; pour reports the vessel it
+  // poured INTO as toId, which is the only one actions.js runs the engine on.
+  const containerId = result.containerId ?? result.toId;
+  const steps = result.engineResult?.steps;
+  if (!containerId || !steps) return;
+
+  const animated = [...steps].reverse().find((step) => step.reaction?.molecularAnimation);
+  if (animated) lastAnimatedReactionByContainer.set(containerId, animated.reaction.id);
+}
+
 /* ------------------------------------------------------------------ *
  * A tiny pub/sub so every zone can re-render itself after any dispatch,
  * without app.js having to know which zones care about which actions.
@@ -120,13 +152,17 @@ function notify() {
 }
 
 /**
- * Wraps a dispatch function so every call updates the hazard tracking (if the
- * result carries an engineResult) and then notifies every subscribed zone.
+ * Wraps a dispatch function so every call updates the hazard and molecular
+ * animation tracking (if the result carries an engineResult) and then
+ * notifies every subscribed zone.
  */
 function wrap(fn) {
   return (...args) => {
     const result = fn(...args);
-    if (result && result.engineResult) trackHazard(result.engineResult);
+    if (result && result.engineResult) {
+      trackHazard(result.engineResult);
+      trackAnimatedReaction(result);
+    }
     notify();
     return result;
   };
@@ -178,6 +214,10 @@ function getState() {
         heatLevel: snapshot.heatLevel,
         pH: snapshot.pH,
         appearance: appearanceFor(snapshot),
+        // The most recent reaction in THIS vessel that has a molecular
+        // animation, so bench.js can offer to replay it right there. Null
+        // until something animatable has actually happened in it.
+        lastAnimatedReactionId: lastAnimatedReactionByContainer.get(snapshot.id) || null,
       };
     }),
     activeHazard,
@@ -191,6 +231,8 @@ function getState() {
     selectedToolId,
     reduceAnimationEnabled,
     viewingChemicalId,
+    viewingReactionId,
+    viewing3DChemicalId,
   };
 }
 
@@ -257,6 +299,26 @@ const dispatch = {
     viewingChemicalId = null;
   }),
 
+  // The molecular view, CLAUDE.md section 8's Phase 6 deliverable. Like
+  // viewProperties, this does not check the id resolves - molecular.js says
+  // so honestly if there is no animation, rather than opening a blank stage.
+  viewReactionAnimation: wrap((reactionId) => {
+    viewingReactionId = reactionId;
+  }),
+  closeReactionAnimation: wrap(() => {
+    viewingReactionId = null;
+  }),
+
+  // The 3D ball-and-stick view. Same honesty as viewReactionAnimation: does
+  // not check the id resolves or that 3D data exists for it - molecular3d.js
+  // says so plainly rather than opening an empty stage.
+  view3DStructure: wrap((chemicalId) => {
+    viewing3DChemicalId = chemicalId;
+  }),
+  close3DStructure: wrap(() => {
+    viewing3DChemicalId = null;
+  }),
+
   /**
    * Records a student's estimate, capturing what the instrument actually says
    * right now as the hidden true value. The comparison itself happens in
@@ -293,6 +355,11 @@ const dispatch = {
     activeHazard = null;
     selectedToolId = null;
     viewingChemicalId = null;
+    viewingReactionId = null;
+    viewing3DChemicalId = null;
+    // A fresh bench has had no reactions in it, so no vessel should still be
+    // offering to replay one from the last session.
+    lastAnimatedReactionByContainer.clear();
   }),
 };
 
@@ -318,6 +385,22 @@ mountPropertiesCard({
   getState,
   dispatch,
   subscribe,
+});
+mountMolecularView({
+  root: document.getElementById('molecular-view'),
+  getState,
+  dispatch,
+  subscribe,
+  // The same read-only engine access every other zone gets. molecular.js
+  // needs the reaction to find its molecularAnimation id and its equation.
+  getReaction: engine.getReaction,
+});
+mountMolecular3DView({
+  root: document.getElementById('molecular-3d-view'),
+  getState,
+  dispatch,
+  subscribe,
+  getChemical: engine.getChemical,
 });
 
 document.getElementById('reset-bench').addEventListener('click', () => dispatch.resetBench());

@@ -1,0 +1,229 @@
+{
+  "hcl_1m": {
+    "atoms": [
+      { "id": "h", "element": "H", "x": -0.7, "y": 0, "z": 0 },
+      { "id": "cl", "element": "Cl", "x": 0.6, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "h", "to": "cl", "type": "covalent" }]
+  },
+
+  "naoh_1m": {
+    "atoms": [
+      { "id": "na", "element": "Na", "x": -1.3, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0.3, "y": 0, "z": 0 },
+      { "id": "h", "element": "H", "x": 1.2, "y": 0.5, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o", "to": "h", "type": "covalent" },
+      { "from": "na", "to": "o", "type": "ionic" }
+    ]
+  },
+
+  "nacl_1m": {
+    "atoms": [
+      { "id": "na", "element": "Na", "x": -0.9, "y": 0, "z": 0 },
+      { "id": "cl", "element": "Cl", "x": 0.9, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "na", "to": "cl", "type": "ionic" }]
+  },
+
+  "cuso4_0_5m": {
+    "atoms": [
+      { "id": "cu", "element": "Cu", "x": -1.6, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.4, "y": 1.0, "z": 0.6 },
+      { "id": "o2", "element": "O", "x": 0.4, "y": -1.0, "z": 0.6 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 0.2, "z": -0.9 },
+      { "id": "o4", "element": "O", "x": -0.4, "y": -0.2, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "cu", "to": "s", "type": "ionic" }
+    ]
+  },
+
+  "pbno3_0_1m": {
+    "atoms": [
+      { "id": "pb", "element": "Pb", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": -1.9, "y": 0, "z": 0 },
+      { "id": "o1a", "element": "O", "x": -2.9, "y": 0.6, "z": 0 },
+      { "id": "o1b", "element": "O", "x": -2.9, "y": -0.6, "z": 0 },
+      { "id": "o1c", "element": "O", "x": -1.9, "y": 1.3, "z": 0 },
+      { "id": "n2", "element": "N", "x": 1.9, "y": 0, "z": 0 },
+      { "id": "o2a", "element": "O", "x": 2.9, "y": 0.6, "z": 0 },
+      { "id": "o2b", "element": "O", "x": 2.9, "y": -0.6, "z": 0 },
+      { "id": "o2c", "element": "O", "x": 1.9, "y": -1.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n1", "to": "o1a", "type": "covalent" },
+      { "from": "n1", "to": "o1b", "type": "covalent" },
+      { "from": "n1", "to": "o1c", "type": "covalent" },
+      { "from": "n2", "to": "o2a", "type": "covalent" },
+      { "from": "n2", "to": "o2b", "type": "covalent" },
+      { "from": "n2", "to": "o2c", "type": "covalent" },
+      { "from": "pb", "to": "n1", "type": "ionic" },
+      { "from": "pb", "to": "n2", "type": "ionic" }
+    ]
+  },
+
+  "ki_0_1m": {
+    "atoms": [
+      { "id": "k", "element": "K", "x": -0.9, "y": 0, "z": 0 },
+      { "id": "i", "element": "I", "x": 0.9, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "k", "to": "i", "type": "ionic" }]
+  },
+
+  "agno3_0_1m": {
+    "atoms": [
+      { "id": "ag", "element": "Ag", "x": -1.9, "y": 0, "z": 0 },
+      { "id": "n", "element": "N", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "oa", "element": "O", "x": 1.4, "y": 0.6, "z": 0 },
+      { "id": "ob", "element": "O", "x": 1.4, "y": -0.6, "z": 0 },
+      { "id": "oc", "element": "O", "x": 0.4, "y": -1.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "oa", "type": "covalent" },
+      { "from": "n", "to": "ob", "type": "covalent" },
+      { "from": "n", "to": "oc", "type": "covalent" },
+      { "from": "ag", "to": "n", "type": "ionic" }
+    ]
+  },
+
+  "phenolphthalein_1pct": {
+    "note": "Simplified schematic - matches molecules/phenolphthalein.svg's caveat. Not a bond-precise organic structure; see the properties card note.",
+    "atoms": [
+      { "id": "c9", "element": "C", "x": 0, "y": -0.6, "z": 0 },
+      { "id": "ring1", "element": "group", "x": -1.6, "y": 0.5, "z": 0.4 },
+      { "id": "oh1", "element": "O", "x": -1.6, "y": 1.9, "z": 0.4 },
+      { "id": "ring2", "element": "group", "x": 1.6, "y": 0.5, "z": -0.4 },
+      { "id": "oh2", "element": "O", "x": 1.6, "y": 1.9, "z": -0.4 },
+      { "id": "ring3", "element": "group", "x": 0, "y": 0.9, "z": -1.2 },
+      { "id": "lactoneO", "element": "O", "x": -0.9, "y": 1.6, "z": -1.4 },
+      { "id": "carbonylO", "element": "O", "x": 1.1, "y": 1.4, "z": -2.0 }
+    ],
+    "bonds": [
+      { "from": "c9", "to": "ring1", "type": "covalent" },
+      { "from": "ring1", "to": "oh1", "type": "covalent" },
+      { "from": "c9", "to": "ring2", "type": "covalent" },
+      { "from": "ring2", "to": "oh2", "type": "covalent" },
+      { "from": "c9", "to": "ring3", "type": "covalent" },
+      { "from": "ring3", "to": "lactoneO", "type": "covalent" },
+      { "from": "lactoneO", "to": "c9", "type": "covalent" },
+      { "from": "ring3", "to": "carbonylO", "type": "covalent" }
+    ]
+  },
+
+  "water_distilled": {
+    "atoms": [
+      { "id": "o", "element": "O", "x": 0, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -0.76, "y": 0.59, "z": 0 },
+      { "id": "h2", "element": "H", "x": 0.76, "y": 0.59, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o", "to": "h1", "type": "covalent" },
+      { "from": "o", "to": "h2", "type": "covalent" }
+    ]
+  },
+
+  "zn_metal": {
+    "note": "A single atom, not a molecule - a solid metal is a lattice of many of these. See molecules/zn.svg's caption.",
+    "atoms": [{ "id": "zn", "element": "Zn", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "nacl_aq": {
+    "atoms": [
+      { "id": "na", "element": "Na", "x": -0.9, "y": 0, "z": 0 },
+      { "id": "cl", "element": "Cl", "x": 0.9, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "na", "to": "cl", "type": "ionic" }]
+  },
+
+  "water": {
+    "atoms": [
+      { "id": "o", "element": "O", "x": 0, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -0.76, "y": 0.59, "z": 0 },
+      { "id": "h2", "element": "H", "x": 0.76, "y": 0.59, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o", "to": "h1", "type": "covalent" },
+      { "from": "o", "to": "h2", "type": "covalent" }
+    ]
+  },
+
+  "pbi2_s": {
+    "atoms": [
+      { "id": "i1", "element": "I", "x": -1.1, "y": 0, "z": 0 },
+      { "id": "pb", "element": "Pb", "x": 0.5, "y": 0, "z": 0 },
+      { "id": "i2", "element": "I", "x": 2.1, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "pb", "to": "i1", "type": "ionic" },
+      { "from": "pb", "to": "i2", "type": "ionic" }
+    ]
+  },
+
+  "kno3_aq": {
+    "atoms": [
+      { "id": "k", "element": "K", "x": -1.9, "y": 0, "z": 0 },
+      { "id": "n", "element": "N", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "oa", "element": "O", "x": 1.4, "y": 0.6, "z": 0 },
+      { "id": "ob", "element": "O", "x": 1.4, "y": -0.6, "z": 0 },
+      { "id": "oc", "element": "O", "x": 0.4, "y": -1.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "oa", "type": "covalent" },
+      { "from": "n", "to": "ob", "type": "covalent" },
+      { "from": "n", "to": "oc", "type": "covalent" },
+      { "from": "k", "to": "n", "type": "ionic" }
+    ]
+  },
+
+  "agcl_s": {
+    "atoms": [
+      { "id": "ag", "element": "Ag", "x": -0.9, "y": 0, "z": 0 },
+      { "id": "cl", "element": "Cl", "x": 0.9, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "ag", "to": "cl", "type": "ionic" }]
+  },
+
+  "nano3_aq": {
+    "atoms": [
+      { "id": "na", "element": "Na", "x": -1.9, "y": 0, "z": 0 },
+      { "id": "n", "element": "N", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "oa", "element": "O", "x": 1.4, "y": 0.6, "z": 0 },
+      { "id": "ob", "element": "O", "x": 1.4, "y": -0.6, "z": 0 },
+      { "id": "oc", "element": "O", "x": 0.4, "y": -1.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "oa", "type": "covalent" },
+      { "from": "n", "to": "ob", "type": "covalent" },
+      { "from": "n", "to": "oc", "type": "covalent" },
+      { "from": "na", "to": "n", "type": "ionic" }
+    ]
+  },
+
+  "zncl2_aq": {
+    "atoms": [
+      { "id": "cl1", "element": "Cl", "x": -1.1, "y": 0, "z": 0 },
+      { "id": "zn", "element": "Zn", "x": 0.5, "y": 0, "z": 0 },
+      { "id": "cl2", "element": "Cl", "x": 2.1, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "zn", "to": "cl1", "type": "ionic" },
+      { "from": "zn", "to": "cl2", "type": "ionic" }
+    ]
+  },
+
+  "h2_g": {
+    "atoms": [
+      { "id": "h1", "element": "H", "x": -0.4, "y": 0, "z": 0 },
+      { "id": "h2", "element": "H", "x": 0.4, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "h1", "to": "h2", "type": "covalent" }]
+  }
+}

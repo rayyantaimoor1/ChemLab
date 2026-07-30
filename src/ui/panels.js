@@ -22,6 +22,9 @@ import { flashHazardEdge, shakeElement } from './effects.js';
 // chemical up by id rather than app.js resolving it into state, so this
 // stays a plain lookup, not a chemistry decision.
 import { engine } from '../core/engine.js';
+// Only used to check whether a 3D model exists, so the "View in 3D" button
+// can be left out honestly rather than opening a viewer with nothing in it.
+import { getMolecule3D } from './molecular3d.js';
 
 export function mountPanels({ root, getState, dispatch, subscribe }) {
   function render() {
@@ -607,6 +610,15 @@ export function mountPropertiesCard({ root, getState, dispatch, subscribe }) {
       img.height = 120;
       figure.appendChild(img);
       panel.appendChild(figure);
+    }
+
+    if (getMolecule3D(chemicalId)) {
+      const view3D = document.createElement('button');
+      view3D.type = 'button';
+      view3D.className = 'properties-panel__view-3d';
+      view3D.textContent = 'View in 3D';
+      view3D.addEventListener('click', () => dispatch.view3DStructure(chemicalId));
+      panel.appendChild(view3D);
     }
 
     // UI.md section 7's list, in order: name, formula, state, colour name,
