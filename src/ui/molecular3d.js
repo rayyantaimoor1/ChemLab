@@ -111,6 +111,44 @@ function el(tag, className) {
 const UNIT_PX = 46; // one coordinate unit, in on-screen pixels at rest
 
 /**
+ * A bond div's un-rotated shape points straight down the screen (its CSS
+ * height grows in +Y). This computes the ONE rotation - about a single
+ * axis, by a single angle (Rodrigues' rotation formula, exposed directly
+ * by CSS's rotate3d()) - that swings that resting +Y direction onto the
+ * vector toward the other atom.
+ *
+ * The previous version split this into a separate rotateY(yaw) then
+ * rotateX(pitch). That decomposition has a real hole: whenever the two
+ * atoms are level with each other (dy = 0, a purely horizontal bond -
+ * exactly the case for every ionic bond in this data, since the metal
+ * and the ion it is paired with are drawn at the same height), pitch
+ * comes out to 0deg. rotateX(0) is a no-op, and rotateY can never rotate
+ * a vector that starts out lying exactly on the Y axis in the first
+ * place - so the bond stayed stuck pointing straight down instead of
+ * reaching sideways to the other atom. A single-axis rotation has no
+ * such degenerate case to fall into.
+ */
+function bondRotation(dx, dy, dz, length) {
+  if (length < 1e-6) return ''; // guarded by a data test; distinct atoms only
+  const ux = dx / length;
+  const uy = dy / length;
+  const uz = dz / length;
+
+  // axis = (0, 1, 0) × (ux, uy, uz); the Y terms drop out algebraically.
+  const axisX = uz;
+  const axisZ = -ux;
+  const axisLength = Math.hypot(axisX, axisZ);
+  const angleDeg = (Math.acos(Math.max(-1, Math.min(1, uy))) * 180) / Math.PI;
+
+  if (axisLength < 1e-6) {
+    // Straight down (no rotation needed) or straight up (the axis is
+    // undefined, but any axis perpendicular to Y works for a 180 turn).
+    return angleDeg < 1 ? '' : 'rotate3d(1, 0, 0, 180deg)';
+  }
+  return `rotate3d(${axisX / axisLength}, 0, ${axisZ / axisLength}, ${angleDeg}deg)`;
+}
+
+/**
  * Builds the scene once. Every atom and bond is a plain positioned div;
  * nothing is ever added or removed afterwards, so a drag only ever writes
  * one `transform` string onto the outer `.scene` element - the atoms and
@@ -157,14 +195,12 @@ function buildScene(stage, molecule) {
     const dy = -(to.y - from.y) * UNIT_PX;
     const dz = (to.z - from.z) * UNIT_PX;
     const length = Math.hypot(dx, dy, dz);
-    const yaw = (Math.atan2(dx, dz) * 180) / Math.PI;
-    const pitch = (Math.atan2(dy, Math.hypot(dx, dz)) * 180) / Math.PI;
 
     const stick = el('div', `molecular3d__bond molecular3d__bond--${bond.type || 'covalent'}`);
     stick.style.height = `${length}px`;
     stick.style.transform =
       `translate3d(${from.x * UNIT_PX}px, ${-from.y * UNIT_PX}px, ${from.z * UNIT_PX}px)` +
-      ` rotateY(${yaw}deg) rotateX(${-pitch}deg)`;
+      ` ${bondRotation(dx, dy, dz, length)}`;
     scene.appendChild(stick);
   }
 
