@@ -147,6 +147,20 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     });
     el.appendChild(heatSection);
 
+    // stir(containerId) - UI.md section 1's fixed dispatch name. There was
+    // previously no control for it at all (the same gap setHeat's comment
+    // above already notes it once had); guided mode's titration and golden
+    // rain experiments both have a stir step, so without this button
+    // neither could actually be finished through the UI.
+    const stir = document.createElement('button');
+    stir.type = 'button';
+    stir.className = 'container__stir';
+    stir.textContent = 'Stir';
+    stir.addEventListener('click', () => {
+      withEffects(container.id, () => dispatch.stir(container.id));
+    });
+    el.appendChild(stir);
+
     const dip = document.createElement('button');
     dip.type = 'button';
     dip.className = 'container__dip';

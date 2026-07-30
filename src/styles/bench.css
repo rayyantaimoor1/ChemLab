@@ -15,10 +15,21 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
   color: #222;
+  /* A flex column, topbar/step-card/layout stacked, rather than .layout
+     assuming a fixed topbar height. Guided mode's step card (added this
+     phase) does not have a fixed height - it grows with the instruction
+     and hint text - so a hardcoded "100vh minus one magic number" would
+     have started clipping the bench the moment guided mode was active. */
+  display: flex;
+  flex-direction: column;
 }
 
 .topbar {
@@ -27,6 +38,7 @@ body {
   justify-content: space-between;
   padding: 8px 16px;
   border-bottom: 1px solid #ccc;
+  flex: none;
 }
 
 .topbar__reduce-motion {
@@ -49,7 +61,11 @@ body {
 .layout {
   display: flex;
   align-items: stretch;
-  height: calc(100vh - 41px);
+  flex: 1;
+  /* Lets the zones' own overflow-y: auto actually take effect inside a
+     flex child, instead of the flex item growing to fit its content and
+     pushing the page itself into a second scrollbar. */
+  min-height: 0;
 }
 
 .zone {
@@ -164,6 +180,12 @@ body {
 .tool-tray__hint {
   margin: 4px 0 0;
   font-size: 0.9em;
+}
+
+.container__stir {
+  margin-top: 6px;
+  margin-right: 6px;
+  padding: 6px 12px;
 }
 
 .container__dip {
@@ -895,4 +917,172 @@ html.reduce-motion .fx-flame--3 {
   font-size: 0.85em;
   color: #4A4A4A;
   text-align: center;
+}
+
+/* ------------------------------------------------------------------ *
+ * Guided mode - Phase 7. The topbar picker, the persistent step card,
+ * and the completion summary modal. See src/ui/guided.js.
+ * ------------------------------------------------------------------ */
+
+.guided-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.guided-bar__mode {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.guided-bar__picker {
+  min-height: 40px;
+  padding: 4px 8px;
+}
+
+.guided-stepcard {
+  padding: 10px 16px;
+  border-bottom: 1px solid #ccc;
+  background: #EDEAE3;
+  color: #161A19;
+  flex: none;
+}
+
+.guided-stepcard__progress {
+  margin: 0 0 4px;
+  font-size: 0.85em;
+  font-weight: bold;
+}
+
+.guided-progress {
+  height: 8px;
+  margin-bottom: 8px;
+  background: #D8D3C6;
+  border: 1px solid #999;
+}
+
+.guided-progress__fill {
+  height: 100%;
+  /* A static width recalculated on every render, not an animated
+     transition - UI.md section 6's performance budget applies here too,
+     and a step only ever advances on a deliberate student action, never
+     on a timer, so there is nothing worth easing between. */
+  background: #A8702B;
+}
+
+.guided-stepcard__instruction {
+  margin: 0 0 6px;
+  font-size: 1.05em;
+}
+
+.guided-stepcard__hint {
+  margin: 0 0 6px;
+}
+
+.guided-stepcard__hint summary {
+  cursor: pointer;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.guided-stepcard__hint p {
+  margin: 4px 0 0;
+  color: #4A4A4A;
+}
+
+.guided-stepcard__feedback {
+  margin: 6px 0 0;
+  padding: 6px 10px;
+  border-left: 3px solid #161A19;
+  background: #FFFFFF;
+  /* Deliberately not colour-coded by judgement (correct/wrong/ahead/
+     repeat) - UI.md section 4's "one hard rule" reserves red exclusively
+     for the hazard alert, and green/red as a pass/fail signal would be
+     exactly the kind of invented grading colour system section 4 never
+     calls for. The words already say what happened. */
+}
+
+.guided-summary-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.guided-summary-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 26, 25, 0.5);
+}
+
+.guided-summary-panel {
+  position: relative;
+  max-width: 640px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  padding: 20px 24px 24px;
+  background: #EDEAE3;
+  border: 2px solid #161A19;
+  color: #161A19;
+}
+
+.guided-summary-panel__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 6px 10px;
+  border: 1px solid #161A19;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+
+.guided-summary-panel__title {
+  margin: 0 30px 16px 0;
+}
+
+.guided-summary-panel__columns {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.guided-summary-panel__column {
+  flex: 1 1 240px;
+  min-width: 220px;
+}
+
+.guided-summary-panel__column h3 {
+  margin: 0 0 8px;
+  font-size: 1em;
+}
+
+.guided-summary-panel__vessel {
+  margin: 12px 0 4px;
+  font-weight: bold;
+}
+
+.guided-summary-panel__facts {
+  margin: 0 0 4px;
+}
+
+.guided-summary-panel__facts dt {
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.guided-summary-panel__facts dd {
+  margin: 0 0 0 0;
+}
+
+.guided-summary-panel__note {
+  margin: 16px 0 0;
+  font-size: 0.85em;
+  font-style: italic;
+  color: #4A4A4A;
 }

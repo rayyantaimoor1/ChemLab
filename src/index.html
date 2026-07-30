@@ -7,13 +7,26 @@
 </head>
 <body>
   <header class="topbar">
-    <span class="topbar__mode">MODE: Free Lab</span>
+    <!--
+      Guided mode's topbar chrome, UI.md section 3: "MODE: Free Lab / Guided
+      Experiment ▾". Owned entirely by mountGuidedBar in guided.js so the
+      mode text and the picker stay in sync with the same state everything
+      else re-renders from.
+    -->
+    <div id="guided-bar" class="guided-bar"></div>
     <label class="topbar__reduce-motion">
       <input type="checkbox" id="reduce-animation" />
       Reduce animation
     </label>
     <button id="reset-bench" type="button">Reset</button>
   </header>
+
+  <!--
+    The guided step card, UI.md section 7's "guided step card with hint".
+    Hidden by mountGuidedStepCard whenever guided mode is not active or the
+    run has finished, in which case the completion summary below takes over.
+  -->
+  <div id="guided-stepcard"></div>
 
   <div class="layout">
     <aside id="shelf" class="zone zone--shelf" aria-label="Reagent shelf"></aside>
@@ -51,6 +64,15 @@
     and has no idle render loop of its own.
   -->
   <div id="molecular-3d-view"></div>
+
+  <!--
+    The completion summary, UI.md section 3's fourth listed modal overlay,
+    "Experiment step detail" - shown automatically once a guided run's last
+    step is done. Compares the experiment's curated expectedResult with
+    whatever the student's own bench shows right now; see guided.js's file
+    header for why nothing here computes a pass/fail verdict.
+  -->
+  <div id="guided-summary"></div>
 
   <script type="module" src="ui/app.js"></script>
 </body>

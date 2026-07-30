@@ -24,11 +24,13 @@ import { createContainer } from '../core/container.js';
 import { createActions } from '../core/actions.js';
 import { createNotebook } from '../core/notebook.js';
 import { createTools } from '../core/tools.js';
+import { createExperimentRunner, STATUS as EXPERIMENT_STATUS } from '../core/experiments.js';
 import { mountShelf } from './shelf.js';
 import { mountBench } from './bench.js';
 import { mountPanels, mountHazardAlert, mountPropertiesCard } from './panels.js';
 import { mountMolecularView } from './molecular.js';
 import { mountMolecular3DView } from './molecular3d.js';
+import { mountGuidedBar, mountGuidedStepCard, mountGuidedSummary } from './guided.js';
 import { setReduceAnimation } from './effects.js';
 
 /* ------------------------------------------------------------------ *
@@ -62,6 +64,16 @@ const actions = createActions({
   getContainer: (id) => containersById.get(id),
   engine,
   tools,
+  onNotebookEntry: notebook.logAction,
+});
+
+// Phase 7's guided-mode state machine. It never touches the bench itself -
+// see experiments.js's file header - so it only needs a way to look up a
+// container's type (for steps written against "the beaker" rather than a
+// fixed id) and the same notebook logAction() actions.js already uses, so
+// a guided milestone lands in the same notebook as everything else.
+const experimentRunner = createExperimentRunner({
+  getContainer: (id) => containersById.get(id),
   onNotebookEntry: notebook.logAction,
 });
 
@@ -118,6 +130,18 @@ let viewingReactionId = null;
 // way its 2D structure already is.
 let viewing3DChemicalId = null;
 
+// How the most recent action was judged against the current guided step,
+// or null before anything has been judged yet. Cleared whenever guided
+// mode is entered or left, so a stale "wrong action" message from a
+// previous attempt never lingers into a fresh one.
+let guidedFeedback = null;
+
+// The completion summary is shown automatically the moment an experiment
+// finishes (see mountGuidedSummary in guided.js). This only tracks whether
+// the student has since closed it - reset to false every time a run starts,
+// the same "which overlay is open" pattern viewingChemicalId etc. use above.
+let guidedSummaryDismissed = false;
+
 /**
  * Notes which vessel just ran a reaction worth animating.
  *
@@ -151,17 +175,62 @@ function notify() {
   for (const listener of listeners) listener();
 }
 
+// The six dispatch names a guided experiment's requiredAction can name (see
+// experiments.json / experiments.js). Only these are ever handed to the
+// runner - things like selectTool or viewProperties are interface state
+// with nothing for a step to validate.
+const GUIDED_ACTION_NAMES = new Set(['addChemical', 'pour', 'setHeat', 'stir', 'dipTool', 'recordObservation']);
+
+/**
+ * Rebuilds the { action, ... } shape experiments.js expects, straight from
+ * the arguments a dispatch call was made with. This is possible only
+ * because UI.md section 1 fixes each of these signatures exactly - the
+ * argument order here is that contract, not a guess.
+ */
+function guidedPayload(actionName, args) {
+  switch (actionName) {
+    case 'addChemical':
+      return { action: 'addChemical', containerId: args[0], chemicalId: args[1], amountMl: args[2] };
+    case 'pour':
+      return { action: 'pour', fromId: args[0], toId: args[1], amountMl: args[2] };
+    case 'setHeat':
+      return { action: 'setHeat', containerId: args[0], level: args[1] };
+    case 'stir':
+      return { action: 'stir', containerId: args[0] };
+    case 'dipTool':
+      return { action: 'dipTool', toolId: args[0], containerId: args[1] };
+    case 'recordObservation':
+      return { action: 'recordObservation', text: args[0] };
+    default:
+      return null;
+  }
+}
+
 /**
  * Wraps a dispatch function so every call updates the hazard and molecular
- * animation tracking (if the result carries an engineResult) and then
- * notifies every subscribed zone.
+ * animation tracking (if the result carries an engineResult), tells the
+ * guided-mode runner what just happened (if one of the six action names is
+ * given and a run is in progress), and then notifies every subscribed zone.
+ *
+ * Guided-mode judging happens AFTER fn(...args) has already run, never
+ * instead of it - see experiments.js's file header on why guided mode is
+ * not allowed to block the action it is watching.
+ *
+ * @param {Function} fn
+ * @param {string}   [actionName] one of GUIDED_ACTION_NAMES, or left out for
+ *   dispatch functions guided mode has no opinion about.
  */
-function wrap(fn) {
+function wrap(fn, actionName = null) {
   return (...args) => {
     const result = fn(...args);
     if (result && result.engineResult) {
       trackHazard(result.engineResult);
       trackAnimatedReaction(result);
+    }
+    if (actionName && GUIDED_ACTION_NAMES.has(actionName) && experimentRunner.isRunning()) {
+      const payload = guidedPayload(actionName, args);
+      const judged = experimentRunner.recordAction(payload);
+      guidedFeedback = { judgement: judged.judgement, message: judged.message, hint: judged.hint };
     }
     notify();
     return result;
@@ -196,7 +265,34 @@ function appearanceFor(snapshot) {
   return { ...empty, colorHex: '#C9D6DA', colorName: null };
 }
 
+/**
+ * Turns experimentRunner's own state into UI.md section 1's guided shape
+ * (experimentId, stepIndex, instruction, hint), plus what a step card and
+ * completion summary need beyond that fixed set - the same "keep the fixed
+ * fields and add clearly-marked extras" pattern the rest of this file's
+ * getState() already follows for containers, tools and the modal-overlay ids.
+ */
+function guidedStateFor() {
+  const runnerState = experimentRunner.getState();
+  if (runnerState.status === EXPERIMENT_STATUS.NOT_STARTED) return null;
+
+  return {
+    experimentId: runnerState.experimentId,
+    stepIndex: runnerState.stepIndex,
+    instruction: runnerState.instruction,
+    hint: runnerState.hint,
+    title: runnerState.title,
+    totalSteps: runnerState.totalSteps,
+    objective: runnerState.objective,
+    status: runnerState.status,
+    expectedResult: runnerState.expectedResult,
+    feedback: guidedFeedback,
+    summaryVisible: runnerState.status === EXPERIMENT_STATUS.COMPLETE && !guidedSummaryDismissed,
+  };
+}
+
 function getState() {
+  const guided = guidedStateFor();
   return {
     containers: containers.map((container, index) => {
       const snapshot = container.snapshot();
@@ -222,8 +318,12 @@ function getState() {
     }),
     activeHazard,
     notebook: notebook.getEntries(),
-    mode: 'free',
-    guided: null,
+    mode: guided ? 'guided' : 'free',
+    guided,
+    // The catalogue for the topbar's Experiment picker (UI.md section 3).
+    // Read-only, the same way tools.listTools() below lists what the tool
+    // tray can offer without the UI inventing the list itself.
+    experiments: experimentRunner.listExperiments(),
     // Beyond UI.md section 1's shape: the tool tray needs to know what tools
     // exist and which one is currently picked up. Kept separate from the
     // section 1 fields above so the contract stays recognisable.
@@ -248,6 +348,34 @@ function currentReadingFor(containerId, toolId) {
   return tools.dip(toolId, container.snapshot());
 }
 
+/**
+ * The actual work of clearing the bench, pulled out of the resetBench
+ * dispatch entry below so startExperiment can reuse it without calling one
+ * wrapped dispatch function from inside another (which would notify twice
+ * for a single student action).
+ */
+function resetBenchState() {
+  // container.empty() deliberately leaves temperature and the burner alone
+  // (see its comment in container.js: "the glassware leaves the glassware
+  // warm", correct for tipping a vessel out mid-session). Resetting the
+  // whole bench for a new session is a different intent, so those are put
+  // back to their starting values here too, explicitly.
+  for (const container of containers) {
+    container.empty();
+    container.setTemperatureC(ROOM_TEMPERATURE_C);
+    container.setHeatLevel(0);
+  }
+  notebook.clear();
+  activeHazard = null;
+  selectedToolId = null;
+  viewingChemicalId = null;
+  viewingReactionId = null;
+  viewing3DChemicalId = null;
+  // A fresh bench has had no reactions in it, so no vessel should still be
+  // offering to replay one from the last session.
+  lastAnimatedReactionByContainer.clear();
+}
+
 /* ------------------------------------------------------------------ *
  * The fixed dispatch names from UI.md section 1, plus two additions:
  * selectTool (pure interface state - which tool is picked up) and
@@ -257,12 +385,12 @@ function currentReadingFor(containerId, toolId) {
  * ------------------------------------------------------------------ */
 
 const dispatch = {
-  addChemical: wrap(actions.addChemical),
-  pour: wrap(actions.pour),
-  setHeat: wrap(actions.setHeat),
-  stir: wrap(actions.stir),
-  dipTool: wrap(actions.dipTool),
-  recordObservation: wrap(notebook.recordObservation),
+  addChemical: wrap(actions.addChemical, 'addChemical'),
+  pour: wrap(actions.pour, 'pour'),
+  setHeat: wrap(actions.setHeat, 'setHeat'),
+  stir: wrap(actions.stir, 'stir'),
+  dipTool: wrap(actions.dipTool, 'dipTool'),
+  recordObservation: wrap(notebook.recordObservation, 'recordObservation'),
   revealReference: wrap(notebook.revealReference),
 
   selectTool: wrap((toolId) => {
@@ -341,25 +469,46 @@ const dispatch = {
     });
   }),
   resetBench: wrap(() => {
-    // container.empty() deliberately leaves temperature and the burner alone
-    // (see its comment in container.js: "the glassware leaves the glassware
-    // warm", correct for tipping a vessel out mid-session). Resetting the
-    // whole bench for a new session is a different intent, so those are put
-    // back to their starting values here too, explicitly.
-    for (const container of containers) {
-      container.empty();
-      container.setTemperatureC(ROOM_TEMPERATURE_C);
-      container.setHeatLevel(0);
+    resetBenchState();
+    // Resetting mid-experiment restarts that experiment at step 1 rather
+    // than silently leaving guided mode. Without this the step card would
+    // go on asking for "step 4: dip the thermometer" over a bench that
+    // Reset just emptied - a confusion this file has no business creating
+    // when experiments.js already goes to such lengths to explain itself
+    // honestly (see its file header).
+    if (experimentRunner.getState().status !== EXPERIMENT_STATUS.NOT_STARTED) {
+      experimentRunner.start(experimentRunner.getState().experimentId);
     }
-    notebook.clear();
-    activeHazard = null;
-    selectedToolId = null;
-    viewingChemicalId = null;
-    viewingReactionId = null;
-    viewing3DChemicalId = null;
-    // A fresh bench has had no reactions in it, so no vessel should still be
-    // offering to replay one from the last session.
-    lastAnimatedReactionByContainer.clear();
+    guidedFeedback = null;
+    guidedSummaryDismissed = false;
+  }),
+
+  // Not one of UI.md section 1's fixed names - Phase 7's guided mode
+  // (CLAUDE.md section 8) needs a way to start and leave a run, and to
+  // dismiss the completion summary. All three follow the same
+  // "does not validate, the thing underneath reports honestly" pattern as
+  // viewProperties/viewReactionAnimation/view3DStructure above.
+  startExperiment: wrap((experimentId) => {
+    // A guided run begins from a clean bench, the same way a real
+    // experiment does - leftover chemicals from Free Lab or an earlier
+    // attempt would make the very first step's instruction either already
+    // satisfied by accident or flatly wrong.
+    resetBenchState();
+    experimentRunner.start(experimentId);
+    guidedFeedback = null;
+    guidedSummaryDismissed = false;
+  }),
+
+  // Leaves the bench exactly as it is. Leaving guided mode is "let me
+  // carry on freely from here", not "start over" - Reset stays the
+  // separate, deliberate way to clear the bench.
+  stopExperiment: wrap(() => {
+    experimentRunner.stop();
+    guidedFeedback = null;
+  }),
+
+  dismissGuidedSummary: wrap(() => {
+    guidedSummaryDismissed = true;
   }),
 };
 
@@ -367,6 +516,9 @@ const dispatch = {
  * Mount the zones and do the first paint.
  * ------------------------------------------------------------------ */
 
+mountGuidedBar({ root: document.getElementById('guided-bar'), getState, dispatch, subscribe });
+mountGuidedStepCard({ root: document.getElementById('guided-stepcard'), getState, dispatch, subscribe });
+mountGuidedSummary({ root: document.getElementById('guided-summary'), getState, dispatch, subscribe });
 mountShelf({ root: document.getElementById('shelf'), dispatch });
 mountBench({ root: document.getElementById('bench'), getState, dispatch, subscribe });
 mountPanels({ root: document.getElementById('notebook'), getState, dispatch, subscribe });
