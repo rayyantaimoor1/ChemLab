@@ -7,13 +7,18 @@
  * native HTML5 drag carrying the chemical's id; bench.js is what turns a drop
  * into a dispatched addChemical() call.
  *
+ * Each bottle also has a small "Properties" button, dispatching
+ * viewProperties(chemicalId) to open the modal panels.js builds - the
+ * dedicated button exists so viewing a reagent's card does not overload the
+ * same click a drag gesture starts from.
+ *
  * No level/type filter yet (UI.md section 7 lists one for later) - every
  * chemical in chemicals.json is shown, unfiltered, for this placeholder.
  */
 
 import { engine } from '../core/engine.js';
 
-export function mountShelf({ root }) {
+export function mountShelf({ root, dispatch }) {
   root.innerHTML = '';
 
   const heading = document.createElement('h2');
@@ -49,6 +54,14 @@ export function mountShelf({ root }) {
       event.dataTransfer.setData('text/plain', chemical.id);
       event.dataTransfer.effectAllowed = 'copy';
     });
+
+    const propertiesButton = document.createElement('button');
+    propertiesButton.type = 'button';
+    propertiesButton.className = 'reagent-bottle__properties';
+    propertiesButton.textContent = 'Properties';
+    propertiesButton.setAttribute('aria-label', `View properties of ${chemical.name}`);
+    propertiesButton.addEventListener('click', () => dispatch.viewProperties(chemical.id));
+    item.appendChild(propertiesButton);
 
     list.appendChild(item);
   }

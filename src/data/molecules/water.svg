@@ -1,0 +1,10 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Water: an oxygen atom bonded to two hydrogen atoms in a bent shape">
+  <line x1="70" y1="65" x2="48" y2="38" stroke="#161A19" stroke-width="2.5"/>
+  <line x1="90" y1="65" x2="112" y2="38" stroke="#161A19" stroke-width="2.5"/>
+  <circle cx="80" cy="75" r="22" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="81" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="38" cy="30" r="14" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="38" y="35" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="122" cy="30" r="14" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="122" y="35" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#161A19">H</text>
+</svg>

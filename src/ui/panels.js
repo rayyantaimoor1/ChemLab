@@ -17,6 +17,11 @@
  */
 
 import { flashHazardEdge, shakeElement } from './effects.js';
+// Same read-only access shelf.js already uses to list reagents (UI.md
+// section 1: "the UI may read engine state"). The properties card looks a
+// chemical up by id rather than app.js resolving it into state, so this
+// stays a plain lookup, not a chemistry decision.
+import { engine } from '../core/engine.js';
 
 export function mountPanels({ root, getState, dispatch, subscribe }) {
   function render() {
@@ -447,6 +452,240 @@ export function mountHazardAlert({ root, getState, dispatch, subscribe, edgeEl =
 
     overlay.appendChild(panel);
     return overlay;
+  }
+
+  root.hidden = true;
+  subscribe(render);
+  render();
+
+  return { render };
+}
+
+/* ==================================================================== *
+ * The properties card
+ * ==================================================================== */
+
+/**
+ * Mounts the properties card modal overlay - UI.md section 3's second
+ * listed overlay, and section 7's "properties card (name, formula, state,
+ * colour name, pH, molar mass, hazards, uses)".
+ *
+ * WHERE THE 2D STRUCTURE COMES FROM
+ * Each chemical's curated `structure` field in chemicals.json points at a
+ * static image under src/data/molecules/ - a plain <img>, nothing rendered
+ * or computed here. CLAUDE.md section 8's Phase 6 asks for exactly this
+ * first ("2D structure images first, 3D ball-and-stick after"); the
+ * ball-and-stick view is a separate, later piece of work.
+ *
+ * "uses" FROM SECTION 7 IS chemicals.json's `description` FIELD
+ * There is no separate "uses" field in the schema, and that text already
+ * carries usage context ("Used with potassium iodide to show..."), so
+ * inventing a second field with overlapping content did not seem worth
+ * doing. Rendered under "Description" rather than mislabelled "Uses".
+ *
+ * WHY A DIFFERENT DISMISSAL POLICY FROM THE HAZARD ALERT
+ * The hazard alert refuses to close on a backdrop click, because closing it
+ * early could mean a safety warning went unread. There is no equivalent
+ * risk here - this is a voluntary look-up, not a warning - so a backdrop
+ * click closing it is normal, expected modal behaviour.
+ *
+ * @param {object}   options
+ * @param {Element}  options.root   where the overlay is mounted
+ */
+export function mountPropertiesCard({ root, getState, dispatch, subscribe }) {
+  let shownChemicalId = null;
+  let returnFocusTo = null;
+
+  function render() {
+    const chemicalId = getState().viewingChemicalId;
+
+    if (!chemicalId) {
+      if (shownChemicalId) close();
+      return;
+    }
+    if (chemicalId === shownChemicalId) return;
+    open(chemicalId);
+  }
+
+  function open(chemicalId) {
+    const chemical = engine.getChemical(chemicalId);
+    shownChemicalId = chemicalId;
+    returnFocusTo = document.activeElement;
+
+    root.innerHTML = '';
+    root.appendChild(buildOverlay(chemical, chemicalId));
+    root.hidden = false;
+
+    const closeButton = root.querySelector('.properties-panel__close');
+    if (closeButton) closeButton.focus();
+
+    document.addEventListener('keydown', onKeyDown, true);
+  }
+
+  function close() {
+    shownChemicalId = null;
+    root.innerHTML = '';
+    root.hidden = true;
+    document.removeEventListener('keydown', onKeyDown, true);
+
+    if (returnFocusTo && typeof returnFocusTo.focus === 'function' && returnFocusTo.isConnected) {
+      returnFocusTo.focus();
+    }
+    returnFocusTo = null;
+  }
+
+  function onKeyDown(event) {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      dispatch.closeProperties();
+    }
+  }
+
+  function labelled(label, value) {
+    if (value === null || value === undefined || value === '') return null;
+    const row = document.createElement('p');
+    row.className = 'properties-panel__row';
+    const term = document.createElement('span');
+    term.className = 'properties-panel__label';
+    term.textContent = `${label}: `;
+    row.appendChild(term);
+    row.append(String(value));
+    return row;
+  }
+
+  function buildOverlay(chemical, chemicalId) {
+    const overlay = document.createElement('div');
+    overlay.className = 'properties-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-labelledby', 'properties-title');
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'properties-backdrop';
+    // Unlike the hazard alert's backdrop, this one IS allowed to close the
+    // card - see the file header for why the two overlays differ here.
+    backdrop.addEventListener('click', () => dispatch.closeProperties());
+    overlay.appendChild(backdrop);
+
+    const panel = document.createElement('div');
+    panel.className = 'properties-panel';
+
+    const closeButton = document.createElement('button');
+    closeButton.type = 'button';
+    closeButton.className = 'properties-panel__close';
+    closeButton.textContent = 'Close';
+    closeButton.setAttribute('aria-label', 'Close properties card');
+    closeButton.addEventListener('click', () => dispatch.closeProperties());
+    panel.appendChild(closeButton);
+
+    if (!chemical) {
+      const missing = document.createElement('p');
+      missing.textContent = `No data found for '${chemicalId}'.`;
+      panel.appendChild(missing);
+      overlay.appendChild(panel);
+      return overlay;
+    }
+
+    const title = document.createElement('h2');
+    title.id = 'properties-title';
+    title.className = 'properties-panel__title';
+    title.textContent = chemical.name;
+    panel.appendChild(title);
+
+    if (chemical.structure) {
+      const figure = document.createElement('figure');
+      figure.className = 'properties-panel__structure';
+      const img = document.createElement('img');
+      // chemicals.json's structure field ("molecules/hcl.svg") is relative
+      // to src/data/. An <img src> resolves against the DOCUMENT's URL
+      // (src/index.html), not this module's own location, so it needs a
+      // "data/" prefix here - "../data/" would be wrong, since that goes
+      // above src/ entirely.
+      img.src = `data/${chemical.structure}`;
+      img.alt = `2D structure of ${chemical.name}`;
+      img.width = 160;
+      img.height = 120;
+      figure.appendChild(img);
+      panel.appendChild(figure);
+    }
+
+    // UI.md section 7's list, in order: name, formula, state, colour name,
+    // pH, molar mass, hazards, uses.
+    const facts = document.createElement('div');
+    facts.className = 'properties-panel__facts';
+    [
+      labelled('Formula', chemical.formula),
+      labelled('Concentration', chemical.concentration),
+      labelled('State', chemical.state),
+      // Section 5: colour is never shown without its name - the swatch is
+      // decoration on top of the word, not a replacement for it.
+      chemical.colorName ? swatchRow(chemical.colorHex, chemical.colorName) : null,
+      labelled('pH', chemical.pH === null || chemical.pH === undefined ? 'not applicable' : chemical.pH),
+      labelled('Molar mass', chemical.molarMass != null ? `${chemical.molarMass} g/mol` : null),
+      labelled('Density', chemical.density != null ? `${chemical.density} g/mL` : null),
+      labelled('Solubility', chemical.solubility),
+      labelled('Conductivity', chemical.conductivity),
+    ]
+      .filter(Boolean)
+      .forEach((row) => facts.appendChild(row));
+    panel.appendChild(facts);
+
+    if (chemical.hazards && chemical.hazards.length > 0) {
+      const hazardsHeading = document.createElement('h3');
+      hazardsHeading.className = 'properties-panel__subheading';
+      hazardsHeading.textContent = 'Hazards';
+      panel.appendChild(hazardsHeading);
+
+      const hazardsList = document.createElement('ul');
+      hazardsList.className = 'properties-panel__hazards';
+      for (const hazard of chemical.hazards) {
+        const item = document.createElement('li');
+        item.textContent = hazard.replace(/_/g, ' ');
+        hazardsList.appendChild(item);
+      }
+      panel.appendChild(hazardsList);
+    }
+
+    if (chemical.description) {
+      const descHeading = document.createElement('h3');
+      descHeading.className = 'properties-panel__subheading';
+      descHeading.textContent = 'Description';
+      panel.appendChild(descHeading);
+
+      const desc = document.createElement('p');
+      desc.className = 'properties-panel__description';
+      desc.textContent = chemical.description;
+      panel.appendChild(desc);
+    }
+
+    if (chemical.source) {
+      const source = document.createElement('p');
+      source.className = 'properties-panel__source';
+      source.textContent = `Source: ${chemical.source}`;
+      panel.appendChild(source);
+    }
+
+    overlay.appendChild(panel);
+    return overlay;
+  }
+
+  function swatchRow(colorHex, colorName) {
+    const row = document.createElement('p');
+    row.className = 'properties-panel__row';
+    const term = document.createElement('span');
+    term.className = 'properties-panel__label';
+    term.textContent = 'Colour: ';
+    row.appendChild(term);
+
+    if (colorHex) {
+      const swatch = document.createElement('span');
+      swatch.className = 'properties-panel__swatch';
+      swatch.style.background = colorHex;
+      swatch.setAttribute('aria-hidden', 'true');
+      row.appendChild(swatch);
+    }
+    row.append(colorName);
+    return row;
   }
 
   root.hidden = true;

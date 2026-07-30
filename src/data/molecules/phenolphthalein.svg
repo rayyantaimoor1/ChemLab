@@ -1,0 +1,26 @@
+<svg width="160" height="130" viewBox="0 0 160 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Phenolphthalein, simplified schematic: two phenol rings and a lactone ring joined at a central carbon">
+  <!-- Simplified schematic, not a precise bond-angle skeletal formula - see
+       the properties card note. Two 4-hydroxyphenyl rings and the phthalide
+       (lactone) ring, meeting at the central carbon, C20H14O4. -->
+
+  <line x1="80" y1="82" x2="45" y2="55" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="82" x2="115" y2="55" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="82" x2="80" y2="45" stroke="#161A19" stroke-width="2"/>
+
+  <polygon points="45,30 62,40 62,60 45,70 28,60 28,40" fill="none" stroke="#2C3E50" stroke-width="2"/>
+  <text x="45" y="20" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">OH</text>
+  <line x1="45" y1="30" x2="45" y2="22" stroke="#161A19" stroke-width="1.5"/>
+
+  <polygon points="115,30 132,40 132,60 115,70 98,60 98,40" fill="none" stroke="#2C3E50" stroke-width="2"/>
+  <text x="115" y="20" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">OH</text>
+  <line x1="115" y1="30" x2="115" y2="22" stroke="#161A19" stroke-width="1.5"/>
+
+  <circle cx="80" cy="88" r="7" fill="#2C3E50"/>
+
+  <path d="M 80 45 L 65 24 L 80 8 L 95 24 Z" fill="none" stroke="#2C3E50" stroke-width="2"/>
+  <text x="65" y="20" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">O</text>
+  <line x1="95" y1="24" x2="108" y2="18" stroke="#161A19" stroke-width="1.5"/>
+  <text x="112" y="16" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">=O</text>
+
+  <text x="80" y="120" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#4A4A4A">C₂₀H₁₄O₄ (lactone form)</text>
+</svg>

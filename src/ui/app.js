@@ -26,7 +26,7 @@ import { createNotebook } from '../core/notebook.js';
 import { createTools } from '../core/tools.js';
 import { mountShelf } from './shelf.js';
 import { mountBench } from './bench.js';
-import { mountPanels, mountHazardAlert } from './panels.js';
+import { mountPanels, mountHazardAlert, mountPropertiesCard } from './panels.js';
 import { setReduceAnimation } from './effects.js';
 
 /* ------------------------------------------------------------------ *
@@ -75,6 +75,12 @@ let selectedToolId = null;
 // is not theirs. Deliberately not reset by resetBench(): it is a display
 // preference, not lab state.
 let reduceAnimationEnabled = false;
+
+// Which chemical's properties card is open, if any - UI.md section 3's
+// properties card overlay. Only the id is kept here; panels.js looks the
+// full record up itself through engine.getChemical, the same read-only
+// access shelf.js already uses to list reagents.
+let viewingChemicalId = null;
 
 // The hazard currently being warned about, rendered by the alert overlay in
 // panels.js. The whole hazard object from reactions.json is kept, not just
@@ -184,6 +190,7 @@ function getState() {
     tools: tools.listTools(),
     selectedToolId,
     reduceAnimationEnabled,
+    viewingChemicalId,
   };
 }
 
@@ -239,6 +246,17 @@ const dispatch = {
     setReduceAnimation(reduceAnimationEnabled);
   }),
 
+  // Also not a section 1 name: UI.md section 3 lists the properties card as
+  // a modal overlay, and something has to open and close it. Opening does
+  // not check the id is real - engine.getChemical already returns null for
+  // an unknown one, and panels.js shows that honestly instead of guessing.
+  viewProperties: wrap((chemicalId) => {
+    viewingChemicalId = chemicalId;
+  }),
+  closeProperties: wrap(() => {
+    viewingChemicalId = null;
+  }),
+
   /**
    * Records a student's estimate, capturing what the instrument actually says
    * right now as the hidden true value. The comparison itself happens in
@@ -274,6 +292,7 @@ const dispatch = {
     notebook.clear();
     activeHazard = null;
     selectedToolId = null;
+    viewingChemicalId = null;
   }),
 };
 
@@ -281,7 +300,7 @@ const dispatch = {
  * Mount the zones and do the first paint.
  * ------------------------------------------------------------------ */
 
-mountShelf({ root: document.getElementById('shelf') });
+mountShelf({ root: document.getElementById('shelf'), dispatch });
 mountBench({ root: document.getElementById('bench'), getState, dispatch, subscribe });
 mountPanels({ root: document.getElementById('notebook'), getState, dispatch, subscribe });
 mountHazardAlert({
@@ -293,6 +312,12 @@ mountHazardAlert({
   // The bench is what shakes, not the whole window - see shakeElement in
   // effects.js for why the warning text is deliberately left still.
   shakeEl: document.getElementById('bench'),
+});
+mountPropertiesCard({
+  root: document.getElementById('properties-card'),
+  getState,
+  dispatch,
+  subscribe,
 });
 
 document.getElementById('reset-bench').addEventListener('click', () => dispatch.resetBench());

@@ -479,3 +479,146 @@ html.reduce-motion .fx-flame--3 {
   outline: 3px solid #161A19;
   outline-offset: 2px;
 }
+
+/* ------------------------------------------------------------------ *
+ * The "Properties" button on each shelf bottle.
+ * ------------------------------------------------------------------ */
+
+.reagent-bottle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.reagent-bottle__properties {
+  flex: none;
+  padding: 4px 8px;
+  font-size: 0.85em;
+  border: 1px solid #999;
+  background: #fff;
+  cursor: pointer;
+}
+
+.reagent-bottle__properties:focus-visible {
+  outline: 3px solid #161A19;
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------------ *
+ * The properties card. Same overlay/backdrop/panel structure as the
+ * hazard alert, deliberately - one visual language for "a modal appeared",
+ * not two competing ones - but its own colours: nothing here is a warning,
+ * so hazard red never appears in this panel (see UI.md section 4: that red
+ * is reserved for danger alone).
+ * ------------------------------------------------------------------ */
+
+.properties-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.properties-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 26, 25, 0.5);
+}
+
+.properties-panel {
+  position: relative;
+  max-width: 420px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  padding: 20px 24px 24px;
+  background: #EDEAE3;
+  border: 2px solid #161A19;
+  color: #161A19;
+}
+
+.properties-panel__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 6px 10px;
+  border: 1px solid #161A19;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+
+.properties-panel__close:focus-visible {
+  outline: 3px solid #161A19;
+  outline-offset: 2px;
+}
+
+.properties-panel__title {
+  margin: 0 40px 12px 0;
+  font-size: 1.3em;
+}
+
+.properties-panel__structure {
+  margin: 0 0 14px;
+  text-align: center;
+}
+
+.properties-panel__structure img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.properties-panel__facts {
+  margin: 0 0 10px;
+}
+
+.properties-panel__row {
+  margin: 4px 0;
+}
+
+.properties-panel__label {
+  font-weight: bold;
+}
+
+.properties-panel__swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  vertical-align: middle;
+  border: 1px solid #161A19;
+}
+
+.properties-panel__subheading {
+  margin: 14px 0 4px;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.properties-panel__hazards {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.properties-panel__hazards li {
+  text-transform: capitalize;
+}
+
+.properties-panel__description {
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+
+.properties-panel__source {
+  margin: 14px 0 0;
+  font-size: 0.85em;
+  font-style: italic;
+  color: #4A4A4A;
+}

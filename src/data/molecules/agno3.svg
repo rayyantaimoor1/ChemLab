@@ -1,0 +1,22 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Silver nitrate: a silver ion and a nitrate ion, nitrogen bonded to three oxygens">
+  <line x1="42" y1="60" x2="62" y2="60" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <circle cx="24" cy="60" r="20" fill="#B0B7BD" stroke="#161A19" stroke-width="2"/>
+  <text x="24" y="65" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#161A19">Ag</text>
+  <text x="40" y="38" font-family="sans-serif" font-size="12" font-weight="bold" fill="#161A19">+</text>
+
+  <line x1="100" y1="52" x2="100" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="104" y1="52" x2="104" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="93" y1="68" x2="72" y2="88" stroke="#161A19" stroke-width="2"/>
+  <line x1="109" y1="68" x2="130" y2="88" stroke="#161A19" stroke-width="2"/>
+
+  <circle cx="102" cy="60" r="14" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="102" y="65" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">N</text>
+
+  <circle cx="102" cy="20" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="102" y="24" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="66" cy="94" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="66" y="98" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="138" cy="94" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="138" y="98" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <text x="150" y="98" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">-</text>
+</svg>

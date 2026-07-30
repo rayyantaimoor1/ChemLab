@@ -16,6 +16,9 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { existsSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import {
   createEngine,
@@ -25,6 +28,8 @@ import {
   MESSAGES,
   DEFAULT_MAX_CASCADE,
 } from '../src/core/engine.js';
+
+const DATA_DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data');
 
 /* ------------------------------------------------------------------ *
  * Made-up test data
@@ -662,6 +667,26 @@ test('every hazard carries both the danger and the correct response', async () =
     assert.ok(
       ['low', 'moderate', 'high'].includes(hazard.severity),
       `hazard on ${reaction.id} has an unrecognised severity '${hazard.severity}'`
+    );
+  }
+});
+
+test('every real chemical points its structure field at an image that actually exists', async () => {
+  const { engine } = await import('../src/core/engine.js');
+
+  for (const chemical of engine.getAllChemicals()) {
+    assert.ok(
+      typeof chemical.structure === 'string' && chemical.structure.length > 0,
+      `chemical ${chemical.id} has no structure field`
+    );
+
+    // The properties card serves this straight to an <img>, so a typo here
+    // is a broken image in the app, not a loud test failure - this is that
+    // loud failure instead.
+    const resolved = path.join(DATA_DIR, chemical.structure);
+    assert.ok(
+      existsSync(resolved),
+      `chemical ${chemical.id}'s structure file is missing: ${chemical.structure}`
     );
   }
 });
