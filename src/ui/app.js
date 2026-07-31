@@ -122,6 +122,17 @@ function trackHazard(engineResult) {
 // happened rather than somewhere general. Keyed by container id.
 const lastAnimatedReactionByContainer = new Map();
 
+// The most recent electrolysis in each vessel, so the bench can keep showing
+// ions drifting to the electrodes while the current is still flowing.
+//
+// It has to be remembered rather than recomputed, because the moment the
+// electrolysis runs its reactant is used up - the vessel then holds only
+// products, which match no electrolysis rule, and the ions would vanish the
+// instant they became relevant. A real cell goes on electrolysing for as
+// long as the power is on, so remembering the reaction is also the more
+// truthful of the two.
+const lastElectrolysisByContainer = new Map();
+
 // Which reaction's animation is open, if any.
 let viewingReactionId = null;
 
@@ -157,6 +168,9 @@ function trackAnimatedReaction(result) {
 
   const animated = [...steps].reverse().find((step) => step.reaction?.molecularAnimation);
   if (animated) lastAnimatedReactionByContainer.set(containerId, animated.reaction.id);
+
+  const electrolysis = [...steps].reverse().find((step) => step.reaction?.electrodes);
+  if (electrolysis) lastElectrolysisByContainer.set(containerId, electrolysis.reaction.id);
 }
 
 /* ------------------------------------------------------------------ *
@@ -179,7 +193,7 @@ function notify() {
 // experiments.json / experiments.js). Only these are ever handed to the
 // runner - things like selectTool or viewProperties are interface state
 // with nothing for a step to validate.
-const GUIDED_ACTION_NAMES = new Set(['addChemical', 'pour', 'setHeat', 'stir', 'dipTool', 'recordObservation']);
+const GUIDED_ACTION_NAMES = new Set(['addChemical', 'pour', 'setHeat', 'setPower', 'stir', 'dipTool', 'recordObservation']);
 
 /**
  * Rebuilds the { action, ... } shape experiments.js expects, straight from
@@ -195,6 +209,8 @@ function guidedPayload(actionName, args) {
       return { action: 'pour', fromId: args[0], toId: args[1], amountMl: args[2] };
     case 'setHeat':
       return { action: 'setHeat', containerId: args[0], level: args[1] };
+    case 'setPower':
+      return { action: 'setPower', containerId: args[0], on: args[1] };
     case 'stir':
       return { action: 'stir', containerId: args[0] };
     case 'dipTool':
@@ -291,6 +307,47 @@ function guidedStateFor() {
   };
 }
 
+/**
+ * The ions a vessel would show drifting to each electrode, if the current
+ * were switched on.
+ *
+ * This asks the engine what electrolysis rule the vessel's contents match,
+ * and then reads that rule's own `electrodes` block. Which ion goes to which
+ * electrode is curated chemistry sitting in reactions.json - nothing here
+ * works it out, exactly as nothing here works out what a reaction produces.
+ * Returns an empty list for anything with no electrolysis rule, which is how
+ * a cell full of a non-electrolyte correctly ends up showing no movement.
+ */
+function electrolysisIonsFor(snapshot) {
+  if (!snapshot.electrified) return [];
+
+  // What is in the vessel right now, if it matches an electrolysis rule...
+  const match = engine.resolve(snapshot.speciesIds, {
+    tempC: snapshot.temperatureC,
+    heating: snapshot.heatLevel > 0,
+    electrified: true,
+    log: false,
+  });
+
+  // ...otherwise the electrolysis that has already run here, which is the
+  // usual case: the reactant is consumed the instant the power goes on.
+  const ran = lastElectrolysisByContainer.get(snapshot.id);
+  const reaction = match.reaction?.electrodes ? match.reaction : (ran ? engine.getReaction(ran) : null);
+
+  const electrodes = reaction?.electrodes;
+  if (!electrodes) return [];
+
+  const ions = [];
+  for (const side of ['cathode', 'anode']) {
+    const label = electrodes[side]?.attracts;
+    if (!label) continue;
+    // Two of each, so the drift reads as a crowd of ions rather than one
+    // token particle heading each way.
+    ions.push({ label, toward: side }, { label, toward: side });
+  }
+  return ions;
+}
+
 function getState() {
   const guided = guidedStateFor();
   return {
@@ -308,8 +365,13 @@ function getState() {
         capacityMl: snapshot.capacityMl,
         temperatureC: snapshot.temperatureC,
         heatLevel: snapshot.heatLevel,
+        electrified: snapshot.electrified,
         pH: snapshot.pH,
         appearance: appearanceFor(snapshot),
+        // Which ions are drifting to which electrode, for bench.js to draw.
+        // Read straight out of the reaction's curated `electrodes` block -
+        // app.js does not decide any of this, it only looks it up.
+        electrolysisIons: electrolysisIonsFor(snapshot),
         // The most recent reaction in THIS vessel that has a molecular
         // animation, so bench.js can offer to replay it right there. Null
         // until something animatable has actually happened in it.
@@ -364,6 +426,7 @@ function resetBenchState() {
     container.empty();
     container.setTemperatureC(ROOM_TEMPERATURE_C);
     container.setHeatLevel(0);
+    container.setElectrified(false);
   }
   notebook.clear();
   activeHazard = null;
@@ -374,6 +437,7 @@ function resetBenchState() {
   // A fresh bench has had no reactions in it, so no vessel should still be
   // offering to replay one from the last session.
   lastAnimatedReactionByContainer.clear();
+  lastElectrolysisByContainer.clear();
 }
 
 /* ------------------------------------------------------------------ *
@@ -388,6 +452,10 @@ const dispatch = {
   addChemical: wrap(actions.addChemical, 'addChemical'),
   pour: wrap(actions.pour, 'pour'),
   setHeat: wrap(actions.setHeat, 'setHeat'),
+  // Electrolysis, added with the requiresElectricity condition in engine.js.
+  // Not one of UI.md section 1's original names - that list predates
+  // electrolysis being modelled - but it behaves exactly like setHeat.
+  setPower: wrap(actions.setPower, 'setPower'),
   stir: wrap(actions.stir, 'stir'),
   dipTool: wrap(actions.dipTool, 'dipTool'),
   recordObservation: wrap(notebook.recordObservation, 'recordObservation'),

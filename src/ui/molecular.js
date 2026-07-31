@@ -81,6 +81,12 @@ const ELEMENT_STYLE = {
   C: { fill: '#2C3E50', text: '#FFFFFF' },
   group: { fill: '#D5DBDB', text: '#161A19' },
   electron: { fill: '#F1C40F', text: '#161A19' },
+  // Both electrodes are drawn the same dark grey on purpose: in a real cell
+  // they are usually two identical carbon rods, and it is the sign on them -
+  // not their colour - that says which is which. UI.md section 5's rule that
+  // colour is never the only channel applies here as much as anywhere, and
+  // hazard red is reserved for danger (section 4) so it cannot mark an anode.
+  electrode: { fill: '#4A4A4A', text: '#FFFFFF' },
 };
 
 const FALLBACK_STYLE = { fill: '#BDC3C7', text: '#161A19' };

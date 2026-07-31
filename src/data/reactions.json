@@ -960,5 +960,186 @@
     "explanation": "No observable change. Iron under water that has had the air boiled out of it does not rust, because although water is present there is no oxygen for the iron to lose its electrons to. This is the other half of the three-tube experiment, and the pair of negative results together prove something a single positive result never could: that rusting needs oxygen AND water, not just one or the other.",
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, conditions necessary for rusting"
+  },
+  {
+    "id": "rxn_electrolysis_water",
+    "reactants": ["water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["h2_g", "o2_g"],
+    "equation": "2H₂O → 2H₂ + O₂",
+    "type": "electrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen and oxygen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "H⁺",
+        "attractsName": "hydrogen ions",
+        "halfEquation": "4H⁺ + 4e⁻ → 2H₂",
+        "product": "h2_g",
+        "observation": "Twice as much gas collects here as at the anode."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "OH⁻",
+        "attractsName": "hydroxide ions",
+        "halfEquation": "4OH⁻ → O₂ + 2H₂O + 4e⁻",
+        "product": "o2_g",
+        "observation": "Half as much gas as at the cathode, and it relights a glowing splint."
+      }
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Hydrogen and oxygen are being made together",
+      "warning": "Electrolysing water produces hydrogen and oxygen in exactly the proportions that burn most fiercely. Collected together in one container they form an explosive mixture, and a flame or spark is all it takes.",
+      "visualEffect": null,
+      "whatToDoInstead": "Collect the two gases in separate tubes, one over each electrode, and keep all flames away until you are ready to test each gas on its own."
+    },
+    "molecularAnimation": "anim_electrolysis_water",
+    "explanation": "Water is split into its two elements by an electric current. Positive hydrogen ions drift to the negative electrode (the cathode) where they collect electrons and leave as hydrogen gas; negative hydroxide ions drift to the positive electrode (the anode) where they give electrons up and leave as oxygen. Exactly twice as much hydrogen is produced as oxygen, which matches the formula H₂O and is the easiest way to see that formula being confirmed by experiment. In practice a few drops of dilute sulfuric acid are added first, because pure water conducts far too poorly on its own — the acid is not used up.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of water"
+  },
+  {
+    "id": "rxn_electrolysis_brine",
+    "reactants": ["nacl_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["naoh_aq", "h2_g", "cl2_g"],
+    "equation": "2NaCl + 2H₂O → 2NaOH + H₂ + Cl₂",
+    "type": "electrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen and chlorine",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 14.0
+    },
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "H⁺",
+        "attractsName": "hydrogen ions from the water",
+        "halfEquation": "2H⁺ + 2e⁻ → H₂",
+        "product": "h2_g",
+        "observation": "Hydrogen, not sodium — the water is discharged in preference to the more reactive metal."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "Cl⁻",
+        "attractsName": "chloride ions",
+        "halfEquation": "2Cl⁻ → Cl₂ + 2e⁻",
+        "product": "cl2_g",
+        "observation": "Choking pale green chlorine, which bleaches damp litmus paper."
+      }
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "Poisonous chlorine gas is released",
+      "warning": "Chlorine given off at the anode is poisonous to breathe and attacks the eyes and lungs. It is denser than air, so it collects low down rather than dispersing upwards. Hydrogen is coming off the other electrode at the same time, and that is flammable.",
+      "visualEffect": null,
+      "whatToDoInstead": "Run this only in a fume cupboard or a very well ventilated room, and never lean over the cell. Keep flames away from the cathode side because of the hydrogen."
+    },
+    "molecularAnimation": "anim_electrolysis_brine",
+    "explanation": "Electrolysing concentrated salt solution — brine — gives three useful products at once, which is why it is one of the biggest chemical industries in the world. Chloride ions go to the anode and leave as chlorine gas. At the cathode it is NOT sodium that appears, even though sodium ions are drifting there: sodium is too reactive to be discharged out of water, so hydrogen ions from the water take the electrons instead and hydrogen bubbles off. That leaves sodium and hydroxide ions behind in the cell, so the solution turns strongly alkaline.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of brine and the Nelson cell"
+  },
+  {
+    "id": "rxn_electrolysis_molten_nacl",
+    "reactants": ["nacl_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 801, "catalyst": null, "requiresElectricity": true },
+    "products": ["na_metal", "cl2_g"],
+    "equation": "2NaCl → 2Na + Cl₂",
+    "type": "electrolysis",
+    "effects": {
+      "colorToHex": "#DCE8A8",
+      "precipitate": "molten silvery sodium",
+      "gas": "chlorine",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "Na⁺",
+        "attractsName": "sodium ions",
+        "halfEquation": "2Na⁺ + 2e⁻ → 2Na",
+        "product": "na_metal",
+        "observation": "Molten silvery sodium collects here and floats on the melt."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "Cl⁻",
+        "attractsName": "chloride ions",
+        "halfEquation": "2Cl⁻ → Cl₂ + 2e⁻",
+        "product": "cl2_g",
+        "observation": "Pale green chlorine bubbles off."
+      }
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "Molten salt at 800 °C, poisonous chlorine, and sodium metal",
+      "warning": "This cell runs at over 800 °C. The chlorine given off is poisonous, and the sodium produced catches fire in air and reacts violently with water. All three hazards are present at once, which is why this is an industrial process and not a school experiment.",
+      "visualEffect": null,
+      "whatToDoInstead": "This is shown here as a simulation of the industrial Down's cell. It is not something to attempt in a school laboratory at all — study the diagram and the half equations instead."
+    },
+    "molecularAnimation": "anim_electrolysis_molten_nacl",
+    "explanation": "Solid salt does not conduct, because its ions are locked in the crystal and cannot move — which is why this vessel does nothing until it is heated past the melting point of about 801 °C. Once molten, the ions are free, and now the current can pull them apart: sodium ions to the cathode where they become sodium metal, chloride ions to the anode where they become chlorine gas. With no water present there is nothing to be discharged in preference, so this time the sodium really does appear. This is the only practical way to obtain such a reactive metal, and it is how the industrial Down's cell works.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of molten sodium chloride and the Down's cell"
+  },
+  {
+    "id": "rxn_electrolysis_cuso4",
+    "reactants": ["cuso4_0_5m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["cu_metal", "o2_g", "h2so4_1m"],
+    "equation": "2CuSO₄ + 2H₂O → 2Cu + O₂ + 2H₂SO₄",
+    "type": "electrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": "reddish brown copper on the cathode",
+      "gas": "oxygen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 1.0
+    },
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "Cu²⁺",
+        "attractsName": "copper(II) ions",
+        "halfEquation": "Cu²⁺ + 2e⁻ → Cu",
+        "product": "cu_metal",
+        "observation": "A reddish-brown layer of copper plates onto the electrode, and the blue fades from the solution."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "OH⁻",
+        "attractsName": "hydroxide ions from the water",
+        "halfEquation": "4OH⁻ → O₂ + 2H₂O + 4e⁻",
+        "product": "o2_g",
+        "observation": "Oxygen bubbles off, because sulfate ions are not discharged."
+      }
+    },
+    "hazard": null,
+    "molecularAnimation": "anim_electrolysis_cuso4",
+    "explanation": "This is the reaction behind electroplating and behind the refining of copper. Copper(II) ions are pulled to the cathode, where they collect electrons and stick to it as a solid layer of copper — so whatever object you make the cathode gets copper-plated. Because the copper is being taken out of the solution, the blue colour fades as the reaction goes on, which makes progress easy to watch. At the anode the sulfate ion is too stable to be discharged, so hydroxide ions from the water give up their electrons instead and oxygen bubbles off, leaving the solution increasingly acidic.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of copper(II) sulfate, electroplating and refining"
   }
 ]

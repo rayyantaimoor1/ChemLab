@@ -366,6 +366,117 @@ body {
   }
 }
 
+/* ------------------------------------------------------------------ *
+ * Electrolysis: two electrodes in the vessel and the ions drifting to
+ * them. Only `transform` and `opacity` are animated, per UI.md section 6.
+ * ------------------------------------------------------------------ */
+
+.electrode {
+  position: absolute;
+  top: 6%;
+  width: 12px;
+  height: 78%;
+  /* Both rods the same grey on purpose - the sign says which is which,
+     not the colour (UI.md section 5). */
+  background: #4A4A4A;
+  border: 1px solid #161A19;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.electrode--cathode { left: 14%; }
+.electrode--anode { right: 14%; }
+
+.electrode__sign {
+  color: #FFFFFF;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.ion {
+  position: absolute;
+  left: 50%;
+  font-family: sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #161A19;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #4A4A4A;
+  border-radius: 9px;
+  padding: 0 4px;
+  white-space: nowrap;
+}
+
+/* The drift. Negative ions travel right to the anode, positive ones left
+   to the cathode - the direction itself is carrying the teaching point,
+   which is why each has its own keyframe rather than one shared one. */
+.ion--cathode {
+  animation: ion-to-cathode 3.4s linear infinite;
+}
+
+.ion--anode {
+  animation: ion-to-anode 3.4s linear infinite;
+}
+
+@keyframes ion-to-cathode {
+  0% { transform: translateX(10px); opacity: 0; }
+  15% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(-58px); opacity: 0; }
+}
+
+@keyframes ion-to-anode {
+  0% { transform: translateX(-10px); opacity: 0; }
+  15% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(58px); opacity: 0; }
+}
+
+/* The ions stop travelling but stay on screen, sitting nearer their own
+   electrode, so which ion goes where is still readable without any motion -
+   UI.md section 8: no information conveyed by animation alone.
+   Both switches are honoured: the OS setting and the in-app toggle, the
+   same pair the flame rules above already match. */
+@media (prefers-reduced-motion: reduce) {
+  .ion--cathode,
+  .ion--anode {
+    animation: none;
+    opacity: 1;
+  }
+  .ion--cathode { transform: translateX(-46px); }
+  .ion--anode { transform: translateX(46px); }
+}
+
+html.reduce-motion .ion--cathode,
+html.reduce-motion .ion--anode {
+  animation: none;
+  opacity: 1;
+}
+
+html.reduce-motion .ion--cathode { transform: translateX(-46px); }
+html.reduce-motion .ion--anode { transform: translateX(46px); }
+
+.container__power {
+  margin-top: 6px;
+  margin-right: 6px;
+  min-height: 40px;
+  padding: 6px 12px;
+  border: 1px solid #999;
+  background: #fff;
+  cursor: pointer;
+}
+
+.container__power--on {
+  background: #A8702B;
+  color: #FFFFFF;
+  border-color: #161A19;
+}
+
 html.reduce-motion .fx-flame--1,
 html.reduce-motion .fx-flame--2,
 html.reduce-motion .fx-flame--3 {

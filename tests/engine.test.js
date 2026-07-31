@@ -920,6 +920,114 @@ test('every real reaction leaves behind something the engine can account for', a
   }
 });
 
+/* ------------------------------------------------------------------ *
+ * Electrolysis - the requiresElectricity condition.
+ * ------------------------------------------------------------------ */
+
+test('a rule needing a current does not fire with the power off', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create();
+
+  const off = engine.resolve(['water_distilled']);
+  assert.equal(off.outcome, OUTCOME.NO_REACTION);
+  assert.match(off.message, /needs an electric current/);
+});
+
+test('the same rule fires once the current is switched on', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create();
+
+  const on = engine.resolve(['water_distilled'], { electrified: true });
+  assert.equal(on.outcome, OUTCOME.REACTION);
+  assert.equal(on.reaction.id, 'rxn_electrolysis_water');
+});
+
+test('molten salt needs the heat first and the current second', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create();
+
+  // Cold, no power: the temperature is the thing to fix first.
+  assert.match(engine.resolve(['nacl_s']).message, /801 °C/);
+
+  // Cold WITH power: still the temperature, because solid salt cannot
+  // conduct at all - its ions are locked in the lattice.
+  assert.match(engine.resolve(['nacl_s'], { electrified: true }).message, /801 °C/);
+
+  // Molten but no power: now the current is what is missing.
+  const molten = engine.resolve(['nacl_s'], { tempC: 850, heating: true });
+  assert.match(molten.message, /needs an electric current/);
+
+  // Both: it runs.
+  const both = engine.resolve(['nacl_s'], { tempC: 850, heating: true, electrified: true });
+  assert.equal(both.outcome, OUTCOME.REACTION);
+  assert.equal(both.reaction.id, 'rxn_electrolysis_molten_nacl');
+});
+
+test('a blocked rule is only blamed when it explains the whole vessel', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create();
+
+  // Copper sulfate alone has an electrolysis rule, so with the power off
+  // the honest answer is "switch the current on".
+  assert.match(engine.resolve(['cuso4_0_5m']).message, /needs an electric current/);
+
+  // Add something that rule says nothing about and the honest answer
+  // changes: we do not know what phenolphthalein does with copper sulfate,
+  // and blaming the missing current would imply that we do.
+  const withExtra = engine.resolve(['cuso4_0_5m', 'phenolphthalein_1pct']);
+  assert.equal(withExtra.outcome, OUTCOME.UNKNOWN);
+});
+
+test('every electrolysis rule names what happens at each electrode', async () => {
+  const { engine } = await import('../src/core/engine.js');
+
+  for (const reaction of engine.getAllReactions()) {
+    if (reaction.conditions?.requiresElectricity !== true) continue;
+
+    const electrodes = reaction.electrodes;
+    assert.ok(electrodes, `${reaction.id} is an electrolysis but names no electrodes`);
+
+    for (const side of ['cathode', 'anode']) {
+      const entry = electrodes[side];
+      assert.ok(entry, `${reaction.id} has no ${side}`);
+      for (const field of ['sign', 'attracts', 'halfEquation', 'product', 'observation']) {
+        assert.ok(
+          typeof entry[field] === 'string' && entry[field].trim().length > 0,
+          `${reaction.id}'s ${side} is missing ${field}`
+        );
+      }
+      // The product named at an electrode must be one the rule actually makes.
+      assert.ok(
+        reaction.products.includes(entry.product),
+        `${reaction.id}'s ${side} claims to produce '${entry.product}', which the rule does not make`
+      );
+    }
+
+    assert.equal(electrodes.cathode.sign, 'negative');
+    assert.equal(electrodes.anode.sign, 'positive');
+  }
+});
+
+test('every electrolysis rule has an animation showing the ions moving', async () => {
+  const { engine } = await import('../src/core/engine.js');
+  const { default: animations } = await import('../src/data/animations.json', {
+    with: { type: 'json' },
+  });
+
+  for (const reaction of engine.getAllReactions()) {
+    if (reaction.conditions?.requiresElectricity !== true) continue;
+
+    const animation = animations[reaction.molecularAnimation];
+    assert.ok(animation, `${reaction.id} has no molecular animation`);
+
+    // Both electrodes have to be on the stage, or the ions have nothing to
+    // be seen moving towards.
+    const ids = new Set(animation.particles.map((particle) => particle.id));
+    assert.ok(ids.has('cathode'), `${reaction.molecularAnimation} draws no cathode`);
+    assert.ok(ids.has('anode'), `${reaction.molecularAnimation} draws no anode`);
+  }
+});
+
 test('a settled outcome still gives way to a real follow-on reaction', async () => {
   const { createEngine: create } = await import('../src/core/engine.js');
 

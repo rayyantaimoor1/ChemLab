@@ -99,7 +99,7 @@ function blockingCondition(reaction, state) {
   const conditions = reaction.conditions;
   if (!conditions) return null;
 
-  const { requiresHeat, minTempC, catalyst } = conditions;
+  const { requiresHeat, minTempC, catalyst, requiresElectricity } = conditions;
 
   // A minimum temperature is checked first because it is the more specific test.
   if (typeof minTempC === 'number' && state.tempC < minTempC) {
@@ -110,6 +110,19 @@ function blockingCondition(reaction, state) {
   // actually be heating the container.
   if (requiresHeat === true && typeof minTempC !== 'number' && !state.heating) {
     return 'needs to be heated';
+  }
+
+  // Electrolysis. Checked AFTER the temperature tests on purpose: molten
+  // sodium chloride needs both, and a student who has not melted it yet
+  // should be told to melt it first rather than to switch the power on.
+  //
+  // This is deliberately NOT modelled as a catalyst. A catalyst speeds up a
+  // reaction that would happen anyway; an electric current DRIVES a reaction
+  // that otherwise will not go at all. Calling electricity a catalyst would
+  // teach a student something plainly wrong, which is what CLAUDE.md
+  // section 6 exists to stop.
+  if (requiresElectricity === true && !state.electrified) {
+    return 'needs an electric current passed through it';
   }
 
   if (catalyst) {
@@ -262,15 +275,29 @@ export function createEngine({
 
     if (candidates.length === 0) return { rule: null, blocked: null };
 
-    // Prefer a rule that can actually run. If every candidate is held back by a
-    // condition, report the first one so we can explain what is missing.
+    // Prefer a rule that can actually run.
     for (const candidate of candidates) {
       if (candidate.reaction.noReaction === true) return { rule: candidate, blocked: null };
       if (!blockingCondition(candidate.reaction, state)) return { rule: candidate, blocked: null };
     }
 
-    const first = candidates[0];
-    return { rule: null, blocked: { rule: first, reason: blockingCondition(first.reaction, state) } };
+    // Every candidate is held back by a condition. We only say WHICH condition
+    // if the rule accounts for everything in the vessel.
+    //
+    // Otherwise we would be answering about the wrong thing. Copper(II)
+    // sulfate on its own has an electrolysis rule, so a vessel holding copper
+    // sulfate AND phenolphthalein would otherwise be told it "needs an
+    // electric current" - which quietly implies we know what phenolphthalein
+    // does with copper sulfate. We do not, and section 6.2 says to say so.
+    // An unexplained extra substance makes this an honest gap, not a
+    // condition that has not been met yet.
+    const explains = candidates.find(({ reactants }) => reactants.length === present.size);
+    if (!explains) return { rule: null, blocked: null };
+
+    return {
+      rule: null,
+      blocked: { rule: explains, reason: blockingCondition(explains.reaction, state) },
+    };
   }
 
   /** Normalises the optional bench conditions the caller passes in. */
@@ -279,6 +306,7 @@ export function createEngine({
       species,
       tempC: typeof options.tempC === 'number' ? options.tempC : ROOM_TEMPERATURE_C,
       heating: options.heating === true,
+      electrified: options.electrified === true,
       catalysts: Array.isArray(options.catalysts) ? options.catalysts : [],
     };
   }

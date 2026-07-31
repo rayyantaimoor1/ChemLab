@@ -104,7 +104,26 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const pourMouth = document.createElement('div');
     pourMouth.className = 'vessel__layer vessel__mouth';
 
-    vessel.append(liquidBase, liquidIncoming, precipitateLayer, bubbleLayer, gasLayer, pourMouth);
+    // The two electrodes, and the ions drifting towards them. Hidden until
+    // the power is switched on. Both rods are drawn the same dark grey
+    // because in a real cell they usually are two identical carbon rods -
+    // it is the + and - signs, not the colour, that say which is which
+    // (UI.md section 5: colour is never the only channel, and section 4
+    // reserves red for hazards so it cannot mark an anode).
+    const electrodeLayer = document.createElement('div');
+    electrodeLayer.className = 'vessel__layer vessel__electrodes';
+    electrodeLayer.hidden = true;
+    const cathodeRod = document.createElement('div');
+    cathodeRod.className = 'electrode electrode--cathode';
+    cathodeRod.innerHTML = '<span class="electrode__sign">&minus;</span>';
+    const anodeRod = document.createElement('div');
+    anodeRod.className = 'electrode electrode--anode';
+    anodeRod.innerHTML = '<span class="electrode__sign">+</span>';
+    const ionLayer = document.createElement('div');
+    ionLayer.className = 'vessel__layer vessel__ions';
+    electrodeLayer.append(cathodeRod, anodeRod, ionLayer);
+
+    vessel.append(liquidBase, liquidIncoming, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
     el.appendChild(vessel);
 
     const contentsList = document.createElement('ul');
@@ -146,6 +165,20 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       return button;
     });
     el.appendChild(heatSection);
+
+    // The electrolysis power supply. Sits next to the burner because it is
+    // the same kind of control: a switch that decides which rules are
+    // allowed to fire, not something that changes the chemistry itself.
+    const power = document.createElement('button');
+    power.type = 'button';
+    power.className = 'container__power';
+    power.textContent = 'Power off';
+    power.setAttribute('aria-pressed', 'false');
+    power.addEventListener('click', () => {
+      const now = getState().containers.find((c) => c.id === container.id);
+      withEffects(container.id, () => dispatch.setPower(container.id, !now.electrified));
+    });
+    el.appendChild(power);
 
     // stir(containerId) - UI.md section 1's fixed dispatch name. There was
     // previously no control for it at all (the same gap setHeat's comment
@@ -190,6 +223,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const refs = {
       el, liquidBase, liquidIncoming, precipitateLayer, bubbleLayer, gasLayer, pourMouth,
       contentsList, volumeEl, tempEl, phEl, colorLabel, flame, heatButtons, dip, molecularView,
+      electrodeLayer, ionLayer, power,
       lastCapacityMl: container.capacityMl,
     };
     containerEls.set(container.id, refs);
@@ -244,12 +278,57 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     }
     setFlameLevel(refs.flame, container.heatLevel);
 
+    updateElectrolysis(refs, container);
+
     refs.dip.disabled = !state.selectedToolId;
     refs.dip.title = state.selectedToolId ? 'Dip the tool you are holding' : 'Pick up a tool first';
 
     const animatedReactionId = container.lastAnimatedReactionId;
     refs.molecularView.hidden = !animatedReactionId;
     if (animatedReactionId) refs.molecularView.dataset.reactionId = animatedReactionId;
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Electrolysis: the electrodes, and the ions drifting towards them.
+   *
+   * The ions shown are read from the reaction's own `electrodes` block in
+   * reactions.json - which ion goes to which electrode is curated chemistry,
+   * not something worked out here. When the current is on but no electrolysis
+   * rule has fired, the rods are drawn with no ions moving, which is exactly
+   * what a cell holding a non-electrolyte looks like.
+   *
+   * Each ion is one span animated with a CSS keyframe that only moves
+   * `transform` and fades `opacity`, per UI.md section 6's budget. There is
+   * no requestAnimationFrame loop here: once the classes are set the
+   * compositor runs the drift on its own, and stopping it is one class
+   * removal.
+   * ------------------------------------------------------------------ */
+
+  function updateElectrolysis(refs, container) {
+    const on = container.electrified === true;
+
+    refs.power.textContent = on ? 'Power on' : 'Power off';
+    refs.power.setAttribute('aria-pressed', on ? 'true' : 'false');
+    refs.power.classList.toggle('container__power--on', on);
+    refs.electrodeLayer.hidden = !on;
+
+    const signature = on ? (container.electrolysisIons || []).map((ion) => ion.label + ion.toward).join('|') : '';
+    if (refs.lastIonSignature === signature) return;
+    refs.lastIonSignature = signature;
+
+    refs.ionLayer.innerHTML = '';
+    if (!on) return;
+
+    for (const [index, ion] of (container.electrolysisIons || []).entries()) {
+      const span = document.createElement('span');
+      span.className = `ion ion--${ion.toward}`;
+      span.textContent = ion.label;
+      // Stagger them so they do not all set off together, and spread them
+      // down the vessel so the drift reads as a crowd rather than a line.
+      span.style.top = `${18 + (index % 3) * 26}%`;
+      span.style.animationDelay = `${(index % 4) * 0.55}s`;
+      refs.ionLayer.appendChild(span);
+    }
   }
 
   /* ------------------------------------------------------------------ *

@@ -90,6 +90,11 @@ export function createContainer({
   // burner is on" into an actual temperature rise over time, the same way a
   // real burner does not heat a beaker instantly.
   let heatLevel = 0;
+  // Whether a pair of electrodes is dipped in and the power supply is on.
+  // Like heatLevel this file only records the switch position - it does not
+  // decide what electrolysis produces. engine.js does that, from
+  // reactions.json, exactly as it does for every other reaction.
+  let electrified = false;
 
   const lookup = (speciesId) => (typeof getChemical === 'function' ? getChemical(speciesId) : null);
 
@@ -184,6 +189,9 @@ export function createContainer({
     /** True whenever the burner is on at all (level 1, 2, or 3). */
     isHeating: () => heatLevel > 0,
 
+    /** True when electrodes are in the vessel and the current is flowing. */
+    isElectrified: () => electrified,
+
     /** The pH, or null when we genuinely do not have a curated value. */
     getPH: () => pH,
 
@@ -206,6 +214,7 @@ export function createContainer({
         volumeMl: getVolumeMl(),
         temperatureC: temperature,
         heatLevel,
+        electrified,
         pH,
         pHSource,
       });
@@ -299,6 +308,14 @@ export function createContainer({
         throw new RangeError(`setHeatLevel() needs a whole number from 0 to 3, got ${level}`);
       }
       heatLevel = level;
+    },
+
+    /** Switches the electrolysis power supply for this vessel on or off. */
+    setElectrified(on) {
+      if (typeof on !== 'boolean') {
+        throw new TypeError(`setElectrified() needs true or false, got ${on}`);
+      }
+      electrified = on;
     },
 
     /** Warms or cools the vessel by a set amount. */

@@ -27,6 +27,10 @@
  *   pour(fromId, toId, amountMl)
  *   setHeat(containerId, level)      // 0-3
  *   stir(containerId)
+ *
+ * setPower(containerId, on) is the one addition to that list, for
+ * electrolysis. See the comment above it for why an electric current could
+ * not be squeezed into the existing conditions.
  */
 
 import { engine as defaultEngine } from './engine.js';
@@ -78,6 +82,7 @@ export function createActions({
     const result = engine.react(speciesIds, {
       tempC: container.getTemperatureC(),
       heating: container.isHeating(),
+      electrified: container.isElectrified(),
     });
 
     // engine.react() only works out what WOULD happen; applying it to the real
@@ -212,6 +217,41 @@ export function createActions({
   }
 
   /* ------------------------------------------------------------------ *
+   * setPower(containerId, on)
+   *
+   * Dips a pair of electrodes into the vessel and switches the supply on
+   * or off. Not one of UI.md section 1's original dispatch names - that
+   * list predates electrolysis being modelled at all - but it follows the
+   * same shape as setHeat, because it is the same kind of thing: a switch
+   * position that gates which rules are allowed to fire.
+   * ------------------------------------------------------------------ */
+
+  function setPower(containerId, on) {
+    const container = findContainer(containerId, 'setPower');
+
+    container.setElectrified(Boolean(on));
+
+    const sentence = on
+      ? `Electrodes were placed in ${container.name} and the current switched on.`
+      : `The current through ${container.name} was switched off.`;
+
+    // Switching the supply on can unlock an electrolysis rule, and switching
+    // it off can stop one being satisfied - the same reason setHeat rechecks.
+    const engineResult = checkForReaction(container);
+    const fullSentence = `${sentence} ${engineResult.message}`;
+
+    return {
+      action: 'setPower',
+      containerId,
+      on: Boolean(on),
+      electrified: container.isElectrified(),
+      engineResult,
+      notebookText: fullSentence,
+      notebookEntry: emitNotebookEntry('setPower', containerId, fullSentence),
+    };
+  }
+
+  /* ------------------------------------------------------------------ *
    * stir(containerId)
    * ------------------------------------------------------------------ */
 
@@ -264,7 +304,7 @@ export function createActions({
     };
   }
 
-  return { addChemical, pour, setHeat, stir, dipTool };
+  return { addChemical, pour, setHeat, setPower, stir, dipTool };
 }
 
 export default createActions;

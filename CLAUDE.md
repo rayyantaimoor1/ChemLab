@@ -156,6 +156,55 @@ These are contracts. Adding content must never require changing engine code.
 }
 ```
 
+### Electrolysis (variant)
+
+`conditions.requiresElectricity` gates a rule on the power supply being
+switched on, exactly the way `requiresHeat` gates one on the burner. It is a
+condition in its own right and **not** a catalyst: a catalyst speeds up a
+reaction that would happen anyway, while a current *drives* one that
+otherwise will not go at all.
+
+A rule may carry both. Molten sodium chloride needs `minTempC: 801` **and**
+`requiresElectricity: true`, so a cold vessel is told to melt the salt first
+and only then asked for the current.
+
+Every electrolysis rule must also carry an `electrodes` block. Which ion
+travels to which electrode is curated chemistry that lives here — the UI
+reads it to draw the ions drifting across the vessel, and never works it out
+for itself.
+
+```json
+{
+  "id": "rxn_electrolysis_brine",
+  "reactants": ["nacl_1m"],
+  "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+  "products": ["naoh_aq", "h2_g", "cl2_g"],
+  "equation": "2NaCl + 2H₂O → 2NaOH + H₂ + Cl₂",
+  "type": "electrolysis",
+  "electrodes": {
+    "cathode": {
+      "sign": "negative",
+      "attracts": "H⁺",
+      "attractsName": "hydrogen ions from the water",
+      "halfEquation": "2H⁺ + 2e⁻ → H₂",
+      "product": "h2_g",
+      "observation": "Hydrogen, not sodium — the water is discharged in preference to the more reactive metal."
+    },
+    "anode": {
+      "sign": "positive",
+      "attracts": "Cl⁻",
+      "attractsName": "chloride ions",
+      "halfEquation": "2Cl⁻ → Cl₂ + 2e⁻",
+      "product": "cl2_g",
+      "observation": "Choking pale green chlorine, which bleaches damp litmus paper."
+    }
+  }
+}
+```
+
+Each side's `product` must be one the rule actually makes — there is a test
+for that, and for both signs being the right way round.
+
 ### Hazardous reaction (variant)
 
 ```json
@@ -269,6 +318,16 @@ owner has confirmed it. Each phase must leave the app in a working state.
 | **6** | Molecular view: 2D structure images first, 3D ball-and-stick after | Student can view structure and a reaction animation for a formed product |
 | **7** | Guided mode: experiment runner, step validation, hints | Two full experiments (titration + one precipitation) run end to end |
 | **8** | Content scale-up by level (Matric → FSc → BS) | Content added purely as JSON, zero engine changes needed |
+
+> **Phase 8 note — one approved engine change.** Four batches of Matric
+> content (40 reactions) were added as pure JSON with `src/core/` untouched,
+> as the criterion asks. Electrolysis was the single exception: the engine
+> gated reactions on heat, temperature and catalyst only, and there was no
+> honest way to express "pass a current through this" without adding a
+> condition. Faking it as a catalyst would have taught wrong chemistry (see
+> §5's electrolysis variant), so `requiresElectricity` was added with the
+> project owner's approval. It is a one-time capability addition: every
+> electrolysis reaction after it is pure JSON again.
 | **9** | Real UI, designed in Claude Design and integrated | Visual redesign required no changes inside `src/core/` |
 | **10** | Packaging, installer polish, testing on target hardware | Installs and runs on a real 8 GB / i5 5th gen lab PC |
 
