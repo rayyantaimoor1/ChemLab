@@ -1141,5 +1141,239 @@
     "explanation": "This is the reaction behind electroplating and behind the refining of copper. Copper(II) ions are pulled to the cathode, where they collect electrons and stick to it as a solid layer of copper — so whatever object you make the cathode gets copper-plated. Because the copper is being taken out of the solution, the blue colour fades as the reaction goes on, which makes progress easy to watch. At the anode the sulfate ion is too stable to be discharged, so hydroxide ions from the water give up their electrons instead and oxygen bubbles off, leaving the solution increasingly acidic.",
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of copper(II) sulfate, electroplating and refining"
+  },
+  {
+    "id": "rxn_combustion_sulfur",
+    "reactants": ["o2_g", "s_powder"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["so2_g"],
+    "equation": "S + O₂ → SO₂",
+    "type": "combustion",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "sulfur dioxide",
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 25,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_gas",
+      "title": "Choking sulfur dioxide is produced",
+      "warning": "Sulfur dioxide has a sharp, choking smell and irritates the eyes, nose and lungs. It is the gas that makes acid rain, and breathing it is genuinely harmful — people with asthma react to it badly.",
+      "visualEffect": null,
+      "whatToDoInstead": "Burn sulfur only in a fume cupboard, and use the smallest amount that shows the effect. Never lean over the burning sulfur to smell the gas directly."
+    },
+    "molecularAnimation": null,
+    "explanation": "Sulfur burns in air with a striking blue flame to give sulfur dioxide. It matters far beyond the laboratory: coal and oil contain sulfur as an impurity, so burning them in a power station does exactly this on an enormous scale, and the sulfur dioxide released is the main cause of acid rain. Removing sulfur from fuels before burning them, and scrubbing it out of chimney gases afterwards, are the two ways of preventing it.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, air pollutants and their sources"
+  },
+  {
+    "id": "rxn_acidrain_so2_water",
+    "reactants": ["so2_g", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["h2so3_aq"],
+    "equation": "SO₂ + H₂O → H₂SO₃",
+    "type": "acid_formation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 2.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "This is acid rain being made, in one step. Sulfur dioxide from burning fuel dissolves in the water of a cloud droplet and turns it into sulfurous acid. Dip pH paper in before and after and the change is dramatic — from neutral water to a strongly acidic solution. Rain like this dissolves limestone buildings and statues, strips nutrients out of soil, and kills fish by acidifying lakes. In the atmosphere it is oxidised further to sulfuric acid, which is stronger still.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, acid rain and its effects"
+  },
+  {
+    "id": "rxn_combustion_carbon",
+    "reactants": ["c_s", "o2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["co2_g"],
+    "equation": "C + O₂ → CO₂",
+    "type": "combustion",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "carbon dioxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 30,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Carbon burning in plenty of air glows red and gives carbon dioxide. The words IN PLENTY OF AIR matter: where the air supply is restricted the same carbon burns to carbon monoxide instead, a colourless and odourless gas that stops blood carrying oxygen and kills people in rooms with badly ventilated heaters. Same fuel, same element, and the only difference is how much oxygen reaches it. Carbon dioxide itself is not poisonous, but it is the main greenhouse gas driving climate change.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, complete and incomplete combustion"
+  },
+  {
+    "id": "rxn_acidrain_co2_water",
+    "reactants": ["co2_g", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["h2co3_aq"],
+    "equation": "CO₂ + H₂O → H₂CO₃",
+    "type": "acid_formation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 4.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Carbon dioxide dissolves in water to make carbonic acid, a very weak acid. This is why perfectly clean, unpolluted rain is already slightly acidic at about pH 5.6 — so acid rain does not mean rain that is acidic, it means rain MORE acidic than that natural background. It is also the reaction that puts the sharpness into fizzy drinks, and, working over thousands of years, the one that dissolves limestone into caves.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, natural acidity of rainwater"
+  },
+  {
+    "id": "rxn_nitrogen_fixation_lightning",
+    "reactants": ["n2_g", "o2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": 1500, "catalyst": null },
+    "products": ["no_g"],
+    "equation": "N₂ + O₂ → 2NO",
+    "type": "combination",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "nitrogen monoxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Nitrogen and oxygen sit mixed together in every breath of air and do absolutely nothing, because the triple bond holding N₂ together is one of the strongest in chemistry. Only at about 1500 °C and above — the temperature inside a lightning bolt or a car engine — is there enough energy to break it. That is why this vessel does nothing until it is extremely hot. The reaction also ABSORBS energy rather than releasing it, which is the other reason it needs such extreme conditions.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, oxides of nitrogen and their formation"
+  },
+  {
+    "id": "rxn_oxidation_no_o2",
+    "reactants": ["no_g", "o2_g"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["no2_g"],
+    "equation": "2NO + O₂ → 2NO₂",
+    "type": "oxidation",
+    "effects": {
+      "colorToHex": "#A0522D",
+      "precipitate": null,
+      "gas": "nitrogen dioxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_gas",
+      "title": "Poisonous brown nitrogen dioxide forms",
+      "warning": "Nitrogen dioxide is poisonous and attacks the lungs, and unlike many hazards it gives little warning — the damage can appear hours after breathing it.",
+      "visualEffect": null,
+      "whatToDoInstead": "Keep oxides of nitrogen in a fume cupboard and never smell them directly. The brown colour alone is enough to identify the gas."
+    },
+    "molecularAnimation": null,
+    "explanation": "This one is worth watching rather than reading about: a colourless gas turns brown the instant it meets air. Nitrogen monoxide from an engine does exactly this as soon as it leaves the exhaust, and that brown haze hanging over a congested city on a still day is largely nitrogen dioxide. It is also the step that turns a fairly harmless gas into a poisonous one and into a cause of acid rain.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, oxides of nitrogen"
+  },
+  {
+    "id": "rxn_acidrain_no2_water",
+    "reactants": ["no2_g", "o2_g", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["hno3_aq"],
+    "equation": "4NO₂ + O₂ + 2H₂O → 4HNO₃",
+    "type": "acid_formation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 2.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The second route to acid rain. Nitrogen dioxide dissolves in cloud droplets, along with oxygen from the air, to give nitric acid — and the brown colour disappears as it goes into solution. Between them, sulfur dioxide from burning coal and nitrogen oxides from engines account for nearly all acid rain. Note that the acid in real rain is enormously more dilute than anything in a bottle on the shelf; it is the sheer volume falling year after year that does the damage.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, acid rain from oxides of nitrogen"
+  },
+  {
+    "id": "rxn_hardness_boiling_temporary",
+    "reactants": ["cahco3_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": 100, "catalyst": null },
+    "products": ["caco3_s", "water", "co2_g"],
+    "equation": "Ca(HCO₃)₂ → CaCO₃ + H₂O + CO₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white limescale",
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "This is why the hardness is called TEMPORARY: boiling alone destroys it. Calcium hydrogencarbonate is only stable while it is cold and dissolved, so heating breaks it apart into insoluble calcium carbonate, water and carbon dioxide. The calcium that made the water hard leaves the solution as a white solid — which is the limescale that furs up kettles, blocks hot water pipes and coats heating elements. Notice that the vessel does nothing until it actually reaches 100 °C.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Water, removal of temporary hardness by boiling"
+  },
+  {
+    "id": "rxn_hardness_clark_method",
+    "reactants": ["cahco3_aq", "caoh2_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["caco3_s", "water"],
+    "equation": "Ca(HCO₃)₂ + Ca(OH)₂ → 2CaCO₃ + 2H₂O",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white calcium carbonate",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 8.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Clark's method: temporary hardness can be removed cold, without boiling, by adding just the right amount of limewater. It looks strange at first — adding more calcium to get rid of calcium — but it works because the hydroxide converts the soluble hydrogencarbonate into insoluble carbonate, and BOTH lots of calcium come out together as a solid. Adding too much limewater simply makes the water alkaline instead, so the amount has to be calculated rather than guessed. Boiling a whole town's water supply is impossible; this is cheap enough to do at scale.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Water, Clark's method for removing temporary hardness"
+  },
+  {
+    "id": "rxn_hardness_washing_soda",
+    "reactants": ["caso4_aq", "na2co3_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["caco3_s", "na2so4_aq"],
+    "equation": "CaSO₄ + Na₂CO₃ → CaCO₃ + Na₂SO₄",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white calcium carbonate",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 9.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Permanent hardness is the kind boiling cannot touch, so it has to be dealt with chemically. Washing soda supplies carbonate ions, which grab the calcium out of solution as insoluble calcium carbonate and leave harmless sodium sulfate behind. With the calcium gone the water lathers properly instead of forming scum, which is exactly why washing soda has been added to laundry for generations. Compare this with boiling, which does nothing at all to permanent hardness.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Water, removal of permanent hardness using washing soda"
   }
 ]

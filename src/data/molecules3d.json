@@ -801,5 +801,161 @@
       { "from": "o", "to": "h", "type": "covalent" },
       { "from": "na", "to": "o", "type": "ionic" }
     ]
+  },
+
+  "s_powder": {
+    "note": "A single atom, drawn simply. Solid sulfur is really made of rings of eight atoms, not single ones.",
+    "atoms": [{ "id": "s", "element": "S", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "c_s": {
+    "note": "A single atom. In charcoal and coal, many carbon atoms are joined into sheets and networks rather than separate molecules.",
+    "atoms": [{ "id": "c", "element": "C", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "n2_g": {
+    "note": "The two atoms are held by a triple bond - the strongest part of the reason nitrogen is so unreactive.",
+    "atoms": [
+      { "id": "n1", "element": "N", "x": -0.55, "y": 0, "z": 0 },
+      { "id": "n2", "element": "N", "x": 0.55, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "n1", "to": "n2", "type": "covalent" }]
+  },
+
+  "so2_g": {
+    "note": "Bent, not linear - the lone pair on the sulfur pushes the two oxygens down to about 119 degrees apart.",
+    "atoms": [
+      { "id": "s", "element": "S", "x": 0, "y": 0.35, "z": 0 },
+      { "id": "o1", "element": "O", "x": -1.25, "y": -0.35, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.25, "y": -0.35, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" }
+    ]
+  },
+
+  "no2_g": {
+    "note": "Bent like sulfur dioxide, and the only common coloured gas in this lab.",
+    "atoms": [
+      { "id": "n", "element": "N", "x": 0, "y": 0.35, "z": 0 },
+      { "id": "o1", "element": "O", "x": -1.1, "y": -0.35, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.1, "y": -0.35, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "o1", "type": "covalent" },
+      { "from": "n", "to": "o2", "type": "covalent" }
+    ]
+  },
+
+  "no_g": {
+    "atoms": [
+      { "id": "n", "element": "N", "x": -0.58, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0.58, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "n", "to": "o", "type": "covalent" }]
+  },
+
+  "h2so3_aq": {
+    "atoms": [
+      { "id": "s", "element": "S", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.3, "z": 0.3 },
+      { "id": "o2", "element": "O", "x": -1.25, "y": -0.6, "z": -0.3 },
+      { "id": "o3", "element": "O", "x": 1.25, "y": -0.6, "z": -0.3 },
+      { "id": "h1", "element": "H", "x": -1.95, "y": -1.25, "z": -0.3 },
+      { "id": "h2", "element": "H", "x": 1.95, "y": -1.25, "z": -0.3 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "o2", "to": "h1", "type": "covalent" },
+      { "from": "o3", "to": "h2", "type": "covalent" }
+    ]
+  },
+
+  "h2co3_aq": {
+    "note": "The carbon and its three oxygens all lie in one flat plane.",
+    "atoms": [
+      { "id": "c", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.25, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.1, "y": -0.65, "z": 0 },
+      { "id": "o3", "element": "O", "x": 1.1, "y": -0.65, "z": 0 },
+      { "id": "h1", "element": "H", "x": -1.8, "y": -1.3, "z": 0 },
+      { "id": "h2", "element": "H", "x": 1.8, "y": -1.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c", "to": "o1", "type": "covalent" },
+      { "from": "c", "to": "o2", "type": "covalent" },
+      { "from": "c", "to": "o3", "type": "covalent" },
+      { "from": "o2", "to": "h1", "type": "covalent" },
+      { "from": "o3", "to": "h2", "type": "covalent" }
+    ]
+  },
+
+  "hno3_aq": {
+    "note": "The nitrate group is flat - nitrogen and its three oxygens all lie in one plane.",
+    "atoms": [
+      { "id": "n", "element": "N", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.25, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.1, "y": -0.65, "z": 0 },
+      { "id": "o3", "element": "O", "x": 1.1, "y": -0.65, "z": 0 },
+      { "id": "h", "element": "H", "x": 1.85, "y": 0.05, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "o1", "type": "covalent" },
+      { "from": "n", "to": "o2", "type": "covalent" },
+      { "from": "n", "to": "o3", "type": "covalent" },
+      { "from": "o3", "to": "h", "type": "covalent" }
+    ]
+  },
+
+  "cahco3_aq": {
+    "note": "A calcium ion with two hydrogencarbonate ions. Only one oxygen of each group is drawn attached to the calcium, to keep the picture readable.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -2.4, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": -2.4, "y": 1.25, "z": 0 },
+      { "id": "o2", "element": "O", "x": -3.5, "y": -0.65, "z": 0 },
+      { "id": "h1", "element": "H", "x": -4.2, "y": -1.3, "z": 0 },
+      { "id": "o3", "element": "O", "x": -1.3, "y": -0.65, "z": 0 },
+      { "id": "ca", "element": "Ca", "x": 0, "y": 0, "z": 0 },
+      { "id": "o4", "element": "O", "x": 1.3, "y": -0.65, "z": 0 },
+      { "id": "c2", "element": "C", "x": 2.4, "y": 0, "z": 0 },
+      { "id": "o5", "element": "O", "x": 2.4, "y": 1.25, "z": 0 },
+      { "id": "o6", "element": "O", "x": 3.5, "y": -0.65, "z": 0 },
+      { "id": "h2", "element": "H", "x": 4.2, "y": -1.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "o1", "type": "covalent" },
+      { "from": "c1", "to": "o2", "type": "covalent" },
+      { "from": "o2", "to": "h1", "type": "covalent" },
+      { "from": "c1", "to": "o3", "type": "covalent" },
+      { "from": "ca", "to": "o3", "type": "ionic" },
+      { "from": "ca", "to": "o4", "type": "ionic" },
+      { "from": "c2", "to": "o4", "type": "covalent" },
+      { "from": "c2", "to": "o5", "type": "covalent" },
+      { "from": "c2", "to": "o6", "type": "covalent" },
+      { "from": "o6", "to": "h2", "type": "covalent" }
+    ]
+  },
+
+  "caso4_aq": {
+    "atoms": [
+      { "id": "ca", "element": "Ca", "x": -2.2, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.4, "y": 1, "z": 0.6 },
+      { "id": "o2", "element": "O", "x": 0.4, "y": -1, "z": 0.6 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 0.2, "z": -0.9 },
+      { "id": "o4", "element": "O", "x": -0.4, "y": -0.2, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "ca", "to": "s", "type": "ionic" }
+    ]
   }
 }
