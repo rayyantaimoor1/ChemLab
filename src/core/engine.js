@@ -196,6 +196,32 @@ export function createEngine({
     reactants: normaliseSpecies(reaction.reactants),
   }));
 
+  /**
+   * The species sets our own rules describe as finished outcomes.
+   *
+   * When a rule says "Zn + CuSO4 gives ZnSO4 + Cu", the data is asserting
+   * that zinc sulfate and copper sitting together IS the end of the story.
+   * So if a student stirs the vessel afterwards and we look those two up
+   * again, the honest answer is "No observable change" - not "this
+   * combination isn't available in this version of the lab yet", which
+   * would be telling them our data is missing something it plainly is not.
+   *
+   * This is not the engine inventing chemistry (section 6.1). The answer
+   * comes straight out of reactions.json's own products field; nothing is
+   * guessed or approximated. It only ever applies when no rule matched, so
+   * a genuine follow-on reaction always still wins - findRule runs first.
+   *
+   * It also keeps the unknown-combination roadmap (section 6.3) honest.
+   * That log is meant to show what students TRIED that we cannot handle;
+   * the aftermath of a reaction the app itself produced was never a thing
+   * the student tried, and logging it buries the real gaps in noise.
+   */
+  const settledOutcomes = new Set(
+    reactions
+      .filter((reaction) => Array.isArray(reaction.products) && reaction.products.length > 1)
+      .map((reaction) => speciesKey(reaction.products))
+  );
+
   // Combinations students tried that we have no data for. This is the content
   // roadmap described in CLAUDE.md section 6.3.
   const unknownCombinations = new Map();
@@ -301,6 +327,13 @@ export function createEngine({
       // such as a decomposition on heating, is still allowed to match above.)
       if (species.length < 2) {
         return { ...base, outcome: OUTCOME.NO_REACTION, message: MESSAGES.NO_REACTION };
+      }
+
+      // What is left in the vessel after one of our own reactions finished.
+      // We already said what that reaction does; there is nothing missing
+      // here to report. See settledOutcomes above.
+      if (settledOutcomes.has(speciesKey(species))) {
+        return { ...base, outcome: OUTCOME.NO_REACTION, message: MESSAGES.NO_REACTION, settled: true };
       }
 
       // Nothing in the data files covers this combination at all.

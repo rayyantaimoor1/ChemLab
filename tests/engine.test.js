@@ -868,3 +868,88 @@ test('a real combination we have no data for is refused, not guessed', async () 
   assert.equal(result.message, MESSAGES.UNKNOWN);
   assert.equal(engine.getUnknownCombinations().length, 1);
 });
+
+/* ------------------------------------------------------------------ *
+ * What is left in the vessel after a reaction has finished.
+ *
+ * Stirring after a reaction used to re-check the products, find no rule
+ * for them, and announce "This combination isn't available in this
+ * version of the lab yet" - telling the student our data was missing
+ * something it had in fact already fully described.
+ * ------------------------------------------------------------------ */
+
+test('stirring after a reaction says nothing happens, not that data is missing', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create();
+
+  // Exactly what Zn + HCl leaves behind.
+  const result = engine.react(['zncl2_aq', 'h2_g']);
+
+  assert.equal(result.outcome, OUTCOME.NO_REACTION);
+  assert.equal(result.message, MESSAGES.NO_REACTION);
+});
+
+test('the aftermath of a reaction is not written into the content roadmap', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create();
+
+  engine.react(['zncl2_aq', 'h2_g']);
+
+  // Section 6.3's log is for combinations students TRIED that we cannot
+  // handle. The app put these two here itself, so it is not a gap.
+  assert.deepEqual(engine.getUnknownCombinations(), []);
+});
+
+test('every real reaction leaves behind something the engine can account for', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create();
+
+  // The regression guard for the whole class of bug: pick up every rule's
+  // own product list and check that stirring the vessel afterwards never
+  // reports an honest-gap message.
+  for (const reaction of engine.getAllReactions()) {
+    if (reaction.noReaction || !Array.isArray(reaction.products) || reaction.products.length < 2) {
+      continue;
+    }
+    const after = create().resolve(reaction.products);
+    assert.notEqual(
+      after.outcome,
+      OUTCOME.UNKNOWN,
+      `stirring after ${reaction.id} claims its own products are an unsupported combination`
+    );
+  }
+});
+
+test('a settled outcome still gives way to a real follow-on reaction', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+
+  // A made-up pair where B + C is BOTH the product of rule one and the
+  // reactant set of rule two. The real rule must win over "settled".
+  const engine = create({
+    chemicals: [
+      { id: 'a', name: 'A' }, { id: 'b', name: 'B' },
+      { id: 'c', name: 'C' }, { id: 'd', name: 'D' },
+    ],
+    reactions: [
+      { id: 'r1', reactants: ['a'], products: ['b', 'c'], equation: 'A -> B + C', effects: {} },
+      { id: 'r2', reactants: ['b', 'c'], products: ['d'], equation: 'B + C -> D', effects: {} },
+    ],
+  });
+
+  const result = engine.resolve(['b', 'c']);
+  assert.equal(result.outcome, OUTCOME.REACTION);
+  assert.equal(result.reaction.id, 'r2');
+});
+
+test('a single-product outcome is not treated as a settled pair', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create({
+    chemicals: [{ id: 'a', name: 'A' }, { id: 'b', name: 'B' }, { id: 'x', name: 'X' }],
+    reactions: [{ id: 'r1', reactants: ['a', 'b'], products: ['x'], equation: 'A + B -> X', effects: {} }],
+  });
+
+  // X alone is one substance, already covered by the lone-substance rule.
+  // Pairing it with something unrelated is still a genuine gap.
+  const result = engine.resolve(['x', 'a']);
+  assert.equal(result.outcome, OUTCOME.UNKNOWN);
+});
