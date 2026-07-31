@@ -1,0 +1,19 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ammonium chloride: an ammonium ion of nitrogen bonded to four hydrogens, beside a chloride ion">
+  <line x1="56" y1="60" x2="80" y2="60" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="34" y1="46" x2="34" y2="32" stroke="#161A19" stroke-width="2"/>
+  <line x1="34" y1="74" x2="34" y2="88" stroke="#161A19" stroke-width="2"/>
+  <line x1="20" y1="60" x2="8" y2="60" stroke="#161A19" stroke-width="2"/>
+  <line x1="48" y1="60" x2="60" y2="60" stroke="#161A19" stroke-width="2"/>
+  <circle cx="34" cy="60" r="16" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="34" y="66" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="34" cy="24" r="9" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="34" y="27" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="34" cy="96" r="9" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="34" y="99" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="6" cy="60" r="9" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="6" y="63" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#161A19">H</text>
+  <text x="50" y="34" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">+</text>
+  <circle cx="112" cy="60" r="20" fill="#2ECC71" stroke="#161A19" stroke-width="2"/>
+  <text x="112" y="68" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#0B3D1E">Cl</text>
+  <text x="130" y="36" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">-</text>
+</svg>

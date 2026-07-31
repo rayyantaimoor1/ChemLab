@@ -314,5 +314,239 @@
     "explanation": "No observable change. Zinc is below magnesium in the reactivity series, so it cannot displace magnesium from its salt. Compare this with zinc in copper(II) sulfate, where zinc is the more reactive metal and the reaction runs easily. Testing a metal against several different salt solutions, and noting which combinations do nothing, is exactly how the order of the reactivity series was worked out in the first place.",
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, establishing the order of the reactivity series"
+  },
+  {
+    "id": "rxn_carbonate_na2co3_hcl",
+    "reactants": ["hcl_1m", "na2co3_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nacl_aq", "co2_g", "water"],
+    "equation": "Na₂CO₃ + 2HCl → 2NaCl + CO₂ + H₂O",
+    "type": "acid_carbonate",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Every acid reacts with every carbonate in the same way: acid plus carbonate gives a salt, water and carbon dioxide. The carbonate ion takes two H⁺ ions from the acid to make carbonic acid, which is so unstable that it immediately falls apart into water and carbon dioxide — which is why you see fizzing rather than anything staying in solution. The gas that bubbles off turns limewater milky, and that is how you prove it is carbon dioxide.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with carbonates"
+  },
+  {
+    "id": "rxn_carbonate_caco3_hcl",
+    "reactants": ["caco3_s", "hcl_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cacl2_aq", "co2_g", "water"],
+    "equation": "CaCO₃ + 2HCl → CaCl₂ + CO₂ + H₂O",
+    "type": "acid_carbonate",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 6,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Marble chips are calcium carbonate, and they fizz steadily in dilute hydrochloric acid, giving off carbon dioxide and slowly shrinking away. Because the chips are solid lumps the reaction proceeds at a rate you can watch and time, which is why this exact combination is the standard experiment for studying how surface area, concentration and temperature change the speed of a reaction. This is also the reaction that eats away limestone buildings in acid rain.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with carbonates"
+  },
+  {
+    "id": "rxn_carbonate_nahco3_hcl",
+    "reactants": ["hcl_1m", "nahco3_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nacl_aq", "co2_g", "water"],
+    "equation": "NaHCO₃ + HCl → NaCl + CO₂ + H₂O",
+    "type": "acid_carbonate",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": -4,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "A hydrogencarbonate fizzes with acid just as a carbonate does, but it only needs one H⁺ per formula unit because it already carries one of its own hydrogens. The striking thing here is the temperature: the mixture gets COLDER, not hotter. Most acid–base reactions give out heat, so this is a rare and useful example of an endothermic reaction — one that takes heat in from its surroundings. That is why an instant cold pack can be made from much the same chemistry.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with hydrogencarbonates; Chemistry 9 — exothermic and endothermic changes"
+  },
+  {
+    "id": "rxn_gastest_co2_limewater",
+    "reactants": ["caoh2_aq", "co2_g"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["caco3_s", "water"],
+    "equation": "Ca(OH)₂ + CO₂ → CaCO₃ + H₂O",
+    "type": "gas_test",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white calcium carbonate",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 8.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "This is THE test for carbon dioxide. Limewater is a clear solution of calcium hydroxide; bubbling carbon dioxide through it produces calcium carbonate, which is almost insoluble, so it appears as a fine white solid that makes the clear liquid turn milky. Nothing else in ordinary school chemistry does this, which is what makes the test reliable. If you keep bubbling gas through for a long time the milkiness clears again, because excess carbon dioxide converts the carbonate into soluble calcium hydrogencarbonate.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, the limewater test for carbon dioxide"
+  },
+  {
+    "id": "rxn_neutralisation_cuo_hcl",
+    "reactants": ["cuo_s", "hcl_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cucl2_aq", "water"],
+    "equation": "CuO + 2HCl → CuCl₂ + H₂O",
+    "type": "neutralisation",
+    "effects": {
+      "colorToHex": "#59A6A0",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 4.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "A metal oxide is a base, so it neutralises an acid to give a salt and water — and nothing else. Black copper(II) oxide will not dissolve in water at all, but it dissolves readily in acid, and the colourless acid turns blue-green as copper(II) chloride forms. Notice there are no bubbles: that is the clearest way to tell a metal oxide from a carbonate, since a carbonate would fizz.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with metal oxides"
+  },
+  {
+    "id": "rxn_neutralisation_mgo_hcl",
+    "reactants": ["hcl_1m", "mgo_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mgcl2_aq", "water"],
+    "equation": "MgO + 2HCl → MgCl₂ + H₂O",
+    "type": "neutralisation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 10,
+      "resultPH": 6.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Magnesium oxide is a basic oxide, so like copper(II) oxide it neutralises acid to a salt and water with no gas given off. The white powder simply disappears into the acid and the mixture warms up. Compare this with magnesium METAL in the same acid, which fizzes hydrogen off vigorously — the metal and its oxide behave quite differently, and telling them apart is a common examination question.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with metal oxides"
+  },
+  {
+    "id": "rxn_neutralisation_naoh_h2so4",
+    "reactants": ["h2so4_1m", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["na2so4_aq", "water"],
+    "equation": "2NaOH + H₂SO₄ → Na₂SO₄ + 2H₂O",
+    "type": "neutralisation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 14,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Sulfuric acid is dibasic — each molecule gives away two H⁺ ions — so it takes two formula units of sodium hydroxide to neutralise one of acid, and the equation needs those coefficients to balance. Because twice as much water is being formed for each acid molecule, this releases noticeably more heat than the same amount of hydrochloric acid does. The salt left behind, sodium sulfate, is neutral, so the end point sits at pH 7.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, neutralisation and basicity of acids"
+  },
+  {
+    "id": "rxn_neutralisation_naoh_hno3",
+    "reactants": ["hno3_1m", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nano3_aq", "water"],
+    "equation": "NaOH + HNO₃ → NaNO₃ + H₂O",
+    "type": "neutralisation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 7,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Nitric acid is monobasic, like hydrochloric acid, so one formula unit of alkali neutralises one of acid and the heat given out is close to that of the hydrochloric acid reaction. This is because in every neutralisation of a strong acid by a strong alkali the same thing is really happening: H⁺ and OH⁻ joining to make water. The sodium and nitrate ions are spectators, and evaporating the solution would leave sodium nitrate crystals behind.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, neutralisation and preparation of salts"
+  },
+  {
+    "id": "rxn_displacement_zn_h2so4",
+    "reactants": ["h2so4_1m", "zn_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["znso4_aq", "h2_g"],
+    "equation": "Zn + H₂SO₄ → ZnSO₄ + H₂",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 9,
+      "resultPH": 5.5
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Flammable hydrogen gas is released",
+      "warning": "The bubbles streaming off the zinc are hydrogen, which burns very easily and forms an explosive mixture with air.",
+      "visualEffect": null,
+      "whatToDoInstead": "Keep flames and hot surfaces well away while the metal is fizzing, and work in a well ventilated room so the hydrogen disperses."
+    },
+    "molecularAnimation": null,
+    "explanation": "Acid plus a metal above hydrogen in the reactivity series always gives a salt and hydrogen, whichever acid it is — only the salt changes. With hydrochloric acid zinc gives zinc chloride; with sulfuric acid the same metal gives zinc sulfate. This is the usual laboratory way of preparing hydrogen, and the gas is identified by the squeaky pop it makes with a lighted splint.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with metals; Chemistry 9 — preparation of hydrogen"
+  },
+  {
+    "id": "rxn_gastest_nh4cl_naoh",
+    "reactants": ["naoh_1m", "nh4cl_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["nacl_aq", "nh3_g", "water"],
+    "equation": "NH₄Cl + NaOH → NaCl + NH₃ + H₂O",
+    "type": "gas_test",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "ammonia",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 8.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_gas",
+      "title": "Choking ammonia gas is released",
+      "warning": "Ammonia has a sharp, choking smell and irritates the eyes, nose and throat. Warming the mixture drives it off quickly, and leaning over the tube to smell it directly is genuinely harmful.",
+      "visualEffect": null,
+      "whatToDoInstead": "Work in a fume cupboard or a well ventilated room, and never inhale directly over the tube. To identify the gas, hold damp red litmus paper at the mouth of the tube rather than putting your nose near it."
+    },
+    "molecularAnimation": null,
+    "explanation": "This is the standard test for an ammonium salt. Any alkali will displace ammonia from an ammonium compound, but the mixture has to be warmed before enough gas comes off to detect — which is why nothing much happens in this vessel until the burner is turned on. Ammonia is the only common alkaline gas, so damp red litmus paper turning blue at the mouth of the tube identifies it beyond doubt.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, tests for ammonium salts"
   }
 ]

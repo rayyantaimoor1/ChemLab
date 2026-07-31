@@ -76,6 +76,7 @@ const ELEMENT_STYLE = {
   Fe: { fill: '#8A6A4F', text: '#FFFFFF' },
   Ca: { fill: '#6E8FA6', text: '#161A19' },
   S: { fill: '#F1C40F', text: '#161A19' },
+  C: { fill: '#2C3E50', text: '#FFFFFF' },
   group: { fill: '#D5DBDB', text: '#161A19' },
   electron: { fill: '#F1C40F', text: '#161A19' },
 };
