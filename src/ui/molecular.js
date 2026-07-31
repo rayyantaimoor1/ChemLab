@@ -71,6 +71,11 @@ const ELEMENT_STYLE = {
   Pb: { fill: '#7F8C8D', text: '#FFFFFF' },
   Ag: { fill: '#B0B7BD', text: '#161A19' },
   Zn: { fill: '#5D6D7E', text: '#FFFFFF' },
+  Cu: { fill: '#B5651D', text: '#FFFFFF' },
+  Mg: { fill: '#86A17A', text: '#161A19' },
+  Fe: { fill: '#8A6A4F', text: '#FFFFFF' },
+  Ca: { fill: '#6E8FA6', text: '#161A19' },
+  S: { fill: '#F1C40F', text: '#161A19' },
   group: { fill: '#D5DBDB', text: '#161A19' },
   electron: { fill: '#F1C40F', text: '#161A19' },
 };

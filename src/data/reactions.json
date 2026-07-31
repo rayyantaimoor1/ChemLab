@@ -108,5 +108,211 @@
     "explanation": "No observable change. The only products that could possibly form are sodium iodide and potassium chloride, and both of those are soluble in water. Since nothing insoluble can form, no precipitate appears, no gas is given off and the mixture stays clear and colourless. All four ions simply stay dissolved and move about independently. This is still a real chemical result and worth knowing: mixing two salt solutions does not automatically produce a reaction.",
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — solubility rules for common salts"
+  },
+  {
+    "id": "rxn_displacement_zn_cuso4",
+    "reactants": ["cuso4_0_5m", "zn_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["znso4_aq", "cu_metal"],
+    "equation": "Zn + CuSO₄ → ZnSO₄ + Cu",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": "reddish brown copper",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 5.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Zinc is above copper in the reactivity series, so it takes the sulfate for itself and pushes the copper out. Each zinc atom gives up two electrons and enters the solution as Zn²⁺; the Cu²⁺ ions take those electrons and become copper metal, which settles on the zinc as a reddish-brown coating. The blue colour fades as the copper(II) ions leave the solution, which is the clearest sign the reaction is working. The mixture warms up because the reaction gives out heat.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, the reactivity series and displacement reactions"
+  },
+  {
+    "id": "rxn_displacement_fe_cuso4",
+    "reactants": ["cuso4_0_5m", "fe_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["feso4_aq", "cu_metal"],
+    "equation": "Fe + CuSO₄ → FeSO₄ + Cu",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#C7E0C0",
+      "precipitate": "reddish brown copper",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": 4.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Iron is above copper in the reactivity series, so it displaces copper from the solution. The iron dissolves as Fe²⁺ ions and the copper comes out of solution as a reddish-brown coating on the iron. Here the colour change is between two colours rather than fading to nothing: the blue of copper(II) sulfate is replaced by the pale green of iron(II) sulfate. This is the reaction behind the old trick of an iron nail turning copper-coloured in blue vitriol.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, the reactivity series and displacement reactions"
+  },
+  {
+    "id": "rxn_displacement_mg_cuso4",
+    "reactants": ["cuso4_0_5m", "mg_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mgso4_aq", "cu_metal"],
+    "equation": "Mg + CuSO₄ → MgSO₄ + Cu",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": "reddish brown copper",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 15,
+      "resultPH": 6.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Magnesium is far above copper in the reactivity series, so this displacement is the most vigorous of the three. The blue colour disappears quickly, copper settles out as a dark reddish-brown powder, and the mixture becomes noticeably hot — much hotter than with zinc or iron. The bigger the gap between two metals in the reactivity series, the more energy the displacement gives out.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, the reactivity series and displacement reactions"
+  },
+  {
+    "id": "rxn_displacement_mg_hcl",
+    "reactants": ["hcl_1m", "mg_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mgcl2_aq", "h2_g"],
+    "equation": "Mg + 2HCl → MgCl₂ + H₂",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 20,
+      "resultPH": 6.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Flammable hydrogen gas is released",
+      "warning": "Magnesium reacts fast enough with acid to produce hydrogen in a hurry, and hydrogen forms an explosive mixture with air. The tube also becomes hot enough to be uncomfortable to hold.",
+      "visualEffect": null,
+      "whatToDoInstead": "Keep all flames well away while the metal is fizzing, use a small piece of ribbon rather than a long strip, and work in a well ventilated room so the hydrogen disperses."
+    },
+    "molecularAnimation": null,
+    "explanation": "Magnesium is high in the reactivity series, so it displaces hydrogen from the acid quickly. The metal gives up two electrons to become Mg²⁺, and the H⁺ ions from the acid take those electrons and pair up as hydrogen gas. You see a fast stream of bubbles, the ribbon shrinks and disappears, and the tube gets hot. Compare this with iron, which does the same thing far more slowly, and with copper, which cannot do it at all.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with dilute acids"
+  },
+  {
+    "id": "rxn_displacement_fe_hcl",
+    "reactants": ["fe_metal", "hcl_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["fecl2_aq", "h2_g"],
+    "equation": "Fe + 2HCl → FeCl₂ + H₂",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#C7E0C0",
+      "precipitate": null,
+      "gas": "hydrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 6,
+      "resultPH": 4.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Flammable hydrogen gas is released",
+      "warning": "The bubbles coming off the iron are hydrogen, which burns very easily and forms an explosive mixture with air.",
+      "visualEffect": null,
+      "whatToDoInstead": "Keep flames and hot surfaces away from the apparatus while gas is being given off, and work in a well ventilated room."
+    },
+    "molecularAnimation": null,
+    "explanation": "Iron is above hydrogen in the reactivity series, so it displaces hydrogen from dilute acid — but it sits much lower than magnesium, so the bubbling is slow and steady rather than vigorous. The solution turns pale green as iron(II) chloride forms. The difference in speed between magnesium, zinc and iron in the same acid is one of the clearest ways to see the reactivity series in action.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with dilute acids"
+  },
+  {
+    "id": "rxn_reaction_ca_water",
+    "reactants": ["ca_metal", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["caoh2_aq", "h2_g"],
+    "equation": "Ca + 2H₂O → Ca(OH)₂ + H₂",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 15,
+      "resultPH": 12.4
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Flammable hydrogen gas, and the water turns strongly alkaline",
+      "warning": "Calcium releases hydrogen steadily as it reacts, and hydrogen forms an explosive mixture with air. The calcium hydroxide left behind is strongly alkaline and attacks skin and eyes.",
+      "visualEffect": null,
+      "whatToDoInstead": "Keep flames away, add only a small granule of calcium at a time, and wear eye protection. Rinse any splashes off the skin with plenty of water."
+    },
+    "molecularAnimation": null,
+    "explanation": "Calcium is reactive enough to displace hydrogen from cold water, which magnesium cannot do. The granule sinks and fizzes steadily, giving off hydrogen, and the water becomes cloudy white because calcium hydroxide is only slightly soluble — the little that dissolves gives the strongly alkaline solution known as limewater, and the rest stays as a white suspension. Sodium and potassium do the same thing far more violently, which is why they are demonstrated only by a teacher.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with water"
+  },
+  {
+    "id": "rxn_oxidation_mg_steam",
+    "reactants": ["mg_metal", "water_distilled"],
+    "conditions": { "requiresHeat": true, "minTempC": 100, "catalyst": null },
+    "products": ["mgo_s", "h2_g"],
+    "equation": "Mg + H₂O(steam) → MgO + H₂",
+    "type": "oxidation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white magnesium oxide",
+      "gas": "hydrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 25,
+      "resultPH": 10.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Flammable hydrogen gas, and the apparatus is hot",
+      "warning": "This reaction needs steam, so the apparatus is at boiling point throughout, and the hydrogen given off burns very easily.",
+      "visualEffect": null,
+      "whatToDoInstead": "Keep flames away from where the hydrogen escapes, and let the apparatus cool before handling it. Never seal the tube — trapped steam and gas must be able to escape."
+    },
+    "molecularAnimation": null,
+    "explanation": "Magnesium hardly touches cold water, but it reacts readily with steam. That is why nothing happens in this vessel until it is heated to about 100 °C. Once steam is present, the magnesium is oxidised to white magnesium oxide and hydrogen is driven off. The oxide is basic, so the little that dissolves leaves the water alkaline. This contrast — nothing in cold water, a clear reaction in steam — is exactly why the reactivity series has to be read alongside the conditions.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with water and steam"
+  },
+  {
+    "id": "rxn_none_cu_hcl",
+    "reactants": ["cu_metal", "hcl_1m"],
+    "noReaction": true,
+    "explanation": "No observable change. Copper sits BELOW hydrogen in the reactivity series, so it cannot push hydrogen out of the acid — no bubbles, no dissolving, no colour change, however long you wait. This is the single most useful \"nothing happens\" in the whole reactivity series: it is why copper is used for water pipes and roofing while iron rusts away, and it is the dividing line the series is really about. Zinc, iron and magnesium all sit above hydrogen and all fizz in this same acid.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, position of hydrogen in the reactivity series"
+  },
+  {
+    "id": "rxn_none_cu_znso4",
+    "reactants": ["cu_metal", "znso4_aq"],
+    "noReaction": true,
+    "explanation": "No observable change. Copper is less reactive than zinc, so it cannot take the sulfate away from it — the copper stays as solid metal and the zinc stays in solution. Displacement only runs one way: a more reactive metal pushes out a less reactive one, never the other way round. Putting zinc into copper(II) sulfate gives a clear reaction; putting copper into zinc sulfate gives nothing at all.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, displacement runs only from more reactive to less reactive"
+  },
+  {
+    "id": "rxn_none_zn_mgso4",
+    "reactants": ["mgso4_aq", "zn_metal"],
+    "noReaction": true,
+    "explanation": "No observable change. Zinc is below magnesium in the reactivity series, so it cannot displace magnesium from its salt. Compare this with zinc in copper(II) sulfate, where zinc is the more reactive metal and the reaction runs easily. Testing a metal against several different salt solutions, and noting which combinations do nothing, is exactly how the order of the reactivity series was worked out in the first place.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, establishing the order of the reactivity series"
   }
 ]

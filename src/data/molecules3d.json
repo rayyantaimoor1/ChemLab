@@ -225,5 +225,132 @@
       { "id": "h2", "element": "H", "x": 0.4, "y": 0, "z": 0 }
     ],
     "bonds": [{ "from": "h1", "to": "h2", "type": "covalent" }]
+  },
+
+  "mg_metal": {
+    "note": "A single atom, not a molecule - a solid metal is a lattice of many of these. See molecules/mg.svg's caption.",
+    "atoms": [{ "id": "mg", "element": "Mg", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "fe_metal": {
+    "note": "A single atom, not a molecule - a solid metal is a lattice of many of these. See molecules/fe.svg's caption.",
+    "atoms": [{ "id": "fe", "element": "Fe", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "cu_metal": {
+    "note": "A single atom, not a molecule - a solid metal is a lattice of many of these. See molecules/cu.svg's caption.",
+    "atoms": [{ "id": "cu", "element": "Cu", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "ca_metal": {
+    "note": "A single atom, not a molecule - a solid metal is a lattice of many of these. See molecules/ca.svg's caption.",
+    "atoms": [{ "id": "ca", "element": "Ca", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "znso4_aq": {
+    "atoms": [
+      { "id": "zn", "element": "Zn", "x": -1.6, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.4, "y": 1, "z": 0.6 },
+      { "id": "o2", "element": "O", "x": 0.4, "y": -1, "z": 0.6 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 0.2, "z": -0.9 },
+      { "id": "o4", "element": "O", "x": -0.4, "y": -0.2, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "zn", "to": "s", "type": "ionic" }
+    ]
+  },
+
+  "feso4_aq": {
+    "atoms": [
+      { "id": "fe", "element": "Fe", "x": -1.6, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.4, "y": 1, "z": 0.6 },
+      { "id": "o2", "element": "O", "x": 0.4, "y": -1, "z": 0.6 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 0.2, "z": -0.9 },
+      { "id": "o4", "element": "O", "x": -0.4, "y": -0.2, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "fe", "to": "s", "type": "ionic" }
+    ]
+  },
+
+  "mgso4_aq": {
+    "atoms": [
+      { "id": "mg", "element": "Mg", "x": -1.6, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.4, "y": 1, "z": 0.6 },
+      { "id": "o2", "element": "O", "x": 0.4, "y": -1, "z": 0.6 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 0.2, "z": -0.9 },
+      { "id": "o4", "element": "O", "x": -0.4, "y": -0.2, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "mg", "to": "s", "type": "ionic" }
+    ]
+  },
+
+  "mgcl2_aq": {
+    "atoms": [
+      { "id": "cl1", "element": "Cl", "x": -1.8, "y": 0, "z": 0 },
+      { "id": "mg", "element": "Mg", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl2", "element": "Cl", "x": 1.8, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "mg", "to": "cl1", "type": "ionic" },
+      { "from": "mg", "to": "cl2", "type": "ionic" }
+    ]
+  },
+
+  "fecl2_aq": {
+    "atoms": [
+      { "id": "cl1", "element": "Cl", "x": -1.8, "y": 0, "z": 0 },
+      { "id": "fe", "element": "Fe", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl2", "element": "Cl", "x": 1.8, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "fe", "to": "cl1", "type": "ionic" },
+      { "from": "fe", "to": "cl2", "type": "ionic" }
+    ]
+  },
+
+  "caoh2_aq": {
+    "atoms": [
+      { "id": "o1", "element": "O", "x": -1.8, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.4, "y": 0.75, "z": 0 },
+      { "id": "ca", "element": "Ca", "x": 0, "y": 0, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.8, "y": 0, "z": 0 },
+      { "id": "h2", "element": "H", "x": 2.4, "y": 0.75, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" },
+      { "from": "ca", "to": "o1", "type": "ionic" },
+      { "from": "ca", "to": "o2", "type": "ionic" }
+    ]
+  },
+
+  "mgo_s": {
+    "note": "One ion pair, drawn simply. The real solid is a cubic lattice of many magnesium and oxide ions, not a molecule.",
+    "atoms": [
+      { "id": "mg", "element": "Mg", "x": -1.1, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 1.1, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "mg", "to": "o", "type": "ionic" }]
   }
 }

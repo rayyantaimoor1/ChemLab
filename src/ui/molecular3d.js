@@ -77,6 +77,9 @@ const ELEMENT_STYLE = {
   Ag: '#B0B7BD',
   Zn: '#5D6D7E',
   Cu: '#B5651D',
+  Mg: '#86A17A',
+  Fe: '#8A6A4F',
+  Ca: '#6E8FA6',
   S: '#F1C40F',
   C: '#2C3E50',
   group: '#D5DBDB',
@@ -87,7 +90,8 @@ const FALLBACK_COLOR = '#BDC3C7';
 /** Roughly relative atomic radii, purely for how big the sphere is drawn. */
 const ELEMENT_RADIUS = {
   H: 0.32, O: 0.5, N: 0.5, Cl: 0.62, I: 0.66, Na: 0.58, K: 0.66,
-  Pb: 0.72, Ag: 0.6, Zn: 0.56, Cu: 0.58, S: 0.6, C: 0.5, group: 0.45,
+  Pb: 0.72, Ag: 0.6, Zn: 0.56, Cu: 0.58, Mg: 0.54, Fe: 0.56, Ca: 0.68,
+  S: 0.6, C: 0.5, group: 0.45,
 };
 
 export function getMolecule3D(chemicalId) {
