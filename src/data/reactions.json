@@ -768,5 +768,197 @@
     "explanation": "No observable change. Work out what could possibly form: copper(II) chloride and sodium sulfate. Check both against the solubility rules — all common chlorides except silver, lead and mercury(I) are soluble, and all sodium salts are soluble — so neither product can leave the solution, and nothing precipitates. The blue simply stays blue. This is the routine you should follow before every double displacement: name the two possible products, look both up, and only expect a precipitate if one of them is insoluble.",
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — applying solubility rules to predict double displacement reactions"
+  },
+  {
+    "id": "rxn_oxidation_mg_o2",
+    "reactants": ["mg_metal", "o2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["mgo_s"],
+    "equation": "2Mg + O₂ → 2MgO",
+    "type": "oxidation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white magnesium oxide ash",
+      "gas": null,
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 35,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "blinding_light",
+      "title": "Burning magnesium gives off blinding ultraviolet light",
+      "warning": "Magnesium burns with an intensely bright white flame that contains a lot of ultraviolet. Looking straight at it can damage the eyes, and the flame is hot enough to set light to anything nearby. Water must never be used on a magnesium fire — it makes it worse, because magnesium reacts with steam.",
+      "visualEffect": null,
+      "whatToDoInstead": "Look at the flame indirectly or through darkened glass, never straight at it. Burn only a short piece held in tongs over a heatproof mat, and smother a magnesium fire with dry sand rather than water."
+    },
+    "molecularAnimation": null,
+    "explanation": "Oxidation in its oldest and simplest sense: a substance gaining oxygen. Each magnesium atom loses two electrons to an oxygen atom, so magnesium is oxidised and oxygen is reduced — the two always happen together, which is why these are called redox reactions. The white ash left behind is magnesium oxide, and it weighs MORE than the magnesium you started with, because the oxygen has been added to it.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, oxidation and reduction; Chemistry 9 — Chemical Reactivity, reactions of metals with oxygen"
+  },
+  {
+    "id": "rxn_oxidation_cu_o2",
+    "reactants": ["cu_metal", "o2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["cuo_s"],
+    "equation": "2Cu + O₂ → 2CuO",
+    "type": "oxidation",
+    "effects": {
+      "colorToHex": "#1F1D1C",
+      "precipitate": "black copper(II) oxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 10,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Copper is unreactive enough that it will not touch oxygen at room temperature — this is why copper roofs and pipes last so long. Heat it strongly, though, and the surface turns from reddish brown to black as copper(II) oxide forms. The colour change is easy to reverse: passing hydrogen over the hot black oxide turns it back to bright copper, which is the standard demonstration of reduction.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, oxidation as gain of oxygen"
+  },
+  {
+    "id": "rxn_reduction_cuo_h2",
+    "reactants": ["cuo_s", "h2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["cu_metal", "water"],
+    "equation": "CuO + H₂ → Cu + H₂O",
+    "type": "reduction",
+    "effects": {
+      "colorToHex": "#B87333",
+      "precipitate": "reddish brown copper",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 7.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Hydrogen and a hot tube together",
+      "warning": "Hydrogen forms an explosive mixture with air, and this reaction needs the tube to be hot. Air left in the apparatus when the hydrogen is lit is what makes this dangerous rather than the reaction itself.",
+      "visualEffect": null,
+      "whatToDoInstead": "Let the hydrogen flow long enough to sweep all the air out of the apparatus before heating, and keep heating until the flow is stopped so no air is drawn back in."
+    },
+    "molecularAnimation": null,
+    "explanation": "The mirror image of the reaction above, and the classic demonstration of reduction: the black copper(II) oxide LOSES its oxygen and turns back into bright reddish-brown copper, while the hydrogen GAINS that oxygen and leaves as water. Both halves happen at once — copper oxide is reduced, hydrogen is oxidised. Here hydrogen is acting as the reducing agent, which is exactly the job carbon monoxide does in a blast furnace when iron is extracted from its ore.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, reduction as loss of oxygen and the action of reducing agents"
+  },
+  {
+    "id": "rxn_displacement_cl2_kbr",
+    "reactants": ["cl2_aq", "kbr_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["kcl_aq", "br2_aq"],
+    "equation": "Cl₂ + 2KBr → 2KCl + Br₂",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#C1652A",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 5.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Halogen displacement is redox seen through electrons rather than oxygen. Chlorine is more reactive than bromine, so it takes the electrons: each chlorine atom gains an electron to become a chloride ion (chlorine is reduced), while each bromide ion loses one to become bromine (the bromide is oxidised). You can follow it by colour alone — a nearly colourless mixture turns orange-brown as bromine appears.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactivity of the halogens; Electrochemistry, redox as electron transfer"
+  },
+  {
+    "id": "rxn_displacement_cl2_ki",
+    "reactants": ["cl2_aq", "ki_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["kcl_aq", "i2_aq"],
+    "equation": "Cl₂ + 2KI → 2KCl + I₂",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#7A4A1E",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 5.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Chlorine is more reactive than iodine as well, so it displaces it just as it displaced bromine — and the colour change is even more striking, from almost colourless to a deep brown as iodine forms. Because chlorine displaces both of the others, and neither of them can displace chlorine, chlorine must be the most reactive of the three.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactivity of the halogens"
+  },
+  {
+    "id": "rxn_displacement_br2_ki",
+    "reactants": ["br2_aq", "ki_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["kbr_aq", "i2_aq"],
+    "equation": "Br₂ + 2KI → 2KBr + I₂",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#7A4A1E",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 5.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The middle step that settles the order. Bromine cannot displace chlorine, but it CAN displace iodine — the orange-brown of bromine deepens to the brown of iodine. Put together with the two chlorine reactions, this fixes the Group 7 order beyond doubt: chlorine, then bromine, then iodine, with reactivity falling as you go down the group.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactivity of the halogens"
+  },
+  {
+    "id": "rxn_none_i2_kbr",
+    "reactants": ["i2_aq", "kbr_0_1m"],
+    "noReaction": true,
+    "explanation": "No observable change. Iodine is BELOW bromine in Group 7, so it is the less reactive of the two and cannot take the electrons away from bromide ions. The brown of the iodine simply stays as it was. This negative result is what makes the other three trustworthy: displacement works in one direction only, and finding the direction that fails is how the order of reactivity is proved rather than assumed.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, establishing the order of halogen reactivity"
+  },
+  {
+    "id": "rxn_corrosion_iron_rusting",
+    "reactants": ["fe_metal", "o2_g", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["rust_s"],
+    "equation": "4Fe + 3O₂ + 2xH₂O → 2Fe₂O₃·xH₂O",
+    "type": "corrosion",
+    "effects": {
+      "colorToHex": "#8B4A2B",
+      "precipitate": "reddish brown flaky rust",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Rusting is the slow oxidation of iron, and it needs BOTH oxygen and water — leave either one out and it does not happen, which is what the two entries alongside this one show. The iron loses electrons to oxygen, so the iron is oxidised. What makes rust so destructive compared with the oxide layer on aluminium is that it flakes off instead of sealing the surface, so fresh iron keeps being exposed. Painting, greasing, galvanising and sacrificial protection all work by keeping oxygen and water away from the metal, or by giving them something more reactive to attack instead.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, corrosion of iron and methods of its prevention"
+  },
+  {
+    "id": "rxn_none_fe_o2_dry",
+    "reactants": ["fe_metal", "o2_g"],
+    "noReaction": true,
+    "explanation": "No observable change. Iron sitting in dry oxygen does not rust, however long it is left. This is one half of the classic three-tube experiment: iron in air and water rusts, iron in dry air does not, and iron in water with the air boiled out does not either. Both must be present together. It is also why tools kept in a dry store stay bright while the same tools left outside go orange within days.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, conditions necessary for rusting"
+  },
+  {
+    "id": "rxn_none_fe_water_deoxygenated",
+    "reactants": ["fe_metal", "water_distilled"],
+    "noReaction": true,
+    "explanation": "No observable change. Iron under water that has had the air boiled out of it does not rust, because although water is present there is no oxygen for the iron to lose its electrons to. This is the other half of the three-tube experiment, and the pair of negative results together prove something a single positive result never could: that rusting needs oxygen AND water, not just one or the other.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, conditions necessary for rusting"
   }
 ]
