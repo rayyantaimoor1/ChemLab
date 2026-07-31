@@ -1086,3 +1086,79 @@ html.reduce-motion .fx-flame--3 {
   font-style: italic;
   color: #4A4A4A;
 }
+
+/* ------------------------------------------------------------------ *
+ * The amount modal - asks how much of a dropped reagent to add.
+ * Replaces a window.prompt() call Electron's renderer cannot run at
+ * all; see the comment above openAmountModal in bench.js.
+ * ------------------------------------------------------------------ */
+
+.amount-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.amount-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 26, 25, 0.5);
+}
+
+.amount-panel {
+  position: relative;
+  width: 280px;
+  padding: 20px 24px 24px;
+  background: #EDEAE3;
+  border: 2px solid #161A19;
+  color: #161A19;
+}
+
+.amount-panel__title {
+  margin: 0 0 14px;
+  font-size: 1.05em;
+}
+
+.amount-panel__form label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.amount-panel__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.amount-panel__row input {
+  flex: 1;
+  min-height: 40px;
+  padding: 4px 8px;
+  font-size: 1em;
+}
+
+.amount-panel__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.amount-panel__buttons button {
+  min-width: 40px;
+  min-height: 40px;
+  padding: 6px 14px;
+  border: 1px solid #161A19;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+
+.amount-panel__buttons button[type="submit"] {
+  background: #A8702B;
+  color: #FFFFFF;
+  border-color: #161A19;
+}

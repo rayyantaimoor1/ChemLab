@@ -376,17 +376,141 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       const chemicalId = event.dataTransfer.getData('text/plain');
       if (!chemicalId) return;
 
-      // No volume-picker widget yet, so a plain browser prompt stands in for
-      // one. Cancelling, or entering anything that is not a positive number,
-      // adds nothing.
-      const amountText = window.prompt('How much to add (mL, or g for a solid)?', '10');
-      if (amountText === null) return;
+      openAmountModal(containerId, chemicalId);
+    });
+  }
 
-      const amount = Number(amountText);
+  /* ------------------------------------------------------------------ *
+   * The amount modal - asks how much of a dropped reagent to add.
+   *
+   * This used to be a single window.prompt() call. Electron's renderer does
+   * not implement window.prompt() at all (only alert()/confirm() have a
+   * native equivalent - a long-standing, well-documented Electron gap, not
+   * a bug in this app's own code). Calling it threw immediately, which
+   * killed the 'drop' handler right there with nothing shown to the
+   * student: the chemical never reached dispatch.addChemical, so the
+   * vessel stayed empty and nothing explained why. This modal replaces it
+   * with an ordinary in-page form, so adding a reagent no longer depends on
+   * a browser feature this app's own shell does not have.
+   * ------------------------------------------------------------------ */
+
+  // A PLAIN host with no CSS class of its own - amountModalHost.hidden is
+  // toggled directly, and only a plain element is safe for that. Giving
+  // this element the .amount-overlay class itself was the actual bug a
+  // student reported as "I can't click anything": that class sets
+  // `display: flex`, and an ordinary author-stylesheet rule always beats
+  // the browser's own default `[hidden] { display: none }` no matter its
+  // specificity, because origin (author vs user-agent) is compared before
+  // specificity in the cascade. So the element stayed a full-viewport,
+  // invisible, `position: fixed` flex box even while "hidden" - sitting at
+  // z-index 1001 over the entire page and swallowing every click on it.
+  // Every other modal in this app (see panels.js's properties/hazard
+  // overlays) avoids this because the classed overlay div only ever
+  // exists as a transient child, built on open and torn down on close;
+  // the persistent mount point itself never carries a class. Copied that
+  // exact shape here instead of inventing a different one.
+  const amountModalHost = document.createElement('div');
+  amountModalHost.hidden = true;
+  root.appendChild(amountModalHost);
+
+  function openAmountModal(containerId, chemicalId) {
+    const chemical = engine.getChemical(chemicalId);
+    const container = getState().containers.find((c) => c.id === containerId);
+    // A solid is measured in grams, everything else in millilitres - the same
+    // rule container.js's own defaultUnitFor() applies; this only needs the
+    // label, container.add() still works out the real unit itself.
+    const unit = chemical && chemical.state === 'solid' ? 'g' : 'mL';
+    const returnFocusTo = document.activeElement;
+
+    amountModalHost.innerHTML = '';
+
+    const overlay = document.createElement('div');
+    overlay.className = 'amount-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-labelledby', 'amount-title');
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'amount-backdrop';
+    backdrop.addEventListener('click', close);
+    overlay.appendChild(backdrop);
+
+    const panel = document.createElement('div');
+    panel.className = 'amount-panel';
+
+    const title = document.createElement('h2');
+    title.id = 'amount-title';
+    title.className = 'amount-panel__title';
+    title.textContent = `Add ${chemical ? chemical.name : chemicalId} to ${container ? container.id : containerId}`;
+    panel.appendChild(title);
+
+    const form = document.createElement('form');
+    form.className = 'amount-panel__form';
+
+    const label = document.createElement('label');
+    label.textContent = `Amount (${unit})`;
+    label.htmlFor = 'amount-input';
+    form.appendChild(label);
+
+    const row = document.createElement('div');
+    row.className = 'amount-panel__row';
+    const input = document.createElement('input');
+    input.id = 'amount-input';
+    input.type = 'number';
+    input.min = '0.01';
+    input.step = 'any';
+    input.value = '10';
+    input.required = true;
+    row.appendChild(input);
+    const unitLabel = document.createElement('span');
+    unitLabel.textContent = unit;
+    row.appendChild(unitLabel);
+    form.appendChild(row);
+
+    const buttons = document.createElement('div');
+    buttons.className = 'amount-panel__buttons';
+    const cancel = document.createElement('button');
+    cancel.type = 'button';
+    cancel.textContent = 'Cancel';
+    cancel.addEventListener('click', close);
+    const add = document.createElement('button');
+    add.type = 'submit';
+    add.textContent = 'Add';
+    buttons.append(cancel, add);
+    form.appendChild(buttons);
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const amount = Number(input.value);
       if (!Number.isFinite(amount) || amount <= 0) return;
-
+      close();
       withEffects(containerId, () => dispatch.addChemical(containerId, chemicalId, amount));
     });
+
+    panel.appendChild(form);
+    overlay.appendChild(panel);
+    amountModalHost.appendChild(overlay);
+    amountModalHost.hidden = false;
+    input.focus();
+    input.select();
+
+    document.addEventListener('keydown', onKeyDown, true);
+
+    function onKeyDown(event) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        close();
+      }
+    }
+
+    function close() {
+      amountModalHost.hidden = true;
+      amountModalHost.innerHTML = '';
+      document.removeEventListener('keydown', onKeyDown, true);
+      if (returnFocusTo && typeof returnFocusTo.focus === 'function' && returnFocusTo.isConnected) {
+        returnFocusTo.focus();
+      }
+    }
   }
 
   /* ------------------------------------------------------------------ *
