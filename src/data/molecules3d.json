@@ -543,5 +543,159 @@
       { "from": "cu", "to": "cl1", "type": "ionic" },
       { "from": "cu", "to": "cl2", "type": "ionic" }
     ]
+  },
+
+  "bacl2_0_1m": {
+    "atoms": [
+      { "id": "cl1", "element": "Cl", "x": -2.2, "y": 0, "z": 0 },
+      { "id": "ba", "element": "Ba", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl2", "element": "Cl", "x": 2.2, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "ba", "to": "cl1", "type": "ionic" },
+      { "from": "ba", "to": "cl2", "type": "ionic" }
+    ]
+  },
+
+  "kbr_0_1m": {
+    "atoms": [
+      { "id": "k", "element": "K", "x": -1.6, "y": 0, "z": 0 },
+      { "id": "br", "element": "Br", "x": 1.6, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "k", "to": "br", "type": "ionic" }]
+  },
+
+  "fecl3_0_1m": {
+    "note": "Drawn with the three chlorides spread evenly around the iron. In solution the ion is surrounded by water molecules as well.",
+    "atoms": [
+      { "id": "fe", "element": "Fe", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl1", "element": "Cl", "x": 0, "y": 2.1, "z": 0 },
+      { "id": "cl2", "element": "Cl", "x": -1.82, "y": -1.05, "z": 0 },
+      { "id": "cl3", "element": "Cl", "x": 1.82, "y": -1.05, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "fe", "to": "cl1", "type": "ionic" },
+      { "from": "fe", "to": "cl2", "type": "ionic" },
+      { "from": "fe", "to": "cl3", "type": "ionic" }
+    ]
+  },
+
+  "baso4_s": {
+    "note": "One ion pair, drawn simply. The real solid is a lattice of many barium and sulfate ions, not a molecule.",
+    "atoms": [
+      { "id": "ba", "element": "Ba", "x": -2.0, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.4, "y": 1, "z": 0.6 },
+      { "id": "o2", "element": "O", "x": 0.4, "y": -1, "z": 0.6 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 0.2, "z": -0.9 },
+      { "id": "o4", "element": "O", "x": -0.4, "y": -0.2, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "ba", "to": "s", "type": "ionic" }
+    ]
+  },
+
+  "agi_s": {
+    "note": "One ion pair, drawn simply. The real solid is a lattice of many silver and iodide ions, not a molecule.",
+    "atoms": [
+      { "id": "ag", "element": "Ag", "x": -1.5, "y": 0, "z": 0 },
+      { "id": "i", "element": "I", "x": 1.5, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "ag", "to": "i", "type": "ionic" }]
+  },
+
+  "agbr_s": {
+    "note": "One ion pair, drawn simply. The real solid is a lattice of many silver and bromide ions, not a molecule.",
+    "atoms": [
+      { "id": "ag", "element": "Ag", "x": -1.4, "y": 0, "z": 0 },
+      { "id": "br", "element": "Br", "x": 1.4, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "ag", "to": "br", "type": "ionic" }]
+  },
+
+  "cuoh2_s": {
+    "atoms": [
+      { "id": "o1", "element": "O", "x": -1.8, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.4, "y": 0.75, "z": 0 },
+      { "id": "cu", "element": "Cu", "x": 0, "y": 0, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.8, "y": 0, "z": 0 },
+      { "id": "h2", "element": "H", "x": 2.4, "y": 0.75, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" },
+      { "from": "cu", "to": "o1", "type": "ionic" },
+      { "from": "cu", "to": "o2", "type": "ionic" }
+    ]
+  },
+
+  "feoh2_s": {
+    "atoms": [
+      { "id": "o1", "element": "O", "x": -1.8, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.4, "y": 0.75, "z": 0 },
+      { "id": "fe", "element": "Fe", "x": 0, "y": 0, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.8, "y": 0, "z": 0 },
+      { "id": "h2", "element": "H", "x": 2.4, "y": 0.75, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" },
+      { "from": "fe", "to": "o1", "type": "ionic" },
+      { "from": "fe", "to": "o2", "type": "ionic" }
+    ]
+  },
+
+  "feoh3_s": {
+    "note": "Three hydroxide ions spread evenly around the iron, which carries a 3+ charge here rather than the 2+ of iron(II) hydroxide.",
+    "atoms": [
+      { "id": "fe", "element": "Fe", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.9, "z": 0 },
+      { "id": "h1", "element": "H", "x": 0.7, "y": 2.5, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.65, "y": -0.95, "z": 0 },
+      { "id": "h2", "element": "H", "x": -2.35, "y": -1.55, "z": 0 },
+      { "id": "o3", "element": "O", "x": 1.65, "y": -0.95, "z": 0 },
+      { "id": "h3", "element": "H", "x": 2.35, "y": -1.55, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" },
+      { "from": "o3", "to": "h3", "type": "covalent" },
+      { "from": "fe", "to": "o1", "type": "ionic" },
+      { "from": "fe", "to": "o2", "type": "ionic" },
+      { "from": "fe", "to": "o3", "type": "ionic" }
+    ]
+  },
+
+  "mgoh2_s": {
+    "atoms": [
+      { "id": "o1", "element": "O", "x": -1.7, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.3, "y": 0.75, "z": 0 },
+      { "id": "mg", "element": "Mg", "x": 0, "y": 0, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.7, "y": 0, "z": 0 },
+      { "id": "h2", "element": "H", "x": 2.3, "y": 0.75, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" },
+      { "from": "mg", "to": "o1", "type": "ionic" },
+      { "from": "mg", "to": "o2", "type": "ionic" }
+    ]
+  },
+
+  "pbcl2_s": {
+    "note": "One lead ion with two chlorides, drawn simply. The real solid is a lattice of many such ions, not a molecule.",
+    "atoms": [
+      { "id": "cl1", "element": "Cl", "x": -2.2, "y": 0, "z": 0 },
+      { "id": "pb", "element": "Pb", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl2", "element": "Cl", "x": 2.2, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "pb", "to": "cl1", "type": "ionic" },
+      { "from": "pb", "to": "cl2", "type": "ionic" }
+    ]
   }
 }

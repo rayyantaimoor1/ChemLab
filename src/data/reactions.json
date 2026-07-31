@@ -548,5 +548,225 @@
     "explanation": "This is the standard test for an ammonium salt. Any alkali will displace ammonia from an ammonium compound, but the mixture has to be warmed before enough gas comes off to detect — which is why nothing much happens in this vessel until the burner is turned on. Ammonia is the only common alkaline gas, so damp red litmus paper turning blue at the mouth of the tube identifies it beyond doubt.",
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, tests for ammonium salts"
+  },
+  {
+    "id": "rxn_precipitation_bacl2_na2so4",
+    "reactants": ["bacl2_0_1m", "na2so4_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["baso4_s", "nacl_aq"],
+    "equation": "BaCl₂ + Na₂SO₄ → BaSO₄ + 2NaCl",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "dense white barium sulfate",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_heavy_metal",
+      "title": "Soluble barium salts are poisonous",
+      "warning": "The barium chloride solution used here is poisonous if swallowed. The barium sulfate it forms is harmless because it is so insoluble that the body cannot absorb it, but the solution it came from is not.",
+      "visualEffect": null,
+      "whatToDoInstead": "Handle barium solutions with care, wash your hands afterwards, and put the waste in the labelled heavy-metal container rather than down the sink."
+    },
+    "molecularAnimation": null,
+    "explanation": "This is the standard test for the sulfate ion. Barium sulfate is one of the most insoluble salts known, so the moment Ba²⁺ ions meet SO₄²⁻ ions a dense white precipitate appears. Sodium and chloride take no part and stay dissolved as spectator ions. In a real analysis the sample is acidified with hydrochloric acid first, so that a carbonate — which would also give a white precipitate — is destroyed before the barium chloride is added.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — tests for anions, the barium chloride test for sulfate"
+  },
+  {
+    "id": "rxn_precipitation_agno3_ki",
+    "reactants": ["agno3_0_1m", "ki_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["agi_s", "kno3_aq"],
+    "equation": "AgNO₃ + KI → AgI + KNO₃",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#E3CE4A",
+      "precipitate": "yellow silver iodide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 6.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Silver nitrate is the standard reagent for identifying halide ions, and it tells the three apart by colour: a chloride gives a white precipitate, a bromide a cream one, and an iodide this distinct yellow. All three silver halides are insoluble, so the precipitate appears at once. Potassium and nitrate are spectator ions. Doing all three side by side is the only reliable way to judge the colours, because cream and white are hard to tell apart on their own.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — tests for anions, the silver nitrate test for halides"
+  },
+  {
+    "id": "rxn_precipitation_agno3_kbr",
+    "reactants": ["agno3_0_1m", "kbr_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["agbr_s", "kno3_aq"],
+    "equation": "AgNO₃ + KBr → AgBr + KNO₃",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#EDE3C4",
+      "precipitate": "cream silver bromide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 6.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The middle member of the three halide tests. Silver bromide is cream — noticeably deeper than the white of silver chloride, but clearly paler than the yellow of silver iodide — and the colours deepen in that order going down Group 7. Silver bromide is extremely sensitive to light, and it was the compound coated onto photographic film for exactly that reason.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — tests for anions, the silver nitrate test for halides"
+  },
+  {
+    "id": "rxn_precipitation_cuso4_naoh",
+    "reactants": ["cuso4_0_5m", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cuoh2_s", "na2so4_aq"],
+    "equation": "CuSO₄ + 2NaOH → Cu(OH)₂ + Na₂SO₄",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#7EB6DD",
+      "precipitate": "pale blue gelatinous copper(II) hydroxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 8.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Adding sodium hydroxide to a solution of a metal salt is the standard way of identifying the metal ion, because most metal hydroxides are insoluble and each has its own colour. Copper(II) gives this pale blue jelly-like precipitate, and no other common ion looks like it. The clear blue solution turning into a blue solid that will not settle quickly is the giveaway. Warming the precipitate turns it black as it loses water and becomes copper(II) oxide.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — tests for cations using sodium hydroxide"
+  },
+  {
+    "id": "rxn_precipitation_feso4_naoh",
+    "reactants": ["feso4_aq", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["feoh2_s", "na2so4_aq"],
+    "equation": "FeSO₄ + 2NaOH → Fe(OH)₂ + Na₂SO₄",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#7C8F6A",
+      "precipitate": "dirty green iron(II) hydroxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 8.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The test for the iron(II) ion. Sodium hydroxide precipitates a dull, dirty green solid quite unlike the clean colours of the other hydroxides. Left standing in air the surface slowly turns reddish brown, because oxygen converts iron(II) into iron(III) — which is the same change, and the same two colours, that you see when iron rusts.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — tests for cations using sodium hydroxide"
+  },
+  {
+    "id": "rxn_precipitation_fecl3_naoh",
+    "reactants": ["fecl3_0_1m", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["feoh3_s", "nacl_aq"],
+    "equation": "FeCl₃ + 3NaOH → Fe(OH)₃ + 3NaCl",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#A0522D",
+      "precipitate": "reddish brown iron(III) hydroxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 8.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The test for the iron(III) ion, and the one that makes the pair of iron tests worth doing together: iron(II) gives a dirty green precipitate and iron(III) this unmistakable reddish brown. Notice the equation needs three hydroxides rather than two, because the iron here carries a 3+ charge instead of 2+. What forms is essentially rust.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — tests for cations using sodium hydroxide"
+  },
+  {
+    "id": "rxn_precipitation_mgcl2_naoh",
+    "reactants": ["mgcl2_aq", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mgoh2_s", "nacl_aq"],
+    "equation": "MgCl₂ + 2NaOH → Mg(OH)₂ + 2NaCl",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white magnesium hydroxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 9.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Magnesium gives a plain white precipitate with sodium hydroxide. Because several ions give white precipitates, a white result narrows the answer down rather than settling it — which is a useful lesson about qualitative analysis: one test rarely proves an identity on its own. The solid here is the same magnesium hydroxide sold as milk of magnesia for neutralising stomach acid.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — tests for cations using sodium hydroxide"
+  },
+  {
+    "id": "rxn_precipitation_cacl2_na2co3",
+    "reactants": ["cacl2_aq", "na2co3_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["caco3_s", "nacl_aq"],
+    "equation": "CaCl₂ + Na₂CO₃ → CaCO₃ + 2NaCl",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white calcium carbonate",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 9.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "A clean demonstration of a solubility rule: all sodium salts are soluble and all carbonates are insoluble EXCEPT those of Group 1 — so mixing a soluble calcium salt with a soluble carbonate must leave calcium carbonate behind as a solid. This is the same reaction that furs up kettles and pipes in hard-water areas, and the same white solid that makes limewater go milky.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — solubility rules and double displacement reactions"
+  },
+  {
+    "id": "rxn_precipitation_pbno3_nacl",
+    "reactants": ["nacl_1m", "pbno3_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["pbcl2_s", "nano3_aq"],
+    "equation": "Pb(NO₃)₂ + 2NaCl → PbCl₂ + 2NaNO₃",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F2F2F0",
+      "precipitate": "white lead(II) chloride",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 5.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_heavy_metal",
+      "title": "Lead compounds are poisonous",
+      "warning": "Both the lead(II) nitrate solution and the white lead(II) chloride formed are poisonous. Lead builds up in the body rather than being cleared out, so even small repeated exposures matter.",
+      "visualEffect": null,
+      "whatToDoInstead": "Handle lead solutions with gloves and wash your hands afterwards. Collect all lead waste in the labelled heavy-metal container rather than washing it down the sink."
+    },
+    "molecularAnimation": null,
+    "explanation": "The solubility rule for chlorides is that they are all soluble EXCEPT silver, lead and mercury(I) — and this is that exception in action. Lead(II) chloride is unusual among precipitates because it is only slightly insoluble: warming the tube dissolves it again, and on cooling it comes back as glittering white needles. That reversibility is a good reminder that solubility depends on temperature.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — solubility rules for chlorides and their exceptions"
+  },
+  {
+    "id": "rxn_none_cuso4_nacl",
+    "reactants": ["cuso4_0_5m", "nacl_1m"],
+    "noReaction": true,
+    "explanation": "No observable change. Work out what could possibly form: copper(II) chloride and sodium sulfate. Check both against the solubility rules — all common chlorides except silver, lead and mercury(I) are soluble, and all sodium salts are soluble — so neither product can leave the solution, and nothing precipitates. The blue simply stays blue. This is the routine you should follow before every double displacement: name the two possible products, look both up, and only expect a precipitate if one of them is insoluble.",
+    "levels": ["matric", "fsc"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — applying solubility rules to predict double displacement reactions"
   }
 ]

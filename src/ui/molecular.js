@@ -75,6 +75,8 @@ const ELEMENT_STYLE = {
   Mg: { fill: '#86A17A', text: '#161A19' },
   Fe: { fill: '#8A6A4F', text: '#FFFFFF' },
   Ca: { fill: '#6E8FA6', text: '#161A19' },
+  Ba: { fill: '#4A6E8A', text: '#FFFFFF' },
+  Br: { fill: '#A62929', text: '#FFFFFF' },
   S: { fill: '#F1C40F', text: '#161A19' },
   C: { fill: '#2C3E50', text: '#FFFFFF' },
   group: { fill: '#D5DBDB', text: '#161A19' },
