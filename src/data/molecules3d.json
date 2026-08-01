@@ -1132,5 +1132,210 @@
       { "from": "na1", "to": "o2", "type": "ionic" },
       { "from": "na2", "to": "o3", "type": "ionic" }
     ]
+  },
+
+  "nh4no3_s": {
+    "note": "An ammonium ion beside a nitrate ion. The real solid is a lattice of many of these.",
+    "atoms": [
+      { "id": "n1", "element": "N", "x": -2.2, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.9, "y": 0.85, "z": 0.3 },
+      { "id": "h2", "element": "H", "x": -2.9, "y": -0.6, "z": -0.7 },
+      { "id": "h3", "element": "H", "x": -1.5, "y": -0.6, "z": 0.85 },
+      { "id": "h4", "element": "H", "x": -1.55, "y": 0.55, "z": -0.85 },
+      { "id": "n2", "element": "N", "x": 1.8, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 1.8, "y": 1.25, "z": 0 },
+      { "id": "o2", "element": "O", "x": 0.7, "y": -0.65, "z": 0 },
+      { "id": "o3", "element": "O", "x": 2.9, "y": -0.65, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n1", "to": "h1", "type": "covalent" },
+      { "from": "n1", "to": "h2", "type": "covalent" },
+      { "from": "n1", "to": "h3", "type": "covalent" },
+      { "from": "n1", "to": "h4", "type": "covalent" },
+      { "from": "n2", "to": "o1", "type": "covalent" },
+      { "from": "n2", "to": "o2", "type": "covalent" },
+      { "from": "n2", "to": "o3", "type": "covalent" },
+      { "from": "n1", "to": "o2", "type": "ionic" }
+    ]
+  },
+
+  "nh4no3_aq": {
+    "atoms": [
+      { "id": "n1", "element": "N", "x": -2.2, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.9, "y": 0.85, "z": 0.3 },
+      { "id": "h2", "element": "H", "x": -2.9, "y": -0.6, "z": -0.7 },
+      { "id": "h3", "element": "H", "x": -1.5, "y": -0.6, "z": 0.85 },
+      { "id": "h4", "element": "H", "x": -1.55, "y": 0.55, "z": -0.85 },
+      { "id": "n2", "element": "N", "x": 1.8, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 1.8, "y": 1.25, "z": 0 },
+      { "id": "o2", "element": "O", "x": 0.7, "y": -0.65, "z": 0 },
+      { "id": "o3", "element": "O", "x": 2.9, "y": -0.65, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n1", "to": "h1", "type": "covalent" },
+      { "from": "n1", "to": "h2", "type": "covalent" },
+      { "from": "n1", "to": "h3", "type": "covalent" },
+      { "from": "n1", "to": "h4", "type": "covalent" },
+      { "from": "n2", "to": "o1", "type": "covalent" },
+      { "from": "n2", "to": "o2", "type": "covalent" },
+      { "from": "n2", "to": "o3", "type": "covalent" }
+    ]
+  },
+
+  "kno3_s": {
+    "note": "The nitrate group is flat. The real solid is a lattice of many potassium and nitrate ions.",
+    "atoms": [
+      { "id": "k", "element": "K", "x": -2.6, "y": 0, "z": 0 },
+      { "id": "n", "element": "N", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.4, "y": 1.25, "z": 0 },
+      { "id": "o2", "element": "O", "x": -0.7, "y": -0.65, "z": 0 },
+      { "id": "o3", "element": "O", "x": 1.5, "y": -0.65, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "o1", "type": "covalent" },
+      { "from": "n", "to": "o2", "type": "covalent" },
+      { "from": "n", "to": "o3", "type": "covalent" },
+      { "from": "k", "to": "o2", "type": "ionic" }
+    ]
+  },
+
+  "cacl2_s": {
+    "note": "One calcium ion with two chlorides. The real solid is a lattice of many of these.",
+    "atoms": [
+      { "id": "cl1", "element": "Cl", "x": -2.0, "y": 0, "z": 0 },
+      { "id": "ca", "element": "Ca", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl2", "element": "Cl", "x": 2.0, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "ca", "to": "cl1", "type": "ionic" },
+      { "from": "ca", "to": "cl2", "type": "ionic" }
+    ]
+  },
+
+  "naoh_s": {
+    "note": "One ion pair. The real solid is a lattice of many sodium and hydroxide ions.",
+    "atoms": [
+      { "id": "na", "element": "Na", "x": -1.8, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0.6, "y": 0, "z": 0 },
+      { "id": "h", "element": "H", "x": 1.4, "y": 0.7, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o", "to": "h", "type": "covalent" },
+      { "from": "na", "to": "o", "type": "ionic" }
+    ]
+  },
+
+  "cao_s": {
+    "note": "One ion pair. The real solid is a lattice of many calcium and oxide ions, not a molecule.",
+    "atoms": [
+      { "id": "ca", "element": "Ca", "x": -1.2, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 1.2, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "ca", "to": "o", "type": "ionic" }]
+  },
+
+  "cuso4_anhydrous_s": {
+    "note": "The same copper and sulfate ions as the blue crystals, but with no water in the structure at all - which is exactly why this one is white.",
+    "atoms": [
+      { "id": "cu", "element": "Cu", "x": -2.0, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.4, "y": 1, "z": 0.6 },
+      { "id": "o2", "element": "O", "x": 0.4, "y": -1, "z": 0.6 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 0.2, "z": -0.9 },
+      { "id": "o4", "element": "O", "x": -0.4, "y": -0.2, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "cu", "to": "s", "type": "ionic" }
+    ]
+  },
+
+  "cuso4_5h2o_s": {
+    "note": "Two of the five waters are drawn, arranged round the copper ion. In the real crystal four sit around the copper and the fifth is held by the sulfate - and it is that built-in water which makes these crystals blue.",
+    "atoms": [
+      { "id": "cu", "element": "Cu", "x": -2.2, "y": 0, "z": 0 },
+      { "id": "ow1", "element": "O", "x": -2.2, "y": 1.9, "z": 0 },
+      { "id": "hw1", "element": "H", "x": -2.9, "y": 2.5, "z": 0 },
+      { "id": "hw2", "element": "H", "x": -1.5, "y": 2.5, "z": 0 },
+      { "id": "ow2", "element": "O", "x": -2.2, "y": -1.9, "z": 0 },
+      { "id": "hw3", "element": "H", "x": -2.9, "y": -2.5, "z": 0 },
+      { "id": "hw4", "element": "H", "x": -1.5, "y": -2.5, "z": 0 },
+      { "id": "s", "element": "S", "x": 0.6, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.6, "y": 1, "z": 0.6 },
+      { "id": "o2", "element": "O", "x": 0.6, "y": -1, "z": 0.6 },
+      { "id": "o3", "element": "O", "x": 1.4, "y": 0.2, "z": -0.9 },
+      { "id": "o4", "element": "O", "x": -0.2, "y": -0.2, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "cu", "to": "s", "type": "ionic" },
+      { "from": "ow1", "to": "hw1", "type": "covalent" },
+      { "from": "ow1", "to": "hw2", "type": "covalent" },
+      { "from": "ow2", "to": "hw3", "type": "covalent" },
+      { "from": "ow2", "to": "hw4", "type": "covalent" },
+      { "from": "cu", "to": "ow1", "type": "ionic" },
+      { "from": "cu", "to": "ow2", "type": "ionic" }
+    ]
+  },
+
+  "cocl2_s": {
+    "note": "Cobalt with two chlorides and no water at all, which is what makes this form blue.",
+    "atoms": [
+      { "id": "cl1", "element": "Cl", "x": -1.9, "y": 0, "z": 0 },
+      { "id": "co", "element": "Co", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl2", "element": "Cl", "x": 1.9, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "co", "to": "cl1", "type": "ionic" },
+      { "from": "co", "to": "cl2", "type": "ionic" }
+    ]
+  },
+
+  "cocl2_6h2o_s": {
+    "note": "Two of the six waters are drawn. In the real crystal all six surround the cobalt ion in an octahedron, and it is that shell of water which turns the blue form pink.",
+    "atoms": [
+      { "id": "co", "element": "Co", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl1", "element": "Cl", "x": -2.4, "y": 0, "z": 0 },
+      { "id": "cl2", "element": "Cl", "x": 2.4, "y": 0, "z": 0 },
+      { "id": "ow1", "element": "O", "x": 0, "y": 1.9, "z": 0 },
+      { "id": "hw1", "element": "H", "x": -0.7, "y": 2.5, "z": 0 },
+      { "id": "hw2", "element": "H", "x": 0.7, "y": 2.5, "z": 0 },
+      { "id": "ow2", "element": "O", "x": 0, "y": -1.9, "z": 0 },
+      { "id": "hw3", "element": "H", "x": -0.7, "y": -2.5, "z": 0 },
+      { "id": "hw4", "element": "H", "x": 0.7, "y": -2.5, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "co", "to": "cl1", "type": "ionic" },
+      { "from": "co", "to": "cl2", "type": "ionic" },
+      { "from": "ow1", "to": "hw1", "type": "covalent" },
+      { "from": "ow1", "to": "hw2", "type": "covalent" },
+      { "from": "ow2", "to": "hw3", "type": "covalent" },
+      { "from": "ow2", "to": "hw4", "type": "covalent" },
+      { "from": "co", "to": "ow1", "type": "ionic" },
+      { "from": "co", "to": "ow2", "type": "ionic" }
+    ]
+  },
+
+  "nh4cl_aq": {
+    "atoms": [
+      { "id": "n", "element": "N", "x": -1.4, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.1, "y": 0.85, "z": 0.3 },
+      { "id": "h2", "element": "H", "x": -2.1, "y": -0.6, "z": -0.7 },
+      { "id": "h3", "element": "H", "x": -0.7, "y": -0.6, "z": 0.85 },
+      { "id": "h4", "element": "H", "x": -0.75, "y": 0.55, "z": -0.85 },
+      { "id": "cl", "element": "Cl", "x": 1.8, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "h1", "type": "covalent" },
+      { "from": "n", "to": "h2", "type": "covalent" },
+      { "from": "n", "to": "h3", "type": "covalent" },
+      { "from": "n", "to": "h4", "type": "covalent" }
+    ]
   }
 }

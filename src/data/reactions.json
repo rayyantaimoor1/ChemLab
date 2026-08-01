@@ -1616,5 +1616,239 @@
     "explanation": "Heating baking soda turns it into washing soda, driving off water and carbon dioxide. This is the reaction that makes a cake rise: the carbon dioxide released inside the batter is what lifts it, and the residue left behind is harmless. Industrially it is the last step of the Solvay process, which manufactures sodium carbonate from salt and limestone. Test the gas with limewater — turning milky confirms carbon dioxide.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry, the Solvay process; thermal decomposition of hydrogencarbonates"
+  },
+  {
+    "id": "rxn_dissolution_nh4no3",
+    "reactants": ["nh4no3_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nh4no3_aq"],
+    "equation": "NH₄NO₃(s) + water → NH₄NO₃(aq)",
+    "type": "dissolution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": -15,
+      "resultPH": 5.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "An ENDOTHERMIC change, and one you can feel. Dissolving takes two steps: pulling the ions out of the crystal costs energy, and letting water molecules cluster round them releases it. For ammonium nitrate the first costs more than the second gives back, so the difference is taken from the surroundings and the beaker turns genuinely cold to hold. This is exactly what is inside an instant cold pack — squeeze it, the inner bag of water breaks, and the injury gets cooled with no freezer anywhere. It is also the clearest possible answer to the idea that reactions always give out heat.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, enthalpy of solution; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution +25.7 kJ/mol)"
+  },
+  {
+    "id": "rxn_dissolution_kno3",
+    "reactants": ["kno3_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["kno3_aq"],
+    "equation": "KNO₃(s) + water → KNO₃(aq)",
+    "type": "dissolution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": -8,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Also endothermic, but less sharply so than ammonium nitrate — put the two side by side and the difference in how cold each beaker gets is the enthalpy of solution being measured by hand. Potassium nitrate is also the salt to use for showing solubility against temperature: very much more of it dissolves in hot water than cold, so a hot saturated solution left to cool grows crystals as it goes.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry and Solutions, enthalpy of solution and solubility curves; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution +34.9 kJ/mol)"
+  },
+  {
+    "id": "rxn_dissolution_nh4cl",
+    "reactants": ["nh4cl_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nh4cl_aq"],
+    "equation": "NH₄Cl(s) + water → NH₄Cl(aq)",
+    "type": "dissolution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": -6,
+      "resultPH": 4.6
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The mildest of the three endothermic dissolutions here, cooling the water by a few degrees. Having three of them at different strengths is the point: the enthalpy of solution is a property of the particular salt, not something that all dissolving does. The solution left is acidic, because the ammonium ion gives a hydrogen ion back to the water.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, enthalpy of solution; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution +14.8 kJ/mol)"
+  },
+  {
+    "id": "rxn_dissolution_cacl2",
+    "reactants": ["cacl2_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cacl2_aq"],
+    "equation": "CaCl₂(s) + water → CaCl₂(aq)",
+    "type": "dissolution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 18,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The same two steps as ammonium nitrate, coming out the other way round. Calcium chloride's ions are small and doubly charged, so water molecules cluster round them very tightly and release more energy than it cost to break the crystal apart — the beaker gets hot. This is the chemistry inside a reusable hand warmer, and it is also why bags of calcium chloride are spread on icy roads.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, enthalpy of solution and hydration; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution −81.3 kJ/mol)"
+  },
+  {
+    "id": "rxn_dissolution_naoh",
+    "reactants": ["naoh_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["naoh_aq"],
+    "equation": "NaOH(s) + water → NaOH(aq)",
+    "type": "dissolution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 25,
+      "resultPH": 14.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "corrosive",
+      "title": "A corrosive solid dissolving, and getting hot doing it",
+      "warning": "Sodium hydroxide attacks skin and eyes, and dissolving it releases enough heat that a strong solution can become hot enough to spit. Both hazards arrive at once.",
+      "visualEffect": null,
+      "whatToDoInstead": "Add the pellets to plenty of water a few at a time, never water to the pellets, and stir as you go so the heat spreads out. Wear eye protection throughout."
+    },
+    "molecularAnimation": null,
+    "explanation": "Strongly exothermic — dissolving sodium hydroxide in only a little water can drive it close to boiling. Notice this is dissolving, not neutralising: no acid is involved and no new substance is made, yet a great deal of heat comes out. That is worth separating from the enthalpy of neutralisation, which is a different quantity measured for a different change and often confused with it.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, enthalpy of solution; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution −44.5 kJ/mol)"
+  },
+  {
+    "id": "rxn_slaking_quicklime",
+    "reactants": ["cao_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["caoh2_aq"],
+    "equation": "CaO + H₂O → Ca(OH)₂",
+    "type": "combination",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": true,
+      "smoke": true,
+      "tempDeltaC": 40,
+      "resultPH": 12.4
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "corrosive",
+      "title": "Slaking lime is violent and the water can boil",
+      "warning": "Quicklime reacts with water so vigorously that the lump cracks and hisses, steam comes off it, and the water can reach boiling point with no burner anywhere near. The calcium hydroxide formed is strongly alkaline and attacks eyes badly. Quicklime in a damp eye reacts with the moisture there.",
+      "visualEffect": null,
+      "whatToDoInstead": "Add a small lump to plenty of cold water, never the other way round, stand back, and wear eye protection. Never handle quicklime with damp hands."
+    },
+    "molecularAnimation": null,
+    "explanation": "Slaking, and about the most violently exothermic thing a school laboratory demonstrates without setting light to anything. The lump swells, cracks and steams, and a thermometer in the water climbs dozens of degrees on its own. It is the middle step of the lime cycle that has been used in building for thousands of years: roast limestone to quicklime, slake it to make lime putty, and the putty then slowly absorbs carbon dioxide from the air and hardens back into limestone.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, exothermic reactions; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of reaction −63.7 kJ/mol)"
+  },
+  {
+    "id": "rxn_hydration_cuso4",
+    "reactants": ["cuso4_anhydrous_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cuso4_5h2o_s"],
+    "equation": "CuSO₄ + 5H₂O → CuSO₄·5H₂O",
+    "type": "hydration",
+    "effects": {
+      "colorToHex": "#1F6FB2",
+      "precipitate": "blue hydrated copper(II) sulfate",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 10,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The standard chemical test for water. White anhydrous copper(II) sulfate turns blue the instant water touches it, and gets warm doing so, because the water is being locked into the crystal structure itself — water of crystallisation. Be careful what the test proves: it says water is PRESENT, not that the liquid is pure water. Tap water, sea water and orange juice all turn it blue. Proving something is pure water needs a boiling point of 100 °C and a freezing point of 0 °C as well.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Water, chemical test for water; Chemistry XI — water of crystallisation"
+  },
+  {
+    "id": "rxn_dehydration_cuso4",
+    "reactants": ["cuso4_5h2o_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 100, "catalyst": null },
+    "products": ["cuso4_anhydrous_s", "water"],
+    "equation": "CuSO₄·5H₂O → CuSO₄ + 5H₂O",
+    "type": "dehydration",
+    "effects": {
+      "colorToHex": "#F0EFE9",
+      "precipitate": "white anhydrous copper(II) sulfate",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Heating the blue crystals drives the water of crystallisation out of them and the colour drains away to white. The water does not vanish — it condenses on the cool upper part of the tube, where you can see it and test it. This is endothermic: it takes energy to pull that water out, which is why it needs a burner. Add water to the white powder afterwards and the blue comes straight back, which is what makes this pair the clearest demonstration of a hydrate there is.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — water of crystallisation and its removal by heating"
+  },
+  {
+    "id": "rxn_hydration_cocl2",
+    "reactants": ["cocl2_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cocl2_6h2o_s"],
+    "equation": "CoCl₂ + 6H₂O → CoCl₂·6H₂O",
+    "type": "hydration",
+    "effects": {
+      "colorToHex": "#D9838D",
+      "precipitate": "pink hydrated cobalt(II) chloride",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The other test for water, and the one that comes on paper. Filter paper soaked in cobalt(II) chloride and dried is blue; touch it with water and it turns pink at once. It is more convenient than the copper sulfate test because the paper can be dried and used again, and because blue to pink is easier to judge at a glance than white to blue. Both tests answer the same limited question: is there water here, not is this pure water.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Water, cobalt chloride test for water"
+  },
+  {
+    "id": "rxn_dehydration_cocl2",
+    "reactants": ["cocl2_6h2o_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 100, "catalyst": null },
+    "products": ["cocl2_s", "water"],
+    "equation": "CoCl₂·6H₂O → CoCl₂ + 6H₂O",
+    "type": "dehydration",
+    "effects": {
+      "colorToHex": "#2E6DA4",
+      "precipitate": "blue anhydrous cobalt(II) chloride",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Warming the pink hydrate drives its six waters off and it returns to blue — which is why cobalt chloride paper is reusable in a way copper sulfate is not. Put the two hydrate pairs side by side and the general rule appears: a hydrate's colour belongs to the water built into its crystal, and heating takes the water and the colour away together.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — water of crystallisation; Chemistry 10 — cobalt chloride paper"
   }
 ]

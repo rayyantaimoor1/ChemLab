@@ -79,6 +79,7 @@ const ELEMENT_STYLE = {
   V: { fill: '#B5651D', text: '#FFFFFF' },
   Pt: { fill: '#C9CDD1', text: '#161A19' },
   Mn: { fill: '#7D5BA6', text: '#FFFFFF' },
+  Co: { fill: '#3F7FB5', text: '#FFFFFF' },
   Br: { fill: '#A62929', text: '#FFFFFF' },
   S: { fill: '#F1C40F', text: '#161A19' },
   C: { fill: '#2C3E50', text: '#FFFFFF' },
