@@ -2365,5 +2365,260 @@
     "explanation": "The same reaction one row further down Group II, and worth doing alongside the magnesium one: both give a white precipitate, and the barium one is noticeably denser and settles faster. It is also a useful contrast with barium sulfate — that one is safe enough to swallow for an X-ray because nothing dissolves it, while barium carbonate dissolves in stomach acid and is genuinely poisonous. Insoluble in water does not mean insoluble in everything.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA, solubility of the carbonates"
+  },
+  {
+    "id": "rxn_prep_chlorine_mno2",
+    "reactants": ["hcl_1m", "mno2_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["mncl2_aq", "cl2_g", "water"],
+    "equation": "MnO₂ + 4HCl → MnCl₂ + Cl₂ + 2H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#E8C8CE",
+      "precipitate": null,
+      "gas": "chlorine",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 6,
+      "resultPH": 5.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "Poisonous chlorine gas is being generated",
+      "warning": "This is a chlorine generator. Chlorine attacks the eyes and lungs, is denser than air so it collects low down rather than dispersing, and was used as a chemical weapon. Heating concentrated hydrochloric acid also gives off choking hydrogen chloride fumes.",
+      "visualEffect": null,
+      "whatToDoInstead": "Run this only in a fume cupboard, generate no more gas than you need, and pass the excess through sodium hydroxide solution to destroy it rather than letting it into the room."
+    },
+    "molecularAnimation": null,
+    "explanation": "The standard laboratory preparation of chlorine, and a clean example of redox with both halves visible. Manganese(IV) oxide takes electrons from the chloride ions, so the chloride is oxidised to chlorine gas while the manganese is reduced from +4 down to +2 — which is why the flask ends up holding the very pale pink of a manganese(II) solution. Note that this needs manganese(IV) oxide as a REACTANT, not a catalyst: it is used up here, unlike its role with hydrogen peroxide.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, laboratory preparation of chlorine"
+  },
+  {
+    "id": "rxn_chlorine_cold_alkali",
+    "reactants": ["cl2_g", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nacl_aq", "naclo_aq", "water"],
+    "equation": "Cl₂ + 2NaOH → NaCl + NaOCl + H₂O",
+    "type": "disproportionation",
+    "effects": {
+      "colorToHex": "#E4EDBC",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 11.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "How household bleach is made, and a rare thing worth naming: DISPROPORTIONATION. The chlorine starts at oxidation state 0 and ends up in two places at once — reduced to −1 in the chloride, and oxidised to +1 in the hypochlorite. One element, one reaction, oxidised and reduced simultaneously. Doing this cold gives the hypochlorite that bleaches; doing it hot gives the chlorate instead, which is why the temperature is specified on an industrial plant. It is also the safe way to destroy leftover chlorine, which is why a chlorine generator is vented through sodium hydroxide.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reaction of chlorine with cold dilute alkali"
+  },
+  {
+    "id": "rxn_halide_nacl_h2so4",
+    "reactants": ["h2so4_1m", "nacl_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nahso4_aq", "hcl_g"],
+    "equation": "NaCl + H₂SO₄ → NaHSO₄ + HCl",
+    "type": "acid_base",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen chloride",
+      "bubbles": true,
+      "smoke": true,
+      "tempDeltaC": 4,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "corrosive_gas",
+      "title": "Choking hydrogen chloride fumes",
+      "warning": "Steamy, acrid fumes of hydrogen chloride come off and fume heavily in moist air. They attack the eyes and airways.",
+      "visualEffect": null,
+      "whatToDoInstead": "Work in a fume cupboard, and if you are collecting the gas lead it into water rather than letting it escape."
+    },
+    "molecularAnimation": null,
+    "explanation": "The first of three, and the control. Concentrated sulfuric acid simply displaces the more volatile hydrogen chloride from its salt — an acid–base swap, with NO redox at all. Nothing is oxidised, nothing is reduced, and the only product besides the salt is steamy hydrogen chloride. Chloride ions are too weakly reducing to attack the sulfuric acid. Keep that in mind for the bromide and iodide, which do exactly that.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reactions of halides with concentrated sulfuric acid"
+  },
+  {
+    "id": "rxn_halide_nabr_h2so4",
+    "reactants": ["h2so4_1m", "nabr_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nahso4_aq", "br2_aq", "so2_g", "water"],
+    "equation": "2NaBr + 3H₂SO₄ → 2NaHSO₄ + Br₂ + SO₂ + 2H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#C1652A",
+      "precipitate": null,
+      "gas": "sulfur dioxide",
+      "bubbles": true,
+      "smoke": true,
+      "tempDeltaC": 6,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_gas",
+      "title": "Bromine vapour and sulfur dioxide together",
+      "warning": "Orange-brown bromine vapour and choking sulfur dioxide come off at the same time. Bromine burns skin badly on contact and its vapour attacks the eyes and lungs.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard only, on the smallest scale that shows the colour. Never handle bromine or its vapour outside one."
+    },
+    "molecularAnimation": null,
+    "explanation": "The second of three, and now something new happens. The bromide starts as the chloride did, but it does not stop there: bromide ions are strong enough reducing agents to attack the sulfuric acid itself, pulling the sulfur from +6 down to +4 as sulfur dioxide, while the bromide is oxidised to orange-brown bromine. Set the three tubes side by side and the trend is unmistakable: reducing power of the halide ions INCREASES down Group VII, because a larger ion holds its outer electrons more loosely and gives them up more readily.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reducing power of the halide ions"
+  },
+  {
+    "id": "rxn_halide_nai_h2so4",
+    "reactants": ["h2so4_1m", "nai_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nahso4_aq", "i2_aq", "h2s_g", "water"],
+    "equation": "8NaI + 9H₂SO₄ → 8NaHSO₄ + 4I₂ + H₂S + 4H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#7A4A1E",
+      "precipitate": null,
+      "gas": "hydrogen sulfide",
+      "bubbles": true,
+      "smoke": true,
+      "tempDeltaC": 8,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "Hydrogen sulfide is released",
+      "warning": "Hydrogen sulfide smells of rotten eggs and is genuinely poisonous. The danger is that it deadens the sense of smell within minutes, so the warning fades exactly as the concentration rises — people have died believing the gas had cleared.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard only, smallest possible scale. Never rely on the smell to tell you whether it is safe, and leave the room if you notice the smell weakening."
+    },
+    "molecularAnimation": null,
+    "explanation": "The third of three, and the trend reaches its conclusion. Iodide ions are the strongest reducing agents of the three, and they do not stop at sulfur dioxide — they drag the sulfur all the way from +6 down to −2, giving hydrogen sulfide, while dark purple iodine appears. Read the set together: chloride does no redox at all, bromide takes the sulfur to +4, iodide takes it to −2. One column of the periodic table, one property, changing steadily as the ion gets larger.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reducing power of the halide ions"
+  },
+  {
+    "id": "rxn_agcl_dissolves_ammonia",
+    "reactants": ["agcl_s", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["agnh3_aq"],
+    "equation": "AgCl + 2NH₃ → [Ag(NH₃)₂]⁺ + Cl⁻",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 10.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The white precipitate simply disappears. Two ammonia molecules attach to each silver ion and hold it in solution as a complex ion, so a solid that water could not touch dissolves in front of you. This is the second half of the halide test: silver chloride dissolves in dilute ammonia, silver bromide needs concentrated ammonia, and silver iodide will not dissolve at all. Since white and cream are hard to tell apart by eye, the ammonia test is what actually settles which halide you have.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, distinguishing the silver halides with ammonia"
+  },
+  {
+    "id": "rxn_none_agi_ammonia",
+    "reactants": ["agi_s", "nh4oh_aq"],
+    "noReaction": true,
+    "explanation": "No observable change — the yellow precipitate just sits there. Silver iodide is the least soluble of the three silver halides by a very wide margin, and ammonia cannot pull the silver ion out of it however concentrated it is. That refusal is exactly what makes the test useful: add ammonia to three tubes and the chloride dissolves, the bromide dissolves only if the ammonia is concentrated, and the iodide never does. A negative result identifying a substance is as good as a positive one.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, distinguishing the silver halides with ammonia"
+  },
+  {
+    "id": "rxn_synthesis_hcl",
+    "reactants": ["cl2_g", "h2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["hcl_g"],
+    "equation": "H₂ + Cl₂ → 2HCl",
+    "type": "combination",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen chloride",
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 35,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "explosive_mixture",
+      "title": "Hydrogen and chlorine explode together",
+      "warning": "A mixture of hydrogen and chlorine explodes when lit — and, unusually, also when exposed to bright sunlight or a camera flash, with no flame needed at all. The hydrogen chloride produced is corrosive and choking.",
+      "visualEffect": null,
+      "whatToDoInstead": "This is an industrial process. Any demonstration is done behind a screen with a tiny volume of gas, and mixtures of the two are never stored or left in daylight."
+    },
+    "molecularAnimation": null,
+    "explanation": "The direct synthesis, and how hydrogen chloride is made on an industrial scale for hydrochloric acid. The striking thing is what sets it off: light alone will do it, because a photon splits a chlorine molecule into two very reactive atoms and a chain reaction follows. Combustion usually needs heat; here a bright enough flash is sufficient, which is a memorable way into how reaction mechanisms actually start.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, hydrogen halides and their preparation"
+  },
+  {
+    "id": "rxn_hazard_bleach_acid",
+    "reactants": ["hcl_1m", "naclo_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nacl_aq", "cl2_g", "water"],
+    "equation": "NaOCl + 2HCl → NaCl + Cl₂ + H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "chlorine",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": 3.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "Mixing bleach with acid releases chlorine",
+      "warning": "Bleach and any acid — including limescale remover, toilet cleaner and even vinegar — release chlorine gas on contact. Chlorine attacks the eyes and lungs and is denser than air, so in a small bathroom it collects rather than clearing. This is one of the commonest household poisonings there is, and it happens in seconds.",
+      "visualEffect": null,
+      "whatToDoInstead": "Never mix bleach with any other cleaning product. If it happens, leave the room at once, open windows from outside the room, and do not go back in to try to clear it up."
+    },
+    "molecularAnimation": null,
+    "explanation": "This entry exists to teach what NOT to do. The hypochlorite ion and the chloride ion meet in acid and reverse the disproportionation that made the bleach in the first place, giving chlorine gas straight back. It is the same chemistry as the laboratory preparation, except it happens by accident in a bathroom with no fume cupboard anywhere. Bleach bottles carry the warning for exactly this reason.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reactions of hypochlorites"
+  },
+  {
+    "id": "rxn_hazard_bleach_ammonia",
+    "reactants": ["naclo_aq", "nh3_g"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["chloramine_g", "naoh_aq"],
+    "equation": "NaOCl + NH₃ → NH₂Cl + NaOH",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "chloramine vapour",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 13.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "Toxic gas released",
+      "warning": "This combination releases chloramine vapour, which is toxic to inhale. It burns the eyes and airways and can cause lasting lung damage. Because bleach and ammonia-based cleaners are both ordinary household products, this is one of the most frequent accidental poisonings in the home. In a real laboratory this must never be done outside a fume hood.",
+      "visualEffect": "toxic_cloud",
+      "whatToDoInstead": "Never mix chlorine bleach with ammonia-based cleaners, and never combine cleaning products at all in the hope of a stronger result. Ventilate and evacuate if it happens accidentally, and do not re-enter to clean it up."
+    },
+    "molecularAnimation": null,
+    "explanation": "The companion warning to bleach with acid, and the other reason two cleaners must never be combined. Ammonia-based glass cleaner poured into a toilet already treated with bleach gives exactly this. The entry is here to teach the danger and the correct response — what to avoid and what to do if it happens — and deliberately not the quantities or method that would help anyone produce it.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reactions of hypochlorites; PubChem, National Library of Medicine — Chloramine"
   }
 ]

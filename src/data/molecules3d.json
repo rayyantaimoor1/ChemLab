@@ -1522,5 +1522,129 @@
       { "from": "c", "to": "o3", "type": "covalent" },
       { "from": "ba", "to": "o2", "type": "ionic" }
     ]
+  },
+
+  "nabr_s": {
+    "note": "One ion pair. The real solid is a cubic lattice of many sodium and bromide ions.",
+    "atoms": [
+      { "id": "na", "element": "Na", "x": -1.5, "y": 0, "z": 0 },
+      { "id": "br", "element": "Br", "x": 1.5, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "na", "to": "br", "type": "ionic" }]
+  },
+
+  "nai_s": {
+    "note": "One ion pair. The iodide ion is the largest of the common halides, which is why it holds its outer electrons most loosely and reduces most readily.",
+    "atoms": [
+      { "id": "na", "element": "Na", "x": -1.65, "y": 0, "z": 0 },
+      { "id": "i", "element": "I", "x": 1.65, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "na", "to": "i", "type": "ionic" }]
+  },
+
+  "naclo_aq": {
+    "atoms": [
+      { "id": "na", "element": "Na", "x": -2.2, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0.2, "y": 0, "z": 0 },
+      { "id": "cl", "element": "Cl", "x": 1.9, "y": 0.35, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o", "to": "cl", "type": "covalent" },
+      { "from": "na", "to": "o", "type": "ionic" }
+    ]
+  },
+
+  "mncl2_aq": {
+    "atoms": [
+      { "id": "cl1", "element": "Cl", "x": -1.9, "y": 0, "z": 0 },
+      { "id": "mn", "element": "Mn", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl2", "element": "Cl", "x": 1.9, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "mn", "to": "cl1", "type": "ionic" },
+      { "from": "mn", "to": "cl2", "type": "ionic" }
+    ]
+  },
+
+  "nahso4_aq": {
+    "note": "A sulfate group that has kept ONE of its two hydrogens - which is why this salt still gives an acidic solution.",
+    "atoms": [
+      { "id": "na", "element": "Na", "x": -3.0, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.25, "z": 0.7 },
+      { "id": "o2", "element": "O", "x": 0, "y": -1.25, "z": 0.7 },
+      { "id": "o3", "element": "O", "x": 1.25, "y": 0, "z": -0.7 },
+      { "id": "o4", "element": "O", "x": -1.25, "y": 0, "z": -0.7 },
+      { "id": "h", "element": "H", "x": 2.0, "y": 0.6, "z": -1.1 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "o3", "to": "h", "type": "covalent" },
+      { "from": "na", "to": "o4", "type": "ionic" }
+    ]
+  },
+
+  "hcl_g": {
+    "atoms": [
+      { "id": "h", "element": "H", "x": -0.64, "y": 0, "z": 0 },
+      { "id": "cl", "element": "Cl", "x": 0.64, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "h", "to": "cl", "type": "covalent" }]
+  },
+
+  "h2s_g": {
+    "note": "Bent like water, but at a wider angle of about 92 degrees - and unlike water it has almost no hydrogen bonding, which is why it is a gas at room temperature while water is a liquid.",
+    "atoms": [
+      { "id": "s", "element": "S", "x": 0, "y": 0.3, "z": 0 },
+      { "id": "h1", "element": "H", "x": -0.96, "y": -0.35, "z": 0 },
+      { "id": "h2", "element": "H", "x": 0.96, "y": -0.35, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "h1", "type": "covalent" },
+      { "from": "s", "to": "h2", "type": "covalent" }
+    ]
+  },
+
+  "agnh3_aq": {
+    "note": "The silver ion sits in a straight line between its two ammonia molecules. Holding it this way is what keeps a silver halide dissolved that water alone could not touch.",
+    "atoms": [
+      { "id": "ag", "element": "Ag", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": -2.1, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.7, "y": 0.8, "z": 0.3 },
+      { "id": "h2", "element": "H", "x": -2.7, "y": -0.5, "z": -0.7 },
+      { "id": "h3", "element": "H", "x": -2.7, "y": -0.3, "z": 0.85 },
+      { "id": "n2", "element": "N", "x": 2.1, "y": 0, "z": 0 },
+      { "id": "h4", "element": "H", "x": 2.7, "y": 0.8, "z": 0.3 },
+      { "id": "h5", "element": "H", "x": 2.7, "y": -0.5, "z": -0.7 },
+      { "id": "h6", "element": "H", "x": 2.7, "y": -0.3, "z": 0.85 }
+    ],
+    "bonds": [
+      { "from": "n1", "to": "h1", "type": "covalent" },
+      { "from": "n1", "to": "h2", "type": "covalent" },
+      { "from": "n1", "to": "h3", "type": "covalent" },
+      { "from": "n2", "to": "h4", "type": "covalent" },
+      { "from": "n2", "to": "h5", "type": "covalent" },
+      { "from": "n2", "to": "h6", "type": "covalent" },
+      { "from": "ag", "to": "n1", "type": "ionic" },
+      { "from": "ag", "to": "n2", "type": "ionic" }
+    ]
+  },
+
+  "chloramine_g": {
+    "note": "Ammonia with one hydrogen swapped for a chlorine - pyramidal, like the ammonia it came from.",
+    "atoms": [
+      { "id": "n", "element": "N", "x": 0, "y": 0.3, "z": 0 },
+      { "id": "cl", "element": "Cl", "x": 1.5, "y": -0.35, "z": 0.2 },
+      { "id": "h1", "element": "H", "x": -0.75, "y": -0.35, "z": 0.75 },
+      { "id": "h2", "element": "H", "x": -0.75, "y": -0.35, "z": -0.75 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "cl", "type": "covalent" },
+      { "from": "n", "to": "h1", "type": "covalent" },
+      { "from": "n", "to": "h2", "type": "covalent" }
+    ]
   }
 }
