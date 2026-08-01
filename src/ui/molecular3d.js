@@ -85,6 +85,7 @@ const ELEMENT_STYLE = {
   Pt: '#C9CDD1',
   Mn: '#7D5BA6',
   Co: '#3F7FB5',
+  Al: '#9AA7B0',
   Br: '#A62929',
   S: '#F1C40F',
   C: '#2C3E50',
@@ -97,7 +98,7 @@ const FALLBACK_COLOR = '#BDC3C7';
 const ELEMENT_RADIUS = {
   H: 0.32, O: 0.5, N: 0.5, Cl: 0.62, I: 0.66, Na: 0.58, K: 0.66,
   Pb: 0.72, Ag: 0.6, Zn: 0.56, Cu: 0.58, Mg: 0.54, Fe: 0.56, Ca: 0.68,
-  Ba: 0.76, Br: 0.64, V: 0.6, Pt: 0.66, Mn: 0.58, Co: 0.56, S: 0.6, C: 0.5, group: 0.45,
+  Ba: 0.76, Br: 0.64, V: 0.6, Pt: 0.66, Mn: 0.58, Co: 0.56, Al: 0.6, S: 0.6, C: 0.5, group: 0.45,
 };
 
 export function getMolecule3D(chemicalId) {

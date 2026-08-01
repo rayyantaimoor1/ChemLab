@@ -1787,5 +1787,636 @@
         ]
       }
     ]
+  },
+  "anim_electrolysis_agno3": {
+    "equation": "4AgNO₃ + 2H₂O → 4Ag + O₂ + 4HNO₃",
+    "viewBox": [
+      0,
+      0,
+      340,
+      190
+    ],
+    "particles": [
+      {
+        "id": "cathode",
+        "label": "−",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "anode",
+        "label": "+",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "ag1",
+        "label": "Ag",
+        "element": "Ag",
+        "r": 19
+      },
+      {
+        "id": "ag2",
+        "label": "Ag",
+        "element": "Ag",
+        "r": 19
+      },
+      {
+        "id": "no3",
+        "label": "NO₃",
+        "element": "group",
+        "r": 21
+      },
+      {
+        "id": "oh1",
+        "label": "OH",
+        "element": "O",
+        "r": 18
+      },
+      {
+        "id": "oh2",
+        "label": "OH",
+        "element": "O",
+        "r": 18
+      }
+    ],
+    "steps": [
+      {
+        "durationMs": 1600,
+        "caption": "Silver nitrate solution holds silver ions and nitrate ions, plus hydroxide ions from the water.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "ag1": [
+            140,
+            56
+          ],
+          "ag2": [
+            150,
+            132
+          ],
+          "no3": [
+            204,
+            95
+          ],
+          "oh1": [
+            198,
+            50
+          ],
+          "oh2": [
+            208,
+            140
+          ]
+        },
+        "charges": {
+          "ag1": "+",
+          "ag2": "+",
+          "no3": "−",
+          "oh1": "−",
+          "oh2": "−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 1800,
+        "caption": "The current sends the positive silver ions to the cathode, and the negative nitrate and hydroxide ions to the anode.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "ag1": [
+            100,
+            60
+          ],
+          "ag2": [
+            100,
+            130
+          ],
+          "no3": [
+            230,
+            95
+          ],
+          "oh1": [
+            240,
+            56
+          ],
+          "oh2": [
+            240,
+            134
+          ]
+        },
+        "charges": {
+          "ag1": "+",
+          "ag2": "+",
+          "no3": "−",
+          "oh1": "−",
+          "oh2": "−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "Each silver ion needs only ONE electron to become silver metal, so the layer builds quickly. At the anode the nitrate is too stable to give up electrons, so the hydroxide ions do it instead.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "ag1": [
+            74,
+            64
+          ],
+          "ag2": [
+            74,
+            126
+          ],
+          "no3": [
+            230,
+            95
+          ],
+          "oh1": [
+            264,
+            64
+          ],
+          "oh2": [
+            264,
+            124
+          ]
+        },
+        "charges": {
+          "no3": "−"
+        },
+        "bonds": [
+          {
+            "from": "oh1",
+            "to": "oh2",
+            "type": "covalent"
+          }
+        ]
+      },
+      {
+        "durationMs": 2000,
+        "caption": "A bright even layer of silver has plated onto the cathode and oxygen bubbles off the anode. That is electroplating: a cheap object made the cathode comes out covered in an expensive metal.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "ag1": [
+            74,
+            64
+          ],
+          "ag2": [
+            74,
+            126
+          ],
+          "no3": [
+            206,
+            110
+          ],
+          "oh1": [
+            268,
+            58
+          ],
+          "oh2": [
+            288,
+            42
+          ]
+        },
+        "charges": {
+          "no3": "−"
+        },
+        "bonds": [
+          {
+            "from": "oh1",
+            "to": "oh2",
+            "type": "covalent"
+          }
+        ]
+      }
+    ]
+  },
+  "anim_electrolysis_cucl2": {
+    "equation": "CuCl₂ → Cu + Cl₂",
+    "viewBox": [
+      0,
+      0,
+      340,
+      190
+    ],
+    "particles": [
+      {
+        "id": "cathode",
+        "label": "−",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "anode",
+        "label": "+",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "cu1",
+        "label": "Cu",
+        "element": "Cu",
+        "r": 20
+      },
+      {
+        "id": "cu2",
+        "label": "Cu",
+        "element": "Cu",
+        "r": 20
+      },
+      {
+        "id": "cl1",
+        "label": "Cl",
+        "element": "Cl",
+        "r": 20
+      },
+      {
+        "id": "cl2",
+        "label": "Cl",
+        "element": "Cl",
+        "r": 20
+      }
+    ],
+    "steps": [
+      {
+        "durationMs": 1600,
+        "caption": "Copper(II) chloride solution holds just two kinds of ion: copper ions and chloride ions. Both products will come from the salt itself, not from the water.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "cu1": [
+            140,
+            58
+          ],
+          "cu2": [
+            152,
+            132
+          ],
+          "cl1": [
+            200,
+            54
+          ],
+          "cl2": [
+            196,
+            136
+          ]
+        },
+        "charges": {
+          "cu1": "2+",
+          "cu2": "2+",
+          "cl1": "−",
+          "cl2": "−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 1800,
+        "caption": "With the current on, the copper ions head for the cathode and the chloride ions for the anode.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "cu1": [
+            100,
+            62
+          ],
+          "cu2": [
+            100,
+            128
+          ],
+          "cl1": [
+            242,
+            62
+          ],
+          "cl2": [
+            242,
+            128
+          ]
+        },
+        "charges": {
+          "cu1": "2+",
+          "cu2": "2+",
+          "cl1": "−",
+          "cl2": "−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "Copper is below hydrogen in the series, so the copper ion is discharged in preference to the water — each one takes two electrons and sticks to the cathode as metal. The chloride gives its electron up at the anode.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "cu1": [
+            74,
+            66
+          ],
+          "cu2": [
+            74,
+            124
+          ],
+          "cl1": [
+            264,
+            64
+          ],
+          "cl2": [
+            264,
+            124
+          ]
+        },
+        "charges": {},
+        "bonds": [
+          {
+            "from": "cl1",
+            "to": "cl2",
+            "type": "covalent"
+          }
+        ]
+      },
+      {
+        "durationMs": 2000,
+        "caption": "Reddish-brown copper coats the cathode, the blue-green colour drains out of the solution, and pale green chlorine bubbles off the anode. Compare this with brine, where the sodium is too reactive to be discharged and hydrogen appears instead.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "cu1": [
+            74,
+            66
+          ],
+          "cu2": [
+            74,
+            124
+          ],
+          "cl1": [
+            266,
+            58
+          ],
+          "cl2": [
+            288,
+            42
+          ]
+        },
+        "charges": {},
+        "bonds": [
+          {
+            "from": "cl1",
+            "to": "cl2",
+            "type": "covalent"
+          }
+        ]
+      }
+    ]
+  },
+  "anim_electrolysis_al2o3": {
+    "equation": "2Al₂O₃ → 4Al + 3O₂",
+    "viewBox": [
+      0,
+      0,
+      340,
+      190
+    ],
+    "particles": [
+      {
+        "id": "cathode",
+        "label": "−",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "anode",
+        "label": "+",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "al1",
+        "label": "Al",
+        "element": "Al",
+        "r": 19
+      },
+      {
+        "id": "al2",
+        "label": "Al",
+        "element": "Al",
+        "r": 19
+      },
+      {
+        "id": "o1",
+        "label": "O",
+        "element": "O",
+        "r": 18
+      },
+      {
+        "id": "o2",
+        "label": "O",
+        "element": "O",
+        "r": 18
+      }
+    ],
+    "steps": [
+      {
+        "durationMs": 1800,
+        "caption": "Solid aluminium oxide holds its ions locked in place, so nothing can move and nothing happens. Melting it needs over 2000 °C — impossible to run — so it is dissolved in molten cryolite instead, which frees the ions at about 950 °C.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "al1": [
+            148,
+            68
+          ],
+          "o1": [
+            196,
+            68
+          ],
+          "o2": [
+            148,
+            122
+          ],
+          "al2": [
+            196,
+            122
+          ]
+        },
+        "charges": {
+          "al1": "3+",
+          "al2": "3+",
+          "o1": "2−",
+          "o2": "2−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 1800,
+        "caption": "Once molten, the ions are free to move and the current can pull them apart: aluminium ions to the cathode, oxide ions to the anode.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "al1": [
+            100,
+            62
+          ],
+          "al2": [
+            100,
+            128
+          ],
+          "o1": [
+            242,
+            62
+          ],
+          "o2": [
+            242,
+            128
+          ]
+        },
+        "charges": {
+          "al1": "3+",
+          "al2": "3+",
+          "o1": "2−",
+          "o2": "2−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "Each aluminium ion has to collect THREE electrons to become a metal atom — which is a large part of why this process eats so much electricity. The oxide ions give up two each at the anode.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "al1": [
+            74,
+            66
+          ],
+          "al2": [
+            74,
+            124
+          ],
+          "o1": [
+            264,
+            64
+          ],
+          "o2": [
+            264,
+            124
+          ]
+        },
+        "charges": {},
+        "bonds": [
+          {
+            "from": "o1",
+            "to": "o2",
+            "type": "covalent"
+          }
+        ]
+      },
+      {
+        "durationMs": 2200,
+        "caption": "Molten aluminium collects at the base of the cell and is tapped off, while oxygen comes off at the anode — and burns the carbon anodes away, so they must be replaced continually. Recycling aluminium takes about a twentieth of the energy of making it this way.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "al1": [
+            74,
+            66
+          ],
+          "al2": [
+            74,
+            124
+          ],
+          "o1": [
+            266,
+            58
+          ],
+          "o2": [
+            288,
+            42
+          ]
+        },
+        "charges": {},
+        "bonds": [
+          {
+            "from": "o1",
+            "to": "o2",
+            "type": "covalent"
+          }
+        ]
+      }
+    ]
   }
 }

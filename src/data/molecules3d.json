@@ -1337,5 +1337,92 @@
       { "from": "n", "to": "h3", "type": "covalent" },
       { "from": "n", "to": "h4", "type": "covalent" }
     ]
+  },
+
+  "ag_metal": {
+    "note": "A single atom, not a molecule - a solid metal is a lattice of many of these. See molecules/ag.svg's caption.",
+    "atoms": [{ "id": "ag", "element": "Ag", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "pb_metal": {
+    "note": "A single atom, not a molecule - a solid metal is a lattice of many of these. See molecules/pb.svg's caption.",
+    "atoms": [{ "id": "pb", "element": "Pb", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "al_metal": {
+    "note": "A single atom, not a molecule - a solid metal is a lattice of many of these. See molecules/al.svg's caption.",
+    "atoms": [{ "id": "al", "element": "Al", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "cuno3_aq": {
+    "note": "Each nitrate group is flat - nitrogen and its three oxygens all lie in one plane.",
+    "atoms": [
+      { "id": "cu", "element": "Cu", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": -2.6, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": -2.6, "y": 1.25, "z": 0 },
+      { "id": "o2", "element": "O", "x": -3.7, "y": -0.65, "z": 0 },
+      { "id": "o3", "element": "O", "x": -1.5, "y": -0.65, "z": 0 },
+      { "id": "n2", "element": "N", "x": 2.6, "y": 0, "z": 0 },
+      { "id": "o4", "element": "O", "x": 2.6, "y": 1.25, "z": 0 },
+      { "id": "o5", "element": "O", "x": 3.7, "y": -0.65, "z": 0 },
+      { "id": "o6", "element": "O", "x": 1.5, "y": -0.65, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n1", "to": "o1", "type": "covalent" },
+      { "from": "n1", "to": "o2", "type": "covalent" },
+      { "from": "n1", "to": "o3", "type": "covalent" },
+      { "from": "n2", "to": "o4", "type": "covalent" },
+      { "from": "n2", "to": "o5", "type": "covalent" },
+      { "from": "n2", "to": "o6", "type": "covalent" },
+      { "from": "cu", "to": "o3", "type": "ionic" },
+      { "from": "cu", "to": "o6", "type": "ionic" }
+    ]
+  },
+
+  "znno3_aq": {
+    "note": "Each nitrate group is flat - nitrogen and its three oxygens all lie in one plane.",
+    "atoms": [
+      { "id": "zn", "element": "Zn", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": -2.6, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": -2.6, "y": 1.25, "z": 0 },
+      { "id": "o2", "element": "O", "x": -3.7, "y": -0.65, "z": 0 },
+      { "id": "o3", "element": "O", "x": -1.5, "y": -0.65, "z": 0 },
+      { "id": "n2", "element": "N", "x": 2.6, "y": 0, "z": 0 },
+      { "id": "o4", "element": "O", "x": 2.6, "y": 1.25, "z": 0 },
+      { "id": "o5", "element": "O", "x": 3.7, "y": -0.65, "z": 0 },
+      { "id": "o6", "element": "O", "x": 1.5, "y": -0.65, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n1", "to": "o1", "type": "covalent" },
+      { "from": "n1", "to": "o2", "type": "covalent" },
+      { "from": "n1", "to": "o3", "type": "covalent" },
+      { "from": "n2", "to": "o4", "type": "covalent" },
+      { "from": "n2", "to": "o5", "type": "covalent" },
+      { "from": "n2", "to": "o6", "type": "covalent" },
+      { "from": "zn", "to": "o3", "type": "ionic" },
+      { "from": "zn", "to": "o6", "type": "ionic" }
+    ]
+  },
+
+  "al2o3_s": {
+    "note": "Two aluminium ions with three oxide ions, drawn simply. The real solid is a rigid lattice of many of these - which is why it does not conduct until it is melted or dissolved in cryolite.",
+    "atoms": [
+      { "id": "al1", "element": "Al", "x": -1.9, "y": 0, "z": 0 },
+      { "id": "al2", "element": "Al", "x": 1.9, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.1, "z": 0 },
+      { "id": "o2", "element": "O", "x": 0, "y": -1.1, "z": 0 },
+      { "id": "o3", "element": "O", "x": 0, "y": 0, "z": 1.5 }
+    ],
+    "bonds": [
+      { "from": "al1", "to": "o1", "type": "ionic" },
+      { "from": "al1", "to": "o2", "type": "ionic" },
+      { "from": "al1", "to": "o3", "type": "ionic" },
+      { "from": "al2", "to": "o1", "type": "ionic" },
+      { "from": "al2", "to": "o2", "type": "ionic" },
+      { "from": "al2", "to": "o3", "type": "ionic" }
+    ]
   }
 }

@@ -1850,5 +1850,272 @@
     "explanation": "Warming the pink hydrate drives its six waters off and it returns to blue — which is why cobalt chloride paper is reusable in a way copper sulfate is not. Put the two hydrate pairs side by side and the general rule appears: a hydrate's colour belongs to the water built into its crystal, and heating takes the water and the colour away together.",
     "levels": ["matric", "fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XI — water of crystallisation; Chemistry 10 — cobalt chloride paper"
+  },
+  {
+    "id": "rxn_displacement_cu_agno3",
+    "reactants": ["agno3_0_1m", "cu_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cuno3_aq", "ag_metal"],
+    "equation": "Cu + 2AgNO₃ → Cu(NO₃)₂ + 2Ag",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#2B7CC1",
+      "precipitate": "glittering silver crystals",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 4.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The silver tree, and one of the most beautiful demonstrations in chemistry: leave a coil of copper wire in silver nitrate and needles of silver grow out of it over an hour while the solution turns blue. Copper's electrode potential is +0.34 V and silver's is +0.80 V, so the cell voltage for this change is 0.80 − 0.34 = +0.46 V. A POSITIVE cell voltage is what says a redox reaction will go on its own, and this is the number the electrochemical series exists to let you look up. The blue appearing is the copper going into solution; the needles are the silver coming out of it.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series and cell potential; CRC Handbook of Chemistry and Physics, 97th ed. (standard electrode potentials)"
+  },
+  {
+    "id": "rxn_displacement_zn_agno3",
+    "reactants": ["agno3_0_1m", "zn_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["znno3_aq", "ag_metal"],
+    "equation": "Zn + 2AgNO₃ → Zn(NO₃)₂ + 2Ag",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": "glittering silver crystals",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 12,
+      "resultPH": 5.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The same silver tree, grown from zinc instead of copper — and it happens faster and gives out more heat. The reason is in the numbers: zinc is at −0.76 V, so the cell voltage here is 0.80 − (−0.76) = +1.56 V, more than three times the copper figure. The further apart two metals sit in the electrochemical series, the larger the voltage and the more vigorous the displacement. Comparing these two reactions side by side is how that relationship stops being a table to memorise and becomes something you can watch.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series and cell potential; CRC Handbook of Chemistry and Physics, 97th ed. (standard electrode potentials)"
+  },
+  {
+    "id": "rxn_none_ag_cuso4",
+    "reactants": ["ag_metal", "cuso4_0_5m"],
+    "noReaction": true,
+    "explanation": "No observable change, and the electrochemical series says why before you try it. Silver is at +0.80 V and copper at +0.34 V, so this way round the cell voltage is 0.34 − 0.80 = −0.46 V. A NEGATIVE cell voltage means the reaction cannot happen on its own — it is the exact reverse of the silver tree, which had +0.46 V and works beautifully. This is the real usefulness of the series: it lets you predict that nothing will happen, and put a number to why, without wasting the reagents finding out.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, predicting feasibility from cell potential"
+  },
+  {
+    "id": "rxn_displacement_zn_pbno3",
+    "reactants": ["pbno3_0_1m", "zn_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["znno3_aq", "pb_metal"],
+    "equation": "Zn + Pb(NO₃)₂ → Zn(NO₃)₂ + Pb",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": "feathery grey lead crystals",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": 5.5
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_heavy_metal",
+      "title": "Lead compounds are poisonous",
+      "warning": "Both the lead(II) nitrate solution and the lead metal grown from it are poisonous, and lead accumulates in the body rather than being cleared out.",
+      "visualEffect": null,
+      "whatToDoInstead": "Handle with gloves, wash your hands afterwards, and put all lead waste in the labelled heavy-metal container rather than down the sink."
+    },
+    "molecularAnimation": null,
+    "explanation": "The lead tree — the same idea as the silver tree, with feathery grey crystals instead of bright needles. Zinc is at −0.76 V and lead at −0.13 V, giving a cell voltage of −0.13 − (−0.76) = +0.63 V: positive, so it goes, but a smaller voltage than the silver version and correspondingly less dramatic. Three trees grown side by side — silver from zinc, silver from copper, lead from zinc — put the whole electrochemical series in front of you as a set of visible speeds.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series; CRC Handbook of Chemistry and Physics, 97th ed. (standard electrode potentials)"
+  },
+  {
+    "id": "rxn_none_cu_pbno3",
+    "reactants": ["cu_metal", "pbno3_0_1m"],
+    "noReaction": true,
+    "explanation": "No observable change. Copper is at +0.34 V and lead at −0.13 V, so the cell voltage is −0.13 − 0.34 = −0.47 V, and a negative value means it will not go. Lead sits ABOVE copper in the series, so lead can displace copper but copper cannot displace lead. This pair is worth doing right after the zinc and lead one: same lead solution, different metal, and the series correctly predicts one works and one does not.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, predicting feasibility from cell potential"
+  },
+  {
+    "id": "rxn_displacement_zn_feso4",
+    "reactants": ["feso4_aq", "zn_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["znso4_aq", "fe_metal"],
+    "equation": "Zn + FeSO₄ → ZnSO₄ + Fe",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": "dark grey iron",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 5.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Zinc at −0.76 V displaces iron at −0.44 V, a cell voltage of +0.32 V. That is the smallest positive value in this batch and the reaction is correspondingly slow and undramatic — the pale green of the iron(II) solution fades and a dark deposit collects on the zinc. It matters far beyond the beaker: because zinc is the more reactive of the two, a zinc coating on iron protects it even when scratched, which is what galvanising is and why it works when paint alone does not.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series and sacrificial protection"
+  },
+  {
+    "id": "rxn_displacement_mg_feso4",
+    "reactants": ["feso4_aq", "mg_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mgso4_aq", "fe_metal"],
+    "equation": "Mg + FeSO₄ → MgSO₄ + Fe",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": "dark grey iron",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 20,
+      "resultPH": 6.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Magnesium sits right down at −2.37 V, so against iron's −0.44 V the cell voltage is +1.93 V — the largest in this batch, and the reaction is correspondingly the most vigorous, with the mixture warming noticeably. Set this against zinc and iron at +0.32 V and the pattern is unmistakable: the bigger the gap in the series, the bigger the voltage and the more energy comes out. Magnesium's position is also why blocks of it are bolted to ships' hulls and buried pipelines, to corrode away in place of the iron.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series and sacrificial protection"
+  },
+  {
+    "id": "rxn_electrolysis_agno3",
+    "reactants": ["agno3_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["ag_metal", "o2_g", "hno3_aq"],
+    "equation": "4AgNO₃ + 2H₂O → 4Ag + O₂ + 4HNO₃",
+    "type": "electrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": "bright silver plated on the cathode",
+      "gas": "oxygen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 2.0
+    },
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "Ag⁺",
+        "attractsName": "silver ions",
+        "halfEquation": "Ag⁺ + e⁻ → Ag",
+        "product": "ag_metal",
+        "observation": "A bright, even layer of silver plates onto whatever object is made the cathode."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "OH⁻",
+        "attractsName": "hydroxide ions from the water",
+        "halfEquation": "4OH⁻ → O₂ + 2H₂O + 4e⁻",
+        "product": "o2_g",
+        "observation": "Oxygen bubbles off, because the nitrate ion is not discharged."
+      }
+    },
+    "hazard": null,
+    "molecularAnimation": "anim_electrolysis_agno3",
+    "explanation": "Silver plating, and the reason electroplating is done at all: a cheap object made the cathode comes out covered in an even, hard-wearing layer of an expensive metal. Only one electron is needed per silver ion, unlike two for copper, so the deposit builds quickly. At the anode the nitrate ion is too stable to give up electrons, so hydroxide ions from the water do it instead and oxygen comes off — which is why the solution turns increasingly acidic as the plating goes on.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electroplating"
+  },
+  {
+    "id": "rxn_electrolysis_cucl2",
+    "reactants": ["cucl2_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["cu_metal", "cl2_g"],
+    "equation": "CuCl₂ → Cu + Cl₂",
+    "type": "electrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": "reddish brown copper on the cathode",
+      "gas": "chlorine",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 4.0
+    },
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "Cu²⁺",
+        "attractsName": "copper(II) ions",
+        "halfEquation": "Cu²⁺ + 2e⁻ → Cu",
+        "product": "cu_metal",
+        "observation": "Reddish-brown copper coats the electrode and the blue-green colour fades."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "Cl⁻",
+        "attractsName": "chloride ions",
+        "halfEquation": "2Cl⁻ → Cl₂ + 2e⁻",
+        "product": "cl2_g",
+        "observation": "Pale green chlorine bubbles off and bleaches damp litmus held near it."
+      }
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_gas",
+      "title": "Poisonous chlorine gas is released",
+      "warning": "Chlorine given off at the anode is poisonous to breathe and irritates the eyes and lungs.",
+      "visualEffect": null,
+      "whatToDoInstead": "Electrolyse only small volumes in a fume cupboard or a very well ventilated room, and never lean over the cell."
+    },
+    "molecularAnimation": "anim_electrolysis_cucl2",
+    "explanation": "The tidiest electrolysis of a solution there is, and the one to learn the rules from: BOTH products come from the dissolved salt itself rather than from the water. Copper is below hydrogen in the series so the copper ion is discharged in preference to the water at the cathode, and the chloride is discharged in preference to the water at the anode. Compare it with brine, where the sodium is too reactive to be discharged and hydrogen appears instead — same setup, different answer, and the electrochemical series is what tells the two apart.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrolysis of solutions and preferential discharge"
+  },
+  {
+    "id": "rxn_electrolysis_al2o3",
+    "reactants": ["al2o3_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 950, "catalyst": null, "requiresElectricity": true },
+    "products": ["al_metal", "o2_g"],
+    "equation": "2Al₂O₃ → 4Al + 3O₂",
+    "type": "electrolysis",
+    "effects": {
+      "colorToHex": "#CFD3D6",
+      "precipitate": "molten aluminium collecting at the base",
+      "gas": "oxygen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "Al³⁺",
+        "attractsName": "aluminium ions",
+        "halfEquation": "Al³⁺ + 3e⁻ → Al",
+        "product": "al_metal",
+        "observation": "Molten aluminium collects on the carbon lining at the base of the cell and is tapped off."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "O²⁻",
+        "attractsName": "oxide ions",
+        "halfEquation": "2O²⁻ → O₂ + 4e⁻",
+        "product": "o2_g",
+        "observation": "Oxygen burns the carbon anodes away, so they have to be replaced continually."
+      }
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "molten_metal",
+      "title": "A cell of molten salt at nearly 1000 °C",
+      "warning": "This runs as a bath of molten material at about 950 °C carrying an enormous current, with molten metal collecting underneath. Any water reaching molten metal flashes to steam instantly and throws it out of the cell.",
+      "visualEffect": null,
+      "whatToDoInstead": "This is an industrial smelter, shown here as a simulation. It is not something to attempt in a school laboratory — study the cell diagram and the half equations instead."
+    },
+    "molecularAnimation": "anim_electrolysis_al2o3",
+    "explanation": "How aluminium is actually made. It is far too reactive to be extracted by heating its ore with carbon the way iron is, so the only route is electrolysis — and that is why aluminium was once more precious than gold, and stayed a curiosity until electricity became cheap. Aluminium oxide melts above 2000 °C, which would be impossible to run; dissolving it in molten cryolite brings that down to about 950 °C. Even so the process consumes so much electricity that smelters are built next to power stations, and recycling aluminium takes about a twentieth of the energy of making it new.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, extraction of aluminium by electrolysis"
   }
 ]
