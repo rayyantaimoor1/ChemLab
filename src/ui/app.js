@@ -655,7 +655,12 @@ mountMolecular3DView({
  * rather than pretending.
  * ------------------------------------------------------------------ */
 
-const BURNER_TARGET_C = [ROOM_TEMPERATURE_C, 50, 80, 250];
+// A dry tube in a roaring blue flame genuinely reaches several hundred
+// degrees - glass does not soften until about 700 °C. 250 was too timid and
+// put magnesium carbonate's decomposition at 350 °C out of reach, which is
+// an ordinary school experiment. Limestone at 900 °C stays unreachable, and
+// should: that is a lime kiln, not a Bunsen burner.
+const BURNER_TARGET_C = [ROOM_TEMPERATURE_C, 50, 80, 500];
 const BURNER_RATE_C = [0, 2, 4, 8];
 const COOLING_RATE_C = 3;
 const BOILING_POINT_C = 100;

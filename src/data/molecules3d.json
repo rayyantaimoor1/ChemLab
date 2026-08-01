@@ -1424,5 +1424,103 @@
       { "from": "al2", "to": "o2", "type": "ionic" },
       { "from": "al2", "to": "o3", "type": "ionic" }
     ]
+  },
+
+  "li_metal": {
+    "note": "A single atom, not a molecule - a solid metal is a lattice of many of these. Lithium is the least dense solid element there is.",
+    "atoms": [{ "id": "li", "element": "Li", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "k_metal": {
+    "note": "A single atom, not a molecule - a solid metal is a lattice of many of these. See molecules/k.svg's caption.",
+    "atoms": [{ "id": "k", "element": "K", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "lioh_aq": {
+    "atoms": [
+      { "id": "li", "element": "Li", "x": -1.6, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0.6, "y": 0, "z": 0 },
+      { "id": "h", "element": "H", "x": 1.4, "y": 0.7, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o", "to": "h", "type": "covalent" },
+      { "from": "li", "to": "o", "type": "ionic" }
+    ]
+  },
+
+  "koh_aq": {
+    "atoms": [
+      { "id": "k", "element": "K", "x": -2.0, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0.6, "y": 0, "z": 0 },
+      { "id": "h", "element": "H", "x": 1.4, "y": 0.7, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o", "to": "h", "type": "covalent" },
+      { "from": "k", "to": "o", "type": "ionic" }
+    ]
+  },
+
+  "li2o_s": {
+    "note": "Two lithium ions to one oxide ion. Lithium is the only alkali metal that burns in air to this simple oxide.",
+    "atoms": [
+      { "id": "li1", "element": "Li", "x": -1.7, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0, "y": 0, "z": 0 },
+      { "id": "li2", "element": "Li", "x": 1.7, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "li1", "to": "o", "type": "ionic" },
+      { "from": "li2", "to": "o", "type": "ionic" }
+    ]
+  },
+
+  "na2o2_s": {
+    "note": "The two oxygens are still bonded to EACH OTHER - that surviving oxygen-oxygen bond is what makes this a peroxide rather than an oxide, and is why sodium parts company with lithium here.",
+    "atoms": [
+      { "id": "na1", "element": "Na", "x": -2.6, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": -0.74, "y": 0, "z": 0 },
+      { "id": "o2", "element": "O", "x": 0.74, "y": 0, "z": 0 },
+      { "id": "na2", "element": "Na", "x": 2.6, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o1", "to": "o2", "type": "covalent" },
+      { "from": "na1", "to": "o1", "type": "ionic" },
+      { "from": "na2", "to": "o2", "type": "ionic" }
+    ]
+  },
+
+  "mgco3_s": {
+    "note": "The carbonate group is flat. The real solid is a lattice of many magnesium and carbonate ions.",
+    "atoms": [
+      { "id": "mg", "element": "Mg", "x": -2.4, "y": 0, "z": 0 },
+      { "id": "c", "element": "C", "x": 0.2, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.2, "y": 1.2, "z": 0 },
+      { "id": "o2", "element": "O", "x": -0.85, "y": -0.6, "z": 0 },
+      { "id": "o3", "element": "O", "x": 1.25, "y": -0.6, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c", "to": "o1", "type": "covalent" },
+      { "from": "c", "to": "o2", "type": "covalent" },
+      { "from": "c", "to": "o3", "type": "covalent" },
+      { "from": "mg", "to": "o2", "type": "ionic" }
+    ]
+  },
+
+  "baco3_s": {
+    "note": "The same carbonate group as magnesium carbonate, with a much larger cation beside it - which is exactly why this one needs far more heat to break apart.",
+    "atoms": [
+      { "id": "ba", "element": "Ba", "x": -2.8, "y": 0, "z": 0 },
+      { "id": "c", "element": "C", "x": 0.2, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.2, "y": 1.2, "z": 0 },
+      { "id": "o2", "element": "O", "x": -0.85, "y": -0.6, "z": 0 },
+      { "id": "o3", "element": "O", "x": 1.25, "y": -0.6, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c", "to": "o1", "type": "covalent" },
+      { "from": "c", "to": "o2", "type": "covalent" },
+      { "from": "c", "to": "o3", "type": "covalent" },
+      { "from": "ba", "to": "o2", "type": "ionic" }
+    ]
   }
 }

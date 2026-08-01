@@ -2117,5 +2117,253 @@
     "explanation": "How aluminium is actually made. It is far too reactive to be extracted by heating its ore with carbon the way iron is, so the only route is electrolysis — and that is why aluminium was once more precious than gold, and stayed a curiosity until electricity became cheap. Aluminium oxide melts above 2000 °C, which would be impossible to run; dissolving it in molten cryolite brings that down to about 950 °C. Even so the process consumes so much electricity that smelters are built next to power stations, and recycling aluminium takes about a twentieth of the energy of making it new.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, extraction of aluminium by electrolysis"
+  },
+  {
+    "id": "rxn_group1_li_water",
+    "reactants": ["li_metal", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["lioh_aq", "h2_g"],
+    "equation": "2Li + 2H₂O → 2LiOH + H₂",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 10,
+      "resultPH": 13.5
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Flammable hydrogen, and a strongly alkaline solution",
+      "warning": "Lithium is the gentlest of the alkali metals with water, but it still gives off hydrogen steadily and leaves a solution alkaline enough to attack skin and eyes.",
+      "visualEffect": null,
+      "whatToDoInstead": "Use a small piece behind a safety screen, keep flames away, and wear eye protection. Never touch alkali metals with bare or damp hands."
+    },
+    "molecularAnimation": null,
+    "explanation": "The first of three to be done side by side, because the comparison is the whole lesson. Lithium floats — it is the least dense solid element known, at about half the density of water — and fizzes steadily without melting. It stays a recognisable piece of metal throughout. Keep this picture in mind for what sodium and potassium do next.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements, reaction with water"
+  },
+  {
+    "id": "rxn_group1_na_water",
+    "reactants": ["na_metal", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["naoh_aq", "h2_g"],
+    "equation": "2Na + 2H₂O → 2NaOH + H₂",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 25,
+      "resultPH": 14.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "violent_reaction",
+      "title": "Sodium reacts violently with water",
+      "warning": "Sodium melts from its own heat, skates across the surface, and can catch fire or spit molten metal. The sodium hydroxide left behind is strongly caustic. A piece larger than a grain of rice is genuinely dangerous.",
+      "visualEffect": null,
+      "whatToDoInstead": "This is a teacher demonstration behind a safety screen, using a piece no bigger than a grain of rice on a large trough of water. Never put alkali metals in a sink, and never use more than the smallest visible piece."
+    },
+    "molecularAnimation": null,
+    "explanation": "The middle of the three, and the change from lithium is unmistakable. Enough heat comes out that the sodium MELTS into a silver ball and skates about the surface, fizzing hard. The reason is that sodium's outer electron sits further from the nucleus than lithium's and is more loosely held, so it is given up more easily. That is why reactivity increases going DOWN Group I — the opposite direction to Group VII, and one of the most commonly muddled points in the syllabus.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements, reaction with water and the trend in reactivity"
+  },
+  {
+    "id": "rxn_group1_k_water",
+    "reactants": ["k_metal", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["koh_aq", "h2_g"],
+    "equation": "2K + 2H₂O → 2KOH + H₂",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen",
+      "bubbles": true,
+      "smoke": true,
+      "tempDeltaC": 40,
+      "resultPH": 14.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "violent_reaction",
+      "title": "Potassium reacts explosively with water",
+      "warning": "Potassium reacts fast enough that the hydrogen it produces ignites on its own, burning with a lilac flame, and the piece can spit and explode. It is more violent than sodium and gives no time to react once started.",
+      "visualEffect": null,
+      "whatToDoInstead": "A teacher demonstration only, behind a safety screen, with the smallest possible piece on a large trough. Never attempt this as a student experiment."
+    },
+    "molecularAnimation": null,
+    "explanation": "The third of the three, and it completes the trend beyond doubt. Potassium reacts so fast that the hydrogen catches fire as it is produced, burning with the lilac flame that identifies potassium — so this reaction gives you the flame test for free. Lithium fizzes, sodium melts and darts, potassium ignites: three metals in one group, one clear direction, and the explanation is simply how far the outer electron sits from the nucleus.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements, reaction with water and the trend in reactivity"
+  },
+  {
+    "id": "rxn_group1_li_o2",
+    "reactants": ["li_metal", "o2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["li2o_s"],
+    "equation": "4Li + O₂ → 2Li₂O",
+    "type": "oxidation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white lithium oxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 30,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Lithium burns in air with a crimson flame to give the plain oxide, Li₂O — and it is the ONLY alkali metal that does. Everything about Group I encourages the idea that its members behave alike, so it is worth meeting the place where they do not: burn sodium and you get the peroxide instead, burn potassium and you get the superoxide. Lithium is the odd one out because its ion is small enough to hold a simple oxide ion stably.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements, reactions with oxygen"
+  },
+  {
+    "id": "rxn_group1_na_o2",
+    "reactants": ["na_metal", "o2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["na2o2_s"],
+    "equation": "2Na + O₂ → Na₂O₂",
+    "type": "oxidation",
+    "effects": {
+      "colorToHex": "#F2E8B0",
+      "precipitate": "pale yellow sodium peroxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 30,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Sodium burns in plenty of air with its familiar golden-yellow flame, but what it leaves is NOT the simple oxide — it is the pale yellow peroxide, with an oxygen–oxygen bond still intact. Put this next to lithium and the neat picture of a group behaving as one falls apart in a single experiment. The bigger sodium ion cannot stabilise a lone oxide ion as well, so the peroxide wins. It has a real use: sodium peroxide takes in exhaled carbon dioxide and gives oxygen back, which is why it is carried in submarines and breathing sets.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements, reactions with oxygen"
+  },
+  {
+    "id": "rxn_group2_mgco3_decomposition",
+    "reactants": ["mgco3_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 350, "catalyst": null },
+    "products": ["mgo_s", "co2_g"],
+    "equation": "MgCO₃ → MgO + CO₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white magnesium oxide",
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Magnesium carbonate breaks down at about 350 °C — hot, but well within a strongly heated test tube, so this is an experiment a class can actually do. Collect the gas and turn limewater milky to prove it is carbon dioxide. Now compare it with calcium carbonate, which needs a kiln at 900 °C, and barium carbonate, which needs over 1300 °C: thermal stability of the carbonates INCREASES down Group II, because the larger cations distort the carbonate ion less and so pull it apart less easily.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA, thermal stability of carbonates"
+  },
+  {
+    "id": "rxn_group2_caco3_decomposition",
+    "reactants": ["caco3_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 900, "catalyst": null },
+    "products": ["cao_s", "co2_g"],
+    "equation": "CaCO₃ → CaO + CO₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white quicklime",
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Limestone into quicklime — one of the oldest industrial processes there is, and still one of the largest. It needs about 900 °C, which is why it is done in a kiln and why a Bunsen burner will not manage it however long you leave it: the app will keep telling you the temperature is not high enough, and that is the honest answer. Set against magnesium carbonate at 350 °C, the pair make the Group II trend concrete. The quicklime produced can then be slaked with water, which is where the lime cycle continues.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA, thermal stability of carbonates; Chemistry XI — Industrial Chemistry, lime"
+  },
+  {
+    "id": "rxn_group2_mgoh2_decomposition",
+    "reactants": ["mgoh2_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 350, "catalyst": null },
+    "products": ["mgo_s", "water"],
+    "equation": "Mg(OH)₂ → MgO + H₂O",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white magnesium oxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The Group II hydroxides follow the same rule as the carbonates: magnesium hydroxide gives up its water at about 350 °C, while calcium hydroxide holds on until well over 500 °C and barium hydroxide further still. Stability increases down the group in both families, for the same reason — the larger the cation, the less it distorts and destabilises the anion sitting next to it. The water driven off condenses on the cool part of the tube.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA, thermal stability of hydroxides"
+  },
+  {
+    "id": "rxn_precipitation_mgcl2_na2co3",
+    "reactants": ["mgcl2_aq", "na2co3_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mgco3_s", "nacl_aq"],
+    "equation": "MgCl₂ + Na₂CO₃ → MgCO₃ + 2NaCl",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white magnesium carbonate",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 9.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Every Group II carbonate is insoluble, so adding a soluble carbonate to any Group II salt drops the carbonate out as a white solid. This is how the magnesium carbonate for the decomposition experiment is prepared, and it is also the reaction that removes hardness from water — the same chemistry doing a laboratory job here and a domestic one there.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA, solubility of the carbonates"
+  },
+  {
+    "id": "rxn_precipitation_bacl2_na2co3",
+    "reactants": ["bacl2_0_1m", "na2co3_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["baco3_s", "nacl_aq"],
+    "equation": "BaCl₂ + Na₂CO₃ → BaCO₃ + 2NaCl",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "dense white barium carbonate",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 9.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_heavy_metal",
+      "title": "Soluble barium salts are poisonous",
+      "warning": "The barium chloride used here is poisonous if swallowed. The barium carbonate formed is far less dangerous because it is almost insoluble, but it does dissolve in stomach acid, so it is not as harmless as barium sulfate.",
+      "visualEffect": null,
+      "whatToDoInstead": "Handle barium solutions with care, wash your hands afterwards, and put the waste in the labelled heavy-metal container."
+    },
+    "molecularAnimation": null,
+    "explanation": "The same reaction one row further down Group II, and worth doing alongside the magnesium one: both give a white precipitate, and the barium one is noticeably denser and settles faster. It is also a useful contrast with barium sulfate — that one is safe enough to swallow for an X-ray because nothing dissolves it, while barium carbonate dissolves in stomach acid and is genuinely poisonous. Insoluble in water does not mean insoluble in everything.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA, solubility of the carbonates"
   }
 ]
