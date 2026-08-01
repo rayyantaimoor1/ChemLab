@@ -456,6 +456,11 @@ const dispatch = {
   // Not one of UI.md section 1's original names - that list predates
   // electrolysis being modelled - but it behaves exactly like setHeat.
   setPower: wrap(actions.setPower, 'setPower'),
+  // Called by the burner tick below, not by a control the student clicks.
+  // Deliberately not in GUIDED_ACTION_NAMES: a step should never be
+  // satisfied by the burner ticking a degree, only by something the
+  // student actually did.
+  warmTo: wrap(actions.warmTo),
   stir: wrap(actions.stir, 'stir'),
   dipTool: wrap(actions.dipTool, 'dipTool'),
   recordObservation: wrap(notebook.recordObservation, 'recordObservation'),
@@ -621,6 +626,85 @@ mountMolecular3DView({
   dispatch,
   subscribe,
   getChemical: engine.getChemical,
+});
+
+/* ------------------------------------------------------------------ *
+ * The burner tick.
+ *
+ * container.js records which position the burner knob is at but never
+ * raises the temperature itself, and says so: turning "the burner is on"
+ * into an actual temperature rise over time belongs outside it, the way it
+ * does at a real bench. This is that clock.
+ *
+ * Without it every minTempC rule in reactions.json was unreachable - a
+ * student could turn the burner to maximum and still be told the mixture
+ * "needs to reach about 100 °C". Boiling temporary hardness out of hard
+ * water and reacting magnesium with steam are both ordinary school
+ * experiments that simply could not be performed.
+ *
+ * WHY THE NUMBERS ARE WHAT THEY ARE
+ * A liquid on a burner climbs to its boiling point and then stays there,
+ * however hard you heat it - the extra energy boils it away instead of
+ * making it hotter. So anything holding liquid stops at 100 °C no matter
+ * which position the knob is at. A dry tube has no such limit and a
+ * roaring flame takes it several hundred degrees higher.
+ *
+ * That is also why an 801 °C melt and a 1500 °C lightning strike stay out
+ * of reach, and should: those are a Down's cell and a thunderstorm, not a
+ * Bunsen burner. The app already explains what is missing in those cases
+ * rather than pretending.
+ * ------------------------------------------------------------------ */
+
+const BURNER_TARGET_C = [ROOM_TEMPERATURE_C, 50, 80, 250];
+const BURNER_RATE_C = [0, 2, 4, 8];
+const COOLING_RATE_C = 3;
+const BOILING_POINT_C = 100;
+const BURNER_TICK_MS = 400;
+
+let burnerTimer = null;
+
+function burnerTick() {
+  let stillBusy = false;
+
+  for (const container of containers) {
+    const level = container.getHeatLevel();
+    const now = container.getTemperatureC();
+    const holdsLiquid = container.getVolumeMl() > 0;
+
+    // Off: the glass gives its heat back to the room.
+    const target = level === 0
+      ? ROOM_TEMPERATURE_C
+      : (holdsLiquid ? Math.min(BURNER_TARGET_C[level], BOILING_POINT_C) : BURNER_TARGET_C[level]);
+
+    const rate = level === 0 ? COOLING_RATE_C : BURNER_RATE_C[level];
+    if (Math.abs(target - now) < 0.5) continue;
+
+    const next = target > now ? Math.min(target, now + rate) : Math.max(target, now - rate);
+    dispatch.warmTo(container.id, Math.round(next * 10) / 10);
+    stillBusy = true;
+  }
+
+  // Nothing left to warm or cool: stop the clock rather than leave a timer
+  // running behind an idle bench (CLAUDE.md section 9's performance budget).
+  if (!stillBusy) {
+    clearInterval(burnerTimer);
+    burnerTimer = null;
+  }
+}
+
+function ensureBurnerTicking() {
+  if (burnerTimer !== null) return;
+  burnerTimer = setInterval(burnerTick, BURNER_TICK_MS);
+}
+
+// Any state change might have turned a burner on, or emptied a hot vessel
+// that now needs to cool, so the clock is (re)started after every dispatch.
+subscribe(() => {
+  const needsClock = containers.some(
+    (container) => container.getHeatLevel() > 0
+      || Math.abs(container.getTemperatureC() - ROOM_TEMPERATURE_C) >= 0.5
+  );
+  if (needsClock) ensureBurnerTicking();
 });
 
 document.getElementById('reset-bench').addEventListener('click', () => dispatch.resetBench());

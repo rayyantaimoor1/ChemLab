@@ -459,6 +459,84 @@ test('a real bench: HCl added to a flask already holding NaOH neutralises', asyn
   assert.equal(flask.getPH(), 7.0);
 });
 
+/* ------------------------------------------------------------------ *
+ * warmTo - what makes the burner actually do something.
+ *
+ * setHeat only records the knob position. Before warmTo existed, every
+ * rule gated on minTempC was unreachable: a student could turn the burner
+ * to maximum and still be told the mixture "needs to reach about 100 °C".
+ * ------------------------------------------------------------------ */
+
+test('warmTo puts the vessel at the temperature it is given', () => {
+  const { register, actions } = makeWorld();
+  const vessel = register(beaker('b1'));
+
+  actions.addChemical('b1', 'water', 50);
+  actions.warmTo('b1', 72);
+
+  assert.equal(vessel.getTemperatureC(), 72);
+});
+
+test('warmTo unlocks a rule that was waiting on a temperature', () => {
+  const boilsAt100 = {
+    id: 'rxn_test_boils',
+    reactants: ['water'],
+    conditions: { requiresHeat: true, minTempC: 100, catalyst: null },
+    products: ['hot_product'],
+    equation: 'Water → Product',
+    effects: {
+      colorToHex: '#EEF3F5',
+      precipitate: null,
+      gas: 'steam',
+      bubbles: true,
+      smoke: false,
+      tempDeltaC: 0,
+      resultPH: 7.0,
+    },
+    explanation: 'Only once it actually boils.',
+    levels: ['matric'],
+    source: 'fixture',
+  };
+
+  const engine = createEngine({ chemicals, reactions: [boilsAt100] });
+  const containers = new Map();
+  const actions = createActions({ getContainer: (id) => containers.get(id), engine });
+  containers.set('b1', beaker('b1'));
+
+  actions.addChemical('b1', 'water', 50);
+  actions.setHeat('b1', 3);
+
+  // Turning the knob to maximum is not enough on its own - that was the bug.
+  assert.match(actions.stir('b1').engineResult.message, /needs to reach about 100 °C/);
+
+  // Part-way up it still refuses.
+  assert.equal(actions.warmTo('b1', 80).engineResult.outcome, OUTCOME.NO_REACTION);
+
+  // At the temperature the rule actually asks for, it runs.
+  assert.equal(actions.warmTo('b1', 100).engineResult.outcome, OUTCOME.REACTION);
+});
+
+test('warmTo only writes a notebook line when something actually happened', () => {
+  const { register, actions, notebookEntries } = makeWorld();
+  register(beaker('b1'));
+
+  actions.addChemical('b1', 'water', 50);
+  const before = notebookEntries.length;
+
+  // A burner ticking a couple of degrees at a time must not bury the log.
+  for (let temp = 30; temp <= 90; temp += 5) actions.warmTo('b1', temp);
+
+  assert.equal(notebookEntries.length, before, 'silent warming should add no entries');
+  assert.equal(actions.warmTo('b1', 95).notebookText, null);
+});
+
+test('warmTo refuses anything that is not a temperature', () => {
+  const { register, actions } = makeWorld();
+  register(beaker('b1'));
+
+  assert.throws(() => actions.warmTo('b1', 'hot'), /needs a temperature/);
+});
+
 test('a real bench: an unknown combination is reported honestly, not guessed', async () => {
   const { engine } = await import('../src/core/engine.js');
   const containers = new Map();

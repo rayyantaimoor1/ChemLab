@@ -33,7 +33,7 @@
  * not be squeezed into the existing conditions.
  */
 
-import { engine as defaultEngine } from './engine.js';
+import { engine as defaultEngine, OUTCOME } from './engine.js';
 
 /**
  * Builds the action set for one bench.
@@ -217,6 +217,48 @@ export function createActions({
   }
 
   /* ------------------------------------------------------------------ *
+   * warmTo(containerId, tempC)
+   *
+   * Puts the vessel at a temperature and re-checks it. This is what makes
+   * the burner actually DO something: setHeat only records the knob
+   * position, and container.js says in as many words that turning "the
+   * burner is on" into a temperature rise over time belongs outside it.
+   * Whoever owns the clock (app.js's burner tick) calls this.
+   *
+   * The one place in this file that does NOT always write a notebook line.
+   * A burner ticking a couple of degrees at a time would bury the log in
+   * hundreds of "the beaker is now 34 °C" entries and drown the entries
+   * that matter. So the temperature is recorded silently and only a real
+   * reaction gets written down - which is the moment worth recording
+   * anyway, and is still automatic, as CLAUDE.md section 7 requires.
+   * ------------------------------------------------------------------ */
+
+  function warmTo(containerId, tempC) {
+    const container = findContainer(containerId, 'warmTo');
+    if (typeof tempC !== 'number' || Number.isNaN(tempC)) {
+      throw new TypeError(`warmTo() needs a temperature in °C, got ${tempC}`);
+    }
+
+    container.setTemperatureC(tempC);
+
+    // Reaching a temperature can unlock a rule gated on it - that is the
+    // whole point of raising it, so the contents have to be rechecked.
+    const engineResult = checkForReaction(container);
+
+    const reacted = engineResult.outcome === OUTCOME.REACTION;
+    const sentence = `${container.name} reached ${Math.round(tempC)} °C. ${engineResult.message}`;
+
+    return {
+      action: 'warmTo',
+      containerId,
+      tempC,
+      engineResult,
+      notebookText: reacted ? sentence : null,
+      notebookEntry: reacted ? emitNotebookEntry('warmTo', containerId, sentence) : null,
+    };
+  }
+
+  /* ------------------------------------------------------------------ *
    * setPower(containerId, on)
    *
    * Dips a pair of electrodes into the vessel and switches the supply on
@@ -304,7 +346,7 @@ export function createActions({
     };
   }
 
-  return { addChemical, pour, setHeat, setPower, stir, dipTool };
+  return { addChemical, pour, setHeat, setPower, warmTo, stir, dipTool };
 }
 
 export default createActions;
