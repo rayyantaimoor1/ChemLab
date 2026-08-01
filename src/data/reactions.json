@@ -2620,5 +2620,246 @@
     "explanation": "The companion warning to bleach with acid, and the other reason two cleaners must never be combined. Ammonia-based glass cleaner poured into a toilet already treated with bleach gives exactly this. The entry is here to teach the danger and the correct response — what to avoid and what to do if it happens — and deliberately not the quantities or method that would help anyone produce it.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reactions of hypochlorites; PubChem, National Library of Medicine — Chloramine"
+  },
+  {
+    "id": "rxn_oxidation_fe2_to_fe3",
+    "reactants": ["cl2_g", "fecl2_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["fecl3_0_1m"],
+    "equation": "2FeCl₂ + Cl₂ → 2FeCl₃",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#C89A5B",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": 2.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Variable oxidation state, seen as a colour change. Iron gives up one more electron and goes from +2 to +3, and the pale green of the iron(II) solution turns yellow-brown. This is what marks the transition metals out: a main-group metal like sodium or magnesium has one oxidation state and that is that, while iron has two that are both easy to reach and easy to move between. The half-filled d subshell of Fe³⁺ is part of why the higher state is so accessible here.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, variable oxidation states"
+  },
+  {
+    "id": "rxn_test_fe3_thiocyanate",
+    "reactants": ["fecl3_0_1m", "kscn_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["fescn_aq", "kcl_aq"],
+    "equation": "Fe³⁺ + SCN⁻ ⇌ [Fe(SCN)]²⁺",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#8E1B1B",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 2.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The most sensitive test for iron(III) there is — a trace turns the whole solution blood red, so it will find rust dissolved in water at concentrations nothing else would show. It is also the standard equilibrium demonstration: the double arrow is real, and adding more iron(III) OR more thiocyanate deepens the colour, while removing either fades it. That is Le Chatelier's principle in a form you can photograph, which is why this exact pair appears in every equilibrium chapter.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, complex ions; Chemistry XI — Chemical Equilibrium, Le Chatelier's principle"
+  },
+  {
+    "id": "rxn_redox_fe3_iodide",
+    "reactants": ["fecl3_0_1m", "ki_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["fecl2_aq", "i2_aq", "kcl_aq"],
+    "equation": "2FeCl₃ + 2KI → 2FeCl₂ + I₂ + 2KCl",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#7A4A1E",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 2.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The same iron, travelling the other way. Here iron(III) acts as the OXIDISING agent: it takes an electron from each iodide ion and drops back to iron(II), while brown iodine appears. Put this next to the chlorine reaction and the pair make the point — a transition metal ion can be the oxidant in one flask and the thing being oxidised in the next, because both of its states are stable and close in energy. Chlorine is a strong enough oxidant to push iron up; iodide is a strong enough reductant to pull it back down.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, variable oxidation states and redox behaviour"
+  },
+  {
+    "id": "rxn_complex_cu_ammonia",
+    "reactants": ["cuso4_0_5m", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cu_nh3_aq"],
+    "equation": "CuSO₄ + 4NH₃ → [Cu(NH₃)₄]SO₄",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#1B3F94",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 11.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Add ammonia a little at a time and two things happen in order: first a pale blue precipitate of copper(II) hydroxide, then — as more ammonia goes in — that precipitate dissolves again into an intense royal blue solution. The ammonia molecules have displaced the water around the copper ion. Same metal, same +2 charge, different ligands, and a completely different colour, which is the clearest evidence that in a complex the colour belongs to the whole ion and not to the metal by itself. It is also a confirmatory test for copper(II).",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, complex formation and ligand exchange"
+  },
+  {
+    "id": "rxn_decomposition_cuoh2",
+    "reactants": ["cuoh2_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 100, "catalyst": null },
+    "products": ["cuo_s", "water"],
+    "equation": "Cu(OH)₂ → CuO + H₂O",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#1F1D1C",
+      "precipitate": "black copper(II) oxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Warm the pale blue precipitate and it turns black as it loses water and becomes copper(II) oxide. It is a satisfying loop to close: that black oxide is the same substance that dissolves in acid to give a blue-green solution, and the same one hydrogen reduces back to bright copper metal. Three appearances of copper — blue hydroxide, black oxide, red-brown metal — all within a few experiments of each other.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, copper chemistry"
+  },
+  {
+    "id": "rxn_chromate_dichromate",
+    "reactants": ["k2cr2o7_aq", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["na2cro4_aq", "water"],
+    "equation": "Cr₂O₇²⁻ + 2OH⁻ ⇌ 2CrO₄²⁻ + H₂O",
+    "type": "equilibrium",
+    "effects": {
+      "colorToHex": "#F2C511",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 12.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic",
+      "title": "Chromium(VI) compounds are toxic and carcinogenic",
+      "warning": "Both the orange dichromate and the yellow chromate contain chromium in the +6 state, which is poisonous and causes cancer. They also stain skin and clothing.",
+      "visualEffect": null,
+      "whatToDoInstead": "Handle with gloves, avoid raising any dust from the solid, and put all chromium waste in the labelled heavy-metal container rather than down the sink."
+    },
+    "molecularAnimation": null,
+    "explanation": "Orange to yellow, and the important thing is what has NOT happened: this is not a redox reaction. The chromium is in the +6 state before and after — nothing is oxidised or reduced. All that changes is how the chromium and oxygen are arranged, and the colour changes with it. Add acid and the orange comes straight back, which is why the double arrow is there. It is the cleanest available proof that colour in a transition metal compound depends on the whole ion, not on the oxidation state alone.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, the chromate–dichromate equilibrium"
+  },
+  {
+    "id": "rxn_dichromate_oxidises_iron2",
+    "reactants": ["feso4_aq", "h2so4_1m", "k2cr2o7_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cr2so43_aq", "fe2so43_aq", "water"],
+    "equation": "Cr₂O₇²⁻ + 6Fe²⁺ + 14H⁺ → 2Cr³⁺ + 6Fe³⁺ + 7H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#2E7D5B",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 6,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic",
+      "title": "Chromium(VI) compounds are toxic and carcinogenic",
+      "warning": "Potassium dichromate contains chromium in the +6 state, which is poisonous and carcinogenic. The mixture is also strongly acidic.",
+      "visualEffect": null,
+      "whatToDoInstead": "Wear gloves and eye protection, and collect all chromium waste in the labelled heavy-metal container. The green chromium(III) product is much less hazardous than the orange starting material, but it still does not belong down the sink."
+    },
+    "molecularAnimation": null,
+    "explanation": "Orange to green, and this time it IS a redox reaction — the contrast with the alkali version is the point of doing both. Dichromate takes three electrons per chromium atom, dropping from +6 to +3, while each iron(II) gives one up and becomes iron(III). Acid is essential: the equation needs fourteen hydrogen ions, which is why nothing happens without it. This colour change is the chemistry the original breathalyser ran on — alcohol in the breath reduced orange dichromate on the tube to green, and how far the green spread gave the reading.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, dichromate as an oxidising agent"
+  },
+  {
+    "id": "rxn_permanganate_oxidises_iron2",
+    "reactants": ["feso4_aq", "h2so4_1m", "kmno4_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mnso4_aq", "fe2so43_aq", "water"],
+    "equation": "MnO₄⁻ + 5Fe²⁺ + 8H⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#F5E4E8",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The purple simply vanishes. Manganese falls from +7 all the way to +2 — five oxidation states in a single step — and manganese(II) is so faintly pink that it reads as colourless. That disappearing act makes permanganate SELF-INDICATING: in a titration you add it until one drop leaves a permanent pale pink, and no separate indicator is needed at all. The acid must be sulfuric; hydrochloric would be oxidised to chlorine instead and ruin the result, which is a favourite examination question.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, permanganate as an oxidising agent and redox titrations"
+  },
+  {
+    "id": "rxn_precipitation_cr3_naoh",
+    "reactants": ["cr2so43_aq", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["croh3_s", "na2so4_aq"],
+    "equation": "Cr₂(SO₄)₃ + 6NaOH → 2Cr(OH)₃ + 3Na₂SO₄",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#6B8E7A",
+      "precipitate": "grey-green chromium(III) hydroxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 9.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The test for chromium(III): alkali gives a grey-green gelatinous precipitate. What makes it interesting is what happens if you keep adding alkali — the precipitate dissolves again, because chromium(III) hydroxide is AMPHOTERIC and reacts with base as well as acid. Magnesium hydroxide, from a main-group metal, simply sits there however much alkali you add. Adding reagent in excess and watching what happens next is a routine worth having, because the second half of the answer is often where the identification actually lies.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, chromium(III) chemistry and amphoteric hydroxides"
+  },
+  {
+    "id": "rxn_decomposition_kmno4",
+    "reactants": ["kmno4_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": 240, "catalyst": null },
+    "products": ["k2mno4_s", "mno2_s", "o2_g"],
+    "equation": "2KMnO₄ → K₂MnO₄ + MnO₂ + O₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#1E5E3A",
+      "precipitate": "dark green and black manganese residue",
+      "gas": "oxygen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "oxidiser",
+      "title": "A strong oxidiser being heated",
+      "warning": "Potassium permanganate gives up oxygen when hot, and anything combustible in the tube — paper, dust, a trace of glycerol — can ignite fiercely.",
+      "visualEffect": null,
+      "whatToDoInstead": "Heat only in a clean dry tube, on a small scale, and keep it well away from anything that burns. It stains skin and clothing brown, so wear gloves."
+    },
+    "molecularAnimation": null,
+    "explanation": "Another laboratory preparation of oxygen, and a display of manganese's oxidation states in one tube. The purple +7 permanganate breaks into green +6 manganate and black +4 manganese(IV) oxide, releasing oxygen as it goes. Four states of one metal — purple at +7, green at +6, black at +4 and pale pink at +2 — each with its own colour. That is the transition metals in a sentence, and it is why they are the coloured part of the periodic table.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, oxidation states of manganese; preparation of oxygen"
   }
 ]

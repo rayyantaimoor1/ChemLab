@@ -1,0 +1,30 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Potassium dichromate: two chromium atoms joined through a bridging oxygen, each also bonded to three more oxygens">
+  <line x1="14" y1="60" x2="30" y2="60" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="130" y1="60" x2="146" y2="60" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <circle cx="8" cy="60" r="11" fill="#9B59B6" stroke="#161A19" stroke-width="2"/>
+  <text x="8" y="64" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">K</text>
+  <circle cx="152" cy="60" r="11" fill="#9B59B6" stroke="#161A19" stroke-width="2"/>
+  <text x="152" y="64" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">K</text>
+  <line x1="44" y1="60" x2="76" y2="60" stroke="#161A19" stroke-width="2"/>
+  <line x1="84" y1="60" x2="116" y2="60" stroke="#161A19" stroke-width="2"/>
+  <line x1="44" y1="48" x2="34" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="44" y1="72" x2="34" y2="90" stroke="#161A19" stroke-width="2"/>
+  <line x1="38" y1="60" x2="26" y2="60" stroke="#161A19" stroke-width="2"/>
+  <line x1="116" y1="48" x2="126" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="116" y1="72" x2="126" y2="90" stroke="#161A19" stroke-width="2"/>
+  <line x1="122" y1="60" x2="134" y2="60" stroke="#161A19" stroke-width="2"/>
+  <circle cx="44" cy="60" r="16" fill="#4E8F6D" stroke="#161A19" stroke-width="2"/>
+  <text x="44" y="66" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Cr</text>
+  <circle cx="80" cy="60" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="64" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="116" cy="60" r="16" fill="#4E8F6D" stroke="#161A19" stroke-width="2"/>
+  <text x="116" y="66" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Cr</text>
+  <circle cx="30" cy="22" r="10" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="30" y="26" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="30" cy="98" r="10" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="30" y="102" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="130" cy="22" r="10" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="130" y="26" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="130" cy="98" r="10" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="130" y="102" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+</svg>

@@ -1646,5 +1646,221 @@
       { "from": "n", "to": "h1", "type": "covalent" },
       { "from": "n", "to": "h2", "type": "covalent" }
     ]
+  },
+
+  "kscn_aq": {
+    "note": "The thiocyanate ion is linear - sulfur, carbon and nitrogen in a straight line.",
+    "atoms": [
+      { "id": "k", "element": "K", "x": -3.2, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": -0.8, "y": 0, "z": 0 },
+      { "id": "c", "element": "C", "x": 0.85, "y": 0, "z": 0 },
+      { "id": "n", "element": "N", "x": 2.05, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "c", "type": "covalent" },
+      { "from": "c", "to": "n", "type": "covalent" },
+      { "from": "k", "to": "s", "type": "ionic" }
+    ]
+  },
+
+  "fescn_aq": {
+    "note": "The iron holds the thiocyanate through its sulfur end. In solution the iron also carries water molecules that are not drawn here.",
+    "atoms": [
+      { "id": "fe", "element": "Fe", "x": -2.2, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0, "y": 0, "z": 0 },
+      { "id": "c", "element": "C", "x": 1.65, "y": 0, "z": 0 },
+      { "id": "n", "element": "N", "x": 2.85, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "fe", "to": "s", "type": "ionic" },
+      { "from": "s", "to": "c", "type": "covalent" },
+      { "from": "c", "to": "n", "type": "covalent" }
+    ]
+  },
+
+  "cu_nh3_aq": {
+    "note": "Four ammonia molecules arranged in a square around the copper ion. Each nitrogen also carries three hydrogens, drawn here for two of them only to keep the shape readable.",
+    "atoms": [
+      { "id": "cu", "element": "Cu", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": -2.0, "y": 0, "z": 0 },
+      { "id": "n2", "element": "N", "x": 2.0, "y": 0, "z": 0 },
+      { "id": "n3", "element": "N", "x": 0, "y": 0, "z": -2.0 },
+      { "id": "n4", "element": "N", "x": 0, "y": 0, "z": 2.0 },
+      { "id": "h1", "element": "H", "x": -2.6, "y": 0.8, "z": 0 },
+      { "id": "h2", "element": "H", "x": -2.6, "y": -0.8, "z": 0 },
+      { "id": "h3", "element": "H", "x": 2.6, "y": 0.8, "z": 0 },
+      { "id": "h4", "element": "H", "x": 2.6, "y": -0.8, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "cu", "to": "n1", "type": "ionic" },
+      { "from": "cu", "to": "n2", "type": "ionic" },
+      { "from": "cu", "to": "n3", "type": "ionic" },
+      { "from": "cu", "to": "n4", "type": "ionic" },
+      { "from": "n1", "to": "h1", "type": "covalent" },
+      { "from": "n1", "to": "h2", "type": "covalent" },
+      { "from": "n2", "to": "h3", "type": "covalent" },
+      { "from": "n2", "to": "h4", "type": "covalent" }
+    ]
+  },
+
+  "k2cr2o7_aq": {
+    "note": "Two chromium atoms joined through a single bridging oxygen - that bridge is what makes this the DIchromate rather than two separate chromates.",
+    "atoms": [
+      { "id": "cr1", "element": "Cr", "x": -1.8, "y": 0, "z": 0 },
+      { "id": "obr", "element": "O", "x": 0, "y": 0, "z": 0 },
+      { "id": "cr2", "element": "Cr", "x": 1.8, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": -2.6, "y": 1.3, "z": 0 },
+      { "id": "o2", "element": "O", "x": -2.6, "y": -1.0, "z": 0.9 },
+      { "id": "o3", "element": "O", "x": -2.6, "y": -0.4, "z": -1.2 },
+      { "id": "o4", "element": "O", "x": 2.6, "y": 1.3, "z": 0 },
+      { "id": "o5", "element": "O", "x": 2.6, "y": -1.0, "z": 0.9 },
+      { "id": "o6", "element": "O", "x": 2.6, "y": -0.4, "z": -1.2 }
+    ],
+    "bonds": [
+      { "from": "cr1", "to": "obr", "type": "covalent" },
+      { "from": "cr2", "to": "obr", "type": "covalent" },
+      { "from": "cr1", "to": "o1", "type": "covalent" },
+      { "from": "cr1", "to": "o2", "type": "covalent" },
+      { "from": "cr1", "to": "o3", "type": "covalent" },
+      { "from": "cr2", "to": "o4", "type": "covalent" },
+      { "from": "cr2", "to": "o5", "type": "covalent" },
+      { "from": "cr2", "to": "o6", "type": "covalent" }
+    ]
+  },
+
+  "na2cro4_aq": {
+    "note": "One chromium with four oxygens in a tetrahedron. The chromium is in exactly the same +6 state as in dichromate - only the arrangement differs.",
+    "atoms": [
+      { "id": "cr", "element": "Cr", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.6, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.5, "y": -0.55, "z": 0 },
+      { "id": "o3", "element": "O", "x": -0.75, "y": -0.55, "z": 1.3 },
+      { "id": "o4", "element": "O", "x": -0.75, "y": -0.55, "z": -1.3 },
+      { "id": "na1", "element": "Na", "x": -3.0, "y": 0.8, "z": 0 },
+      { "id": "na2", "element": "Na", "x": 3.0, "y": 0.8, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "cr", "to": "o1", "type": "covalent" },
+      { "from": "cr", "to": "o2", "type": "covalent" },
+      { "from": "cr", "to": "o3", "type": "covalent" },
+      { "from": "cr", "to": "o4", "type": "covalent" },
+      { "from": "na1", "to": "o3", "type": "ionic" },
+      { "from": "na2", "to": "o2", "type": "ionic" }
+    ]
+  },
+
+  "cr2so43_aq": {
+    "atoms": [
+      { "id": "cr", "element": "Cr", "x": -2.2, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.4, "y": 1, "z": 0.6 },
+      { "id": "o2", "element": "O", "x": 0.4, "y": -1, "z": 0.6 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 0.2, "z": -0.9 },
+      { "id": "o4", "element": "O", "x": -0.4, "y": -0.2, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "cr", "to": "s", "type": "ionic" }
+    ]
+  },
+
+  "croh3_s": {
+    "note": "Three hydroxide ions around the chromium. This hydroxide is amphoteric - it reacts with excess alkali as well as with acid.",
+    "atoms": [
+      { "id": "cr", "element": "Cr", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.9, "z": 0 },
+      { "id": "h1", "element": "H", "x": 0.7, "y": 2.5, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.65, "y": -0.95, "z": 0 },
+      { "id": "h2", "element": "H", "x": -2.35, "y": -1.55, "z": 0 },
+      { "id": "o3", "element": "O", "x": 1.65, "y": -0.95, "z": 0 },
+      { "id": "h3", "element": "H", "x": 2.35, "y": -1.55, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" },
+      { "from": "o3", "to": "h3", "type": "covalent" },
+      { "from": "cr", "to": "o1", "type": "ionic" },
+      { "from": "cr", "to": "o2", "type": "ionic" },
+      { "from": "cr", "to": "o3", "type": "ionic" }
+    ]
+  },
+
+  "kmno4_aq": {
+    "note": "Manganese with four oxygens in a tetrahedron, in its highest oxidation state of +7.",
+    "atoms": [
+      { "id": "mn", "element": "Mn", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.6, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.5, "y": -0.55, "z": 0 },
+      { "id": "o3", "element": "O", "x": -0.75, "y": -0.55, "z": 1.3 },
+      { "id": "o4", "element": "O", "x": -0.75, "y": -0.55, "z": -1.3 },
+      { "id": "k", "element": "K", "x": -3.2, "y": 0.8, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "mn", "to": "o1", "type": "covalent" },
+      { "from": "mn", "to": "o2", "type": "covalent" },
+      { "from": "mn", "to": "o3", "type": "covalent" },
+      { "from": "mn", "to": "o4", "type": "covalent" },
+      { "from": "k", "to": "o3", "type": "ionic" }
+    ]
+  },
+
+  "k2mno4_s": {
+    "note": "The same manganese-and-four-oxygens unit as permanganate, but carrying two potassium ions instead of one - because the manganese here is +6 rather than +7.",
+    "atoms": [
+      { "id": "mn", "element": "Mn", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.6, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.5, "y": -0.55, "z": 0 },
+      { "id": "o3", "element": "O", "x": -0.75, "y": -0.55, "z": 1.3 },
+      { "id": "o4", "element": "O", "x": -0.75, "y": -0.55, "z": -1.3 },
+      { "id": "k1", "element": "K", "x": -3.2, "y": 0.8, "z": 0 },
+      { "id": "k2", "element": "K", "x": 3.2, "y": 0.8, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "mn", "to": "o1", "type": "covalent" },
+      { "from": "mn", "to": "o2", "type": "covalent" },
+      { "from": "mn", "to": "o3", "type": "covalent" },
+      { "from": "mn", "to": "o4", "type": "covalent" },
+      { "from": "k1", "to": "o3", "type": "ionic" },
+      { "from": "k2", "to": "o2", "type": "ionic" }
+    ]
+  },
+
+  "mnso4_aq": {
+    "atoms": [
+      { "id": "mn", "element": "Mn", "x": -2.0, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.4, "y": 1, "z": 0.6 },
+      { "id": "o2", "element": "O", "x": 0.4, "y": -1, "z": 0.6 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 0.2, "z": -0.9 },
+      { "id": "o4", "element": "O", "x": -0.4, "y": -0.2, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "mn", "to": "s", "type": "ionic" }
+    ]
+  },
+
+  "fe2so43_aq": {
+    "atoms": [
+      { "id": "fe", "element": "Fe", "x": -2.1, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0.4, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.4, "y": 1, "z": 0.6 },
+      { "id": "o2", "element": "O", "x": 0.4, "y": -1, "z": 0.6 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 0.2, "z": -0.9 },
+      { "id": "o4", "element": "O", "x": -0.4, "y": -0.2, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "fe", "to": "s", "type": "ionic" }
+    ]
   }
 }
