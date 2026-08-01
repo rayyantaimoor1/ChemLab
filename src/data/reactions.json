@@ -1375,5 +1375,246 @@
     "explanation": "Permanent hardness is the kind boiling cannot touch, so it has to be dealt with chemically. Washing soda supplies carbonate ions, which grab the calcium out of solution as insoluble calcium carbonate and leave harmless sodium sulfate behind. With the calcium gone the water lathers properly instead of forming scum, which is exactly why washing soda has been added to laundry for generations. Compare this with boiling, which does nothing at all to permanent hardness.",
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Water, removal of permanent hardness using washing soda"
+  },
+  {
+    "id": "rxn_catalysis_h2o2_mno2",
+    "reactants": ["h2o2_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": "mno2_s" },
+    "products": ["water", "o2_g"],
+    "equation": "2H₂O₂ → 2H₂O + O₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "oxygen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 12,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The clearest demonstration there is of what a catalyst does. Hydrogen peroxide decomposes on its own, but so slowly that a bottle keeps for months. Drop in a little black manganese(IV) oxide and it foams vigorously at once. The catalyst provides an easier route for the same reaction — a lower activation energy — so far more collisions succeed. It is not used up: filter it out at the end, dry it, weigh it, and you have exactly what you started with, ready to do it again. Note it is the reaction that warms the flask, not the catalyst.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Reaction Kinetics, catalysis and activation energy; Chemistry 9 — preparation of oxygen"
+  },
+  {
+    "id": "rxn_decomposition_kclo3",
+    "reactants": ["kclo3_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 200, "catalyst": "mno2_s" },
+    "products": ["kcl_s", "o2_g"],
+    "equation": "2KClO₃ → 2KCl + 3O₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white potassium chloride residue",
+      "gas": "oxygen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "oxidiser",
+      "title": "A strong oxidiser being heated",
+      "warning": "Potassium chlorate gives up oxygen readily when hot. Mixed with anything that burns — paper, sulfur, a trace of organic dust in the tube — it can ignite the mixture fiercely or explosively.",
+      "visualEffect": null,
+      "whatToDoInstead": "Heat it only in a scrupulously clean, dry tube, never grind it with anything combustible, and use small amounts. Add the catalyst rather than a hotter flame if it is slow."
+    },
+    "molecularAnimation": null,
+    "explanation": "The other standard laboratory preparation of oxygen, and a second look at catalysis from a different angle. Potassium chlorate heated on its own needs a fierce flame before it gives up its oxygen; mixed with a little manganese(IV) oxide it does the same job at a much lower temperature. The catalyst has not changed WHAT happens or how much oxygen you get — only how easily it happens. Test the gas with a glowing splint: it should burst back into flame.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Reaction Kinetics, effect of a catalyst; preparation of oxygen"
+  },
+  {
+    "id": "rxn_haber_process",
+    "reactants": ["h2_g", "n2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "fe_metal" },
+    "products": ["nh3_g"],
+    "equation": "N₂ + 3H₂ ⇌ 2NH₃",
+    "type": "equilibrium",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "ammonia",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The Haber process, which takes nitrogen straight from the air and turns it into the ammonia that becomes fertiliser — the reason the world can feed as many people as it does. Industrially it runs at about 450 °C and 200 atmospheres over an iron catalyst. Those numbers are a compromise, and that is the lesson: the reaction gives out heat, so a LOW temperature would favour more ammonia at equilibrium, but a low temperature is also unbearably slow. 450 °C is chosen not because it gives the best yield but because it gives a workable yield quickly. High pressure genuinely does favour ammonia, because four molecules of gas become two. This lab does not model pressure, so treat the vessel here as showing the chemistry rather than the yield.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Chemical Equilibrium, Le Chatelier's principle and the Haber process"
+  },
+  {
+    "id": "rxn_contact_so2_o2",
+    "reactants": ["o2_g", "so2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "v2o5_s" },
+    "products": ["so3_g"],
+    "equation": "2SO₂ + O₂ ⇌ 2SO₃",
+    "type": "equilibrium",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "sulfur trioxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 10,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The heart of the Contact process, the way almost all the world's sulfuric acid is made. Sulfur dioxide and oxygen are passed over vanadium(V) oxide at about 450 °C. The same compromise as the Haber process applies — the reaction is exothermic, so cooler would mean a better yield but an unusably slow one. The catalyst works by handing oxygen back and forth: it is reduced by the sulfur dioxide and then re-oxidised by the oxygen, over and over, ending each cycle exactly as it began.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry, the Contact process"
+  },
+  {
+    "id": "rxn_contact_so3_water",
+    "reactants": ["so3_g", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["h2so4_aq"],
+    "equation": "SO₃ + H₂O → H₂SO₄",
+    "type": "acid_formation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 30,
+      "resultPH": 0.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "corrosive_mist",
+      "title": "A violent reaction that throws off a mist of acid",
+      "warning": "Sulfur trioxide meeting water reacts so fiercely, and gives out so much heat, that much of the acid is thrown up as a choking mist of fine droplets rather than staying in the vessel. That mist is concentrated sulfuric acid and attacks the eyes and lungs.",
+      "visualEffect": null,
+      "whatToDoInstead": "This is why industry never does it this way. The sulfur trioxide is absorbed into concentrated sulfuric acid first, giving oleum, and the oleum is then diluted with water under control."
+    },
+    "molecularAnimation": null,
+    "explanation": "The last step of the Contact process, and a good example of a reaction that is simple to write and awkward to carry out. On paper sulfur trioxide plus water gives sulfuric acid. In practice it is so violently exothermic that it produces an unmanageable acid mist, so the plant dissolves the sulfur trioxide in concentrated sulfuric acid to make oleum and dilutes that instead. Same overall change, arrived at safely — a reminder that an equation says what happens, not how to do it.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry, the Contact process and oleum"
+  },
+  {
+    "id": "rxn_ostwald_nh3_o2",
+    "reactants": ["nh3_g", "o2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "pt_s" },
+    "products": ["no_g", "water"],
+    "equation": "4NH₃ + 5O₂ → 4NO + 6H₂O",
+    "type": "oxidation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "nitrogen monoxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 20,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The first stage of the Ostwald process, which turns the ammonia from the Haber process into nitric acid. Ammonia and air are passed over a platinum gauze at about 900 °C; the reaction gives out so much heat that once it starts the gauze glows and stays hot without further heating. The nitrogen monoxide made here goes on to react with more oxygen to give nitrogen dioxide, and that with water to give nitric acid — the same two steps that happen accidentally in polluted air and produce acid rain.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry, the Ostwald process"
+  },
+  {
+    "id": "rxn_combustion_hydrogen",
+    "reactants": ["h2_g", "o2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["water"],
+    "equation": "2H₂ + O₂ → 2H₂O",
+    "type": "combustion",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 40,
+      "resultPH": 7.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "explosive_mixture",
+      "title": "Hydrogen and oxygen together are explosive",
+      "warning": "Hydrogen mixed with oxygen or air burns explosively the instant it is lit. A test tube of the mixture gives the sharp squeaky pop used to identify hydrogen; a larger volume is genuinely dangerous.",
+      "visualEffect": null,
+      "whatToDoInstead": "Test only a small tube of gas at a time, hold it away from your face, and never light a large collected volume. Point the mouth of the tube away from anyone before applying a flame."
+    },
+    "molecularAnimation": null,
+    "explanation": "The squeaky pop test, and the reaction that identifies hydrogen. It is worth noticing what the product is: burning hydrogen makes nothing but water, no carbon dioxide and no smoke at all, which is why hydrogen is of such interest as a fuel. The catch is that hydrogen has to be made first, and today most of it is made from natural gas in a process that releases carbon dioxide — so the fuel is only as clean as the way it was produced.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — properties of hydrogen and its test; Chemistry XI — Thermochemistry"
+  },
+  {
+    "id": "rxn_smoke_nh3_hcl",
+    "reactants": ["hcl_1m", "nh3_g"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nh4cl_s"],
+    "equation": "NH₃ + HCl → NH₄Cl",
+    "type": "combination",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "dense white ammonium chloride smoke",
+      "gas": null,
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 6,
+      "resultPH": 5.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Two colourless things meet and produce a dense white smoke out of apparently nothing — which is why this is a demonstration people remember. The smoke is a cloud of tiny solid ammonium chloride particles. It is also an acid–base reaction with no water involved anywhere: the ammonia takes a hydrogen ion directly from the hydrogen chloride. That is exactly the case the Arrhenius definition of an acid cannot describe and the Brønsted–Lowry definition can, which is the main reason the definition had to be widened.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Acids and bases, the Brønsted–Lowry definition"
+  },
+  {
+    "id": "rxn_ammonia_dissolves",
+    "reactants": ["nh3_g", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nh4oh_aq"],
+    "equation": "NH₃ + H₂O ⇌ NH₄OH",
+    "type": "acid_base",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 11.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Ammonia is extraordinarily soluble in water — so soluble that the classic fountain experiment works, where water rushes up into a flask of the gas as it dissolves and the pressure drops. What forms is a WEAK base: at any moment only a small fraction of the ammonia has actually taken a hydrogen ion from the water, and the double arrow says so. Compare the pH here, 11.5, with sodium hydroxide's 14 at a similar concentration. That gap is the difference between weak and strong, and it has nothing to do with being dilute or concentrated.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Acids and bases, strong and weak bases"
+  },
+  {
+    "id": "rxn_decomposition_nahco3",
+    "reactants": ["nahco3_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 100, "catalyst": null },
+    "products": ["na2co3_s", "water", "co2_g"],
+    "equation": "2NaHCO₃ → Na₂CO₃ + H₂O + CO₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white sodium carbonate residue",
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Heating baking soda turns it into washing soda, driving off water and carbon dioxide. This is the reaction that makes a cake rise: the carbon dioxide released inside the batter is what lifts it, and the residue left behind is harmless. Industrially it is the last step of the Solvay process, which manufactures sodium carbonate from salt and limestone. Test the gas with limewater — turning milky confirms carbon dioxide.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry, the Solvay process; thermal decomposition of hydrogencarbonates"
   }
 ]

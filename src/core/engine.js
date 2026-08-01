@@ -95,7 +95,7 @@ export function speciesKey(ids = []) {
  * not fire at room temperature." Returns null when the rule is free to run, or
  * a short reason string when something is holding it back.
  */
-function blockingCondition(reaction, state) {
+function blockingCondition(reaction, state, nameOf = (id) => id) {
   const conditions = reaction.conditions;
   if (!conditions) return null;
 
@@ -128,7 +128,11 @@ function blockingCondition(reaction, state) {
   if (catalyst) {
     const catalystPresent =
       state.species.includes(catalyst) || state.catalysts.includes(catalyst);
-    if (!catalystPresent) return 'needs a catalyst that is not present';
+    // Naming the catalyst turns a dead end into a next step. "Needs a
+    // catalyst that is not present" leaves a student with nowhere to go;
+    // "needs a catalyst that is not present: manganese(IV) oxide" tells
+    // them exactly what to reach for off the shelf.
+    if (!catalystPresent) return `needs a catalyst that is not present: ${nameOf(catalyst)}`;
   }
 
   return null;
@@ -229,11 +233,22 @@ export function createEngine({
    * the aftermath of a reaction the app itself produced was never a thing
    * the student tried, and logging it buries the real gaps in noise.
    */
-  const settledOutcomes = new Set(
-    reactions
-      .filter((reaction) => Array.isArray(reaction.products) && reaction.products.length > 1)
-      .map((reaction) => speciesKey(reaction.products))
-  );
+  const settledOutcomes = new Set();
+  for (const reaction of reactions) {
+    const products = Array.isArray(reaction.products) ? reaction.products : [];
+    if (products.length === 0) continue;
+
+    if (products.length > 1) settledOutcomes.add(speciesKey(products));
+
+    // A catalyst is still sitting in the vessel when the reaction finishes -
+    // that is the whole point of it. So "the products, plus the catalyst
+    // that made them" is just as settled an outcome as the products alone,
+    // and has to be recognised as one. Without this, the Contact process
+    // ends holding sulfur trioxide and vanadium(V) oxide and the app calls
+    // its own finished reaction an unsupported combination.
+    const catalyst = reaction.conditions?.catalyst;
+    if (catalyst) settledOutcomes.add(speciesKey([...products, catalyst]));
+  }
 
   // Combinations students tried that we have no data for. This is the content
   // roadmap described in CLAUDE.md section 6.3.
@@ -262,6 +277,9 @@ export function createEngine({
    * When more than one rule could apply, the one needing the most substances
    * wins, because it is the more specific description of what is in the vessel.
    */
+  /** A catalyst's readable name for the "you still need this" message. */
+  const catalystName = (id) => chemicalsById.get(id)?.name || id;
+
   function findRule(species, state) {
     const present = new Set(species);
 
@@ -278,7 +296,7 @@ export function createEngine({
     // Prefer a rule that can actually run.
     for (const candidate of candidates) {
       if (candidate.reaction.noReaction === true) return { rule: candidate, blocked: null };
-      if (!blockingCondition(candidate.reaction, state)) return { rule: candidate, blocked: null };
+      if (!blockingCondition(candidate.reaction, state, catalystName)) return { rule: candidate, blocked: null };
     }
 
     // Every candidate is held back by a condition. We only say WHICH condition
@@ -291,12 +309,22 @@ export function createEngine({
     // does with copper sulfate. We do not, and section 6.2 says to say so.
     // An unexplained extra substance makes this an honest gap, not a
     // condition that has not been met yet.
-    const explains = candidates.find(({ reactants }) => reactants.length === present.size);
+    // A rule accounts for its reactants AND its catalyst: the catalyst is
+    // named by the rule and is meant to be sitting in the vessel without
+    // being consumed, so finding it there is the rule working as intended,
+    // not an unexplained extra. Without this, potassium chlorate with its
+    // manganese(IV) oxide already added would be called an unknown
+    // combination instead of being told it still needs heating.
+    const explains = candidates.find(({ reactants, reaction }) => {
+      const accounted = new Set(reactants);
+      if (reaction.conditions?.catalyst) accounted.add(reaction.conditions.catalyst);
+      return [...present].every((id) => accounted.has(id));
+    });
     if (!explains) return { rule: null, blocked: null };
 
     return {
       rule: null,
-      blocked: { rule: explains, reason: blockingCondition(explains.reaction, state) },
+      blocked: { rule: explains, reason: blockingCondition(explains.reaction, state, catalystName) },
     };
   }
 

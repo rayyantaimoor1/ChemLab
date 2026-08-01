@@ -906,16 +906,22 @@ test('every real reaction leaves behind something the engine can account for', a
 
   // The regression guard for the whole class of bug: pick up every rule's
   // own product list and check that stirring the vessel afterwards never
-  // reports an honest-gap message.
+  // reports an honest-gap message. The catalyst is included where there is
+  // one, because it is still in the vessel when the reaction finishes.
   for (const reaction of engine.getAllReactions()) {
-    if (reaction.noReaction || !Array.isArray(reaction.products) || reaction.products.length < 2) {
+    if (reaction.noReaction || !Array.isArray(reaction.products) || reaction.products.length === 0) {
       continue;
     }
-    const after = create().resolve(reaction.products);
+
+    const catalyst = reaction.conditions?.catalyst;
+    const leftovers = catalyst ? [...reaction.products, catalyst] : reaction.products;
+    if (leftovers.length < 2) continue;
+
+    const after = create().resolve(leftovers);
     assert.notEqual(
       after.outcome,
       OUTCOME.UNKNOWN,
-      `stirring after ${reaction.id} claims its own products are an unsupported combination`
+      `stirring after ${reaction.id} claims its own leftovers are an unsupported combination`
     );
   }
 });
@@ -1026,6 +1032,52 @@ test('every electrolysis rule has an animation showing the ions moving', async (
     assert.ok(ids.has('cathode'), `${reaction.molecularAnimation} draws no cathode`);
     assert.ok(ids.has('anode'), `${reaction.molecularAnimation} draws no anode`);
   }
+});
+
+/* ------------------------------------------------------------------ *
+ * Catalysts. The condition has existed since Phase 1 but no real
+ * content used it until the FSc industrial processes.
+ * ------------------------------------------------------------------ */
+
+test('a missing catalyst is named, so the student knows what to reach for', async () => {
+  const { engine } = await import('../src/core/engine.js');
+
+  // Hydrogen peroxide sits there for months without one.
+  const without = engine.resolve(['h2o2_aq']);
+  assert.equal(without.outcome, OUTCOME.NO_REACTION);
+  assert.match(without.message, /needs a catalyst/);
+  assert.match(without.message, /Manganese\(IV\) oxide/, 'the catalyst should be named, not just implied');
+
+  // Add it and the reaction runs.
+  const withIt = engine.resolve(['h2o2_aq', 'mno2_s']);
+  assert.equal(withIt.outcome, OUTCOME.REACTION);
+  assert.equal(withIt.reaction.id, 'rxn_catalysis_h2o2_mno2');
+});
+
+test('a catalyst is not used up by the reaction it speeds up', async () => {
+  const { engine } = await import('../src/core/engine.js');
+
+  const result = engine.react(['h2o2_aq', 'mno2_s']);
+  assert.equal(result.outcome, OUTCOME.REACTION);
+  assert.ok(
+    result.species.includes('mno2_s'),
+    'the catalyst must still be there afterwards - that is what makes it a catalyst'
+  );
+});
+
+test('a catalyst already in the vessel is not mistaken for an unexplained extra', async () => {
+  const { engine } = await import('../src/core/engine.js');
+
+  // Potassium chlorate needs BOTH its catalyst and 200 degC. With the
+  // catalyst added but the tube still cold, the honest answer is the
+  // temperature - not "this combination is not available", which is what
+  // came back before the catalyst was counted as accounted for.
+  const cold = engine.resolve(['kclo3_s', 'mno2_s']);
+  assert.equal(cold.outcome, OUTCOME.NO_REACTION);
+  assert.match(cold.message, /200 °C/);
+
+  const hot = engine.resolve(['kclo3_s', 'mno2_s'], { tempC: 220, heating: true });
+  assert.equal(hot.outcome, OUTCOME.REACTION);
 });
 
 test('a settled outcome still gives way to a real follow-on reaction', async () => {

@@ -957,5 +957,180 @@
       { "from": "s", "to": "o4", "type": "covalent" },
       { "from": "ca", "to": "s", "type": "ionic" }
     ]
+  },
+
+  "h2o2_aq": {
+    "note": "The molecule is not flat - the two hydrogens sit on either side of the O-O bond like a half-open book.",
+    "atoms": [
+      { "id": "o1", "element": "O", "x": -0.73, "y": 0, "z": 0 },
+      { "id": "o2", "element": "O", "x": 0.73, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -1.0, "y": 0.87, "z": 0.5 },
+      { "id": "h2", "element": "H", "x": 1.0, "y": -0.87, "z": 0.5 }
+    ],
+    "bonds": [
+      { "from": "o1", "to": "o2", "type": "covalent" },
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" }
+    ]
+  },
+
+  "mno2_s": {
+    "note": "One manganese ion with two oxide ions. The real solid is a lattice of many of these, not a molecule.",
+    "atoms": [
+      { "id": "o1", "element": "O", "x": -1.9, "y": 0, "z": 0 },
+      { "id": "mn", "element": "Mn", "x": 0, "y": 0, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.9, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "mn", "to": "o1", "type": "ionic" },
+      { "from": "mn", "to": "o2", "type": "ionic" }
+    ]
+  },
+
+  "v2o5_s": {
+    "note": "Drawn simply as two vanadium atoms sharing five oxygens. The real solid is a layered network, not a molecule.",
+    "atoms": [
+      { "id": "v1", "element": "V", "x": -1.9, "y": 0, "z": 0 },
+      { "id": "v2", "element": "V", "x": 1.9, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 0.95, "z": 0 },
+      { "id": "o2", "element": "O", "x": 0, "y": -0.95, "z": 0 },
+      { "id": "o3", "element": "O", "x": -2.9, "y": 1.1, "z": 0 },
+      { "id": "o4", "element": "O", "x": 2.9, "y": 1.1, "z": 0 },
+      { "id": "o5", "element": "O", "x": 0, "y": -0.95, "z": 1.5 }
+    ],
+    "bonds": [
+      { "from": "v1", "to": "o1", "type": "ionic" },
+      { "from": "v1", "to": "o2", "type": "ionic" },
+      { "from": "v2", "to": "o1", "type": "ionic" },
+      { "from": "v2", "to": "o2", "type": "ionic" },
+      { "from": "v1", "to": "o3", "type": "ionic" },
+      { "from": "v2", "to": "o4", "type": "ionic" },
+      { "from": "v1", "to": "o5", "type": "ionic" }
+    ]
+  },
+
+  "pt_s": {
+    "note": "A single atom, not a molecule - the catalyst gauze is a lattice of many of these. See molecules/pt.svg's caption.",
+    "atoms": [{ "id": "pt", "element": "Pt", "x": 0, "y": 0, "z": 0 }],
+    "bonds": []
+  },
+
+  "so3_g": {
+    "note": "Flat and perfectly even - sulfur in the middle with its three oxygens 120 degrees apart, all in one plane.",
+    "atoms": [
+      { "id": "s", "element": "S", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.43, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.24, "y": -0.72, "z": 0 },
+      { "id": "o3", "element": "O", "x": 1.24, "y": -0.72, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" }
+    ]
+  },
+
+  "h2so4_aq": {
+    "atoms": [
+      { "id": "s", "element": "S", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.25, "z": 0.7 },
+      { "id": "o2", "element": "O", "x": 0, "y": -1.25, "z": 0.7 },
+      { "id": "o3", "element": "O", "x": 1.25, "y": 0, "z": -0.7 },
+      { "id": "o4", "element": "O", "x": -1.25, "y": 0, "z": -0.7 },
+      { "id": "h1", "element": "H", "x": 2.0, "y": 0.6, "z": -1.1 },
+      { "id": "h2", "element": "H", "x": -2.0, "y": -0.6, "z": -1.1 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "o3", "to": "h1", "type": "covalent" },
+      { "from": "o4", "to": "h2", "type": "covalent" }
+    ]
+  },
+
+  "kclo3_s": {
+    "note": "The chlorate ion is a pyramid - the chlorine sits above the triangle of its three oxygens, not in the middle of it.",
+    "atoms": [
+      { "id": "k", "element": "K", "x": -2.8, "y": 0, "z": 0 },
+      { "id": "cl", "element": "Cl", "x": 0.4, "y": 0.45, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.4, "y": -0.6, "z": 1.3 },
+      { "id": "o2", "element": "O", "x": -0.7, "y": -0.6, "z": -0.65 },
+      { "id": "o3", "element": "O", "x": 1.5, "y": -0.6, "z": -0.65 }
+    ],
+    "bonds": [
+      { "from": "cl", "to": "o1", "type": "covalent" },
+      { "from": "cl", "to": "o2", "type": "covalent" },
+      { "from": "cl", "to": "o3", "type": "covalent" },
+      { "from": "k", "to": "o2", "type": "ionic" }
+    ]
+  },
+
+  "kcl_s": {
+    "note": "One ion pair. The real solid is a cubic lattice of many potassium and chloride ions.",
+    "atoms": [
+      { "id": "k", "element": "K", "x": -1.6, "y": 0, "z": 0 },
+      { "id": "cl", "element": "Cl", "x": 1.6, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "k", "to": "cl", "type": "ionic" }]
+  },
+
+  "nh4cl_s": {
+    "note": "The ammonium ion is tetrahedral - the four hydrogens point to the corners of a triangular pyramid.",
+    "atoms": [
+      { "id": "n", "element": "N", "x": -1.4, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.1, "y": 0.85, "z": 0.3 },
+      { "id": "h2", "element": "H", "x": -2.1, "y": -0.6, "z": -0.7 },
+      { "id": "h3", "element": "H", "x": -0.7, "y": -0.6, "z": 0.85 },
+      { "id": "h4", "element": "H", "x": -0.75, "y": 0.55, "z": -0.85 },
+      { "id": "cl", "element": "Cl", "x": 1.8, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "h1", "type": "covalent" },
+      { "from": "n", "to": "h2", "type": "covalent" },
+      { "from": "n", "to": "h3", "type": "covalent" },
+      { "from": "n", "to": "h4", "type": "covalent" },
+      { "from": "n", "to": "cl", "type": "ionic" }
+    ]
+  },
+
+  "nh4oh_aq": {
+    "atoms": [
+      { "id": "n", "element": "N", "x": -1.8, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.5, "y": 0.85, "z": 0.3 },
+      { "id": "h2", "element": "H", "x": -2.5, "y": -0.6, "z": -0.7 },
+      { "id": "h3", "element": "H", "x": -1.1, "y": -0.6, "z": 0.85 },
+      { "id": "h4", "element": "H", "x": -1.15, "y": 0.55, "z": -0.85 },
+      { "id": "o", "element": "O", "x": 1.6, "y": 0, "z": 0 },
+      { "id": "h5", "element": "H", "x": 2.35, "y": 0.65, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "h1", "type": "covalent" },
+      { "from": "n", "to": "h2", "type": "covalent" },
+      { "from": "n", "to": "h3", "type": "covalent" },
+      { "from": "n", "to": "h4", "type": "covalent" },
+      { "from": "o", "to": "h5", "type": "covalent" },
+      { "from": "n", "to": "o", "type": "ionic" }
+    ]
+  },
+
+  "na2co3_s": {
+    "note": "The carbonate group is flat. The real solid is a lattice of many sodium and carbonate ions.",
+    "atoms": [
+      { "id": "na1", "element": "Na", "x": -2.6, "y": 0, "z": 0 },
+      { "id": "c", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.2, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.05, "y": -0.6, "z": 0 },
+      { "id": "o3", "element": "O", "x": 1.05, "y": -0.6, "z": 0 },
+      { "id": "na2", "element": "Na", "x": 2.6, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c", "to": "o1", "type": "covalent" },
+      { "from": "c", "to": "o2", "type": "covalent" },
+      { "from": "c", "to": "o3", "type": "covalent" },
+      { "from": "na1", "to": "o2", "type": "ionic" },
+      { "from": "na2", "to": "o3", "type": "ionic" }
+    ]
   }
 }
