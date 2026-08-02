@@ -1,0 +1,15 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A protein: a chain of amino acids folded into a particular shape. The blue nitrogen atoms mark the peptide links, which are what the biuret test detects">
+  <path d="M 14 84 C 34 34, 62 96, 80 56 C 96 20, 124 66, 146 40" fill="none" stroke="#C9A227" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="14" cy="84" r="8" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="14" y="87" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="46" cy="66" r="8" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="46" y="69" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="80" cy="56" r="8" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="59" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="112" cy="44" r="8" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="112" y="47" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="146" cy="40" r="8" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="146" y="43" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">N</text>
+  <text x="80" y="104" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">a chain of amino acids, FOLDED into a shape</text>
+  <text x="80" y="115" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">the blue N atoms mark the peptide links</text>
+</svg>

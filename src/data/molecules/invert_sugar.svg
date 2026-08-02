@@ -1,0 +1,42 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Invert sugar: the glucose and the fructose from a hydrolysed sucrose, now separate. Both are free to open into reducing forms, which is why this reduces Fehling’s where sucrose did not">
+  <line x1="29" y1="32.9" x2="51" y2="32.9" stroke="#161A19" stroke-width="2.5"/>
+  <line x1="51" y1="32.9" x2="62" y2="52" stroke="#161A19" stroke-width="2.5"/>
+  <line x1="62" y1="52" x2="51" y2="71.1" stroke="#161A19" stroke-width="2.5"/>
+  <line x1="51" y1="71.1" x2="29" y2="71.1" stroke="#161A19" stroke-width="2.5"/>
+  <line x1="29" y1="71.1" x2="18" y2="52" stroke="#161A19" stroke-width="2.5"/>
+  <line x1="18" y1="52" x2="29" y2="32.9" stroke="#161A19" stroke-width="2.5"/>
+  <circle cx="51" cy="32.9" r="9" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="51" y="35.9" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="29" cy="32.9" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="29" y="35.9" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="62" cy="52" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="62" y="55" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="51" cy="71.1" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="51" y="74.1" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="29" cy="71.1" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="29" y="74.1" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="18" cy="52" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="18" y="55" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <line x1="101" y1="32.9" x2="123" y2="32.9" stroke="#161A19" stroke-width="2.5"/>
+  <line x1="123" y1="32.9" x2="134" y2="52" stroke="#161A19" stroke-width="2.5"/>
+  <line x1="134" y1="52" x2="123" y2="71.1" stroke="#161A19" stroke-width="2.5"/>
+  <line x1="123" y1="71.1" x2="101" y2="71.1" stroke="#161A19" stroke-width="2.5"/>
+  <line x1="101" y1="71.1" x2="90" y2="52" stroke="#161A19" stroke-width="2.5"/>
+  <line x1="90" y1="52" x2="101" y2="32.9" stroke="#161A19" stroke-width="2.5"/>
+  <circle cx="123" cy="32.9" r="9" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="123" y="35.9" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="101" cy="32.9" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="101" y="35.9" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="134" cy="52" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="134" y="55" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="123" cy="71.1" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="123" y="74.1" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="101" cy="71.1" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="101" y="74.1" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="90" cy="52" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="90" y="55" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <text x="40" y="96" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#4A4A4A">glucose</text>
+  <text x="112" y="96" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#4A4A4A">fructose</text>
+  <text x="76" y="56" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#161A19">+</text>
+  <text x="76" y="114" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">the link is broken — both are free now</text>
+</svg>

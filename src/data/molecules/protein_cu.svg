@@ -1,0 +1,19 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The violet copper peptide complex: copper two plus held by the nitrogen atoms of several peptide links at once. It is that grip which shifts the colour from pale blue to violet">
+  <path d="M 12 26 C 40 10, 60 40, 80 26 C 104 10, 130 34, 150 22" fill="none" stroke="#C9A227" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 12 96 C 40 110, 60 80, 80 96 C 104 110, 130 88, 150 100" fill="none" stroke="#C9A227" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="46" cy="30" r="9" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="46" y="33" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="112" cy="28" r="9" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="112" y="31" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="46" cy="92" r="9" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="46" y="95" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="112" cy="94" r="9" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="112" y="97" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">N</text>
+  <line x1="54" y1="38" x2="68" y2="54" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="104" y1="36" x2="90" y2="54" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="54" y1="84" x2="68" y2="68" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="104" y1="86" x2="90" y2="68" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <circle cx="79" cy="61" r="18" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="79" y="68" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <text x="80" y="116" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">four peptide N atoms gripping one copper</text>
+</svg>

@@ -3811,5 +3811,190 @@
     "explanation": "No scum, no curd, and a good lather — which is the entire reason synthetic detergents were invented. A detergent is built to the same two-ended plan as soap, but its water-loving head is a sulfonate rather than a —COO⁻, and the calcium salt of a sulfonate stays dissolved instead of precipitating out. Run this beside the soap tube and one shake tells the whole story. Detergents are also close to neutral, where soap is alkaline, so they are safe on wool and silk. The cost came later: the early branched-chain detergents would not break down in rivers and foamed up sewage works, which is why straight-chain ones replaced them.",
     "levels": ["matric", "fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, soaps and detergents compared"
+  },
+  {
+    "id": "rxn_fehlings_glucose",
+    "reactants": ["fehlings_aq", "glucose_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["cu2o_s", "gluconate_aq"],
+    "equation": "C₆H₁₂O₆ + 2Cu²⁺ + 5OH⁻ → C₆H₁₁O₇⁻ + Cu₂O + 3H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#A83C1E",
+      "precipitate": "brick red copper(I) oxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 11.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Exactly the same brick-red result that ethanal gave, and for exactly the same reason: glucose has an aldehyde group, so it is a REDUCING SUGAR. Nothing new is being learnt here — a test met in a bottle of laboratory chemicals is being turned on something out of the kitchen, and it works. One subtlety worth knowing: almost all the glucose in the solution is curled into a ring at any moment, with only a trace in the open-chain aldehyde form. That trace is still enough, because as fast as it is used up more ring opens to replace it, until the whole sample has reacted.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, reducing sugars and Fehling's test"
+  },
+  {
+    "id": "rxn_none_fehlings_starch",
+    "reactants": ["fehlings_aq", "starch_aq"],
+    "noReaction": true,
+    "explanation": "The solution stays blue — no red precipitate, however long you warm it. Starch is hundreds of glucose units joined end to end, and every link uses up the very carbon that would otherwise open into an aldehyde. Only the one unit at the far end of the chain still has a free reducing group, and one in several hundred is far too dilute to see. So a food packed with glucose can still fail the test for glucose, simply because of how that glucose is joined together. The next two entries show how to unlock it.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, polysaccharides are non-reducing"
+  },
+  {
+    "id": "rxn_starch_iodine",
+    "reactants": ["i2_aq", "starch_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["starch_iodine_aq"],
+    "equation": "starch + I₂ → starch·I₂ (blue-black)",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#12203A",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "One drop of iodine into starch and the whole beaker goes blue-black instantly — the sharpest colour change in school chemistry, and sensitive enough to detect starch at a few parts per million. Be careful how you describe what has happened, because no bond has been made. The starch chain coils into a helix, and iodine molecules slide into the tube down the middle of it; the colour comes from being trapped, not from reacting. In a real laboratory you can prove that for yourself: warm the tube and the colour disappears as the helix unwinds, cool it and the colour comes straight back. A genuine reaction would not do that.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, iodine test for starch"
+  },
+  {
+    "id": "rxn_hydrolysis_starch",
+    "reactants": ["hcl_1m", "starch_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["glucose_aq"],
+    "equation": "(C₆H₁₀O₅)ₙ + nH₂O → nC₆H₁₂O₆",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Boil starch with dilute acid and the chain is cut back to the glucose it was built from — the milky cloudiness clears as it goes. Every link in that chain is an ester-like bond between two sugars, so this is hydrolysis, the same idea that broke the ester and the amide open in the last batch. Your own body does it far more gently, with an enzyme in saliva rather than boiling acid, which is why bread starts to taste sweet if you chew it long enough. IMPORTANT in the real laboratory: neutralise the acid before adding Fehling's, or the alkali in the reagent is simply used up by the acid and the test tells you nothing.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, acid hydrolysis of starch"
+  },
+  {
+    "id": "rxn_none_iodine_glucose",
+    "reactants": ["glucose_aq", "i2_aq"],
+    "noReaction": true,
+    "explanation": "The iodine keeps its own brown colour and nothing turns blue — which is precisely the result you want. There is no helix left to trap the iodine, because the starch has been cut into single glucose units. Run this straight after the hydrolysis and it is your proof that the job is finished: the iodine test has gone negative while the Fehling's test has gone positive, and the two together say more than either alone. This is how a chemist checks a reaction is complete rather than guessing.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, testing for completeness of hydrolysis"
+  },
+  {
+    "id": "rxn_none_fehlings_sucrose",
+    "reactants": ["fehlings_aq", "sucrose_aq"],
+    "noReaction": true,
+    "explanation": "Table sugar fails the test for sugar, and the reason is a genuinely good piece of chemistry. Sucrose is one glucose joined to one fructose, and the join is made through exactly the carbon on each half that would otherwise open into a reducing group. Both are tied up at once, so nothing is left to reduce the copper. This is what NON-reducing means. Compare it with glucose, which passes, and it is clear the test is detecting a free reducing group rather than sweetness or the word sugar.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, reducing and non-reducing sugars"
+  },
+  {
+    "id": "rxn_hydrolysis_sucrose",
+    "reactants": ["hcl_1m", "sucrose_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["invert_sugar_aq"],
+    "equation": "C₁₂H₂₂O₁₁ + H₂O → C₆H₁₂O₆ + C₆H₁₂O₆",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Warm sucrose with dilute acid and the single link holding its two halves together is cut, giving an equal mixture of glucose and fructose. That mixture has a name of its own — INVERT SUGAR — and it is most of what honey is, which is why honey tastes sweeter than table sugar. Nothing has been added or taken away except a molecule of water. As with starch, neutralise the acid before testing with Fehling's.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, hydrolysis of sucrose"
+  },
+  {
+    "id": "rxn_fehlings_invert_sugar",
+    "reactants": ["fehlings_aq", "invert_sugar_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["cu2o_s", "gluconate_aq"],
+    "equation": "C₆H₁₂O₆ + 2Cu²⁺ + 5OH⁻ → C₆H₁₁O₇⁻ + Cu₂O + 3H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#A83C1E",
+      "precipitate": "brick red copper(I) oxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 11.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The payoff. Sucrose gave nothing at all with Fehling's; hydrolyse it and the very same test now goes brick red. Nothing was added that could reduce copper — one bond was broken, and that was enough to free the reducing groups on both halves. This pairing is the whole method of carbohydrate chemistry in two tubes: test, then break, then test again, and the difference tells you what was there. Fructose is worth a second look here, because it is a ketone and by the rule from the last batch ought to fail — it passes because the alkali in Fehling's rearranges it into glucose first.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, hydrolysis of sucrose and the reducing test"
+  },
+  {
+    "id": "rxn_biuret_protein",
+    "reactants": ["albumin_aq", "biuret_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["protein_cu_aq"],
+    "equation": "protein + Cu²⁺/OH⁻ → violet copper–peptide complex",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#7B4C9E",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 13.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "corrosive",
+      "title": "The reagent is strongly alkaline",
+      "warning": "Biuret reagent is copper(II) sulfate in concentrated sodium hydroxide. It burns skin and is particularly dangerous to eyes, where alkali causes lasting damage within seconds.",
+      "visualEffect": null,
+      "whatToDoInstead": "Goggles and gloves, and rinse any splash with plenty of water at once."
+    },
+    "molecularAnimation": null,
+    "explanation": "Pale blue turns violet, and a protein has been identified. What the test actually detects is the PEPTIDE LINK — the same C—N bond made in the last batch when the acid chloride met ammonia — because copper(II) is gripped by the nitrogens of several links at once and that grip changes its colour. Two consequences follow. A single amino acid gives nothing, since there is no link to grip; you need at least three joined together. And the deeper the violet, the more protein there is, which is how protein is measured rather than merely detected.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, biuret test for proteins"
+  },
+  {
+    "id": "rxn_denaturation_protein_heat",
+    "reactants": ["albumin_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": 60, "catalyst": null },
+    "products": ["albumin_coag_s"],
+    "equation": "folded protein →(heat) unfolded, tangled protein",
+    "type": "denaturation",
+    "effects": {
+      "colorToHex": "#FAFAF5",
+      "precipitate": "a solid white coagulate, like cooked egg white",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Warm it past about 60 °C and the clear solution sets to an opaque white solid — an egg cooking, watched as chemistry. Notice what has NOT happened: not one peptide link has broken. The chain is entirely intact; only the folding that held it in shape has been shaken apart, and the unfolded chains have tangled together and dropped out of solution. That is DENATURATION, and it explains why cooling will not undo it — the tangle simply cannot sort itself out again. In a real laboratory a biuret test on the cooked solid still comes out positive, which is the proof that the links survived. The same unfolding is what alcohol does to bacterial proteins, and it is why a disinfectant works.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, denaturation of proteins"
   }
 ]

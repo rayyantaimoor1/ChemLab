@@ -2852,6 +2852,307 @@
     ]
   },
 
+  "glucose_aq": {
+    "note": "The hydrogens are left off so the ring can be seen. Turn it and the ring is not flat - it buckles into the shape called a chair, and every OH group sticks out sideways rather than up or down. That is what makes this particular arrangement the most comfortable of all the sugars, and it is why glucose, out of all of them, is the one life runs on.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": 1.25, "y": 0.25, "z": 0.25 },
+      { "id": "o5", "element": "O", "x": 0.6, "y": 1.2, "z": -0.6 },
+      { "id": "c5", "element": "C", "x": -0.75, "y": 1.35, "z": -0.2 },
+      { "id": "c4", "element": "C", "x": -1.5, "y": 0.05, "z": 0.25 },
+      { "id": "c3", "element": "C", "x": -0.75, "y": -1.2, "z": -0.3 },
+      { "id": "c2", "element": "C", "x": 0.7, "y": -1.1, "z": 0.2 },
+      { "id": "o1", "element": "O", "x": 2.55, "y": 0.4, "z": -0.2 },
+      { "id": "o2", "element": "O", "x": 1.4, "y": -2.25, "z": -0.3 },
+      { "id": "o3", "element": "O", "x": -1.4, "y": -2.4, "z": 0.2 },
+      { "id": "o4", "element": "O", "x": -2.8, "y": 0.05, "z": -0.3 },
+      { "id": "c6", "element": "C", "x": -1.45, "y": 2.6, "z": 0.35 },
+      { "id": "o6", "element": "O", "x": -2.8, "y": 2.7, "z": -0.1 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "o5", "type": "covalent" },
+      { "from": "o5", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "o1", "type": "covalent" },
+      { "from": "c2", "to": "o2", "type": "covalent" },
+      { "from": "c3", "to": "o3", "type": "covalent" },
+      { "from": "c4", "to": "o4", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" },
+      { "from": "c6", "to": "o6", "type": "covalent" }
+    ]
+  },
+
+  "sucrose_aq": {
+    "note": "Two sugar rings joined through the single oxygen in the middle. Find that oxygen and follow it to the carbon on each side: those two carbons are exactly the ones that would otherwise open into reducing groups, and both are used up making this one bond. That is the whole reason sucrose gives nothing with Fehling's. The hydrogens are left off, and the fructose ring on the right is drawn as a six-membered ring for clarity when the real one has five.",
+    "atoms": [
+      { "id": "a1", "element": "C", "x": -1.6, "y": 0.2, "z": 0.2 },
+      { "id": "ao", "element": "O", "x": -2.3, "y": 1.2, "z": -0.5 },
+      { "id": "a5", "element": "C", "x": -3.6, "y": 1.3, "z": -0.1 },
+      { "id": "a4", "element": "C", "x": -4.3, "y": 0, "z": 0.3 },
+      { "id": "a3", "element": "C", "x": -3.6, "y": -1.2, "z": -0.2 },
+      { "id": "a2", "element": "C", "x": -2.15, "y": -1.1, "z": 0.2 },
+      { "id": "ao2", "element": "O", "x": -1.5, "y": -2.2, "z": -0.3 },
+      { "id": "ao4", "element": "O", "x": -5.6, "y": 0, "z": -0.2 },
+      { "id": "link", "element": "O", "x": 0, "y": 0.35, "z": -0.3 },
+      { "id": "b1", "element": "C", "x": 1.6, "y": 0.2, "z": 0.2 },
+      { "id": "bo", "element": "O", "x": 2.3, "y": 1.2, "z": -0.5 },
+      { "id": "b5", "element": "C", "x": 3.6, "y": 1.3, "z": -0.1 },
+      { "id": "b4", "element": "C", "x": 4.3, "y": 0, "z": 0.3 },
+      { "id": "b3", "element": "C", "x": 3.6, "y": -1.2, "z": -0.2 },
+      { "id": "b2", "element": "C", "x": 2.15, "y": -1.1, "z": 0.2 },
+      { "id": "bo2", "element": "O", "x": 1.5, "y": -2.2, "z": -0.3 },
+      { "id": "bo4", "element": "O", "x": 5.6, "y": 0, "z": -0.2 }
+    ],
+    "bonds": [
+      { "from": "a1", "to": "ao", "type": "covalent" },
+      { "from": "ao", "to": "a5", "type": "covalent" },
+      { "from": "a5", "to": "a4", "type": "covalent" },
+      { "from": "a4", "to": "a3", "type": "covalent" },
+      { "from": "a3", "to": "a2", "type": "covalent" },
+      { "from": "a2", "to": "a1", "type": "covalent" },
+      { "from": "a2", "to": "ao2", "type": "covalent" },
+      { "from": "a4", "to": "ao4", "type": "covalent" },
+      { "from": "a1", "to": "link", "type": "covalent" },
+      { "from": "link", "to": "b1", "type": "covalent" },
+      { "from": "b1", "to": "bo", "type": "covalent" },
+      { "from": "bo", "to": "b5", "type": "covalent" },
+      { "from": "b5", "to": "b4", "type": "covalent" },
+      { "from": "b4", "to": "b3", "type": "covalent" },
+      { "from": "b3", "to": "b2", "type": "covalent" },
+      { "from": "b2", "to": "b1", "type": "covalent" },
+      { "from": "b2", "to": "bo2", "type": "covalent" },
+      { "from": "b4", "to": "bo4", "type": "covalent" }
+    ]
+  },
+
+  "invert_sugar_aq": {
+    "note": "The same two rings as sucrose, but no longer joined - this is a MIXTURE of two separate sugars, not one molecule, and the gap between them in this model is real rather than decorative. Compare it with the sucrose model: one bond is missing, and that is the entire difference between a negative Fehling's test and a positive one.",
+    "atoms": [
+      { "id": "a1", "element": "C", "x": -2.6, "y": 0.2, "z": 0.2 },
+      { "id": "ao", "element": "O", "x": -3.3, "y": 1.2, "z": -0.5 },
+      { "id": "a5", "element": "C", "x": -4.6, "y": 1.3, "z": -0.1 },
+      { "id": "a4", "element": "C", "x": -5.3, "y": 0, "z": 0.3 },
+      { "id": "a3", "element": "C", "x": -4.6, "y": -1.2, "z": -0.2 },
+      { "id": "a2", "element": "C", "x": -3.15, "y": -1.1, "z": 0.2 },
+      { "id": "ao1", "element": "O", "x": -1.3, "y": 0.35, "z": -0.3 },
+      { "id": "ao2", "element": "O", "x": -2.5, "y": -2.2, "z": -0.3 },
+      { "id": "b1", "element": "C", "x": 2.6, "y": 0.2, "z": 0.2 },
+      { "id": "bo", "element": "O", "x": 3.3, "y": 1.2, "z": -0.5 },
+      { "id": "b5", "element": "C", "x": 4.6, "y": 1.3, "z": -0.1 },
+      { "id": "b4", "element": "C", "x": 5.3, "y": 0, "z": 0.3 },
+      { "id": "b3", "element": "C", "x": 4.6, "y": -1.2, "z": -0.2 },
+      { "id": "b2", "element": "C", "x": 3.15, "y": -1.1, "z": 0.2 },
+      { "id": "bo1", "element": "O", "x": 1.3, "y": 0.35, "z": -0.3 },
+      { "id": "bo2", "element": "O", "x": 2.5, "y": -2.2, "z": -0.3 }
+    ],
+    "bonds": [
+      { "from": "a1", "to": "ao", "type": "covalent" },
+      { "from": "ao", "to": "a5", "type": "covalent" },
+      { "from": "a5", "to": "a4", "type": "covalent" },
+      { "from": "a4", "to": "a3", "type": "covalent" },
+      { "from": "a3", "to": "a2", "type": "covalent" },
+      { "from": "a2", "to": "a1", "type": "covalent" },
+      { "from": "a1", "to": "ao1", "type": "covalent" },
+      { "from": "a2", "to": "ao2", "type": "covalent" },
+      { "from": "b1", "to": "bo", "type": "covalent" },
+      { "from": "bo", "to": "b5", "type": "covalent" },
+      { "from": "b5", "to": "b4", "type": "covalent" },
+      { "from": "b4", "to": "b3", "type": "covalent" },
+      { "from": "b3", "to": "b2", "type": "covalent" },
+      { "from": "b2", "to": "b1", "type": "covalent" },
+      { "from": "b1", "to": "bo1", "type": "covalent" },
+      { "from": "b2", "to": "bo2", "type": "covalent" }
+    ]
+  },
+
+  "gluconate_aq": {
+    "note": "The ring has opened out into a straight chain and the end carbon now carries TWO oxygens instead of one. That is the only change Fehling's made - the aldehyde has become a carboxylate - and everything else along the chain is the glucose it came from, untouched. Hydrogens are left off.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": 3.2, "y": 0.3, "z": 0 },
+      { "id": "oa", "element": "O", "x": 4.0, "y": 1.25, "z": 0 },
+      { "id": "ob", "element": "O", "x": 3.7, "y": -0.9, "z": 0 },
+      { "id": "na", "element": "Na", "x": 5.6, "y": -1.5, "z": 0 },
+      { "id": "c2", "element": "C", "x": 1.75, "y": 0.5, "z": 0.2 },
+      { "id": "c3", "element": "C", "x": 0.85, "y": -0.6, "z": -0.35 },
+      { "id": "c4", "element": "C", "x": -0.6, "y": -0.4, "z": 0.1 },
+      { "id": "c5", "element": "C", "x": -1.5, "y": -1.5, "z": -0.45 },
+      { "id": "c6", "element": "C", "x": -2.95, "y": -1.3, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.35, "y": 1.7, "z": -0.3 },
+      { "id": "o3", "element": "O", "x": 1.25, "y": -1.85, "z": 0.15 },
+      { "id": "o4", "element": "O", "x": -1.0, "y": 0.85, "z": -0.3 },
+      { "id": "o5", "element": "O", "x": -1.1, "y": -2.75, "z": 0.05 },
+      { "id": "o6", "element": "O", "x": -3.8, "y": -2.35, "z": -0.4 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "oa", "type": "covalent" },
+      { "from": "c1", "to": "ob", "type": "covalent" },
+      { "from": "na", "to": "ob", "type": "ionic" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" },
+      { "from": "c2", "to": "o2", "type": "covalent" },
+      { "from": "c3", "to": "o3", "type": "covalent" },
+      { "from": "c4", "to": "o4", "type": "covalent" },
+      { "from": "c5", "to": "o5", "type": "covalent" },
+      { "from": "c6", "to": "o6", "type": "covalent" }
+    ]
+  },
+
+  "starch_aq": {
+    "note": "A real starch molecule has HUNDREDS of glucose units and could not be drawn. Five are shown, each as one grey block, with the linking oxygens between them in red. What is honest here is the plan and the curve: the chain does not run straight but twists, and that twist is what eventually coils it into the helix the iodine test depends on.",
+    "atoms": [
+      { "id": "g1", "element": "group", "x": -4.4, "y": -0.6, "z": -0.8 },
+      { "id": "l1", "element": "O", "x": -3.3, "y": 0.1, "z": -0.3 },
+      { "id": "g2", "element": "group", "x": -2.2, "y": 0.5, "z": 0.4 },
+      { "id": "l2", "element": "O", "x": -1.1, "y": 0.3, "z": 1.0 },
+      { "id": "g3", "element": "group", "x": 0, "y": -0.2, "z": 1.1 },
+      { "id": "l3", "element": "O", "x": 1.1, "y": -0.7, "z": 0.6 },
+      { "id": "g4", "element": "group", "x": 2.2, "y": -0.6, "z": -0.2 },
+      { "id": "l4", "element": "O", "x": 3.3, "y": -0.1, "z": -0.8 },
+      { "id": "g5", "element": "group", "x": 4.4, "y": 0.5, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "g1", "to": "l1", "type": "covalent" },
+      { "from": "l1", "to": "g2", "type": "covalent" },
+      { "from": "g2", "to": "l2", "type": "covalent" },
+      { "from": "l2", "to": "g3", "type": "covalent" },
+      { "from": "g3", "to": "l3", "type": "covalent" },
+      { "from": "l3", "to": "g4", "type": "covalent" },
+      { "from": "g4", "to": "l4", "type": "covalent" },
+      { "from": "l4", "to": "g5", "type": "covalent" }
+    ]
+  },
+
+  "starch_iodine_aq": {
+    "note": "Turn this one and look down the length of it: the grey sugar units spiral round, and the purple iodines sit in a straight line down the hollow middle. They touch nothing - there are no bonds drawn to them because there are none. The colour comes from iodine being TRAPPED inside the coil, which is exactly why warming the tube, which shakes the coil loose, makes the blue-black vanish.",
+    "atoms": [
+      { "id": "s1", "element": "group", "x": -3.0, "y": 1.4, "z": 0 },
+      { "id": "s2", "element": "group", "x": -2.0, "y": 0, "z": 1.4 },
+      { "id": "s3", "element": "group", "x": -1.0, "y": -1.4, "z": 0 },
+      { "id": "s4", "element": "group", "x": 0, "y": 0, "z": -1.4 },
+      { "id": "s5", "element": "group", "x": 1.0, "y": 1.4, "z": 0 },
+      { "id": "s6", "element": "group", "x": 2.0, "y": 0, "z": 1.4 },
+      { "id": "s7", "element": "group", "x": 3.0, "y": -1.4, "z": 0 },
+      { "id": "i1", "element": "I", "x": -1.4, "y": 0, "z": 0 },
+      { "id": "i2", "element": "I", "x": 0.1, "y": 0, "z": 0 },
+      { "id": "i3", "element": "I", "x": 1.6, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "s1", "to": "s2", "type": "covalent" },
+      { "from": "s2", "to": "s3", "type": "covalent" },
+      { "from": "s3", "to": "s4", "type": "covalent" },
+      { "from": "s4", "to": "s5", "type": "covalent" },
+      { "from": "s5", "to": "s6", "type": "covalent" },
+      { "from": "s6", "to": "s7", "type": "covalent" },
+      { "from": "i1", "to": "i2", "type": "covalent" },
+      { "from": "i2", "to": "i3", "type": "covalent" }
+    ]
+  },
+
+  "albumin_aq": {
+    "note": "A real protein has thousands of atoms, so each amino acid is shown here as one grey block with the peptide nitrogens between them in blue. The point of the model is the FOLD: the chain does not lie straight, it doubles back on itself into a particular shape, and everything the protein does depends on that shape being kept.",
+    "atoms": [
+      { "id": "r1", "element": "group", "x": -3.4, "y": -1.6, "z": 0.6 },
+      { "id": "n1", "element": "N", "x": -2.4, "y": -0.6, "z": 0.2 },
+      { "id": "r2", "element": "group", "x": -1.6, "y": 0.6, "z": 0.9 },
+      { "id": "n2", "element": "N", "x": -0.4, "y": 1.3, "z": 0.1 },
+      { "id": "r3", "element": "group", "x": 0.9, "y": 0.8, "z": -0.6 },
+      { "id": "n3", "element": "N", "x": 1.4, "y": -0.5, "z": -1.0 },
+      { "id": "r4", "element": "group", "x": 0.8, "y": -1.8, "z": -0.4 },
+      { "id": "n4", "element": "N", "x": 1.6, "y": -2.6, "z": 0.7 },
+      { "id": "r5", "element": "group", "x": 3.0, "y": -2.1, "z": 1.2 }
+    ],
+    "bonds": [
+      { "from": "r1", "to": "n1", "type": "covalent" },
+      { "from": "n1", "to": "r2", "type": "covalent" },
+      { "from": "r2", "to": "n2", "type": "covalent" },
+      { "from": "n2", "to": "r3", "type": "covalent" },
+      { "from": "r3", "to": "n3", "type": "covalent" },
+      { "from": "n3", "to": "r4", "type": "covalent" },
+      { "from": "r4", "to": "n4", "type": "covalent" },
+      { "from": "n4", "to": "r5", "type": "covalent" }
+    ]
+  },
+
+  "albumin_coag_s": {
+    "note": "Put this beside the albumin model and count the bonds: there are exactly as many, and not one has been broken. All that has changed is where the blocks sit - the neat fold has been shaken out into a sprawl. That is denaturation, and it is why cooking an egg cannot be undone by cooling it and why a biuret test on the result still works.",
+    "atoms": [
+      { "id": "r1", "element": "group", "x": -4.2, "y": 1.8, "z": -1.4 },
+      { "id": "n1", "element": "N", "x": -2.8, "y": 0.4, "z": 1.2 },
+      { "id": "r2", "element": "group", "x": -1.4, "y": 2.4, "z": -0.6 },
+      { "id": "n2", "element": "N", "x": 0.2, "y": 0.2, "z": 1.8 },
+      { "id": "r3", "element": "group", "x": 1.6, "y": 2.6, "z": 0.4 },
+      { "id": "n3", "element": "N", "x": 2.4, "y": 0.2, "z": -1.6 },
+      { "id": "r4", "element": "group", "x": 0.6, "y": -1.8, "z": -0.8 },
+      { "id": "n4", "element": "N", "x": 2.8, "y": -2.4, "z": 1.4 },
+      { "id": "r5", "element": "group", "x": 4.4, "y": -0.6, "z": -0.4 }
+    ],
+    "bonds": [
+      { "from": "r1", "to": "n1", "type": "covalent" },
+      { "from": "n1", "to": "r2", "type": "covalent" },
+      { "from": "r2", "to": "n2", "type": "covalent" },
+      { "from": "n2", "to": "r3", "type": "covalent" },
+      { "from": "r3", "to": "n3", "type": "covalent" },
+      { "from": "n3", "to": "r4", "type": "covalent" },
+      { "from": "r4", "to": "n4", "type": "covalent" },
+      { "from": "n4", "to": "r5", "type": "covalent" }
+    ]
+  },
+
+  "biuret_aq": {
+    "note": "Biuret reagent is a MIXTURE - copper(II) sulfate stirred into plenty of sodium hydroxide - so there is no real structure to show. What is drawn is a copper(II) ion with hydroxide ions round it, which is the state the copper is actually in while it waits for a protein. Read it as a sketch of the bottle's contents, not as a formula.",
+    "atoms": [
+      { "id": "cu", "element": "Cu", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 2.0, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": 2.9, "y": 0.6, "z": 0 },
+      { "id": "o2", "element": "O", "x": -2.0, "y": 0, "z": 0 },
+      { "id": "h2", "element": "H", "x": -2.9, "y": -0.6, "z": 0 },
+      { "id": "o3", "element": "O", "x": 0, "y": 2.0, "z": 0 },
+      { "id": "h3", "element": "H", "x": 0.6, "y": 2.9, "z": 0 },
+      { "id": "o4", "element": "O", "x": 0, "y": -2.0, "z": 0 },
+      { "id": "h4", "element": "H", "x": -0.6, "y": -2.9, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "cu", "to": "o1", "type": "ionic" },
+      { "from": "cu", "to": "o2", "type": "ionic" },
+      { "from": "cu", "to": "o3", "type": "ionic" },
+      { "from": "cu", "to": "o4", "type": "ionic" },
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" },
+      { "from": "o3", "to": "h3", "type": "covalent" },
+      { "from": "o4", "to": "h4", "type": "covalent" }
+    ]
+  },
+
+  "protein_cu_aq": {
+    "note": "One copper ion held by FOUR peptide nitrogens at once, two from each of two stretches of chain. Count them, because the number matters: a single amino acid has no peptide link at all and gives no colour, and you need at least three joined together before there are enough nitrogens to grip the copper. That is why the biuret test detects a protein rather than an amino acid.",
+    "atoms": [
+      { "id": "cu", "element": "Cu", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": 1.95, "y": 0.1, "z": 0.3 },
+      { "id": "n2", "element": "N", "x": -1.95, "y": -0.1, "z": -0.3 },
+      { "id": "n3", "element": "N", "x": 0.1, "y": 1.95, "z": -0.3 },
+      { "id": "n4", "element": "N", "x": -0.1, "y": -1.95, "z": 0.3 },
+      { "id": "r1", "element": "group", "x": 3.3, "y": 1.2, "z": 0.6 },
+      { "id": "r2", "element": "group", "x": -3.3, "y": -1.2, "z": -0.6 },
+      { "id": "r3", "element": "group", "x": 1.2, "y": 3.3, "z": -0.6 },
+      { "id": "r4", "element": "group", "x": -1.2, "y": -3.3, "z": 0.6 }
+    ],
+    "bonds": [
+      { "from": "cu", "to": "n1", "type": "ionic" },
+      { "from": "cu", "to": "n2", "type": "ionic" },
+      { "from": "cu", "to": "n3", "type": "ionic" },
+      { "from": "cu", "to": "n4", "type": "ionic" },
+      { "from": "n1", "to": "r1", "type": "covalent" },
+      { "from": "n2", "to": "r2", "type": "covalent" },
+      { "from": "n3", "to": "r3", "type": "covalent" },
+      { "from": "n4", "to": "r4", "type": "covalent" }
+    ]
+  },
+
   "scum_s": {
     "note": "One calcium holding TWO shortened soap chains, one above and one below. Sodium could only ever hold one; calcium's second charge lets it bridge two, and the bridged pair has no charged end left free to keep it in solution. That is scum, and it is why it will not wash off.",
     "atoms": [
