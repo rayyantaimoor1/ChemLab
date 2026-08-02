@@ -2852,6 +2852,305 @@
     ]
   },
 
+  "cucl4_aq": {
+    "note": "Turn it and count: FOUR chlorides, arranged tetrahedrally. Then look at the hexaaquacopper model with its six waters. Same copper, same +2 charge, different ligands and a different shape - and that is the entire reason one is blue and this one is yellow-green. Chloride is the bigger ligand, which is why only four will fit.",
+    "atoms": [
+      { "id": "cu", "element": "Cu", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl1", "element": "Cl", "x": 1.3, "y": 1.3, "z": 1.3 },
+      { "id": "cl2", "element": "Cl", "x": -1.3, "y": -1.3, "z": 1.3 },
+      { "id": "cl3", "element": "Cl", "x": -1.3, "y": 1.3, "z": -1.3 },
+      { "id": "cl4", "element": "Cl", "x": 1.3, "y": -1.3, "z": -1.3 }
+    ],
+    "bonds": [
+      { "from": "cu", "to": "cl1", "type": "ionic" },
+      { "from": "cu", "to": "cl2", "type": "ionic" },
+      { "from": "cu", "to": "cl3", "type": "ionic" },
+      { "from": "cu", "to": "cl4", "type": "ionic" }
+    ]
+  },
+
+  "co_h2o_aq": {
+    "note": "SIX waters, arranged octahedrally - one at each of six directions, all at the same distance. Water here is not the solvent standing politely aside; every one of these is BONDED to the cobalt, and they have to be pushed off before anything else can take their place. Compare with the tetrachlorocobaltate model, which has four ligands and a different shape entirely.",
+    "atoms": [
+      { "id": "co", "element": "Co", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 2.1, "y": 0, "z": 0 },
+      { "id": "o2", "element": "O", "x": -2.1, "y": 0, "z": 0 },
+      { "id": "o3", "element": "O", "x": 0, "y": 2.1, "z": 0 },
+      { "id": "o4", "element": "O", "x": 0, "y": -2.1, "z": 0 },
+      { "id": "o5", "element": "O", "x": 0, "y": 0, "z": 2.1 },
+      { "id": "o6", "element": "O", "x": 0, "y": 0, "z": -2.1 },
+      { "id": "h1", "element": "H", "x": 2.9, "y": 0.7, "z": 0 },
+      { "id": "h2", "element": "H", "x": -2.9, "y": -0.7, "z": 0 },
+      { "id": "h3", "element": "H", "x": 0.7, "y": 2.9, "z": 0 },
+      { "id": "h4", "element": "H", "x": -0.7, "y": -2.9, "z": 0 },
+      { "id": "h5", "element": "H", "x": 0, "y": 0.7, "z": 2.9 },
+      { "id": "h6", "element": "H", "x": 0, "y": -0.7, "z": -2.9 }
+    ],
+    "bonds": [
+      { "from": "co", "to": "o1", "type": "ionic" },
+      { "from": "co", "to": "o2", "type": "ionic" },
+      { "from": "co", "to": "o3", "type": "ionic" },
+      { "from": "co", "to": "o4", "type": "ionic" },
+      { "from": "co", "to": "o5", "type": "ionic" },
+      { "from": "co", "to": "o6", "type": "ionic" },
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" },
+      { "from": "o3", "to": "h3", "type": "covalent" },
+      { "from": "o4", "to": "h4", "type": "covalent" },
+      { "from": "o5", "to": "h5", "type": "covalent" },
+      { "from": "o6", "to": "h6", "type": "covalent" }
+    ]
+  },
+
+  "cocl4_aq": {
+    "note": "Four chlorides, tetrahedral, and the same cobalt atom that sat in the middle of six waters a moment ago. Open both models side by side: nothing about the metal has changed, not its identity and not its charge, yet one solution is pale pink and this one is deep blue. That is the lesson of the whole batch - colour belongs to the complex, not to the metal.",
+    "atoms": [
+      { "id": "co", "element": "Co", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl1", "element": "Cl", "x": 1.32, "y": 1.32, "z": 1.32 },
+      { "id": "cl2", "element": "Cl", "x": -1.32, "y": -1.32, "z": 1.32 },
+      { "id": "cl3", "element": "Cl", "x": -1.32, "y": 1.32, "z": -1.32 },
+      { "id": "cl4", "element": "Cl", "x": 1.32, "y": -1.32, "z": -1.32 }
+    ],
+    "bonds": [
+      { "from": "co", "to": "cl1", "type": "ionic" },
+      { "from": "co", "to": "cl2", "type": "ionic" },
+      { "from": "co", "to": "cl3", "type": "ionic" },
+      { "from": "co", "to": "cl4", "type": "ionic" }
+    ]
+  },
+
+  "nicl2_aq": {
+    "atoms": [
+      { "id": "ni", "element": "Ni", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl1", "element": "Cl", "x": 2.2, "y": 0, "z": 0 },
+      { "id": "cl2", "element": "Cl", "x": -2.2, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "ni", "to": "cl1", "type": "ionic" },
+      { "from": "ni", "to": "cl2", "type": "ionic" }
+    ]
+  },
+
+  "dmg_aq": {
+    "note": "The molecule is flat, and the two nitrogens sit on the same side of it at a fixed distance apart. That distance is everything. It happens to match the spacing nickel wants between neighbouring bonds almost exactly, and it matches very few other ions, which is why one reagent picks nickel out of a mixture.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -0.75, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0.75, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": -1.5, "y": 1.2, "z": 0 },
+      { "id": "n2", "element": "N", "x": 1.5, "y": 1.2, "z": 0 },
+      { "id": "o1", "element": "O", "x": -0.85, "y": 2.4, "z": 0 },
+      { "id": "o2", "element": "O", "x": 0.85, "y": 2.4, "z": 0 },
+      { "id": "h1", "element": "H", "x": -1.5, "y": 3.15, "z": 0 },
+      { "id": "h2", "element": "H", "x": 1.5, "y": 3.15, "z": 0 },
+      { "id": "c3", "element": "C", "x": -1.6, "y": -1.3, "z": 0 },
+      { "id": "c4", "element": "C", "x": 1.6, "y": -1.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c1", "to": "n1", "type": "covalent" },
+      { "from": "c2", "to": "n2", "type": "covalent" },
+      { "from": "n1", "to": "o1", "type": "covalent" },
+      { "from": "n2", "to": "o2", "type": "covalent" },
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" },
+      { "from": "c1", "to": "c3", "type": "covalent" },
+      { "from": "c2", "to": "c4", "type": "covalent" }
+    ]
+  },
+
+  "ni_dmg_s": {
+    "note": "Look at it edge-on: the whole thing is FLAT, with four nitrogens in a perfect square round the nickel. Two ligand molecules, one above the plane of the page and one below, each gripping with two nitrogens. It carries no charge at all, which is why it will not dissolve in water - and that is exactly what makes it weighable.",
+    "atoms": [
+      { "id": "ni", "element": "Ni", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": 1.0, "y": 1.6, "z": 0 },
+      { "id": "n2", "element": "N", "x": -1.0, "y": 1.6, "z": 0 },
+      { "id": "n3", "element": "N", "x": 1.0, "y": -1.6, "z": 0 },
+      { "id": "n4", "element": "N", "x": -1.0, "y": -1.6, "z": 0 },
+      { "id": "a1", "element": "C", "x": 0.75, "y": 2.95, "z": 0 },
+      { "id": "a2", "element": "C", "x": -0.75, "y": 2.95, "z": 0 },
+      { "id": "b1", "element": "C", "x": 0.75, "y": -2.95, "z": 0 },
+      { "id": "b2", "element": "C", "x": -0.75, "y": -2.95, "z": 0 },
+      { "id": "ao1", "element": "O", "x": 2.2, "y": 1.3, "z": 0 },
+      { "id": "ao2", "element": "O", "x": -2.2, "y": 1.3, "z": 0 },
+      { "id": "bo1", "element": "O", "x": 2.2, "y": -1.3, "z": 0 },
+      { "id": "bo2", "element": "O", "x": -2.2, "y": -1.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "ni", "to": "n1", "type": "ionic" },
+      { "from": "ni", "to": "n2", "type": "ionic" },
+      { "from": "ni", "to": "n3", "type": "ionic" },
+      { "from": "ni", "to": "n4", "type": "ionic" },
+      { "from": "n1", "to": "a1", "type": "covalent" },
+      { "from": "n2", "to": "a2", "type": "covalent" },
+      { "from": "a1", "to": "a2", "type": "covalent" },
+      { "from": "n3", "to": "b1", "type": "covalent" },
+      { "from": "n4", "to": "b2", "type": "covalent" },
+      { "from": "b1", "to": "b2", "type": "covalent" },
+      { "from": "n1", "to": "ao1", "type": "covalent" },
+      { "from": "n2", "to": "ao2", "type": "covalent" },
+      { "from": "n3", "to": "bo1", "type": "covalent" },
+      { "from": "n4", "to": "bo2", "type": "covalent" }
+    ]
+  },
+
+  "aloh4_aq": {
+    "note": "Four hydroxides round the aluminium, tetrahedral, and the whole ion carries a charge - which is the reason it dissolves where the neutral hydroxide would not. Put this beside the zincate model and they are the same shape doing the same job, which is exactly why sodium hydroxide alone cannot tell aluminium from zinc.",
+    "atoms": [
+      { "id": "al", "element": "Al", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 1.05, "y": 1.05, "z": 1.05 },
+      { "id": "o2", "element": "O", "x": -1.05, "y": -1.05, "z": 1.05 },
+      { "id": "o3", "element": "O", "x": -1.05, "y": 1.05, "z": -1.05 },
+      { "id": "o4", "element": "O", "x": 1.05, "y": -1.05, "z": -1.05 },
+      { "id": "h1", "element": "H", "x": 1.8, "y": 1.8, "z": 1.8 },
+      { "id": "h2", "element": "H", "x": -1.8, "y": -1.8, "z": 1.8 },
+      { "id": "h3", "element": "H", "x": -1.8, "y": 1.8, "z": -1.8 },
+      { "id": "h4", "element": "H", "x": 1.8, "y": -1.8, "z": -1.8 }
+    ],
+    "bonds": [
+      { "from": "al", "to": "o1", "type": "covalent" },
+      { "from": "al", "to": "o2", "type": "covalent" },
+      { "from": "al", "to": "o3", "type": "covalent" },
+      { "from": "al", "to": "o4", "type": "covalent" },
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" },
+      { "from": "o3", "to": "h3", "type": "covalent" },
+      { "from": "o4", "to": "h4", "type": "covalent" }
+    ]
+  },
+
+  "znoh2_s": {
+    "atoms": [
+      { "id": "zn", "element": "Zn", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 1.9, "y": 0.5, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.9, "y": -0.5, "z": 0 },
+      { "id": "h1", "element": "H", "x": 2.6, "y": 1.3, "z": 0 },
+      { "id": "h2", "element": "H", "x": -2.6, "y": -1.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "zn", "to": "o1", "type": "ionic" },
+      { "from": "zn", "to": "o2", "type": "ionic" },
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" }
+    ]
+  },
+
+  "znoh4_aq": {
+    "note": "Compare this with the aluminate model and you will find nothing useful to tell them apart: same shape, same four hydroxides, both colourless in the beaker. That is the honest state of the investigation after this test - it proves zinc hydroxide is amphoteric and leaves the identification exactly where it was.",
+    "atoms": [
+      { "id": "zn", "element": "Zn", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 1.1, "y": 1.1, "z": 1.1 },
+      { "id": "o2", "element": "O", "x": -1.1, "y": -1.1, "z": 1.1 },
+      { "id": "o3", "element": "O", "x": -1.1, "y": 1.1, "z": -1.1 },
+      { "id": "o4", "element": "O", "x": 1.1, "y": -1.1, "z": -1.1 },
+      { "id": "h1", "element": "H", "x": 1.85, "y": 1.85, "z": 1.85 },
+      { "id": "h2", "element": "H", "x": -1.85, "y": -1.85, "z": 1.85 },
+      { "id": "h3", "element": "H", "x": -1.85, "y": 1.85, "z": -1.85 },
+      { "id": "h4", "element": "H", "x": 1.85, "y": -1.85, "z": -1.85 }
+    ],
+    "bonds": [
+      { "from": "zn", "to": "o1", "type": "covalent" },
+      { "from": "zn", "to": "o2", "type": "covalent" },
+      { "from": "zn", "to": "o3", "type": "covalent" },
+      { "from": "zn", "to": "o4", "type": "covalent" },
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" },
+      { "from": "o3", "to": "h3", "type": "covalent" },
+      { "from": "o4", "to": "h4", "type": "covalent" }
+    ]
+  },
+
+  "zn_nh3_aq": {
+    "note": "Four ammonias round the zinc. Aluminium forms nothing like this at all, and that is what finally separates the two white hydroxides. Worth noticing what is NOT here: any colour. Copper's version of this complex is deep blue, but zinc's d shell is completely full, so there is no electron jump available to absorb light - the usual reason for saying zinc is not really a transition metal.",
+    "atoms": [
+      { "id": "zn", "element": "Zn", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": 1.2, "y": 1.2, "z": 1.2 },
+      { "id": "n2", "element": "N", "x": -1.2, "y": -1.2, "z": 1.2 },
+      { "id": "n3", "element": "N", "x": -1.2, "y": 1.2, "z": -1.2 },
+      { "id": "n4", "element": "N", "x": 1.2, "y": -1.2, "z": -1.2 },
+      { "id": "h1", "element": "H", "x": 2.1, "y": 1.9, "z": 1.5 },
+      { "id": "h2", "element": "H", "x": -2.1, "y": -1.9, "z": 1.5 },
+      { "id": "h3", "element": "H", "x": -2.1, "y": 1.9, "z": -1.5 },
+      { "id": "h4", "element": "H", "x": 2.1, "y": -1.9, "z": -1.5 }
+    ],
+    "bonds": [
+      { "from": "zn", "to": "n1", "type": "ionic" },
+      { "from": "zn", "to": "n2", "type": "ionic" },
+      { "from": "zn", "to": "n3", "type": "ionic" },
+      { "from": "zn", "to": "n4", "type": "ionic" },
+      { "from": "n1", "to": "h1", "type": "covalent" },
+      { "from": "n2", "to": "h2", "type": "covalent" },
+      { "from": "n3", "to": "h3", "type": "covalent" },
+      { "from": "n4", "to": "h4", "type": "covalent" }
+    ]
+  },
+
+  "na2cr2o7_aq": {
+    "note": "Two chromium atoms, each sitting in its own tetrahedron of oxygens, joined through the single oxygen they share in the middle. Turn it and find that bridging oxygen - it is the whole difference from chromate. Count the bonds on each chromium and you will find four in both ions, because the chromium is +6 either way. Nothing has been oxidised or reduced.",
+    "atoms": [
+      { "id": "cr1", "element": "Cr", "x": -1.7, "y": 0, "z": 0 },
+      { "id": "cr2", "element": "Cr", "x": 1.7, "y": 0, "z": 0 },
+      { "id": "ob", "element": "O", "x": 0, "y": 0.5, "z": 0 },
+      { "id": "a1", "element": "O", "x": -2.5, "y": 1.4, "z": 0.5 },
+      { "id": "a2", "element": "O", "x": -2.5, "y": -1.0, "z": 1.0 },
+      { "id": "a3", "element": "O", "x": -2.2, "y": -0.5, "z": -1.4 },
+      { "id": "b1", "element": "O", "x": 2.5, "y": 1.4, "z": -0.5 },
+      { "id": "b2", "element": "O", "x": 2.5, "y": -1.0, "z": -1.0 },
+      { "id": "b3", "element": "O", "x": 2.2, "y": -0.5, "z": 1.4 }
+    ],
+    "bonds": [
+      { "from": "cr1", "to": "ob", "type": "covalent" },
+      { "from": "cr2", "to": "ob", "type": "covalent" },
+      { "from": "cr1", "to": "a1", "type": "covalent" },
+      { "from": "cr1", "to": "a2", "type": "covalent" },
+      { "from": "cr1", "to": "a3", "type": "covalent" },
+      { "from": "cr2", "to": "b1", "type": "covalent" },
+      { "from": "cr2", "to": "b2", "type": "covalent" },
+      { "from": "cr2", "to": "b3", "type": "covalent" }
+    ]
+  },
+
+  "na2s2o3_aq": {
+    "note": "A sulfate tetrahedron with one corner swapped: three oxygens and one SULFUR. Find the sulfur on the outside - it is bigger than the oxygens and a different colour, and it is the atom that does all the work. Big, soft, easily distorted atoms bind big, soft metal ions like silver; small hard ones like oxygen prefer small hard ions like calcium. That one idea explains why hypo dissolves silver bromide and limewater does not.",
+    "atoms": [
+      { "id": "s1", "element": "S", "x": 0, "y": 0, "z": 0 },
+      { "id": "s2", "element": "S", "x": 0, "y": 2.0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 1.4, "y": -0.8, "z": 0.5 },
+      { "id": "o2", "element": "O", "x": -1.4, "y": -0.8, "z": 0.5 },
+      { "id": "o3", "element": "O", "x": 0, "y": -0.8, "z": -1.5 }
+    ],
+    "bonds": [
+      { "from": "s1", "to": "s2", "type": "covalent" },
+      { "from": "s1", "to": "o1", "type": "covalent" },
+      { "from": "s1", "to": "o2", "type": "covalent" },
+      { "from": "s1", "to": "o3", "type": "covalent" }
+    ]
+  },
+
+  "ag_s2o3_aq": {
+    "note": "One silver in the middle, held by two thiosulfates, and the bonds run to their SULFUR atoms rather than to any oxygen. Trace the two bonds from the silver and check which atoms they land on - that is the hard-and-soft principle made visible, and it is the reason this complex is stable enough to strip silver bromide off a photographic film.",
+    "atoms": [
+      { "id": "ag", "element": "Ag", "x": 0, "y": 0, "z": 0 },
+      { "id": "s1", "element": "S", "x": -2.4, "y": 0, "z": 0 },
+      { "id": "sa", "element": "S", "x": -3.4, "y": 1.7, "z": 0 },
+      { "id": "oa1", "element": "O", "x": -3.2, "y": -1.2, "z": 1.0 },
+      { "id": "oa2", "element": "O", "x": -2.0, "y": -0.9, "z": -1.4 },
+      { "id": "s2", "element": "S", "x": 2.4, "y": 0, "z": 0 },
+      { "id": "sb", "element": "S", "x": 3.4, "y": -1.7, "z": 0 },
+      { "id": "ob1", "element": "O", "x": 3.2, "y": 1.2, "z": -1.0 },
+      { "id": "ob2", "element": "O", "x": 2.0, "y": 0.9, "z": 1.4 }
+    ],
+    "bonds": [
+      { "from": "ag", "to": "s1", "type": "ionic" },
+      { "from": "ag", "to": "s2", "type": "ionic" },
+      { "from": "s1", "to": "sa", "type": "covalent" },
+      { "from": "s1", "to": "oa1", "type": "covalent" },
+      { "from": "s1", "to": "oa2", "type": "covalent" },
+      { "from": "s2", "to": "sb", "type": "covalent" },
+      { "from": "s2", "to": "ob1", "type": "covalent" },
+      { "from": "s2", "to": "ob2", "type": "covalent" }
+    ]
+  },
+
   "urea_s": {
     "note": "Turn it and the whole molecule is FLAT - both nitrogens, the carbon and the oxygen lie in one plane. That is the same flatness seen in ethanamide, and for the same reason: each nitrogen's lone pair is pulled towards the carbonyl. Urea simply has two of them instead of one, which is where its unbeatable 46 % nitrogen comes from.",
     "atoms": [

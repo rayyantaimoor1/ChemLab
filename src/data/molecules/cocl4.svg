@@ -1,0 +1,19 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tetrachlorocobaltate: four chlorides around one cobalt, tetrahedral, and deep blue. The same cobalt as the pink aqua ion, wearing different ligands">
+  <line x1="78" y1="52" x2="38" y2="27.2" stroke="#161A19" stroke-width="2"/>
+  <line x1="78" y1="52" x2="118" y2="27.2" stroke="#161A19" stroke-width="2"/>
+  <line x1="78" y1="52" x2="54" y2="83.2" stroke="#161A19" stroke-width="2"/>
+  <line x1="78" y1="52" x2="102" y2="83.2" stroke="#161A19" stroke-width="2"/>
+  <circle cx="38" cy="27.2" r="13" fill="#2ECC71" stroke="#161A19" stroke-width="2"/>
+  <text x="38" y="32.2" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0B3D1E">Cl</text>
+  <circle cx="118" cy="27.2" r="13" fill="#2ECC71" stroke="#161A19" stroke-width="2"/>
+  <text x="118" y="32.2" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0B3D1E">Cl</text>
+  <circle cx="54" cy="83.2" r="13" fill="#2ECC71" stroke="#161A19" stroke-width="2"/>
+  <text x="54" y="88.2" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0B3D1E">Cl</text>
+  <circle cx="102" cy="83.2" r="13" fill="#2ECC71" stroke="#161A19" stroke-width="2"/>
+  <text x="102" y="88.2" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0B3D1E">Cl</text>
+  <circle cx="78" cy="52" r="17" fill="#3F7FB5" stroke="#161A19" stroke-width="2"/>
+  <text x="78" y="59" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Co</text>
+  <text x="98" y="32" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">2-</text>
+  <text x="80" y="106" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">same cobalt, four ligands instead of six</text>
+  <text x="80" y="116" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">add water and it goes back to pink</text>
+</svg>

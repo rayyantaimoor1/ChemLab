@@ -4296,5 +4296,247 @@
     "explanation": "The ammonium test done with limewater rather than sodium hydroxide, and the result is identical — ANY alkali will do it, because all the test needs is something able to take the hydrogen ion back off the ammonium. That is worth knowing rather than memorising one recipe. Industrially this same reaction is the recovery step of the Solvay process, where cheap lime is used precisely because it is cheap, and the ammonia it releases goes straight back into the plant to be used again.",
     "levels": ["matric", "fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry X — test for the ammonium ion; Chemistry XII — Common chemical industries, the Solvay process"
+  },
+  {
+    "id": "rxn_ligand_exchange_cu_chloride",
+    "reactants": ["cuso4_0_5m", "hcl_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cucl4_aq", "h2so4_aq"],
+    "equation": "[Cu(H₂O)₆]²⁺ + 4Cl⁻ ⇌ [CuCl₄]²⁻ + 6H₂O",
+    "type": "ligand_exchange",
+    "effects": {
+      "colorToHex": "#9AA83C",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Blue to yellow-green, and not one electron has moved. The copper is +2 before and +2 after; all that has changed is what is bonded to it. Four chlorides have pushed six waters off, and because chloride is the bigger ligand only four will fit — so the SHAPE changes too, from octahedral to tetrahedral. That is why the colour changes so completely: the colour of a transition metal complex comes from the gap between its d orbitals, and that gap is set by the ligands and the geometry, not by the metal alone. In the real laboratory this needs concentrated hydrochloric acid, and the intermediate green shows both complexes present at once.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — ligand substitution and the spectrochemical series"
+  },
+  {
+    "id": "rxn_ligand_exchange_cobalt_to_blue",
+    "reactants": ["cocl2_6h2o_s", "hcl_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cocl4_aq", "water"],
+    "equation": "[Co(H₂O)₆]²⁺ + 4Cl⁻ ⇌ [CoCl₄]²⁻ + 6H₂O",
+    "type": "ligand_exchange",
+    "effects": {
+      "colorToHex": "#2B4C9B",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Pink to deep blue. This is the same ligand exchange the copper just did, but with a colour change so complete that it became the standard demonstration of LE CHATELIER'S PRINCIPLE. Adding chloride pushes the equilibrium to the right, and the blue tetrahedral complex takes over. The point of the demonstration is what comes next: nothing has been used up and nothing is irreversible, so adding water pushes it straight back. Try that in the next entry.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the cobalt(II) chloride equilibrium"
+  },
+  {
+    "id": "rxn_ligand_exchange_cobalt_to_pink",
+    "reactants": ["cocl4_aq", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["co_h2o_aq", "hcl_1m"],
+    "equation": "[CoCl₄]²⁻ + 6H₂O ⇌ [Co(H₂O)₆]²⁺ + 4Cl⁻",
+    "type": "ligand_exchange",
+    "effects": {
+      "colorToHex": "#E8A0B4",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": -3,
+      "resultPH": 2.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "And back to pink, by doing nothing but adding water. This is the half of the demonstration that carries the lesson. An equilibrium is not a reaction that has stopped — it is one running both ways at the same rate, and adding more of something on one side simply shifts where that balance sits. Notice also what water is doing here. It is not a solvent standing politely aside; it is a LIGAND, competing with chloride for the cobalt, and it wins when there is enough of it. Warm the pink solution and it goes blue again, because the change to the blue form absorbs heat.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the cobalt(II) chloride equilibrium and Le Chatelier's principle"
+  },
+  {
+    "id": "rxn_test_nickel_dmg",
+    "reactants": ["dmg_aq", "nicl2_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["ni_dmg_s"],
+    "equation": "Ni²⁺ + 2C₄H₈N₂O₂ → Ni(C₄H₇N₂O₂)₂ + 2H⁺",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#D14D6B",
+      "precipitate": "a rose red solid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 5.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "A rose-red solid appears at once, and almost nothing else on the periodic table does this. Dimethylglyoxime is a CHELATING ligand — one molecule that grips the metal at two points instead of one, like a claw — and the two-point grip is far harder to break than two separate ligands would be. What makes it a great test is the fit. The bite of those two nitrogens matches nickel's square arrangement almost exactly and matches very little else, so the reagent is selective in a way most are not. The precipitate is clean and its composition exact, which is why nickel is one of the few metals still determined by simply filtering, drying and weighing.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Quantitative Chemical Analysis 6th ed. — gravimetric determination of nickel with dimethylglyoxime"
+  },
+  {
+    "id": "rxn_amphoteric_aloh3_naoh",
+    "reactants": ["aloh3_s", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["aloh4_aq", "water"],
+    "equation": "Al(OH)₃ + OH⁻ → [Al(OH)₄]⁻",
+    "type": "amphoteric",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 13.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The white solid dissolves and the beaker goes clear — which should be surprising, because a hydroxide is a base and bases do not dissolve in alkali. Aluminium hydroxide does both: it dissolves in acid like any base, and it dissolves in alkali as though it were an acid. That is what AMPHOTERIC means. Industry lives on this one property. Bauxite is aluminium oxide contaminated with iron oxide, and hot alkali dissolves the aluminium and leaves the iron behind — the Bayer process, and the reason aluminium is cheap enough to make drink cans from.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — amphoteric behaviour and the Bayer process"
+  },
+  {
+    "id": "rxn_none_aloh3_ammonia",
+    "reactants": ["aloh3_s", "nh4oh_aq"],
+    "noReaction": true,
+    "explanation": "Nothing dissolves. The solid sits there exactly as it was, and that refusal is one of the most useful facts in qualitative analysis. Ammonia is an alkali, so if aluminium hydroxide dissolved in sodium hydroxide you might expect it to dissolve here too — but ammonia works as a LIGAND rather than simply as a source of hydroxide, and aluminium forms no ammine complexes at all. Zinc hydroxide, which looks identical in the test tube and is also amphoteric, dissolves in ammonia readily. One reagent, two answers, and the two white solids are told apart.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — separation of aluminium from zinc"
+  },
+  {
+    "id": "rxn_amphoteric_znoh2_naoh",
+    "reactants": ["naoh_1m", "znoh2_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["znoh4_aq"],
+    "equation": "Zn(OH)₂ + 2OH⁻ → [Zn(OH)₄]²⁻",
+    "type": "amphoteric",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 13.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Zinc hydroxide dissolves in excess alkali exactly as aluminium's did, giving a colourless solution that looks the same in every respect. So this test has proved that zinc hydroxide is amphoteric, and it has told you nothing whatever about which of the two white solids you are holding. That is worth sitting with. A test that gives the same answer for two possibilities is not a failed test — it has genuinely narrowed things down — but you need a second, different test to finish the job.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — zincate formation"
+  },
+  {
+    "id": "rxn_complex_znoh2_ammonia",
+    "reactants": ["nh4oh_aq", "znoh2_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["zn_nh3_aq", "water"],
+    "equation": "Zn(OH)₂ + 4NH₃ → [Zn(NH₃)₄]²⁺ + 2OH⁻",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 11.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "This is the second test, and it settles it. The zinc hydroxide dissolves in ammonia where the aluminium hydroxide would not move, because zinc forms an ammine complex and aluminium has no such chemistry. Two white solids, indistinguishable by eye and identical in sodium hydroxide, separated cleanly by one reagent. Notice too that this solution is COLOURLESS, while the copper ammine from an earlier batch is deep blue. Zinc's d shell is completely full, so there is no room for the electron jump that gives transition metal complexes their colour — which is the usual reason for saying zinc is not really a transition metal at all.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — the zinc ammine complex; Housecroft & Sharpe, Inorganic Chemistry 4th ed. — d10 ions and colour"
+  },
+  {
+    "id": "rxn_chromate_to_dichromate_acid",
+    "reactants": ["hcl_1m", "na2cro4_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["na2cr2o7_aq", "water"],
+    "equation": "2CrO₄²⁻ + 2H⁺ ⇌ Cr₂O₇²⁻ + H₂O",
+    "type": "equilibrium",
+    "effects": {
+      "colorToHex": "#D2691E",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 3.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "carcinogen",
+      "title": "Chromium(VI) causes cancer",
+      "warning": "Both the yellow chromate and the orange dichromate are chromium(VI), and chromium(VI) is a proven human carcinogen as well as being corrosive. The colour change is harmless to watch; the chemicals are not harmless to handle.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves and eye protection, never by mouth pipette, and all chromium waste into the labelled heavy-metal container rather than the sink."
+    },
+    "molecularAnimation": null,
+    "explanation": "Yellow turns orange the moment acid is added, and the app already knew the reverse — add alkali to dichromate and the yellow comes back. Now both directions are here and they can be run against each other in one beaker. The essential point is what has NOT happened: the chromium is +6 before and +6 after, so despite how dramatic it looks this is not a redox reaction at all. Two chromate units have simply joined through a shared oxygen, the same way two acid molecules join to make an anhydride. Students lose marks on this every year by calling it a reduction.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the chromate–dichromate equilibrium"
+  },
+  {
+    "id": "rxn_photographic_fixing",
+    "reactants": ["agbr_s", "na2s2o3_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["ag_s2o3_aq", "nabr_aq"],
+    "equation": "AgBr + 2S₂O₃²⁻ → [Ag(S₂O₃)₂]³⁻ + Br⁻",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 8.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The cream precipitate dissolves away to nothing, and photography exists because of it. On a developed film the exposed silver has become the picture; the unexposed silver bromide is still sitting there, and left alone it would darken in daylight and destroy the image within minutes. Hypo removes it, and only hypo does the job this cleanly. Why thiosulfate and not, say, chloride? Because the donor atom is SULFUR, and soft donor atoms bind soft metal ions like silver far more strongly than hard donors do. That single principle — hard and soft, acids and bases — predicts this and a great deal else besides.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hard and soft acids and bases, silver thiosulfate complexes"
+  },
+  {
+    "id": "rxn_dichromate_to_chromate_alkali_na",
+    "reactants": ["na2cr2o7_aq", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["na2cro4_aq", "water"],
+    "equation": "Cr₂O₇²⁻ + 2OH⁻ ⇌ 2CrO₄²⁻ + H₂O",
+    "type": "equilibrium",
+    "effects": {
+      "colorToHex": "#F2C511",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 12.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "carcinogen",
+      "title": "Chromium(VI) causes cancer",
+      "warning": "Both the orange dichromate and the yellow chromate are chromium(VI), and chromium(VI) is a proven human carcinogen as well as being corrosive.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves and eye protection, never by mouth pipette, and all chromium waste into the labelled heavy-metal container rather than the sink."
+    },
+    "molecularAnimation": null,
+    "explanation": "Orange back to yellow, and now the equilibrium really can be driven both ways in one beaker: add acid and it goes orange, add alkali and the yellow returns, as many times as you like. That is the whole character of an equilibrium — no reagent is used up in any permanent sense, and the colour simply reports where the balance currently sits. Keep hold of the point that survives all this switching: the chromium is +6 the entire time. What changes is how many chromate units are joined together, not the oxidation state of anything.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the chromate–dichromate equilibrium"
   }
 ]

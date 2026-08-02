@@ -1,0 +1,31 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nickel dimethylglyoximate: two chelating molecules gripping one nickel between them, four nitrogens in a flat square. Uncharged and flat, which is why it will not dissolve and can simply be filtered and weighed">
+  <line x1="80" y1="60" x2="50" y2="40" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="60" x2="110" y2="40" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="60" x2="50" y2="80" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="60" x2="110" y2="80" stroke="#161A19" stroke-width="2"/>
+  <line x1="50" y1="40" x2="110" y2="40" stroke="#161A19" stroke-width="2"/>
+  <line x1="50" y1="80" x2="110" y2="80" stroke="#161A19" stroke-width="2"/>
+  <circle cx="50" cy="40" r="11" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="50" y="44" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="110" cy="40" r="11" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="110" y="44" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="50" cy="80" r="11" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="50" y="84" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="110" cy="80" r="11" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="110" y="84" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="80" cy="60" r="17" fill="#8FA5A8" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="67" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#161A19">Ni</text>
+  <circle cx="28" cy="26" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+
+  <circle cx="132" cy="26" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+
+  <circle cx="28" cy="94" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+
+  <circle cx="132" cy="94" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+
+  <line x1="41" y1="33" x2="34" y2="29" stroke="#161A19" stroke-width="2"/>
+  <line x1="119" y1="33" x2="126" y2="29" stroke="#161A19" stroke-width="2"/>
+  <line x1="41" y1="87" x2="34" y2="91" stroke="#161A19" stroke-width="2"/>
+  <line x1="119" y1="87" x2="126" y2="91" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">FOUR N in a flat square — no charge, so it will not dissolve</text>
+</svg>
