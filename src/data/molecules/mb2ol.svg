@@ -1,0 +1,23 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2-methylbutan-2-ol: a TERTIARY alcohol. Three carbons on the carbon holding the OH and NO hydrogen at all, which is why ordinary oxidising agents cannot touch it">
+  <line x1="46" y1="60" x2="74" y2="60" stroke="#161A19" stroke-width="2"/>
+  <line x1="74" y1="60" x2="102" y2="60" stroke="#161A19" stroke-width="2"/>
+  <line x1="74" y1="60" x2="74" y2="34" stroke="#161A19" stroke-width="2"/>
+  <line x1="74" y1="60" x2="74" y2="86" stroke="#161A19" stroke-width="2"/>
+  <line x1="102" y1="60" x2="126" y2="74" stroke="#161A19" stroke-width="2"/>
+  <circle cx="38" cy="60" r="13" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="38" y="65" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="74" cy="60" r="15" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="74" y="66" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="102" cy="60" r="13" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="102" y="65" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="132" cy="78" r="11" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="132" y="82" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="74" cy="24" r="12" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="74" y="29" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">O</text>
+  <line x1="84" y1="20" x2="94" y2="14" stroke="#161A19" stroke-width="2"/>
+  <circle cx="100" cy="10" r="8" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="100" y="13" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="74" cy="94" r="11" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="74" y="98" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">C</text>
+  <text x="80" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">NO H on the C–OH carbon → TERTIARY, and un-oxidisable</text>
+</svg>

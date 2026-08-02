@@ -1,0 +1,17 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Triiodomethane: one carbon carrying three iodine atoms and a single hydrogen. The pale yellow crystals and antiseptic smell are what a positive iodoform test looks like">
+  <line x1="80" y1="54" x2="80" y2="26" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="54" x2="40" y2="84" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="54" x2="120" y2="84" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="54" r="15" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="60" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="80" cy="16" r="14" fill="#6C3483" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="21" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">I</text>
+  <circle cx="30" cy="92" r="14" fill="#6C3483" stroke="#161A19" stroke-width="2"/>
+  <text x="30" y="97" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">I</text>
+  <circle cx="130" cy="92" r="14" fill="#6C3483" stroke="#161A19" stroke-width="2"/>
+  <text x="130" y="97" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">I</text>
+  <line x1="80" y1="54" x2="108" y2="44" stroke="#161A19" stroke-width="2"/>
+  <circle cx="116" cy="40" r="10" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="116" y="44" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#161A19">H</text>
+  <text x="80" y="114" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">THREE iodines — from three I₂ molecules used</text>
+</svg>

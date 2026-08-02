@@ -4755,5 +4755,233 @@
     "explanation": "The magnesium stays in solution, and it is meant to. Magnesium carbonate is not especially soluble, and adding SODIUM carbonate to the same solution would have brought it straight down — the app has that rule too, so the two can be run side by side. What keeps it dissolved here is that ammonium carbonate, used alongside the ammonium chloride already in the mixture, holds the carbonate concentration low enough to catch barium, strontium and calcium and no lower. This is the scheme at its most deliberate: the reagent was chosen for what it FAILS to precipitate, and that failure is what leaves magnesium behind for the last group.",
     "levels": ["bs"],
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — why magnesium is not in Group V"
+  },
+  {
+    "id": "rxn_grignard_formation",
+    "reactants": ["c2h5br_l", "mg_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["etmgbr_l"],
+    "equation": "C₂H₅Br + Mg →(dry ether) C₂H₅MgBr",
+    "type": "organometallic",
+    "effects": {
+      "colorToHex": "#C8C2AE",
+      "precipitate": null,
+      "dissolves": "the magnesium ribbon slowly went, curl by curl, until none was left",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 14,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable",
+      "title": "Made and used in dry ether, which is extremely flammable",
+      "warning": "Diethyl ether boils at 35 °C, its vapour is heavier than air and will creep along a bench to a flame several metres away, and the reaction itself gives out enough heat to boil it. The reagent formed is corrosive and reacts violently with water.",
+      "visualEffect": null,
+      "whatToDoInstead": "No naked flames anywhere in the room. Heat only with a water bath, never a burner, and keep everything stoppered and dry."
+    },
+    "molecularAnimation": null,
+    "explanation": "The magnesium ribbon slowly disappears and the liquid turns cloudy — a Grignard reagent has formed. What has happened is a REVERSAL worth understanding rather than memorising. In bromoethane the carbon attached to the bromine is slightly positive, because bromine drags electrons towards itself; slide a magnesium atom in between and that same carbon becomes slightly NEGATIVE. A carbon that things attacked has become a carbon that attacks. That is why the next four entries can build carbon–carbon bonds, which nothing else in this app can do. Two practical notes the app cannot show: it is made in DRY ether, and the glassware must be dried in an oven first — the next entry is what happens if it is not.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — preparation of Grignard reagents"
+  },
+  {
+    "id": "rxn_grignard_destroyed_by_water",
+    "reactants": ["etmgbr_l", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["c2h6_g", "mgohbr_aq"],
+    "equation": "C₂H₅MgBr + H₂O → C₂H₆ + Mg(OH)Br",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "ethane",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 18,
+      "resultPH": 9.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "violent_reaction",
+      "title": "Immediate and vigorous",
+      "warning": "The reaction is instant and gives out heat next to a solvent that boils at 35 °C and catches fire readily. A flask of Grignard reagent meeting a significant amount of water can boil over.",
+      "visualEffect": null,
+      "whatToDoInstead": "Quench deliberately and slowly, with cooling, and never let water reach the flask by accident — which means dry glassware and a drying tube from the start."
+    },
+    "molecularAnimation": null,
+    "explanation": "The most expensive mistake in a preparative organic laboratory, watched happening. All that careful work and the reagent is gone in seconds, giving nothing but ethane bubbling away — the bromoethane you started from, minus its bromine, and no use to anybody. The reason follows directly from the last entry: the carbon is now negatively charged, and a negatively charged carbon will take a hydrogen ion from ANY source it can reach. Water is the obvious one, but ethanol, an acid, even the moisture on undried glassware will do it. This is why the whole procedure insists on oven-dried apparatus and a drying tube.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — why Grignard reagents require anhydrous conditions"
+  },
+  {
+    "id": "rxn_grignard_methanal",
+    "reactants": ["etmgbr_l", "hcho_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["propan1ol_aq", "mgohbr_aq"],
+    "equation": "C₂H₅MgBr + HCHO → CH₃CH₂CH₂OH (after work-up)",
+    "type": "nucleophilic_addition",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 12,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The first of three, and the three together are the whole point of Grignard chemistry. Count carbons: two went in as bromoethane, three came out. A carbon–carbon bond has been MADE, which is a different kind of achievement from swapping one group for another — it is how a bigger molecule gets built from smaller ones, and it is most of what synthesis is. Methanal is the special case, because its carbonyl carbon carries two hydrogens instead of one, so what comes out is a PRIMARY alcohol. Nothing else gives a primary alcohol this way.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Grignard addition to carbonyls"
+  },
+  {
+    "id": "rxn_grignard_ethanal",
+    "reactants": ["ch3cho_l", "etmgbr_l"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["butan2ol_aq", "mgohbr_aq"],
+    "equation": "C₂H₅MgBr + CH₃CHO → CH₃CH(OH)C₂H₅ (after work-up)",
+    "type": "nucleophilic_addition",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 12,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The same reagent, an ordinary aldehyde this time, and the answer changes: a SECONDARY alcohol. The rule behind it is simple once seen. Whatever was already attached to the carbonyl carbon stays attached, and the Grignard adds one more group — so an aldehyde, which had one carbon group and one hydrogen, ends up with two carbon groups and one hydrogen. Count the groups on the carbon holding the OH and you have classified the alcohol. This is the middle case; the next entry is the third.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Grignard addition to carbonyls"
+  },
+  {
+    "id": "rxn_grignard_propanone",
+    "reactants": ["ch3coch3_l", "etmgbr_l"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mb2ol_aq", "mgohbr_aq"],
+    "equation": "C₂H₅MgBr + (CH₃)₂CO → (CH₃)₂C(OH)C₂H₅ (after work-up)",
+    "type": "nucleophilic_addition",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 11,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "A ketone had two carbon groups on its carbonyl carbon already, so adding a third gives a TERTIARY alcohol — no hydrogen left on that carbon at all. The three entries together are the table worth learning: methanal gives primary, any other aldehyde gives secondary, a ketone gives tertiary. And notice how it connects backwards. A tertiary alcohol resists oxidation for exactly the reason a ketone did, and it is the same reason in both cases — there is no hydrogen on the important carbon to take off. The same structural fact keeps explaining different observations.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Grignard addition to carbonyls"
+  },
+  {
+    "id": "rxn_grignard_co2",
+    "reactants": ["co2_g", "etmgbr_l"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["propanoic_aq", "mgohbr_aq"],
+    "equation": "C₂H₅MgBr + CO₂ → C₂H₅COOH (after work-up)",
+    "type": "nucleophilic_addition",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 10,
+      "resultPH": 2.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Carbon dioxide has a carbonyl group too, and the Grignard attacks it exactly as it attacked the aldehyde — nothing new is being learnt, the same reagent is simply pointed at a different carbonyl. What makes it worth its own entry is the result: a carboxylic acid one carbon LONGER than the halogenoalkane you began with, built by taking a carbon out of the air. Lengthening a chain by precisely one carbon is a genuinely awkward thing to do, and this is the standard answer. In the laboratory it is done by pouring the reagent onto solid carbon dioxide.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — carboxylation of Grignard reagents"
+  },
+  {
+    "id": "rxn_reduction_nabh4_ethanal",
+    "reactants": ["ch3cho_l", "nabh4_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["c2h5oh_aq"],
+    "equation": "CH₃CHO + [H] → C₂H₅OH",
+    "type": "reduction",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 6,
+      "resultPH": 9.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The oxidation ladder run backwards. Ethanol was oxidised to ethanal with dichromate several batches ago; sodium borohydride puts the hydrogen back. Reduction and oxidation are the same ladder climbed in opposite directions, and knowing both means being able to move a molecule wherever you need it. The next two entries are about something more interesting than the direction, though — they are about what this reagent will REFUSE to do.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — reduction of carbonyl compounds"
+  },
+  {
+    "id": "rxn_none_nabh4_ethanoic_acid",
+    "reactants": ["ch3cooh_aq", "nabh4_aq"],
+    "noReaction": true,
+    "explanation": "Nothing at all — and a reagent that fails is often more valuable than one that works. Sodium borohydride reduces aldehydes and ketones readily and will not touch a carboxylic acid, an ester or an amide. Now picture a molecule containing both a ketone and an ester, which is entirely ordinary in real synthesis. A reagent that reduced everything would leave you with a mess and no way back. This one reduces the ketone and leaves the ester untouched, and that ability to hit one group and spare another is called CHEMOSELECTIVITY. Choosing reagents for what they will not do is most of the craft of building a molecule.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — chemoselectivity of hydride reducing agents"
+  },
+  {
+    "id": "rxn_reduction_lialh4_acid",
+    "reactants": ["ch3cooh_aq", "lialh4_l"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["c2h5oh_aq"],
+    "equation": "CH₃COOH + 4[H] → C₂H₅OH + H₂O",
+    "type": "reduction",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 20,
+      "resultPH": 7.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "violent_reaction",
+      "title": "Reacts violently with water, and with the acid itself",
+      "warning": "Lithium aluminium hydride attacks anything with an acidic hydrogen, giving off hydrogen gas next to a flammable ether solvent. Adding it to an acid is vigorous before the reduction even begins, and quenching the excess afterwards is the step where accidents happen.",
+      "visualEffect": null,
+      "whatToDoInstead": "Dry ether, no flames, add the hydride slowly with cooling to the acid rather than the reverse, and quench the excess dropwise with great care behind a screen."
+    },
+    "molecularAnimation": null,
+    "explanation": "The carboxylic acid that sodium borohydride would not touch is reduced here without difficulty, all the way to the alcohol. Put the two side by side and the trade-off is plain: lithium aluminium hydride is far more powerful and correspondingly far less discriminating — it reduces aldehydes, ketones, esters, amides and acids alike — while sodium borohydride is weaker and therefore useful precisely because it is fussy. Neither is better. You pick the one whose reach matches the job, and if your molecule has only one reducible group you may as well use the powerful one.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — lithium aluminium hydride reductions"
+  },
+  {
+    "id": "rxn_iodoform_propanone",
+    "reactants": ["ch3coch3_l", "i2_aq", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["chi3_s", "ch3coona_aq", "nai_aq"],
+    "equation": "CH₃COCH₃ + 3I₂ + 4NaOH → CHI₃↓ + CH₃COONa + 3NaI + 3H₂O",
+    "type": "haloform",
+    "effects": {
+      "colorToHex": "#E8D24A",
+      "precipitate": "pale yellow crystals with a sharp antiseptic smell",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 11.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The IODOFORM TEST, and it is unusually precise about what it detects. Pale yellow crystals with an antiseptic smell appear only if the molecule carries a CH₃CO— group attached to a carbon or a hydrogen, or an alcohol that oxidises to one — so a positive result names a specific FRAGMENT rather than a whole family the way Fehling's or Tollens' does. Propanone passes. Pentan-3-one, which is also a ketone, fails, because its carbonyl has an ethyl group on each side and no methyl. Note the arithmetic too: three iodine molecules go in and only one iodine atom ends up in the yellow solid.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — the haloform reaction; Vogel's Textbook of Practical Organic Chemistry 5th ed."
   }
 ]

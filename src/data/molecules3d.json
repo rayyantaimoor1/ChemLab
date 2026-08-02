@@ -2852,6 +2852,221 @@
     ]
   },
 
+  "etmgbr_l": {
+    "note": "Follow the chain: carbon, carbon, then MAGNESIUM, then bromine. In bromoethane the bromine sat directly on the carbon and pulled electrons away from it. Slide a metal in between and the pull reverses - the metal is the one giving electrons up now, so the carbon end becomes electron-rich. Everything a Grignard does follows from that one structural change.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -2.6, "y": -0.4, "z": 0 },
+      { "id": "c2", "element": "C", "x": -1.2, "y": 0.3, "z": 0 },
+      { "id": "mg", "element": "Mg", "x": 0.6, "y": -0.5, "z": 0 },
+      { "id": "br", "element": "Br", "x": 2.8, "y": 0.4, "z": 0 },
+      { "id": "h1", "element": "H", "x": -3.0, "y": -1.4, "z": 0 },
+      { "id": "h2", "element": "H", "x": -3.1, "y": 0.1, "z": 0.89 },
+      { "id": "h3", "element": "H", "x": -3.1, "y": 0.1, "z": -0.89 },
+      { "id": "h4", "element": "H", "x": -0.9, "y": 0.9, "z": 0.89 },
+      { "id": "h5", "element": "H", "x": -0.9, "y": 0.9, "z": -0.89 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "mg", "type": "covalent" },
+      { "from": "mg", "to": "br", "type": "covalent" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c1", "to": "h2", "type": "covalent" },
+      { "from": "c1", "to": "h3", "type": "covalent" },
+      { "from": "c2", "to": "h4", "type": "covalent" },
+      { "from": "c2", "to": "h5", "type": "covalent" }
+    ]
+  },
+
+  "mgohbr_aq": {
+    "atoms": [
+      { "id": "mg", "element": "Mg", "x": 0, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": -1.9, "y": 0.6, "z": 0 },
+      { "id": "h", "element": "H", "x": -2.7, "y": -0.1, "z": 0 },
+      { "id": "br", "element": "Br", "x": 2.2, "y": -0.7, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "mg", "to": "o", "type": "ionic" },
+      { "from": "o", "to": "h", "type": "covalent" },
+      { "from": "mg", "to": "br", "type": "ionic" }
+    ]
+  },
+
+  "hcho_aq": {
+    "note": "Flat, and only four atoms. Count the hydrogens on the carbonyl carbon: TWO. Every other aldehyde has one there and a carbon group in the other place, and that difference is the entire reason methanal is the only carbonyl that gives a primary alcohol with a Grignard.",
+    "atoms": [
+      { "id": "c", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0, "y": 1.21, "z": 0 },
+      { "id": "h1", "element": "H", "x": 0.94, "y": -0.59, "z": 0 },
+      { "id": "h2", "element": "H", "x": -0.94, "y": -0.59, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c", "to": "o", "type": "covalent" },
+      { "from": "c", "to": "h1", "type": "covalent" },
+      { "from": "c", "to": "h2", "type": "covalent" }
+    ]
+  },
+
+  "propan1ol_aq": {
+    "note": "PRIMARY. Find the carbon carrying the oxygen and count the hydrogens on it - there are two. Then open the butan-2-ol and 2-methylbutan-2-ol models and do the same count on each. One, two or no hydrogens on that carbon is the whole of what primary, secondary and tertiary mean.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -2.5, "y": -0.3, "z": 0 },
+      { "id": "c2", "element": "C", "x": -1.2, "y": 0.4, "z": 0 },
+      { "id": "c3", "element": "C", "x": 0.1, "y": -0.4, "z": 0 },
+      { "id": "o", "element": "O", "x": 1.35, "y": 0.35, "z": 0 },
+      { "id": "ho", "element": "H", "x": 2.15, "y": -0.2, "z": 0 },
+      { "id": "h1", "element": "H", "x": 0.2, "y": -1.05, "z": 0.89 },
+      { "id": "h2", "element": "H", "x": 0.2, "y": -1.05, "z": -0.89 },
+      { "id": "h3", "element": "H", "x": -3.3, "y": 0.4, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "o", "type": "covalent" },
+      { "from": "o", "to": "ho", "type": "covalent" },
+      { "from": "c3", "to": "h1", "type": "covalent" },
+      { "from": "c3", "to": "h2", "type": "covalent" },
+      { "from": "c1", "to": "h3", "type": "covalent" }
+    ]
+  },
+
+  "butan2ol_aq": {
+    "note": "SECONDARY. The carbon holding the oxygen has a carbon on each side and ONE hydrogen left. That single hydrogen is what an oxidising agent takes to turn this into a ketone - and once it is gone the oxidation stops, because there is nothing else on that carbon to remove.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -2.6, "y": 0.4, "z": 0 },
+      { "id": "c2", "element": "C", "x": -1.3, "y": -0.35, "z": 0 },
+      { "id": "c3", "element": "C", "x": 0, "y": 0.4, "z": 0 },
+      { "id": "c4", "element": "C", "x": 1.3, "y": -0.35, "z": 0 },
+      { "id": "o", "element": "O", "x": -1.3, "y": -1.75, "z": 0 },
+      { "id": "ho", "element": "H", "x": -2.15, "y": -2.15, "z": 0 },
+      { "id": "hc", "element": "H", "x": -1.3, "y": 0.15, "z": -1.0 },
+      { "id": "h1", "element": "H", "x": -3.4, "y": -0.25, "z": 0 },
+      { "id": "h2", "element": "H", "x": 2.1, "y": 0.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c2", "to": "o", "type": "covalent" },
+      { "from": "o", "to": "ho", "type": "covalent" },
+      { "from": "c2", "to": "hc", "type": "covalent" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c4", "to": "h2", "type": "covalent" }
+    ]
+  },
+
+  "mb2ol_aq": {
+    "note": "TERTIARY, and the thing to look for is an ABSENCE. Turn the model until the carbon holding the oxygen faces you and look for a hydrogen on it - there is none, because three carbons and the oxygen have used up all four bonds. Nothing to remove means nothing for an oxidising agent to do, which is exactly the argument that explained why a ketone resists oxidation too.",
+    "atoms": [
+      { "id": "cq", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0, "y": 1.42, "z": 0 },
+      { "id": "ho", "element": "H", "x": 0.85, "y": 1.8, "z": 0 },
+      { "id": "m1", "element": "C", "x": -1.45, "y": -0.6, "z": 0.3 },
+      { "id": "m2", "element": "C", "x": 0.7, "y": -0.6, "z": -1.3 },
+      { "id": "e1", "element": "C", "x": 0.9, "y": -0.5, "z": 1.2 },
+      { "id": "e2", "element": "C", "x": 2.35, "y": -0.1, "z": 1.15 },
+      { "id": "h1", "element": "H", "x": -2.2, "y": -0.15, "z": -0.35 },
+      { "id": "h2", "element": "H", "x": 0.15, "y": -0.3, "z": -2.2 },
+      { "id": "h3", "element": "H", "x": 2.95, "y": -0.5, "z": 1.95 }
+    ],
+    "bonds": [
+      { "from": "cq", "to": "o", "type": "covalent" },
+      { "from": "o", "to": "ho", "type": "covalent" },
+      { "from": "cq", "to": "m1", "type": "covalent" },
+      { "from": "cq", "to": "m2", "type": "covalent" },
+      { "from": "cq", "to": "e1", "type": "covalent" },
+      { "from": "e1", "to": "e2", "type": "covalent" },
+      { "from": "m1", "to": "h1", "type": "covalent" },
+      { "from": "m2", "to": "h2", "type": "covalent" },
+      { "from": "e2", "to": "h3", "type": "covalent" }
+    ]
+  },
+
+  "propanoic_aq": {
+    "note": "Three carbons where the bromoethane had two. The one carrying both oxygens is the new arrival, and it came out of the air as carbon dioxide - which is worth pausing on, because building a carbon chain longer by exactly one is otherwise an awkward thing to arrange.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -2.5, "y": -0.3, "z": 0 },
+      { "id": "c2", "element": "C", "x": -1.2, "y": 0.4, "z": 0 },
+      { "id": "c3", "element": "C", "x": 0.1, "y": -0.35, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.15, "y": -1.58, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.25, "y": 0.35, "z": 0 },
+      { "id": "ho", "element": "H", "x": 2.05, "y": -0.2, "z": 0 },
+      { "id": "h1", "element": "H", "x": -3.3, "y": 0.4, "z": 0 },
+      { "id": "h2", "element": "H", "x": -1.15, "y": 1.05, "z": 0.89 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "o1", "type": "covalent" },
+      { "from": "c3", "to": "o2", "type": "covalent" },
+      { "from": "o2", "to": "ho", "type": "covalent" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c2", "to": "h2", "type": "covalent" }
+    ]
+  },
+
+  "nabh4_aq": {
+    "note": "A boron with four hydrogens in a tetrahedron, and a sodium ion beside it. Open the lithium aluminium hydride model next to this one: identical shape, different central atom, and completely different behaviour. Aluminium is bigger and holds its hydrogens more loosely, which is why one reagent is fussy and the other reduces everything in reach.",
+    "atoms": [
+      { "id": "b", "element": "B", "x": 0, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": 0.71, "y": 0.71, "z": 0.71 },
+      { "id": "h2", "element": "H", "x": -0.71, "y": -0.71, "z": 0.71 },
+      { "id": "h3", "element": "H", "x": -0.71, "y": 0.71, "z": -0.71 },
+      { "id": "h4", "element": "H", "x": 0.71, "y": -0.71, "z": -0.71 },
+      { "id": "na", "element": "Na", "x": -2.8, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "b", "to": "h1", "type": "covalent" },
+      { "from": "b", "to": "h2", "type": "covalent" },
+      { "from": "b", "to": "h3", "type": "covalent" },
+      { "from": "b", "to": "h4", "type": "covalent" },
+      { "from": "na", "to": "b", "type": "ionic" }
+    ]
+  },
+
+  "lialh4_l": {
+    "note": "The same tetrahedral arrangement as sodium borohydride, built on aluminium instead of boron. Compare the two spheres in the middle: aluminium is noticeably larger, its bonds to the hydrogens are longer and weaker, and hydrogen leaves it far more readily. That is the whole of why this one reduces esters and acids - and why it cannot be used in water.",
+    "atoms": [
+      { "id": "al", "element": "Al", "x": 0, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": 0.92, "y": 0.92, "z": 0.92 },
+      { "id": "h2", "element": "H", "x": -0.92, "y": -0.92, "z": 0.92 },
+      { "id": "h3", "element": "H", "x": -0.92, "y": 0.92, "z": -0.92 },
+      { "id": "h4", "element": "H", "x": 0.92, "y": -0.92, "z": -0.92 },
+      { "id": "li", "element": "Li", "x": -3.0, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "al", "to": "h1", "type": "covalent" },
+      { "from": "al", "to": "h2", "type": "covalent" },
+      { "from": "al", "to": "h3", "type": "covalent" },
+      { "from": "al", "to": "h4", "type": "covalent" },
+      { "from": "li", "to": "al", "type": "ionic" }
+    ]
+  },
+
+  "chi3_s": {
+    "note": "One carbon, three iodines and a single hydrogen, tetrahedral. The iodines are enormous next to the carbon holding them, and that crowding is why the solid is dense and why it drops out of solution the moment it forms rather than staying dissolved.",
+    "atoms": [
+      { "id": "c", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "i1", "element": "I", "x": 1.72, "y": 1.05, "z": 0 },
+      { "id": "i2", "element": "I", "x": -1.72, "y": 1.05, "z": 0 },
+      { "id": "i3", "element": "I", "x": 0, "y": -0.95, "z": 1.85 },
+      { "id": "h", "element": "H", "x": 0, "y": -0.6, "z": -1.05 }
+    ],
+    "bonds": [
+      { "from": "c", "to": "i1", "type": "covalent" },
+      { "from": "c", "to": "i2", "type": "covalent" },
+      { "from": "c", "to": "i3", "type": "covalent" },
+      { "from": "c", "to": "h", "type": "covalent" }
+    ]
+  },
+
+  "nai_aq": {
+    "atoms": [
+      { "id": "na", "element": "Na", "x": -1.4, "y": 0, "z": 0 },
+      { "id": "i", "element": "I", "x": 1.4, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "na", "to": "i", "type": "ionic" }]
+  },
+
   "pbcl2_aq": {
     "note": "The lead and its two chlorides are shown APART, with water molecules between them, because that is what dissolved means. Compare this with the copper sulfide lattice, where the ions are locked into a grid: nothing chemical distinguishes the two situations except how strongly the ions hold each other against the pull of the water. Hot water pulls harder, which is the whole trick of this separation.",
     "atoms": [
