@@ -88,6 +88,7 @@ const ELEMENT_STYLE = {
   Si: { fill: '#7A8B99', text: '#FFFFFF' },
   Br: { fill: '#A62929', text: '#FFFFFF' },
   S: { fill: '#F1C40F', text: '#161A19' },
+  Sn: { fill: '#8C9BA5', text: '#161A19' },
   B: { fill: '#C97B84', text: '#FFFFFF' },
   C: { fill: '#2C3E50', text: '#FFFFFF' },
   group: { fill: '#D5DBDB', text: '#161A19' },

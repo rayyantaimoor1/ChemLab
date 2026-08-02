@@ -1,0 +1,15 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Phenylamine: an amine group on a benzene ring. The nitrogen lone pair is drawn into the ring, which makes the ring extremely reactive and at the same time makes the nitrogen a much weaker base than ammonia">
+  <line x1="80" y1="30" x2="104.2" y2="44" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="104.2" y1="44" x2="104.2" y2="72" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="104.2" y1="72" x2="80" y2="86" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="80" y1="86" x2="55.8" y2="72" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="55.8" y1="72" x2="55.8" y2="44" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="55.8" y1="44" x2="80" y2="30" stroke="#161A19" stroke-width="2.2"/>
+  <circle cx="80" cy="58" r="15.4" fill="none" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="30" x2="80" y2="12" stroke="#161A19" stroke-width="2"/>
+  <rect x="63.0" y="3.0" width="34" height="18" rx="5" fill="#CFDCE8" stroke="#161A19" stroke-width="1.8"/>
+  <text x="80.0" y="16.0" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">NH₂</text>
+  <path d="M 80 20 Q 96 34 88 46" fill="none" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="80" y="106" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">the N lone pair is pulled INTO the ring —</text>
+  <text x="80" y="116" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">so the ring is activated and the N is a weak base</text>
+</svg>

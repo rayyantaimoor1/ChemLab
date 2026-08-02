@@ -3081,8 +3081,8 @@
     "equation": "C₂H₄ + [O] + H₂O → C₂H₄(OH)₂",
     "type": "oxidation",
     "effects": {
-      "colorToHex": "#1F1D1C",
-      "precipitate": "brown manganese(IV) oxide",
+      "colorToHex": "#1A1A1A",
+      "precipitate": "black-brown manganese(IV) oxide",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -4983,5 +4983,268 @@
     "explanation": "The IODOFORM TEST, and it is unusually precise about what it detects. Pale yellow crystals with an antiseptic smell appear only if the molecule carries a CH₃CO— group attached to a carbon or a hydrogen, or an alcohol that oxidises to one — so a positive result names a specific FRAGMENT rather than a whole family the way Fehling's or Tollens' does. Propanone passes. Pentan-3-one, which is also a ketone, fails, because its carbonyl has an ethyl group on each side and no methyl. Note the arithmetic too: three iodine molecules go in and only one iodine atom ends up in the yellow solid.",
     "levels": ["bs"],
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — the haloform reaction; Vogel's Textbook of Practical Organic Chemistry 5th ed."
+  },
+  {
+    "id": "rxn_friedel_crafts_alkylation",
+    "reactants": ["c6h6_l", "ch3cl_g"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": "alcl3_s" },
+    "products": ["toluene_l", "hcl_g"],
+    "equation": "C₆H₆ + CH₃Cl →(AlCl₃) C₆H₅CH₃ + HCl",
+    "type": "electrophilic_substitution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen chloride",
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 12,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "carcinogen",
+      "title": "Benzene causes leukaemia, and the fumes are corrosive",
+      "warning": "Benzene is a proven human carcinogen absorbed through skin as well as breathed in, chloromethane is toxic, and the reaction gives off steamy hydrogen chloride. Aluminium chloride reacts violently with any water it meets.",
+      "visualEffect": "white_fumes",
+      "whatToDoInstead": "Fume cupboard, gloves, no skin contact with benzene at all. Where a reaction can be done in methylbenzene instead of benzene, it should be."
+    },
+    "molecularAnimation": null,
+    "explanation": "FRIEDEL–CRAFTS ALKYLATION: a carbon group put straight onto a benzene ring. The aluminium chloride does the essential work by being greedy for electrons — it pulls the chloride off chloromethane and leaves behind a fragment positive enough to attack a ring that normally protects its electrons fiercely. Worth knowing the catch, because it is why this reaction disappoints in practice: the methyl group it installs makes the ring MORE reactive than it was, so the product is attacked faster than the starting material and you end up with a mixture of multiply-substituted rings. The next entry is the way round that.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Friedel–Crafts alkylation"
+  },
+  {
+    "id": "rxn_friedel_crafts_acylation",
+    "reactants": ["c6h6_l", "ch3cocl_l"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": "alcl3_s" },
+    "products": ["acetophenone_l", "hcl_g"],
+    "equation": "C₆H₆ + CH₃COCl →(AlCl₃) C₆H₅COCH₃ + HCl",
+    "type": "electrophilic_substitution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen chloride",
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 16,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "carcinogen",
+      "title": "Benzene causes leukaemia, and the fumes are corrosive",
+      "warning": "Benzene is a proven human carcinogen absorbed through skin as well as breathed in. Ethanoyl chloride fumes in moist air and burns the airways, and the reaction produces more hydrogen chloride on top.",
+      "visualEffect": "white_fumes",
+      "whatToDoInstead": "Fume cupboard, gloves, no skin contact with benzene. Keep everything dry, since both the acid chloride and the catalyst are destroyed by water."
+    },
+    "molecularAnimation": null,
+    "explanation": "FRIEDEL–CRAFTS ACYLATION, and it is the better reaction for a reason that is pure logic rather than chemistry-specific. The group installed here contains a carbonyl, which pulls electrons OUT of the ring — so the product is LESS reactive than the benzene it came from, and the reaction stops cleanly after one substitution instead of running away. Alkylation makes its product more reactive and cannot help going too far. When a chemist wants an alkyl group on a ring, the usual route is therefore to acylate first and reduce the carbonyl afterwards: two steps that work beat one step that does not.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Friedel–Crafts acylation"
+  },
+  {
+    "id": "rxn_nitration_toluene",
+    "reactants": ["h2so4_1m", "hno3_1m", "toluene_l"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nitrotoluene_l", "water"],
+    "equation": "C₆H₅CH₃ + HNO₃ →(H₂SO₄) C₆H₄(CH₃)NO₂ + H₂O",
+    "type": "electrophilic_substitution",
+    "effects": {
+      "colorToHex": "#F0DC82",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 10,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic",
+      "title": "Nitro compounds are toxic and the acid mixture is severely corrosive",
+      "warning": "Nitrotoluenes are toxic and absorbed through skin. The nitrating mixture is concentrated acid and gets hot on mixing.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard, goggles and gloves, and cool the flask while the acids are mixed."
+    },
+    "molecularAnimation": null,
+    "explanation": "Nitration under conditions milder than benzene needs, and the product is a MIXTURE of two isomers — the nitro group has gone next to the methyl or opposite it, and essentially none has landed in between. This is ORTHO–PARA DIRECTING, and the reason is worth following rather than memorising: the methyl group pushes electrons into the ring, that extra density collects at the next-to and opposite positions, and an attacking electrophile goes where the electrons are. Two facts about the methyl group, one cause. It makes the ring react faster than benzene, and it decides where.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — ortho–para directing activators"
+  },
+  {
+    "id": "rxn_nitration_nitrobenzene",
+    "reactants": ["c6h5no2_l", "h2so4_1m", "hno3_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["dinitrobenzene_s", "water"],
+    "equation": "C₆H₅NO₂ + HNO₃ →(H₂SO₄, heat) 1,3-C₆H₄(NO₂)₂ + H₂O",
+    "type": "electrophilic_substitution",
+    "effects": {
+      "colorToHex": "#F5E6A8",
+      "precipitate": "pale yellow crystals",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic",
+      "title": "Both nitro compounds are seriously toxic",
+      "warning": "Nitrobenzene and dinitrobenzene are absorbed through skin, damage the blood's ability to carry oxygen, and the harm builds up with repeated small exposures. Hot concentrated nitrating acid is severely corrosive.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard, double gloves, and treat any skin contact as serious even when nothing is felt. Nitro waste goes in the labelled organic container."
+    },
+    "molecularAnimation": null,
+    "explanation": "The contrast this batch is built around. Toluene nitrated easily and gave the 2 and 4 positions; nitrobenzene needs HEATING to react at all, and the second nitro group lands at the 3 position — META. Both results come from the same cause read in opposite directions. The methyl group pushed electrons in, so the ring reacted faster and the ortho and para positions were richest; the nitro group pulls electrons OUT, so the ring reacts slower and those same ortho and para positions are drained hardest, leaving the meta position as the least bad option. The engine's demand for heat here is the deactivation made visible.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — meta-directing deactivators"
+  },
+  {
+    "id": "rxn_bromination_phenol_water",
+    "reactants": ["br2_aq", "phenol_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["tribromophenol_s", "hbr_g"],
+    "equation": "C₆H₅OH + 3Br₂ → C₆H₂Br₃OH↓ + 3HBr",
+    "type": "electrophilic_substitution",
+    "effects": {
+      "colorToHex": "#FAFAF5",
+      "precipitate": "a white solid, formed at once",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 2.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "corrosive",
+      "title": "Phenol burns skin without hurting at first",
+      "warning": "Phenol causes severe burns and numbs the nerves as it does so, so the damage is often done before anything is felt. Bromine water is corrosive and its vapour attacks the eyes and lungs.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves and eye protection, fume cupboard for the bromine, and wash any phenol contact off immediately with plenty of water whether or not it hurts."
+    },
+    "molecularAnimation": null,
+    "explanation": "Compare this directly with benzene. Benzene will not touch bromine water at all without iron(III) bromide to help — the app will tell you so if you try. Phenol needs no catalyst, no heat, and no waiting: a white precipitate appears instantly, and THREE bromines go on at once. That gap is the measure of how powerfully an OH group activates a ring, and the reason is the oxygen's lone pair being donated into it. The positions taken are 2, 4 and 6 — ortho and para, the same pattern the methyl group gave, because the same kind of donation is behind both.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — activation of benzene rings by hydroxyl"
+  },
+  {
+    "id": "rxn_nitration_phenol",
+    "reactants": ["hno3_1m", "phenol_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["picric_s", "water"],
+    "equation": "C₆H₅OH + 3HNO₃ → C₆H₂(NO₂)₃OH + 3H₂O",
+    "type": "electrophilic_substitution",
+    "effects": {
+      "colorToHex": "#E8D24A",
+      "precipitate": "bright yellow crystals",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 14,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "explosive",
+      "title": "Picric acid is an explosive once it dries out",
+      "warning": "2,4,6-trinitrophenol is a powerful explosive when dry, and it becomes more sensitive still if it contacts metals and forms picrate salts. Laboratory stock is deliberately stored wet for this reason. A bottle found dried out is not something to move or open.",
+      "visualEffect": null,
+      "whatToDoInstead": "Leave a dried-out bottle alone, tell someone in charge, and let specialists deal with it. Keep any picric acid wet, away from metal fittings, and never let it dry in a stoppered container."
+    },
+    "molecularAnimation": null,
+    "explanation": "Phenol is so activated that nitration needs no sulfuric acid to help it and goes straight to THREE nitro groups. Then look at what those three groups do to the molecule they are on: picric acid is a genuinely strong acid, thousands of times stronger than phenol, because the nitro groups pull so hard on the ring that the O–H hydrogen leaves far more readily. That is the whole idea of substituent effects taken to its conclusion — the same OH group, in different company, behaves like a different class of compound. It is also a serious explosive, which is why it is kept wet.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — substituent effects on aromatic reactivity and acidity"
+  },
+  {
+    "id": "rxn_oxidation_toluene_side_chain",
+    "reactants": ["kmno4_aq", "toluene_l"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["benzoic_s", "mno2_s"],
+    "equation": "C₆H₅CH₃ + 3[O] → C₆H₅COOH + H₂O",
+    "type": "oxidation",
+    "effects": {
+      "colorToHex": "#1A1A1A",
+      "precipitate": "black-brown manganese(IV) oxide, with white crystals of the acid appearing as it cools",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 6,
+      "resultPH": 4.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The purple permanganate is discharged and brown solid appears — but read carefully what has been oxidised. The RING is untouched; only the methyl group hanging off it has been attacked, and it has been cut back to a COOH. The ring's stability is the point: those six electrons shared round it are held so well that hot permanganate, which tears an alkene apart, cannot get at them. Two more consequences worth knowing. However long the side chain, oxidation cuts it back to exactly one COOH — so propylbenzene gives benzoic acid too. And a ring with no side chain gives nothing at all, which is the next entry.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — side-chain oxidation of alkylbenzenes"
+  },
+  {
+    "id": "rxn_none_benzene_kmno4",
+    "reactants": ["c6h6_l", "kmno4_aq"],
+    "noReaction": true,
+    "explanation": "The permanganate stays purple. Nothing happens, and after the last entry that should be striking rather than dull — the same reagent, hot, ate a methyl group off this very ring and cannot touch the ring itself. Set it beside the Baeyer test too, where an alkene decolourises permanganate in seconds at room temperature. Benzene has three formal double bonds and behaves like none: its electrons are spread evenly round the whole ring instead of being concentrated between pairs of carbons, and that spreading is what makes them unavailable. This negative result is the best evidence in the app that benzene is not simply cyclohexatriene.",
+    "levels": ["fsc", "bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — aromatic stability"
+  },
+  {
+    "id": "rxn_reduction_nitrobenzene_aniline",
+    "reactants": ["c6h5no2_l", "hcl_1m", "sn_metal"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["aniline_l", "sncl4_aq", "water"],
+    "equation": "C₆H₅NO₂ + 6[H] →(Sn/HCl) C₆H₅NH₂ + 2H₂O",
+    "type": "reduction",
+    "effects": {
+      "colorToHex": "#C9A66B",
+      "precipitate": null,
+      "dissolves": "the tin granules were eaten away as the mixture was boiled",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 15,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic",
+      "title": "Aniline is toxic and goes straight through skin",
+      "warning": "Phenylamine is absorbed through unbroken skin, is toxic, and is a suspected carcinogen. It damages the blood's ability to carry oxygen and the effect of repeated small exposures accumulates. The starting material is no safer.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves that aniline does not penetrate, fume cupboard, and treat any skin contact as a real exposure rather than a nuisance."
+    },
+    "molecularAnimation": null,
+    "explanation": "A nitro group reduced all the way to an amine, and with it the door into the whole of aromatic amine chemistry — dyes, drugs and the diazonium reactions that follow from here. The tin dissolves as it gives up its electrons. It is worth pausing on how completely the ring's character has flipped: nitrobenzene was DEACTIVATED and meta-directing, and aniline is one of the most activated rings there is, ortho–para directing and so eager to react that bromine water attacks it three times over with no catalyst. Same ring, opposite behaviour, and the only difference is what is hanging off it.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — reduction of nitroarenes to amines"
+  },
+  {
+    "id": "rxn_bromination_aniline",
+    "reactants": ["aniline_l", "br2_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["tribromoaniline_s", "hbr_g"],
+    "equation": "C₆H₅NH₂ + 3Br₂ → C₆H₂Br₃NH₂↓ + 3HBr",
+    "type": "electrophilic_substitution",
+    "effects": {
+      "colorToHex": "#FAFAF5",
+      "precipitate": "a white solid, formed at once",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": 2.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic",
+      "title": "Aniline is absorbed through skin",
+      "warning": "Phenylamine is toxic and passes through unbroken skin, and bromine water is corrosive with a vapour that attacks the eyes and lungs.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves and eye protection, and keep the bromine in a fume cupboard."
+    },
+    "molecularAnimation": null,
+    "explanation": "The same instant white precipitate phenol gave, three bromines at once and no catalyst — the nitrogen's lone pair floods the ring exactly as the oxygen's did. The batch now has a complete series to compare: benzene will not react without a halogen carrier, toluene reacts a little faster than benzene, phenol and aniline react instantly and three times over. One reagent, four rings, and the difference is entirely in what is attached. Being TOO reactive is a real problem, incidentally — putting a single bromine on aniline needs the amine tamed first, and that difficulty is a standard exam question.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — activation by amino groups"
   }
 ]

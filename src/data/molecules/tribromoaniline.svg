@@ -1,0 +1,22 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2,4,6-tribromoaniline: three bromines at once with no catalyst, exactly as phenol gave. The nitrogen floods the ring with electrons in the same way the oxygen did">
+  <line x1="80" y1="30" x2="102.5" y2="43" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="102.5" y1="43" x2="102.5" y2="69" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="102.5" y1="69" x2="80" y2="82" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="80" y1="82" x2="57.5" y2="69" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="57.5" y1="69" x2="57.5" y2="43" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="57.5" y1="43" x2="80" y2="30" stroke="#161A19" stroke-width="2.2"/>
+  <circle cx="80" cy="56" r="14.3" fill="none" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="30" x2="80" y2="12" stroke="#161A19" stroke-width="2"/>
+  <rect x="66.0" y="4.5" width="28" height="15" rx="5" fill="#CFDCE8" stroke="#161A19" stroke-width="1.8"/>
+  <text x="80.0" y="16.0" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">NH₂</text>
+  <line x1="102.5" y1="43" x2="118.08557131840192" y2="33.99500323825667" stroke="#161A19" stroke-width="2"/>
+  <rect x="106.1" y="26.5" width="24" height="15" rx="5" fill="#E7C3C3" stroke="#161A19" stroke-width="1.8"/>
+  <text x="118.1" y="38.0" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Br</text>
+  <line x1="57.5" y1="43" x2="41.91442868159809" y2="33.99500323825667" stroke="#161A19" stroke-width="2"/>
+  <rect x="29.9" y="26.5" width="24" height="15" rx="5" fill="#E7C3C3" stroke="#161A19" stroke-width="1.8"/>
+  <text x="41.9" y="38.0" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Br</text>
+  <line x1="80" y1="82" x2="80" y2="100" stroke="#161A19" stroke-width="2"/>
+  <rect x="68.0" y="92.5" width="24" height="15" rx="5" fill="#E7C3C3" stroke="#161A19" stroke-width="1.8"/>
+  <text x="80.0" y="104.0" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Br</text>
+  <text x="80" y="116" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">same 2,4,6 pattern as phenol, same reason</text>
+</svg>

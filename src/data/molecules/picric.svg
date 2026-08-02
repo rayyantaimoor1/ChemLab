@@ -1,0 +1,22 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2,4,6-trinitrophenol, picric acid: three nitro groups pulling so hard on the ring that the OH hydrogen comes off far more easily than an ordinary phenol. That makes it a strong acid, and it is also an explosive when dry">
+  <line x1="80" y1="28" x2="102.5" y2="41" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="102.5" y1="41" x2="102.5" y2="67" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="102.5" y1="67" x2="80" y2="80" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="80" y1="80" x2="57.5" y2="67" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="57.5" y1="67" x2="57.5" y2="41" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="57.5" y1="41" x2="80" y2="28" stroke="#161A19" stroke-width="2.2"/>
+  <circle cx="80" cy="54" r="14.3" fill="none" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="28" x2="80" y2="10" stroke="#161A19" stroke-width="2"/>
+  <rect x="67.0" y="2.5" width="26" height="15" rx="5" fill="#F3CFCF" stroke="#161A19" stroke-width="1.8"/>
+  <text x="80.0" y="14.0" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">OH</text>
+  <line x1="102.5" y1="41" x2="118.08557131840192" y2="31.995003238256672" stroke="#161A19" stroke-width="2"/>
+  <rect x="104.6" y="24.5" width="27" height="15" rx="5" fill="#E8D8C0" stroke="#161A19" stroke-width="1.8"/>
+  <text x="118.1" y="36.0" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">NO₂</text>
+  <line x1="57.5" y1="41" x2="41.91442868159809" y2="31.995003238256672" stroke="#161A19" stroke-width="2"/>
+  <rect x="28.4" y="24.5" width="27" height="15" rx="5" fill="#E8D8C0" stroke="#161A19" stroke-width="1.8"/>
+  <text x="41.9" y="36.0" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">NO₂</text>
+  <line x1="80" y1="80" x2="80" y2="98" stroke="#161A19" stroke-width="2"/>
+  <rect x="66.5" y="90.5" width="27" height="15" rx="5" fill="#E8D8C0" stroke="#161A19" stroke-width="1.8"/>
+  <text x="80.0" y="102.0" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">NO₂</text>
+  <text x="80" y="116" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">three NO₂ pulling → a STRONG acid, not a weak one</text>
+</svg>
