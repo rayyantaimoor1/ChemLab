@@ -1,0 +1,21 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Benzenediazonium ion: two nitrogens on the ring held by a bond that barely wants to exist, because becoming nitrogen gas is such a favourable end. That reluctance is both what makes it useful and why it cannot be kept">
+  <line x1="52" y1="36" x2="74.5" y2="49" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="74.5" y1="49" x2="74.5" y2="75" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="74.5" y1="75" x2="52" y2="88" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="52" y1="88" x2="29.5" y2="75" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="29.5" y1="75" x2="29.5" y2="49" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="29.5" y1="49" x2="52" y2="36" stroke="#161A19" stroke-width="2.2"/>
+  <circle cx="52" cy="62" r="14.3" fill="none" stroke="#161A19" stroke-width="2"/>
+  <line x1="74.5" y1="49" x2="96" y2="62" stroke="#161A19" stroke-width="2"/>
+  <line x1="104" y1="58" x2="124" y2="58" stroke="#161A19" stroke-width="2"/>
+  <line x1="104" y1="62" x2="124" y2="62" stroke="#161A19" stroke-width="2"/>
+  <line x1="104" y1="66" x2="124" y2="66" stroke="#161A19" stroke-width="2"/>
+  <circle cx="96" cy="62" r="13" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="96" y="67" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="132" cy="62" r="13" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="132" y="67" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">N</text>
+  <text x="110" y="40" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">+</text>
+  <text x="80" y="100" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">a TRIPLE bond between the nitrogens —</text>
+  <text x="80" y="110" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">they are already most of the way to being N₂</text>
+  <text x="80" y="119" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">which is why the group leaves so readily</text>
+</svg>

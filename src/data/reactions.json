@@ -5693,5 +5693,203 @@
     "explanation": "The other end of the chloride walk, and the contrast with salt could hardly be sharper: instead of dissolving quietly at pH 7, this hisses, throws down solid silica and fills the fume cupboard with hydrogen chloride at pH 1. The bonding has gone from ionic to covalent across the period, and a covalent chloride is hydrolysed by water rather than dissolved by it. There is a nice extra puzzle here too. Tetrachloromethane, the carbon version, does none of this — silicon is a bigger atom with empty d orbitals, so water can attach itself before any bond breaks, and carbon has no such opening.",
     "levels": ["bs"],
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — Period 3 chlorides and hydrolysis"
+  },
+  {
+    "id": "rxn_nitrous_acid_generated",
+    "reactants": ["hcl_1m", "nano2_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "maxTempC": 10, "catalyst": null },
+    "products": ["hno2_aq", "nacl_aq"],
+    "equation": "NaNO₂ + HCl → HNO₂ + NaCl",
+    "type": "acid_base",
+    "effects": {
+      "colorToHex": "#A8D8E8",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 2.5
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic",
+      "title": "Nitrites are toxic and give off nitrogen oxides",
+      "warning": "Sodium nitrite is poisonous, and the nitrous acid it makes decomposes to brown nitrogen oxides if it is allowed to warm up. Those gases damage the lungs and the damage can be delayed by hours.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard, gloves, keep the mixture in ice throughout, and make only what is needed for the next few minutes."
+    },
+    "molecularAnimation": null,
+    "explanation": "Nitrous acid cannot be bought in a bottle, because it falls apart on standing and falls apart faster when warm. So it is made where it is needed, in the flask, from a stable salt and an acid — and the app insists on the cold, because a warm mixture destroys the reagent as fast as it appears. Generating an unstable reagent in place is an ordinary answer to instability rather than a special trick, and it is the first step of every diazotisation.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — generation of nitrous acid"
+  },
+  {
+    "id": "rxn_diazotisation_aniline",
+    "reactants": ["aniline_l", "hno2_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "maxTempC": 5, "catalyst": null },
+    "products": ["diazonium_aq", "water"],
+    "equation": "C₆H₅NH₂ + HNO₂ + HCl → C₆H₅N₂⁺Cl⁻ + 2H₂O",
+    "type": "diazotisation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 2.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "unstable",
+      "title": "Never isolate a diazonium salt, and never let it warm",
+      "warning": "Benzenediazonium chloride decomposes above about 5 °C and the DRY solid is explosive. Attempting to filter one off and dry it has killed people. Aniline is also toxic and passes through skin.",
+      "visualEffect": null,
+      "whatToDoInstead": "Keep the flask in ice from start to finish, keep the salt in solution, and use it within minutes. There is no reason to isolate it and no safe way to do so in a teaching laboratory."
+    },
+    "molecularAnimation": null,
+    "explanation": "DIAZOTISATION, and the temperature is not a detail. Below 5 °C this works; a few degrees warmer and the product decomposes faster than it forms, which is why the app will not let it run out of the ice. What has been made is an amine with two nitrogens on the ring held by a bond that scarcely wants to exist — because nitrogen gas is such a stable thing to become that the group will leave in favour of almost anything. That reluctance is simultaneously why the compound is so useful and why it cannot be kept.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — diazotisation of aromatic amines"
+  },
+  {
+    "id": "rxn_diazonium_decomposes_warm",
+    "reactants": ["diazonium_aq", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": 10, "catalyst": null },
+    "products": ["phenol_s", "n2_g", "hcl_1m"],
+    "equation": "C₆H₅N₂⁺ + H₂O → C₆H₅OH + N₂↑ + H⁺",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "nitrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 2.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Take the flask out of the ice and this is what you lose it to. Bubbles of nitrogen rise, the diazonium salt is gone, and what is left is phenol — the same compound met several batches ago, arrived at by accident. This is the other half of the previous entry and the reason its temperature limit exists: the two rules together mean the ice bath is not advice a student can ignore, because ignoring it produces a visibly different result. Run deliberately with warm water, this is also a genuine preparation of a phenol from an amine.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — hydrolysis of diazonium salts"
+  },
+  {
+    "id": "rxn_azo_coupling_phenol",
+    "reactants": ["diazonium_aq", "naoh_1m", "phenol_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "maxTempC": 5, "catalyst": null },
+    "products": ["azo_dye_s", "nacl_aq", "water"],
+    "equation": "C₆H₅N₂⁺ + C₆H₅OH → C₆H₅N=NC₆H₄OH + H⁺",
+    "type": "azo_coupling",
+    "effects": {
+      "colorToHex": "#E8663C",
+      "precipitate": "a bright orange solid, appearing the instant the two are mixed",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 10.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "stains_skin",
+      "title": "Azo dyes stain everything, and some are carcinogenic",
+      "warning": "The colour is the point, and it transfers readily to skin, clothing and bench. Several azo dyes made from aromatic amines are known carcinogens, and the alkaline solution used here is corrosive.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves and a lab coat, and treat the dye as something not to get on you rather than something to admire on your fingers."
+    },
+    "molecularAnimation": null,
+    "explanation": "AZO COUPLING, and it is the most dramatic thing in this app — a colourless solution poured into another colourless solution gives an intense orange in an instant. The diazonium ion attacks the phenol ring, which is possible only because that ring is so heavily activated, and the alkali makes it more activated still by turning the phenol into a phenoxide. What results is two rings joined through an N=N bridge, making one continuous system of shared electrons long enough to absorb visible light. This reaction is why the modern chemical industry exists: the first synthetic dyes made from coal tar were worth more than the coal, and the companies founded to make them became the pharmaceutical industry.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — azo coupling"
+  },
+  {
+    "id": "rxn_azo_coupling_aniline",
+    "reactants": ["aniline_l", "diazonium_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "maxTempC": 5, "catalyst": null },
+    "products": ["azo_dye_red_s", "hcl_1m"],
+    "equation": "C₆H₅N₂⁺ + C₆H₅NH₂ → C₆H₅N=NC₆H₄NH₂ + H⁺",
+    "type": "azo_coupling",
+    "effects": {
+      "colorToHex": "#C0392B",
+      "precipitate": "a deep red solid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 4.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic",
+      "title": "Aniline is absorbed through skin and azo dyes stain",
+      "warning": "Phenylamine passes through unbroken skin and is toxic, and several azo dyes derived from aromatic amines are carcinogenic.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves that aniline does not penetrate, and treat both the reagent and the dye as things to keep off you."
+    },
+    "molecularAnimation": null,
+    "explanation": "The same coupling with an amine instead of a phenol, and the dye comes out RED where the other came out orange. Nothing else about the molecule has changed — same two rings, same N=N bridge, one group swapped on the far end. That is dye design in a single comparison: the coupled system decides that there will be a colour, and the groups on the ends decide which colour, so a chemist tunes a shade by changing a substituent rather than starting over. Note also that no alkali is needed here; an amine is activating enough on its own.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — azo coupling with amines"
+  },
+  {
+    "id": "rxn_none_diazonium_benzene",
+    "reactants": ["c6h6_l", "diazonium_aq"],
+    "noReaction": true,
+    "explanation": "Nothing at all, and after two instant dyes that should stop a student rather than disappoint them. A diazonium ion is a weak electrophile — much weaker than the nitronium ion that nitrates benzene — so it can only attack a ring that has been strongly activated first. Phenol and aniline qualify; plain benzene does not, and neither would methylbenzene. This is the activation series from an earlier batch reappearing as a hard limit rather than as a difference in rate. A reagent that couples only with activated rings is more useful than one that attacks everything, because it can be pointed.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — the diazonium ion as a weak electrophile"
+  },
+  {
+    "id": "rxn_diazonium_ki",
+    "reactants": ["diazonium_aq", "ki_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["c6h5i_l", "n2_g", "kcl_aq"],
+    "equation": "C₆H₅N₂⁺ + I⁻ → C₆H₅I + N₂↑",
+    "type": "substitution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "nitrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 5.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Iodine put onto a benzene ring, which cannot be done directly at all — iodine is too unreactive for the halogen carrier route that works for chlorine and bromine. Here it happens simply by adding potassium iodide, because the diazonium group leaves so readily that the iodide has only to be present. This is what makes diazonium salts worth the trouble of the ice bath: they are a doorway, and what walks through is whatever you put in the flask. Chloride, bromide, cyanide, water and hydroxide all work the same way.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — substitution of the diazonium group"
+  },
+  {
+    "id": "rxn_dye_on_fabric",
+    "reactants": ["azo_dye_s", "cotton_cloth"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["dyed_cloth"],
+    "equation": "dye + cellulose → dye held in the fibre",
+    "type": "adsorption",
+    "effects": {
+      "colorToHex": "#E8663C",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The point of the whole batch, and worth being precise about: NO bond forms between the dye and the cloth. The dye molecule is flat and insoluble, cotton fibre is a tangle of cellulose chains, and the dye simply lodges in that tangle and is held there by the same weak attractions that hold anything to anything. That is why a direct dye like this one washes out over time, and why chemists later invented reactive dyes that do form a real bond to the fibre. Colour fastness is a separate problem from colour, and solving one does not solve the other.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — dyes and fibres"
+  },
+  {
+    "id": "rxn_none_dye_warm_water",
+    "reactants": ["dyed_cloth", "water_distilled"],
+    "noReaction": true,
+    "explanation": "The cloth stays coloured in plain water, which is what a dye is for. It is worth knowing why this test is weaker than it looks, though: the dye is held only by weak attractions, so soap and repeated washing will eventually pull it out even though water alone does not. A single negative result at room temperature is evidence of fastness to water and evidence of nothing else — and the difference between those two statements is most of what testing a material carefully means.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — dye fastness"
   }
 ]

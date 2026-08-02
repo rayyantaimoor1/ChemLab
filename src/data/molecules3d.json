@@ -19642,5 +19642,1125 @@
         "type": "covalent"
       }
     ]
+  },
+  "diazonium_aq": {
+    "note": "Follow the chain out from the ring: carbon, then nitrogen, then nitrogen - and the two nitrogens are held by a TRIPLE bond, drawn short and tight. They are already most of the way to being N2, one of the most stable molecules there is, and that is the whole reason this group will leave in favour of almost anything. It is also why the compound decomposes above 5 °C.",
+    "atoms": [
+      {
+        "id": "ac1",
+        "element": "C",
+        "x": 0,
+        "y": -1.4,
+        "z": 0
+      },
+      {
+        "id": "ac2",
+        "element": "C",
+        "x": 1.21,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "ac3",
+        "element": "C",
+        "x": 1.21,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "ac4",
+        "element": "C",
+        "x": 0,
+        "y": 1.4,
+        "z": 0
+      },
+      {
+        "id": "ac5",
+        "element": "C",
+        "x": -1.21,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "ac6",
+        "element": "C",
+        "x": -1.21,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "n1",
+        "element": "N",
+        "x": 0.7,
+        "y": 2.6,
+        "z": 0
+      },
+      {
+        "id": "n2",
+        "element": "N",
+        "x": 0.7,
+        "y": 3.75,
+        "z": 0
+      },
+      {
+        "id": "h3",
+        "element": "H",
+        "x": -2.48,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "h4",
+        "element": "H",
+        "x": -1.24,
+        "y": -2.15,
+        "z": 0
+      },
+      {
+        "id": "h5",
+        "element": "H",
+        "x": 1.24,
+        "y": -2.15,
+        "z": 0
+      }
+    ],
+    "bonds": [
+      {
+        "from": "ac1",
+        "to": "ac2",
+        "type": "covalent"
+      },
+      {
+        "from": "ac2",
+        "to": "ac3",
+        "type": "covalent"
+      },
+      {
+        "from": "ac3",
+        "to": "ac4",
+        "type": "covalent"
+      },
+      {
+        "from": "ac4",
+        "to": "ac5",
+        "type": "covalent"
+      },
+      {
+        "from": "ac5",
+        "to": "ac6",
+        "type": "covalent"
+      },
+      {
+        "from": "ac6",
+        "to": "ac1",
+        "type": "covalent"
+      },
+      {
+        "from": "ac2",
+        "to": "n1",
+        "type": "covalent"
+      },
+      {
+        "from": "n1",
+        "to": "n2",
+        "type": "covalent"
+      },
+      {
+        "from": "ac4",
+        "to": "h3",
+        "type": "covalent"
+      },
+      {
+        "from": "ac5",
+        "to": "h4",
+        "type": "covalent"
+      },
+      {
+        "from": "ac6",
+        "to": "h5",
+        "type": "covalent"
+      }
+    ]
+  },
+  "azo_dye_s": {
+    "note": "Turn it edge-on: the two rings and the N=N bridge all lie in ONE flat plane. That flatness is not decoration - it is what lets the electrons run continuously from one end of the molecule to the other, and a system that long absorbs visible light instead of ultraviolet. Flat and long means coloured.",
+    "atoms": [
+      {
+        "id": "ac1",
+        "element": "C",
+        "x": -3.4,
+        "y": -1.4,
+        "z": 0
+      },
+      {
+        "id": "ac2",
+        "element": "C",
+        "x": -2.19,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "ac3",
+        "element": "C",
+        "x": -2.19,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "ac4",
+        "element": "C",
+        "x": -3.4,
+        "y": 1.4,
+        "z": 0
+      },
+      {
+        "id": "ac5",
+        "element": "C",
+        "x": -4.61,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "ac6",
+        "element": "C",
+        "x": -4.61,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "bc1",
+        "element": "C",
+        "x": 3.4,
+        "y": -1.4,
+        "z": 0
+      },
+      {
+        "id": "bc2",
+        "element": "C",
+        "x": 4.61,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "bc3",
+        "element": "C",
+        "x": 4.61,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "bc4",
+        "element": "C",
+        "x": 3.4,
+        "y": 1.4,
+        "z": 0
+      },
+      {
+        "id": "bc5",
+        "element": "C",
+        "x": 2.19,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "bc6",
+        "element": "C",
+        "x": 2.19,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "n1",
+        "element": "N",
+        "x": -1.1,
+        "y": 0.35,
+        "z": 0
+      },
+      {
+        "id": "n2",
+        "element": "N",
+        "x": 1.1,
+        "y": 0.35,
+        "z": 0
+      },
+      {
+        "id": "tail",
+        "element": "O",
+        "x": 6.2,
+        "y": 0.9,
+        "z": 0
+      },
+      {
+        "id": "tailh",
+        "element": "H",
+        "x": 7,
+        "y": 0.3,
+        "z": 0
+      }
+    ],
+    "bonds": [
+      {
+        "from": "ac1",
+        "to": "ac2",
+        "type": "covalent"
+      },
+      {
+        "from": "ac2",
+        "to": "ac3",
+        "type": "covalent"
+      },
+      {
+        "from": "ac3",
+        "to": "ac4",
+        "type": "covalent"
+      },
+      {
+        "from": "ac4",
+        "to": "ac5",
+        "type": "covalent"
+      },
+      {
+        "from": "ac5",
+        "to": "ac6",
+        "type": "covalent"
+      },
+      {
+        "from": "ac6",
+        "to": "ac1",
+        "type": "covalent"
+      },
+      {
+        "from": "bc1",
+        "to": "bc2",
+        "type": "covalent"
+      },
+      {
+        "from": "bc2",
+        "to": "bc3",
+        "type": "covalent"
+      },
+      {
+        "from": "bc3",
+        "to": "bc4",
+        "type": "covalent"
+      },
+      {
+        "from": "bc4",
+        "to": "bc5",
+        "type": "covalent"
+      },
+      {
+        "from": "bc5",
+        "to": "bc6",
+        "type": "covalent"
+      },
+      {
+        "from": "bc6",
+        "to": "bc1",
+        "type": "covalent"
+      },
+      {
+        "from": "ac1",
+        "to": "n1",
+        "type": "covalent"
+      },
+      {
+        "from": "n1",
+        "to": "n2",
+        "type": "covalent"
+      },
+      {
+        "from": "n2",
+        "to": "bc4",
+        "type": "covalent"
+      },
+      {
+        "from": "bc1",
+        "to": "tail",
+        "type": "covalent"
+      },
+      {
+        "from": "tail",
+        "to": "tailh",
+        "type": "covalent"
+      }
+    ]
+  },
+  "azo_dye_red_s": {
+    "note": "Open this beside the orange dye and look for the difference: one atom, at the far right, a nitrogen where the other had an oxygen. Everything else is identical - same two rings, same flat plane, same N=N bridge. One atom moved the colour from orange to red, which is how a dye chemist works.",
+    "atoms": [
+      {
+        "id": "ac1",
+        "element": "C",
+        "x": -3.4,
+        "y": -1.4,
+        "z": 0
+      },
+      {
+        "id": "ac2",
+        "element": "C",
+        "x": -2.19,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "ac3",
+        "element": "C",
+        "x": -2.19,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "ac4",
+        "element": "C",
+        "x": -3.4,
+        "y": 1.4,
+        "z": 0
+      },
+      {
+        "id": "ac5",
+        "element": "C",
+        "x": -4.61,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "ac6",
+        "element": "C",
+        "x": -4.61,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "bc1",
+        "element": "C",
+        "x": 3.4,
+        "y": -1.4,
+        "z": 0
+      },
+      {
+        "id": "bc2",
+        "element": "C",
+        "x": 4.61,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "bc3",
+        "element": "C",
+        "x": 4.61,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "bc4",
+        "element": "C",
+        "x": 3.4,
+        "y": 1.4,
+        "z": 0
+      },
+      {
+        "id": "bc5",
+        "element": "C",
+        "x": 2.19,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "bc6",
+        "element": "C",
+        "x": 2.19,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "n1",
+        "element": "N",
+        "x": -1.1,
+        "y": 0.35,
+        "z": 0
+      },
+      {
+        "id": "n2",
+        "element": "N",
+        "x": 1.1,
+        "y": 0.35,
+        "z": 0
+      },
+      {
+        "id": "tail",
+        "element": "N",
+        "x": 6.2,
+        "y": 0.9,
+        "z": 0
+      },
+      {
+        "id": "tailh",
+        "element": "H",
+        "x": 7.1,
+        "y": 0.5,
+        "z": 0.4
+      },
+      {
+        "id": "tailh2",
+        "element": "H",
+        "x": 6.1,
+        "y": 1.9,
+        "z": 0
+      }
+    ],
+    "bonds": [
+      {
+        "from": "ac1",
+        "to": "ac2",
+        "type": "covalent"
+      },
+      {
+        "from": "ac2",
+        "to": "ac3",
+        "type": "covalent"
+      },
+      {
+        "from": "ac3",
+        "to": "ac4",
+        "type": "covalent"
+      },
+      {
+        "from": "ac4",
+        "to": "ac5",
+        "type": "covalent"
+      },
+      {
+        "from": "ac5",
+        "to": "ac6",
+        "type": "covalent"
+      },
+      {
+        "from": "ac6",
+        "to": "ac1",
+        "type": "covalent"
+      },
+      {
+        "from": "bc1",
+        "to": "bc2",
+        "type": "covalent"
+      },
+      {
+        "from": "bc2",
+        "to": "bc3",
+        "type": "covalent"
+      },
+      {
+        "from": "bc3",
+        "to": "bc4",
+        "type": "covalent"
+      },
+      {
+        "from": "bc4",
+        "to": "bc5",
+        "type": "covalent"
+      },
+      {
+        "from": "bc5",
+        "to": "bc6",
+        "type": "covalent"
+      },
+      {
+        "from": "bc6",
+        "to": "bc1",
+        "type": "covalent"
+      },
+      {
+        "from": "ac1",
+        "to": "n1",
+        "type": "covalent"
+      },
+      {
+        "from": "n1",
+        "to": "n2",
+        "type": "covalent"
+      },
+      {
+        "from": "n2",
+        "to": "bc4",
+        "type": "covalent"
+      },
+      {
+        "from": "bc1",
+        "to": "tail",
+        "type": "covalent"
+      },
+      {
+        "from": "tail",
+        "to": "tailh",
+        "type": "covalent"
+      },
+      {
+        "from": "tail",
+        "to": "tailh2",
+        "type": "covalent"
+      }
+    ]
+  },
+  "c6h5i_l": {
+    "note": "An iodine on a benzene ring. The iodine sphere is huge beside the carbons - and that size is part of why it cannot be put here directly: iodine is too unreactive for the halogen carrier route, so this compound has to be reached the long way round through a diazonium salt.",
+    "atoms": [
+      {
+        "id": "ac1",
+        "element": "C",
+        "x": 0,
+        "y": -1.4,
+        "z": 0
+      },
+      {
+        "id": "ac2",
+        "element": "C",
+        "x": 1.21,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "ac3",
+        "element": "C",
+        "x": 1.21,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "ac4",
+        "element": "C",
+        "x": 0,
+        "y": 1.4,
+        "z": 0
+      },
+      {
+        "id": "ac5",
+        "element": "C",
+        "x": -1.21,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "ac6",
+        "element": "C",
+        "x": -1.21,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "i",
+        "element": "I",
+        "x": 0.95,
+        "y": 3.05,
+        "z": 0
+      },
+      {
+        "id": "h3",
+        "element": "H",
+        "x": -2.48,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "h4",
+        "element": "H",
+        "x": -1.24,
+        "y": -2.15,
+        "z": 0
+      },
+      {
+        "id": "h5",
+        "element": "H",
+        "x": 1.24,
+        "y": -2.15,
+        "z": 0
+      }
+    ],
+    "bonds": [
+      {
+        "from": "ac1",
+        "to": "ac2",
+        "type": "covalent"
+      },
+      {
+        "from": "ac2",
+        "to": "ac3",
+        "type": "covalent"
+      },
+      {
+        "from": "ac3",
+        "to": "ac4",
+        "type": "covalent"
+      },
+      {
+        "from": "ac4",
+        "to": "ac5",
+        "type": "covalent"
+      },
+      {
+        "from": "ac5",
+        "to": "ac6",
+        "type": "covalent"
+      },
+      {
+        "from": "ac6",
+        "to": "ac1",
+        "type": "covalent"
+      },
+      {
+        "from": "ac2",
+        "to": "i",
+        "type": "covalent"
+      },
+      {
+        "from": "ac4",
+        "to": "h3",
+        "type": "covalent"
+      },
+      {
+        "from": "ac5",
+        "to": "h4",
+        "type": "covalent"
+      },
+      {
+        "from": "ac6",
+        "to": "h5",
+        "type": "covalent"
+      }
+    ]
+  },
+  "nano2_aq": {
+    "note": "The nitrite ion is BENT rather than straight, because the nitrogen keeps a lone pair that pushes the two oxygens together. Compare it with the nitrate ion, which is flat and symmetrical with three oxygens - one oxygen fewer and the whole shape changes.",
+    "atoms": [
+      {
+        "id": "n",
+        "element": "N",
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "o1",
+        "element": "O",
+        "x": 1.1,
+        "y": -0.6,
+        "z": 0
+      },
+      {
+        "id": "o2",
+        "element": "O",
+        "x": -1.1,
+        "y": -0.6,
+        "z": 0
+      },
+      {
+        "id": "na",
+        "element": "Na",
+        "x": 0,
+        "y": 2.6,
+        "z": 0
+      }
+    ],
+    "bonds": [
+      {
+        "from": "n",
+        "to": "o1",
+        "type": "covalent"
+      },
+      {
+        "from": "n",
+        "to": "o2",
+        "type": "covalent"
+      },
+      {
+        "from": "na",
+        "to": "n",
+        "type": "ionic"
+      }
+    ]
+  },
+  "hno2_aq": {
+    "note": "Bent like the nitrite it came from, with a hydrogen on one oxygen. It is drawn here because the reaction needs it, not because a bottle of it exists - this molecule falls apart on standing, which is why it is always made in the flask and used within minutes.",
+    "atoms": [
+      {
+        "id": "n",
+        "element": "N",
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "o1",
+        "element": "O",
+        "x": 1.1,
+        "y": 0.6,
+        "z": 0
+      },
+      {
+        "id": "o2",
+        "element": "O",
+        "x": -0.9,
+        "y": -0.9,
+        "z": 0
+      },
+      {
+        "id": "h",
+        "element": "H",
+        "x": -1.85,
+        "y": -0.45,
+        "z": 0
+      }
+    ],
+    "bonds": [
+      {
+        "from": "n",
+        "to": "o1",
+        "type": "covalent"
+      },
+      {
+        "from": "n",
+        "to": "o2",
+        "type": "covalent"
+      },
+      {
+        "from": "o2",
+        "to": "h",
+        "type": "covalent"
+      }
+    ]
+  },
+  "cotton_cloth": {
+    "note": "Three cellulose chains lying alongside each other, each unit shown as one grey block. What matters is the SPACE between them. Nothing here will bond to a direct dye; the gaps are simply wide enough for a flat molecule to slip into and stay.",
+    "atoms": [
+      {
+        "id": "r0u0",
+        "element": "group",
+        "x": -3,
+        "y": -2.4,
+        "z": 0
+      },
+      {
+        "id": "r0u1",
+        "element": "group",
+        "x": -1,
+        "y": -2.4,
+        "z": 0.4
+      },
+      {
+        "id": "r0u2",
+        "element": "group",
+        "x": 1,
+        "y": -2.4,
+        "z": 0
+      },
+      {
+        "id": "r0u3",
+        "element": "group",
+        "x": 3,
+        "y": -2.4,
+        "z": 0.4
+      },
+      {
+        "id": "r1u0",
+        "element": "group",
+        "x": -3,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "r1u1",
+        "element": "group",
+        "x": -1,
+        "y": 0,
+        "z": 0.4
+      },
+      {
+        "id": "r1u2",
+        "element": "group",
+        "x": 1,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "r1u3",
+        "element": "group",
+        "x": 3,
+        "y": 0,
+        "z": 0.4
+      },
+      {
+        "id": "r2u0",
+        "element": "group",
+        "x": -3,
+        "y": 2.4,
+        "z": 0
+      },
+      {
+        "id": "r2u1",
+        "element": "group",
+        "x": -1,
+        "y": 2.4,
+        "z": 0.4
+      },
+      {
+        "id": "r2u2",
+        "element": "group",
+        "x": 1,
+        "y": 2.4,
+        "z": 0
+      },
+      {
+        "id": "r2u3",
+        "element": "group",
+        "x": 3,
+        "y": 2.4,
+        "z": 0.4
+      }
+    ],
+    "bonds": [
+      {
+        "from": "r0u0",
+        "to": "r0u1",
+        "type": "covalent"
+      },
+      {
+        "from": "r0u1",
+        "to": "r0u2",
+        "type": "covalent"
+      },
+      {
+        "from": "r0u2",
+        "to": "r0u3",
+        "type": "covalent"
+      },
+      {
+        "from": "r1u0",
+        "to": "r1u1",
+        "type": "covalent"
+      },
+      {
+        "from": "r1u1",
+        "to": "r1u2",
+        "type": "covalent"
+      },
+      {
+        "from": "r1u2",
+        "to": "r1u3",
+        "type": "covalent"
+      },
+      {
+        "from": "r2u0",
+        "to": "r2u1",
+        "type": "covalent"
+      },
+      {
+        "from": "r2u1",
+        "to": "r2u2",
+        "type": "covalent"
+      },
+      {
+        "from": "r2u2",
+        "to": "r2u3",
+        "type": "covalent"
+      }
+    ]
+  },
+  "dyed_cloth": {
+    "note": "The same three chains with dye molecules sitting in the gaps between them - and notice there are NO bonds drawn from a dye to a chain, because there are none. The dye is held by nothing more than the weak attraction between surfaces in contact. That is the whole reason a direct dye eventually washes out.",
+    "atoms": [
+      {
+        "id": "r0u0",
+        "element": "group",
+        "x": -3,
+        "y": -2.4,
+        "z": 0
+      },
+      {
+        "id": "r0u1",
+        "element": "group",
+        "x": -1,
+        "y": -2.4,
+        "z": 0.4
+      },
+      {
+        "id": "r0u2",
+        "element": "group",
+        "x": 1,
+        "y": -2.4,
+        "z": 0
+      },
+      {
+        "id": "r0u3",
+        "element": "group",
+        "x": 3,
+        "y": -2.4,
+        "z": 0.4
+      },
+      {
+        "id": "r1u0",
+        "element": "group",
+        "x": -3,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "r1u1",
+        "element": "group",
+        "x": -1,
+        "y": 0,
+        "z": 0.4
+      },
+      {
+        "id": "r1u2",
+        "element": "group",
+        "x": 1,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "r1u3",
+        "element": "group",
+        "x": 3,
+        "y": 0,
+        "z": 0.4
+      },
+      {
+        "id": "r2u0",
+        "element": "group",
+        "x": -3,
+        "y": 2.4,
+        "z": 0
+      },
+      {
+        "id": "r2u1",
+        "element": "group",
+        "x": -1,
+        "y": 2.4,
+        "z": 0.4
+      },
+      {
+        "id": "r2u2",
+        "element": "group",
+        "x": 1,
+        "y": 2.4,
+        "z": 0
+      },
+      {
+        "id": "r2u3",
+        "element": "group",
+        "x": 3,
+        "y": 2.4,
+        "z": 0.4
+      },
+      {
+        "id": "d1a",
+        "element": "C",
+        "x": -1.6,
+        "y": -1.2,
+        "z": 1.4
+      },
+      {
+        "id": "d1b",
+        "element": "N",
+        "x": -0.4,
+        "y": -1.2,
+        "z": 1.4
+      },
+      {
+        "id": "d1c",
+        "element": "C",
+        "x": 0.8,
+        "y": -1.2,
+        "z": 1.4
+      },
+      {
+        "id": "d2a",
+        "element": "C",
+        "x": -0.6,
+        "y": 1.2,
+        "z": -1.2
+      },
+      {
+        "id": "d2b",
+        "element": "N",
+        "x": 0.6,
+        "y": 1.2,
+        "z": -1.2
+      },
+      {
+        "id": "d2c",
+        "element": "C",
+        "x": 1.8,
+        "y": 1.2,
+        "z": -1.2
+      }
+    ],
+    "bonds": [
+      {
+        "from": "r0u0",
+        "to": "r0u1",
+        "type": "covalent"
+      },
+      {
+        "from": "r0u1",
+        "to": "r0u2",
+        "type": "covalent"
+      },
+      {
+        "from": "r0u2",
+        "to": "r0u3",
+        "type": "covalent"
+      },
+      {
+        "from": "r1u0",
+        "to": "r1u1",
+        "type": "covalent"
+      },
+      {
+        "from": "r1u1",
+        "to": "r1u2",
+        "type": "covalent"
+      },
+      {
+        "from": "r1u2",
+        "to": "r1u3",
+        "type": "covalent"
+      },
+      {
+        "from": "r2u0",
+        "to": "r2u1",
+        "type": "covalent"
+      },
+      {
+        "from": "r2u1",
+        "to": "r2u2",
+        "type": "covalent"
+      },
+      {
+        "from": "r2u2",
+        "to": "r2u3",
+        "type": "covalent"
+      },
+      {
+        "from": "d1a",
+        "to": "d1b",
+        "type": "covalent"
+      },
+      {
+        "from": "d1b",
+        "to": "d1c",
+        "type": "covalent"
+      },
+      {
+        "from": "d2a",
+        "to": "d2b",
+        "type": "covalent"
+      },
+      {
+        "from": "d2b",
+        "to": "d2c",
+        "type": "covalent"
+      }
+    ]
   }
 }
