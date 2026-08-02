@@ -3343,5 +3343,218 @@
     "explanation": "Ethanol loses water and becomes ethene, which closes a loop: hydrate ethene and you get ethanol, dehydrate ethanol and you get ethene back. Which direction runs depends entirely on the conditions — phosphoric acid with steam going one way, hot concentrated sulfuric acid going the other. The temperature matters more than it looks: at about 170 °C you get ethene, but nearer 140 °C the same flask gives ethoxyethane instead. This is also the laboratory way to make ethene from something renewable, since the ethanol can come from fermentation.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alcohols, dehydration to alkenes"
+  },
+  {
+    "id": "rxn_alcohol_sodium",
+    "reactants": ["c2h5oh_aq", "na_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["c2h5ona_aq", "h2_g"],
+    "equation": "2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 12,
+      "resultPH": 13.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Sodium and a flammable solvent",
+      "warning": "Hydrogen is given off next to a liquid that itself catches fire easily, and the sodium is corrosive to skin. This is far gentler than sodium in water, but it is still sodium.",
+      "visualEffect": null,
+      "whatToDoInstead": "Use a small piece of sodium in plenty of ethanol, keep flames away, and destroy any leftover sodium properly rather than putting it in a bin or a sink."
+    },
+    "molecularAnimation": null,
+    "explanation": "Sodium fizzes steadily in ethanol and gives off hydrogen — noticeably calmer than the same sodium in water, which is the first hint that the OH here holds its hydrogen more tightly than water does. That makes ethanol an acid, but an extremely weak one. The proof is what is left behind: sodium ethoxide is a stronger base than sodium hydroxide, and the weaker the acid, the stronger the base it leaves. Compare this with the next entry, where sodium hydroxide cannot touch ethanol at all.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alcohols, reaction with sodium"
+  },
+  {
+    "id": "rxn_none_ethanol_naoh",
+    "reactants": ["c2h5oh_aq", "naoh_1m"],
+    "noReaction": true,
+    "explanation": "No observable change, and that absence is the whole point. Ethanol has an OH group and sodium hydroxide is a strong base, so it looks as though something ought to happen — and nothing does. Ethanol is simply too weak an acid for hydroxide to take its hydrogen. Put this beside the sodium reaction, which DOES work, and beside phenol, which reacts with sodium hydroxide readily, and an order appears: ethanol is a weaker acid than phenol, which is weaker than ethanoic acid. Three tubes, three results, one ladder.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alcohols and Phenols, comparative acidity"
+  },
+  {
+    "id": "rxn_phenol_naoh",
+    "reactants": ["naoh_1m", "phenol_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["c6h5ona_aq", "water"],
+    "equation": "C₆H₅OH + NaOH → C₆H₅ONa + H₂O",
+    "type": "neutralisation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": 11.5
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "corrosive",
+      "title": "Phenol burns skin, and the burn does not hurt at first",
+      "warning": "Phenol causes severe burns, and it numbs the nerves as it does so — so a serious burn can feel mild until the damage is done. It is also absorbed through the skin and is toxic that way.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves and eye protection throughout, and never handle the solid with bare hands. Wash any contact with plenty of water immediately, whether or not it hurts."
+    },
+    "molecularAnimation": null,
+    "explanation": "Phenol does what ethanol could not: it hands its hydrogen to sodium hydroxide and dissolves as the salt. The difference is the benzene ring. In ethanol the negative charge left on the oxygen has nowhere to go and sits there, which makes losing the hydrogen expensive; in phenol that charge is spread out round the whole ring, which makes it much cheaper. Same OH group, different neighbour, and an acidity difference of about five orders of magnitude.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Phenols, acidity and delocalisation"
+  },
+  {
+    "id": "rxn_oxidation_ethanol_to_ethanal",
+    "reactants": ["c2h5oh_aq", "h2so4_1m", "k2cr2o7_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["ch3cho_l", "cr2so43_aq", "water"],
+    "equation": "C₂H₅OH + [O] → CH₃CHO + H₂O",
+    "type": "oxidation",
+    "effects": {
+      "colorToHex": "#2E7D5B",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic",
+      "title": "Chromium(VI) is carcinogenic and ethanal is volatile and toxic",
+      "warning": "Potassium dichromate is poisonous and causes cancer. Ethanal boils at 21 °C, so it comes off as a vapour that is itself toxic and highly flammable.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves and eye protection, collect the distillate rather than letting the vapour into the room, and put all chromium waste in the labelled heavy-metal container."
+    },
+    "molecularAnimation": null,
+    "explanation": "The first rung of the oxidation ladder, and orange turns green as the dichromate is reduced. The practical difficulty is that the reaction does not want to stop here: ethanal is easier to oxidise than the ethanol was, so leaving it in the flask means it goes straight on to the acid. The answer is to exploit its low boiling point of 21 °C and DISTIL IT OFF as it forms. Same reagents, same flask — whether you get the aldehyde or the acid depends on the apparatus, which is why the diagram matters as much as the equation.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alcohols, oxidation of primary alcohols"
+  },
+  {
+    "id": "rxn_oxidation_ethanal_to_acid",
+    "reactants": ["ch3cho_l", "h2so4_1m", "k2cr2o7_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["ch3cooh_aq", "cr2so43_aq", "water"],
+    "equation": "CH₃CHO + [O] → CH₃COOH",
+    "type": "oxidation",
+    "effects": {
+      "colorToHex": "#2E7D5B",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 7,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The second rung: the aldehyde becomes the carboxylic acid. It goes so readily because the carbonyl carbon still carries a hydrogen, and taking that off is all the oxidation requires. This is why aldehydes are reducing agents in their own right and why every test that identifies them works by letting them reduce something else. A ketone has no such hydrogen and stops dead here — which is the whole basis of the two tests that follow. To make the acid deliberately you use excess dichromate and REFLUX, so nothing escapes until the oxidation is complete.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones, oxidation to carboxylic acids"
+  },
+  {
+    "id": "rxn_tollens_ethanal",
+    "reactants": ["ch3cho_l", "tollens_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["ag_metal", "ch3coona_aq"],
+    "equation": "CH₃CHO + 2[Ag(NH₃)₂]⁺ → CH₃COO⁻ + 2Ag + ...",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#B7BEC4",
+      "precipitate": "a mirror of silver on the glass",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 10.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The silver mirror test, and one of the most striking things a school laboratory does: warm the tube gently and a bright mirror of silver plates itself onto the inside of the glass. The aldehyde is oxidised to the acid, and in giving those electrons up it reduces silver ions to silver metal. Only an aldehyde does this. The same reaction was once the industrial way of silvering mirrors, and it is why glucose — which has an aldehyde group — gives a positive result and is called a reducing sugar.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones, Tollens' test"
+  },
+  {
+    "id": "rxn_none_tollens_propanone",
+    "reactants": ["ch3coch3_l", "tollens_aq"],
+    "noReaction": true,
+    "explanation": "No observable change — no mirror, no darkening, nothing. Propanone is a KETONE: its carbonyl carbon sits between two carbon groups and carries no hydrogen of its own, so there is nothing to remove without breaking the carbon chain, and it cannot reduce the silver. That negative result is exactly as informative as the positive one from ethanal. Run the two tubes side by side and you have distinguished an aldehyde from a ketone — two compounds that both contain a C=O group and can look identical on paper.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones, distinguishing aldehydes from ketones"
+  },
+  {
+    "id": "rxn_fehlings_ethanal",
+    "reactants": ["ch3cho_l", "fehlings_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["cu2o_s", "ch3coona_aq"],
+    "equation": "CH₃CHO + 2Cu²⁺ + 5OH⁻ → CH₃COO⁻ + Cu₂O + 3H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#A83C1E",
+      "precipitate": "brick red copper(I) oxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 11.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The second aldehyde test, and it works the same way with a different metal: the aldehyde reduces copper(II) to copper(I), and the deep blue solution throws down a brick-red precipitate. Having two independent tests matters, because a single positive result can always be a coincidence and two agreeing is much harder to argue with. Propanone gives nothing here either, for the same reason it gives nothing with Tollens'. This test was used for a century to check urine for sugar, since glucose reduces the copper in exactly this way.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones, Fehling's test"
+  },
+  {
+    "id": "rxn_carboxylic_acid_carbonate",
+    "reactants": ["ch3cooh_aq", "na2co3_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["ch3coona_aq", "co2_g", "water"],
+    "equation": "2CH₃COOH + Na₂CO₃ → 2CH₃COONa + CO₂ + H₂O",
+    "type": "acid_carbonate",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 8.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Ethanoic acid fizzes with a carbonate exactly as hydrochloric acid does, which settles the question of whether a carboxylic acid is a real acid: it is, weak or not. This is also the test that completes the acidity ladder. Phenol, put with sodium carbonate, does nothing — it is acidic enough for sodium hydroxide but not enough to drive carbon dioxide out of a carbonate. So: ethanol reacts with neither, phenol reacts with hydroxide only, and the carboxylic acid reacts with both. Three compounds, all with an O–H, in a clear order.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids, reaction with carbonates and comparative acidity"
+  },
+  {
+    "id": "rxn_esterification",
+    "reactants": ["c2h5oh_aq", "ch3cooh_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "h2so4_1m" },
+    "products": ["ester_l", "water"],
+    "equation": "CH₃COOH + C₂H₅OH ⇌ CH₃COOC₂H₅ + H₂O",
+    "type": "esterification",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Warm an acid with an alcohol and a trace of sulfuric acid and the flask fills with the smell of pear drops. It is the most memorable reaction in the syllabus for a reason — two starting materials that smell of nothing pleasant give something that smells of sweets. Note the double arrow: this is a genuine equilibrium and never goes to completion, so the yield is improved by removing the ester as it forms or by using an excess of one reactant. The sulfuric acid is a catalyst and is not used up, and esters like this one give fruit and flowers much of their scent.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids, esterification"
   }
 ]

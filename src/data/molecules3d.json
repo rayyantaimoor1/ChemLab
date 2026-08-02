@@ -2337,6 +2337,271 @@
     "bonds": [{ "from": "h", "to": "br", "type": "covalent" }]
   },
 
+  "phenol_s": {
+    "note": "The OH sits in the same plane as the ring, and the whole molecule is flat. That flatness is not decoration - it is what lets the oxygen's charge spread into the ring once the hydrogen leaves, which is why phenol is an acid and ethanol is not.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": 1.4, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0.7, "y": 1.21, "z": 0 },
+      { "id": "c3", "element": "C", "x": -0.7, "y": 1.21, "z": 0 },
+      { "id": "c4", "element": "C", "x": -1.4, "y": 0, "z": 0 },
+      { "id": "c5", "element": "C", "x": -0.7, "y": -1.21, "z": 0 },
+      { "id": "c6", "element": "C", "x": 0.7, "y": -1.21, "z": 0 },
+      { "id": "o", "element": "O", "x": 2.76, "y": 0, "z": 0 },
+      { "id": "ho", "element": "H", "x": 3.13, "y": 0.92, "z": 0 },
+      { "id": "h2", "element": "H", "x": 1.24, "y": 2.15, "z": 0 },
+      { "id": "h3", "element": "H", "x": -1.24, "y": 2.15, "z": 0 },
+      { "id": "h4", "element": "H", "x": -2.48, "y": 0, "z": 0 },
+      { "id": "h5", "element": "H", "x": -1.24, "y": -2.15, "z": 0 },
+      { "id": "h6", "element": "H", "x": 1.24, "y": -2.15, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" },
+      { "from": "c6", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "o", "type": "covalent" },
+      { "from": "o", "to": "ho", "type": "covalent" },
+      { "from": "c2", "to": "h2", "type": "covalent" },
+      { "from": "c3", "to": "h3", "type": "covalent" },
+      { "from": "c4", "to": "h4", "type": "covalent" },
+      { "from": "c5", "to": "h5", "type": "covalent" },
+      { "from": "c6", "to": "h6", "type": "covalent" }
+    ]
+  },
+
+  "c6h5ona_aq": {
+    "note": "Phenol with its hydrogen gone. The charge left on the oxygen is shared into the flat ring beside it rather than sitting on one atom, which is the whole reason this ion is stable enough to form.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": 1.4, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0.7, "y": 1.21, "z": 0 },
+      { "id": "c3", "element": "C", "x": -0.7, "y": 1.21, "z": 0 },
+      { "id": "c4", "element": "C", "x": -1.4, "y": 0, "z": 0 },
+      { "id": "c5", "element": "C", "x": -0.7, "y": -1.21, "z": 0 },
+      { "id": "c6", "element": "C", "x": 0.7, "y": -1.21, "z": 0 },
+      { "id": "o", "element": "O", "x": 2.76, "y": 0, "z": 0 },
+      { "id": "na", "element": "Na", "x": 5.0, "y": 0.4, "z": 0 },
+      { "id": "h2", "element": "H", "x": 1.24, "y": 2.15, "z": 0 },
+      { "id": "h3", "element": "H", "x": -1.24, "y": 2.15, "z": 0 },
+      { "id": "h4", "element": "H", "x": -2.48, "y": 0, "z": 0 },
+      { "id": "h5", "element": "H", "x": -1.24, "y": -2.15, "z": 0 },
+      { "id": "h6", "element": "H", "x": 1.24, "y": -2.15, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" },
+      { "from": "c6", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "o", "type": "covalent" },
+      { "from": "na", "to": "o", "type": "ionic" },
+      { "from": "c2", "to": "h2", "type": "covalent" },
+      { "from": "c3", "to": "h3", "type": "covalent" },
+      { "from": "c4", "to": "h4", "type": "covalent" },
+      { "from": "c5", "to": "h5", "type": "covalent" },
+      { "from": "c6", "to": "h6", "type": "covalent" }
+    ]
+  },
+
+  "c2h5ona_aq": {
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -1.9, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": -0.4, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0.3, "y": 1.25, "z": 0 },
+      { "id": "na", "element": "Na", "x": 2.4, "y": 1.9, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.3, "y": 1.02, "z": 0 },
+      { "id": "h2", "element": "H", "x": -2.3, "y": -0.51, "z": 0.89 },
+      { "id": "h3", "element": "H", "x": -2.3, "y": -0.51, "z": -0.89 },
+      { "id": "h4", "element": "H", "x": 0, "y": -0.55, "z": 0.89 },
+      { "id": "h5", "element": "H", "x": 0, "y": -0.55, "z": -0.89 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "o", "type": "covalent" },
+      { "from": "na", "to": "o", "type": "ionic" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c1", "to": "h2", "type": "covalent" },
+      { "from": "c1", "to": "h3", "type": "covalent" },
+      { "from": "c2", "to": "h4", "type": "covalent" },
+      { "from": "c2", "to": "h5", "type": "covalent" }
+    ]
+  },
+
+  "ch3cho_l": {
+    "note": "Look at the carbonyl carbon: it carries a HYDROGEN as well as the oxygen. That hydrogen is the whole difference between this and propanone, and it is what makes an aldehyde easy to oxidise. The C=O group and everything attached to it lie in one plane.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -1.5, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0.72, "y": 1.18, "z": 0 },
+      { "id": "hc", "element": "H", "x": 0.6, "y": -1.0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -1.9, "y": 1.02, "z": 0 },
+      { "id": "h2", "element": "H", "x": -1.9, "y": -0.51, "z": 0.89 },
+      { "id": "h3", "element": "H", "x": -1.9, "y": -0.51, "z": -0.89 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "o", "type": "covalent" },
+      { "from": "c2", "to": "hc", "type": "covalent" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c1", "to": "h2", "type": "covalent" },
+      { "from": "c1", "to": "h3", "type": "covalent" }
+    ]
+  },
+
+  "ch3coch3_l": {
+    "note": "Now compare with ethanal: the carbonyl carbon here has a CARBON on each side and no hydrogen at all. There is nothing to take off without breaking the chain, which is exactly why ketones fail both Tollens' and Fehling's.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -1.5, "y": -0.4, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0, "y": 0.2, "z": 0 },
+      { "id": "c3", "element": "C", "x": 1.5, "y": -0.4, "z": 0 },
+      { "id": "o", "element": "O", "x": 0, "y": 1.42, "z": 0 },
+      { "id": "h1", "element": "H", "x": -1.9, "y": -1.4, "z": 0 },
+      { "id": "h2", "element": "H", "x": -2.0, "y": 0.1, "z": 0.89 },
+      { "id": "h3", "element": "H", "x": -2.0, "y": 0.1, "z": -0.89 },
+      { "id": "h4", "element": "H", "x": 1.9, "y": -1.4, "z": 0 },
+      { "id": "h5", "element": "H", "x": 2.0, "y": 0.1, "z": 0.89 },
+      { "id": "h6", "element": "H", "x": 2.0, "y": 0.1, "z": -0.89 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c2", "to": "o", "type": "covalent" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c1", "to": "h2", "type": "covalent" },
+      { "from": "c1", "to": "h3", "type": "covalent" },
+      { "from": "c3", "to": "h4", "type": "covalent" },
+      { "from": "c3", "to": "h5", "type": "covalent" },
+      { "from": "c3", "to": "h6", "type": "covalent" }
+    ]
+  },
+
+  "ch3cooh_aq": {
+    "note": "The COOH group: one oxygen double bonded to the carbon, one carrying the hydrogen. It is that O-H hydrogen that comes off as an ion, not any of the three on the other carbon.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -1.5, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.68, "y": 1.2, "z": 0 },
+      { "id": "o2", "element": "O", "x": 0.7, "y": -1.15, "z": 0 },
+      { "id": "ho", "element": "H", "x": 1.65, "y": -1.1, "z": 0 },
+      { "id": "h1", "element": "H", "x": -1.9, "y": 1.02, "z": 0 },
+      { "id": "h2", "element": "H", "x": -1.9, "y": -0.51, "z": 0.89 },
+      { "id": "h3", "element": "H", "x": -1.9, "y": -0.51, "z": -0.89 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "o1", "type": "covalent" },
+      { "from": "c2", "to": "o2", "type": "covalent" },
+      { "from": "o2", "to": "ho", "type": "covalent" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c1", "to": "h2", "type": "covalent" },
+      { "from": "c1", "to": "h3", "type": "covalent" }
+    ]
+  },
+
+  "ch3coona_aq": {
+    "note": "With the hydrogen gone, the two oxygens become identical - the charge is shared evenly between them, and the two carbon-oxygen bonds are the same length. That sharing is why the ion is stable and the acid can form at all.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -1.5, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.68, "y": 1.18, "z": 0 },
+      { "id": "o2", "element": "O", "x": 0.68, "y": -1.18, "z": 0 },
+      { "id": "na", "element": "Na", "x": 2.9, "y": -1.6, "z": 0 },
+      { "id": "h1", "element": "H", "x": -1.9, "y": 1.02, "z": 0 },
+      { "id": "h2", "element": "H", "x": -1.9, "y": -0.51, "z": 0.89 },
+      { "id": "h3", "element": "H", "x": -1.9, "y": -0.51, "z": -0.89 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "o1", "type": "covalent" },
+      { "from": "c2", "to": "o2", "type": "covalent" },
+      { "from": "na", "to": "o2", "type": "ionic" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c1", "to": "h2", "type": "covalent" },
+      { "from": "c1", "to": "h3", "type": "covalent" }
+    ]
+  },
+
+  "ester_l": {
+    "note": "The acid's O-H hydrogen has been replaced by an ethyl group from the alcohol. That single swap is the whole of esterification, and it is why the smell changes so completely.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -2.5, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": -1.1, "y": 0.2, "z": 0 },
+      { "id": "o1", "element": "O", "x": -0.7, "y": 1.4, "z": 0 },
+      { "id": "o2", "element": "O", "x": -0.2, "y": -0.85, "z": 0 },
+      { "id": "c3", "element": "C", "x": 1.2, "y": -0.7, "z": 0 },
+      { "id": "c4", "element": "C", "x": 1.9, "y": -2.0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.9, "y": 1.0, "z": 0 },
+      { "id": "h2", "element": "H", "x": -2.9, "y": -0.5, "z": 0.89 },
+      { "id": "h3", "element": "H", "x": 1.5, "y": -0.2, "z": 0.89 },
+      { "id": "h4", "element": "H", "x": 2.9, "y": -1.9, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "o1", "type": "covalent" },
+      { "from": "c2", "to": "o2", "type": "covalent" },
+      { "from": "o2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c1", "to": "h2", "type": "covalent" },
+      { "from": "c3", "to": "h3", "type": "covalent" },
+      { "from": "c4", "to": "h4", "type": "covalent" }
+    ]
+  },
+
+  "tollens_aq": {
+    "note": "The silver sits in a straight line between its two ammonia molecules. This is the same diammine arrangement that keeps silver chloride dissolved - here it is holding the silver ready to be reduced back to metal.",
+    "atoms": [
+      { "id": "ag", "element": "Ag", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": -2.1, "y": 0, "z": 0 },
+      { "id": "n2", "element": "N", "x": 2.1, "y": 0, "z": 0 },
+      { "id": "h1", "element": "H", "x": -2.7, "y": 0.8, "z": 0.3 },
+      { "id": "h2", "element": "H", "x": -2.7, "y": -0.5, "z": -0.7 },
+      { "id": "h3", "element": "H", "x": 2.7, "y": 0.8, "z": 0.3 },
+      { "id": "h4", "element": "H", "x": 2.7, "y": -0.5, "z": -0.7 }
+    ],
+    "bonds": [
+      { "from": "ag", "to": "n1", "type": "ionic" },
+      { "from": "ag", "to": "n2", "type": "ionic" },
+      { "from": "n1", "to": "h1", "type": "covalent" },
+      { "from": "n1", "to": "h2", "type": "covalent" },
+      { "from": "n2", "to": "h3", "type": "covalent" },
+      { "from": "n2", "to": "h4", "type": "covalent" }
+    ]
+  },
+
+  "fehlings_aq": {
+    "note": "Fehling's is a MIXTURE, not a molecule, so there is no true structure to draw. What is shown is a copper(II) ion with the two oxygens of a tartrate gripping it - the arrangement that stops the copper precipitating out of the alkali. Treat this as a sketch of the idea rather than as a real geometry.",
+    "atoms": [
+      { "id": "cu", "element": "Cu", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": -1.9, "y": 0.6, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.9, "y": -0.6, "z": 0 },
+      { "id": "c1", "element": "C", "x": -3.1, "y": 0.8, "z": 0 },
+      { "id": "c2", "element": "C", "x": -3.1, "y": -0.8, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "cu", "to": "o1", "type": "ionic" },
+      { "from": "cu", "to": "o2", "type": "ionic" },
+      { "from": "o1", "to": "c1", "type": "covalent" },
+      { "from": "o2", "to": "c2", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" }
+    ]
+  },
+
+  "cu2o_s": {
+    "note": "TWO coppers to one oxygen, because the copper here is +1 rather than its usual +2. The real solid is a lattice of many of these.",
+    "atoms": [
+      { "id": "cu1", "element": "Cu", "x": -1.85, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0, "y": 0, "z": 0 },
+      { "id": "cu2", "element": "Cu", "x": 1.85, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "cu1", "to": "o", "type": "ionic" },
+      { "from": "cu2", "to": "o", "type": "ionic" }
+    ]
+  },
+
   "h3po4_aq": {
     "note": "Phosphorus at the centre of a tetrahedron of four oxygens, three of which carry a hydrogen - which is what makes the acid tribasic.",
     "atoms": [

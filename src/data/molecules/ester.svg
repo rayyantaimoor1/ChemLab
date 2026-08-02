@@ -1,0 +1,24 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ethyl ethanoate: an ESTER - the acid’s OH hydrogen has been replaced by an ethyl group from the alcohol">
+  <line x1="30" y1="66" x2="46" y2="66" stroke="#161A19" stroke-width="2"/>
+  <line x1="58" y1="52" x2="58" y2="36" stroke="#161A19" stroke-width="2"/>
+  <line x1="64" y1="52" x2="64" y2="36" stroke="#161A19" stroke-width="2"/>
+  <line x1="72" y1="74" x2="88" y2="84" stroke="#161A19" stroke-width="2"/>
+  <line x1="104" y1="80" x2="120" y2="70" stroke="#161A19" stroke-width="2"/>
+  <line x1="132" y1="62" x2="146" y2="54" stroke="#161A19" stroke-width="2"/>
+  <circle cx="20" cy="66" r="13" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="20" y="71" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="60" cy="66" r="14" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="60" y="71" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="61" cy="28" r="12" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="61" y="33" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="96" cy="88" r="13" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="96" y="93" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="126" cy="66" r="13" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="126" y="71" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="152" cy="48" r="11" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="152" y="52" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="8" cy="46" r="9" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="8" y="49" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="8" cy="88" r="9" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="8" y="91" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+</svg>

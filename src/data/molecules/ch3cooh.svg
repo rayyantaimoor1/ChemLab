@@ -1,0 +1,26 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ethanoic acid: a COOH group - one oxygen double bonded to the carbon and one carrying a hydrogen. That OH hydrogen is the acidic one">
+  <line x1="48" y1="66" x2="66" y2="66" stroke="#161A19" stroke-width="2"/>
+  <line x1="30" y1="54" x2="20" y2="40" stroke="#161A19" stroke-width="2"/>
+  <line x1="30" y1="78" x2="20" y2="92" stroke="#161A19" stroke-width="2"/>
+  <line x1="16" y1="66" x2="4" y2="66" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="52" x2="80" y2="34" stroke="#161A19" stroke-width="2"/>
+  <line x1="86" y1="52" x2="86" y2="34" stroke="#161A19" stroke-width="2"/>
+  <line x1="96" y1="72" x2="116" y2="84" stroke="#161A19" stroke-width="2"/>
+  <circle cx="32" cy="66" r="15" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="32" y="72" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="82" cy="66" r="15" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="82" y="72" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="83" cy="24" r="14" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="83" y="29" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="124" cy="90" r="13" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="124" y="95" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">O</text>
+  <line x1="134" y1="84" x2="144" y2="76" stroke="#161A19" stroke-width="2"/>
+  <circle cx="150" cy="70" r="8" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="150" y="73" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="14" cy="32" r="9" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="14" y="35" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="14" cy="100" r="9" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="14" y="103" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="2" cy="66" r="9" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="2" y="69" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+</svg>
