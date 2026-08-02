@@ -1045,8 +1045,13 @@ test('a missing catalyst is named, so the student knows what to reach for', asyn
   // Hydrogen peroxide sits there for months without one.
   const without = engine.resolve(['h2o2_aq']);
   assert.equal(without.outcome, OUTCOME.NO_REACTION);
-  assert.match(without.message, /needs a catalyst/);
+  assert.match(without.message, /as a catalyst/);
   assert.match(without.message, /Manganese\(IV\) oxide/, 'the catalyst should be named, not just implied');
+  // The reason has to read as a sentence, not as a label stuck on the end.
+  assert.match(
+    without.message,
+    /This mixture needs Manganese\(IV\) oxide present as a catalyst before anything happens\./
+  );
 
   // Add it and the reaction runs.
   const withIt = engine.resolve(['h2o2_aq', 'mno2_s']);

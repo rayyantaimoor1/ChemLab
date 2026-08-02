@@ -3088,5 +3088,260 @@
     "explanation": "Baeyer's test — the second way of showing a double bond is there. Cold dilute permanganate attacks the double bond and puts an OH group on each carbon, giving a diol. Two things happen that you can see at once: the purple is destroyed, and a brown precipitate of manganese(IV) oxide appears. Having a second, independent test matters, because bromine water can be decolourised by other things too, and two tests agreeing is much stronger evidence than one. The product here is the antifreeze in car radiators.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, Baeyer's test for unsaturation"
+  },
+  {
+    "id": "rxn_bromination_benzene",
+    "reactants": ["br2_aq", "c6h6_l"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": "febr3_s" },
+    "products": ["c6h5br_l", "hbr_g"],
+    "equation": "C₆H₆ + Br₂ → C₆H₅Br + HBr",
+    "type": "substitution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen bromide",
+      "bubbles": true,
+      "smoke": true,
+      "tempDeltaC": 6,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "carcinogen",
+      "title": "Benzene causes cancer, and hydrogen bromide is corrosive",
+      "warning": "Benzene is a proven carcinogen — it is absorbed through skin as well as breathed, and there is no concentration considered safe for casual handling. The hydrogen bromide given off is choking and corrosive.",
+      "visualEffect": null,
+      "whatToDoInstead": "This is why school laboratories use methylbenzene instead of benzene wherever they can. If benzene must be used it is a fume cupboard job with gloves throughout, and never on an open bench."
+    },
+    "molecularAnimation": null,
+    "explanation": "The single most important thing about benzene, and it shows up twice here. FIRST: with no catalyst present, nothing happens at all — the app will simply say a catalyst is missing. Shake ethene with bromine water and the orange vanishes on the spot; shake benzene with it and the orange stays. Benzene looks unsaturated on paper and refuses to behave like it, because its six spare electrons are spread evenly round the whole ring and breaking that arrangement costs more than the reaction gains. SECOND: once the catalyst polarises the bromine enough to force a reaction, what happens is SUBSTITUTION, not addition — a hydrogen is swapped out, the ring survives intact, and the hydrogen bromide fuming off is the proof.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, electrophilic substitution and the stability of the ring"
+  },
+  {
+    "id": "rxn_nitration_benzene",
+    "reactants": ["c6h6_l", "hno3_1m", "h2so4_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["c6h5no2_l", "water"],
+    "equation": "C₆H₆ + HNO₃ → C₆H₅NO₂ + H₂O",
+    "type": "substitution",
+    "effects": {
+      "colorToHex": "#E8DC9A",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 10,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic",
+      "title": "Benzene, a nitrating mixture, and nitrobenzene - all three are dangerous",
+      "warning": "Benzene causes cancer. The concentrated acid mixture is fiercely corrosive and gets hot on mixing. Nitrobenzene smells pleasantly of almonds and is absorbed straight through skin, where it stops the blood carrying oxygen — the smell is an invitation to a serious poisoning.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard, gloves and eye protection throughout, and the temperature held below 60 °C in a water bath — a runaway here can produce dinitrobenzene explosively. Never judge nitrobenzene safe because it smells sweet."
+    },
+    "molecularAnimation": null,
+    "explanation": "Nitration, and the reaction that founded the synthetic dye and explosives industries. Sulfuric acid's job is to take a hydrogen from the nitric acid and generate the nitronium ion, which is what actually attacks the ring — the nitric acid alone is not reactive enough. Note that once again the ring survives: a hydrogen is substituted and the delocalised system is left whole. Nitrobenzene goes on to become aniline and from there most of the early synthetic dyes.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, nitration of benzene"
+  },
+  {
+    "id": "rxn_sulfonation_benzene",
+    "reactants": ["c6h6_l", "h2so4_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["c6h5so3h_aq", "water"],
+    "equation": "C₆H₆ + H₂SO₄ → C₆H₅SO₃H + H₂O",
+    "type": "substitution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 0.5
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "carcinogen",
+      "title": "Benzene causes cancer and the acid is fuming",
+      "warning": "Benzene is a proven carcinogen absorbed through skin as well as lungs. Fuming sulfuric acid attacks skin and eyes instantly and the mixture must be heated.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard with gloves and a face shield, heated in a water bath rather than over a flame. Add the acid to the benzene slowly and never the reverse."
+    },
+    "molecularAnimation": null,
+    "explanation": "The third substitution on the ring, and the one with the biggest industrial output. What it produces is a molecule of two halves: a benzene ring that will not mix with water at one end, and a strongly acidic group that dissolves readily at the other. That is precisely the structure of a detergent — the hydrocarbon tail grips grease, the sulfonate head is dragged away by water, and the two together lift the dirt off. Almost every washing-up liquid and washing powder starts here.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, sulfonation and detergent manufacture"
+  },
+  {
+    "id": "rxn_combustion_benzene",
+    "reactants": ["c6h6_l", "o2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["co2_g", "water"],
+    "equation": "2C₆H₆ + 15O₂ → 12CO₂ + 6H₂O",
+    "type": "combustion",
+    "effects": {
+      "colorToHex": "#1F1D1C",
+      "precipitate": "black soot",
+      "gas": "carbon dioxide",
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 45,
+      "resultPH": 7.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "carcinogen",
+      "title": "Burning a carcinogen, and the soot is carcinogenic too",
+      "warning": "Benzene causes cancer, and the thick black smoke it burns with carries unburnt aromatic compounds that are carcinogenic in their own right. The flame is also very hot and benzene vapour ignites easily.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard only, and burn the smallest quantity that shows the effect. The sooty flame is the point of the demonstration, so a drop on a watch glass is plenty."
+    },
+    "molecularAnimation": null,
+    "explanation": "Benzene burns with a strikingly smoky yellow flame, thick with soot, and that appearance is itself a clue to the structure. The proportion of carbon in an aromatic ring is so high that ordinary air cannot supply enough oxygen to burn it all, and the surplus carbon comes off as smoke. Compare it with methane's clean blue flame: the sootier the flame, the more carbon-rich the fuel, which is a quick qualitative test for an aromatic compound.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, combustion of benzene"
+  },
+  {
+    "id": "rxn_hydrogenation_benzene",
+    "reactants": ["c6h6_l", "h2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": 180, "catalyst": "ni_s" },
+    "products": ["c6h12_l"],
+    "equation": "C₆H₆ + 3H₂ → C₆H₁₂",
+    "type": "addition",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 20,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Benzene CAN be made to add hydrogen — but look at what it takes. Ethene does this over nickel at ordinary temperatures; benzene needs about 180 °C and high pressure, and it takes three molecules of hydrogen all at once rather than one. There is no stopping half way at a partly hydrogenated ring, because breaking the delocalisation is the expensive step and once it is paid for the rest follows. That contrast in conditions is the best measure there is of how much the delocalised ring is worth, and the product is a puckered chair-shaped ring rather than a flat one.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, hydrogenation and resonance energy"
+  },
+  {
+    "id": "rxn_substitution_bromoethane_naoh",
+    "reactants": ["c2h5br_l", "naoh_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["c2h5oh_aq", "nabr_aq"],
+    "equation": "C₂H₅Br + NaOH(aq) → C₂H₅OH + NaBr",
+    "type": "substitution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 6,
+      "resultPH": 12.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Nucleophilic substitution, and half of the most instructive pair in the whole of organic chemistry. The carbon–bromine bond is polar, leaving that carbon slightly positive; the hydroxide ion has a lone pair and is drawn straight to it, pushing the bromide out as it arrives. In WATER this is what happens and you get an alcohol. Now do the identical reaction in ethanol instead and see what changes.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides, nucleophilic substitution"
+  },
+  {
+    "id": "rxn_elimination_bromoethane_naoh",
+    "reactants": ["c2h5br_l", "naoh_ethanolic"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["c2h4_g", "nabr_aq", "water"],
+    "equation": "C₂H₅Br + NaOH(alcoholic) → C₂H₄ + NaBr + H₂O",
+    "type": "elimination",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "ethene",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": 12.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The other half of the pair, and the reason conditions get written under arrows. Same halogenoalkane, same sodium hydroxide, same heat — but dissolved in ethanol rather than water, the hydroxide stops behaving as a nucleophile and behaves as a BASE instead. Rather than attacking the carbon, it pulls a hydrogen off the neighbouring one, and the electrons left behind form a double bond as the bromide departs. Substitution gives an alcohol; elimination gives an alkene. Nothing about the reagents predicts which — only the solvent does, and you can confirm the difference by testing the gas with bromine water.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides, elimination versus substitution"
+  },
+  {
+    "id": "rxn_substitution_bromoethane_ammonia",
+    "reactants": ["c2h5br_l", "nh3_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["c2h5nh2_aq", "hbr_g"],
+    "equation": "C₂H₅Br + NH₃ → C₂H₅NH₂ + HBr",
+    "type": "substitution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 7,
+      "resultPH": 12.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Ammonia has a lone pair on its nitrogen, so it too is a nucleophile and attacks the same slightly positive carbon, giving an amine. The awkwardness is that the amine produced ALSO has a lone pair on its nitrogen and is if anything a better nucleophile than ammonia was — so it attacks more bromoethane in its turn, and the real product is a mixture of primary, secondary and tertiary amines. Using a large excess of ammonia improves the odds without ever fixing the problem, which is a good early lesson in why a clean equation on paper does not guarantee a clean product in a flask.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides, reaction with ammonia"
+  },
+  {
+    "id": "rxn_test_halogenoalkane_agno3",
+    "reactants": ["agno3_0_1m", "c2h5br_l"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["agbr_s", "c2h5oh_aq", "hno3_aq"],
+    "equation": "C₂H₅Br + AgNO₃ + H₂O → AgBr + C₂H₅OH + HNO₃",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#EDE3C4",
+      "precipitate": "cream silver bromide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 2.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The test that identifies which halogen a halogenoalkane contains. Warming it with silver nitrate lets the halide leave and it drops out as the silver halide, with the same colours as always — white for chloride, cream for bromide, yellow for iodide. What makes it more than a repeat of the halide test is the SPEED: the iodide goes first, the bromide next and the chloride slowest, because the carbon–halogen bond gets weaker down the group and so breaks more easily. Timing three tubes side by side turns bond strength into something you can watch.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides, identifying the halogen and carbon–halogen bond strength"
+  },
+  {
+    "id": "rxn_dehydration_ethanol",
+    "reactants": ["c2h5oh_aq", "h2so4_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": 170, "catalyst": null },
+    "products": ["c2h4_g", "water"],
+    "equation": "C₂H₅OH → C₂H₄ + H₂O",
+    "type": "elimination",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "ethene",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "corrosive",
+      "title": "Hot concentrated sulfuric acid",
+      "warning": "This needs concentrated sulfuric acid at about 170 °C. At that temperature it chars anything organic it touches, including skin, and the mixture can froth up suddenly.",
+      "visualEffect": null,
+      "whatToDoInstead": "Heat gently with anti-bumping granules in the flask, wear eye protection and gloves, and never seal the apparatus — the gas must be free to escape."
+    },
+    "molecularAnimation": null,
+    "explanation": "Ethanol loses water and becomes ethene, which closes a loop: hydrate ethene and you get ethanol, dehydrate ethanol and you get ethene back. Which direction runs depends entirely on the conditions — phosphoric acid with steam going one way, hot concentrated sulfuric acid going the other. The temperature matters more than it looks: at about 170 °C you get ethene, but nearer 140 °C the same flask gives ethoxyethane instead. This is also the laboratory way to make ethene from something renewable, since the ethanol can come from fermentation.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alcohols, dehydration to alkenes"
   }
 ]

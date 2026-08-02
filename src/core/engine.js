@@ -128,11 +128,12 @@ function blockingCondition(reaction, state, nameOf = (id) => id) {
   if (catalyst) {
     const catalystPresent =
       state.species.includes(catalyst) || state.catalysts.includes(catalyst);
-    // Naming the catalyst turns a dead end into a next step. "Needs a
-    // catalyst that is not present" leaves a student with nowhere to go;
-    // "needs a catalyst that is not present: manganese(IV) oxide" tells
-    // them exactly what to reach for off the shelf.
-    if (!catalystPresent) return `needs a catalyst that is not present: ${nameOf(catalyst)}`;
+    // Naming the catalyst turns a dead end into a next step: "needs a
+    // catalyst" leaves a student with nowhere to go, while naming it tells
+    // them exactly what to reach for off the shelf. Worded to sit inside
+    // resolve()'s "This mixture ___ before anything happens." sentence
+    // without reading like a list bolted onto the end of it.
+    if (!catalystPresent) return `needs ${nameOf(catalyst)} present as a catalyst`;
   }
 
   return null;

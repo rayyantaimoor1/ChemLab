@@ -1,0 +1,21 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cyclohexane: the fully saturated six-carbon ring. No inner circle, because there are no delocalised electrons - and the real ring is puckered into a chair shape rather than flat">
+  <line x1="80.0" y1="22.0" x2="109.4" y2="39.0" stroke="#161A19" stroke-width="2"/>
+  <line x1="109.4" y1="39.0" x2="109.4" y2="73.0" stroke="#161A19" stroke-width="2"/>
+  <line x1="109.4" y1="73.0" x2="80.0" y2="90.0" stroke="#161A19" stroke-width="2"/>
+  <line x1="80.0" y1="90.0" x2="50.6" y2="73.0" stroke="#161A19" stroke-width="2"/>
+  <line x1="50.6" y1="73.0" x2="50.6" y2="39.0" stroke="#161A19" stroke-width="2"/>
+  <line x1="50.6" y1="39.0" x2="80.0" y2="22.0" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80.0" cy="22.0" r="9" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="80.0" y="22.03" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="109.4" cy="39.0" r="9" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="109.4" y="39.03" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="109.4" cy="73.0" r="9" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="109.4" y="73.03" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="80.0" cy="90.0" r="9" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="80.0" y="90.03" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="50.6" cy="73.0" r="9" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="50.6" y="73.03" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="50.6" cy="39.0" r="9" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="50.6" y="39.03" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">C</text>
+  <text x="80" y="110" text-anchor="middle" font-family="sans-serif" font-size="10" font-style="italic" fill="#4A4A4A">each C also carries 2 H</text>
+</svg>

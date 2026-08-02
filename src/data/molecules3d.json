@@ -2072,6 +2072,271 @@
     "bonds": []
   },
 
+  "c6h6_l": {
+    "note": "PERFECTLY FLAT. Rotate it and the whole ring goes edge-on to a single straight line - every one of the twelve atoms lies in one plane. All six carbon-carbon bonds are the same length too, which is the strongest evidence that there are no separate double bonds here: the electrons are spread evenly right round the ring.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": 1.4, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0.7, "y": 1.21, "z": 0 },
+      { "id": "c3", "element": "C", "x": -0.7, "y": 1.21, "z": 0 },
+      { "id": "c4", "element": "C", "x": -1.4, "y": 0, "z": 0 },
+      { "id": "c5", "element": "C", "x": -0.7, "y": -1.21, "z": 0 },
+      { "id": "c6", "element": "C", "x": 0.7, "y": -1.21, "z": 0 },
+      { "id": "h1", "element": "H", "x": 2.48, "y": 0, "z": 0 },
+      { "id": "h2", "element": "H", "x": 1.24, "y": 2.15, "z": 0 },
+      { "id": "h3", "element": "H", "x": -1.24, "y": 2.15, "z": 0 },
+      { "id": "h4", "element": "H", "x": -2.48, "y": 0, "z": 0 },
+      { "id": "h5", "element": "H", "x": -1.24, "y": -2.15, "z": 0 },
+      { "id": "h6", "element": "H", "x": 1.24, "y": -2.15, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" },
+      { "from": "c6", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c2", "to": "h2", "type": "covalent" },
+      { "from": "c3", "to": "h3", "type": "covalent" },
+      { "from": "c4", "to": "h4", "type": "covalent" },
+      { "from": "c5", "to": "h5", "type": "covalent" },
+      { "from": "c6", "to": "h6", "type": "covalent" }
+    ]
+  },
+
+  "c6h12_l": {
+    "note": "The same six carbons, and NOT flat. This is the chair form: alternate carbons sit above and below the mean plane, because every carbon here is tetrahedral. Rotate it beside benzene and the difference between a delocalised flat ring and a saturated puckered one is unmistakable.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": 1.46, "y": 0, "z": 0.25 },
+      { "id": "c2", "element": "C", "x": 0.73, "y": 1.26, "z": -0.25 },
+      { "id": "c3", "element": "C", "x": -0.73, "y": 1.26, "z": 0.25 },
+      { "id": "c4", "element": "C", "x": -1.46, "y": 0, "z": -0.25 },
+      { "id": "c5", "element": "C", "x": -0.73, "y": -1.26, "z": 0.25 },
+      { "id": "c6", "element": "C", "x": 0.73, "y": -1.26, "z": -0.25 },
+      { "id": "h1", "element": "H", "x": 2.5, "y": 0, "z": 0.6 },
+      { "id": "h2", "element": "H", "x": 1.25, "y": 2.16, "z": -0.6 },
+      { "id": "h3", "element": "H", "x": -1.25, "y": 2.16, "z": 0.6 },
+      { "id": "h4", "element": "H", "x": -2.5, "y": 0, "z": -0.6 },
+      { "id": "h5", "element": "H", "x": -1.25, "y": -2.16, "z": 0.6 },
+      { "id": "h6", "element": "H", "x": 1.25, "y": -2.16, "z": -0.6 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" },
+      { "from": "c6", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c2", "to": "h2", "type": "covalent" },
+      { "from": "c3", "to": "h3", "type": "covalent" },
+      { "from": "c4", "to": "h4", "type": "covalent" },
+      { "from": "c5", "to": "h5", "type": "covalent" },
+      { "from": "c6", "to": "h6", "type": "covalent" }
+    ]
+  },
+
+  "c6h5br_l": {
+    "note": "Still flat, and still a complete ring - the bromine has replaced a hydrogen rather than breaking anything open.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": 1.4, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0.7, "y": 1.21, "z": 0 },
+      { "id": "c3", "element": "C", "x": -0.7, "y": 1.21, "z": 0 },
+      { "id": "c4", "element": "C", "x": -1.4, "y": 0, "z": 0 },
+      { "id": "c5", "element": "C", "x": -0.7, "y": -1.21, "z": 0 },
+      { "id": "c6", "element": "C", "x": 0.7, "y": -1.21, "z": 0 },
+      { "id": "br", "element": "Br", "x": 3.29, "y": 0, "z": 0 },
+      { "id": "h2", "element": "H", "x": 1.24, "y": 2.15, "z": 0 },
+      { "id": "h3", "element": "H", "x": -1.24, "y": 2.15, "z": 0 },
+      { "id": "h4", "element": "H", "x": -2.48, "y": 0, "z": 0 },
+      { "id": "h5", "element": "H", "x": -1.24, "y": -2.15, "z": 0 },
+      { "id": "h6", "element": "H", "x": 1.24, "y": -2.15, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" },
+      { "from": "c6", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "br", "type": "covalent" },
+      { "from": "c2", "to": "h2", "type": "covalent" },
+      { "from": "c3", "to": "h3", "type": "covalent" },
+      { "from": "c4", "to": "h4", "type": "covalent" },
+      { "from": "c5", "to": "h5", "type": "covalent" },
+      { "from": "c6", "to": "h6", "type": "covalent" }
+    ]
+  },
+
+  "c6h5no2_l": {
+    "note": "The nitro group lies in the same plane as the ring, so the whole molecule is still flat.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": 1.4, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0.7, "y": 1.21, "z": 0 },
+      { "id": "c3", "element": "C", "x": -0.7, "y": 1.21, "z": 0 },
+      { "id": "c4", "element": "C", "x": -1.4, "y": 0, "z": 0 },
+      { "id": "c5", "element": "C", "x": -0.7, "y": -1.21, "z": 0 },
+      { "id": "c6", "element": "C", "x": 0.7, "y": -1.21, "z": 0 },
+      { "id": "n", "element": "N", "x": 2.87, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 3.5, "y": 1.06, "z": 0 },
+      { "id": "o2", "element": "O", "x": 3.5, "y": -1.06, "z": 0 },
+      { "id": "h2", "element": "H", "x": 1.24, "y": 2.15, "z": 0 },
+      { "id": "h3", "element": "H", "x": -1.24, "y": 2.15, "z": 0 },
+      { "id": "h4", "element": "H", "x": -2.48, "y": 0, "z": 0 },
+      { "id": "h5", "element": "H", "x": -1.24, "y": -2.15, "z": 0 },
+      { "id": "h6", "element": "H", "x": 1.24, "y": -2.15, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" },
+      { "from": "c6", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "n", "type": "covalent" },
+      { "from": "n", "to": "o1", "type": "covalent" },
+      { "from": "n", "to": "o2", "type": "covalent" },
+      { "from": "c2", "to": "h2", "type": "covalent" },
+      { "from": "c3", "to": "h3", "type": "covalent" },
+      { "from": "c4", "to": "h4", "type": "covalent" },
+      { "from": "c5", "to": "h5", "type": "covalent" },
+      { "from": "c6", "to": "h6", "type": "covalent" }
+    ]
+  },
+
+  "c6h5so3h_aq": {
+    "note": "A flat water-hating ring at one end and a water-loving acid group at the other - the two halves that make a detergent work.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": 1.4, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0.7, "y": 1.21, "z": 0 },
+      { "id": "c3", "element": "C", "x": -0.7, "y": 1.21, "z": 0 },
+      { "id": "c4", "element": "C", "x": -1.4, "y": 0, "z": 0 },
+      { "id": "c5", "element": "C", "x": -0.7, "y": -1.21, "z": 0 },
+      { "id": "c6", "element": "C", "x": 0.7, "y": -1.21, "z": 0 },
+      { "id": "s", "element": "S", "x": 3.16, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 3.8, "y": 1.3, "z": 0.3 },
+      { "id": "o2", "element": "O", "x": 3.8, "y": -1.1, "z": 0.7 },
+      { "id": "o3", "element": "O", "x": 3.6, "y": -0.3, "z": -1.3 },
+      { "id": "ho", "element": "H", "x": 4.3, "y": -0.9, "z": -1.9 },
+      { "id": "h2", "element": "H", "x": 1.24, "y": 2.15, "z": 0 },
+      { "id": "h3", "element": "H", "x": -1.24, "y": 2.15, "z": 0 },
+      { "id": "h4", "element": "H", "x": -2.48, "y": 0, "z": 0 },
+      { "id": "h5", "element": "H", "x": -1.24, "y": -2.15, "z": 0 },
+      { "id": "h6", "element": "H", "x": 1.24, "y": -2.15, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" },
+      { "from": "c6", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "s", "type": "covalent" },
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "o3", "to": "ho", "type": "covalent" },
+      { "from": "c2", "to": "h2", "type": "covalent" },
+      { "from": "c3", "to": "h3", "type": "covalent" },
+      { "from": "c4", "to": "h4", "type": "covalent" },
+      { "from": "c5", "to": "h5", "type": "covalent" },
+      { "from": "c6", "to": "h6", "type": "covalent" }
+    ]
+  },
+
+  "febr3_s": {
+    "atoms": [
+      { "id": "fe", "element": "Fe", "x": 0, "y": 0, "z": 0 },
+      { "id": "br1", "element": "Br", "x": 0, "y": 2.3, "z": 0 },
+      { "id": "br2", "element": "Br", "x": -1.99, "y": -1.15, "z": 0 },
+      { "id": "br3", "element": "Br", "x": 1.99, "y": -1.15, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "fe", "to": "br1", "type": "ionic" },
+      { "from": "fe", "to": "br2", "type": "ionic" },
+      { "from": "fe", "to": "br3", "type": "ionic" }
+    ]
+  },
+
+  "c2h5br_l": {
+    "note": "Two tetrahedral carbons with a bromine on the end. The bromine is much bigger than the hydrogens, and it is the polarity of that carbon-bromine bond that makes the carbon open to attack.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -1.5, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "br", "element": "Br", "x": 0.75, "y": 1.7, "z": 0 },
+      { "id": "h1", "element": "H", "x": -1.9, "y": 1.02, "z": 0 },
+      { "id": "h2", "element": "H", "x": -1.9, "y": -0.51, "z": 0.89 },
+      { "id": "h3", "element": "H", "x": -1.9, "y": -0.51, "z": -0.89 },
+      { "id": "h4", "element": "H", "x": 0.4, "y": -0.6, "z": 0.89 },
+      { "id": "h5", "element": "H", "x": 0.4, "y": -0.6, "z": -0.89 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "br", "type": "covalent" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c1", "to": "h2", "type": "covalent" },
+      { "from": "c1", "to": "h3", "type": "covalent" },
+      { "from": "c2", "to": "h4", "type": "covalent" },
+      { "from": "c2", "to": "h5", "type": "covalent" }
+    ]
+  },
+
+  "c2h5nh2_aq": {
+    "note": "Pyramidal at the nitrogen, exactly like ammonia - and for the same reason, the lone pair pushing the other three groups down.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -1.5, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "n", "element": "N", "x": 0.72, "y": 1.32, "z": 0 },
+      { "id": "hn1", "element": "H", "x": 1.7, "y": 1.28, "z": 0.1 },
+      { "id": "hn2", "element": "H", "x": 0.42, "y": 1.9, "z": -0.8 },
+      { "id": "h1", "element": "H", "x": -1.9, "y": 1.02, "z": 0 },
+      { "id": "h2", "element": "H", "x": -1.9, "y": -0.51, "z": 0.89 },
+      { "id": "h3", "element": "H", "x": -1.9, "y": -0.51, "z": -0.89 },
+      { "id": "h4", "element": "H", "x": 0.4, "y": -0.6, "z": 0.89 },
+      { "id": "h5", "element": "H", "x": 0.4, "y": -0.6, "z": -0.89 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "n", "type": "covalent" },
+      { "from": "n", "to": "hn1", "type": "covalent" },
+      { "from": "n", "to": "hn2", "type": "covalent" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c1", "to": "h2", "type": "covalent" },
+      { "from": "c1", "to": "h3", "type": "covalent" },
+      { "from": "c2", "to": "h4", "type": "covalent" },
+      { "from": "c2", "to": "h5", "type": "covalent" }
+    ]
+  },
+
+  "naoh_ethanolic": {
+    "note": "Chemically the same sodium hydroxide as the aqueous bottle - it is the ethanol it is dissolved in, not the reagent itself, that changes what happens to a halogenoalkane.",
+    "atoms": [
+      { "id": "na", "element": "Na", "x": -1.8, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0.6, "y": 0, "z": 0 },
+      { "id": "h", "element": "H", "x": 1.4, "y": 0.7, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o", "to": "h", "type": "covalent" },
+      { "from": "na", "to": "o", "type": "ionic" }
+    ]
+  },
+
+  "nabr_aq": {
+    "atoms": [
+      { "id": "na", "element": "Na", "x": -1.5, "y": 0, "z": 0 },
+      { "id": "br", "element": "Br", "x": 1.5, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "na", "to": "br", "type": "ionic" }]
+  },
+
+  "hbr_g": {
+    "atoms": [
+      { "id": "h", "element": "H", "x": -0.71, "y": 0, "z": 0 },
+      { "id": "br", "element": "Br", "x": 0.71, "y": 0, "z": 0 }
+    ],
+    "bonds": [{ "from": "h", "to": "br", "type": "covalent" }]
+  },
+
   "h3po4_aq": {
     "note": "Phosphorus at the centre of a tetrahedron of four oxygens, three of which carry a hydrogen - which is what makes the acid tribasic.",
     "atoms": [
