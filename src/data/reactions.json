@@ -5246,5 +5246,226 @@
     "explanation": "The same instant white precipitate phenol gave, three bromines at once and no catalyst — the nitrogen's lone pair floods the ring exactly as the oxygen's did. The batch now has a complete series to compare: benzene will not react without a halogen carrier, toluene reacts a little faster than benzene, phenol and aniline react instantly and three times over. One reagent, four rings, and the difference is entirely in what is attached. Being TOO reactive is a real problem, incidentally — putting a single bromine on aniline needs the amine tamed first, and that difficulty is a standard exam question.",
     "levels": ["bs"],
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — activation by amino groups"
+  },
+  {
+    "id": "rxn_vanadium_dissolve_v2o5",
+    "reactants": ["h2so4_1m", "v2o5_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["vo2_aq", "water"],
+    "equation": "V₂O₅ + 2H⁺ → 2VO₂⁺ + H₂O",
+    "type": "dissolution",
+    "effects": {
+      "colorToHex": "#F0C419",
+      "precipitate": null,
+      "dissolves": "the orange powder went into solution, leaving a clear yellow liquid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic",
+      "title": "Vanadium compounds are toxic and the dust is worse",
+      "warning": "Vanadium(V) oxide is toxic and its dust irritates and damages the lungs. Vanadium solutions are toxic if swallowed and harmful to aquatic life.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves and eye protection, avoid raising dust from the solid, and vanadium waste into the labelled heavy-metal container."
+    },
+    "molecularAnimation": null,
+    "explanation": "The starting point of the best colour demonstration in inorganic chemistry. Vanadium is unusual: it has FOUR oxidation states stable enough to sit in a beaker, and every one of them is a different colour, so a single tube can be walked down the whole series while you watch. This is the top of it, +5, and the next three entries take it down one step at a time. It is also the state vanadium(V) oxide is using when it catalyses the Contact process — the same compound met a long way back, now being examined rather than merely used.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — vanadium redox series"
+  },
+  {
+    "id": "rxn_vanadium_v_to_iv",
+    "reactants": ["vo2_aq", "zn_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["vo_aq", "znso4_aq"],
+    "equation": "2VO₂⁺ + Zn + 4H⁺ → 2VO²⁺ + Zn²⁺ + 2H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#2E86C1",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Yellow to blue, one electron at a time. Zinc is the reducing agent throughout this series, and the useful thing about it is that it is strong enough to keep going all the way down — add it in excess and the tube will pass through every colour in turn rather than stopping. The blue +4 state is the most stable of the four, which is why a vanadium solution left standing in air drifts back to this colour whatever you did to it.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — reduction of vanadium(V) by zinc"
+  },
+  {
+    "id": "rxn_vanadium_iv_to_iii",
+    "reactants": ["vo_aq", "zn_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["v3_aq", "znso4_aq"],
+    "equation": "2VO²⁺ + Zn + 4H⁺ → 2V³⁺ + Zn²⁺ + 2H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#3E8C6E",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Blue to green, and something structural has happened alongside the colour. At +5 and +4 the vanadium was holding an oxygen — it was VO₂⁺ and then VO²⁺, never a bare metal ion. At +3 the charge has finally dropped far enough that it lets go, and what is in solution is a plain hydrated V³⁺. The colour change is the visible half of a change in what the ion actually IS. Note also that this green is easy to mistake for chromium(III)'s green, which is a fair warning that colour narrows a possibility rather than settling it.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — vanadium(IV) to vanadium(III)"
+  },
+  {
+    "id": "rxn_vanadium_iii_to_ii",
+    "reactants": ["v3_aq", "zn_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["v2_aq", "znso4_aq"],
+    "equation": "2V³⁺ + Zn → 2V²⁺ + Zn²⁺",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#7B4C9E",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Green to violet, and the end of the line — yellow, blue, green, violet, from one element in one tube. Vanadium(II) is where the series stops because it is now a powerful reducing agent itself, strong enough to pull oxygen out of the air and start climbing back up if the tube is left open. That is worth taking seriously rather than treating as a nuisance: an oxidation state can be easy to reach and hard to keep, and the two are almost the same statement seen from opposite ends.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — vanadium(II)"
+  },
+  {
+    "id": "rxn_permanganate_neutral_fe2",
+    "reactants": ["feso4_aq", "kmno4_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mno2_s", "fe2so43_aq"],
+    "equation": "MnO₄⁻ + 3Fe²⁺ + 2H₂O → MnO₂↓ + 3Fe³⁺ + 4OH⁻",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#1A1A1A",
+      "precipitate": "black-brown manganese(IV) oxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The same permanganate and the same iron(II) as the acidified reaction the app already knows — but with no acid added, and the manganese stops at +4 instead of falling to +2. This is the middle member of a set of three worth running together. In ACID, permanganate goes to colourless Mn²⁺. In NEUTRAL solution it stops here, as brown manganese(IV) oxide. In ALKALI it goes only as far as green manganate, which is the next entry. One oxidising agent, three different products, and the only variable is the pH.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — permanganate reduction products and pH"
+  },
+  {
+    "id": "rxn_permanganate_alkaline_fe2",
+    "reactants": ["feso4_aq", "kmno4_aq", "naoh_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["k2mno4_s", "feoh3_s"],
+    "equation": "MnO₄⁻ + Fe²⁺ + 3OH⁻ → MnO₄²⁻ + Fe(OH)₃↓",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#1E5E3A",
+      "precipitate": "reddish brown iron(III) hydroxide in a dark green solution",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 13.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Purple to dark green, and the manganese has moved only one step, from +7 to +6. Compare the three: acid takes it five steps down to +2, neutral takes it three steps to +4, alkali takes it one step to +6. The more hydrogen ions there are available, the further the reduction can go, because every one of those half-equations needs them. That is why a redox half-equation is written with H⁺ in it and why 'oxidising power' is not a fixed property of a reagent — it depends on the conditions you give it.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — manganate(VI) formation in alkali"
+  },
+  {
+    "id": "rxn_dichromate_reduced_by_zinc",
+    "reactants": ["h2so4_1m", "k2cr2o7_aq", "zn_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cr2so43_aq", "znso4_aq", "water"],
+    "equation": "Cr₂O₇²⁻ + 3Zn + 14H⁺ → 2Cr³⁺ + 3Zn²⁺ + 7H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#3E8C6E",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "carcinogen",
+      "title": "Chromium(VI) causes cancer",
+      "warning": "Potassium dichromate is a proven human carcinogen as well as corrosive. The chromium(III) produced is far less dangerous, but the starting material is handled with real care.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves and eye protection, never mouth pipette, and all chromium waste into the labelled heavy-metal container."
+    },
+    "molecularAnimation": null,
+    "explanation": "Orange to green, and unlike the chromate–dichromate change from an earlier batch, THIS one really is a redox reaction — the chromium goes from +6 to +3, gaining three electrons. Worth holding the two side by side, because they look similar and are not. Adding alkali to dichromate turns it yellow and changes no oxidation state at all; adding zinc and acid turns it green and changes the chromium fundamentally. A colour change tells you something happened, never what.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — reduction of dichromate"
+  },
+  {
+    "id": "rxn_chromium3_to_chromium2",
+    "reactants": ["cr2so43_aq", "zn_metal"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cr2_aq", "znso4_aq"],
+    "equation": "2Cr³⁺ + Zn → 2Cr²⁺ + Zn²⁺",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#2C7BE5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Green to a bright blue that most students never see, because it will not last — chromium(II) is such a strong reducing agent that oxygen from the air takes it straight back to green chromium(III) within minutes. Keeping it means keeping air out. The parallel with vanadium(II) at the bottom of its own series is exact, and it is the general pattern: the lowest oxidation state a metal can be pushed into is usually the one most eager to give the electrons back.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — chromium(II) and air sensitivity"
+  },
+  {
+    "id": "rxn_none_fe2_thiocyanate",
+    "reactants": ["feso4_aq", "kscn_aq"],
+    "noReaction": true,
+    "explanation": "No blood red, no colour at all — and that is what makes the thiocyanate test worth running. Iron(III) gives an unmistakable deep red with thiocyanate; iron(II) gives nothing whatever. A test that reacted with both would tell you only that iron was present, which you probably already knew. This one separates the two oxidation states of the SAME element, which is a harder question and a more useful answer. It is also sensitive enough to catch iron(III) formed by a little iron(II) oxidising in air, so a faint pink in an old solution is worth noticing rather than ignoring.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — distinguishing iron(II) from iron(III)"
+  },
+  {
+    "id": "rxn_iodine_thiosulfate",
+    "reactants": ["i2_aq", "na2s2o3_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nai_aq", "na2s4o6_aq"],
+    "equation": "I₂ + 2S₂O₃²⁻ → 2I⁻ + S₄O₆²⁻",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The brown of the iodine fades to nothing, and this single reaction is the whole basis of iodometric analysis. Two thiosulfate ions each give up an electron and are joined together through their sulfurs into one tetrathionate ion — an exact two-to-one ratio, which is what makes it usable for measuring rather than merely observing. In practice the endpoint is sharpened by adding starch near the end, so the last trace of iodine shows as blue-black and its disappearance is unmistakable. Add the starch too early and it traps the iodine and ruins the reading.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Quantitative Chemical Analysis 6th ed. — iodometric titration"
   }
 ]

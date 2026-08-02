@@ -18321,5 +18321,773 @@
         "type": "covalent"
       }
     ]
+  },
+  "vo2_aq": {
+    "note": "Find the two oxygens bonded SHORT and tight to the vanadium - those are held oxide ions, not water. A +5 ion is small and charged enough to keep them permanently. Open the vanadium(III) model afterwards and they are gone; the series is a change in structure, not only in colour.",
+    "atoms": [
+      {
+        "id": "v",
+        "element": "V",
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "o1",
+        "element": "O",
+        "x": 1.25,
+        "y": 1.05,
+        "z": 0
+      },
+      {
+        "id": "o2",
+        "element": "O",
+        "x": -1.25,
+        "y": 1.05,
+        "z": 0
+      },
+      {
+        "id": "w1",
+        "element": "O",
+        "x": 2.15,
+        "y": -1,
+        "z": 0
+      },
+      {
+        "id": "w2",
+        "element": "O",
+        "x": -2.15,
+        "y": -1,
+        "z": 0
+      },
+      {
+        "id": "w3",
+        "element": "O",
+        "x": 0,
+        "y": -1.6,
+        "z": 1.9
+      },
+      {
+        "id": "w4",
+        "element": "O",
+        "x": 0,
+        "y": -1.6,
+        "z": -1.9
+      }
+    ],
+    "bonds": [
+      {
+        "from": "v",
+        "to": "o1",
+        "type": "covalent"
+      },
+      {
+        "from": "v",
+        "to": "o2",
+        "type": "covalent"
+      },
+      {
+        "from": "v",
+        "to": "w1",
+        "type": "ionic"
+      },
+      {
+        "from": "v",
+        "to": "w2",
+        "type": "ionic"
+      },
+      {
+        "from": "v",
+        "to": "w3",
+        "type": "ionic"
+      },
+      {
+        "from": "v",
+        "to": "w4",
+        "type": "ionic"
+      }
+    ]
+  },
+  "vo_aq": {
+    "note": "ONE oxide left, sitting straight above the vanadium, with waters filling the rest. Count them against the vanadium(V) model, which had two, and the vanadium(III) model, which has none. The oxide ions leave one at a time as the charge falls.",
+    "atoms": [
+      {
+        "id": "v",
+        "element": "V",
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "o1",
+        "element": "O",
+        "x": 0,
+        "y": 1.6,
+        "z": 0
+      },
+      {
+        "id": "w1",
+        "element": "O",
+        "x": 2.1,
+        "y": -0.3,
+        "z": 0
+      },
+      {
+        "id": "w2",
+        "element": "O",
+        "x": -2.1,
+        "y": -0.3,
+        "z": 0
+      },
+      {
+        "id": "w3",
+        "element": "O",
+        "x": 0,
+        "y": -0.3,
+        "z": 2.1
+      },
+      {
+        "id": "w4",
+        "element": "O",
+        "x": 0,
+        "y": -0.3,
+        "z": -2.1
+      },
+      {
+        "id": "w5",
+        "element": "O",
+        "x": 0,
+        "y": -2.1,
+        "z": 0
+      }
+    ],
+    "bonds": [
+      {
+        "from": "v",
+        "to": "o1",
+        "type": "covalent"
+      },
+      {
+        "from": "v",
+        "to": "w1",
+        "type": "ionic"
+      },
+      {
+        "from": "v",
+        "to": "w2",
+        "type": "ionic"
+      },
+      {
+        "from": "v",
+        "to": "w3",
+        "type": "ionic"
+      },
+      {
+        "from": "v",
+        "to": "w4",
+        "type": "ionic"
+      },
+      {
+        "from": "v",
+        "to": "w5",
+        "type": "ionic"
+      }
+    ]
+  },
+  "v3_aq": {
+    "note": "No oxide at all now - six waters and nothing else, all at the same distance. This is what a plain hydrated ion looks like, and reaching it is the point at which the vanadium stopped being able to hold an oxide.",
+    "atoms": [
+      {
+        "id": "m",
+        "element": "V",
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "o0",
+        "element": "O",
+        "x": 2.05,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "h0",
+        "element": "H",
+        "x": 2.9109999999999996,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "o1",
+        "element": "O",
+        "x": -2.05,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "h1",
+        "element": "H",
+        "x": -2.9109999999999996,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "o2",
+        "element": "O",
+        "x": 0,
+        "y": 2.05,
+        "z": 0
+      },
+      {
+        "id": "h2",
+        "element": "H",
+        "x": 0,
+        "y": 2.9109999999999996,
+        "z": 0
+      },
+      {
+        "id": "o3",
+        "element": "O",
+        "x": 0,
+        "y": -2.05,
+        "z": 0
+      },
+      {
+        "id": "h3",
+        "element": "H",
+        "x": 0,
+        "y": -2.9109999999999996,
+        "z": 0
+      },
+      {
+        "id": "o4",
+        "element": "O",
+        "x": 0,
+        "y": 0,
+        "z": 2.05
+      },
+      {
+        "id": "h4",
+        "element": "H",
+        "x": 0,
+        "y": 0.7,
+        "z": 2.9109999999999996
+      },
+      {
+        "id": "o5",
+        "element": "O",
+        "x": 0,
+        "y": 0,
+        "z": -2.05
+      },
+      {
+        "id": "h5",
+        "element": "H",
+        "x": 0,
+        "y": 0.7,
+        "z": -2.9109999999999996
+      }
+    ],
+    "bonds": [
+      {
+        "from": "m",
+        "to": "o0",
+        "type": "ionic"
+      },
+      {
+        "from": "o0",
+        "to": "h0",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o1",
+        "type": "ionic"
+      },
+      {
+        "from": "o1",
+        "to": "h1",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o2",
+        "type": "ionic"
+      },
+      {
+        "from": "o2",
+        "to": "h2",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o3",
+        "type": "ionic"
+      },
+      {
+        "from": "o3",
+        "to": "h3",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o4",
+        "type": "ionic"
+      },
+      {
+        "from": "o4",
+        "to": "h4",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o5",
+        "type": "ionic"
+      },
+      {
+        "from": "o5",
+        "to": "h5",
+        "type": "covalent"
+      }
+    ]
+  },
+  "v2_aq": {
+    "note": "The same six-water arrangement as vanadium(III), one electron richer. Nothing about the picture says how unstable it is - which is worth knowing, because a structure drawing tells you what something IS and never how long it will last.",
+    "atoms": [
+      {
+        "id": "m",
+        "element": "V",
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "o0",
+        "element": "O",
+        "x": 2.05,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "h0",
+        "element": "H",
+        "x": 2.9109999999999996,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "o1",
+        "element": "O",
+        "x": -2.05,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "h1",
+        "element": "H",
+        "x": -2.9109999999999996,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "o2",
+        "element": "O",
+        "x": 0,
+        "y": 2.05,
+        "z": 0
+      },
+      {
+        "id": "h2",
+        "element": "H",
+        "x": 0,
+        "y": 2.9109999999999996,
+        "z": 0
+      },
+      {
+        "id": "o3",
+        "element": "O",
+        "x": 0,
+        "y": -2.05,
+        "z": 0
+      },
+      {
+        "id": "h3",
+        "element": "H",
+        "x": 0,
+        "y": -2.9109999999999996,
+        "z": 0
+      },
+      {
+        "id": "o4",
+        "element": "O",
+        "x": 0,
+        "y": 0,
+        "z": 2.05
+      },
+      {
+        "id": "h4",
+        "element": "H",
+        "x": 0,
+        "y": 0.7,
+        "z": 2.9109999999999996
+      },
+      {
+        "id": "o5",
+        "element": "O",
+        "x": 0,
+        "y": 0,
+        "z": -2.05
+      },
+      {
+        "id": "h5",
+        "element": "H",
+        "x": 0,
+        "y": 0.7,
+        "z": -2.9109999999999996
+      }
+    ],
+    "bonds": [
+      {
+        "from": "m",
+        "to": "o0",
+        "type": "ionic"
+      },
+      {
+        "from": "o0",
+        "to": "h0",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o1",
+        "type": "ionic"
+      },
+      {
+        "from": "o1",
+        "to": "h1",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o2",
+        "type": "ionic"
+      },
+      {
+        "from": "o2",
+        "to": "h2",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o3",
+        "type": "ionic"
+      },
+      {
+        "from": "o3",
+        "to": "h3",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o4",
+        "type": "ionic"
+      },
+      {
+        "from": "o4",
+        "to": "h4",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o5",
+        "type": "ionic"
+      },
+      {
+        "from": "o5",
+        "to": "h5",
+        "type": "covalent"
+      }
+    ]
+  },
+  "cr2_aq": {
+    "note": "Six waters round a chromium(II). Put it beside the vanadium(II) model and they are the same shape doing the same thing: both sit at the bottom of their own series, and both hand their electrons to the first oxygen that comes past.",
+    "atoms": [
+      {
+        "id": "m",
+        "element": "Cr",
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "o0",
+        "element": "O",
+        "x": 2.05,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "h0",
+        "element": "H",
+        "x": 2.9109999999999996,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "o1",
+        "element": "O",
+        "x": -2.05,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "h1",
+        "element": "H",
+        "x": -2.9109999999999996,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "o2",
+        "element": "O",
+        "x": 0,
+        "y": 2.05,
+        "z": 0
+      },
+      {
+        "id": "h2",
+        "element": "H",
+        "x": 0,
+        "y": 2.9109999999999996,
+        "z": 0
+      },
+      {
+        "id": "o3",
+        "element": "O",
+        "x": 0,
+        "y": -2.05,
+        "z": 0
+      },
+      {
+        "id": "h3",
+        "element": "H",
+        "x": 0,
+        "y": -2.9109999999999996,
+        "z": 0
+      },
+      {
+        "id": "o4",
+        "element": "O",
+        "x": 0,
+        "y": 0,
+        "z": 2.05
+      },
+      {
+        "id": "h4",
+        "element": "H",
+        "x": 0,
+        "y": 0.7,
+        "z": 2.9109999999999996
+      },
+      {
+        "id": "o5",
+        "element": "O",
+        "x": 0,
+        "y": 0,
+        "z": -2.05
+      },
+      {
+        "id": "h5",
+        "element": "H",
+        "x": 0,
+        "y": 0.7,
+        "z": -2.9109999999999996
+      }
+    ],
+    "bonds": [
+      {
+        "from": "m",
+        "to": "o0",
+        "type": "ionic"
+      },
+      {
+        "from": "o0",
+        "to": "h0",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o1",
+        "type": "ionic"
+      },
+      {
+        "from": "o1",
+        "to": "h1",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o2",
+        "type": "ionic"
+      },
+      {
+        "from": "o2",
+        "to": "h2",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o3",
+        "type": "ionic"
+      },
+      {
+        "from": "o3",
+        "to": "h3",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o4",
+        "type": "ionic"
+      },
+      {
+        "from": "o4",
+        "to": "h4",
+        "type": "covalent"
+      },
+      {
+        "from": "m",
+        "to": "o5",
+        "type": "ionic"
+      },
+      {
+        "from": "o5",
+        "to": "h5",
+        "type": "covalent"
+      }
+    ]
+  },
+  "na2s4o6_aq": {
+    "note": "FOUR sulfurs in a row. The two in the middle were the outer sulfur of one thiosulfate and the outer sulfur of another - iodine took an electron from each and the two ends joined. Trace that chain and the two-to-one ratio the titration depends on is visible rather than memorised.",
+    "atoms": [
+      {
+        "id": "s1",
+        "element": "S",
+        "x": -2.6,
+        "y": 0.3,
+        "z": 0
+      },
+      {
+        "id": "s2",
+        "element": "S",
+        "x": -1,
+        "y": -0.5,
+        "z": 0
+      },
+      {
+        "id": "s3",
+        "element": "S",
+        "x": 1,
+        "y": -0.5,
+        "z": 0
+      },
+      {
+        "id": "s4",
+        "element": "S",
+        "x": 2.6,
+        "y": 0.3,
+        "z": 0
+      },
+      {
+        "id": "a1",
+        "element": "O",
+        "x": -3.5,
+        "y": 1.4,
+        "z": 0.6
+      },
+      {
+        "id": "a2",
+        "element": "O",
+        "x": -3.4,
+        "y": -0.9,
+        "z": -0.8
+      },
+      {
+        "id": "a3",
+        "element": "O",
+        "x": -2.2,
+        "y": 1,
+        "z": -1.5
+      },
+      {
+        "id": "b1",
+        "element": "O",
+        "x": 3.5,
+        "y": 1.4,
+        "z": -0.6
+      },
+      {
+        "id": "b2",
+        "element": "O",
+        "x": 3.4,
+        "y": -0.9,
+        "z": 0.8
+      },
+      {
+        "id": "b3",
+        "element": "O",
+        "x": 2.2,
+        "y": 1,
+        "z": 1.5
+      }
+    ],
+    "bonds": [
+      {
+        "from": "s1",
+        "to": "s2",
+        "type": "covalent"
+      },
+      {
+        "from": "s2",
+        "to": "s3",
+        "type": "covalent"
+      },
+      {
+        "from": "s3",
+        "to": "s4",
+        "type": "covalent"
+      },
+      {
+        "from": "s1",
+        "to": "a1",
+        "type": "covalent"
+      },
+      {
+        "from": "s1",
+        "to": "a2",
+        "type": "covalent"
+      },
+      {
+        "from": "s1",
+        "to": "a3",
+        "type": "covalent"
+      },
+      {
+        "from": "s4",
+        "to": "b1",
+        "type": "covalent"
+      },
+      {
+        "from": "s4",
+        "to": "b2",
+        "type": "covalent"
+      },
+      {
+        "from": "s4",
+        "to": "b3",
+        "type": "covalent"
+      }
+    ]
   }
 }
