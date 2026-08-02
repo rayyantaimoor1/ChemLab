@@ -1,0 +1,44 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zinc sulfide: the same kind of lattice as copper sulfide but held together far less tightly, so dilute acid dissolves it easily. That one difference is why zinc and copper end up in different groups">
+  <line x1="30" y1="30" x2="64" y2="30" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="30" y1="30" x2="30" y2="64" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="64" y1="30" x2="98" y2="30" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="64" y1="30" x2="64" y2="64" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="98" y1="30" x2="132" y2="30" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="98" y1="30" x2="98" y2="64" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="132" y1="30" x2="132" y2="64" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="30" y1="64" x2="64" y2="64" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="30" y1="64" x2="30" y2="98" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="64" y1="64" x2="98" y2="64" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="64" y1="64" x2="64" y2="98" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="98" y1="64" x2="132" y2="64" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="98" y1="64" x2="98" y2="98" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="132" y1="64" x2="132" y2="98" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="30" y1="98" x2="64" y2="98" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="64" y1="98" x2="98" y2="98" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="98" y1="98" x2="132" y2="98" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <circle cx="30" cy="30" r="13" fill="#5D6D7E" stroke="#161A19" stroke-width="2"/>
+  <text x="30" y="35" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">Zn</text>
+  <circle cx="64" cy="30" r="13" fill="#F1C40F" stroke="#161A19" stroke-width="2"/>
+  <text x="64" y="35" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">S</text>
+  <circle cx="98" cy="30" r="13" fill="#5D6D7E" stroke="#161A19" stroke-width="2"/>
+  <text x="98" y="35" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">Zn</text>
+  <circle cx="132" cy="30" r="13" fill="#F1C40F" stroke="#161A19" stroke-width="2"/>
+  <text x="132" y="35" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">S</text>
+  <circle cx="30" cy="64" r="13" fill="#F1C40F" stroke="#161A19" stroke-width="2"/>
+  <text x="30" y="69" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">S</text>
+  <circle cx="64" cy="64" r="13" fill="#5D6D7E" stroke="#161A19" stroke-width="2"/>
+  <text x="64" y="69" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">Zn</text>
+  <circle cx="98" cy="64" r="13" fill="#F1C40F" stroke="#161A19" stroke-width="2"/>
+  <text x="98" y="69" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">S</text>
+  <circle cx="132" cy="64" r="13" fill="#5D6D7E" stroke="#161A19" stroke-width="2"/>
+  <text x="132" y="69" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">Zn</text>
+  <circle cx="30" cy="98" r="13" fill="#5D6D7E" stroke="#161A19" stroke-width="2"/>
+  <text x="30" y="103" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">Zn</text>
+  <circle cx="64" cy="98" r="13" fill="#F1C40F" stroke="#161A19" stroke-width="2"/>
+  <text x="64" y="103" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">S</text>
+  <circle cx="98" cy="98" r="13" fill="#5D6D7E" stroke="#161A19" stroke-width="2"/>
+  <text x="98" y="103" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">Zn</text>
+  <circle cx="132" cy="98" r="13" fill="#F1C40F" stroke="#161A19" stroke-width="2"/>
+  <text x="132" y="103" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">S</text>
+  <text x="80" y="116" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">same pattern as CuS — but acid DOES break this one up</text>
+</svg>

@@ -2852,6 +2852,114 @@
     ]
   },
 
+  "pbcl2_aq": {
+    "note": "The lead and its two chlorides are shown APART, with water molecules between them, because that is what dissolved means. Compare this with the copper sulfide lattice, where the ions are locked into a grid: nothing chemical distinguishes the two situations except how strongly the ions hold each other against the pull of the water. Hot water pulls harder, which is the whole trick of this separation.",
+    "atoms": [
+      { "id": "pb", "element": "Pb", "x": 0, "y": 0, "z": 0 },
+      { "id": "cl1", "element": "Cl", "x": 3.6, "y": 1.4, "z": 0.5 },
+      { "id": "cl2", "element": "Cl", "x": 3.0, "y": -2.2, "z": -0.5 },
+      { "id": "w1", "element": "O", "x": -2.3, "y": 1.5, "z": 0.4 },
+      { "id": "w2", "element": "O", "x": -2.3, "y": -1.5, "z": -0.4 },
+      { "id": "w3", "element": "O", "x": 0.4, "y": 2.7, "z": -0.8 },
+      { "id": "w4", "element": "O", "x": 0.4, "y": -2.7, "z": 0.8 }
+    ],
+    "bonds": [
+      { "from": "pb", "to": "w1", "type": "ionic" },
+      { "from": "pb", "to": "w2", "type": "ionic" },
+      { "from": "pb", "to": "w3", "type": "ionic" },
+      { "from": "pb", "to": "w4", "type": "ionic" }
+    ]
+  },
+
+  "cus_s": {
+    "note": "A block of the lattice, and the point is that there are no molecules in it - just copper and sulfide ions repeating in every direction. Turn it and look at how tightly packed it is. Small, highly charged ions gripping each other this closely is what an extremely low solubility product looks like from the inside, and it is why acid cannot prise this one apart.",
+    "atoms": [
+      { "id": "cu1", "element": "Cu", "x": -1.4, "y": -1.4, "z": -1.4 },
+      { "id": "s1", "element": "S", "x": 1.4, "y": -1.4, "z": -1.4 },
+      { "id": "cu2", "element": "Cu", "x": 1.4, "y": 1.4, "z": -1.4 },
+      { "id": "s2", "element": "S", "x": -1.4, "y": 1.4, "z": -1.4 },
+      { "id": "s3", "element": "S", "x": -1.4, "y": -1.4, "z": 1.4 },
+      { "id": "cu3", "element": "Cu", "x": 1.4, "y": -1.4, "z": 1.4 },
+      { "id": "s4", "element": "S", "x": 1.4, "y": 1.4, "z": 1.4 },
+      { "id": "cu4", "element": "Cu", "x": -1.4, "y": 1.4, "z": 1.4 }
+    ],
+    "bonds": [
+      { "from": "cu1", "to": "s1", "type": "ionic" },
+      { "from": "s1", "to": "cu2", "type": "ionic" },
+      { "from": "cu2", "to": "s2", "type": "ionic" },
+      { "from": "s2", "to": "cu1", "type": "ionic" },
+      { "from": "s3", "to": "cu3", "type": "ionic" },
+      { "from": "cu3", "to": "s4", "type": "ionic" },
+      { "from": "s4", "to": "cu4", "type": "ionic" },
+      { "from": "cu4", "to": "s3", "type": "ionic" },
+      { "from": "cu1", "to": "s3", "type": "ionic" },
+      { "from": "s1", "to": "cu3", "type": "ionic" },
+      { "from": "cu2", "to": "s4", "type": "ionic" },
+      { "from": "s2", "to": "cu4", "type": "ionic" }
+    ]
+  },
+
+  "zns_s": {
+    "note": "The same arrangement as copper sulfide, deliberately, because the difference between them is not one of pattern. Zinc holds its sulfide less tightly than copper does, so an acid strong enough to leave copper sulfide untouched pulls this apart with ease - and that single difference in grip is what puts the two metals into different analytical groups.",
+    "atoms": [
+      { "id": "zn1", "element": "Zn", "x": -1.45, "y": -1.45, "z": -1.45 },
+      { "id": "s1", "element": "S", "x": 1.45, "y": -1.45, "z": -1.45 },
+      { "id": "zn2", "element": "Zn", "x": 1.45, "y": 1.45, "z": -1.45 },
+      { "id": "s2", "element": "S", "x": -1.45, "y": 1.45, "z": -1.45 },
+      { "id": "s3", "element": "S", "x": -1.45, "y": -1.45, "z": 1.45 },
+      { "id": "zn3", "element": "Zn", "x": 1.45, "y": -1.45, "z": 1.45 },
+      { "id": "s4", "element": "S", "x": 1.45, "y": 1.45, "z": 1.45 },
+      { "id": "zn4", "element": "Zn", "x": -1.45, "y": 1.45, "z": 1.45 }
+    ],
+    "bonds": [
+      { "from": "zn1", "to": "s1", "type": "ionic" },
+      { "from": "s1", "to": "zn2", "type": "ionic" },
+      { "from": "zn2", "to": "s2", "type": "ionic" },
+      { "from": "s2", "to": "zn1", "type": "ionic" },
+      { "from": "s3", "to": "zn3", "type": "ionic" },
+      { "from": "zn3", "to": "s4", "type": "ionic" },
+      { "from": "s4", "to": "zn4", "type": "ionic" },
+      { "from": "zn4", "to": "s3", "type": "ionic" },
+      { "from": "zn1", "to": "s3", "type": "ionic" },
+      { "from": "s1", "to": "zn3", "type": "ionic" },
+      { "from": "zn2", "to": "s4", "type": "ionic" },
+      { "from": "s2", "to": "zn4", "type": "ionic" }
+    ]
+  },
+
+  "nh42co3_aq": {
+    "note": "Two ammonium ions and one carbonate. Turn the carbonate and you will find it is FLAT - three oxygens spread evenly round the carbon at 120 degrees - while each ammonium is a tetrahedron. Both shapes have turned up repeatedly in this app, and neither is an accident of drawing.",
+    "atoms": [
+      { "id": "c", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 1.29, "y": 0, "z": 0 },
+      { "id": "o2", "element": "O", "x": -0.64, "y": 1.12, "z": 0 },
+      { "id": "o3", "element": "O", "x": -0.64, "y": -1.12, "z": 0 },
+      { "id": "n1", "element": "N", "x": -3.4, "y": 2.0, "z": 0.5 },
+      { "id": "a1", "element": "H", "x": -4.0, "y": 2.8, "z": 0.9 },
+      { "id": "a2", "element": "H", "x": -2.8, "y": 2.5, "z": -0.2 },
+      { "id": "a3", "element": "H", "x": -4.0, "y": 1.3, "z": 0.0 },
+      { "id": "a4", "element": "H", "x": -2.8, "y": 1.4, "z": 1.3 },
+      { "id": "n2", "element": "N", "x": 3.4, "y": -2.0, "z": -0.5 },
+      { "id": "b1", "element": "H", "x": 4.0, "y": -2.8, "z": -0.9 },
+      { "id": "b2", "element": "H", "x": 2.8, "y": -2.5, "z": 0.2 },
+      { "id": "b3", "element": "H", "x": 4.0, "y": -1.3, "z": 0.0 },
+      { "id": "b4", "element": "H", "x": 2.8, "y": -1.4, "z": -1.3 }
+    ],
+    "bonds": [
+      { "from": "c", "to": "o1", "type": "covalent" },
+      { "from": "c", "to": "o2", "type": "covalent" },
+      { "from": "c", "to": "o3", "type": "covalent" },
+      { "from": "n1", "to": "a1", "type": "covalent" },
+      { "from": "n1", "to": "a2", "type": "covalent" },
+      { "from": "n1", "to": "a3", "type": "covalent" },
+      { "from": "n1", "to": "a4", "type": "covalent" },
+      { "from": "n2", "to": "b1", "type": "covalent" },
+      { "from": "n2", "to": "b2", "type": "covalent" },
+      { "from": "n2", "to": "b3", "type": "covalent" },
+      { "from": "n2", "to": "b4", "type": "covalent" }
+    ]
+  },
+
   "cucl4_aq": {
     "note": "Turn it and count: FOUR chlorides, arranged tetrahedrally. Then look at the hexaaquacopper model with its six waters. Same copper, same +2 charge, different ligands and a different shape - and that is the entire reason one is blue and this one is yellow-green. Chloride is the bigger ligand, which is why only four will fit.",
     "atoms": [

@@ -1,0 +1,25 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ammonium carbonate: two ammonium ions and one carbonate ion. It is chosen over sodium carbonate because it is the weaker source of carbonate, and that weakness is exactly what makes the separation work">
+  <circle cx="26" cy="32" r="14" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="26" y="37" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">N</text>
+  <text x="38" y="20" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">+</text>
+  <circle cx="26" cy="88" r="14" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="26" y="93" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">N</text>
+  <text x="38" y="78" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">+</text>
+  <text x="26" y="60" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">each N holds 4 H</text>
+  <line x1="42" y1="38" x2="66" y2="50" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="42" y1="82" x2="66" y2="70" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="96" y1="46" x2="96" y2="32" stroke="#161A19" stroke-width="2"/>
+  <line x1="102" y1="46" x2="102" y2="32" stroke="#161A19" stroke-width="2"/>
+  <line x1="88" y1="68" x2="74" y2="78" stroke="#161A19" stroke-width="2"/>
+  <line x1="110" y1="68" x2="124" y2="78" stroke="#161A19" stroke-width="2"/>
+  <circle cx="99" cy="58" r="15" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="99" y="64" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="99" cy="22" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="99" y="26" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="66" cy="84" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="66" y="88" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="132" cy="84" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="132" y="88" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+  <text x="144" y="66" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">2-</text>
+  <text x="80" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">a WEAKER carbonate source than Na₂CO₃ — deliberately</text>
+</svg>

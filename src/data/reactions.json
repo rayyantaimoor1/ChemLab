@@ -4538,5 +4538,211 @@
     "explanation": "Orange back to yellow, and now the equilibrium really can be driven both ways in one beaker: add acid and it goes orange, add alkali and the yellow returns, as many times as you like. That is the whole character of an equilibrium — no reagent is used up in any permanent sense, and the colour simply reports where the balance currently sits. Keep hold of the point that survives all this switching: the chromium is +6 the entire time. What changes is how many chromate units are joined together, not the oxidation state of anything.",
     "levels": ["fsc", "bs"],
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the chromate–dichromate equilibrium"
+  },
+  {
+    "id": "rxn_qa_group1_silver",
+    "reactants": ["agno3_0_1m", "hcl_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["agcl_s", "hno3_aq"],
+    "equation": "Ag⁺ + Cl⁻ → AgCl↓",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#E9EBEC",
+      "precipitate": "a white curdy solid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The first move of the systematic separation, and the logic behind the whole scheme is visible in it. Dilute hydrochloric acid is added to the unknown FIRST, before anything else, because only three cations in common use give an insoluble chloride — silver, lead and mercury(I). Whatever comes down here is one of those three; whatever stays in solution is not, and has been ruled out without being touched. Each later reagent narrows the field the same way. The curdy texture is characteristic, and so is the darkening in sunlight, which is the same light sensitivity that made photography possible.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group I, the chloride group"
+  },
+  {
+    "id": "rxn_qa_group1_lead",
+    "reactants": ["hcl_1m", "pbno3_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["pbcl2_s", "hno3_aq"],
+    "equation": "Pb²⁺ + 2Cl⁻ → PbCl₂↓",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F2F2F0",
+      "precipitate": "a white solid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic",
+      "title": "Lead is a cumulative poison",
+      "warning": "Lead compounds are toxic and the body does not clear them — small exposures add up over years, and the damage to the nervous system is permanent. Children are affected at far lower levels than adults.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves, no eating or drinking anywhere near the bench, wash hands properly afterwards, and all lead waste into the labelled heavy-metal container rather than the sink."
+    },
+    "molecularAnimation": null,
+    "explanation": "Lead gives a white precipitate with the very same reagent that just caught silver, so at this point the two are sitting in the same filter paper and cannot be told apart by eye. That is the normal state of an analysis after one test — a group identified, the individual not. The next two entries are how the group is taken apart, and they exploit a difference that has nothing to do with colour.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group I, the chloride group"
+  },
+  {
+    "id": "rxn_qa_pbcl2_hot_water",
+    "reactants": ["pbcl2_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": 80, "catalyst": null },
+    "products": ["pbcl2_aq"],
+    "equation": "PbCl₂(s) →(hot water) Pb²⁺ + 2Cl⁻",
+    "type": "dissolution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 6.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Pour hot water on the mixed precipitate and the lead chloride dissolves and runs through the filter, while the silver chloride stays behind. Nothing has reacted — this is pure solubility, and it works because solubility is a property of a substance AT A TEMPERATURE rather than a fixed fact about it. Lead chloride's solubility climbs steeply with heat and silver chloride's hardly moves. Let the filtrate cool and needle-shaped crystals appear, which confirms the lead a second time. Note the app will not let this happen below about 80 °C, exactly as the real procedure insists.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — separation of lead from silver within Group I"
+  },
+  {
+    "id": "rxn_none_agcl_hot_water",
+    "reactants": ["agcl_s", "water_distilled"],
+    "noReaction": true,
+    "explanation": "The silver chloride sits there in the hot water unchanged, and that refusal is the other half of the separation. If both chlorides had dissolved, or neither had, the hot water would have told you nothing. It is worth being clear that a NEGATIVE result is a result: the solid still in the filter paper is now known not to be lead. To finish the identification, add ammonia — the app already knows that one, and the silver chloride dissolves in it as the diammine complex.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — separation of lead from silver within Group I"
+  },
+  {
+    "id": "rxn_qa_group2_copper",
+    "reactants": ["cuso4_0_5m", "h2s_g"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cus_s", "h2so4_aq"],
+    "equation": "Cu²⁺ + H₂S → CuS↓ + 2H⁺",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#1F1D1C",
+      "precipitate": "a dense black solid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "Hydrogen sulfide kills, and it stops smelling first",
+      "warning": "Hydrogen sulfide is as toxic as hydrogen cyanide. The rotten-egg smell is not a reliable warning, because at dangerous concentrations it paralyses the sense of smell within minutes — so the smell going away is the worst sign, not a good one. People have died in drains and tanks for exactly this reason.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard, always, with the sash low. Never rely on smell to tell you the concentration. In a teaching laboratory thioacetamide, which releases the gas slowly in solution, is a much safer substitute and is now the usual choice."
+    },
+    "molecularAnimation": null,
+    "explanation": "A dense black precipitate the moment the gas goes through, and note the conditions: the solution is still ACIDIC from the hydrochloric acid added at the first step, and copper sulfide comes down anyway. It is so nearly insoluble that acid cannot hold it back. This is the group reagent for a whole family of metals — copper, lead, bismuth, cadmium, mercury, arsenic, antimony, tin — and the family is defined by precisely that property. The next entry is the same reagent on a metal that behaves the opposite way.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group II, the hydrogen sulfide group"
+  },
+  {
+    "id": "rxn_none_zn_h2s_acid",
+    "reactants": ["h2s_g", "znso4_aq"],
+    "noReaction": true,
+    "explanation": "Nothing. The same gas that threw down copper sulfide instantly leaves zinc completely alone, and this is the single most important negative result in the whole scheme. Zinc sulfide is far more soluble in acid than copper sulfide is, so in an acidic solution it simply cannot form — the acid pulls it apart as fast as it appears. That difference in solubility is what the entire separation of Group II from Group IV rests on. Make the solution alkaline and the zinc comes down at once, which is the next entry. Same metal, same reagent, opposite answer, and the only thing that changed was the pH.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — why Group II and Group IV are separated by pH"
+  },
+  {
+    "id": "rxn_qa_group3_iron",
+    "reactants": ["fecl3_0_1m", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["feoh3_s", "nh4cl_aq"],
+    "equation": "Fe³⁺ + 3NH₃ + 3H₂O → Fe(OH)₃↓ + 3NH₄⁺",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#A0522D",
+      "precipitate": "a reddish brown gelatinous solid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 9.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "With the first two groups filtered off, ammonia is added and the hydroxides of iron, aluminium and chromium come down together — reddish brown for iron, white for aluminium, grey-green for chromium, so this group can often be read by colour alone. Ammonia is used rather than sodium hydroxide on purpose, and for two reasons: it is a weak base, so it will not go on to dissolve the amphoteric aluminium and chromium hydroxides the way excess sodium hydroxide would, and used with ammonium chloride it keeps magnesium in solution for a later group.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group III, the ammonia group"
+  },
+  {
+    "id": "rxn_qa_group4_zinc",
+    "reactants": ["h2s_g", "nh4oh_aq", "znso4_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["zns_s", "nh42so4_aq"],
+    "equation": "Zn²⁺ + H₂S + 2NH₃ → ZnS↓ + 2NH₄⁺",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#FAFAF5",
+      "precipitate": "a white solid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 9.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "Hydrogen sulfide kills, and it stops smelling first",
+      "warning": "Hydrogen sulfide is as toxic as hydrogen cyanide, and the rotten-egg smell disappears at dangerous concentrations because the gas paralyses the sense of smell. The smell fading is the worst sign, not a reassuring one.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard with the sash low, never judge the concentration by smell, and prefer thioacetamide in a teaching laboratory."
+    },
+    "molecularAnimation": null,
+    "explanation": "The same gas, the same zinc, and now a white precipitate — because the ammonia has made the solution alkaline and there is no longer enough acid to keep the sulfide dissolved. Put this beside the previous entry and the design of the scheme becomes obvious: hydrogen sulfide is used TWICE, once in acid and once in alkali, and the pH does the sorting. A white sulfide is also worth noticing in itself, since almost every other metal sulfide is black or brown, so the colour has half-identified the metal before any confirmatory test is run.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group IV, the ammoniacal hydrogen sulfide group"
+  },
+  {
+    "id": "rxn_qa_group5_barium",
+    "reactants": ["bacl2_0_1m", "nh42co3_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["baco3_s", "nh4cl_aq"],
+    "equation": "Ba²⁺ + CO₃²⁻ → BaCO₃↓",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "a white solid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 8.8
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic",
+      "title": "Soluble barium salts are poisonous",
+      "warning": "Barium chloride and other soluble barium compounds are toxic if swallowed. The insoluble sulfate and carbonate are far less dangerous, which is why barium sulfate can be drunk as a medical X-ray meal while the chloride certainly cannot.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves, no pipetting by mouth, and barium waste into the labelled heavy-metal container."
+    },
+    "molecularAnimation": null,
+    "explanation": "Barium, strontium and calcium come down together as their carbonates. The reagent is ammonium carbonate rather than sodium carbonate, and the substitution is deliberate — a weaker, more controllable source of carbonate that brings down only the least soluble ones. Once this group is filtered off, the only common cations left in the solution are magnesium, sodium, potassium and ammonium, which have no group reagent at all and are identified individually.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group V, the ammonium carbonate group"
+  },
+  {
+    "id": "rxn_none_mg_ammonium_carbonate",
+    "reactants": ["mgcl2_aq", "nh42co3_aq"],
+    "noReaction": true,
+    "explanation": "The magnesium stays in solution, and it is meant to. Magnesium carbonate is not especially soluble, and adding SODIUM carbonate to the same solution would have brought it straight down — the app has that rule too, so the two can be run side by side. What keeps it dissolved here is that ammonium carbonate, used alongside the ammonium chloride already in the mixture, holds the carbonate concentration low enough to catch barium, strontium and calcium and no lower. This is the scheme at its most deliberate: the reagent was chosen for what it FAILS to precipitate, and that failure is what leaves magnesium behind for the last group.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — why magnesium is not in Group V"
   }
 ]
