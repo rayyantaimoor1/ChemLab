@@ -485,11 +485,13 @@ test('setHeatLevel(0) means the burner is off', () => {
   assert.equal(beaker.isHeating(), false);
 });
 
-test('setHeatLevel only accepts whole numbers from 0 to 3', () => {
+test('setHeatLevel only accepts whole numbers from -1 to 3', () => {
   const beaker = makeContainer();
 
+  // -1 is the ice bath, a real position of the control.
+  assert.doesNotThrow(() => beaker.setHeatLevel(-1));
   assert.throws(() => beaker.setHeatLevel(4), RangeError);
-  assert.throws(() => beaker.setHeatLevel(-1), RangeError);
+  assert.throws(() => beaker.setHeatLevel(-2), RangeError);
   assert.throws(() => beaker.setHeatLevel(1.5), RangeError);
   assert.throws(() => beaker.setHeatLevel('2'), RangeError);
 });

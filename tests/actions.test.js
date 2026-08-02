@@ -273,12 +273,14 @@ test('setHeat to 0 turns the burner off', () => {
   assert.equal(b1.isHeating(), false);
 });
 
-test('setHeat only accepts whole numbers from 0 to 3', () => {
+test('setHeat only accepts whole numbers from -1 to 3', () => {
   const { register, actions } = makeWorld();
   register(beaker('b1'));
 
+  // -1 is the ice bath and is a real setting; -2 and 4 are not.
+  assert.doesNotThrow(() => actions.setHeat('b1', -1));
   assert.throws(() => actions.setHeat('b1', 4));
-  assert.throws(() => actions.setHeat('b1', -1));
+  assert.throws(() => actions.setHeat('b1', -2));
   assert.throws(() => actions.setHeat('b1', 1.5));
 });
 

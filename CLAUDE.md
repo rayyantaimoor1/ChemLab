@@ -174,6 +174,24 @@ and it would be wrong: sulfur burning in oxygen fits that description exactly,
 and so does sodium skidding about on water. Whether a vanishing solid is worth
 writing down is a judgement about the chemistry, so it belongs here.
 
+### Temperature conditions
+
+`conditions.minTempC` and `conditions.maxTempC` are a floor and a ceiling, and
+a rule may carry either or both. A rule with both describes a temperature
+**window**, and the floor is reported first when a vessel is below it.
+
+A maximum is not a stylistic mirror of a minimum — it exists because some
+reactions are **stopped** by heat rather than started by it. Diazotisation is
+the case that forced it: above about 5 °C the diazonium salt decomposes faster
+than it forms, so the ice bath is not a refinement of the method, it *is* the
+method. Modelling it any other way teaches a student the ice is optional.
+
+The vessel's heat setting runs from **−1 to 3**: −1 is an ice bath, 0 is
+nothing under it, 1–3 are burner levels. One value rather than two flags,
+because a flask cannot stand in ice and over a flame at once, and a single
+setting makes that impossible to express by accident. An ice bath is *not*
+heating, so `requiresHeat` rules stay correctly blocked while one is in use.
+
 ### Electrolysis (variant)
 
 `conditions.requiresElectricity` gates a rule on the power supply being
@@ -337,9 +355,9 @@ owner has confirmed it. Each phase must leave the app in a working state.
 | **7** | Guided mode: experiment runner, step validation, hints | Two full experiments (titration + one precipitation) run end to end |
 | **8** | Content scale-up by level (Matric → FSc → BS) | Content added purely as JSON, zero engine changes needed |
 
-> **Phase 8 note — three approved engine changes.** Content has otherwise gone
+> **Phase 8 note — four approved engine changes.** Content has otherwise gone
 > in as pure JSON with `src/core/` untouched, exactly as the criterion asks.
-> Three exceptions were approved by the project owner, and all three share a
+> Four exceptions were approved by the project owner, and all four share a
 > shape: the data could not express something true, and faking it would have
 > taught something false.
 >
@@ -360,6 +378,14 @@ owner has confirmed it. Each phase must leave the app in a working state.
 >    for the same reason: a solid visibly going into solution had no field to
 >    record it, so hot water separating lead chloride from silver chloride
 >    also read as *"no visible change"*. Curated, never inferred — see §5.
+>
+> 4. **`conditions.maxTempC`, and the ice bath that makes it reachable.** The
+>    engine could say a reaction needed heat and never that heat would stop
+>    one. Diazotisation needs 0–5 °C because above that the product decomposes
+>    faster than it forms; leaving the condition out would have taught that
+>    the ice bath is a nicety. The vessel's heat setting therefore extends to
+>    −1, an ice bath — see §5. It is still one setting, so ice and flame
+>    cannot both be on.
 >
 > Each is a one-time capability addition. Content written after each one is
 > pure JSON again.

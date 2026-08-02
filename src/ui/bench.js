@@ -37,7 +37,9 @@ import {
   setFlameLevel,
 } from './effects.js';
 
-const HEAT_LEVELS = [0, 1, 2, 3];
+// -1 is the ice bath. It sits first because the control reads left to right
+// as a temperature scale: coldest, off, then hotter.
+const HEAT_LEVELS = [-1, 0, 1, 2, 3];
 
 export function mountBench({ root, getState, dispatch, subscribe }) {
   /** @type {Map<string, object>} containerId -> the DOM refs built for it */
@@ -155,9 +157,17 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const heatButtons = HEAT_LEVELS.map((level) => {
       const button = document.createElement('button');
       button.type = 'button';
-      button.className = 'heat-level';
+      button.className = level < 0 ? 'heat-level heat-level--ice' : 'heat-level';
       button.dataset.level = String(level);
-      button.textContent = level === 0 ? 'Off' : String(level);
+      button.textContent = level < 0 ? 'Ice' : level === 0 ? 'Off' : String(level);
+      // The label alone says which is which, so this is not colour-only
+      // (UI.md section 5); the title just spells it out on hover.
+      button.title =
+        level < 0
+          ? 'Stand the vessel in an ice bath'
+          : level === 0
+            ? 'Nothing under the vessel'
+            : `Burner level ${level}`;
       button.addEventListener('click', () => {
         withEffects(container.id, () => dispatch.setHeat(container.id, level));
       });

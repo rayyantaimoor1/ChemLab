@@ -84,11 +84,16 @@ export function createContainer({
   let temperature = tempC;
   let pH = null;
   let pHSource = PH_SOURCE.NONE;
-  // 0 = burner off, 1-3 = how high it is turned up. This file only tracks the
-  // knob position; it does not raise the temperature by itself. Something
-  // outside this file (a UI tick loop, once one exists) is what turns "the
+  // What is under the vessel. -1 = standing in an ice bath, 0 = nothing,
+  // 1-3 = how high the burner is turned up. One value rather than two,
+  // because a flask cannot be in ice and over a flame at the same time and
+  // a single setting makes that impossible to express by accident.
+  //
+  // This file only tracks the setting; it does not change the temperature by
+  // itself. Something outside this file (the UI tick loop) is what turns "the
   // burner is on" into an actual temperature rise over time, the same way a
-  // real burner does not heat a beaker instantly.
+  // real burner does not heat a beaker instantly - and the same way ice takes
+  // a few minutes to bring a flask down.
   let heatLevel = 0;
   // Whether a pair of electrodes is dipped in and the power supply is on.
   // Like heatLevel this file only records the switch position - it does not
@@ -302,10 +307,13 @@ export function createContainer({
       temperature = value;
     },
 
-    /** Turns the burner under this vessel to a position from 0 (off) to 3 (highest). */
+    /**
+     * Sets what is under this vessel: -1 for an ice bath, 0 for nothing,
+     * 1 to 3 for the burner turned progressively higher.
+     */
     setHeatLevel(level) {
-      if (!Number.isInteger(level) || level < 0 || level > 3) {
-        throw new RangeError(`setHeatLevel() needs a whole number from 0 to 3, got ${level}`);
+      if (!Number.isInteger(level) || level < -1 || level > 3) {
+        throw new RangeError(`setHeatLevel() needs a whole number from -1 to 3, got ${level}`);
       }
       heatLevel = level;
     },

@@ -666,6 +666,18 @@ const COOLING_RATE_C = 3;
 const BOILING_POINT_C = 100;
 const BURNER_TICK_MS = 400;
 
+// An ice bath. Not 0 °C: a beaker of melting ice and water sitting in a warm
+// room settles a little above freezing, and a flask standing in it a little
+// above that again. 2 °C is honest and still comfortably inside the window
+// diazotisation needs.
+//
+// The rate is deliberately slower than the burner's. Ice cools by conduction
+// through glass with no flame driving it, so a student who dips the flask in
+// and immediately adds the reagent will find it has not got there yet - which
+// is exactly the mistake the real procedure warns about.
+const ICE_BATH_C = 2;
+const ICE_RATE_C = 2.5;
+
 let burnerTimer = null;
 
 function burnerTick() {
@@ -676,12 +688,15 @@ function burnerTick() {
     const now = container.getTemperatureC();
     const holdsLiquid = container.getVolumeMl() > 0;
 
-    // Off: the glass gives its heat back to the room.
-    const target = level === 0
-      ? ROOM_TEMPERATURE_C
-      : (holdsLiquid ? Math.min(BURNER_TARGET_C[level], BOILING_POINT_C) : BURNER_TARGET_C[level]);
+    // Ice bath: driven down towards the bath. Off: the glass simply gives its
+    // heat back to the room. Burner: driven up, capped at boiling if there is
+    // liquid in the way.
+    let target;
+    if (level < 0) target = ICE_BATH_C;
+    else if (level === 0) target = ROOM_TEMPERATURE_C;
+    else target = holdsLiquid ? Math.min(BURNER_TARGET_C[level], BOILING_POINT_C) : BURNER_TARGET_C[level];
 
-    const rate = level === 0 ? COOLING_RATE_C : BURNER_RATE_C[level];
+    const rate = level < 0 ? ICE_RATE_C : level === 0 ? COOLING_RATE_C : BURNER_RATE_C[level];
     if (Math.abs(target - now) < 0.5) continue;
 
     const next = target > now ? Math.min(target, now + rate) : Math.max(target, now - rate);

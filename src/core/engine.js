@@ -99,11 +99,21 @@ function blockingCondition(reaction, state, nameOf = (id) => id) {
   const conditions = reaction.conditions;
   if (!conditions) return null;
 
-  const { requiresHeat, minTempC, catalyst, requiresElectricity } = conditions;
+  const { requiresHeat, minTempC, maxTempC, catalyst, requiresElectricity } = conditions;
 
   // A minimum temperature is checked first because it is the more specific test.
   if (typeof minTempC === 'number' && state.tempC < minTempC) {
     return `needs to reach about ${minTempC} °C`;
+  }
+
+  // Some reactions are stopped by heat rather than started by it. Diazotisation
+  // is the standard example: above about 5 °C the product falls apart faster
+  // than it forms, so the ice bath is not a refinement of the method, it IS the
+  // method. Modelling that as anything else would teach a student the ice is
+  // optional. Checked right after minTempC because the two together describe a
+  // temperature WINDOW, and a rule is allowed to carry both.
+  if (typeof maxTempC === 'number' && state.tempC > maxTempC) {
+    return `needs to be kept below about ${maxTempC} °C`;
   }
 
   // "Requires heat" with no specific temperature means the student has to

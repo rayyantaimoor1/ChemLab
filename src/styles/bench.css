@@ -497,6 +497,13 @@ html.reduce-motion .fx-flame--3 {
   background: #ffe8d1;
 }
 
+/* The ice bath. A cold tint rather than the burner's warm one, but the
+   button also says "Ice" - the colour is a reinforcement, never the only
+   channel (UI.md section 5). */
+.heat-level--ice.heat-level--active {
+  background: #d6ecf5;
+}
+
 /* ------------------------------------------------------------------ *
  * Hazard alert.
  *

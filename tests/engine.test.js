@@ -1344,3 +1344,69 @@ test('a reaction whose solid burns away is not described as dissolving', () => {
   const zincAcid = engine.resolve(['zn_metal', 'hcl_1m']);
   assert.doesNotMatch(zincAcid.message, /dissolved/);
 });
+
+// ---------------------------------------------------------------------------
+// Reactions stopped by heat rather than started by it.
+//
+// Diazotisation is the standard case: above about 5 °C the product decomposes
+// faster than it forms, so the ice bath is the method rather than a refinement.
+// ---------------------------------------------------------------------------
+
+test('a maxTempC rule is blocked when the vessel is too warm', () => {
+  const engine = makeEngine({
+    reactions: [
+      {
+        id: 'rxn_cold_only',
+        reactants: ['a', 'b'],
+        conditions: { requiresHeat: false, minTempC: null, maxTempC: 5, catalyst: null },
+        products: ['c'],
+        equation: 'A + B -> C',
+        effects: effectsOf(),
+      },
+    ],
+  });
+
+  const warm = engine.resolve(['a', 'b'], { tempC: 25 });
+  assert.equal(warm.outcome, OUTCOME.NO_REACTION);
+  assert.match(warm.message, /kept below about 5 °C/);
+  assert.equal(warm.blockedBy, 'needs to be kept below about 5 °C');
+
+  const cold = engine.resolve(['a', 'b'], { tempC: 2 });
+  assert.equal(cold.outcome, OUTCOME.REACTION);
+});
+
+test('a rule can carry a temperature window with both ends', () => {
+  const engine = makeEngine({
+    reactions: [
+      {
+        id: 'rxn_window',
+        reactants: ['a', 'b'],
+        conditions: { requiresHeat: false, minTempC: 10, maxTempC: 40, catalyst: null },
+        products: ['c'],
+        equation: 'A + B -> C',
+        effects: effectsOf(),
+      },
+    ],
+  });
+
+  // Too cold complains about the floor, too hot about the ceiling, and the
+  // floor is reported first because it is checked first.
+  assert.match(engine.resolve(['a', 'b'], { tempC: 4 }).message, /reach about 10 °C/);
+  assert.match(engine.resolve(['a', 'b'], { tempC: 60 }).message, /kept below about 40 °C/);
+  assert.equal(engine.resolve(['a', 'b'], { tempC: 25 }).outcome, OUTCOME.REACTION);
+});
+
+test('a vessel can be set to stand in an ice bath', async () => {
+  const { createContainer } = await import('../src/core/container.js');
+  const vessel = createContainer({ id: 'beaker', name: 'Beaker' });
+
+  vessel.setHeatLevel(-1);
+  assert.equal(vessel.getHeatLevel(), -1);
+
+  // An ice bath is not heating, so a requiresHeat rule must still be blocked.
+  assert.equal(vessel.isHeating(), false);
+  assert.equal(vessel.snapshot().heatLevel, -1);
+
+  assert.throws(() => vessel.setHeatLevel(-2), RangeError);
+  assert.throws(() => vessel.setHeatLevel(4), RangeError);
+});
