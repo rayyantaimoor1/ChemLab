@@ -1,0 +1,20 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ethene: two carbon atoms joined by a DOUBLE bond, each carrying two hydrogens. The double bond holds the whole molecule flat">
+  <line x1="72" y1="55" x2="88" y2="55" stroke="#161A19" stroke-width="2"/>
+  <line x1="72" y1="65" x2="88" y2="65" stroke="#161A19" stroke-width="2"/>
+  <line x1="55" y1="48" x2="44" y2="32" stroke="#161A19" stroke-width="2"/>
+  <line x1="55" y1="72" x2="44" y2="88" stroke="#161A19" stroke-width="2"/>
+  <line x1="105" y1="48" x2="116" y2="32" stroke="#161A19" stroke-width="2"/>
+  <line x1="105" y1="72" x2="116" y2="88" stroke="#161A19" stroke-width="2"/>
+  <circle cx="55" cy="60" r="17" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="55" y="67" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="105" cy="60" r="17" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="105" y="67" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="38" cy="24" r="11" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="38" y="28" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="38" cy="96" r="11" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="38" y="100" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="122" cy="24" r="11" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="122" y="28" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="122" cy="96" r="11" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="122" y="100" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">H</text>
+</svg>

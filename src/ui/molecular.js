@@ -83,6 +83,8 @@ const ELEMENT_STYLE = {
   Al: { fill: '#9AA7B0', text: '#161A19' },
   Li: { fill: '#C0857A', text: '#FFFFFF' },
   Cr: { fill: '#4E8F6D', text: '#FFFFFF' },
+  Ni: { fill: '#8FA5A8', text: '#161A19' },
+  P: { fill: '#D98E32', text: '#FFFFFF' },
   Br: { fill: '#A62929', text: '#FFFFFF' },
   S: { fill: '#F1C40F', text: '#161A19' },
   C: { fill: '#2C3E50', text: '#FFFFFF' },

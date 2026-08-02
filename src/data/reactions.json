@@ -2861,5 +2861,232 @@
     "explanation": "Another laboratory preparation of oxygen, and a display of manganese's oxidation states in one tube. The purple +7 permanganate breaks into green +6 manganate and black +4 manganese(IV) oxide, releasing oxygen as it goes. Four states of one metal — purple at +7, green at +6, black at +4 and pale pink at +2 — each with its own colour. That is the transition metals in a sentence, and it is why they are the coloured part of the periodic table.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, oxidation states of manganese; preparation of oxygen"
+  },
+  {
+    "id": "rxn_substitution_methane_chlorine",
+    "reactants": ["ch4_g", "cl2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["ch3cl_g", "hcl_g"],
+    "equation": "CH₄ + Cl₂ → CH₃Cl + HCl",
+    "type": "substitution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen chloride",
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 12,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_gas",
+      "title": "Chlorine going in, hydrogen chloride coming out",
+      "warning": "Both the chlorine used and the hydrogen chloride produced are choking and attack the lungs. The chloromethane formed is toxic as well.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard only, on the smallest scale. Never mix the two gases and leave them in sunlight — the reaction can start on its own and run away."
+    },
+    "molecularAnimation": null,
+    "explanation": "The one thing an alkane will do: SUBSTITUTION, where a hydrogen is swapped out rather than something being added on. There is no double bond for anything to add across, so the molecule has to be attacked instead — either by ultraviolet light at room temperature or by heating to around 400 °C. Both work because both split a chlorine molecule into two free radicals, and those start a chain. The awkwardness is that it does not stop: the chloromethane produced is attacked in its turn, so you always end up with a mixture rather than the one product you wanted.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, free radical substitution in alkanes"
+  },
+  {
+    "id": "rxn_combustion_methane",
+    "reactants": ["ch4_g", "o2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["co2_g", "water"],
+    "equation": "CH₄ + 2O₂ → CO₂ + 2H₂O",
+    "type": "combustion",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "carbon dioxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 40,
+      "resultPH": 7.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Methane and air are an explosive mixture",
+      "warning": "Methane burns readily and forms an explosive mixture with air over a wide range of concentrations. Because it is odourless, a smell is added to domestic gas so that leaks can be noticed at all.",
+      "visualEffect": null,
+      "whatToDoInstead": "Light the gas at the burner rather than letting it collect first, and never search for a leak with a flame."
+    },
+    "molecularAnimation": null,
+    "explanation": "Natural gas burning, and the reaction most of the world's heating and cooking runs on. In PLENTY of air it gives carbon dioxide and water and nothing else. Starve it of air and the same fuel gives carbon monoxide instead — colourless, odourless, and the reason a blocked flue kills people in their sleep. A blue flame means enough air is getting in; a yellow, sooty one means it is not, which is a check worth knowing outside a chemistry lesson.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, combustion of alkanes"
+  },
+  {
+    "id": "rxn_prep_ethyne_carbide",
+    "reactants": ["cac2_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["c2h2_g", "caoh2_aq"],
+    "equation": "CaC₂ + 2H₂O → C₂H₂ + Ca(OH)₂",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "ethyne",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 18,
+      "resultPH": 12.4
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Flammable ethyne is produced, and the mixture gets hot",
+      "warning": "Ethyne is highly flammable and the reaction gives out enough heat to be felt. The calcium hydroxide left behind is strongly alkaline.",
+      "visualEffect": null,
+      "whatToDoInstead": "Add water to the carbide a drop at a time so the gas comes off at a controlled rate, keep flames away until you mean to test the gas, and wear eye protection."
+    },
+    "molecularAnimation": null,
+    "explanation": "How ethyne is made in a laboratory: drip water onto calcium carbide and the gas comes off at once. Before electric lighting this was how miners' and cyclists' lamps worked — a carbide chamber, a water drip, and a flame at the top. The gas has a strong garlic-like smell, though that comes from phosphine impurities rather than from ethyne itself, which is odourless when pure.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, laboratory preparation of ethyne"
+  },
+  {
+    "id": "rxn_addition_ethene_bromine",
+    "reactants": ["br2_aq", "c2h4_g"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["c2h4br2_aq"],
+    "equation": "C₂H₄ + Br₂ → C₂H₄Br₂",
+    "type": "addition",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "THE test for a carbon–carbon double bond, and it could hardly be easier to read: shake the gas with orange bromine water and the orange disappears. The bromine has added ACROSS the double bond, one atom to each carbon, and the product is colourless. Nothing needs heating, no catalyst is required, and it happens on shaking — that readiness is the whole difference between an unsaturated compound and a saturated one.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, addition reactions of alkenes and the test for unsaturation"
+  },
+  {
+    "id": "rxn_addition_ethyne_bromine",
+    "reactants": ["br2_aq", "c2h2_g"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["c2h2br4_aq"],
+    "equation": "C₂H₂ + 2Br₂ → C₂H₂Br₄",
+    "type": "addition",
+    "effects": {
+      "colorToHex": "#F2EEDF",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The same test, one step further. A triple bond can add bromine TWICE — first becoming a double bond, then a single one — so ethyne soaks up twice as much bromine water as the same amount of ethene before the orange finally goes. That is how the test distinguishes an alkyne from an alkene instead of merely announcing that something is unsaturated, and measuring the amount absorbed is the principle behind the iodine number used to grade fats and oils.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, addition reactions of alkynes"
+  },
+  {
+    "id": "rxn_none_ethane_bromine",
+    "reactants": ["br2_aq", "c2h6_g"],
+    "noReaction": true,
+    "explanation": "No observable change — the bromine water stays orange. Ethane is SATURATED: every bond is a single bond and there is nothing for the bromine to add across. In the dark and without ultraviolet light it will not substitute either, so absolutely nothing happens. This is the control that gives the other two results their meaning: a test that everything passes tells you nothing, and it is only because ethane fails to decolourise bromine water that ethene decolourising it proves anything at all.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, distinguishing saturated from unsaturated compounds"
+  },
+  {
+    "id": "rxn_hydrogenation_ethene",
+    "reactants": ["c2h4_g", "h2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "ni_s" },
+    "products": ["c2h6_g"],
+    "equation": "C₂H₄ + H₂ → C₂H₆",
+    "type": "addition",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "ethane",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 10,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Hydrogen adds across the double bond over a nickel catalyst, turning an alkene into an alkane. This is the reaction that hardens liquid vegetable oils into margarine: their long chains contain double bonds, and hydrogenating some of them raises the melting point until the oil becomes a spreadable solid. Nickel is used rather than platinum for one reason only — it is far cheaper and does the same job. Note the catalyst is still there at the end; only the hydrogen and ethene are consumed.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, catalytic hydrogenation of alkenes"
+  },
+  {
+    "id": "rxn_hydrogenation_ethyne",
+    "reactants": ["c2h2_g", "h2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "ni_s" },
+    "products": ["c2h4_g"],
+    "equation": "C₂H₂ + H₂ → C₂H₄",
+    "type": "addition",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "ethene",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 12,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Hydrogen adds to a triple bond one stage at a time: ethyne first becomes ethene, and only with more hydrogen does the ethene go on to ethane. Add hydrogen to this vessel again and you can watch the second stage happen. Stopping cleanly at the alkene is genuinely difficult and needs a deliberately weakened catalyst, which is a real industrial problem rather than a textbook detail — it is how partially hydrogenated fats came about.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, catalytic hydrogenation of alkynes"
+  },
+  {
+    "id": "rxn_hydration_ethene",
+    "reactants": ["c2h4_g", "water_distilled"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "h3po4_aq" },
+    "products": ["c2h5oh_aq"],
+    "equation": "C₂H₄ + H₂O → C₂H₅OH",
+    "type": "addition",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Water adds across the double bond over phosphoric acid, and this is how most industrial ethanol is made — not by fermentation. The two routes are worth comparing: this one is fast, continuous and gives a pure product, but starts from crude oil; fermentation is slow and gives a dilute mixture, but starts from sugar and is renewable. Which is better depends on what you are optimising for, and that is a genuine judgement rather than a fact to memorise.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, industrial hydration of ethene"
+  },
+  {
+    "id": "rxn_baeyer_test_ethene",
+    "reactants": ["c2h4_g", "kmno4_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["glycol_aq", "mno2_s"],
+    "equation": "C₂H₄ + [O] + H₂O → C₂H₄(OH)₂",
+    "type": "oxidation",
+    "effects": {
+      "colorToHex": "#1F1D1C",
+      "precipitate": "brown manganese(IV) oxide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 8.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Baeyer's test — the second way of showing a double bond is there. Cold dilute permanganate attacks the double bond and puts an OH group on each carbon, giving a diol. Two things happen that you can see at once: the purple is destroyed, and a brown precipitate of manganese(IV) oxide appears. Having a second, independent test matters, because bromine water can be decolourised by other things too, and two tests agreeing is much stronger evidence than one. The product here is the antifreeze in car radiators.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, Baeyer's test for unsaturation"
   }
 ]
