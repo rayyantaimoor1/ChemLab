@@ -1627,6 +1627,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": null,
+      "dissolves": "the white crystals disappeared into the water",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -1649,6 +1650,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": null,
+      "dissolves": "the white crystals disappeared into the water",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -1671,6 +1673,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": null,
+      "dissolves": "the white crystals disappeared into the water",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -1693,6 +1696,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": null,
+      "dissolves": "the white lumps disappeared into the water",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -1715,6 +1719,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": null,
+      "dissolves": "the white pellets disappeared into the water",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -2514,6 +2519,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": null,
+      "dissolves": "the white curdy solid went completely, leaving a clear colourless solution",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -4395,6 +4401,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": null,
+      "dissolves": "the white gelatinous solid went completely, leaving a clear solution",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -4425,6 +4432,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": null,
+      "dissolves": "the white solid went completely, leaving a clear solution — exactly as the aluminium one did",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -4447,6 +4455,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": null,
+      "dissolves": "the white solid went completely, where aluminium hydroxide in the same reagent would not have moved",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -4498,6 +4507,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": null,
+      "dissolves": "the cream solid cleared away to nothing, which on a film is the unexposed silver being washed off",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -4600,6 +4610,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": null,
+      "dissolves": "the white solid went completely, leaving a clear solution that grows needle-shaped crystals again as it cools",
       "gas": null,
       "bubbles": false,
       "smoke": false,

@@ -184,6 +184,22 @@ function describeEffects(reaction, colourNameOf = () => null) {
     observations.push(`A precipitate formed: ${effects.precipitate}.`);
   }
 
+  // The opposite of a precipitate, and just as much an observation. A solid
+  // going into solution is the whole result of several reactions here - hot
+  // water separating lead chloride from silver chloride, ammonia telling zinc
+  // hydroxide from aluminium's, hypo clearing a film - and without this the
+  // notebook called them "no visible change" while the beaker went clear.
+  //
+  // Curated, never inferred. It would be easy to work out that a solid
+  // reactant left no solid product and announce a dissolution, and it would be
+  // wrong: sulfur burning in oxygen fits that description exactly, and so does
+  // sodium skidding about on water. Whether the disappearance of a solid is
+  // the thing worth writing down is a judgement about the chemistry, so it
+  // lives in reactions.json like every other observation.
+  if (effects.dissolves) {
+    observations.push(`The solid dissolved: ${effects.dissolves}.`);
+  }
+
   if (effects.gas) {
     observations.push(
       effects.bubbles

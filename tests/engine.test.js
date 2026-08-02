@@ -1257,3 +1257,90 @@ test('every reaction that changes colour can name that colour from curated data'
 
   assert.deepEqual(unnameable, []);
 });
+
+// ---------------------------------------------------------------------------
+// Solids going into solution.
+//
+// The mirror image of a precipitate. Before these tests the notebook said
+// "there was no visible change" while the beaker visibly went clear.
+// ---------------------------------------------------------------------------
+
+test('a dissolution says the solid dissolved, in the curated words', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create({
+    chemicals: [
+      { id: 'a', name: 'A' },
+      { id: 'b', name: 'B' },
+      { id: 'x', name: 'X' },
+    ],
+    reactions: [
+      {
+        id: 'r1',
+        reactants: ['a', 'b'],
+        products: ['x'],
+        equation: 'A + B -> X',
+        effects: { dissolves: 'the white solid went completely', tempDeltaC: 0 },
+      },
+    ],
+  });
+
+  const result = engine.resolve(['a', 'b']);
+  assert.match(result.message, /The solid dissolved: the white solid went completely\./);
+  assert.doesNotMatch(result.message, /no visible change/);
+});
+
+test('a dissolution is never inferred from the species alone', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+
+  // A solid reactant that leaves no solid product - which is exactly what
+  // burning sulfur looks like too. Without a curated "dissolves" field the
+  // engine must not announce a dissolution.
+  const engine = create({
+    chemicals: [
+      { id: 'solid', name: 'Solid', state: 'solid' },
+      { id: 'gas', name: 'Gas', state: 'gas' },
+      { id: 'out', name: 'Out', state: 'gas' },
+    ],
+    reactions: [
+      {
+        id: 'r1',
+        reactants: ['solid', 'gas'],
+        products: ['out'],
+        equation: 'solid + gas -> out',
+        effects: { tempDeltaC: 0 },
+      },
+    ],
+  });
+
+  assert.doesNotMatch(engine.resolve(['solid', 'gas']).message, /dissolved/);
+});
+
+test('the shipped dissolutions all say so instead of claiming nothing happened', () => {
+  const engine = createEngine();
+
+  const lead = engine.resolve(['pbcl2_s', 'water_distilled'], { tempC: 90 });
+  assert.match(lead.message, /The solid dissolved/);
+
+  const silver = engine.resolve(['agcl_s', 'nh4oh_aq']);
+  assert.match(silver.message, /The solid dissolved/);
+
+  const fixing = engine.resolve(['agbr_s', 'na2s2o3_aq']);
+  assert.match(fixing.message, /The solid dissolved/);
+
+  const zinc = engine.resolve(['znoh2_s', 'nh4oh_aq']);
+  assert.match(zinc.message, /The solid dissolved/);
+});
+
+test('a reaction whose solid burns away is not described as dissolving', () => {
+  // Sodium in water and the metal-acid displacements all consume a solid and
+  // leave none, and none of them is a dissolution. Their real observation is
+  // the gas, and that is what they must report.
+  const engine = createEngine();
+
+  const sodium = engine.resolve(['na_metal', 'water_distilled']);
+  assert.doesNotMatch(sodium.message, /dissolved/);
+  assert.match(sodium.message, /hydrogen gas/);
+
+  const zincAcid = engine.resolve(['zn_metal', 'hcl_1m']);
+  assert.doesNotMatch(zincAcid.message, /dissolved/);
+});

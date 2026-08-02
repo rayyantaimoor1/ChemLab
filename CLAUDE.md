@@ -142,6 +142,7 @@ These are contracts. Adding content must never require changing engine code.
   "effects": {
     "colorToHex": "#EEF3F5",
     "precipitate": null,
+    "dissolves": null,
     "gas": null,
     "bubbles": false,
     "smoke": false,
@@ -155,6 +156,23 @@ These are contracts. Adding content must never require changing engine code.
   "source": "Punjab Textbook Board Chemistry 10, Ch. 5"
 }
 ```
+
+**Two notes on `effects`, because both are easy to get wrong.**
+
+`colorToHex` must be a colour some chemical record is actually named by. The
+notebook reports colour changes in words, and it gets the words by looking that
+hex up in `chemicals.json` — the rule's own products first, then anything else.
+A hex nothing is named by leaves the notebook silent about the very change the
+entry exists to show, so a test fails the build for it. "Colourless" is skipped
+as an observation; it is true of most neutralisations and teaches nothing.
+
+`dissolves` is the mirror image of `precipitate` — a short description of a
+solid going into solution, used when that disappearance is the observation
+worth recording. It is **curated, never inferred.** The engine could easily
+notice that a solid reactant left no solid product and announce a dissolution,
+and it would be wrong: sulfur burning in oxygen fits that description exactly,
+and so does sodium skidding about on water. Whether a vanishing solid is worth
+writing down is a judgement about the chemistry, so it belongs here.
 
 ### Electrolysis (variant)
 
@@ -319,15 +337,32 @@ owner has confirmed it. Each phase must leave the app in a working state.
 | **7** | Guided mode: experiment runner, step validation, hints | Two full experiments (titration + one precipitation) run end to end |
 | **8** | Content scale-up by level (Matric → FSc → BS) | Content added purely as JSON, zero engine changes needed |
 
-> **Phase 8 note — one approved engine change.** Four batches of Matric
-> content (40 reactions) were added as pure JSON with `src/core/` untouched,
-> as the criterion asks. Electrolysis was the single exception: the engine
-> gated reactions on heat, temperature and catalyst only, and there was no
-> honest way to express "pass a current through this" without adding a
-> condition. Faking it as a catalyst would have taught wrong chemistry (see
-> §5's electrolysis variant), so `requiresElectricity` was added with the
-> project owner's approval. It is a one-time capability addition: every
-> electrolysis reaction after it is pure JSON again.
+> **Phase 8 note — three approved engine changes.** Content has otherwise gone
+> in as pure JSON with `src/core/` untouched, exactly as the criterion asks.
+> Three exceptions were approved by the project owner, and all three share a
+> shape: the data could not express something true, and faking it would have
+> taught something false.
+>
+> 1. **`conditions.requiresElectricity`.** The engine gated reactions on heat,
+>    temperature and catalyst only, so electrolysis had no honest expression.
+>    Modelling a current as a catalyst would have taught wrong chemistry — a
+>    catalyst speeds up a reaction that would happen anyway, a current drives
+>    one that otherwise will not go at all. See §5's electrolysis variant.
+>
+> 2. **Colour in the notebook.** `describeEffects` reported precipitates,
+>    gases, smoke and temperature and never colour, so any reaction whose only
+>    observable was a colour change was written up as *"there was no visible
+>    change"* — the opposite of the truth for the blood-red thiocyanate test,
+>    the blue-black starch test and the violet biuret test. The colour name is
+>    looked up in curated data and never invented.
+>
+> 3. **`effects.dissolves`.** The mirror image of `precipitate`, and missing
+>    for the same reason: a solid visibly going into solution had no field to
+>    record it, so hot water separating lead chloride from silver chloride
+>    also read as *"no visible change"*. Curated, never inferred — see §5.
+>
+> Each is a one-time capability addition. Content written after each one is
+> pure JSON again.
 | **9** | Real UI, designed in Claude Design and integrated | Visual redesign required no changes inside `src/core/` |
 | **10** | Packaging, installer polish, testing on target hardware | Installs and runs on a real 8 GB / i5 5th gen lab PC |
 
