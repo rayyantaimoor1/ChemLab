@@ -147,9 +147,38 @@ function blockingCondition(reaction, state, nameOf = (id) => id) {
  * Everything here is read straight from the data file. The engine is only
  * arranging curated facts into a sentence, never inventing an observation.
  */
-function describeEffects(reaction) {
+function describeEffects(reaction, colourNameOf = () => null) {
   const effects = reaction.effects || {};
   const observations = [];
+
+  // A colour change is an observation like any other, and for some reactions it
+  // is the ONLY one - the silver mirror aside, a blood-red thiocyanate, a
+  // blue-black starch test and a violet biuret test change nothing else at all.
+  // Without this the notebook told a student "there was no visible change"
+  // about the sharpest colour change in school chemistry.
+  //
+  // The name is never invented. It is read off whichever curated chemical
+  // record carries that exact colour, because UI.md section 5 requires a colour
+  // to travel with its name, and section 6 of CLAUDE.md forbids guessing one.
+  // If no record names it, we simply say nothing about colour.
+  //
+  // "Colourless" is deliberately skipped. It is true of most neutralisations
+  // and adds nothing to a notebook line; a reaction that leaves the beaker
+  // colourless and does nothing else still falls through to the honest
+  // "no visible change" sentence at the bottom of this function.
+  // Said once, not twice. Most precipitate descriptions already name their own
+  // colour ("brick red copper(I) oxide"), and a notebook line reading "The
+  // mixture turned brick red. A precipitate formed: brick red copper(I) oxide."
+  // is worse than either sentence alone.
+  const colourName = effects.colorToHex ? colourNameOf(reaction) : null;
+  const alreadySaid =
+    colourName && typeof effects.precipitate === 'string'
+      ? effects.precipitate.toLowerCase().includes(colourName.toLowerCase())
+      : false;
+
+  if (colourName && colourName.toLowerCase() !== 'colourless' && !alreadySaid) {
+    observations.push(`The mixture turned ${colourName}.`);
+  }
 
   if (effects.precipitate) {
     observations.push(`A precipitate formed: ${effects.precipitate}.`);
@@ -213,6 +242,41 @@ export function createEngine({
     reaction,
     reactants: normaliseSpecies(reaction.reactants),
   }));
+
+  // Every colour any curated chemical is known by, indexed by its hex value.
+  // This is how describeEffects turns a rule's colorToHex into words WITHOUT
+  // inventing a name: the name has to already exist in chemicals.json against
+  // that exact colour, or the notebook stays silent about colour.
+  const colourNamesByHex = new Map();
+  for (const chemical of chemicals) {
+    if (!chemical.colorHex || !chemical.colorName) continue;
+    const hex = chemical.colorHex.toUpperCase();
+    if (!colourNamesByHex.has(hex)) colourNamesByHex.set(hex, chemical.colorName);
+  }
+
+  /**
+   * The name for the colour a rule says the vessel ends up.
+   *
+   * A rule's own products are asked first, because they are what the vessel
+   * actually now holds - the brick red belongs to the copper(I) oxide that was
+   * just made. Only if none of them carries that colour do we fall back to any
+   * other chemical known by the same hex, which covers the handful of rules
+   * whose colour comes from something they consumed rather than produced.
+   */
+  function colourNameFor(reaction) {
+    const hex = reaction.effects?.colorToHex;
+    if (!hex) return null;
+    const wanted = hex.toUpperCase();
+
+    for (const id of reaction.products || []) {
+      const product = chemicalsById.get(id);
+      if (product?.colorHex?.toUpperCase() === wanted && product.colorName) {
+        return product.colorName;
+      }
+    }
+
+    return colourNamesByHex.get(wanted) || null;
+  }
 
   /**
    * The species sets our own rules describe as finished outcomes.
@@ -414,7 +478,7 @@ export function createEngine({
 
     return {
       outcome: OUTCOME.REACTION,
-      message: describeEffects(rule.reaction),
+      message: describeEffects(rule.reaction, colourNameFor),
       reaction: rule.reaction,
       effects: rule.reaction.effects || null,
       species: normaliseSpecies([...leftovers, ...products]),

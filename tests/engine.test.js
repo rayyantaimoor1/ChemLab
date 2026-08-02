@@ -1118,3 +1118,142 @@ test('a single-product outcome is not treated as a settled pair', async () => {
   const result = engine.resolve(['x', 'a']);
   assert.equal(result.outcome, OUTCOME.UNKNOWN);
 });
+
+// ---------------------------------------------------------------------------
+// Colour changes in the notebook line.
+//
+// Some reactions change nothing except colour. Before these tests existed the
+// notebook told a student "there was no visible change" about the starch-iodine
+// test, which is the sharpest colour change in school chemistry.
+// ---------------------------------------------------------------------------
+
+test('a colour-only reaction says what colour it turned', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create({
+    chemicals: [
+      { id: 'a', name: 'A' },
+      { id: 'b', name: 'B' },
+      { id: 'x', name: 'X', colorHex: '#12203A', colorName: 'blue-black' },
+    ],
+    reactions: [
+      {
+        id: 'r1',
+        reactants: ['a', 'b'],
+        products: ['x'],
+        equation: 'A + B -> X',
+        effects: { colorToHex: '#12203A', tempDeltaC: 0 },
+      },
+    ],
+  });
+
+  const result = engine.resolve(['a', 'b']);
+  assert.equal(result.outcome, OUTCOME.REACTION);
+  assert.match(result.message, /turned blue-black/);
+  assert.doesNotMatch(result.message, /no visible change/);
+});
+
+test('the colour name is never invented - an unnamed colour stays unmentioned', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create({
+    chemicals: [
+      { id: 'a', name: 'A' },
+      { id: 'b', name: 'B' },
+      { id: 'x', name: 'X' }, // no colorHex, no colorName anywhere
+    ],
+    reactions: [
+      {
+        id: 'r1',
+        reactants: ['a', 'b'],
+        products: ['x'],
+        equation: 'A + B -> X',
+        effects: { colorToHex: '#123456', tempDeltaC: 0 },
+      },
+    ],
+  });
+
+  // Nothing in the data names #123456, so we say nothing rather than guess.
+  const result = engine.resolve(['a', 'b']);
+  assert.doesNotMatch(result.message, /turned/);
+  assert.match(result.message, /no visible change/);
+});
+
+test('"colourless" is not reported as a colour change', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create({
+    chemicals: [
+      { id: 'a', name: 'A' },
+      { id: 'b', name: 'B' },
+      { id: 'x', name: 'X', colorHex: '#EEF3F5', colorName: 'colourless' },
+    ],
+    reactions: [
+      {
+        id: 'r1',
+        reactants: ['a', 'b'],
+        products: ['x'],
+        equation: 'A + B -> X',
+        effects: { colorToHex: '#EEF3F5', tempDeltaC: 7 },
+      },
+    ],
+  });
+
+  const result = engine.resolve(['a', 'b']);
+  assert.doesNotMatch(result.message, /colourless/);
+  assert.match(result.message, /warmed by about 7/);
+});
+
+test('the colour is not said twice when the precipitate already names it', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create({
+    chemicals: [
+      { id: 'a', name: 'A' },
+      { id: 'b', name: 'B' },
+      { id: 'x', name: 'X', colorHex: '#A83C1E', colorName: 'brick red' },
+    ],
+    reactions: [
+      {
+        id: 'r1',
+        reactants: ['a', 'b'],
+        products: ['x'],
+        equation: 'A + B -> X',
+        effects: { colorToHex: '#A83C1E', precipitate: 'brick red copper(I) oxide' },
+      },
+    ],
+  });
+
+  const result = engine.resolve(['a', 'b']);
+  assert.doesNotMatch(result.message, /turned brick red/);
+  assert.match(result.message, /brick red copper\(I\) oxide/);
+});
+
+test('the three shipped colour-only tests all name their colour', async () => {
+  const engine = createEngine();
+
+  const thiocyanate = engine.resolve(['fecl3_0_1m', 'kscn_aq']);
+  assert.match(thiocyanate.message, /turned blood red/);
+
+  const starch = engine.resolve(['starch_aq', 'i2_aq']);
+  assert.match(starch.message, /turned blue-black/);
+
+  const biuret = engine.resolve(['albumin_aq', 'biuret_aq']);
+  assert.match(biuret.message, /turned violet/);
+});
+
+test('every reaction that changes colour can name that colour from curated data', () => {
+  // Guards the rule that a colour is never shown without its name (UI.md
+  // section 5). If a new batch adds a colorToHex no chemical record carries,
+  // this fails and the notebook would have gone quiet about it.
+  const engine = createEngine();
+  const unnameable = [];
+
+  for (const reaction of engine.getAllReactions()) {
+    if (reaction.noReaction === true) continue;
+    const hex = reaction.effects?.colorToHex;
+    if (!hex) continue;
+    const named = engine
+      .getAllChemicals()
+      .some((chemical) => (chemical.colorHex || '').toUpperCase() === hex.toUpperCase() && chemical.colorName);
+    if (!named) unnameable.push(`${reaction.id} (${hex})`);
+  }
+
+  assert.deepEqual(unnameable, []);
+});

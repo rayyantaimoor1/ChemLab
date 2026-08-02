@@ -4237,5 +4237,64 @@
     "explanation": "How muddy river water is made fit to drink, at every waterworks in the country and in any village where a lump of phitkari is rubbed round a pot. The clay that makes water look brown is far too fine to filter and will not settle in a week — the particles all carry the same charge and shove each other apart. Alum cures that in two ways at once: its Al³⁺ ions cancel the charge so the particles can finally touch, and the soft floc forming through the whole depth of the water sweeps them down as it sinks. What is filtered off is mostly the dirt, not the aluminium. It removes bacteria too, but not reliably, which is why chlorination still comes afterwards.",
     "levels": ["matric", "fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Environmental chemistry, purification of drinking water"
+  },
+  {
+    "id": "rxn_soap_temporary_hard_water",
+    "reactants": ["cahco3_aq", "soap_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["scum_s", "nahco3_s"],
+    "equation": "2C₁₇H₃₅COONa + Ca(HCO₃)₂ → (C₁₇H₃₅COO)₂Ca + 2NaHCO₃",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#E8E2D2",
+      "precipitate": "a grey curdy scum instead of a lather",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 8.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Scum again, and the point is that soap cannot tell the two kinds of hardness apart. It is the CALCIUM that wrecks the lather, and calcium is calcium whether it arrived as the hydrogencarbonate or the sulfate. Where the two kinds differ is in how you get rid of them, not in what they do to your soap: this one is temporary hardness, so simply boiling the water first — or adding limewater by Clark's method — removes the calcium and the soap then lathers perfectly. Try that with the sulfate and nothing happens at all. Same symptom, different cure.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry X — Water, temporary hardness and its removal; Chemistry XII — Macromolecules, action of hard water on soap"
+  },
+  {
+    "id": "rxn_none_detergent_temporary_hard_water",
+    "reactants": ["cahco3_aq", "detergent_aq"],
+    "noReaction": true,
+    "explanation": "A good lather and no scum, exactly as with the other kind of hard water. A detergent does not care which calcium salt it meets, because its sulfonate head makes a calcium salt that stays dissolved either way. That is worth pausing on: boiling fixes temporary hardness and does nothing for permanent, Clark's method fixes temporary and does nothing for permanent, but switching from soap to detergent handles both at once without treating the water at all. Sometimes the cheapest answer to a problem is to stop caring about it.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, soaps and detergents compared"
+  },
+  {
+    "id": "rxn_gastest_nh4cl_limewater",
+    "reactants": ["caoh2_aq", "nh4cl_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["cacl2_aq", "nh3_g", "water"],
+    "equation": "2NH₄Cl + Ca(OH)₂ → CaCl₂ + 2NH₃ + 2H₂O",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "ammonia",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 12.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_gas",
+      "title": "Ammonia gas is choking",
+      "warning": "Ammonia comes off steadily on warming and is sharply irritating to the eyes and lungs. Hot limewater is also caustic.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard or good ventilation, eye protection, and identify the gas by wafting it towards you onto damp red litmus rather than by leaning over the tube."
+    },
+    "molecularAnimation": null,
+    "explanation": "The ammonium test done with limewater rather than sodium hydroxide, and the result is identical — ANY alkali will do it, because all the test needs is something able to take the hydrogen ion back off the ammonium. That is worth knowing rather than memorising one recipe. Industrially this same reaction is the recovery step of the Solvay process, where cheap lime is used precisely because it is cheap, and the ammonia it releases goes straight back into the plant to be used again.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry X — test for the ammonium ion; Chemistry XII — Common chemical industries, the Solvay process"
   }
 ]
