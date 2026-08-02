@@ -1,0 +1,27 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Urea: one carbonyl carbon carrying TWO amide groups, which is why everything learnt about ethanamide applies to it. Forty-six per cent nitrogen by mass, more than any other solid fertiliser">
+  <line x1="76" y1="46" x2="76" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="84" y1="46" x2="84" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="70" y1="70" x2="50" y2="82" stroke="#161A19" stroke-width="2"/>
+  <line x1="90" y1="70" x2="110" y2="82" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="58" r="15" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="64" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="80" cy="22" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="26" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="40" cy="88" r="13" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="40" y="93" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="120" cy="88" r="13" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="120" y="93" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">N</text>
+  <line x1="30" y1="80" x2="20" y2="72" stroke="#161A19" stroke-width="2"/>
+  <line x1="36" y1="100" x2="30" y2="110" stroke="#161A19" stroke-width="2"/>
+  <line x1="130" y1="80" x2="140" y2="72" stroke="#161A19" stroke-width="2"/>
+  <line x1="124" y1="100" x2="130" y2="110" stroke="#161A19" stroke-width="2"/>
+  <circle cx="14" cy="66" r="8" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="14" y="69" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="26" cy="114" r="8" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="26" y="117" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="146" cy="66" r="8" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="146" y="69" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="134" cy="114" r="8" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="134" y="117" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+  <text x="80" y="116" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">two N per molecule — that is the point of it</text>
+</svg>

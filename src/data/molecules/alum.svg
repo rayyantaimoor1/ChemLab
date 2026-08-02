@@ -1,0 +1,29 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Alum: aluminium three plus with sulfate ions. The small, highly charged aluminium ion pulls so hard on the water around it that hydrogen ions are forced off, which is why an alum solution is acidic">
+  <circle cx="40" cy="60" r="18" fill="#9AA7B0" stroke="#161A19" stroke-width="2"/>
+  <text x="40" y="67" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#161A19">Al</text>
+  <text x="54" y="38" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">3+</text>
+  <line x1="58" y1="54" x2="76" y2="46" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="58" y1="68" x2="76" y2="78" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <circle cx="96" cy="38" r="13" fill="#F1C40F" stroke="#161A19" stroke-width="2"/>
+  <text x="96" y="43" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">S</text>
+  <line x1="96" y1="25" x2="96" y2="16" stroke="#161A19" stroke-width="2"/>
+  <line x1="109" y1="38" x2="120" y2="38" stroke="#161A19" stroke-width="2"/>
+  <line x1="83" y1="38" x2="76" y2="38" stroke="#161A19" stroke-width="2"/>
+  <line x1="96" y1="51" x2="96" y2="58" stroke="#161A19" stroke-width="2"/>
+  <circle cx="96" cy="8" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="96" y="11" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="130" cy="38" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="130" y="41" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="96" cy="64" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="96" y="67" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="96" cy="88" r="13" fill="#F1C40F" stroke="#161A19" stroke-width="2"/>
+  <text x="96" y="93" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">S</text>
+  <line x1="109" y1="88" x2="120" y2="88" stroke="#161A19" stroke-width="2"/>
+  <line x1="96" y1="101" x2="96" y2="108" stroke="#161A19" stroke-width="2"/>
+  <line x1="83" y1="88" x2="76" y2="88" stroke="#161A19" stroke-width="2"/>
+  <circle cx="130" cy="88" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="130" y="91" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="96" cy="114" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="96" y="117" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <text x="80" y="26" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">Al³⁺ pulls H⁺ off the water → acidic</text>
+</svg>

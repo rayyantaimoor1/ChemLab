@@ -1,0 +1,27 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ammonium sulfate: two ammonium ions and one sulfate ion. It is the salt of a weak base and a strong acid, which is why its solution comes out acidic">
+  <circle cx="28" cy="34" r="15" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="28" y="40" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">N</text>
+  <text x="40" y="22" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">+</text>
+  <circle cx="28" cy="88" r="15" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="28" y="94" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">N</text>
+  <text x="40" y="78" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">+</text>
+  <text x="28" y="58" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">each N holds 4 H</text>
+  <line x1="46" y1="40" x2="68" y2="52" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="46" y1="82" x2="68" y2="68" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <circle cx="94" cy="60" r="17" fill="#F1C40F" stroke="#161A19" stroke-width="2"/>
+  <text x="94" y="67" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#161A19">S</text>
+  <line x1="94" y1="43" x2="94" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="94" y1="77" x2="94" y2="90" stroke="#161A19" stroke-width="2"/>
+  <line x1="111" y1="60" x2="124" y2="60" stroke="#161A19" stroke-width="2"/>
+  <line x1="77" y1="60" x2="68" y2="60" stroke="#161A19" stroke-width="2"/>
+  <circle cx="94" cy="20" r="10" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="94" y="24" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="94" cy="100" r="10" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="94" y="104" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="134" cy="60" r="10" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="134" y="64" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="60" cy="60" r="10" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="60" y="64" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">O</text>
+  <text x="146" y="46" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">2-</text>
+  <text x="80" y="116" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">weak base + strong acid → acidic salt</text>
+</svg>

@@ -3996,5 +3996,246 @@
     "explanation": "Warm it past about 60 °C and the clear solution sets to an opaque white solid — an egg cooking, watched as chemistry. Notice what has NOT happened: not one peptide link has broken. The chain is entirely intact; only the folding that held it in shape has been shaken apart, and the unfolded chains have tangled together and dropped out of solution. That is DENATURATION, and it explains why cooling will not undo it — the tangle simply cannot sort itself out again. In a real laboratory a biuret test on the cooked solid still comes out positive, which is the proof that the links survived. The same unfolding is what alcohol does to bacterial proteins, and it is why a disinfectant works.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, denaturation of proteins"
+  },
+  {
+    "id": "rxn_solvay_precipitation",
+    "reactants": ["co2_g", "nacl_1m", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nahco3_s", "nh4cl_aq"],
+    "equation": "NaCl + NH₃ + CO₂ + H₂O → NaHCO₃ + NH₄Cl",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#FAFAF5",
+      "precipitate": "a fine white solid of sodium hydrogencarbonate",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 6,
+      "resultPH": 8.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The heart of the SOLVAY PROCESS, which turns two of the cheapest substances on earth — salt and limestone — into washing soda. Look at what is in the beaker: sodium, ammonium, chloride and hydrogencarbonate ions, which could pair up four different ways. Only one of those four is barely soluble, and that is the one that drops out as a solid. Nothing forces this reaction; it happens because a single product refuses to stay dissolved, and the whole industry rests on that one fact. Bubbling the gas into cold ammoniated brine, not warm, is what keeps it that way.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, the Solvay process"
+  },
+  {
+    "id": "rxn_solvay_ammonia_recovery",
+    "reactants": ["caoh2_aq", "nh4cl_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["cacl2_aq", "nh3_g", "water"],
+    "equation": "2NH₄Cl + Ca(OH)₂ → CaCl₂ + 2NH₃ + 2H₂O",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "ammonia",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 12.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_gas",
+      "title": "Ammonia gas is choking",
+      "warning": "Ammonia comes off steadily on warming and is sharply irritating to the eyes and lungs. Hot limewater is also caustic.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard or good ventilation, eye protection, and identify the gas by wafting it towards you onto damp red litmus rather than by leaning over the tube."
+    },
+    "molecularAnimation": null,
+    "explanation": "This one entry does two jobs. As a laboratory test it is how you prove a salt contains AMMONIUM: warm it with any alkali and ammonia comes off, turning damp red litmus blue — the only common gas that does. As industry it is the step that makes the Solvay process pay. The ammonium chloride left over from the last reaction is treated with cheap lime, and the ammonia comes straight back to be used again. Almost none is consumed overall. A process that had to buy fresh ammonia every cycle would never have been worth building.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, the Solvay process; Chemistry X — test for the ammonium ion"
+  },
+  {
+    "id": "rxn_urea_synthesis",
+    "reactants": ["co2_g", "nh3_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["urea_s", "water"],
+    "equation": "2NH₃ + CO₂ → NH₂CONH₂ + H₂O",
+    "type": "synthesis",
+    "effects": {
+      "colorToHex": "#FAFAF5",
+      "precipitate": "white crystals of urea",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 14,
+      "resultPH": 7.2
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Pakistan's largest chemical industry in one line. The ammonia comes from the Haber process and the carbon dioxide is a waste gas from making it, so a plant that would otherwise vent carbon dioxide sells it as fertiliser instead. The real conditions are far beyond a school bench — about 180 °C at 150 atmospheres — and the app simply asks for heat rather than pretending otherwise. This reaction also carries a piece of history: making urea, a compound until then known only from living things, out of two lifeless minerals was what ended the belief that organic matter needed a vital force to create it.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, manufacture of urea"
+  },
+  {
+    "id": "rxn_ammonium_sulfate_fertiliser",
+    "reactants": ["h2so4_1m", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nh42so4_aq", "water"],
+    "equation": "2NH₃ + H₂SO₄ → (NH₄)₂SO₄",
+    "type": "neutralisation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 10,
+      "resultPH": 5.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "An ordinary neutralisation that happens to feed a large part of the world. Watch the pH, though, because it does not land on 7: this is the salt of a WEAK base and a STRONG acid, so the solution comes out ACIDIC. That is not a laboratory curiosity. Fields given this fertiliser season after season slowly sour, and the yield falls until the farmer limes the soil to bring it back. It is still worth using where the crop also needs sulfur, which urea cannot supply — every fertiliser is a trade-off rather than a winner.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, nitrogenous fertilisers"
+  },
+  {
+    "id": "rxn_ammonium_nitrate_fertiliser",
+    "reactants": ["hno3_1m", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nh4no3_aq", "water"],
+    "equation": "NH₃ + HNO₃ → NH₄NO₃",
+    "type": "neutralisation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 11,
+      "resultPH": 5.5
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "oxidiser",
+      "title": "Ammonium nitrate is a powerful oxidiser",
+      "warning": "As a solution in a beaker this is harmless enough. As a bulk solid it is a different matter: ammonium nitrate carries its own oxygen supply, and stored in quantity beside fuel or organic matter, or in a fire, it has caused several of the largest accidental explosions in history.",
+      "visualEffect": null,
+      "whatToDoInstead": "Never store it near fuels, oils, sawdust or acids, never confine it, and treat any fire near a store of it as an evacuation rather than something to fight. Its sale and storage are regulated in most countries for exactly this reason."
+    },
+    "molecularAnimation": null,
+    "explanation": "The other great nitrogen fertiliser, and it beats ammonium sulfate on nitrogen content because BOTH ends of the salt carry nitrogen — the ammonium is taken up slowly and the nitrate immediately. That same double dose of nitrogen is what makes it dangerous in bulk, since the nitrate half is an oxidising agent sitting next to the reducing ammonium half with no need for any air. Useful chemistry and hazardous chemistry are often the same chemistry seen from two sides; here the fertiliser and the explosion have identical formulas.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, nitrogenous fertilisers"
+  },
+  {
+    "id": "rxn_cement_clinker",
+    "reactants": ["caco3_s", "sio2_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["clinker_s", "co2_g"],
+    "equation": "3CaCO₃ + SiO₂ → Ca₃SiO₅ + 3CO₂",
+    "type": "synthesis",
+    "effects": {
+      "colorToHex": "#6B6B66",
+      "precipitate": "hard dark grey nodules of clinker",
+      "gas": "carbon dioxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 12.5
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "corrosive",
+      "title": "Cement is alkaline enough to burn skin",
+      "warning": "Clinker and the cement ground from it are strongly alkaline once wet — about pH 12.5. Cement burns are common on building sites and are treacherous, because the alkali works slowly and the damage is often done before anything is felt.",
+      "visualEffect": null,
+      "whatToDoInstead": "Gloves and eye protection, wash any contact off at once with plenty of water however mild it feels, and keep the dust out of the lungs."
+    },
+    "molecularAnimation": null,
+    "explanation": "Limestone and clay burnt together in a rotary kiln at about 1450 °C — far past anything a school burner reaches, so the app asks only for heat and leaves the real figure here. The environmental cost is the part worth arguing about: cement accounts for roughly eight per cent of the world's carbon dioxide, and only about half of that comes from the fuel. The rest comes out of the limestone itself, as this equation shows. That half cannot be removed by switching to cleaner fuel — it is built into the chemistry, and it is why cement is such a hard industry to decarbonise.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, manufacture of cement"
+  },
+  {
+    "id": "rxn_cement_setting",
+    "reactants": ["clinker_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cement_set_s"],
+    "equation": "Ca₃SiO₅ + H₂O → hydrated calcium silicate + Ca(OH)₂",
+    "type": "hydration",
+    "effects": {
+      "colorToHex": "#9A9A93",
+      "precipitate": "a grey solid mass that hardens as it stands",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 12.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Cement does NOT harden by drying, and almost everyone believes it does. It hardens by reacting with the water, growing a mat of interlocking crystals through the space the water occupied — which is why concrete sets perfectly well underwater, why it is kept damp for days after pouring, and why concrete allowed to dry too quickly ends up weaker rather than stronger. The temperature rise here is real and not trivial: a large concrete pour gets hot enough from its own reaction that engineers run cooling pipes through it, and dams have been built in layers for this reason alone.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, setting and hardening of cement"
+  },
+  {
+    "id": "rxn_acidrain_attacks_marble",
+    "reactants": ["caco3_s", "h2so4_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["caso4_aq", "co2_g", "water"],
+    "equation": "CaCO₃ + H₂SO₄ → CaSO₄ + CO₂ + H₂O",
+    "type": "acid_carbonate",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 2.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The app already knew how to MAKE acid rain — sulfur dioxide from burning coal and diesel, dissolved and oxidised. This is what happens when it lands. Marble and limestone are calcium carbonate, so a building is chemically the same thing as the marble chip in this beaker, and it fizzes away in exactly the same manner. The damage is worse than simple dissolving, because the calcium sulfate left behind takes up more room than the stone it replaced and flakes the surface off, taking carved detail with it. It is why old monuments have blurred faces, and it is a chemistry problem with a political solution: scrub the sulfur out at the chimney.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Environmental chemistry, effects of acid rain"
+  },
+  {
+    "id": "rxn_liming_acid_water",
+    "reactants": ["caoh2_aq", "h2so4_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["caso4_aq", "water"],
+    "equation": "Ca(OH)₂ + H₂SO₄ → CaSO₄ + 2H₂O",
+    "type": "neutralisation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 12,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The remedy, and an honest look at what a remedy is worth. Lakes across Scandinavia and Canada were limed from boats and helicopters through the 1980s to bring acidified water back towards pH 7 so that fish could live in it, and this is the reaction that did it. It works, and it treats the symptom: the moment the liming stops the acid rain is still falling, and the lake goes back. The cure was eventually the unglamorous one — sulfur scrubbers on power stations and low-sulfur fuel — which fixed the cause instead. Notice too that the product is calcium sulfate, so a limed lake ends up harder than it began.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Environmental chemistry, control of acid rain"
+  },
+  {
+    "id": "rxn_water_treatment_alum",
+    "reactants": ["alum_aq", "cahco3_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["aloh3_s", "caso4_aq", "co2_g"],
+    "equation": "Al₂(SO₄)₃ + 3Ca(HCO₃)₂ → 2Al(OH)₃ + 3CaSO₄ + 6CO₂",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F2F4F2",
+      "precipitate": "a soft white jelly-like floc that settles slowly",
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 6.5
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "How muddy river water is made fit to drink, at every waterworks in the country and in any village where a lump of phitkari is rubbed round a pot. The clay that makes water look brown is far too fine to filter and will not settle in a week — the particles all carry the same charge and shove each other apart. Alum cures that in two ways at once: its Al³⁺ ions cancel the charge so the particles can finally touch, and the soft floc forming through the whole depth of the water sweeps them down as it sinks. What is filtered off is mostly the dirt, not the aluminium. It removes bacteria too, but not reliably, which is why chlorination still comes afterwards.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Environmental chemistry, purification of drinking water"
   }
 ]

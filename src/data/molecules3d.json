@@ -2852,6 +2852,223 @@
     ]
   },
 
+  "urea_s": {
+    "note": "Turn it and the whole molecule is FLAT - both nitrogens, the carbon and the oxygen lie in one plane. That is the same flatness seen in ethanamide, and for the same reason: each nitrogen's lone pair is pulled towards the carbonyl. Urea simply has two of them instead of one, which is where its unbeatable 46 % nitrogen comes from.",
+    "atoms": [
+      { "id": "c", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0, "y": 1.26, "z": 0 },
+      { "id": "n1", "element": "N", "x": 1.16, "y": -0.72, "z": 0 },
+      { "id": "n2", "element": "N", "x": -1.16, "y": -0.72, "z": 0 },
+      { "id": "h1", "element": "H", "x": 2.06, "y": -0.26, "z": 0 },
+      { "id": "h2", "element": "H", "x": 1.12, "y": -1.72, "z": 0 },
+      { "id": "h3", "element": "H", "x": -2.06, "y": -0.26, "z": 0 },
+      { "id": "h4", "element": "H", "x": -1.12, "y": -1.72, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c", "to": "o", "type": "covalent" },
+      { "from": "c", "to": "n1", "type": "covalent" },
+      { "from": "c", "to": "n2", "type": "covalent" },
+      { "from": "n1", "to": "h1", "type": "covalent" },
+      { "from": "n1", "to": "h2", "type": "covalent" },
+      { "from": "n2", "to": "h3", "type": "covalent" },
+      { "from": "n2", "to": "h4", "type": "covalent" }
+    ]
+  },
+
+  "nh42so4_aq": {
+    "note": "Two ammonium ions and one sulfate. Both ions are neat tetrahedra - turn the model and each looks the same from four directions - but they behave quite differently in water: the sulfate sits there unchanged while the ammonium slowly gives a hydrogen ion back, which is what makes the solution acidic.",
+    "atoms": [
+      { "id": "s", "element": "S", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.85, "y": 0.85, "z": 0.85 },
+      { "id": "o2", "element": "O", "x": -0.85, "y": -0.85, "z": 0.85 },
+      { "id": "o3", "element": "O", "x": -0.85, "y": 0.85, "z": -0.85 },
+      { "id": "o4", "element": "O", "x": 0.85, "y": -0.85, "z": -0.85 },
+      { "id": "n1", "element": "N", "x": -3.6, "y": 1.6, "z": 0 },
+      { "id": "a1", "element": "H", "x": -4.2, "y": 2.4, "z": 0.4 },
+      { "id": "a2", "element": "H", "x": -3.0, "y": 2.1, "z": -0.7 },
+      { "id": "a3", "element": "H", "x": -4.2, "y": 0.9, "z": -0.5 },
+      { "id": "a4", "element": "H", "x": -3.0, "y": 1.0, "z": 0.8 },
+      { "id": "n2", "element": "N", "x": 3.6, "y": -1.6, "z": 0 },
+      { "id": "b1", "element": "H", "x": 4.2, "y": -2.4, "z": 0.4 },
+      { "id": "b2", "element": "H", "x": 3.0, "y": -2.1, "z": -0.7 },
+      { "id": "b3", "element": "H", "x": 4.2, "y": -0.9, "z": -0.5 },
+      { "id": "b4", "element": "H", "x": 3.0, "y": -1.0, "z": 0.8 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "n1", "to": "a1", "type": "covalent" },
+      { "from": "n1", "to": "a2", "type": "covalent" },
+      { "from": "n1", "to": "a3", "type": "covalent" },
+      { "from": "n1", "to": "a4", "type": "covalent" },
+      { "from": "n2", "to": "b1", "type": "covalent" },
+      { "from": "n2", "to": "b2", "type": "covalent" },
+      { "from": "n2", "to": "b3", "type": "covalent" },
+      { "from": "n2", "to": "b4", "type": "covalent" }
+    ]
+  },
+
+  "sio2_s": {
+    "note": "This is a FRAGMENT, and the fragment is the lesson. There is no silica molecule to show - every silicon here has four oxygens round it and every oxygen bridges two silicons, and the pattern simply carries on past the edges of the model in all directions. To melt sand you have to break that network apart, which is why it takes 1700 degrees, while carbon dioxide with its similar-looking formula is a gas at room temperature.",
+    "atoms": [
+      { "id": "si1", "element": "Si", "x": -1.55, "y": 1.55, "z": 0 },
+      { "id": "si2", "element": "Si", "x": 1.55, "y": 1.55, "z": 0 },
+      { "id": "si3", "element": "Si", "x": -1.55, "y": -1.55, "z": 0 },
+      { "id": "si4", "element": "Si", "x": 1.55, "y": -1.55, "z": 0 },
+      { "id": "ob1", "element": "O", "x": 0, "y": 1.8, "z": 0.5 },
+      { "id": "ob2", "element": "O", "x": 0, "y": -1.8, "z": -0.5 },
+      { "id": "ob3", "element": "O", "x": -1.8, "y": 0, "z": -0.5 },
+      { "id": "ob4", "element": "O", "x": 1.8, "y": 0, "z": 0.5 },
+      { "id": "oe1", "element": "O", "x": -3.1, "y": 2.5, "z": 0.6 },
+      { "id": "oe2", "element": "O", "x": 3.1, "y": 2.5, "z": -0.6 },
+      { "id": "oe3", "element": "O", "x": -3.1, "y": -2.5, "z": -0.6 },
+      { "id": "oe4", "element": "O", "x": 3.1, "y": -2.5, "z": 0.6 },
+      { "id": "of1", "element": "O", "x": -1.3, "y": 2.6, "z": -1.4 },
+      { "id": "of2", "element": "O", "x": 1.3, "y": 2.6, "z": 1.4 },
+      { "id": "of3", "element": "O", "x": -1.3, "y": -2.6, "z": 1.4 },
+      { "id": "of4", "element": "O", "x": 1.3, "y": -2.6, "z": -1.4 }
+    ],
+    "bonds": [
+      { "from": "si1", "to": "ob1", "type": "covalent" },
+      { "from": "si2", "to": "ob1", "type": "covalent" },
+      { "from": "si3", "to": "ob2", "type": "covalent" },
+      { "from": "si4", "to": "ob2", "type": "covalent" },
+      { "from": "si1", "to": "ob3", "type": "covalent" },
+      { "from": "si3", "to": "ob3", "type": "covalent" },
+      { "from": "si2", "to": "ob4", "type": "covalent" },
+      { "from": "si4", "to": "ob4", "type": "covalent" },
+      { "from": "si1", "to": "oe1", "type": "covalent" },
+      { "from": "si2", "to": "oe2", "type": "covalent" },
+      { "from": "si3", "to": "oe3", "type": "covalent" },
+      { "from": "si4", "to": "oe4", "type": "covalent" },
+      { "from": "si1", "to": "of1", "type": "covalent" },
+      { "from": "si2", "to": "of2", "type": "covalent" },
+      { "from": "si3", "to": "of3", "type": "covalent" },
+      { "from": "si4", "to": "of4", "type": "covalent" }
+    ]
+  },
+
+  "clinker_s": {
+    "note": "One silicate tetrahedron with three calcium ions round it. The real clinker is a lattice of these repeated endlessly - what is shown is the repeating unit, the same way a single NaCl pair stands for a whole salt crystal. The calcium is what makes wet cement so alkaline, and so good at burning skin.",
+    "atoms": [
+      { "id": "si", "element": "Si", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.93, "y": 0.93, "z": 0.93 },
+      { "id": "o2", "element": "O", "x": -0.93, "y": -0.93, "z": 0.93 },
+      { "id": "o3", "element": "O", "x": -0.93, "y": 0.93, "z": -0.93 },
+      { "id": "o4", "element": "O", "x": 0.93, "y": -0.93, "z": -0.93 },
+      { "id": "ca1", "element": "Ca", "x": 3.0, "y": 1.6, "z": 0 },
+      { "id": "ca2", "element": "Ca", "x": -3.0, "y": 1.6, "z": 0.8 },
+      { "id": "ca3", "element": "Ca", "x": 0, "y": -3.2, "z": -0.8 }
+    ],
+    "bonds": [
+      { "from": "si", "to": "o1", "type": "covalent" },
+      { "from": "si", "to": "o2", "type": "covalent" },
+      { "from": "si", "to": "o3", "type": "covalent" },
+      { "from": "si", "to": "o4", "type": "covalent" },
+      { "from": "ca1", "to": "o1", "type": "ionic" },
+      { "from": "ca2", "to": "o3", "type": "ionic" },
+      { "from": "ca3", "to": "o4", "type": "ionic" }
+    ]
+  },
+
+  "cement_set_s": {
+    "note": "There is no molecule of set cement, so this is a SKETCH of what hardening does: silicate units, shown as grey blocks, that have grown out and locked into each other through the space the mixing water filled. The number of water molecules taken up varies from place to place in the same lump, which is why set cement has no single formula. Nothing here dried out - the water became part of the solid.",
+    "atoms": [
+      { "id": "a", "element": "group", "x": -2.6, "y": 1.4, "z": 0.6 },
+      { "id": "b", "element": "group", "x": -0.6, "y": 2.2, "z": -0.8 },
+      { "id": "c", "element": "group", "x": 1.6, "y": 1.2, "z": 0.4 },
+      { "id": "d", "element": "group", "x": 3.0, "y": -0.4, "z": -0.6 },
+      { "id": "e", "element": "group", "x": 0.4, "y": -0.6, "z": 1.2 },
+      { "id": "f", "element": "group", "x": -2.0, "y": -1.4, "z": -0.4 },
+      { "id": "g", "element": "group", "x": 1.0, "y": -2.6, "z": 0.2 },
+      { "id": "w1", "element": "O", "x": -1.6, "y": 0.4, "z": 1.4 },
+      { "id": "w2", "element": "O", "x": 2.2, "y": 0.4, "z": -1.4 },
+      { "id": "w3", "element": "O", "x": -0.6, "y": -2.0, "z": -1.0 }
+    ],
+    "bonds": [
+      { "from": "a", "to": "b", "type": "covalent" },
+      { "from": "b", "to": "c", "type": "covalent" },
+      { "from": "c", "to": "d", "type": "covalent" },
+      { "from": "a", "to": "w1", "type": "covalent" },
+      { "from": "w1", "to": "e", "type": "covalent" },
+      { "from": "c", "to": "w2", "type": "covalent" },
+      { "from": "w2", "to": "d", "type": "covalent" },
+      { "from": "e", "to": "f", "type": "covalent" },
+      { "from": "f", "to": "w3", "type": "covalent" },
+      { "from": "w3", "to": "g", "type": "covalent" },
+      { "from": "e", "to": "g", "type": "covalent" }
+    ]
+  },
+
+  "alum_aq": {
+    "note": "One aluminium ion between two sulfates. Notice how SMALL the aluminium sphere is for something carrying three positive charges - that combination of small size and high charge is the whole story. It pulls so hard on the water molecules around it that they let go of a hydrogen ion, which is why a solution of this salt turns litmus red, and it is the first step towards the hydroxide floc.",
+    "atoms": [
+      { "id": "al", "element": "Al", "x": 0, "y": 0, "z": 0 },
+      { "id": "s1", "element": "S", "x": 3.4, "y": 0.8, "z": 0 },
+      { "id": "a1", "element": "O", "x": 2.2, "y": 0.3, "z": 0.6 },
+      { "id": "a2", "element": "O", "x": 4.3, "y": 1.7, "z": 0.6 },
+      { "id": "a3", "element": "O", "x": 4.1, "y": -0.3, "z": -0.6 },
+      { "id": "a4", "element": "O", "x": 2.9, "y": 1.5, "z": -1.1 },
+      { "id": "s2", "element": "S", "x": -3.4, "y": -0.8, "z": 0 },
+      { "id": "b1", "element": "O", "x": -2.2, "y": -0.3, "z": -0.6 },
+      { "id": "b2", "element": "O", "x": -4.3, "y": -1.7, "z": -0.6 },
+      { "id": "b3", "element": "O", "x": -4.1, "y": 0.3, "z": 0.6 },
+      { "id": "b4", "element": "O", "x": -2.9, "y": -1.5, "z": 1.1 }
+    ],
+    "bonds": [
+      { "from": "s1", "to": "a1", "type": "covalent" },
+      { "from": "s1", "to": "a2", "type": "covalent" },
+      { "from": "s1", "to": "a3", "type": "covalent" },
+      { "from": "s1", "to": "a4", "type": "covalent" },
+      { "from": "al", "to": "a1", "type": "ionic" },
+      { "from": "s2", "to": "b1", "type": "covalent" },
+      { "from": "s2", "to": "b2", "type": "covalent" },
+      { "from": "s2", "to": "b3", "type": "covalent" },
+      { "from": "s2", "to": "b4", "type": "covalent" },
+      { "from": "al", "to": "b1", "type": "ionic" }
+    ]
+  },
+
+  "aloh3_s": {
+    "note": "Turn this one and look at the SPACE in it. Aluminium hydroxide units bridged loosely through hydroxide groups, with wide gaps everywhere - that openness is the entire reason it works. A dense precipitate would drop straight to the bottom and leave the water as dirty as before, while this mesh forms through the whole depth and carries the clay and bacteria down inside itself.",
+    "atoms": [
+      { "id": "al1", "element": "Al", "x": -2.4, "y": 1.8, "z": 0.4 },
+      { "id": "al2", "element": "Al", "x": 1.2, "y": 2.4, "z": -0.8 },
+      { "id": "al3", "element": "Al", "x": -0.4, "y": -1.2, "z": 1.2 },
+      { "id": "al4", "element": "Al", "x": 3.0, "y": -0.8, "z": 0.6 },
+      { "id": "al5", "element": "Al", "x": -3.0, "y": -1.8, "z": -1.0 },
+      { "id": "o1", "element": "O", "x": -0.6, "y": 2.4, "z": -0.2 },
+      { "id": "o2", "element": "O", "x": 2.4, "y": 0.9, "z": -0.2 },
+      { "id": "o3", "element": "O", "x": 1.4, "y": 0.5, "z": 1.4 },
+      { "id": "o4", "element": "O", "x": -1.5, "y": 0.4, "z": 1.0 },
+      { "id": "o5", "element": "O", "x": -1.8, "y": -1.6, "z": -0.2 },
+      { "id": "h1", "element": "H", "x": -3.4, "y": 2.8, "z": 0.9 },
+      { "id": "h2", "element": "H", "x": 1.4, "y": 3.6, "z": -1.4 },
+      { "id": "h3", "element": "H", "x": 0.2, "y": -2.4, "z": 1.8 },
+      { "id": "h4", "element": "H", "x": 4.2, "y": -1.4, "z": 1.0 },
+      { "id": "h5", "element": "H", "x": -4.2, "y": -2.6, "z": -1.4 }
+    ],
+    "bonds": [
+      { "from": "al1", "to": "o1", "type": "covalent" },
+      { "from": "o1", "to": "al2", "type": "covalent" },
+      { "from": "al2", "to": "o2", "type": "covalent" },
+      { "from": "o2", "to": "al4", "type": "covalent" },
+      { "from": "al2", "to": "o3", "type": "covalent" },
+      { "from": "o3", "to": "al3", "type": "covalent" },
+      { "from": "al1", "to": "o4", "type": "covalent" },
+      { "from": "o4", "to": "al3", "type": "covalent" },
+      { "from": "al3", "to": "o5", "type": "covalent" },
+      { "from": "o5", "to": "al5", "type": "covalent" },
+      { "from": "al1", "to": "h1", "type": "covalent" },
+      { "from": "al2", "to": "h2", "type": "covalent" },
+      { "from": "al3", "to": "h3", "type": "covalent" },
+      { "from": "al4", "to": "h4", "type": "covalent" },
+      { "from": "al5", "to": "h5", "type": "covalent" }
+    ]
+  },
+
   "glucose_aq": {
     "note": "The hydrogens are left off so the ring can be seen. Turn it and the ring is not flat - it buckles into the shape called a chair, and every OH group sticks out sideways rather than up or down. That is what makes this particular arrangement the most comfortable of all the sugars, and it is why glucose, out of all of them, is the one life runs on.",
     "atoms": [
