@@ -3556,5 +3556,260 @@
     "explanation": "Warm an acid with an alcohol and a trace of sulfuric acid and the flask fills with the smell of pear drops. It is the most memorable reaction in the syllabus for a reason — two starting materials that smell of nothing pleasant give something that smells of sweets. Note the double arrow: this is a genuine equilibrium and never goes to completion, so the yield is improved by removing the ester as it forms or by using an excess of one reactant. The sulfuric acid is a catalyst and is not used up, and esters like this one give fruit and flowers much of their scent.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids, esterification"
+  },
+  {
+    "id": "rxn_acid_pcl5",
+    "reactants": ["ch3cooh_aq", "pcl5_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["ch3cocl_l", "pocl3_l", "hcl_g"],
+    "equation": "CH₃COOH + PCl₅ → CH₃COCl + POCl₃ + HCl",
+    "type": "substitution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen chloride",
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 15,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "corrosive_fumes",
+      "title": "Choking fumes of hydrogen chloride",
+      "warning": "Steamy hydrogen chloride pours off immediately and attacks the eyes, nose and lungs. Phosphorus pentachloride itself burns skin, and it reacts violently with any water it meets — including the moisture in your breath and on your hands.",
+      "visualEffect": "white_fumes",
+      "whatToDoInstead": "Fume cupboard, gloves and eye protection, and keep the reagent bottle stoppered so it stays dry. Never add water to try to quieten it down — that makes the fumes worse, not better."
+    },
+    "molecularAnimation": null,
+    "explanation": "Steamy fumes the instant the two meet, and that is the point: this is the standard laboratory TEST for an —OH group. Alcohols, phenols and carboxylic acids all give the fumes; esters, aldehydes and ketones give none, because they have no —OH to attack. What the reaction is doing is swapping that —OH for a chlorine, which turns a sluggish acid into the most reactive derivative there is. One honest note about this simulation: in the real laboratory the acid must be GLACIAL — water-free — because phosphorus pentachloride attacks water just as eagerly as it attacks the acid, and a wet sample simply wastes the reagent.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids, reaction with phosphorus pentachloride"
+  },
+  {
+    "id": "rxn_acyl_chloride_water",
+    "reactants": ["ch3cocl_l", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["ch3cooh_aq", "hcl_g"],
+    "equation": "CH₃COCl + H₂O → CH₃COOH + HCl",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen chloride",
+      "bubbles": true,
+      "smoke": true,
+      "tempDeltaC": 25,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "violent_reaction",
+      "title": "Hisses violently and throws off corrosive fumes",
+      "warning": "The reaction is immediate and strongly exothermic. It spits, it steams, and the hydrogen chloride coming off burns the airways. Adding water to a bottle of ethanoyl chloride can eject the contents.",
+      "visualEffect": "white_fumes",
+      "whatToDoInstead": "Fume cupboard, face protection, and add the ethanoyl chloride dropwise to a large volume of cold water — never the other way round. Destroy small residues this way deliberately rather than leaving them to meet water by accident."
+    },
+    "molecularAnimation": null,
+    "explanation": "It hisses on contact with cold water — no heating, no catalyst, no waiting. Compare that with the ester made in the last batch, which needs boiling with alkali before it will break apart at all, and with an amide, which needs prolonged boiling. Same underlying reaction, wildly different speeds, and the reason is the chlorine: it drags electrons away from the carbonyl carbon and leaves it exposed. This is why an acid chloride cannot be stored in a damp bottle, and why it fumes when you simply take the stopper out — it is reacting with the water vapour in the room.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, hydrolysis of acid chlorides"
+  },
+  {
+    "id": "rxn_acyl_chloride_ethanol",
+    "reactants": ["c2h5oh_aq", "ch3cocl_l"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["ester_l", "hcl_g"],
+    "equation": "CH₃COCl + C₂H₅OH → CH₃COOC₂H₅ + HCl",
+    "type": "substitution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen chloride",
+      "bubbles": true,
+      "smoke": true,
+      "tempDeltaC": 20,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "corrosive_fumes",
+      "title": "Vigorous, and the fumes are corrosive",
+      "warning": "The reaction is fast and gives out heat, and the hydrogen chloride it produces is choking and corrosive. Ethanol is also flammable, and the mixture warms itself considerably.",
+      "visualEffect": "white_fumes",
+      "whatToDoInstead": "Fume cupboard, add the acid chloride slowly with cooling, and keep it well away from flames."
+    },
+    "molecularAnimation": null,
+    "explanation": "Put this side by side with the esterification from the last batch and the lesson is unmistakable. That one needed an acid catalyst, needed heating, and still stopped at an equilibrium that never went to completion. This one needs neither catalyst nor heat, is over in seconds, and goes the whole way — because the hydrogen chloride escapes as a gas and can never come back to reverse it. The same ester, by two routes: one slow and reversible, one fast and complete. When yield matters, this is the route chemists take.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, reaction of acid chlorides with alcohols"
+  },
+  {
+    "id": "rxn_acyl_chloride_ammonia",
+    "reactants": ["ch3cocl_l", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["ch3conh2_s", "nh4cl_aq"],
+    "equation": "CH₃COCl + 2NH₃ → CH₃CONH₂ + NH₄Cl",
+    "type": "substitution",
+    "effects": {
+      "colorToHex": "#FAFAF5",
+      "precipitate": "a white solid of ethanamide",
+      "gas": null,
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 22,
+      "resultPH": 8.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "violent_reaction",
+      "title": "Violent, with dense white smoke",
+      "warning": "The two react at once and strongly, and the flask fills with dense white smoke. Ammonia vapour is choking in its own right, and the mixture gets hot enough to spit.",
+      "visualEffect": "white_fumes",
+      "whatToDoInstead": "Fume cupboard, eye protection, and add the acid chloride a drop at a time to excess cold ammonia solution."
+    },
+    "molecularAnimation": null,
+    "explanation": "A dense white smoke fills the flask and a white solid appears. The chlorine has been replaced by —NH₂ and the product is an AMIDE. Two molecules of ammonia are needed rather than one, because the second is used up mopping the hydrogen chloride into ammonium chloride. Look carefully at the C—N bond that has just been made: repeat it along a chain and it becomes the peptide link that holds every protein in your body together. The bottom rung of this ladder is where biology begins.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, reaction of acid chlorides with ammonia"
+  },
+  {
+    "id": "rxn_anhydride_from_acyl_chloride",
+    "reactants": ["ch3cocl_l", "ch3coona_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["anhydride_l", "nacl_aq"],
+    "equation": "CH₃COCl + CH₃COONa → (CH₃CO)₂O + NaCl",
+    "type": "substitution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 7.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "corrosive",
+      "title": "Both the reagent and the product burn skin and eyes",
+      "warning": "Ethanoyl chloride and ethanoic anhydride are corrosive, and the anhydride's vapour makes the eyes stream.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard, gloves and eye protection. Keep everything dry, since both compounds are attacked by water."
+    },
+    "molecularAnimation": null,
+    "explanation": "Two ethanoic acid units joined through a shared oxygen — an ANHYDRIDE, which is the second rung of the ladder. It does everything the acid chloride does, with water, with alcohols and with ammonia, but more slowly and without throwing off corrosive hydrogen chloride. That is exactly why industry prefers it: it is easier to control, cheaper, and it is the reagent used to make aspirin. So the full order of reactivity runs acid chloride, then anhydride, then ester, then amide — and each step down that list means a reaction that needs more persuading.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, preparation of anhydrides"
+  },
+  {
+    "id": "rxn_ester_hydrolysis_alkaline",
+    "reactants": ["ester_l", "naoh_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["ch3coona_aq", "c2h5oh_aq"],
+    "equation": "CH₃COOC₂H₅ + NaOH → CH₃COONa + C₂H₅OH",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 10.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Boil the ester with sodium hydroxide and the fruity smell disappears — the surest sign that the ester has gone. This is the reverse of making it, but done in a way that cannot reverse itself: the acid produced is immediately taken by the alkali as its salt, and a salt will not re-esterify. That is the trick. Acid hydrolysis of the same ester gets stuck at an equilibrium, exactly as making it did, while alkaline hydrolysis goes to completion every time. Note also that heat is genuinely needed here, where the acid chloride hissed in cold water — the ladder again.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, alkaline hydrolysis of esters"
+  },
+  {
+    "id": "rxn_amide_hydrolysis_alkaline",
+    "reactants": ["ch3conh2_s", "naoh_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["ch3coona_aq", "nh3_g"],
+    "equation": "CH₃CONH₂ + NaOH → CH₃COONa + NH₃",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "ammonia",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 12.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_gas",
+      "title": "Ammonia gas is choking",
+      "warning": "Ammonia comes off as the mixture boils and is sharply irritating to the eyes and lungs. Hot sodium hydroxide also burns skin badly and is particularly dangerous to eyes.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard or good ventilation, eye protection, and smell the gas only by wafting it towards you — never by putting your face over the tube."
+    },
+    "molecularAnimation": null,
+    "explanation": "Boil an amide with alkali and ammonia is driven off — the test is to hold damp red litmus at the mouth of the tube and watch it turn blue. This is also the last rung of the ladder, and note how much persuading it takes: the acid chloride reacted with cold water on contact, the ester needed boiling with alkali, and the amide needs PROLONGED boiling with it. Two things follow. Ethanamide is neutral rather than basic, because the carbonyl group holds the nitrogen's lone pair away from any passing acid. And since a protein is a chain of amide links, this stubbornness is precisely why your body needs enzymes to digest one.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, hydrolysis of amides"
+  },
+  {
+    "id": "rxn_saponification_fat",
+    "reactants": ["fat_l", "naoh_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["soap_aq", "glycerol_l"],
+    "equation": "(C₁₇H₃₅COO)₃C₃H₅ + 3NaOH → 3C₁₇H₃₅COONa + C₃H₅(OH)₃",
+    "type": "saponification",
+    "effects": {
+      "colorToHex": "#F6F2E4",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 6,
+      "resultPH": 10.0
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "corrosive",
+      "title": "Boiling caustic alkali",
+      "warning": "Hot concentrated sodium hydroxide is severely corrosive and the mixture can bump and splash as it boils. Alkali in the eye causes permanent damage within seconds.",
+      "visualEffect": null,
+      "whatToDoInstead": "Goggles, not just safety spectacles. Heat gently with stirring, use anti-bumping granules, and never lean over the beaker."
+    },
+    "molecularAnimation": null,
+    "explanation": "SAPONIFICATION — soap making, and the oldest deliberate chemical reaction there is. Nothing new is happening: a fat IS an ester, three fatty-acid chains joined to one glycerol, and boiling it with alkali hydrolyses it exactly as the last reaction hydrolysed ethyl ethanoate. Three chains come off as the sodium salts, which are the soap, and the glycerol that held them is left behind as a valuable by-product for creams and medicines. Add common salt at the end and the soap, which will not dissolve in brine, rises to the top to be skimmed off.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, saponification and soap manufacture"
+  },
+  {
+    "id": "rxn_soap_hard_water",
+    "reactants": ["caso4_aq", "soap_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["scum_s", "na2so4_aq"],
+    "equation": "2C₁₇H₃₅COONa + CaSO₄ → (C₁₇H₃₅COO)₂Ca + Na₂SO₄",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#E8E2D2",
+      "precipitate": "a grey curdy scum instead of a lather",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 8.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Shake soap with hard water and you get no lather — just a grey curdy scum and a ring round the bath. Calcium carries two positive charges where sodium carried one, so it grips two soap molecules at once and the result will not dissolve. The soap that becomes scum has done no washing at all, and it goes on being wasted until every calcium ion in the water has been used up. Note which hard water this is: permanent hardness, from calcium sulfate, which BOILING WILL NOT REMOVE. Boiling deals only with the temporary kind.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, action of hard water on soap; Chemistry X — Water, hardness"
+  },
+  {
+    "id": "rxn_none_detergent_hard_water",
+    "reactants": ["caso4_aq", "detergent_aq"],
+    "noReaction": true,
+    "explanation": "No scum, no curd, and a good lather — which is the entire reason synthetic detergents were invented. A detergent is built to the same two-ended plan as soap, but its water-loving head is a sulfonate rather than a —COO⁻, and the calcium salt of a sulfonate stays dissolved instead of precipitating out. Run this beside the soap tube and one shake tells the whole story. Detergents are also close to neutral, where soap is alkaline, so they are safe on wool and silk. The cost came later: the early branched-chain detergents would not break down in rivers and foamed up sewage works, which is why straight-chain ones replaced them.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, soaps and detergents compared"
   }
 ]

@@ -1,0 +1,27 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ethanamide: an AMIDE. The C to N bond drawn here is the same peptide link that joins amino acids into a protein, and its stubbornness is why proteins survive">
+  <line x1="44" y1="60" x2="62" y2="60" stroke="#161A19" stroke-width="2"/>
+  <line x1="26" y1="48" x2="16" y2="34" stroke="#161A19" stroke-width="2"/>
+  <line x1="26" y1="72" x2="16" y2="86" stroke="#161A19" stroke-width="2"/>
+  <line x1="76" y1="46" x2="76" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="82" y1="46" x2="82" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="92" y1="68" x2="108" y2="78" stroke="#161A19" stroke-width="2"/>
+  <circle cx="28" cy="60" r="14" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="28" y="65" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="79" cy="60" r="14" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="79" y="65" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="79" cy="22" r="12" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="79" y="27" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="120" cy="84" r="15" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="120" y="90" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">N</text>
+  <line x1="132" y1="76" x2="144" y2="68" stroke="#161A19" stroke-width="2"/>
+  <line x1="128" y1="96" x2="136" y2="106" stroke="#161A19" stroke-width="2"/>
+  <circle cx="150" cy="62" r="8" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="150" y="65" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="142" cy="112" r="8" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="142" y="115" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="10" cy="26" r="9" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="10" y="29" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="10" cy="94" r="9" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="10" y="97" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">H</text>
+  <text x="80" y="114" text-anchor="middle" font-family="sans-serif" font-size="9" font-style="italic" fill="#4A4A4A">this C–N is the peptide bond</text>
+</svg>

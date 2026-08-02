@@ -1,0 +1,25 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ethanoic anhydride: two ethanoic acid units joined through one shared oxygen in the middle. Second rung of the reactivity ladder, below the acid chloride">
+  <line x1="30" y1="60" x2="46" y2="60" stroke="#161A19" stroke-width="2"/>
+  <line x1="58" y1="46" x2="58" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="64" y1="46" x2="64" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="72" y1="68" x2="80" y2="74" stroke="#161A19" stroke-width="2"/>
+  <line x1="88" y1="74" x2="96" y2="68" stroke="#161A19" stroke-width="2"/>
+  <line x1="102" y1="46" x2="102" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="108" y1="46" x2="108" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="118" y1="60" x2="134" y2="60" stroke="#161A19" stroke-width="2"/>
+  <circle cx="20" cy="60" r="12" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="20" y="65" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="61" cy="60" r="14" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="61" y="65" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="61" cy="22" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="61" y="26" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="84" cy="78" r="12" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="84" y="83" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="105" cy="60" r="14" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="105" y="65" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="105" cy="22" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="105" y="26" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="144" cy="60" r="12" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="144" y="65" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">C</text>
+  <text x="84" y="112" text-anchor="middle" font-family="sans-serif" font-size="10" font-style="italic" fill="#4A4A4A">the shared O is the anhydride link</text>
+</svg>
