@@ -5467,5 +5467,231 @@
     "explanation": "The brown of the iodine fades to nothing, and this single reaction is the whole basis of iodometric analysis. Two thiosulfate ions each give up an electron and are joined together through their sulfurs into one tetrathionate ion — an exact two-to-one ratio, which is what makes it usable for measuring rather than merely observing. In practice the endpoint is sharpened by adding starch near the end, so the last trace of iodine shows as blue-black and its disappearance is unmistakable. Add the starch too early and it traps the iodine and ruins the reading.",
     "levels": ["bs"],
     "source": "Vogel's Textbook of Quantitative Chemical Analysis 6th ed. — iodometric titration"
+  },
+  {
+    "id": "rxn_period3_na2o_water",
+    "reactants": ["na2o_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["naoh_aq"],
+    "equation": "Na₂O + H₂O → 2NaOH",
+    "type": "acid_base",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "dissolves": "the white solid disappeared at once, giving a clear solution",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 30,
+      "resultPH": 14.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "corrosive",
+      "title": "Violently corrosive, and it gets very hot",
+      "warning": "Sodium oxide reacts with water fast enough to spit, and what it makes is concentrated sodium hydroxide. Alkali in the eye causes permanent damage within seconds.",
+      "visualEffect": null,
+      "whatToDoInstead": "Goggles rather than spectacles, gloves, and add the solid to plenty of water in small amounts rather than the other way round."
+    },
+    "molecularAnimation": null,
+    "explanation": "The start of a walk across Period 3, and every entry after this is a comparison with it. Sodium oxide gives the most alkaline solution of any oxide in the period — pH 14 — and the reason is its BONDING. Sodium's pull on electrons is so much weaker than oxygen's that the electrons are handed over completely, leaving a lattice of ions; and a free oxide ion is one of the strongest bases there is. Follow the pH across the next five entries and it falls all the way to 1. Nothing about the oxygen changes; only the element it is joined to.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — Period 3 oxides and water"
+  },
+  {
+    "id": "rxn_period3_mgo_water",
+    "reactants": ["mgo_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mgoh2_s"],
+    "equation": "MgO + H₂O → Mg(OH)₂",
+    "type": "acid_base",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "a faint white suspension that does not settle out",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 10.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Still alkaline, but only pH 10 rather than 14 — the first step down. Magnesium oxide is still ionic, so it is still a base, but magnesium holds its two charges on a smaller ion and grips the oxide far more tightly than sodium did. Very little dissolves, and what does gives a weak alkali. This is the compound sold as milk of magnesia precisely because it is alkaline enough to neutralise stomach acid and too insoluble to do any harm beyond that.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — Period 3 oxides and water"
+  },
+  {
+    "id": "rxn_none_al2o3_water",
+    "reactants": ["al2o3_s", "water_distilled"],
+    "noReaction": true,
+    "explanation": "Nothing. The powder sits there and the pH stays at 7, which is exactly the middle of the story. Aluminium oxide is at the point in the period where the bonding has stopped being properly ionic and has not yet become properly covalent, and the result is an oxide that will not behave as a base OR as an acid towards water. That does not make it unreactive — it makes it AMPHOTERIC, which the next two entries demonstrate by attacking it from both directions. An oxide that ignores water and dissolves in both acid and alkali is the signature of this part of the period.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — amphoteric oxides"
+  },
+  {
+    "id": "rxn_period3_al2o3_naoh",
+    "reactants": ["al2o3_s", "naoh_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["aloh4_aq"],
+    "equation": "Al₂O₃ + 2OH⁻ + 3H₂O → 2[Al(OH)₄]⁻",
+    "type": "amphoteric",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "dissolves": "the white powder went slowly into the hot alkali until the liquid ran clear",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 13.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The oxide that ignored water dissolves in alkali, behaving as though it were an acid. Half the proof of amphoteric behaviour, and industrially the more important half: this is the Bayer process. Bauxite is aluminium oxide contaminated with iron oxide, hot alkali dissolves the aluminium and leaves the iron behind as red mud, and that single difference is how aluminium is purified at scale. Every drink can traces back to this reaction.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — amphoteric oxides and the Bayer process"
+  },
+  {
+    "id": "rxn_period3_al2o3_hcl",
+    "reactants": ["al2o3_s", "hcl_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["alcl3_aq", "water"],
+    "equation": "Al₂O₃ + 6HCl → 2AlCl₃ + 3H₂O",
+    "type": "amphoteric",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "dissolves": "the white powder went slowly into the hot acid until the liquid ran clear",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 3.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "And the same oxide dissolves in acid too, behaving as a base. Put this beside the previous entry and the case is closed: aluminium oxide is AMPHOTERIC, and the word means exactly this pair of results and nothing more mysterious. Worth noticing where the pH lands — 3, not 7. The aluminium ion left in solution is small and triply charged, and it pulls hydrogen ions off the water around it, so even the salt of a strong acid and this oxide comes out acidic.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — amphoteric oxides"
+  },
+  {
+    "id": "rxn_none_sio2_water",
+    "reactants": ["sio2_s", "water_distilled"],
+    "noReaction": true,
+    "explanation": "Sand in water, and nothing happens — which is fortunate, given how much of the earth is made of both. Silicon dioxide IS an acidic oxide, so in principle it ought to react; the reason it does not is structural rather than chemical. It is one giant covalent network, and dissolving any of it means breaking strong silicon–oxygen bonds across the whole solid. Water cannot pay that price. The next entry shows what can, and how hard it has to try.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — giant covalent oxides"
+  },
+  {
+    "id": "rxn_period3_sio2_naoh",
+    "reactants": ["naoh_1m", "sio2_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["na2sio3_aq", "water"],
+    "equation": "SiO₂ + 2NaOH → Na₂SiO₃ + H₂O",
+    "type": "acid_base",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "dissolves": "the sand went into the boiling alkali, leaving a thick syrupy liquid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 12.5
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "corrosive",
+      "title": "Boiling concentrated alkali",
+      "warning": "This needs hot concentrated sodium hydroxide, which is severely corrosive and attacks glass slowly as well as skin instantly.",
+      "visualEffect": null,
+      "whatToDoInstead": "Goggles, gloves, and a nickel or iron vessel rather than glass if the alkali is to be boiled for any length of time."
+    },
+    "molecularAnimation": null,
+    "explanation": "Silica does dissolve, but only in hot concentrated alkali and only slowly — proof that it is an acidic oxide, and proof at the same time of how weakly acidic. The comparison worth making is with phosphorus(V) oxide two places along, which reacts with cold water so violently it hisses. Both are acidic oxides of Period 3. The difference is entirely structural: one is a giant network that must be dismantled, the other is small separate molecules. Structure decides the RATE and the conditions; position in the period decides the acid-base character.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silica and alkali"
+  },
+  {
+    "id": "rxn_period3_p4o10_water",
+    "reactants": ["p4o10_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["h3po4_aq"],
+    "equation": "P₄O₁₀ + 6H₂O → 4H₃PO₄",
+    "type": "acid_base",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "dissolves": "the white powder vanished into the water with a hiss",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 35,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "violent_reaction",
+      "title": "Reacts with water violently enough to spit",
+      "warning": "Phosphorus(V) oxide takes up water so fast that the mixture hisses, steams and can throw itself out of the vessel. What it makes is a strong acid, and the solid itself burns skin on contact by pulling water out of it.",
+      "visualEffect": null,
+      "whatToDoInstead": "Goggles and gloves, add the solid in small portions to a large volume of cold water, and never the other way round."
+    },
+    "molecularAnimation": null,
+    "explanation": "The far end of the period, and the mirror image of where it started. Sodium oxide gave pH 14; this gives pH 1. The change is not gradual dithering but a clean consequence of one thing — how strongly the element on the other side of the oxygen pulls on the shared electrons. At the sodium end oxygen wins outright and takes them, leaving oxide ions that behave as a base. At the phosphorus end the electrons are shared, and what dissolves is a molecule that hands hydrogen ions to water instead. Ionic oxides are basic, covalent oxides are acidic, and Period 3 is that sentence made visible.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — Period 3 oxides and water"
+  },
+  {
+    "id": "rxn_period3_nacl_water",
+    "reactants": ["nacl_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nacl_aq"],
+    "equation": "NaCl(s) + water → Na⁺(aq) + Cl⁻(aq)",
+    "type": "dissolution",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "dissolves": "the crystals disappeared into the water and the pH did not move",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": -1,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Now the same walk again, this time with the CHLORIDES, and it starts as unremarkably as possible: salt dissolves and the pH stays at 7. That is the control the next two entries are measured against. Sodium chloride is fully ionic, and neither ion has any interest in the water beyond being surrounded by it — the sodium ion is big enough and its charge low enough that it does not pull hard on anything. Watch what happens when the metal ion gets smaller and more highly charged.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — Period 3 chlorides and water"
+  },
+  {
+    "id": "rxn_period3_sicl4_water",
+    "reactants": ["sicl4_l", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["sio2_s", "hcl_g"],
+    "equation": "SiCl₄ + 2H₂O → SiO₂ + 4HCl",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "a white solid of silica, formed instantly",
+      "gas": "hydrogen chloride",
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 22,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "corrosive_fumes",
+      "title": "Violent, with choking fumes of hydrogen chloride",
+      "warning": "Silicon tetrachloride hydrolyses the moment it meets water — including the water vapour in the room, which is why the bottle fumes as soon as it is opened. The hydrogen chloride produced attacks the eyes and lungs.",
+      "visualEffect": "white_fumes",
+      "whatToDoInstead": "Fume cupboard with the sash low, keep the bottle stoppered, and add it to water rather than water to it."
+    },
+    "molecularAnimation": null,
+    "explanation": "The other end of the chloride walk, and the contrast with salt could hardly be sharper: instead of dissolving quietly at pH 7, this hisses, throws down solid silica and fills the fume cupboard with hydrogen chloride at pH 1. The bonding has gone from ionic to covalent across the period, and a covalent chloride is hydrolysed by water rather than dissolved by it. There is a nice extra puzzle here too. Tetrachloromethane, the carbon version, does none of this — silicon is a bigger atom with empty d orbitals, so water can attach itself before any bond breaks, and carbon has no such opening.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — Period 3 chlorides and hydrolysis"
   }
 ]

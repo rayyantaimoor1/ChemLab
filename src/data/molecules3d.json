@@ -19089,5 +19089,558 @@
         "type": "covalent"
       }
     ]
+  },
+  "na2o_s": {
+    "note": "A fragment of the lattice - there are no Na2O molecules, only ions repeating in every direction. Compare it with the phosphorus(V) oxide model, which IS a molecule with a definite edge. That difference in structure is the whole reason one oxide is basic and the other acidic, and it is what Period 3 is really about.",
+    "atoms": [
+      {
+        "id": "o1",
+        "element": "O",
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "na1",
+        "element": "Na",
+        "x": 2.4,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "na2",
+        "element": "Na",
+        "x": -2.4,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "na3",
+        "element": "Na",
+        "x": 0,
+        "y": 2.4,
+        "z": 0
+      },
+      {
+        "id": "na4",
+        "element": "Na",
+        "x": 0,
+        "y": -2.4,
+        "z": 0
+      },
+      {
+        "id": "o2",
+        "element": "O",
+        "x": 2.4,
+        "y": 2.4,
+        "z": 0
+      },
+      {
+        "id": "o3",
+        "element": "O",
+        "x": -2.4,
+        "y": -2.4,
+        "z": 0
+      }
+    ],
+    "bonds": [
+      {
+        "from": "o1",
+        "to": "na1",
+        "type": "ionic"
+      },
+      {
+        "from": "o1",
+        "to": "na2",
+        "type": "ionic"
+      },
+      {
+        "from": "o1",
+        "to": "na3",
+        "type": "ionic"
+      },
+      {
+        "from": "o1",
+        "to": "na4",
+        "type": "ionic"
+      },
+      {
+        "from": "na1",
+        "to": "o2",
+        "type": "ionic"
+      },
+      {
+        "from": "na3",
+        "to": "o2",
+        "type": "ionic"
+      },
+      {
+        "from": "na2",
+        "to": "o3",
+        "type": "ionic"
+      },
+      {
+        "from": "na4",
+        "to": "o3",
+        "type": "ionic"
+      }
+    ]
+  },
+  "p4o10_s": {
+    "note": "A cage of four phosphorus atoms with oxygens bridging between them and one more on each corner - and crucially it STOPS. This is a molecule with an edge, not a lattice that carries on, which is why it melts low, dissolves rather than merely reacting at a surface, and behaves as an acidic oxide.",
+    "atoms": [
+      {
+        "id": "p1",
+        "element": "P",
+        "x": 1.5,
+        "y": 1.5,
+        "z": 1.5
+      },
+      {
+        "id": "p2",
+        "element": "P",
+        "x": -1.5,
+        "y": -1.5,
+        "z": 1.5
+      },
+      {
+        "id": "p3",
+        "element": "P",
+        "x": -1.5,
+        "y": 1.5,
+        "z": -1.5
+      },
+      {
+        "id": "p4",
+        "element": "P",
+        "x": 1.5,
+        "y": -1.5,
+        "z": -1.5
+      },
+      {
+        "id": "b1",
+        "element": "O",
+        "x": 0,
+        "y": 0,
+        "z": 1.9
+      },
+      {
+        "id": "b2",
+        "element": "O",
+        "x": 0,
+        "y": 1.9,
+        "z": 0
+      },
+      {
+        "id": "b3",
+        "element": "O",
+        "x": 1.9,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "b4",
+        "element": "O",
+        "x": -1.9,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "b5",
+        "element": "O",
+        "x": 0,
+        "y": -1.9,
+        "z": 0
+      },
+      {
+        "id": "b6",
+        "element": "O",
+        "x": 0,
+        "y": 0,
+        "z": -1.9
+      },
+      {
+        "id": "t1",
+        "element": "O",
+        "x": 2.7,
+        "y": 2.7,
+        "z": 2.7
+      },
+      {
+        "id": "t2",
+        "element": "O",
+        "x": -2.7,
+        "y": -2.7,
+        "z": 2.7
+      },
+      {
+        "id": "t3",
+        "element": "O",
+        "x": -2.7,
+        "y": 2.7,
+        "z": -2.7
+      },
+      {
+        "id": "t4",
+        "element": "O",
+        "x": 2.7,
+        "y": -2.7,
+        "z": -2.7
+      }
+    ],
+    "bonds": [
+      {
+        "from": "p1",
+        "to": "b1",
+        "type": "covalent"
+      },
+      {
+        "from": "p2",
+        "to": "b1",
+        "type": "covalent"
+      },
+      {
+        "from": "p1",
+        "to": "b2",
+        "type": "covalent"
+      },
+      {
+        "from": "p3",
+        "to": "b2",
+        "type": "covalent"
+      },
+      {
+        "from": "p1",
+        "to": "b3",
+        "type": "covalent"
+      },
+      {
+        "from": "p4",
+        "to": "b3",
+        "type": "covalent"
+      },
+      {
+        "from": "p2",
+        "to": "b4",
+        "type": "covalent"
+      },
+      {
+        "from": "p3",
+        "to": "b4",
+        "type": "covalent"
+      },
+      {
+        "from": "p2",
+        "to": "b5",
+        "type": "covalent"
+      },
+      {
+        "from": "p4",
+        "to": "b5",
+        "type": "covalent"
+      },
+      {
+        "from": "p3",
+        "to": "b6",
+        "type": "covalent"
+      },
+      {
+        "from": "p4",
+        "to": "b6",
+        "type": "covalent"
+      },
+      {
+        "from": "p1",
+        "to": "t1",
+        "type": "covalent"
+      },
+      {
+        "from": "p2",
+        "to": "t2",
+        "type": "covalent"
+      },
+      {
+        "from": "p3",
+        "to": "t3",
+        "type": "covalent"
+      },
+      {
+        "from": "p4",
+        "to": "t4",
+        "type": "covalent"
+      }
+    ]
+  },
+  "sicl4_l": {
+    "note": "Tetrahedral, and outwardly the twin of tetrachloromethane - yet one fumes in damp air and the other is so unreactive it was used in fire extinguishers. The difference is not in this picture: silicon is the larger atom and has empty d orbitals a water molecule can bond to before any Si-Cl bond has to break. Carbon has no such opening.",
+    "atoms": [
+      {
+        "id": "si",
+        "element": "Si",
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "cl1",
+        "element": "Cl",
+        "x": 1.2,
+        "y": 1.2,
+        "z": 1.2
+      },
+      {
+        "id": "cl2",
+        "element": "Cl",
+        "x": -1.2,
+        "y": -1.2,
+        "z": 1.2
+      },
+      {
+        "id": "cl3",
+        "element": "Cl",
+        "x": -1.2,
+        "y": 1.2,
+        "z": -1.2
+      },
+      {
+        "id": "cl4",
+        "element": "Cl",
+        "x": 1.2,
+        "y": -1.2,
+        "z": -1.2
+      }
+    ],
+    "bonds": [
+      {
+        "from": "si",
+        "to": "cl1",
+        "type": "covalent"
+      },
+      {
+        "from": "si",
+        "to": "cl2",
+        "type": "covalent"
+      },
+      {
+        "from": "si",
+        "to": "cl3",
+        "type": "covalent"
+      },
+      {
+        "from": "si",
+        "to": "cl4",
+        "type": "covalent"
+      }
+    ]
+  },
+  "na2sio3_aq": {
+    "note": "A single silicate unit with its sodium ions - which is exactly what silica is NOT. Open the silica model beside it and the contrast is the point: there, every silicon was locked into an endless network, and getting to this one free unit is what boiling alkali had to achieve.",
+    "atoms": [
+      {
+        "id": "si",
+        "element": "Si",
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "o1",
+        "element": "O",
+        "x": 1.6,
+        "y": 0.4,
+        "z": 0
+      },
+      {
+        "id": "o2",
+        "element": "O",
+        "x": -0.8,
+        "y": 1.4,
+        "z": 0.3
+      },
+      {
+        "id": "o3",
+        "element": "O",
+        "x": -0.7,
+        "y": -1,
+        "z": -1.1
+      },
+      {
+        "id": "na1",
+        "element": "Na",
+        "x": 3.4,
+        "y": 1.2,
+        "z": 0
+      },
+      {
+        "id": "na2",
+        "element": "Na",
+        "x": -2.2,
+        "y": 2.8,
+        "z": 0.6
+      }
+    ],
+    "bonds": [
+      {
+        "from": "si",
+        "to": "o1",
+        "type": "covalent"
+      },
+      {
+        "from": "si",
+        "to": "o2",
+        "type": "covalent"
+      },
+      {
+        "from": "si",
+        "to": "o3",
+        "type": "covalent"
+      },
+      {
+        "from": "na1",
+        "to": "o1",
+        "type": "ionic"
+      },
+      {
+        "from": "na2",
+        "to": "o2",
+        "type": "ionic"
+      }
+    ]
+  },
+  "alcl3_aq": {
+    "note": "Six waters round an aluminium ion, with the chlorides drifting free further out. Look at how SMALL the aluminium sphere is for something carrying three charges - the water molecules are held so tightly that one of them gives up a hydrogen ion, and that is the entire reason a solution of this salt turns litmus red.",
+    "atoms": [
+      {
+        "id": "al",
+        "element": "Al",
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "w1",
+        "element": "O",
+        "x": 1.9,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "w2",
+        "element": "O",
+        "x": -1.9,
+        "y": 0,
+        "z": 0
+      },
+      {
+        "id": "w3",
+        "element": "O",
+        "x": 0,
+        "y": 1.9,
+        "z": 0
+      },
+      {
+        "id": "w4",
+        "element": "O",
+        "x": 0,
+        "y": -1.9,
+        "z": 0
+      },
+      {
+        "id": "w5",
+        "element": "O",
+        "x": 0,
+        "y": 0,
+        "z": 1.9
+      },
+      {
+        "id": "w6",
+        "element": "O",
+        "x": 0,
+        "y": 0,
+        "z": -1.9
+      },
+      {
+        "id": "h1",
+        "element": "H",
+        "x": 2.7,
+        "y": 0.7,
+        "z": 0
+      },
+      {
+        "id": "h2",
+        "element": "H",
+        "x": -2.7,
+        "y": -0.7,
+        "z": 0
+      },
+      {
+        "id": "h3",
+        "element": "H",
+        "x": 0.7,
+        "y": 2.7,
+        "z": 0
+      },
+      {
+        "id": "cl1",
+        "element": "Cl",
+        "x": 4.4,
+        "y": 1.8,
+        "z": 0
+      },
+      {
+        "id": "cl2",
+        "element": "Cl",
+        "x": -4.4,
+        "y": -1.8,
+        "z": 0
+      }
+    ],
+    "bonds": [
+      {
+        "from": "al",
+        "to": "w1",
+        "type": "ionic"
+      },
+      {
+        "from": "al",
+        "to": "w2",
+        "type": "ionic"
+      },
+      {
+        "from": "al",
+        "to": "w3",
+        "type": "ionic"
+      },
+      {
+        "from": "al",
+        "to": "w4",
+        "type": "ionic"
+      },
+      {
+        "from": "al",
+        "to": "w5",
+        "type": "ionic"
+      },
+      {
+        "from": "al",
+        "to": "w6",
+        "type": "ionic"
+      },
+      {
+        "from": "w1",
+        "to": "h1",
+        "type": "covalent"
+      },
+      {
+        "from": "w2",
+        "to": "h2",
+        "type": "covalent"
+      },
+      {
+        "from": "w3",
+        "to": "h3",
+        "type": "covalent"
+      }
+    ]
   }
 }
