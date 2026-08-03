@@ -180,5 +180,945 @@
     "theory": "This is a double displacement reaction. The lead(II) nitrate provides Pb²⁺ ions and the potassium iodide provides I⁻ ions. Lead(II) iodide is insoluble in cold water, so as soon as those two ions meet they join and drop out of the solution as a bright yellow solid. The K⁺ and NO₃⁻ ions are spectators — they were dissolved before and stay dissolved afterwards, which is why the liquid still conducts electricity. Warming the tube and letting it cool slowly makes the solid reappear as glittering flakes, which is where the name golden rain comes from.",
     "safety": "Lead compounds are cumulative poisons: the body stores them rather than clearing them out, so even small repeated exposures matter. Do not touch the solutions or the yellow solid with bare hands, never taste anything, and put all lead waste in the labelled heavy-metal waste container rather than down the sink.",
     "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — solubility rules and double displacement reactions; reaction data from rxn_precipitation_pbno3_ki in reactions.json"
+  },
+  {
+    "id": "exp_reactivity_metal_dilute_acid",
+    "title": "Reactivity with dilute acid — zinc against copper",
+    "level": "matric",
+    "objective": "Add the same dilute acid to two different metals in separate vessels and use what happens — or does not happen — to place them on the reactivity series.",
+    "apparatus": ["beaker", "test_tube", "stirring_rod"],
+    "reagents": ["zn_metal", "cu_metal", "hcl_1m"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put a little zinc into the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "zn_metal", "minAmountMl": 5, "maxAmountMl": 15 },
+        "hint": "Take zinc metal from the shelf and dispense a small amount into the beaker.",
+        "onWrongAction": "Start with the zinc in the beaker. It is one of the two metals being tested, and it goes in before the acid."
+      },
+      {
+        "n": 2,
+        "instruction": "Add dilute hydrochloric acid to the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "hcl_1m", "minAmountMl": 10, "maxAmountMl": 25 },
+        "hint": "Add hydrochloric acid to the zinc and watch closely as it goes in.",
+        "onWrongAction": "Add hydrochloric acid to the beaker that already holds the zinc. Without the acid there is nothing for the metal to react with."
+      },
+      {
+        "n": 3,
+        "instruction": "Write down what happened in the beaker.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe the bubbling and note whether the beaker feels warmer.",
+        "onWrongAction": "Record what the zinc and acid did before moving on to the second metal — otherwise there is nothing to compare the next tube against."
+      },
+      {
+        "n": 4,
+        "instruction": "Put a little copper into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "cu_metal", "minAmountMl": 5, "maxAmountMl": 15 },
+        "hint": "Take copper turnings from the shelf and dispense a small amount into the test tube.",
+        "onWrongAction": "The second metal goes into the test tube, not the beaker. The beaker already holds the zinc result — keep the two separate so they can be compared fairly."
+      },
+      {
+        "n": 5,
+        "instruction": "Add the same dilute hydrochloric acid to the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "hcl_1m", "minAmountMl": 10, "maxAmountMl": 25 },
+        "hint": "Add hydrochloric acid to the copper, the same way you did with the zinc.",
+        "onWrongAction": "Add hydrochloric acid to the test tube holding the copper. Only the acid changes between the two tubes — everything else about the test has to be identical for the comparison to mean anything."
+      },
+      {
+        "n": 6,
+        "instruction": "Write down what happened in the test tube, and compare it with the beaker.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Say plainly whether anything happened this time, and what that difference tells you about which metal is more reactive.",
+        "onWrongAction": "Finish by recording the copper tube's result and comparing it with the zinc tube's — that comparison is the whole point of the experiment."
+      }
+    ],
+    "expectedResult": {
+      "beakerObservation": "Bubbles of hydrogen gas formed steadily and the beaker warmed by about 9 °C.",
+      "tubeObservation": "No observable change. The copper and the acid simply sit together.",
+      "observation": "Zinc reacts with dilute hydrochloric acid, giving off hydrogen gas and warming the mixture. Copper does nothing at all with the same acid. Zinc is above hydrogen in the reactivity series and can displace it; copper is below hydrogen and cannot."
+    },
+    "theory": "A metal above hydrogen in the reactivity series will displace hydrogen from a dilute acid, forming a salt and releasing hydrogen gas. Zinc is well above hydrogen, so the reaction is brisk. Copper is below hydrogen, so no reaction happens at all — not a slow one, none. Running the two side by side with everything else held constant is what makes the comparison trustworthy: the acid, the amount, and the vessel size are the same, so the only variable left is which metal was used.",
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — the reactivity series; reaction data from rxn_displacement_zn_hcl and rxn_none_cu_hcl in reactions.json"
+  },
+  {
+    "id": "exp_displacement_copper_from_sulfate",
+    "title": "Displacement — zinc into copper sulfate",
+    "level": "matric",
+    "objective": "Add a more reactive metal to a solution of a less reactive metal's salt, and watch one metal pull the other out of solution.",
+    "apparatus": ["test_tube", "stirring_rod"],
+    "reagents": ["cuso4_0_5m", "zn_metal"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 15 mL of copper(II) sulfate solution into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "cuso4_0_5m", "minAmountMl": 10, "maxAmountMl": 20 },
+        "hint": "Take copper(II) sulfate from the shelf and dispense it into the test tube.",
+        "onWrongAction": "Start with copper(II) sulfate solution in the test tube. It needs to be there before the zinc goes in."
+      },
+      {
+        "n": 2,
+        "instruction": "Write down what the solution looks like before you add anything else.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Note the colour of the solution now, while it is still just copper(II) sulfate.",
+        "onWrongAction": "Record the blue starting colour before the zinc goes in — that is the 'before' the rest of the experiment is measured against."
+      },
+      {
+        "n": 3,
+        "instruction": "Add a little zinc metal to the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "zn_metal", "minAmountMl": 5, "maxAmountMl": 15 },
+        "hint": "Take zinc metal from the shelf and drop a small amount into the blue solution.",
+        "onWrongAction": "Add the zinc to the same test tube that holds the copper(II) sulfate. Kept apart, the two substances cannot displace anything."
+      },
+      {
+        "n": 4,
+        "instruction": "Stir the tube.",
+        "requiredAction": { "type": "stir", "containerType": "test_tube" },
+        "hint": "Press Stir so the zinc surface meets fresh solution rather than sitting in one spot.",
+        "onWrongAction": "Stir the test tube so the reaction can run properly across the whole surface of the zinc."
+      },
+      {
+        "n": 5,
+        "instruction": "Write down what you see now.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe what has appeared on the zinc and what has happened to the blue colour of the solution.",
+        "onWrongAction": "Finish by recording the result — a reddish deposit and a fading blue colour — and compare it with what you wrote down before the zinc went in."
+      }
+    ],
+    "expectedResult": {
+      "colorAfter": "very pale, almost colourless",
+      "precipitateColour": "reddish brown",
+      "precipitateName": "copper",
+      "temperatureRiseC": 8,
+      "observation": "A reddish brown deposit of copper appears on the zinc and the blue colour of the solution fades almost to nothing, because the copper(II) ions that gave it its colour have been displaced out of solution as metal. The tube also warms slightly."
+    },
+    "theory": "Zinc is more reactive than copper, so it will push copper out of a solution of its salt: zinc atoms give up electrons to become Zn²⁺ ions and go into solution, while Cu²⁺ ions in the solution take those electrons and come out as solid copper metal. This is a single displacement reaction, and the fading blue colour is the direct evidence that copper(II) ions are being removed from the solution one by one as the reaction proceeds.",
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — the reactivity series and displacement reactions; reaction data from rxn_displacement_zn_cuso4 in reactions.json"
+  },
+  {
+    "id": "exp_rusting_needs_water",
+    "title": "Does iron rust without water?",
+    "level": "matric",
+    "objective": "Give iron oxygen and water together in one vessel, and oxygen alone in another, to find out which one is actually needed for rust to form.",
+    "apparatus": ["beaker", "test_tube", "stirring_rod"],
+    "reagents": ["fe_metal", "water_distilled", "o2_g"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put some iron filings into the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "fe_metal", "minAmountMl": 10, "maxAmountMl": 20 },
+        "hint": "Take iron filings from the shelf and dispense them into the beaker.",
+        "onWrongAction": "Start with iron filings in the beaker — this vessel will get both water and oxygen."
+      },
+      {
+        "n": 2,
+        "instruction": "Add distilled water to the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "water_distilled", "minAmountMl": 10, "maxAmountMl": 20 },
+        "hint": "Add distilled water to the iron in the beaker.",
+        "onWrongAction": "Add water to the beaker with the iron in it. This vessel needs both water and oxygen present at once — that is the condition being tested."
+      },
+      {
+        "n": 3,
+        "instruction": "Add oxygen to the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "o2_g", "minAmountMl": 10, "maxAmountMl": 20 },
+        "hint": "Add oxygen to the same beaker, so the iron now has both water and oxygen around it.",
+        "onWrongAction": "Add oxygen to the beaker that already holds the iron and the water. All three have to be together for rust to form."
+      },
+      {
+        "n": 4,
+        "instruction": "Write down what the beaker looks like.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe the colour that has appeared on the iron.",
+        "onWrongAction": "Record what the iron looks like now that it has both water and oxygen, before moving on to the dry comparison."
+      },
+      {
+        "n": 5,
+        "instruction": "Put some iron filings into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "fe_metal", "minAmountMl": 10, "maxAmountMl": 20 },
+        "hint": "Take fresh iron filings from the shelf and dispense them into the test tube — this vessel is the dry comparison, with no water at all.",
+        "onWrongAction": "Put a fresh sample of iron filings into the test tube. It needs to stay completely separate from the beaker so it can be kept dry."
+      },
+      {
+        "n": 6,
+        "instruction": "Add oxygen to the test tube, but no water.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "o2_g", "minAmountMl": 10, "maxAmountMl": 20 },
+        "hint": "Add oxygen to the dry iron. Do not add any water to this tube — that is exactly what makes it the control.",
+        "onWrongAction": "Add oxygen to the test tube. This tube is deliberately kept dry, so leave the water out of it."
+      },
+      {
+        "n": 7,
+        "instruction": "Write down what the test tube looks like, and compare it with the beaker.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Say whether the dry iron changed at all, and what that tells you about what rusting actually needs.",
+        "onWrongAction": "Finish by recording the dry tube's result — nothing happening is itself the answer, so it is worth writing down as carefully as a colour change would be."
+      }
+    ],
+    "expectedResult": {
+      "beakerObservation": "A reddish brown flaky coating of rust appears on the iron.",
+      "tubeObservation": "No observable change. The iron stays bright and untouched.",
+      "observation": "Iron given both water and oxygen rusts. The same iron given oxygen alone, with no water, does not rust at all. Both are needed together — oxygen or water on its own is not enough."
+    },
+    "theory": "Rusting is the oxidation of iron to hydrated iron(III) oxide, and it needs both oxygen AND water to happen — neither one alone will do it. That is why a dry nail in a sealed jar of oxygen stays bright, and why iron submerged in water with no air dissolved in it also stays largely unrusted. Painting, oiling or galvanising a piece of iron works by keeping one of those two things away from its surface, which is why either coating is enough to protect it even though rusting needs both.",
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — corrosion of metals; reaction data from rxn_corrosion_iron_rusting and rxn_none_fe_o2_dry in reactions.json"
+  },
+  {
+    "id": "exp_hard_water_softening",
+    "title": "Softening permanent hard water with washing soda",
+    "level": "matric",
+    "objective": "Add washing soda to a sample of permanent hard water and show that the calcium responsible for the hardness can be removed as a precipitate.",
+    "apparatus": ["beaker", "stirring_rod"],
+    "reagents": ["caso4_aq", "na2co3_1m"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 25 mL of permanent hard water into the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "caso4_aq", "minAmountMl": 20, "maxAmountMl": 30 },
+        "hint": "Take the calcium sulfate solution — the permanent hard water — from the shelf and dispense it into the beaker.",
+        "onWrongAction": "Start with the hard water in the beaker. Notice it is completely clear, which is worth remembering once the next step is done."
+      },
+      {
+        "n": 2,
+        "instruction": "Add sodium carbonate solution (washing soda) to the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "na2co3_1m", "minAmountMl": 15, "maxAmountMl": 25 },
+        "hint": "Take sodium carbonate solution from the shelf and add it to the hard water.",
+        "onWrongAction": "Add the sodium carbonate solution to the beaker that holds the hard water. Washing soda is the reagent that removes the calcium responsible for the hardness."
+      },
+      {
+        "n": 3,
+        "instruction": "Stir the beaker.",
+        "requiredAction": { "type": "stir", "containerType": "beaker" },
+        "hint": "Press Stir so the carbonate ions can reach every calcium ion in the water.",
+        "onWrongAction": "Stir the beaker so the reaction can go to completion throughout the whole sample, not just where the two solutions first met."
+      },
+      {
+        "n": 4,
+        "instruction": "Write down what you observe.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe the solid that has formed and say what has happened to the clarity of the water.",
+        "onWrongAction": "Finish by recording the white solid that has formed — that solid is the calcium leaving the water, which is the whole point of softening it."
+      }
+    ],
+    "expectedResult": {
+      "precipitateColour": "white",
+      "precipitateName": "calcium carbonate",
+      "observation": "A white precipitate of calcium carbonate forms and settles, and the water that remains no longer contains the calcium ions that made it hard."
+    },
+    "theory": "Permanent hardness is caused by dissolved calcium (and magnesium) sulfate, which will not be removed by boiling. Adding sodium carbonate solution provides carbonate ions, which combine with the calcium ions to form calcium carbonate — a solid that is insoluble in water and drops out of solution. Once the calcium is gone, soap can lather properly in the water again instead of forming scum.",
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — hardness of water and its removal; reaction data from rxn_hardness_washing_soda in reactions.json"
+  },
+  {
+    "id": "exp_ammonium_salt_test",
+    "title": "Testing a salt for the ammonium ion",
+    "level": "matric",
+    "objective": "Warm an ammonium salt with an alkali and use damp litmus paper to detect the ammonia gas that is given off.",
+    "apparatus": ["test_tube", "stirring_rod", "litmus"],
+    "reagents": ["nh4cl_1m", "naoh_1m"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 12 mL of ammonium chloride solution into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "nh4cl_1m", "minAmountMl": 8, "maxAmountMl": 15 },
+        "hint": "Take ammonium chloride solution from the shelf and dispense it into the test tube.",
+        "onWrongAction": "Start with the ammonium chloride solution in the test tube — it is the unknown salt being tested for ammonium."
+      },
+      {
+        "n": 2,
+        "instruction": "Add sodium hydroxide solution to the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "naoh_1m", "minAmountMl": 8, "maxAmountMl": 15 },
+        "hint": "Add sodium hydroxide to the ammonium chloride. Any alkali would do this test — sodium hydroxide is simply the one on the shelf.",
+        "onWrongAction": "Add the sodium hydroxide to the same test tube as the ammonium chloride. An alkali is what releases ammonia from an ammonium salt."
+      },
+      {
+        "n": 3,
+        "instruction": "Warm the test tube.",
+        "requiredAction": { "type": "setHeat", "containerType": "test_tube", "level": 2 },
+        "hint": "Press heat level 2 under the test tube. Ammonia is only driven off once the mixture is warmed.",
+        "onWrongAction": "This test needs heat. Turn the burner on under the test tube — cold, the two reagents sit together with nothing given off."
+      },
+      {
+        "n": 4,
+        "instruction": "Stir the tube.",
+        "requiredAction": { "type": "stir", "containerType": "test_tube" },
+        "hint": "Press Stir so the whole mixture warms and reacts evenly.",
+        "onWrongAction": "Stir the test tube to make sure the reaction runs through the whole mixture rather than only near the flame."
+      },
+      {
+        "n": 5,
+        "instruction": "Dip the litmus paper into the tube.",
+        "requiredAction": { "type": "dipTool", "toolId": "litmus", "containerType": "test_tube" },
+        "hint": "Pick up litmus paper and dip it into the warmed tube. In the real test the paper is held damp at the mouth of the tube rather than dipped into the liquid, but the colour it shows is the same.",
+        "onWrongAction": "Dip litmus paper into the tube to check for the alkaline gas being given off."
+      },
+      {
+        "n": 6,
+        "instruction": "Write down what you observed.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Note the smell, the colour the litmus turned, and what both of those tell you about the gas.",
+        "onWrongAction": "Finish by recording your observations — the smell of ammonia and the litmus turning blue are both part of a positive result."
+      }
+    ],
+    "expectedResult": {
+      "gasGiven": "ammonia",
+      "litmusColour": "blue",
+      "observation": "A sharp smell of ammonia is given off on warming, and damp red litmus held near the tube turns blue. This is a positive test for the ammonium ion."
+    },
+    "theory": "Warming any ammonium salt with an alkali releases ammonia gas: the hydroxide ion takes a hydrogen ion from the ammonium ion, leaving NH₃ to escape as a gas. Ammonia is the only common gas that turns damp red litmus blue, which is what makes this a reliable test for the ammonium ion in an unknown salt, whatever the salt's other ion turns out to be.",
+    "safety": "Ammonia gas is choking and irritates the eyes and lungs. Work in a well-ventilated area, do not put your face over the mouth of the tube, and waft the smell towards you instead.",
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — tests for common ions; reaction data from rxn_gastest_nh4cl_naoh in reactions.json"
+  },
+  {
+    "id": "exp_iron3_thiocyanate_test",
+    "title": "Testing for iron(III) — the thiocyanate test",
+    "level": "fsc",
+    "objective": "Add potassium thiocyanate to a solution of iron(III) ions and use the intense colour that appears to identify them.",
+    "apparatus": ["beaker", "stirring_rod"],
+    "reagents": ["fecl3_0_1m", "kscn_aq"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 20 mL of iron(III) chloride solution into the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "fecl3_0_1m", "minAmountMl": 15, "maxAmountMl": 25 },
+        "hint": "Take iron(III) chloride solution from the shelf and dispense it into the beaker.",
+        "onWrongAction": "Start with the iron(III) chloride solution in the beaker — it is the ion this test is designed to detect."
+      },
+      {
+        "n": 2,
+        "instruction": "Write down the colour of the solution before you add anything else.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Note the pale yellow-brown colour now, so you have something to compare the result against.",
+        "onWrongAction": "Record the starting colour first. A test is only convincing if you wrote down what things looked like before the change."
+      },
+      {
+        "n": 3,
+        "instruction": "Add potassium thiocyanate solution to the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "kscn_aq", "minAmountMl": 10, "maxAmountMl": 20 },
+        "hint": "Add potassium thiocyanate solution to the iron(III) chloride and watch closely as it goes in.",
+        "onWrongAction": "Add the potassium thiocyanate to the same beaker as the iron(III) chloride. The two ions have to meet for the colour to appear."
+      },
+      {
+        "n": 4,
+        "instruction": "Stir the beaker.",
+        "requiredAction": { "type": "stir", "containerType": "beaker" },
+        "hint": "Press Stir to mix the two solutions fully.",
+        "onWrongAction": "Stir the beaker so the colour develops evenly through the whole solution."
+      },
+      {
+        "n": 5,
+        "instruction": "Write down what colour the solution has become.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe the intense colour that has appeared, and compare it with the pale colour you recorded before.",
+        "onWrongAction": "Finish by recording the colour change — it is what makes this test so sensitive and so widely used."
+      }
+    ],
+    "expectedResult": {
+      "colorAfter": "blood red",
+      "observation": "The pale yellow-brown solution turns an intense blood red the instant the thiocyanate is added. This colour is unmistakable and appears even at very low concentrations of iron(III)."
+    },
+    "theory": "Fe³⁺ ions and thiocyanate ions (SCN⁻) combine to form the deep red thiocyanatoiron(III) complex, [Fe(SCN)]²⁺. The colour is so intense that this reaction can detect iron(III) at concentrations too low for almost any other test to notice, which is why it remains a standard confirmatory test. Iron(II) gives no such colour, so this test tells the two oxidation states of iron apart as well as confirming iron is present at all.",
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — the thiocyanate test for iron(III); reaction data from rxn_test_fe3_thiocyanate in reactions.json"
+  },
+  {
+    "id": "exp_starch_iodine_vs_glucose",
+    "title": "The iodine test — starch against glucose",
+    "level": "fsc",
+    "objective": "Add iodine solution to starch and, separately, to glucose, and use the difference to show that the test detects the starch molecule specifically rather than sugar in general.",
+    "apparatus": ["beaker", "test_tube", "stirring_rod"],
+    "reagents": ["starch_aq", "glucose_aq", "i2_aq"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 20 mL of starch solution into the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "starch_aq", "minAmountMl": 15, "maxAmountMl": 25 },
+        "hint": "Take starch solution from the shelf and dispense it into the beaker.",
+        "onWrongAction": "Start with starch solution in the beaker — this vessel is the starch half of the comparison."
+      },
+      {
+        "n": 2,
+        "instruction": "Add a few mL of iodine solution to the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "i2_aq", "minAmountMl": 5, "maxAmountMl": 10 },
+        "hint": "Add iodine solution to the starch — only a small amount is needed for a very obvious colour.",
+        "onWrongAction": "Add the iodine solution to the beaker holding the starch. This is the classic iodine test and the colour change is immediate."
+      },
+      {
+        "n": 3,
+        "instruction": "Stir the beaker.",
+        "requiredAction": { "type": "stir", "containerType": "beaker" },
+        "hint": "Press Stir to mix the iodine through the starch solution.",
+        "onWrongAction": "Stir the beaker so the colour develops through the whole sample."
+      },
+      {
+        "n": 4,
+        "instruction": "Write down what colour the beaker has become.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe the striking colour that has appeared with the starch.",
+        "onWrongAction": "Record the beaker's colour before moving on to the glucose comparison."
+      },
+      {
+        "n": 5,
+        "instruction": "Put about 12 mL of glucose solution into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "glucose_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Take glucose solution from the shelf and dispense it into the test tube.",
+        "onWrongAction": "The glucose goes into the test tube, kept separate from the starch in the beaker, so the two results can be compared fairly."
+      },
+      {
+        "n": 6,
+        "instruction": "Add a few mL of iodine solution to the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "i2_aq", "minAmountMl": 5, "maxAmountMl": 10 },
+        "hint": "Add the same iodine solution to the glucose, the same way you did with the starch.",
+        "onWrongAction": "Add iodine solution to the test tube holding the glucose. Everything about this half of the test should match the starch half except the sugar itself."
+      },
+      {
+        "n": 7,
+        "instruction": "Stir the test tube.",
+        "requiredAction": { "type": "stir", "containerType": "test_tube" },
+        "hint": "Press Stir to mix the iodine through the glucose solution.",
+        "onWrongAction": "Stir the test tube so the mixing matches what you did with the beaker."
+      },
+      {
+        "n": 8,
+        "instruction": "Write down what the test tube looks like, and compare it with the beaker.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Say whether the glucose tube changed colour at all, and what that tells you about what the iodine test is actually detecting.",
+        "onWrongAction": "Finish by recording the glucose tube's result. No colour change here, next to a dramatic one in the beaker, is the whole point of running both."
+      }
+    ],
+    "expectedResult": {
+      "beakerObservation": "The starch solution turns an intense blue-black.",
+      "tubeObservation": "No observable change. The iodine solution keeps its own brown colour.",
+      "observation": "Iodine turns starch blue-black but does nothing visible to glucose. The test is specific to the long coiled starch molecule, not to sugar or carbohydrate in general."
+    },
+    "theory": "Starch is a long chain of glucose units that coils into a helix, and iodine molecules slot into the middle of that helix — it is this trapping, not a chemical bond, that produces the intense blue-black colour. Glucose is a single small sugar molecule with no helix for the iodine to sit inside, so nothing happens. That is why this test tells you specifically whether starch is present, rather than merely whether some kind of sugar is present.",
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — the iodine test for starch; reaction data from rxn_starch_iodine and rxn_none_iodine_glucose in reactions.json"
+  },
+  {
+    "id": "exp_fehlings_glucose_vs_starch",
+    "title": "Fehling's test — a reducing sugar against a non-reducing one",
+    "level": "fsc",
+    "objective": "Warm Fehling's solution with glucose and, separately, with starch, and use the difference to show which one is a reducing sugar.",
+    "apparatus": ["beaker", "test_tube", "stirring_rod"],
+    "reagents": ["glucose_aq", "starch_aq", "fehlings_aq"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 12 mL of glucose solution into the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "glucose_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Take glucose solution from the shelf and dispense it into the beaker.",
+        "onWrongAction": "Start with glucose solution in the beaker — this vessel is the reducing-sugar half of the comparison."
+      },
+      {
+        "n": 2,
+        "instruction": "Add Fehling's solution to the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "fehlings_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Add the deep blue Fehling's solution to the glucose.",
+        "onWrongAction": "Add Fehling's solution to the beaker holding the glucose. The two need to be together before you warm the mixture."
+      },
+      {
+        "n": 3,
+        "instruction": "Warm the beaker.",
+        "requiredAction": { "type": "setHeat", "containerType": "beaker", "level": 2 },
+        "hint": "Press heat level 2 under the beaker. Fehling's test only works once the mixture is warmed.",
+        "onWrongAction": "This test needs heat. Turn the burner on under the beaker — cold, the blue colour will not change at all."
+      },
+      {
+        "n": 4,
+        "instruction": "Write down what happened in the beaker.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe the colour of the solid that has formed and what happened to the deep blue colour.",
+        "onWrongAction": "Record the beaker's result before moving on to the starch comparison."
+      },
+      {
+        "n": 5,
+        "instruction": "Put about 12 mL of starch solution into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "starch_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Take starch solution from the shelf and dispense it into the test tube.",
+        "onWrongAction": "The starch goes into the test tube, kept separate from the glucose in the beaker."
+      },
+      {
+        "n": 6,
+        "instruction": "Add Fehling's solution to the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "fehlings_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Add the same Fehling's solution to the starch.",
+        "onWrongAction": "Add Fehling's solution to the test tube holding the starch, the same way you did with the glucose."
+      },
+      {
+        "n": 7,
+        "instruction": "Warm the test tube.",
+        "requiredAction": { "type": "setHeat", "containerType": "test_tube", "level": 2 },
+        "hint": "Press heat level 2 under the test tube, exactly as you did with the beaker.",
+        "onWrongAction": "Warm the test tube the same way as the beaker — the only thing that should differ between the two vessels is the sugar."
+      },
+      {
+        "n": 8,
+        "instruction": "Write down what the test tube looks like, and compare it with the beaker.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Say whether the starch tube changed at all, and what that tells you about the two kinds of carbohydrate.",
+        "onWrongAction": "Finish by recording the starch tube's result. Staying blue, next to a brick-red result in the beaker, is exactly the comparison this experiment is built to show."
+      }
+    ],
+    "expectedResult": {
+      "beakerObservation": "A brick red precipitate of copper(I) oxide forms and the deep blue colour is discharged.",
+      "tubeObservation": "No observable change. The solution stays deep blue.",
+      "observation": "Glucose reduces the copper(II) in Fehling's solution to brick red copper(I) oxide on warming. Starch does not react at all, even under identical conditions."
+    },
+    "theory": "Glucose has a free aldehyde group and is a reducing sugar: it reduces the blue copper(II) in Fehling's solution to a brick red precipitate of copper(I) oxide as it is itself oxidised. Starch is hundreds of glucose units joined end to end, and every one of those links uses up the very carbon that would otherwise be free to reduce anything — so starch gives a completely negative result. The same test that identifies one carbohydrate can therefore also rule another one out.",
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — reducing and non-reducing sugars; reaction data from rxn_fehlings_glucose and rxn_none_fehlings_starch in reactions.json"
+  },
+  {
+    "id": "exp_soap_vs_detergent_hard_water",
+    "title": "Soap and detergent in hard water",
+    "level": "fsc",
+    "objective": "Add soap and, separately, a synthetic detergent to permanent hard water, and use the difference to explain why detergents were invented.",
+    "apparatus": ["beaker", "test_tube", "stirring_rod"],
+    "reagents": ["caso4_aq", "soap_aq", "detergent_aq"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 20 mL of permanent hard water into the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "caso4_aq", "minAmountMl": 15, "maxAmountMl": 25 },
+        "hint": "Take the calcium sulfate solution — the permanent hard water — from the shelf and dispense it into the beaker.",
+        "onWrongAction": "Start with the hard water in the beaker. This vessel is the soap half of the comparison."
+      },
+      {
+        "n": 2,
+        "instruction": "Add soap solution to the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "soap_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Add soap to the hard water and watch what forms rather than a lather.",
+        "onWrongAction": "Add soap to the beaker holding the hard water — that is what this half of the experiment is testing."
+      },
+      {
+        "n": 3,
+        "instruction": "Stir the beaker.",
+        "requiredAction": { "type": "stir", "containerType": "beaker" },
+        "hint": "Press Stir the way you would shake a tube to try to raise a lather.",
+        "onWrongAction": "Stir the beaker so the soap has a proper chance to react with the calcium in the water."
+      },
+      {
+        "n": 4,
+        "instruction": "Write down what happened in the beaker.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe what formed instead of a lather.",
+        "onWrongAction": "Record the beaker's result before moving on to the detergent comparison."
+      },
+      {
+        "n": 5,
+        "instruction": "Put about 20 mL of permanent hard water into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "caso4_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Take the same hard water and dispense it into the test tube this time.",
+        "onWrongAction": "The second sample of hard water goes into the test tube, kept separate from the soap tube."
+      },
+      {
+        "n": 6,
+        "instruction": "Add synthetic detergent solution to the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "detergent_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Add the detergent to the hard water in place of soap.",
+        "onWrongAction": "Add the detergent to the test tube holding the hard water, the same way you added soap to the beaker."
+      },
+      {
+        "n": 7,
+        "instruction": "Stir the test tube.",
+        "requiredAction": { "type": "stir", "containerType": "test_tube" },
+        "hint": "Press Stir to mix the detergent through the hard water.",
+        "onWrongAction": "Stir the test tube so the mixing matches what you did with the soap."
+      },
+      {
+        "n": 8,
+        "instruction": "Write down what the test tube looks like, and compare it with the beaker.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Say whether the detergent tube produced any scum, and what that difference explains.",
+        "onWrongAction": "Finish by recording the detergent tube's result — no scum, next to the soap tube's scum, is the entire reason synthetic detergents exist."
+      }
+    ],
+    "expectedResult": {
+      "beakerObservation": "A grey curdy scum forms instead of a lather.",
+      "tubeObservation": "No observable change. The detergent lathers normally with no scum.",
+      "observation": "Soap forms scum with permanent hard water because calcium ions grip two soap molecules at once and the result will not dissolve. The synthetic detergent does not, because its sulfonate head forms a calcium salt that stays dissolved."
+    },
+    "theory": "Soap is the sodium salt of a long fatty acid, and calcium ions in hard water bind two soap molecules at once, forming an insoluble grey scum instead of a lather — every scrap of soap turned into scum is soap that did no washing. Synthetic detergents are built the same way, with a water-loving head and a grease-loving tail, but the head is a sulfonate rather than a carboxylate, and the calcium salt of a sulfonate stays dissolved. That single difference is why detergents lather in hard water where soap only makes scum.",
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — soaps and detergents compared; reaction data from rxn_soap_hard_water and rxn_none_detergent_hard_water in reactions.json"
+  },
+  {
+    "id": "exp_bromine_water_unsaturation_test",
+    "title": "Bromine water — telling an alkene from an alkane",
+    "level": "fsc",
+    "objective": "Shake bromine water with ethene and, separately, with ethane, and use the difference to identify which one contains a carbon-to-carbon double bond.",
+    "apparatus": ["beaker", "test_tube", "stirring_rod"],
+    "reagents": ["c2h4_g", "c2h6_g", "br2_aq"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 12 mL of bromine water into the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "br2_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Take bromine water from the shelf and dispense it into the beaker. Note its orange-brown colour.",
+        "onWrongAction": "Start with bromine water in the beaker — its colour is what this test is watching for a change in."
+      },
+      {
+        "n": 2,
+        "instruction": "Add ethene gas to the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "c2h4_g", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Add ethene to the bromine water and watch the colour closely.",
+        "onWrongAction": "Add ethene to the beaker holding the bromine water. Ethene is the alkene half of this comparison."
+      },
+      {
+        "n": 3,
+        "instruction": "Stir the beaker.",
+        "requiredAction": { "type": "stir", "containerType": "beaker" },
+        "hint": "Press Stir to mix the ethene through the bromine water.",
+        "onWrongAction": "Stir the beaker so the gas reacts with the bromine water throughout."
+      },
+      {
+        "n": 4,
+        "instruction": "Write down what happened to the colour of the beaker.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe what happened to the orange-brown colour.",
+        "onWrongAction": "Record the beaker's result before moving on to the ethane comparison."
+      },
+      {
+        "n": 5,
+        "instruction": "Put about 12 mL of bromine water into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "br2_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Take a second sample of bromine water and dispense it into the test tube.",
+        "onWrongAction": "The second sample of bromine water goes into the test tube, kept separate from the beaker."
+      },
+      {
+        "n": 6,
+        "instruction": "Add ethane gas to the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "c2h6_g", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Add ethane to the bromine water in place of ethene.",
+        "onWrongAction": "Add ethane to the test tube holding the bromine water, the same way you added ethene to the beaker."
+      },
+      {
+        "n": 7,
+        "instruction": "Stir the test tube.",
+        "requiredAction": { "type": "stir", "containerType": "test_tube" },
+        "hint": "Press Stir to mix the ethane through the bromine water.",
+        "onWrongAction": "Stir the test tube so the mixing matches what you did with the ethene."
+      },
+      {
+        "n": 8,
+        "instruction": "Write down what the test tube looks like, and compare it with the beaker.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Say whether the bromine water's colour survived this time, and what that tells you about ethane's structure.",
+        "onWrongAction": "Finish by recording the test tube's result. Bromine water staying coloured with ethane, next to it losing its colour with ethene, is exactly what this test is designed to show."
+      }
+    ],
+    "expectedResult": {
+      "beakerObservation": "The orange-brown bromine water loses its colour almost at once.",
+      "tubeObservation": "No observable change. The bromine water keeps its orange-brown colour.",
+      "observation": "Ethene decolourises bromine water rapidly, because it has a carbon-to-carbon double bond that the bromine adds across. Ethane, with only single bonds, does nothing to it at room temperature."
+    },
+    "theory": "Bromine adds across a carbon-to-carbon double bond in an addition reaction, and as it does so the orange-brown colour of bromine water disappears — a fast, unmistakable, room-temperature test for unsaturation. Ethane has no double bond for the bromine to add across, so the two simply sit together with no reaction at all under these conditions. This is the standard laboratory test for telling an alkene from an alkane.",
+    "safety": "Bromine water is corrosive and its vapour irritates the eyes and lungs. Work with good ventilation and avoid breathing in the fumes.",
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — addition reactions of alkenes; reaction data from rxn_addition_ethene_bromine and rxn_none_ethane_bromine in reactions.json"
+  },
+  {
+    "id": "exp_biuret_protein_test",
+    "title": "The biuret test for protein",
+    "level": "fsc",
+    "objective": "Add biuret reagent to a protein solution and use the colour change to detect the peptide link that holds a protein together.",
+    "apparatus": ["test_tube", "stirring_rod"],
+    "reagents": ["albumin_aq", "biuret_aq"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 12 mL of egg albumin solution into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "albumin_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Take egg albumin solution from the shelf and dispense it into the test tube.",
+        "onWrongAction": "Start with the egg albumin solution in the test tube — it is the protein this test is designed to detect."
+      },
+      {
+        "n": 2,
+        "instruction": "Add biuret reagent to the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "biuret_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Add the pale blue biuret reagent to the albumin and watch closely.",
+        "onWrongAction": "Add biuret reagent to the test tube holding the albumin solution. The colour change with a protein is immediate."
+      },
+      {
+        "n": 3,
+        "instruction": "Stir the tube.",
+        "requiredAction": { "type": "stir", "containerType": "test_tube" },
+        "hint": "Press Stir to mix the two fully.",
+        "onWrongAction": "Stir the test tube so the colour develops evenly through the whole sample."
+      },
+      {
+        "n": 4,
+        "instruction": "Write down what colour the tube has become.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe the colour the pale blue reagent has turned.",
+        "onWrongAction": "Finish by recording the colour change — it is the whole result of this test."
+      }
+    ],
+    "expectedResult": {
+      "colorAfter": "violet",
+      "observation": "The pale blue biuret reagent turns violet in the presence of the protein."
+    },
+    "theory": "Biuret reagent is copper(II) sulfate in strong alkali, pale blue on its own. It turns violet when it meets a protein because the copper(II) ion is gripped by the nitrogen atoms of several peptide links at once, and that grip shifts its colour. The test detects the peptide link itself rather than any one amino acid, so a single free amino acid gives no colour at all — at least three linked together are needed before the test turns positive.",
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — the biuret test for proteins; reaction data from rxn_biuret_protein in reactions.json"
+  },
+  {
+    "id": "exp_qa_group1_silver_chloride",
+    "title": "Qualitative analysis — the chloride test for silver",
+    "level": "bs",
+    "objective": "Add dilute hydrochloric acid to a solution of silver ions and identify the white precipitate that forms, the first step of the systematic cation analysis scheme.",
+    "apparatus": ["test_tube", "stirring_rod"],
+    "reagents": ["agno3_0_1m", "hcl_1m"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 12 mL of silver nitrate solution into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "agno3_0_1m", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Take silver nitrate solution from the shelf and dispense it into the test tube.",
+        "onWrongAction": "Start with silver nitrate solution in the test tube. In the real scheme this stands in for whichever unknown solution is being analysed."
+      },
+      {
+        "n": 2,
+        "instruction": "Add dilute hydrochloric acid to the tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "hcl_1m", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Add dilute hydrochloric acid to the silver nitrate solution.",
+        "onWrongAction": "Add hydrochloric acid to the tube holding the silver nitrate. This is always the first reagent added in the systematic cation scheme."
+      },
+      {
+        "n": 3,
+        "instruction": "Stir the tube.",
+        "requiredAction": { "type": "stir", "containerType": "test_tube" },
+        "hint": "Press Stir to mix the two solutions.",
+        "onWrongAction": "Stir the tube so the precipitate forms throughout the whole sample."
+      },
+      {
+        "n": 4,
+        "instruction": "Write down what you observe.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe the solid that has formed and its texture.",
+        "onWrongAction": "Finish by recording the white precipitate — identifying it correctly is the point of the test."
+      }
+    ],
+    "expectedResult": {
+      "precipitateColour": "white",
+      "precipitateName": "silver chloride",
+      "observation": "A white curdy precipitate of silver chloride forms at once."
+    },
+    "theory": "Dilute hydrochloric acid is added to an unknown solution first in the systematic cation scheme, because only three common cations give an insoluble chloride: silver, lead and mercury(I). Whatever precipitates here belongs to that small group and can be identified further from there; whatever stays dissolved is ruled out immediately. Silver chloride's curdy white texture, and the way it darkens in sunlight, are both characteristic enough to be diagnostic on their own.",
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group I, the chloride group; reaction data from rxn_qa_group1_silver in reactions.json"
+  },
+  {
+    "id": "exp_qa_iron3_hydroxide",
+    "title": "Qualitative analysis — the ammonia test for iron(III)",
+    "level": "bs",
+    "objective": "Add ammonia solution to a solution of iron(III) ions and identify the gelatinous precipitate that forms, part of the Group III cation test.",
+    "apparatus": ["beaker", "stirring_rod"],
+    "reagents": ["fecl3_0_1m", "nh4oh_aq"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put about 18 mL of iron(III) chloride solution into the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "fecl3_0_1m", "minAmountMl": 15, "maxAmountMl": 20 },
+        "hint": "Take iron(III) chloride solution from the shelf and dispense it into the beaker.",
+        "onWrongAction": "Start with iron(III) chloride solution in the beaker — it stands in for the Group III cation being identified."
+      },
+      {
+        "n": 2,
+        "instruction": "Add ammonia solution to the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "nh4oh_aq", "minAmountMl": 10, "maxAmountMl": 20 },
+        "hint": "Add ammonia solution to the iron(III) chloride.",
+        "onWrongAction": "Add the ammonia solution to the beaker holding the iron(III) chloride. Ammonia, not sodium hydroxide, is used at this stage of the scheme."
+      },
+      {
+        "n": 3,
+        "instruction": "Stir the beaker.",
+        "requiredAction": { "type": "stir", "containerType": "beaker" },
+        "hint": "Press Stir to mix the two solutions fully.",
+        "onWrongAction": "Stir the beaker so the precipitate forms evenly through the sample."
+      },
+      {
+        "n": 4,
+        "instruction": "Write down what you observe.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe the colour and texture of the precipitate.",
+        "onWrongAction": "Finish by recording the reddish brown precipitate — its colour alone is often enough to identify it."
+      }
+    ],
+    "expectedResult": {
+      "precipitateColour": "reddish brown",
+      "precipitateName": "iron(III) hydroxide",
+      "observation": "A reddish brown gelatinous precipitate of iron(III) hydroxide forms."
+    },
+    "theory": "Ammonia is used rather than sodium hydroxide at this stage of the scheme deliberately: it is a weak base, so it precipitates iron(III), aluminium and chromium(III) hydroxides without then dissolving the amphoteric ones the way excess sodium hydroxide would. Iron(III) hydroxide's reddish brown colour is distinctive enough that this group is often identifiable by colour alone, before any confirmatory test is run.",
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group III, the ammonia group; reaction data from rxn_qa_group3_iron in reactions.json"
+  },
+  {
+    "id": "exp_amphoteric_aluminium_hydroxide",
+    "title": "Amphoteric behaviour — aluminium hydroxide in alkali and in ammonia",
+    "level": "bs",
+    "objective": "Test aluminium hydroxide with excess sodium hydroxide and, separately, with ammonia, to show that it dissolves in one and not the other.",
+    "apparatus": ["beaker", "test_tube", "stirring_rod"],
+    "reagents": ["aloh3_s", "naoh_1m", "nh4oh_aq"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put a little aluminium hydroxide into the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "aloh3_s", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Take the white aluminium hydroxide floc from the shelf and dispense it into the beaker.",
+        "onWrongAction": "Start with aluminium hydroxide in the beaker — this vessel will get the sodium hydroxide."
+      },
+      {
+        "n": 2,
+        "instruction": "Add sodium hydroxide solution to the beaker.",
+        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "naoh_1m", "minAmountMl": 15, "maxAmountMl": 25 },
+        "hint": "Add sodium hydroxide to the aluminium hydroxide and watch the solid closely.",
+        "onWrongAction": "Add sodium hydroxide to the beaker holding the aluminium hydroxide. Excess alkali is what tests for amphoteric behaviour."
+      },
+      {
+        "n": 3,
+        "instruction": "Stir the beaker.",
+        "requiredAction": { "type": "stir", "containerType": "beaker" },
+        "hint": "Press Stir so the alkali can reach the whole surface of the solid.",
+        "onWrongAction": "Stir the beaker so the solid has a proper chance to dissolve."
+      },
+      {
+        "n": 4,
+        "instruction": "Write down what happened in the beaker.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe what happened to the white solid.",
+        "onWrongAction": "Record the beaker's result before moving on to the ammonia comparison."
+      },
+      {
+        "n": 5,
+        "instruction": "Put a little aluminium hydroxide into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "aloh3_s", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Take a fresh sample of aluminium hydroxide from the shelf and dispense it into the test tube.",
+        "onWrongAction": "A fresh sample of aluminium hydroxide goes into the test tube, kept separate from the beaker."
+      },
+      {
+        "n": 6,
+        "instruction": "Add ammonia solution to the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "nh4oh_aq", "minAmountMl": 15, "maxAmountMl": 20 },
+        "hint": "Add ammonia solution to the aluminium hydroxide in place of sodium hydroxide.",
+        "onWrongAction": "Add ammonia solution to the test tube holding the aluminium hydroxide, the same way you added sodium hydroxide to the beaker."
+      },
+      {
+        "n": 7,
+        "instruction": "Stir the test tube.",
+        "requiredAction": { "type": "stir", "containerType": "test_tube" },
+        "hint": "Press Stir to give the ammonia the same chance you gave the sodium hydroxide.",
+        "onWrongAction": "Stir the test tube so the mixing matches what you did with the beaker."
+      },
+      {
+        "n": 8,
+        "instruction": "Write down what the test tube looks like, and compare it with the beaker.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Say whether the solid dissolved this time, and what that tells you about the difference between the two reagents.",
+        "onWrongAction": "Finish by recording the test tube's result — the solid staying put here, after dissolving in the beaker, is exactly what amphoteric means."
+      }
+    ],
+    "expectedResult": {
+      "beakerObservation": "The white gelatinous solid dissolves completely, leaving a clear solution.",
+      "tubeObservation": "No observable change. The white solid remains undissolved.",
+      "observation": "Aluminium hydroxide dissolves in excess sodium hydroxide but not in ammonia. Dissolving in alkali, on top of also dissolving in acid, is what makes it amphoteric."
+    },
+    "theory": "Aluminium hydroxide is amphoteric: it dissolves in acid like an ordinary base, and it also dissolves in excess sodium hydroxide, behaving as though it were an acid. Ammonia is also an alkali, so it might seem as though it should dissolve the hydroxide too — but ammonia acts here as a weak base rather than a strong source of hydroxide ions, and it is too weak to redissolve the aluminium hydroxide once formed. This is also how aluminium hydroxide is told apart from zinc hydroxide, which looks identical but dissolves readily in ammonia.",
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — amphoteric hydroxides; reaction data from rxn_amphoteric_aloh3_naoh and rxn_none_aloh3_ammonia in reactions.json"
+  },
+  {
+    "id": "exp_cobalt_chloride_equilibrium",
+    "title": "Le Chatelier's principle — the cobalt chloride colour change",
+    "level": "bs",
+    "objective": "Dissolve cobalt(II) chloride hexahydrate in concentrated hydrochloric acid to shift its colour to blue, then add water to shift it back to pink, demonstrating a ligand-exchange equilibrium in both directions.",
+    "apparatus": ["test_tube", "stirring_rod"],
+    "reagents": ["cocl2_6h2o_s", "hcl_1m", "water_distilled"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put a little cobalt(II) chloride hexahydrate into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "cocl2_6h2o_s", "minAmountMl": 3, "maxAmountMl": 8 },
+        "hint": "Take the pink cobalt(II) chloride hexahydrate from the shelf and dispense a small amount into the test tube.",
+        "onWrongAction": "Start with cobalt(II) chloride hexahydrate in the test tube. Its pink colour is the starting point for the whole demonstration."
+      },
+      {
+        "n": 2,
+        "instruction": "Add hydrochloric acid to the tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "hcl_1m", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Add hydrochloric acid to the cobalt(II) chloride and watch the colour shift.",
+        "onWrongAction": "Add hydrochloric acid to the tube. Chloride ions are what push the equilibrium towards the blue complex."
+      },
+      {
+        "n": 3,
+        "instruction": "Write down what colour the tube has become.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe the colour the pink solid has turned into.",
+        "onWrongAction": "Record the blue result before moving the equilibrium back the other way."
+      },
+      {
+        "n": 4,
+        "instruction": "Add distilled water to the tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "water_distilled", "minAmountMl": 10, "maxAmountMl": 20 },
+        "hint": "Add distilled water to dilute the chloride and push the equilibrium back the other way.",
+        "onWrongAction": "Add distilled water to the tube. Diluting the chloride is what reverses the colour change."
+      },
+      {
+        "n": 5,
+        "instruction": "Write down what colour the tube has become now.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe the colour it has turned back into, and compare it with your first observation.",
+        "onWrongAction": "Finish by recording the colour reversing back to pink — that reversal is what proves this is a genuine equilibrium rather than a one-way reaction."
+      }
+    ],
+    "expectedResult": {
+      "colorAfterAcid": "deep blue",
+      "colorAfterWater": "pale pink",
+      "observation": "Concentrated hydrochloric acid turns the pink cobalt(II) solution deep blue. Adding water afterwards turns it back to pale pink."
+    },
+    "theory": "Cobalt(II) exists as the pale pink hexaaqua complex [Co(H₂O)₆]²⁺ in dilute solution, and as the deep blue tetrachloro complex [CoCl₄]²⁻ when chloride is concentrated enough to displace the water ligands. Nothing is created or destroyed in either direction — the same cobalt ion simply swaps which ligands surround it, and adding more of one ligand (chloride from the acid, or water from dilution) shifts the equilibrium towards the complex that uses it. This reversible colour change is the standard classroom demonstration of Le Chatelier's principle.",
+    "safety": "Concentrated hydrochloric acid is corrosive to skin and eyes and releases irritating fumes. Work with gloves and eye protection and keep the tube away from your face.",
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the cobalt(II) chloride equilibrium; reaction data from rxn_ligand_exchange_cobalt_to_blue and rxn_ligand_exchange_cobalt_to_pink in reactions.json"
+  },
+  {
+    "id": "exp_iodoform_test_propanone",
+    "title": "The iodoform test — identifying a methyl ketone",
+    "level": "bs",
+    "objective": "Warm propanone with iodine and sodium hydroxide and identify the pale yellow precipitate that forms, a test specific to a CH3CO- fragment.",
+    "apparatus": ["test_tube", "stirring_rod"],
+    "reagents": ["ch3coch3_l", "i2_aq", "naoh_1m"],
+    "steps": [
+      {
+        "n": 1,
+        "instruction": "Put a little propanone into the test tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "ch3coch3_l", "minAmountMl": 5, "maxAmountMl": 10 },
+        "hint": "Take propanone (acetone) from the shelf and dispense a small amount into the test tube.",
+        "onWrongAction": "Start with propanone in the test tube — it is the compound this test identifies."
+      },
+      {
+        "n": 2,
+        "instruction": "Add iodine solution to the tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "i2_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Add the brown iodine solution to the propanone.",
+        "onWrongAction": "Add iodine solution to the tube holding the propanone. Both iodine and alkali are needed for this test."
+      },
+      {
+        "n": 3,
+        "instruction": "Add sodium hydroxide solution to the tube.",
+        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "naoh_1m", "minAmountMl": 10, "maxAmountMl": 15 },
+        "hint": "Add sodium hydroxide to the mixture and watch for a solid forming.",
+        "onWrongAction": "Add sodium hydroxide to the tube. The alkali is what drives the reaction all the way to the yellow precipitate."
+      },
+      {
+        "n": 4,
+        "instruction": "Stir the tube.",
+        "requiredAction": { "type": "stir", "containerType": "test_tube" },
+        "hint": "Press Stir to mix the three reagents fully.",
+        "onWrongAction": "Stir the tube so the reaction runs through the whole mixture."
+      },
+      {
+        "n": 5,
+        "instruction": "Write down what you observe.",
+        "requiredAction": { "type": "recordObservation" },
+        "hint": "Describe the colour of the precipitate and its smell.",
+        "onWrongAction": "Finish by recording the pale yellow precipitate and its sharp smell — both are characteristic of a positive result."
+      }
+    ],
+    "expectedResult": {
+      "precipitateColour": "pale yellow",
+      "precipitateName": "triiodomethane (iodoform)",
+      "observation": "Pale yellow crystals with a sharp antiseptic smell form."
+    },
+    "theory": "The iodoform test is positive for any compound carrying a CH₃CO- group directly on a carbon, or an alcohol that oxidises to give one, and propanone is the simplest example. Iodine and alkali together convert that methyl group step by step into triiodomethane, which is far less soluble than anything else in the mixture and drops out as a distinctive pale yellow solid. Because the test responds to one specific structural fragment rather than a whole family of compounds, a positive result is unusually informative about a molecule's structure.",
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — the haloform reaction; reaction data from rxn_iodoform_propanone in reactions.json"
   }
 ]
