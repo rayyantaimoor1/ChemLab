@@ -7,8 +7,8 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **250 chemicals, 252 reactions
-> (30 of them `noReaction`), 18 guided experiments, 274 tests passing.**
+> Snapshot as of the last entry below: **266 chemicals, 262 reactions
+> (32 of them `noReaction`), 18 guided experiments, 274 tests passing.**
 
 ---
 
@@ -62,6 +62,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 5 | `5835be2` | Variable oxidation states and their colours (vanadium, chromium, iron, manganese; iodine/thiosulfate) |
 | 6 | `942622a` | Periodicity across Period 3 (oxides and chlorides, Na → P) |
 | 7 | `6e02cb8` | Diazonium salts and azo dyes |
+| 8 | pending | Polymers — addition and condensation, and why one kind persists |
 
 ## 5. Guided experiments (Phase 7)
 
@@ -128,12 +129,13 @@ Good fits for this engine, not yet written:
 - **More qualitative inorganic analysis** — the cation group separations
   only partly covered by batch BS-2; extending the scheme to nickel,
   manganese and the alkali/alkaline-earth groups properly.
-- **Polymers** — addition and condensation polymerisation is a monomer →
-  polymer reaction like any other; fits the engine cleanly.
 - **Biochemistry beyond carbohydrates/proteins** — lipids in more depth,
   nucleic acid components.
 - **Further halogen and Group trends** at BS depth, mirroring the Period 3
   batch's approach.
+- **Rubber and cross-linking** — vulcanisation is a natural follow-on from
+  the polymers batch and the one big idea it left out: what happens when
+  chains are joined to each other rather than only end to end.
 
 Deliberately **not** forced into this engine — different tooling needed,
 not a content-writing problem:
