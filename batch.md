@@ -62,7 +62,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 5 | `5835be2` | Variable oxidation states and their colours (vanadium, chromium, iron, manganese; iodine/thiosulfate) |
 | 6 | `942622a` | Periodicity across Period 3 (oxides and chlorides, Na → P) |
 | 7 | `6e02cb8` | Diazonium salts and azo dyes |
-| 8 | pending | Polymers — addition and condensation, and why one kind persists |
+| 8 | `ec8b73e` | Polymers — addition and condensation, and why one kind persists |
 
 ## 5. Guided experiments (Phase 7)
 
