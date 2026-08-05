@@ -6312,5 +6312,211 @@
     "explanation": "Nothing again — and this is the entry that turns the batch into a general rule rather than a fact about rubber. Bakelite and vulcanised rubber have almost nothing in common: one is a condensation polymer of phenol and methanal built by branching in three directions, the other is an addition polymer of a diene tied together afterwards with sulfur. Different monomers, different mechanism, different bonds doing the joining. And both refuse the same solvent for the same reason, because in both cases everything is connected to everything else and there is no separate molecule left to dissolve. Cross-linking is what decides whether a plastic melts, dissolves and can be recycled — not what it is made of.",
     "levels": ["bs"],
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — thermoplastics and thermosets compared"
+  },
+  {
+    "id": "rxn_hydrolysis_me2sicl2",
+    "reactants": ["me2sicl2_l", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["me2sioh2_aq", "hcl_g"],
+    "equation": "(CH₃)₂SiCl₂ + 2H₂O → (CH₃)₂Si(OH)₂ + 2HCl",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen chloride",
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 20,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "corrosive_fumes",
+      "title": "Reacts with water on contact and fumes in damp air",
+      "warning": "Chlorosilanes hydrolyse the instant they meet water, including the moisture in the room, and the hydrogen chloride they throw off burns the eyes and airways. The bottle fumes as soon as it is opened.",
+      "visualEffect": "white_fumes",
+      "whatToDoInstead": "Fume cupboard with the sash low, keep it stoppered and dry, and add it to water rather than water to it."
+    },
+    "molecularAnimation": null,
+    "explanation": "Two chlorines go in, two —OH groups come out — and that count is the only thing worth tracking through the next five entries. A molecule with two reactive ends can join forward AND back, which is the same bifunctional requirement the polyester and the nylon needed. The difference is that the reactive centre is a SILICON atom, and silicon hydrolyses far more readily than carbon does because it is bigger and has empty d orbitals a water molecule can attach to before any bond has to break — the same argument that explained why silicon tetrachloride fumes and tetrachloromethane does not.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hydrolysis of chlorosilanes"
+  },
+  {
+    "id": "rxn_silicone_condensation",
+    "reactants": ["me2sioh2_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["silicone_s", "water"],
+    "equation": "n (CH₃)₂Si(OH)₂ → -(Si(CH₃)₂-O)ₙ- + n H₂O",
+    "type": "condensation_polymerisation",
+    "effects": {
+      "colorToHex": "#E6E9E4",
+      "precipitate": "a clear translucent rubbery solid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The two —OH groups condense with their neighbours, throwing out a water molecule at each join, and a chain grows. It is the same mechanism as the polyester several entries back — but look at what the backbone is made of. It is not carbon. It alternates SILICON and OXYGEN the whole way along, and every property that makes silicone worth having follows from that one substitution: the Si—O bond is much stronger than C—C, and the methyl groups point outward all the way down the chain.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — polysiloxane formation"
+  },
+  {
+    "id": "rxn_hydrolysis_me3sicl",
+    "reactants": ["me3sicl_l", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["me3sioh_l", "hcl_g"],
+    "equation": "(CH₃)₃SiCl + H₂O → (CH₃)₃SiOH + HCl",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen chloride",
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 16,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "corrosive_fumes",
+      "title": "Reacts with water on contact and fumes in damp air",
+      "warning": "Like every chlorosilane it hydrolyses the moment it meets water and throws off hydrogen chloride, which burns the eyes and airways.",
+      "visualEffect": "white_fumes",
+      "whatToDoInstead": "Fume cupboard with the sash low, keep it stoppered and dry, and add it to water rather than water to it."
+    },
+    "molecularAnimation": null,
+    "explanation": "The same hydrolysis, and the same fuming — but this silicon started with only ONE chlorine, so it ends with only one —OH. Everything else about it is identical to the last one. Whether that difference matters is the question the next entry answers.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hydrolysis of chlorosilanes"
+  },
+  {
+    "id": "rxn_none_me3silanol_polymerise",
+    "reactants": ["me3sioh_l"],
+    "noReaction": true,
+    "explanation": "No chain forms, however long it is heated — and that difference matters enormously. Two —OH groups let a molecule join forward and back, so a chain can grow indefinitely; ONE lets it join to a single partner and then it is finished. Nothing about the chemistry of the —OH has changed between this and the diol; only how many there are. That is why this compound is worth having anyway: added to a silicone mixture it caps a growing chain and stops it dead, which is exactly how the chain length is controlled, and with it whether the product is a thin oil or a thick rubber.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — chain termination in silicones"
+  },
+  {
+    "id": "rxn_hydrolysis_mesicl3",
+    "reactants": ["mesicl3_l", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mesioh3_aq", "hcl_g"],
+    "equation": "CH₃SiCl₃ + 3H₂O → CH₃Si(OH)₃ + 3HCl",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen chloride",
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 24,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "corrosive_fumes",
+      "title": "Reacts with water on contact and fumes in damp air",
+      "warning": "Three chlorines means three times the hydrogen chloride, and this one gets hottest of the three on contact with water. The fumes burn the eyes and airways.",
+      "visualEffect": "white_fumes",
+      "whatToDoInstead": "Fume cupboard with the sash low, keep it stoppered and dry, and add it slowly to a large volume of water with cooling."
+    },
+    "molecularAnimation": null,
+    "explanation": "Three chlorines, so three —OH groups, and the set is now complete: one, two and three reactive ends from three otherwise identical molecules. Notice the reaction also gets hotter each time, simply because there are more bonds being hydrolysed. What three ends build is the next entry, and it is not a longer chain — a chain needs exactly two.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hydrolysis of chlorosilanes"
+  },
+  {
+    "id": "rxn_silicone_resin_network",
+    "reactants": ["mesioh3_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["silicone_resin_s", "water"],
+    "equation": "n CH₃Si(OH)₃ → cross-linked methylsiloxane network + water",
+    "type": "condensation_polymerisation",
+    "effects": {
+      "colorToHex": "#D8DCD6",
+      "precipitate": "a hard pale translucent solid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 10,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Three reactive ends cannot make a chain, because a chain needs exactly two — one to come from and one to go to. What they make instead is a network branching in three directions, and the result is a THERMOSET: hard, insoluble, and it will not melt. Hold this against Bakelite, which reached the identical outcome from phenol and methanal, and against vulcanised rubber, which got there by tying finished chains together afterwards. Three completely different chemistries, one structural idea. Whether a polymer melts and dissolves is decided by how its pieces are connected, not by what they are.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silicone resins and network polymers"
+  },
+  {
+    "id": "rxn_decomposition_polythene_hot",
+    "reactants": ["polythene_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 350, "catalyst": null },
+    "products": ["c_s", "ch4_g"],
+    "equation": "-(CH₂CH₂)ₙ- →(strong heat) carbon + hydrocarbon vapours",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#1F1D1C",
+      "precipitate": "a black char, and the plastic never flows back",
+      "gas": "hydrocarbon vapour",
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_gas",
+      "title": "Burning plastic gives off harmful fumes",
+      "warning": "Overheated polythene releases a mixture of hydrocarbon vapours that irritate the airways, and any plastic containing chlorine or nitrogen gives off far worse.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard, and never heat an unknown plastic on an open bench to see what happens."
+    },
+    "molecularAnimation": null,
+    "explanation": "Push poly(ethene) past about 350 °C and it does not simply melt and come back — the carbon–carbon backbone starts breaking, and what is left is char and vapour. This is the ceiling on every carbon-backboned polymer, and it is set by the strength of the C—C bond holding the chain together. The next entry is the same test on a silicone, and the answer is different.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — thermal degradation of polymers"
+  },
+  {
+    "id": "rxn_none_silicone_hot",
+    "reactants": ["silicone_s"],
+    "noReaction": true,
+    "explanation": "Nothing — at a temperature that just turned poly(ethene) into char. That is the whole reason silicones exist as a class of material, and the reason is a single bond strength: Si—O is considerably stronger than C—C, so a backbone built from it survives heat that pulls a carbon chain apart. This is why silicone is used for oven gloves, engine gaskets and the seal round a hot bearing, where any ordinary plastic would fail. Swapping one atom in the backbone changed what the material can be asked to do.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal stability of the Si-O bond"
+  },
+  {
+    "id": "rxn_none_silicone_water",
+    "reactants": ["silicone_s", "water_distilled"],
+    "noReaction": true,
+    "explanation": "Water beads up and runs off rather than wetting it, and the reason is what is pointing outwards. The silicon–oxygen backbone is buried on the inside of the chain; what the water actually meets is the methyl groups sticking out all the way along, and a surface of methyl groups is as greasy as a candle. That is why silicone is used to waterproof fabric and to seal round a bath. Notice this is a property of the SURFACE the polymer presents, not of the atoms doing the structural work.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — surface properties of silicones"
+  },
+  {
+    "id": "rxn_glass_making",
+    "reactants": ["caco3_s", "na2co3_s", "sio2_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["glass_s", "co2_g"],
+    "equation": "Na₂CO₃ + CaCO₃ + 6SiO₂ →(1500 °C) Na₂O·CaO·6SiO₂ + 2CO₂",
+    "type": "synthesis",
+    "effects": {
+      "colorToHex": "#DCE8EA",
+      "precipitate": "a clear pale blue-green solid that softened rather than melting sharply",
+      "gas": "carbon dioxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Sand, soda and limestone at about 1500 °C — far beyond a school burner, so the app asks only for heat and leaves the real figure here. Silica on its own would need over 1700 °C because its network is unbroken; the sodium and calcium ions get in among it and snap some of those Si—O—Si links, which is what brings the working temperature down far enough to be practical. That is also why glass SOFTENS gradually instead of melting at one sharp temperature, and why it can be blown and drawn. Compare the reactants with the cement kiln: limestone and sand give cement, and adding soda to the same two gives glass.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silicate glasses; Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries"
   }
 ]

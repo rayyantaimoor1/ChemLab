@@ -5499,5 +5499,203 @@
       { "from": "r3", "to": "b5", "type": "covalent" },
       { "from": "b5", "to": "r6", "type": "covalent" }
     ]
+  },
+  "me2sicl2_l": {
+    "note": "Tetrahedral, like every silicon in this batch. COUNT THE GREEN CHLORINES - there are two. That number is the only thing separating this from the two models beside it, and it decides whether what it builds is a dead end, a chain or a network.",
+    "atoms": [
+      { "id": "si", "element": "Si", "x": 0, "y": 0, "z": 0 },
+      { "id": "s0", "element": "Cl", "x": 1.2, "y": 1.2, "z": 1.2 },
+      { "id": "s1", "element": "Cl", "x": -1.2, "y": -1.2, "z": 1.2 },
+      { "id": "s2", "element": "C", "x": -1.1, "y": 1.1, "z": -1.1 },
+      { "id": "s3", "element": "C", "x": 1.1, "y": -1.1, "z": -1.1 }
+    ],
+    "bonds": [
+      { "from": "si", "to": "s0", "type": "covalent" },
+      { "from": "si", "to": "s1", "type": "covalent" },
+      { "from": "si", "to": "s2", "type": "covalent" },
+      { "from": "si", "to": "s3", "type": "covalent" }
+    ]
+  },
+  "me3sicl_l": {
+    "note": "Count again: ONE chlorine. Everything else about this molecule is the same shape and the same kind of bonding as the one with two, and yet it cannot build a chain at all - it can only cap one. Number of reactive ends, not their nature.",
+    "atoms": [
+      { "id": "si", "element": "Si", "x": 0, "y": 0, "z": 0 },
+      { "id": "s0", "element": "Cl", "x": 1.2, "y": 1.2, "z": 1.2 },
+      { "id": "s1", "element": "C", "x": -1.1, "y": -1.1, "z": 1.1 },
+      { "id": "s2", "element": "C", "x": -1.1, "y": 1.1, "z": -1.1 },
+      { "id": "s3", "element": "C", "x": 1.1, "y": -1.1, "z": -1.1 }
+    ],
+    "bonds": [
+      { "from": "si", "to": "s0", "type": "covalent" },
+      { "from": "si", "to": "s1", "type": "covalent" },
+      { "from": "si", "to": "s2", "type": "covalent" },
+      { "from": "si", "to": "s3", "type": "covalent" }
+    ]
+  },
+  "mesicl3_l": {
+    "note": "THREE chlorines. A chain needs exactly two ends, so three is not \"better at chaining\" - it is a different thing entirely, and what grows from it branches in three directions and closes into a network.",
+    "atoms": [
+      { "id": "si", "element": "Si", "x": 0, "y": 0, "z": 0 },
+      { "id": "s0", "element": "Cl", "x": 1.2, "y": 1.2, "z": 1.2 },
+      { "id": "s1", "element": "Cl", "x": -1.2, "y": -1.2, "z": 1.2 },
+      { "id": "s2", "element": "Cl", "x": -1.2, "y": 1.2, "z": -1.2 },
+      { "id": "s3", "element": "C", "x": 1.1, "y": -1.1, "z": -1.1 }
+    ],
+    "bonds": [
+      { "from": "si", "to": "s0", "type": "covalent" },
+      { "from": "si", "to": "s1", "type": "covalent" },
+      { "from": "si", "to": "s2", "type": "covalent" },
+      { "from": "si", "to": "s3", "type": "covalent" }
+    ]
+  },
+  "me2sioh2_aq": {
+    "note": "Two OH groups, pointing away from each other. One end to come from and one to go to, which is exactly what a growing chain requires.",
+    "atoms": [
+      { "id": "si", "element": "Si", "x": 0, "y": 0, "z": 0 },
+      { "id": "s0", "element": "O", "x": 1.1, "y": 1.1, "z": 1.1 },
+      { "id": "s0h", "element": "H", "x": 1.95, "y": 1.95, "z": 1.95 },
+      { "id": "s1", "element": "O", "x": -1.1, "y": -1.1, "z": 1.1 },
+      { "id": "s1h", "element": "H", "x": -1.95, "y": -1.95, "z": 1.95 },
+      { "id": "s2", "element": "C", "x": -1.1, "y": 1.1, "z": -1.1 },
+      { "id": "s3", "element": "C", "x": 1.1, "y": -1.1, "z": -1.1 }
+    ],
+    "bonds": [
+      { "from": "si", "to": "s0", "type": "covalent" },
+      { "from": "s0", "to": "s0h", "type": "covalent" },
+      { "from": "si", "to": "s1", "type": "covalent" },
+      { "from": "s1", "to": "s1h", "type": "covalent" },
+      { "from": "si", "to": "s2", "type": "covalent" },
+      { "from": "si", "to": "s3", "type": "covalent" }
+    ]
+  },
+  "me3sioh_l": {
+    "note": "One OH, and three methyls that can do nothing. Put it beside the diol: same silicon, same tetrahedron, one fewer OH, and the difference between building a polymer and stopping one.",
+    "atoms": [
+      { "id": "si", "element": "Si", "x": 0, "y": 0, "z": 0 },
+      { "id": "s0", "element": "O", "x": 1.1, "y": 1.1, "z": 1.1 },
+      { "id": "s0h", "element": "H", "x": 1.95, "y": 1.95, "z": 1.95 },
+      { "id": "s1", "element": "C", "x": -1.1, "y": -1.1, "z": 1.1 },
+      { "id": "s2", "element": "C", "x": -1.1, "y": 1.1, "z": -1.1 },
+      { "id": "s3", "element": "C", "x": 1.1, "y": -1.1, "z": -1.1 }
+    ],
+    "bonds": [
+      { "from": "si", "to": "s0", "type": "covalent" },
+      { "from": "s0", "to": "s0h", "type": "covalent" },
+      { "from": "si", "to": "s1", "type": "covalent" },
+      { "from": "si", "to": "s2", "type": "covalent" },
+      { "from": "si", "to": "s3", "type": "covalent" }
+    ]
+  },
+  "mesioh3_aq": {
+    "note": "Three OH groups. Turn it and see them pointing three different ways - that is the geometric reason three ends give a network rather than a longer chain. They simply do not lie in a line.",
+    "atoms": [
+      { "id": "si", "element": "Si", "x": 0, "y": 0, "z": 0 },
+      { "id": "s0", "element": "O", "x": 1.1, "y": 1.1, "z": 1.1 },
+      { "id": "s0h", "element": "H", "x": 1.95, "y": 1.95, "z": 1.95 },
+      { "id": "s1", "element": "O", "x": -1.1, "y": -1.1, "z": 1.1 },
+      { "id": "s1h", "element": "H", "x": -1.95, "y": -1.95, "z": 1.95 },
+      { "id": "s2", "element": "O", "x": -1.1, "y": 1.1, "z": -1.1 },
+      { "id": "s2h", "element": "H", "x": -1.95, "y": 1.95, "z": -1.95 },
+      { "id": "s3", "element": "C", "x": 1.1, "y": -1.1, "z": -1.1 }
+    ],
+    "bonds": [
+      { "from": "si", "to": "s0", "type": "covalent" },
+      { "from": "s0", "to": "s0h", "type": "covalent" },
+      { "from": "si", "to": "s1", "type": "covalent" },
+      { "from": "s1", "to": "s1h", "type": "covalent" },
+      { "from": "si", "to": "s2", "type": "covalent" },
+      { "from": "s2", "to": "s2h", "type": "covalent" },
+      { "from": "si", "to": "s3", "type": "covalent" }
+    ]
+  },
+  "silicone_s": {
+    "note": "Follow the backbone and read the atoms off in order: silicon, oxygen, silicon, oxygen. There is no carbon in it at all - the carbons are the methyl groups hanging off the sides. Two things follow, and both are why silicone exists. Si-O is much stronger than C-C, so heat that chars polythene leaves this alone; and those methyls face outward all the way along, so what water meets is a greasy surface. A fragment, not a whole chain.",
+    "atoms": [
+      { "id": "si0", "element": "Si", "x": -3, "y": 0, "z": 0 },
+      { "id": "si1", "element": "Si", "x": 0, "y": 0, "z": 0 },
+      { "id": "si2", "element": "Si", "x": 3, "y": 0, "z": 0 },
+      { "id": "o0", "element": "O", "x": -1.5, "y": 0.35, "z": 0 },
+      { "id": "o1", "element": "O", "x": 1.5, "y": 0.35, "z": 0 },
+      { "id": "ma0", "element": "C", "x": -3, "y": 1.4, "z": 1 },
+      { "id": "ma1", "element": "C", "x": 0, "y": 1.4, "z": 1 },
+      { "id": "ma2", "element": "C", "x": 3, "y": 1.4, "z": 1 },
+      { "id": "mb0", "element": "C", "x": -3, "y": -1.4, "z": -1 },
+      { "id": "mb1", "element": "C", "x": 0, "y": -1.4, "z": -1 },
+      { "id": "mb2", "element": "C", "x": 3, "y": -1.4, "z": -1 }
+    ],
+    "bonds": [
+      { "from": "si0", "to": "o0", "type": "covalent" },
+      { "from": "o0", "to": "si1", "type": "covalent" },
+      { "from": "si1", "to": "o1", "type": "covalent" },
+      { "from": "o1", "to": "si2", "type": "covalent" },
+      { "from": "si0", "to": "ma0", "type": "covalent" },
+      { "from": "si1", "to": "ma1", "type": "covalent" },
+      { "from": "si2", "to": "ma2", "type": "covalent" },
+      { "from": "si0", "to": "mb0", "type": "covalent" },
+      { "from": "si1", "to": "mb1", "type": "covalent" },
+      { "from": "si2", "to": "mb2", "type": "covalent" }
+    ]
+  },
+  "silicone_resin_s": {
+    "note": "Every silicon here reaches onward in THREE directions through bridging oxygens, so there is no chain to follow and no separate molecule anywhere in it. Open the plain silicone model beside it: same Si-O bonding, same methyls, and the only difference is how many ways each silicon connects. That difference is the whole of thermoplastic versus thermoset.",
+    "atoms": [
+      { "id": "si0", "element": "Si", "x": 0, "y": 0, "z": 0 },
+      { "id": "si1", "element": "Si", "x": 3, "y": 0.6, "z": 0.4 },
+      { "id": "si2", "element": "Si", "x": -1.6, "y": 2.6, "z": -0.5 },
+      { "id": "si3", "element": "Si", "x": -1.4, "y": -2.4, "z": 0.9 },
+      { "id": "o1", "element": "O", "x": 1.5, "y": 0.3, "z": 0.2 },
+      { "id": "o2", "element": "O", "x": -0.8, "y": 1.3, "z": -0.25 },
+      { "id": "o3", "element": "O", "x": -0.7, "y": -1.2, "z": 0.45 },
+      { "id": "m0", "element": "C", "x": 0.4, "y": -0.6, "z": -1.6 },
+      { "id": "m1", "element": "C", "x": 4, "y": 1.8, "z": 0.2 },
+      { "id": "m2", "element": "C", "x": -2.6, "y": 3.6, "z": 0.3 },
+      { "id": "m3", "element": "C", "x": -2.4, "y": -3.4, "z": 0.2 }
+    ],
+    "bonds": [
+      { "from": "si0", "to": "o1", "type": "covalent" },
+      { "from": "o1", "to": "si1", "type": "covalent" },
+      { "from": "si0", "to": "o2", "type": "covalent" },
+      { "from": "o2", "to": "si2", "type": "covalent" },
+      { "from": "si0", "to": "o3", "type": "covalent" },
+      { "from": "o3", "to": "si3", "type": "covalent" },
+      { "from": "si0", "to": "m0", "type": "covalent" },
+      { "from": "si1", "to": "m1", "type": "covalent" },
+      { "from": "si2", "to": "m2", "type": "covalent" },
+      { "from": "si3", "to": "m3", "type": "covalent" }
+    ]
+  },
+  "glass_s": {
+    "note": "A silica network with sodium and calcium ions sitting in among it. Look for where the network STOPS - the metal ions have broken some of the Si-O-Si links, leaving loose ends instead of a continuous framework. Those breaks are why glass works at 1500 degrees rather than 1700, and why it softens gradually instead of melting at one sharp temperature. It is also why the atoms never settled into a regular lattice on cooling.",
+    "atoms": [
+      { "id": "si0", "element": "Si", "x": -2.6, "y": 1.4, "z": 0 },
+      { "id": "si1", "element": "Si", "x": 0.6, "y": 2, "z": 0.5 },
+      { "id": "si2", "element": "Si", "x": 3.2, "y": 0.4, "z": -0.4 },
+      { "id": "si3", "element": "Si", "x": -1.8, "y": -1.8, "z": 0.6 },
+      { "id": "si4", "element": "Si", "x": 1.4, "y": -2.2, "z": -0.6 },
+      { "id": "ob0", "element": "O", "x": -1, "y": 1.7, "z": 0.25 },
+      { "id": "ob1", "element": "O", "x": 1.9, "y": 1.2, "z": 0.05 },
+      { "id": "ob2", "element": "O", "x": -2.2, "y": -0.2, "z": 0.3 },
+      { "id": "ob3", "element": "O", "x": -0.2, "y": -2, "z": 0 },
+      { "id": "oe0", "element": "O", "x": 0.9, "y": 3.5, "z": 0.9 },
+      { "id": "oe1", "element": "O", "x": 4.6, "y": 0.1, "z": -0.8 },
+      { "id": "oe2", "element": "O", "x": -3, "y": -3.1, "z": 1 },
+      { "id": "na", "element": "Na", "x": 2.6, "y": 2.9, "z": 1.4 },
+      { "id": "ca", "element": "Ca", "x": -3.9, "y": -1.6, "z": -1.2 }
+    ],
+    "bonds": [
+      { "from": "si0", "to": "ob0", "type": "covalent" },
+      { "from": "ob0", "to": "si1", "type": "covalent" },
+      { "from": "si1", "to": "ob1", "type": "covalent" },
+      { "from": "ob1", "to": "si2", "type": "covalent" },
+      { "from": "si0", "to": "ob2", "type": "covalent" },
+      { "from": "ob2", "to": "si3", "type": "covalent" },
+      { "from": "si3", "to": "ob3", "type": "covalent" },
+      { "from": "ob3", "to": "si4", "type": "covalent" },
+      { "from": "si1", "to": "oe0", "type": "covalent" },
+      { "from": "si2", "to": "oe1", "type": "covalent" },
+      { "from": "si3", "to": "oe2", "type": "covalent" },
+      { "from": "na", "to": "oe0", "type": "ionic" },
+      { "from": "ca", "to": "oe2", "type": "ionic" }
+    ]
   }
 }

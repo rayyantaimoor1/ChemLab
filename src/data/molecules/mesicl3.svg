@@ -1,0 +1,17 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Methyltrichlorosilane: one methyl group and THREE chlorines, so hydrolysis gives three OH groups. Three reactive ends branch in three directions and build a network, not a chain">
+  <line x1="80" y1="56" x2="80" y2="20" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="56" x2="24" y2="84" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="56" x2="136" y2="84" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="56" x2="80" y2="104" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="20" r="13" fill="#2ECC71" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="25" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0B3D1E">Cl</text>
+  <circle cx="24" cy="84" r="13" fill="#2ECC71" stroke="#161A19" stroke-width="2"/>
+  <text x="24" y="89" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0B3D1E">Cl</text>
+  <circle cx="136" cy="84" r="13" fill="#2ECC71" stroke="#161A19" stroke-width="2"/>
+  <text x="136" y="89" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0B3D1E">Cl</text>
+  <circle cx="80" cy="104" r="12" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="109" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="80" cy="56" r="16" fill="#7A8B99" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="62" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Si</text>
+  <text x="80" y="116" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">THREE Cl → three OH → a NETWORK</text>
+</svg>

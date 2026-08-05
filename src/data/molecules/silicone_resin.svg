@@ -1,0 +1,39 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Silicone resin: each silicon joined onward in three directions instead of two, so the whole solid is one connected network. That is what makes it a thermoset, exactly as with Bakelite">
+  <line x1="80" y1="58" x2="80" y2="40" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="80" y1="40" x2="80" y2="22" stroke="#161A19" stroke-width="2.2"/>
+  <circle cx="80" cy="40" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="43" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+  <line x1="80" y1="58" x2="57" y2="56" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="57" y1="56" x2="34" y2="54" stroke="#161A19" stroke-width="2.2"/>
+  <circle cx="57" cy="56" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="57" y="59" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+  <line x1="80" y1="58" x2="103" y2="56" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="103" y1="56" x2="126" y2="54" stroke="#161A19" stroke-width="2.2"/>
+  <circle cx="103" cy="56" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="103" y="59" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+  <line x1="34" y1="54" x2="45" y2="73" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="45" y1="73" x2="56" y2="92" stroke="#161A19" stroke-width="2.2"/>
+  <circle cx="45" cy="73" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="45" y="76" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+  <line x1="126" y1="54" x2="115" y2="73" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="115" y1="73" x2="104" y2="92" stroke="#161A19" stroke-width="2.2"/>
+  <circle cx="115" cy="73" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="115" y="76" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+  <line x1="56" y1="92" x2="80" y2="92" stroke="#161A19" stroke-width="2.2"/>
+  <line x1="80" y1="92" x2="104" y2="92" stroke="#161A19" stroke-width="2.2"/>
+  <circle cx="80" cy="92" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="80" cy="22" r="13" fill="#7A8B99" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="27" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Si</text>
+  <circle cx="34" cy="54" r="13" fill="#7A8B99" stroke="#161A19" stroke-width="2"/>
+  <text x="34" y="59" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Si</text>
+  <circle cx="126" cy="54" r="13" fill="#7A8B99" stroke="#161A19" stroke-width="2"/>
+  <text x="126" y="59" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Si</text>
+  <circle cx="56" cy="92" r="13" fill="#7A8B99" stroke="#161A19" stroke-width="2"/>
+  <text x="56" y="97" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Si</text>
+  <circle cx="104" cy="92" r="13" fill="#7A8B99" stroke="#161A19" stroke-width="2"/>
+  <text x="104" y="97" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Si</text>
+  <circle cx="80" cy="58" r="13" fill="#7A8B99" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="63" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Si</text>
+  <text x="80" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">each Si reaches out THREE ways — one network</text>
+</svg>
