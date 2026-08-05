@@ -63,7 +63,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 6 | `942622a` | Periodicity across Period 3 (oxides and chlorides, Na → P) |
 | 7 | `6e02cb8` | Diazonium salts and azo dyes |
 | 8 | `ec8b73e` | Polymers — addition and condensation, and why one kind persists |
-| 9 | pending | Rubber and cross-linking — thermoplastic against thermoset |
+| 9 | `dc1eee3` | Rubber and cross-linking — thermoplastic against thermoset |
 
 ## 5. Guided experiments (Phase 7)
 
