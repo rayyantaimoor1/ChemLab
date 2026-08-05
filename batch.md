@@ -65,7 +65,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 8 | `ec8b73e` | Polymers — addition and condensation, and why one kind persists |
 | 9 | `dc1eee3` | Rubber and cross-linking — thermoplastic against thermoset |
 | 10 | `714eb98` | Silicones, and glass — an inorganic backbone |
-| 11 | pending | Ceramics, refractories and plaster |
+| 11 | `c010161` | Ceramics, refractories and plaster |
 
 ## 5. Guided experiments (Phase 7)
 
