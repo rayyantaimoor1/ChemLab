@@ -88,6 +88,8 @@ const ELEMENT_STYLE = {
   Si: { fill: '#7A8B99', text: '#FFFFFF' },
   Br: { fill: '#A62929', text: '#FFFFFF' },
   S: { fill: '#F1C40F', text: '#161A19' },
+  Hg: { fill: '#B8B8C0', text: '#161A19' },
+  Au: { fill: '#D4AF37', text: '#161A19' },
   Ti: { fill: '#9EA7AD', text: '#161A19' },
   F: { fill: '#7FD1AE', text: '#0B3D1E' },
   Sn: { fill: '#8C9BA5', text: '#161A19' },

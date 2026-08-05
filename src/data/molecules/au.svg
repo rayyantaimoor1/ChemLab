@@ -1,0 +1,33 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gold: a metal lattice, and the point is that it stays one. Gold is found in the ground as gold because nothing in nature is strong enough to oxidise it">
+  <line x1="44" y1="32" x2="80" y2="32" stroke="#161A19" stroke-width="1.6"/>
+  <line x1="44" y1="32" x2="44" y2="62" stroke="#161A19" stroke-width="1.6"/>
+  <line x1="80" y1="32" x2="116" y2="32" stroke="#161A19" stroke-width="1.6"/>
+  <line x1="80" y1="32" x2="80" y2="62" stroke="#161A19" stroke-width="1.6"/>
+  <line x1="116" y1="32" x2="116" y2="62" stroke="#161A19" stroke-width="1.6"/>
+  <line x1="44" y1="62" x2="80" y2="62" stroke="#161A19" stroke-width="1.6"/>
+  <line x1="44" y1="62" x2="44" y2="92" stroke="#161A19" stroke-width="1.6"/>
+  <line x1="80" y1="62" x2="116" y2="62" stroke="#161A19" stroke-width="1.6"/>
+  <line x1="80" y1="62" x2="80" y2="92" stroke="#161A19" stroke-width="1.6"/>
+  <line x1="116" y1="62" x2="116" y2="92" stroke="#161A19" stroke-width="1.6"/>
+  <line x1="44" y1="92" x2="80" y2="92" stroke="#161A19" stroke-width="1.6"/>
+  <line x1="80" y1="92" x2="116" y2="92" stroke="#161A19" stroke-width="1.6"/>
+  <circle cx="44" cy="32" r="14" fill="#D4AF37" stroke="#161A19" stroke-width="2"/>
+  <text x="44" y="37" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Au</text>
+  <circle cx="80" cy="32" r="14" fill="#D4AF37" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="37" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Au</text>
+  <circle cx="116" cy="32" r="14" fill="#D4AF37" stroke="#161A19" stroke-width="2"/>
+  <text x="116" y="37" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Au</text>
+  <circle cx="44" cy="62" r="14" fill="#D4AF37" stroke="#161A19" stroke-width="2"/>
+  <text x="44" y="67" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Au</text>
+  <circle cx="80" cy="62" r="14" fill="#D4AF37" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="67" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Au</text>
+  <circle cx="116" cy="62" r="14" fill="#D4AF37" stroke="#161A19" stroke-width="2"/>
+  <text x="116" y="67" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Au</text>
+  <circle cx="44" cy="92" r="14" fill="#D4AF37" stroke="#161A19" stroke-width="2"/>
+  <text x="44" y="97" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Au</text>
+  <circle cx="80" cy="92" r="14" fill="#D4AF37" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="97" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Au</text>
+  <circle cx="116" cy="92" r="14" fill="#D4AF37" stroke="#161A19" stroke-width="2"/>
+  <text x="116" y="97" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Au</text>
+  <text x="80" y="114" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">found AS the metal — no extraction chemistry needed</text>
+</svg>

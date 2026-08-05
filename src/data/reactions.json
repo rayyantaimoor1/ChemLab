@@ -6710,5 +6710,225 @@
     "explanation": "Add the water back and it sets hard in minutes, which is why plaster is used for casts and mouldings. Two things are worth noticing. It gets WARM as it sets — a plaster cast on a broken arm is noticeably so — because bonds are being made as the crystal rebuilds. And it expands very slightly on setting, which is unusual and is exactly what makes it good for a mould: it presses into every detail rather than shrinking away from it. It will not set in a hot oven, though, and the app enforces that: above about 100 °C the half-water form is the stable one, so the water leaves as fast as it arrives. Set beside the ceramic entries, this is a hydration that fully reverses, where firing clay never does.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries; CRC Handbook of Chemistry and Physics, 97th ed."
+  },
+  {
+    "id": "rxn_none_zns_carbon",
+    "reactants": ["c_s", "zns_s"],
+    "noReaction": true,
+    "explanation": "Nothing, however hot it gets — and that is why zinc extraction has two stages rather than one. Carbon reduces a metal by taking its OXYGEN away, forming carbon monoxide or dioxide, and it is the strength of those carbon–oxygen bonds that pays for the reaction. Carbon has no comparable appetite for sulfur, so a sulfide ore simply sits there. The ore must be turned into an oxide first, which is what the next entry is for. Roasting is not a purification step; it is what makes the reduction possible at all.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — why sulfide ores are roasted before reduction"
+  },
+  {
+    "id": "rxn_roasting_zinc_blende",
+    "reactants": ["o2_g", "zns_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["zno_s", "so2_g"],
+    "equation": "2ZnS + 3O₂ →(roasting) 2ZnO + 2SO₂",
+    "type": "oxidation",
+    "effects": {
+      "colorToHex": "#F7F5EE",
+      "precipitate": "a white solid where the pale sulfide used to be",
+      "gas": "sulfur dioxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "Roasting a sulfide ore floods the air with sulfur dioxide",
+      "warning": "Sulfur dioxide is choking, attacks the lungs, and is dangerous to anyone asthmatic at concentrations well below what most people would call a strong smell. Smelters that vented it untreated stripped the vegetation off entire valleys.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard for any scale that would be done in a laboratory. Industrially the gas is not vented at all — it is captured and fed to the Contact process."
+    },
+    "molecularAnimation": null,
+    "explanation": "ROASTING: heat the sulfide in air and it becomes the oxide, which carbon CAN reduce. The sulfur leaves as sulfur dioxide, and what happens to that gas is worth more than a footnote — vented, it is the acid rain from an earlier batch; captured, it is fed straight into the Contact process and sold as sulfuric acid. A smelter's biggest pollutant became one of its products, and the chemistry did not change at all, only whether anyone bothered to collect it.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — roasting of sulfide ores"
+  },
+  {
+    "id": "rxn_reduction_zno_carbon",
+    "reactants": ["c_s", "zno_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["zn_metal", "co_g"],
+    "equation": "ZnO + C →(1200 °C) Zn + CO",
+    "type": "reduction",
+    "effects": {
+      "colorToHex": "#BFC3C6",
+      "precipitate": "bright metal condensing where the white powder was",
+      "gas": "carbon monoxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "Carbon monoxide has no smell and no colour",
+      "warning": "Every carbon reduction produces carbon monoxide, which gives no warning of any kind and binds to haemoglobin far more tightly than oxygen. Someone breathing it feels sleepy rather than breathless.",
+      "visualEffect": null,
+      "whatToDoInstead": "Strong ventilation or a fume cupboard, and a carbon monoxide alarm anywhere this is done regularly. Never judge the air by how it smells."
+    },
+    "molecularAnimation": null,
+    "explanation": "Now that the ore is an oxide, carbon works — it takes the oxygen away and leaves the metal. This is the standard route for every metal in the middle of the reactivity series, and it is cheap because coke is cheap. Zinc adds one wrinkle worth knowing: it boils at 907 °C, well below the temperature the furnace needs, so it comes off as a VAPOUR and is condensed afterwards rather than tapped off as a liquid.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — carbon reduction of metal oxides"
+  },
+  {
+    "id": "rxn_boudouard_co",
+    "reactants": ["c_s", "co2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["co_g"],
+    "equation": "C + CO₂ →(furnace heat) 2CO",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "carbon monoxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "This reaction turns a harmless gas into a lethal one",
+      "warning": "Carbon dioxide passed over hot carbon becomes carbon monoxide, which is odourless, colourless and poisonous. This is exactly what happens in a stove or brazier burning with too little air, and it is why they kill indoors.",
+      "visualEffect": null,
+      "whatToDoInstead": "Never burn charcoal in an unventilated room. Anywhere this chemistry can happen needs air coming in, not just smoke going out."
+    },
+    "molecularAnimation": null,
+    "explanation": "Where the blast furnace's real reducing agent comes from. Coke burning at the bottom makes carbon dioxide; that gas rises through white-hot coke above and is turned into carbon monoxide, which does the work higher up the furnace. Worth reading twice, because it is the same reaction that makes a charcoal brazier lethal indoors: plenty of air gives carbon dioxide and warmth, too little gives carbon monoxide and no warning at all.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the Boudouard equilibrium"
+  },
+  {
+    "id": "rxn_blast_furnace_reduction",
+    "reactants": ["co_g", "fe2o3_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["fe_metal", "co2_g"],
+    "equation": "Fe₂O₃ + 3CO →(blast furnace) 2Fe + 3CO₂",
+    "type": "reduction",
+    "effects": {
+      "colorToHex": "#6E6F71",
+      "precipitate": "molten grey metal, running to the bottom",
+      "gas": "carbon dioxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The reaction that built the industrial world, and it is rust run backwards: iron(III) oxide is what iron becomes when it corrodes, and the furnace puts the electrons back. Notice the reducing agent is the GAS, not the coke directly — carbon monoxide reaches every particle of ore as it falls through the furnace, which solid carbon touching solid ore never could. The limestone charged alongside does a different job again: it becomes lime, which takes up the silica impurity as slag, and the app has that reaction already.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the blast furnace"
+  },
+  {
+    "id": "rxn_none_al2o3_carbon",
+    "reactants": ["al2o3_s", "c_s"],
+    "noReaction": true,
+    "explanation": "Carbon cannot do it. Aluminium holds its oxygen far more tightly than carbon can pull — aluminium is well ABOVE carbon in the reactivity series, and a less reactive element cannot take oxygen from a more reactive one. This single failure is why aluminium was a precious metal in the 1850s, more costly than gold, while iron had been common for three thousand years. The answer was electrolysis, which is in the app already: put aluminium oxide on its own and switch the power supply on. Electricity can force a reaction that no chemical reducing agent will.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — limits of carbon reduction and the Hall–Héroult process"
+  },
+  {
+    "id": "rxn_thermite",
+    "reactants": ["al_metal", "fe2o3_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["fe_metal", "al2o3_s"],
+    "equation": "Fe₂O₃ + 2Al → 2Fe + Al₂O₃",
+    "type": "displacement",
+    "effects": {
+      "colorToHex": "#6E6F71",
+      "precipitate": "white-hot molten iron, running out and setting to grey metal",
+      "gas": null,
+      "bubbles": false,
+      "smoke": true,
+      "tempDeltaC": 90,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "violent_reaction",
+      "title": "Reaches about 2500 °C and cannot be put out",
+      "warning": "The thermite reaction makes its own oxygen from the ore, so water, sand and every ordinary extinguisher fail — water is worse than useless because it is torn apart into hydrogen at that temperature. The molten iron sets fire to whatever it lands on and the glare damages eyesight.",
+      "visualEffect": "smoke",
+      "whatToDoInstead": "This is a demonstration for outdoors on a fireproof base with a wide exclusion zone and welding-grade eye protection, run by someone who has done it before. It is not a bench experiment."
+    },
+    "molecularAnimation": null,
+    "explanation": "If carbon is not reactive enough, use something that is. Aluminium sits above iron, so it takes the oxygen off — the same displacement idea as zinc in copper sulfate from a Matric batch, run between a metal and a metal OXIDE and giving out so much heat that the iron comes out molten. That is exactly why it is used to weld railway track in place, out on the line where no furnace can go. Note the irony worth pointing at: the metal doing the reducing here is the one carbon could not extract two entries ago.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the thermite reaction"
+  },
+  {
+    "id": "rxn_copper_self_reduction",
+    "reactants": ["cu2s_s", "o2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["cu_metal", "so2_g"],
+    "equation": "Cu₂S + O₂ →(heat) 2Cu + SO₂",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#B87333",
+      "precipitate": "reddish brown metal appearing directly from the dark ore",
+      "gas": "sulfur dioxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "Choking sulfur dioxide",
+      "warning": "Sulfur dioxide attacks the lungs and is dangerous to asthmatics well below the concentration most people would call a strong smell.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard, and industrially the gas is captured for sulfuric acid rather than vented."
+    },
+    "molecularAnimation": null,
+    "explanation": "Copper does something none of the others manage: it goes straight from ore to metal with air alone, no carbon and no second stage. The sulfide is oxidised to sulfur dioxide and the electrons it gives up are the ones that reduce the copper — the ore reduces ITSELF, which is why this is called self-reduction. It also explains a piece of history. Copper needs no reducing agent and only a wood fire's temperature, so it was smelted thousands of years before anyone managed iron, and the Bronze Age came first for chemical reasons rather than accidental ones.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — self-reduction of copper sulfide ores"
+  },
+  {
+    "id": "rxn_decomposition_hgo",
+    "reactants": ["hgo_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 400, "catalyst": null },
+    "products": ["hg_l", "o2_g"],
+    "equation": "2HgO →(heat) 2Hg + O₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#C6C7CC",
+      "precipitate": "silvery droplets forming on the cool glass above",
+      "gas": "oxygen",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic",
+      "title": "Mercury vapour is a cumulative nerve poison",
+      "warning": "Heating any mercury compound fills the air with mercury vapour, which has no smell, and the damage it does to the nervous system accumulates and does not reverse. Both the oxide and the metal are seriously toxic.",
+      "visualEffect": null,
+      "whatToDoInstead": "This is a demonstration in a fume cupboard, if at all — most teaching laboratories no longer do it. Mercury waste goes to specialist disposal, never a sink or a bin."
+    },
+    "molecularAnimation": null,
+    "explanation": "No carbon. No electricity. No reducing agent whatsoever — just a flame, and the oxide falls apart into its elements on its own. That is the bottom of the reactivity series made visible: mercury holds oxygen so weakly that the compound barely wants to exist at ordinary temperatures. Historically this is the reaction that gave us oxygen — Priestley ran it in 1774 and collected the gas, and Lavoisier's account of the same experiment is what finished off the phlogiston theory.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal decomposition of mercury(II) oxide"
+  },
+  {
+    "id": "rxn_none_gold_acid",
+    "reactants": ["au_metal", "hcl_1m"],
+    "noReaction": true,
+    "explanation": "Nothing at all — and the end of the series is as informative as the top of it. Gold sits so low that no single acid will touch it, which is why gold is found in the ground AS GOLD, needing no extraction chemistry at all, and why a coin from a shipwreck looks new beside an iron nail that has vanished. Put the batch end to end and the pattern is complete: gold needs nothing, mercury needs only heat, copper reduces itself with air, iron and zinc need carbon, and aluminium needs electricity. The method is not a matter of engineering taste. Each metal is won by the cheapest thing strong enough to beat it, and where it sits in the reactivity series decides what that is.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the coinage metals and native occurrence"
   }
 ]

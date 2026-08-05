@@ -5884,5 +5884,137 @@
       { "from": "ca", "to": "a1", "type": "ionic" },
       { "from": "ca", "to": "b1", "type": "ionic" }
     ]
+  },
+  "zno_s": {
+    "note": "A block of the lattice - zinc and oxide ions alternating, with no ZnO molecule anywhere in it. What matters for extraction is simply that the oxygen is here at all: carbon wins a metal by taking its oxygen, so an oxide is what a furnace can work with and a sulfide is not.",
+    "atoms": [
+      { "id": "x0", "element": "Zn", "x": -1.5, "y": -1.5, "z": -1.5 },
+      { "id": "x1", "element": "O", "x": -1.5, "y": -1.5, "z": 1.5 },
+      { "id": "x2", "element": "O", "x": -1.5, "y": 1.5, "z": -1.5 },
+      { "id": "x3", "element": "Zn", "x": -1.5, "y": 1.5, "z": 1.5 },
+      { "id": "x4", "element": "O", "x": 1.5, "y": -1.5, "z": -1.5 },
+      { "id": "x5", "element": "Zn", "x": 1.5, "y": -1.5, "z": 1.5 },
+      { "id": "x6", "element": "Zn", "x": 1.5, "y": 1.5, "z": -1.5 },
+      { "id": "x7", "element": "O", "x": 1.5, "y": 1.5, "z": 1.5 }
+    ],
+    "bonds": [
+      { "from": "x0", "to": "x1", "type": "ionic" },
+      { "from": "x0", "to": "x2", "type": "ionic" },
+      { "from": "x0", "to": "x4", "type": "ionic" },
+      { "from": "x1", "to": "x3", "type": "ionic" },
+      { "from": "x1", "to": "x5", "type": "ionic" },
+      { "from": "x2", "to": "x3", "type": "ionic" },
+      { "from": "x2", "to": "x6", "type": "ionic" },
+      { "from": "x3", "to": "x7", "type": "ionic" },
+      { "from": "x4", "to": "x5", "type": "ionic" },
+      { "from": "x4", "to": "x6", "type": "ionic" },
+      { "from": "x5", "to": "x7", "type": "ionic" },
+      { "from": "x6", "to": "x7", "type": "ionic" }
+    ]
+  },
+  "fe2o3_s": {
+    "note": "Iron and oxide ions in a lattice - the ore, and chemically the same thing as the rust on a gate. Extraction is this reaction run backwards, and the blast furnace exists to do it by the thousand tonnes.",
+    "atoms": [
+      { "id": "x0", "element": "Fe", "x": -1.5, "y": -1.5, "z": -1.5 },
+      { "id": "x1", "element": "O", "x": -1.5, "y": -1.5, "z": 1.5 },
+      { "id": "x2", "element": "O", "x": -1.5, "y": 1.5, "z": -1.5 },
+      { "id": "x3", "element": "Fe", "x": -1.5, "y": 1.5, "z": 1.5 },
+      { "id": "x4", "element": "O", "x": 1.5, "y": -1.5, "z": -1.5 },
+      { "id": "x5", "element": "Fe", "x": 1.5, "y": -1.5, "z": 1.5 },
+      { "id": "x6", "element": "Fe", "x": 1.5, "y": 1.5, "z": -1.5 },
+      { "id": "x7", "element": "O", "x": 1.5, "y": 1.5, "z": 1.5 }
+    ],
+    "bonds": [
+      { "from": "x0", "to": "x1", "type": "ionic" },
+      { "from": "x0", "to": "x2", "type": "ionic" },
+      { "from": "x0", "to": "x4", "type": "ionic" },
+      { "from": "x1", "to": "x3", "type": "ionic" },
+      { "from": "x1", "to": "x5", "type": "ionic" },
+      { "from": "x2", "to": "x3", "type": "ionic" },
+      { "from": "x2", "to": "x6", "type": "ionic" },
+      { "from": "x3", "to": "x7", "type": "ionic" },
+      { "from": "x4", "to": "x5", "type": "ionic" },
+      { "from": "x4", "to": "x6", "type": "ionic" },
+      { "from": "x5", "to": "x7", "type": "ionic" },
+      { "from": "x6", "to": "x7", "type": "ionic" }
+    ]
+  },
+  "cu2s_s": {
+    "note": "TWO coppers to one sulfide, and each copper is only +1 rather than its usual +2. That is the whole reason this ore is unusual: the sulfide already holds electrons the copper wants back, so blowing air through takes the sulfur away as SO2 and leaves the copper as metal - no carbon needed anywhere.",
+    "atoms": [
+      { "id": "cu1", "element": "Cu", "x": -2.3, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 0, "y": 0, "z": 0 },
+      { "id": "cu2", "element": "Cu", "x": 2.3, "y": 0, "z": 0 },
+      { "id": "cu3", "element": "Cu", "x": 0, "y": 2.3, "z": 0 },
+      { "id": "s2", "element": "S", "x": 0, "y": 2.3, "z": 2.3 }
+    ],
+    "bonds": [
+      { "from": "cu1", "to": "s", "type": "ionic" },
+      { "from": "cu2", "to": "s", "type": "ionic" },
+      { "from": "cu3", "to": "s", "type": "ionic" },
+      { "from": "cu3", "to": "s2", "type": "ionic" }
+    ]
+  },
+  "co_g": {
+    "note": "Two atoms, one bond - but it is a TRIPLE bond and one of the strongest in all of chemistry, which is exactly why carbon monoxide is such a good reducing agent: it is desperate to pick up one more oxygen and become carbon dioxide, and it will take that oxygen off almost any metal ore. The same tightness is why it grips haemoglobin and will not let go.",
+    "atoms": [
+      { "id": "c", "element": "C", "x": -0.56, "y": 0, "z": 0 },
+      { "id": "o", "element": "O", "x": 0.56, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c", "to": "o", "type": "covalent" }
+    ]
+  },
+  "hgo_s": {
+    "note": "Mercury and oxide, drawn as a chain because that is roughly how the solid is built. The bond length is the thing to notice against the zinc oxide model: mercury holds oxygen loosely, and loosely enough that a flame alone is sufficient to take it apart into the two elements. No reducing agent appears in that reaction at all.",
+    "atoms": [
+      { "id": "hg1", "element": "Hg", "x": -2, "y": 0.4, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": -0.4, "z": 0 },
+      { "id": "hg2", "element": "Hg", "x": 2, "y": 0.4, "z": 0 },
+      { "id": "o2", "element": "O", "x": 4, "y": -0.4, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "hg1", "to": "o1", "type": "ionic" },
+      { "from": "o1", "to": "hg2", "type": "ionic" },
+      { "from": "hg2", "to": "o2", "type": "ionic" }
+    ]
+  },
+  "hg_l": {
+    "note": "Loose atoms with no bonds drawn between them, because there are none worth drawing - mercury atoms hold each other so weakly that the metal cannot manage to be a solid at room temperature. Every other metal in this app is a rigid lattice; this one rolls.",
+    "atoms": [
+      { "id": "a", "element": "Hg", "x": -2.4, "y": 1, "z": 0.5 },
+      { "id": "b", "element": "Hg", "x": 0.2, "y": 1.8, "z": -0.8 },
+      { "id": "c", "element": "Hg", "x": 2.6, "y": 0.6, "z": 0.6 },
+      { "id": "d", "element": "Hg", "x": -1.4, "y": -1.6, "z": -0.6 },
+      { "id": "e", "element": "Hg", "x": 1.6, "y": -1.9, "z": 0.9 }
+    ],
+    "bonds": []
+  },
+  "au_metal": {
+    "note": "A rigid lattice of gold atoms, and the interesting thing is what never happens to it. Nothing in air, water or any single acid can pull an electron off gold, so this arrangement survives indefinitely - which is why gold is dug out of the ground already metallic and why it needed no chemistry at all to be used.",
+    "atoms": [
+      { "id": "g0", "element": "Au", "x": -1.45, "y": -1.45, "z": -1.45 },
+      { "id": "g1", "element": "Au", "x": -1.45, "y": -1.45, "z": 1.45 },
+      { "id": "g2", "element": "Au", "x": -1.45, "y": 1.45, "z": -1.45 },
+      { "id": "g3", "element": "Au", "x": -1.45, "y": 1.45, "z": 1.45 },
+      { "id": "g4", "element": "Au", "x": 1.45, "y": -1.45, "z": -1.45 },
+      { "id": "g5", "element": "Au", "x": 1.45, "y": -1.45, "z": 1.45 },
+      { "id": "g6", "element": "Au", "x": 1.45, "y": 1.45, "z": -1.45 },
+      { "id": "g7", "element": "Au", "x": 1.45, "y": 1.45, "z": 1.45 }
+    ],
+    "bonds": [
+      { "from": "g0", "to": "g1", "type": "covalent" },
+      { "from": "g0", "to": "g2", "type": "covalent" },
+      { "from": "g0", "to": "g4", "type": "covalent" },
+      { "from": "g1", "to": "g3", "type": "covalent" },
+      { "from": "g1", "to": "g5", "type": "covalent" },
+      { "from": "g2", "to": "g3", "type": "covalent" },
+      { "from": "g2", "to": "g6", "type": "covalent" },
+      { "from": "g3", "to": "g7", "type": "covalent" },
+      { "from": "g4", "to": "g5", "type": "covalent" },
+      { "from": "g4", "to": "g6", "type": "covalent" },
+      { "from": "g5", "to": "g7", "type": "covalent" },
+      { "from": "g6", "to": "g7", "type": "covalent" }
+    ]
   }
 }

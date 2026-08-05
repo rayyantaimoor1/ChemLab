@@ -1,0 +1,16 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mercury: the only metal that is liquid at room temperature. Its atoms hold each other so weakly that the metal cannot stay solid">
+  <circle cx="42" cy="44" r="15" fill="#B8B8C0" stroke="#161A19" stroke-width="2"/>
+  <text x="42" y="50" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">Hg</text>
+  <circle cx="82" cy="36" r="15" fill="#B8B8C0" stroke="#161A19" stroke-width="2"/>
+  <text x="82" y="42" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">Hg</text>
+  <circle cx="120" cy="50" r="15" fill="#B8B8C0" stroke="#161A19" stroke-width="2"/>
+  <text x="120" y="56" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">Hg</text>
+  <circle cx="56" cy="78" r="15" fill="#B8B8C0" stroke="#161A19" stroke-width="2"/>
+  <text x="56" y="84" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">Hg</text>
+  <circle cx="100" cy="84" r="15" fill="#B8B8C0" stroke="#161A19" stroke-width="2"/>
+  <text x="100" y="90" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">Hg</text>
+  <circle cx="136" cy="84" r="15" fill="#B8B8C0" stroke="#161A19" stroke-width="2"/>
+  <text x="136" y="90" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">Hg</text>
+  <text x="80" y="108" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">no lattice — the atoms roll over each other,</text>
+  <text x="80" y="117" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">which is why it is a liquid and not a solid</text>
+</svg>
