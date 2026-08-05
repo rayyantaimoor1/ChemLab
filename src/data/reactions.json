@@ -6105,5 +6105,212 @@
     "explanation": "Nothing, however long it is boiled — and after the previous entry that should land hard. Hot alkali took the polyester completely apart, and it cannot touch this at all. The reason is the chain itself: a polyester is joined by ester links, which are exactly the kind of bond alkali attacks, while poly(ethene) is one unbroken run of carbon–carbon and carbon–hydrogen bonds with no reactive group anywhere along it. It is simply a very long alkane, and alkanes are famously unreactive. That is why an addition polymer persists in the environment for centuries while a condensation polymer can be broken back down: not a difference in effort, a difference in what the chain is made of.",
     "levels": ["fsc", "bs"],
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — why addition polymers resist degradation"
+  },
+  {
+    "id": "rxn_latex_coagulation",
+    "reactants": ["ch3cooh_aq", "latex_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["rubber_s"],
+    "equation": "latex particles + H⁺ → coagulated rubber",
+    "type": "coagulation",
+    "effects": {
+      "colorToHex": "#D9C9A3",
+      "precipitate": "soft pale amber lumps that clump together and can be lifted out",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 4.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "How rubber is actually harvested, and it is worth noticing that no polymerisation happens here at all — the tree already did that. The latex is tiny rubber particles held apart in water by a coat of protein carrying a charge, and like the clay in muddy water they repel each other and stay dispersed. Acid cancels that charge, the particles can finally touch, and they clump into a solid that is lifted out and rolled into sheets. The same idea as alum in a waterworks, done on a plantation with a bucket of acid.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — natural rubber processing"
+  },
+  {
+    "id": "rxn_none_latex_water",
+    "reactants": ["latex_aq", "water_distilled"],
+    "noReaction": true,
+    "explanation": "The latex stays milky and nothing settles, however long it stands — and that is what makes the previous entry a result rather than an inevitability. Diluting it changes nothing, because the problem was never concentration: every particle carries the same charge and pushes its neighbours away. Only something that cancels that charge will do it. Run this beside the acid tube and you have shown that coagulation needs a specific chemical cause, not merely time or stirring.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — colloid stability in latex"
+  },
+  {
+    "id": "rxn_polymerisation_isoprene",
+    "reactants": ["isoprene_l"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "ziegler_natta_s" },
+    "products": ["rubber_s"],
+    "equation": "n CH₂=C(CH₃)CH=CH₂ → -(CH₂C(CH₃)=CHCH₂)ₙ-",
+    "type": "addition_polymerisation",
+    "effects": {
+      "colorToHex": "#D9C9A3",
+      "precipitate": "a soft pale amber solid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 16,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The synthetic route to the same rubber the tree makes, and it is addition polymerisation again — but with a monomer carrying TWO double bonds instead of one. Only one is used up joining the chain together. The other is left sitting in every single repeat unit, and the next four entries are all consequences of it: it is what bromine attacks, what sulfur uses to tie the chains together, and what ozone destroys. The catalyst matters more here than for poly(ethene), because it also controls which way round each unit joins, and getting that wrong gives a hard useless solid instead of rubber.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — diene polymerisation and stereochemistry"
+  },
+  {
+    "id": "rxn_rubber_bromine",
+    "reactants": ["br2_aq", "rubber_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["dibromo_rubber_s"],
+    "equation": "-(CH₂C(CH₃)=CHCH₂)ₙ- + n Br₂ → -(CH₂C(CH₃)Br-CHBrCH₂)ₙ-",
+    "type": "addition",
+    "effects": {
+      "colorToHex": "#E8DCC0",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 5.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The orange-brown of the bromine water fades — the same test that told ethene from ethane several batches ago, now run on a lump of rubber. It works for the same reason and it proves the same thing: there are carbon-to-carbon double bonds here. That matters because it is easy to assume polymerisation must have used them all up. It did not, and the next entries depend entirely on the ones it left behind. A test learnt on a gas is not limited to gases.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — unsaturation in polydienes"
+  },
+  {
+    "id": "rxn_rubber_dissolves_benzene",
+    "reactants": ["c6h6_l", "rubber_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["rubber_solution_aq"],
+    "equation": "rubber(s) + benzene → rubber in solution",
+    "type": "dissolution",
+    "effects": {
+      "colorToHex": "#E4DCC8",
+      "precipitate": null,
+      "dissolves": "the lump swelled, went sticky, and then disappeared into the solvent completely",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "carcinogen",
+      "title": "Benzene causes leukaemia",
+      "warning": "Benzene is a proven human carcinogen and is absorbed through skin as well as breathed in. A real workshop uses a less dangerous solvent for exactly this job.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard and gloves, and no skin contact at all. Where a job can be done in a safer solvent than benzene, it should be."
+    },
+    "molecularAnimation": null,
+    "explanation": "Raw rubber dissolves, and that single observation is the one this batch is built around — remember it, because the same test is run again two entries from now with the opposite result. It dissolves because its chains are separate objects: solvent works its way between them and floats them off one at a time. This is what bicycle puncture glue and rubber cement actually are. It is also why raw rubber is useless for a tyre, since anything that dissolves in petrol has no business near an engine.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — thermoplastic behaviour"
+  },
+  {
+    "id": "rxn_vulcanisation_rubber",
+    "reactants": ["rubber_s", "s_powder"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["vulcanised_rubber_s"],
+    "equation": "rubber + S₈ →(heat) rubber cross-linked by -S-S- bridges",
+    "type": "cross_linking",
+    "effects": {
+      "colorToHex": "#6B5D4F",
+      "precipitate": "a tough dark brown solid that springs back when pulled",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 10,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_gas",
+      "title": "Hot sulfur gives off choking sulfur dioxide",
+      "warning": "Heating sulfur in air produces sulfur dioxide, which is sharply irritating to the eyes and lungs and dangerous to anyone asthmatic. Molten sulfur also burns skin badly.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard or strong ventilation, and heat gently — sulfur catches fire readily if it gets too hot."
+    },
+    "molecularAnimation": null,
+    "explanation": "VULCANISATION, and it is the whole reason rubber is a useful material rather than a curiosity. Short sulfur bridges reach across from one chain to the next and tie them together, using exactly the double bonds the bromine test just proved were there. What is remarkable is how little it takes: roughly one cross-link per few hundred units transforms a sticky solid that flows into something that snaps back every time. The chains can still uncoil when pulled, so it stretches — but they can no longer slide past each other and stay put, so it always returns. Charles Goodyear found it in 1839 by spilling the mixture on a stove.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — vulcanisation"
+  },
+  {
+    "id": "rxn_none_vulcanised_benzene",
+    "reactants": ["c6h6_l", "vulcanised_rubber_s"],
+    "noReaction": true,
+    "explanation": "Nothing dissolves. It swells a little and then stops, and after watching raw rubber vanish into the same solvent that should be startling. Same solvent, same test, same polymer chains — and the only difference is a scattering of sulfur bridges. Those bridges have tied every chain to its neighbours, so the solid is now ONE enormous molecule with no separate pieces for the solvent to carry away. Solvent still gets in between the chains, which is why it swells; there is simply nothing left that can leave. That is what THERMOSET means, and it is why a tyre survives a puddle of petrol.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — thermosets and solvent resistance"
+  },
+  {
+    "id": "rxn_perishing_rubber_ozone",
+    "reactants": ["o3_g", "rubber_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["perished_rubber_s"],
+    "equation": "rubber + O₃ → chains cut at the double bonds",
+    "type": "degradation",
+    "effects": {
+      "colorToHex": "#9C948A",
+      "precipitate": "a dull grey solid, cracked and brittle where it was soft",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": null
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "toxic_gas",
+      "title": "Ozone damages the lungs",
+      "warning": "Ozone is toxic and attacks the airways at concentrations too low to smell reliably. Its sharp smell fades from awareness quickly, so smell is not a warning you can depend on.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard, and never rely on the smell to judge how much is present."
+    },
+    "molecularAnimation": null,
+    "explanation": "A rubber band left in a drawer for a year comes out grey, hard, and snaps instead of stretching. This is why. Ozone — present in ordinary air, and more of it in city air — attacks carbon-to-carbon double bonds and cuts them clean through, and cutting a long chain into short ones destroys the very thing that let it coil and uncoil. Now hold this next to the vulcanisation entry, because the same feature is doing both jobs: the leftover double bond is what lets sulfur make rubber useful, and it is the weak point that lets ozone destroy it. A structural feature is rarely only an advantage.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — ozonolysis and rubber perishing"
+  },
+  {
+    "id": "rxn_bakelite_formation",
+    "reactants": ["hcho_aq", "phenol_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["bakelite_s", "water"],
+    "equation": "phenol + HCHO →(heat) cross-linked phenol–methanal network + H₂O",
+    "type": "condensation_polymerisation",
+    "effects": {
+      "colorToHex": "#5C4033",
+      "precipitate": "a hard dark reddish brown solid",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 14,
+      "resultPH": 4.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "carcinogen",
+      "title": "Phenol burns without hurting, and methanal causes cancer",
+      "warning": "Phenol causes severe burns and numbs the nerves as it does so, so damage is often done before anything is felt. Methanal is a carcinogen and its vapour attacks the eyes and airways.",
+      "visualEffect": null,
+      "whatToDoInstead": "Fume cupboard, gloves and eye protection throughout, and wash any phenol contact off at once with plenty of water whether or not it hurts."
+    },
+    "molecularAnimation": null,
+    "explanation": "The first fully synthetic plastic, made in 1907, and a thermoset reached by chemistry with nothing whatever in common with rubber's. This is CONDENSATION — a water molecule is thrown out at every join, and there is no double bond anywhere in it. What makes it set hard is that a phenol ring can be attacked at three positions, not two, so the growing structure branches in three directions instead of running in a line. There are no chains in the finished solid at all; it is a single continuous network.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — phenolic resins"
+  },
+  {
+    "id": "rxn_none_bakelite_benzene",
+    "reactants": ["bakelite_s", "c6h6_l"],
+    "noReaction": true,
+    "explanation": "Nothing again — and this is the entry that turns the batch into a general rule rather than a fact about rubber. Bakelite and vulcanised rubber have almost nothing in common: one is a condensation polymer of phenol and methanal built by branching in three directions, the other is an addition polymer of a diene tied together afterwards with sulfur. Different monomers, different mechanism, different bonds doing the joining. And both refuse the same solvent for the same reason, because in both cases everything is connected to everything else and there is no separate molecule left to dissolve. Cross-linking is what decides whether a plastic melts, dissolves and can be recycled — not what it is made of.",
+    "levels": ["bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — thermoplastics and thermosets compared"
   }
 ]

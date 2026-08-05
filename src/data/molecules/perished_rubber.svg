@@ -1,0 +1,19 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Perished rubber: ozone has cut the long chains into short fragments at the double bonds. A short chain cannot coil and uncoil, so the material snaps instead of stretching">
+  <line x1="10" y1="26" x2="28" y2="38" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="28" y1="38" x2="46" y2="26" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="72" y1="26" x2="90" y2="38" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="90" y1="38" x2="108" y2="26" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="120" y1="26" x2="138" y2="38" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="16" y1="58" x2="34" y2="70" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="60" y1="58" x2="78" y2="70" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="78" y1="70" x2="96" y2="58" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="96" y1="58" x2="114" y2="70" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="132" y1="58" x2="150" y2="70" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="10" y1="88" x2="28" y2="100" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="28" y1="100" x2="46" y2="88" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="46" y1="88" x2="64" y2="100" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="90" y1="88" x2="108" y2="100" stroke="#161A19" stroke-width="2.4"/>
+  <line x1="108" y1="100" x2="126" y2="88" stroke="#161A19" stroke-width="2.4"/>
+  <text x="80" y="14" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">the chains have been CUT into short pieces</text>
+  <text x="80" y="114" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">short chains cannot coil — so it snaps, not stretches</text>
+</svg>

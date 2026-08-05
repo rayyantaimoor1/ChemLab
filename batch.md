@@ -7,8 +7,8 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **266 chemicals, 262 reactions
-> (32 of them `noReaction`), 18 guided experiments, 274 tests passing.**
+> Snapshot as of the last entry below: **275 chemicals, 272 reactions
+> (35 of them `noReaction`), 18 guided experiments, 274 tests passing.**
 
 ---
 
@@ -63,6 +63,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 6 | `942622a` | Periodicity across Period 3 (oxides and chlorides, Na → P) |
 | 7 | `6e02cb8` | Diazonium salts and azo dyes |
 | 8 | `ec8b73e` | Polymers — addition and condensation, and why one kind persists |
+| 9 | pending | Rubber and cross-linking — thermoplastic against thermoset |
 
 ## 5. Guided experiments (Phase 7)
 
@@ -133,9 +134,9 @@ Good fits for this engine, not yet written:
   nucleic acid components.
 - **Further halogen and Group trends** at BS depth, mirroring the Period 3
   batch's approach.
-- **Rubber and cross-linking** — vulcanisation is a natural follow-on from
-  the polymers batch and the one big idea it left out: what happens when
-  chains are joined to each other rather than only end to end.
+- **Silicones and inorganic polymers** — a backbone of silicon and oxygen
+  rather than carbon, which is why they survive heat that destroys an
+  organic polymer. Fits the engine the same way the rubber batch did.
 
 Deliberately **not** forced into this engine — different tooling needed,
 not a content-writing problem:

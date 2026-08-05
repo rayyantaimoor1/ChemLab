@@ -5271,5 +5271,233 @@
       { "from": "al", "to": "m1", "type": "covalent" },
       { "from": "al", "to": "m2", "type": "covalent" }
     ]
+  },
+  "isoprene_l": {
+    "note": "Count the double bonds - there are TWO, drawn shorter than the single bonds between them, and that is what makes this a diene rather than an ordinary alkene. The whole molecule is flat. Polymerising consumes one of these; the other is what ends up in every repeat unit of rubber, and every other entry in this batch is about what happens to it.",
+    "atoms": [
+      { "id": "c1", "element": "C", "x": -2.4, "y": 0.6, "z": 0 },
+      { "id": "c2", "element": "C", "x": -1.2, "y": 0, "z": 0 },
+      { "id": "c3", "element": "C", "x": 0.1, "y": 0.6, "z": 0 },
+      { "id": "c4", "element": "C", "x": 1.3, "y": 0, "z": 0 },
+      { "id": "me", "element": "C", "x": -1.2, "y": -1.45, "z": 0 },
+      { "id": "h1", "element": "H", "x": -3.3, "y": 0.05, "z": 0 },
+      { "id": "h2", "element": "H", "x": 0.15, "y": 1.7, "z": 0 },
+      { "id": "h3", "element": "H", "x": 2.2, "y": 0.6, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c2", "to": "me", "type": "covalent" },
+      { "from": "c1", "to": "h1", "type": "covalent" },
+      { "from": "c3", "to": "h2", "type": "covalent" },
+      { "from": "c4", "to": "h3", "type": "covalent" }
+    ]
+  },
+  "rubber_s": {
+    "note": "Two chains, and the thing to notice is what is NOT here: nothing joins them. They lie alongside each other and can slide freely, which is why raw rubber stretches and then stays stretched rather than springing back - and why solvent can float them apart one at a time. A fragment; a real chain is thousands of units long.",
+    "atoms": [
+      { "id": "a0", "element": "C", "x": -4.4, "y": 1.78, "z": 0 },
+      { "id": "a1", "element": "C", "x": -3.14, "y": 2.62, "z": 0 },
+      { "id": "a2", "element": "C", "x": -1.88, "y": 1.78, "z": 0 },
+      { "id": "a3", "element": "C", "x": -0.62, "y": 2.62, "z": 0 },
+      { "id": "a4", "element": "C", "x": 0.64, "y": 1.78, "z": 0 },
+      { "id": "a5", "element": "C", "x": 1.9, "y": 2.62, "z": 0 },
+      { "id": "a6", "element": "C", "x": 3.16, "y": 1.78, "z": 0 },
+      { "id": "a7", "element": "C", "x": 4.42, "y": 2.62, "z": 0 },
+      { "id": "am", "element": "C", "x": -1.9, "y": 3.8, "z": 0 },
+      { "id": "b0", "element": "C", "x": -4.4, "y": -2.62, "z": 0 },
+      { "id": "b1", "element": "C", "x": -3.14, "y": -1.78, "z": 0 },
+      { "id": "b2", "element": "C", "x": -1.88, "y": -2.62, "z": 0 },
+      { "id": "b3", "element": "C", "x": -0.62, "y": -1.78, "z": 0 },
+      { "id": "b4", "element": "C", "x": 0.64, "y": -2.62, "z": 0 },
+      { "id": "b5", "element": "C", "x": 1.9, "y": -1.78, "z": 0 },
+      { "id": "b6", "element": "C", "x": 3.16, "y": -2.62, "z": 0 },
+      { "id": "b7", "element": "C", "x": 4.42, "y": -1.78, "z": 0 },
+      { "id": "bm", "element": "C", "x": -1.9, "y": -0.6, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "a0", "to": "a1", "type": "covalent" },
+      { "from": "a1", "to": "a2", "type": "covalent" },
+      { "from": "a2", "to": "a3", "type": "covalent" },
+      { "from": "a3", "to": "a4", "type": "covalent" },
+      { "from": "a4", "to": "a5", "type": "covalent" },
+      { "from": "a5", "to": "a6", "type": "covalent" },
+      { "from": "a6", "to": "a7", "type": "covalent" },
+      { "from": "a2", "to": "am", "type": "covalent" },
+      { "from": "b0", "to": "b1", "type": "covalent" },
+      { "from": "b1", "to": "b2", "type": "covalent" },
+      { "from": "b2", "to": "b3", "type": "covalent" },
+      { "from": "b3", "to": "b4", "type": "covalent" },
+      { "from": "b4", "to": "b5", "type": "covalent" },
+      { "from": "b5", "to": "b6", "type": "covalent" },
+      { "from": "b6", "to": "b7", "type": "covalent" },
+      { "from": "b2", "to": "bm", "type": "covalent" }
+    ]
+  },
+  "vulcanised_rubber_s": {
+    "note": "The same two chains with a SULFUR BRIDGE between them - find the two yellow atoms in the middle. That one link is the entire difference from the raw rubber model, and it changes the material completely: the chains can still uncoil when pulled but can no longer slide apart and stay put. In real vulcanised rubber there is roughly one of these per few hundred units, which is enough.",
+    "atoms": [
+      { "id": "a0", "element": "C", "x": -4.4, "y": 1.78, "z": 0 },
+      { "id": "a1", "element": "C", "x": -3.14, "y": 2.62, "z": 0 },
+      { "id": "a2", "element": "C", "x": -1.88, "y": 1.78, "z": 0 },
+      { "id": "a3", "element": "C", "x": -0.62, "y": 2.62, "z": 0 },
+      { "id": "a4", "element": "C", "x": 0.64, "y": 1.78, "z": 0 },
+      { "id": "a5", "element": "C", "x": 1.9, "y": 2.62, "z": 0 },
+      { "id": "a6", "element": "C", "x": 3.16, "y": 1.78, "z": 0 },
+      { "id": "a7", "element": "C", "x": 4.42, "y": 2.62, "z": 0 },
+      { "id": "am", "element": "C", "x": -1.9, "y": 3.8, "z": 0 },
+      { "id": "b0", "element": "C", "x": -4.4, "y": -2.62, "z": 0 },
+      { "id": "b1", "element": "C", "x": -3.14, "y": -1.78, "z": 0 },
+      { "id": "b2", "element": "C", "x": -1.88, "y": -2.62, "z": 0 },
+      { "id": "b3", "element": "C", "x": -0.62, "y": -1.78, "z": 0 },
+      { "id": "b4", "element": "C", "x": 0.64, "y": -2.62, "z": 0 },
+      { "id": "b5", "element": "C", "x": 1.9, "y": -1.78, "z": 0 },
+      { "id": "b6", "element": "C", "x": 3.16, "y": -2.62, "z": 0 },
+      { "id": "b7", "element": "C", "x": 4.42, "y": -1.78, "z": 0 },
+      { "id": "bm", "element": "C", "x": -1.9, "y": -0.6, "z": 0 },
+      { "id": "s1", "element": "S", "x": -0.6, "y": 0.7, "z": 0 },
+      { "id": "s2", "element": "S", "x": -0.6, "y": -0.7, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "a0", "to": "a1", "type": "covalent" },
+      { "from": "a1", "to": "a2", "type": "covalent" },
+      { "from": "a2", "to": "a3", "type": "covalent" },
+      { "from": "a3", "to": "a4", "type": "covalent" },
+      { "from": "a4", "to": "a5", "type": "covalent" },
+      { "from": "a5", "to": "a6", "type": "covalent" },
+      { "from": "a6", "to": "a7", "type": "covalent" },
+      { "from": "a2", "to": "am", "type": "covalent" },
+      { "from": "b0", "to": "b1", "type": "covalent" },
+      { "from": "b1", "to": "b2", "type": "covalent" },
+      { "from": "b2", "to": "b3", "type": "covalent" },
+      { "from": "b3", "to": "b4", "type": "covalent" },
+      { "from": "b4", "to": "b5", "type": "covalent" },
+      { "from": "b5", "to": "b6", "type": "covalent" },
+      { "from": "b6", "to": "b7", "type": "covalent" },
+      { "from": "b2", "to": "bm", "type": "covalent" },
+      { "from": "a4", "to": "s1", "type": "covalent" },
+      { "from": "s1", "to": "s2", "type": "covalent" },
+      { "from": "s2", "to": "b4", "type": "covalent" }
+    ]
+  },
+  "rubber_solution_aq": {
+    "note": "One rubber chain with solvent molecules, shown as grey blocks, in among it. This is what dissolving looks like from the inside: the solvent has got between the chains and is carrying this one off on its own. Open the vulcanised model beside it and the sulfur bridge is the reason the same thing cannot happen there.",
+    "atoms": [
+      { "id": "c0", "element": "C", "x": -3.8, "y": -0.42, "z": 0 },
+      { "id": "c1", "element": "C", "x": -2.54, "y": 0.42, "z": 0 },
+      { "id": "c2", "element": "C", "x": -1.28, "y": -0.42, "z": 0 },
+      { "id": "c3", "element": "C", "x": -0.02, "y": 0.42, "z": 0 },
+      { "id": "c4", "element": "C", "x": 1.24, "y": -0.42, "z": 0 },
+      { "id": "c5", "element": "C", "x": 2.5, "y": 0.42, "z": 0 },
+      { "id": "c6", "element": "C", "x": 3.76, "y": -0.42, "z": 0 },
+      { "id": "s1", "element": "group", "x": -2.6, "y": 2.4, "z": 0.8 },
+      { "id": "s2", "element": "group", "x": 0.9, "y": 2.6, "z": -0.6 },
+      { "id": "s3", "element": "group", "x": -0.8, "y": -2.5, "z": 0.9 },
+      { "id": "s4", "element": "group", "x": 2.8, "y": -2.2, "z": -0.8 }
+    ],
+    "bonds": [
+      { "from": "c0", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" }
+    ]
+  },
+  "dibromo_rubber_s": {
+    "note": "A chain fragment with bromines added on. They sit in pairs on adjacent carbons, which is the signature of bromine adding ACROSS a double bond rather than substituting into the chain. Their presence is the proof the double bonds were there to begin with.",
+    "atoms": [
+      { "id": "c0", "element": "C", "x": -3.2, "y": -0.42, "z": 0 },
+      { "id": "c1", "element": "C", "x": -1.9, "y": 0.42, "z": 0 },
+      { "id": "c2", "element": "C", "x": -0.6, "y": -0.42, "z": 0 },
+      { "id": "c3", "element": "C", "x": 0.7, "y": 0.42, "z": 0 },
+      { "id": "c4", "element": "C", "x": 2, "y": -0.42, "z": 0 },
+      { "id": "c5", "element": "C", "x": 3.3, "y": 0.42, "z": 0 },
+      { "id": "br1", "element": "Br", "x": -1.9, "y": -2.1, "z": 0 },
+      { "id": "br2", "element": "Br", "x": -0.6, "y": 2.1, "z": 0 },
+      { "id": "me", "element": "C", "x": 0.7, "y": -2, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c0", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c1", "to": "br1", "type": "covalent" },
+      { "from": "c2", "to": "br2", "type": "covalent" },
+      { "from": "c3", "to": "me", "type": "covalent" }
+    ]
+  },
+  "o3_g": {
+    "note": "Three oxygens, and BENT at about 117 degrees rather than in a straight line - the middle atom keeps a lone pair that pushes the other two down. That bent, uneven arrangement is why ozone is so much more reactive than the O2 it forms from, and why it tears into a carbon-to-carbon double bond on contact.",
+    "atoms": [
+      { "id": "o1", "element": "O", "x": 0, "y": 0.5, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.1, "y": -0.45, "z": 0 },
+      { "id": "o3", "element": "O", "x": 1.1, "y": -0.45, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "o1", "to": "o2", "type": "covalent" },
+      { "from": "o1", "to": "o3", "type": "covalent" }
+    ]
+  },
+  "perished_rubber_s": {
+    "note": "The same chain as the rubber model, except it is in PIECES - three short fragments where there was one long one. Count the carbons in any one piece and compare with the rubber model. Nothing has been added and nothing taken away; the chain has simply been cut, and a short chain cannot coil and uncoil, so the material snaps rather than stretching.",
+    "atoms": [
+      { "id": "a0", "element": "C", "x": -4.4, "y": 0.4, "z": 0 },
+      { "id": "a1", "element": "C", "x": -3.2, "y": -0.4, "z": 0 },
+      { "id": "a2", "element": "C", "x": -2, "y": 0.4, "z": 0 },
+      { "id": "b0", "element": "C", "x": -0.4, "y": -0.4, "z": 0.6 },
+      { "id": "b1", "element": "C", "x": 0.8, "y": 0.4, "z": 0.6 },
+      { "id": "b2", "element": "C", "x": 2, "y": -0.4, "z": 0.6 },
+      { "id": "c0", "element": "C", "x": 3.6, "y": 0.5, "z": -0.6 },
+      { "id": "c1", "element": "C", "x": 4.8, "y": -0.3, "z": -0.6 }
+    ],
+    "bonds": [
+      { "from": "a0", "to": "a1", "type": "covalent" },
+      { "from": "a1", "to": "a2", "type": "covalent" },
+      { "from": "b0", "to": "b1", "type": "covalent" },
+      { "from": "b1", "to": "b2", "type": "covalent" },
+      { "from": "c0", "to": "c1", "type": "covalent" }
+    ]
+  },
+  "latex_aq": {
+    "note": "A SKETCH, not a molecule - latex is a dispersion, so what is drawn is several rubber particles as grey blocks with nothing linking them. What keeps them apart is charge, which no model of this kind can show; the point is only that they are separate objects floating in water, and that making them touch is the whole of harvesting rubber.",
+    "atoms": [
+      { "id": "p1", "element": "group", "x": -3, "y": 1.6, "z": 0.5 },
+      { "id": "p2", "element": "group", "x": 0.4, "y": 2.4, "z": -0.8 },
+      { "id": "p3", "element": "group", "x": 3.2, "y": 0.8, "z": 0.6 },
+      { "id": "p4", "element": "group", "x": -1.8, "y": -1.8, "z": -0.6 },
+      { "id": "p5", "element": "group", "x": 1.9, "y": -2.2, "z": 0.9 }
+    ],
+    "bonds": []
+  },
+  "bakelite_s": {
+    "note": "Phenol rings, shown as blocks, joined by methanal bridges in THREE directions rather than two. Turn it and there is no chain to follow - every ring leads on to several others, so the whole solid is a single molecule. That is why it cannot melt or dissolve, and it is the same conclusion the vulcanised rubber model reaches by completely different chemistry.",
+    "atoms": [
+      { "id": "r1", "element": "group", "x": 0, "y": 0, "z": 0 },
+      { "id": "r2", "element": "group", "x": 2.6, "y": 1.2, "z": 0.4 },
+      { "id": "r3", "element": "group", "x": -2.6, "y": 1.2, "z": -0.4 },
+      { "id": "r4", "element": "group", "x": 0.3, "y": -2.7, "z": 0.8 },
+      { "id": "r5", "element": "group", "x": 4.4, "y": -1, "z": -0.6 },
+      { "id": "r6", "element": "group", "x": -3.4, "y": -1.6, "z": 0.9 },
+      { "id": "b1", "element": "C", "x": 1.3, "y": 0.6, "z": 0.2 },
+      { "id": "b2", "element": "C", "x": -1.3, "y": 0.6, "z": -0.2 },
+      { "id": "b3", "element": "C", "x": 0.15, "y": -1.35, "z": 0.4 },
+      { "id": "b4", "element": "C", "x": 3.5, "y": 0.1, "z": -0.1 },
+      { "id": "b5", "element": "C", "x": -3, "y": -0.2, "z": 0.25 }
+    ],
+    "bonds": [
+      { "from": "r1", "to": "b1", "type": "covalent" },
+      { "from": "b1", "to": "r2", "type": "covalent" },
+      { "from": "r1", "to": "b2", "type": "covalent" },
+      { "from": "b2", "to": "r3", "type": "covalent" },
+      { "from": "r1", "to": "b3", "type": "covalent" },
+      { "from": "b3", "to": "r4", "type": "covalent" },
+      { "from": "r2", "to": "b4", "type": "covalent" },
+      { "from": "b4", "to": "r5", "type": "covalent" },
+      { "from": "r3", "to": "b5", "type": "covalent" },
+      { "from": "b5", "to": "r6", "type": "covalent" }
+    ]
   }
 }

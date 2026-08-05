@@ -1,0 +1,12 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ozone: three oxygen atoms, bent rather than in a line. The third atom is held weakly and comes away readily, which is what makes ozone attack double bonds">
+  <line x1="66" y1="44" x2="44" y2="74" stroke="#161A19" stroke-width="2"/>
+  <line x1="94" y1="44" x2="116" y2="74" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="40" r="17" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="47" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="34" cy="82" r="15" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="34" y="88" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="126" cy="82" r="15" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="126" y="88" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">O</text>
+  <text x="80" y="108" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">BENT, not linear — and far more reactive</text>
+  <text x="80" y="117" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">than the ordinary O₂ it came from</text>
+</svg>

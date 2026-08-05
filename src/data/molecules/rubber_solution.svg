@@ -1,0 +1,22 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rubber dissolved: solvent molecules have worked their way between the chains and floated them apart one at a time. Only a polymer whose chains are separate can do this">
+  <path d="M 12 30 C 40 18, 60 44, 92 30 C 118 18, 134 40, 150 30" fill="none" stroke="#161A19" stroke-width="2.6"/>
+  <path d="M 10 62 C 36 78, 62 50, 88 66 C 112 80, 132 56, 152 66" fill="none" stroke="#161A19" stroke-width="2.6"/>
+  <circle cx="30" cy="46" r="6" fill="#CFE0EA" stroke="#161A19" stroke-width="2"/>
+
+  <circle cx="70" cy="50" r="6" fill="#CFE0EA" stroke="#161A19" stroke-width="2"/>
+
+  <circle cx="110" cy="44" r="6" fill="#CFE0EA" stroke="#161A19" stroke-width="2"/>
+
+  <circle cx="140" cy="52" r="6" fill="#CFE0EA" stroke="#161A19" stroke-width="2"/>
+
+  <circle cx="24" cy="82" r="6" fill="#CFE0EA" stroke="#161A19" stroke-width="2"/>
+
+  <circle cx="64" cy="88" r="6" fill="#CFE0EA" stroke="#161A19" stroke-width="2"/>
+
+  <circle cx="104" cy="84" r="6" fill="#CFE0EA" stroke="#161A19" stroke-width="2"/>
+
+  <circle cx="138" cy="88" r="6" fill="#CFE0EA" stroke="#161A19" stroke-width="2"/>
+
+  <text x="80" y="108" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">solvent gets between the chains and</text>
+  <text x="80" y="117" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">carries them off ONE AT A TIME</text>
+</svg>
