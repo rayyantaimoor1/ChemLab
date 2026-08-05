@@ -66,7 +66,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 9 | `dc1eee3` | Rubber and cross-linking — thermoplastic against thermoset |
 | 10 | `714eb98` | Silicones, and glass — an inorganic backbone |
 | 11 | `c010161` | Ceramics, refractories and plaster |
-| 12 | pending | Metallurgy — why each metal is won by the method it is |
+| 12 | `0725610` | Metallurgy — why each metal is won by the method it is |
 
 ## 5. Guided experiments (Phase 7)
 
