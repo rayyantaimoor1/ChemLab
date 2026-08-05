@@ -64,7 +64,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 7 | `6e02cb8` | Diazonium salts and azo dyes |
 | 8 | `ec8b73e` | Polymers — addition and condensation, and why one kind persists |
 | 9 | `dc1eee3` | Rubber and cross-linking — thermoplastic against thermoset |
-| 10 | pending | Silicones, and glass — an inorganic backbone |
+| 10 | `714eb98` | Silicones, and glass — an inorganic backbone |
 
 ## 5. Guided experiments (Phase 7)
 
