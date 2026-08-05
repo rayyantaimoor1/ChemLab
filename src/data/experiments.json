@@ -23,11 +23,7 @@
       {
         "n": 2,
         "instruction": "Dip the pH paper into the beaker and note the starting reading.",
-        "requiredAction": {
-          "type": "dipTool",
-          "toolId": "ph_paper",
-          "containerType": "beaker"
-        },
+        "requiredAction": { "type": "dipTool", "toolId": "ph_paper", "containerType": "beaker" },
         "hint": "Pick up the pH paper from the tool tray, then press Dip on the beaker. Sodium hydroxide is a strong alkali, so expect a reading near the top of the scale.",
         "onWrongAction": "Measure what you are starting from before you change it. Dip the pH paper into the sodium hydroxide and read the colour against the chart."
       },
@@ -47,47 +43,34 @@
       {
         "n": 4,
         "instruction": "Stir the mixture so the acid and alkali meet properly.",
-        "requiredAction": {
-          "type": "stir",
-          "containerType": "beaker"
-        },
+        "requiredAction": { "type": "stir", "containerType": "beaker" },
         "hint": "Press Stir on the beaker. In a real titration you swirl the flask constantly for the same reason.",
         "onWrongAction": "Stir the beaker before you take a reading. Without mixing, part of the solution may still be unreacted and any measurement you take is of one patch rather than the whole."
       },
       {
         "n": 5,
         "instruction": "Dip the pH paper again to find the pH after neutralisation.",
-        "requiredAction": {
-          "type": "dipTool",
-          "toolId": "ph_paper",
-          "containerType": "beaker"
-        },
+        "requiredAction": { "type": "dipTool", "toolId": "ph_paper", "containerType": "beaker" },
         "hint": "Dip the pH paper into the beaker a second time. If the acid has neutralised the alkali the paper should read close to the middle of the scale, in the green band.",
         "onWrongAction": "Take the reading that shows whether the neutralisation worked. Dip the pH paper into the beaker and compare it with the strongly alkaline reading you took in step 2."
       },
       {
         "n": 6,
         "instruction": "Dip the thermometer into the beaker.",
-        "requiredAction": {
-          "type": "dipTool",
-          "toolId": "thermometer",
-          "containerType": "beaker"
-        },
+        "requiredAction": { "type": "dipTool", "toolId": "thermometer", "containerType": "beaker" },
         "hint": "Neutralisation gives out heat. Pick up the thermometer and dip it into the beaker to see how much warmer the mixture became.",
         "onWrongAction": "There is a second thing to observe besides the pH. Dip the thermometer into the beaker to measure the heat the reaction gave out."
       },
       {
         "n": 7,
         "instruction": "Write down what you observed in the lab notebook.",
-        "requiredAction": {
-          "type": "recordObservation"
-        },
+        "requiredAction": { "type": "recordObservation" },
         "hint": "Type what you saw into the notebook box and press Record. Mention the pH before and after, and whether the beaker felt warmer.",
         "onWrongAction": "Finish by recording your own observation in the notebook, then compare it with the reference answer."
       }
     ],
     "expectedResult": {
-      "endpointPH": 7.0,
+      "endpointPH": 7,
       "indicatorColour": "green on pH paper",
       "temperatureRiseC": 7,
       "observation": "The strongly alkaline solution became neutral, and the beaker grew noticeably warmer. Nothing changed colour and no gas was given off."
@@ -120,9 +103,7 @@
       {
         "n": 2,
         "instruction": "Write down what the lead(II) nitrate solution looks like before you mix anything.",
-        "requiredAction": {
-          "type": "recordObservation"
-        },
+        "requiredAction": { "type": "recordObservation" },
         "hint": "Record what you can see now, while there is only one solution in the tube. Having the 'before' written down is what makes the 'after' mean something.",
         "onWrongAction": "Record your observation of the starting solution first. A precipitation experiment only proves something if you noted that both solutions were clear beforehand."
       },
@@ -142,30 +123,21 @@
       {
         "n": 4,
         "instruction": "Stir the tube to mix the two solutions fully.",
-        "requiredAction": {
-          "type": "stir",
-          "containerType": "test_tube"
-        },
+        "requiredAction": { "type": "stir", "containerType": "test_tube" },
         "hint": "Press Stir on the test tube so all of the lead ions get a chance to meet the iodide ions.",
         "onWrongAction": "Stir the test tube so the two solutions mix completely. Any lead(II) nitrate left in an unmixed layer has nothing to react with."
       },
       {
         "n": 5,
         "instruction": "Dip the conductivity tester into the tube.",
-        "requiredAction": {
-          "type": "dipTool",
-          "toolId": "conductivity",
-          "containerType": "test_tube"
-        },
+        "requiredAction": { "type": "dipTool", "toolId": "conductivity", "containerType": "test_tube" },
         "hint": "Pick up the conductivity tester and dip it in. The solid that formed cannot carry a current, but the potassium and nitrate ions left in the solution still can.",
         "onWrongAction": "Dip the conductivity tester into the tube. It shows that even though a solid has dropped out, there are still dissolved ions left behind in the liquid."
       },
       {
         "n": 6,
         "instruction": "Write down what you observed after mixing.",
-        "requiredAction": {
-          "type": "recordObservation"
-        },
+        "requiredAction": { "type": "recordObservation" },
         "hint": "Describe the colour of the solid and say whether the liquid above it is still clear. Then compare your words with the reference answer.",
         "onWrongAction": "Finish by recording what you saw after mixing, so you can compare your own description with the reference one."
       }
@@ -173,7 +145,7 @@
     "expectedResult": {
       "precipitateColour": "bright yellow",
       "precipitateName": "lead(II) iodide",
-      "endpointPH": 5.0,
+      "endpointPH": 5,
       "conductivity": "strong",
       "observation": "Two clear colourless solutions produced a bright yellow solid that settled through the liquid. The solution left above it still conducts electricity because the potassium and nitrate ions took no part in the reaction."
     },
@@ -192,14 +164,26 @@
       {
         "n": 1,
         "instruction": "Put a little zinc into the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "zn_metal", "minAmountMl": 5, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "zn_metal",
+          "minAmountMl": 5,
+          "maxAmountMl": 15
+        },
         "hint": "Take zinc metal from the shelf and dispense a small amount into the beaker.",
         "onWrongAction": "Start with the zinc in the beaker. It is one of the two metals being tested, and it goes in before the acid."
       },
       {
         "n": 2,
         "instruction": "Add dilute hydrochloric acid to the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "hcl_1m", "minAmountMl": 10, "maxAmountMl": 25 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "hcl_1m",
+          "minAmountMl": 10,
+          "maxAmountMl": 25
+        },
         "hint": "Add hydrochloric acid to the zinc and watch closely as it goes in.",
         "onWrongAction": "Add hydrochloric acid to the beaker that already holds the zinc. Without the acid there is nothing for the metal to react with."
       },
@@ -213,14 +197,26 @@
       {
         "n": 4,
         "instruction": "Put a little copper into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "cu_metal", "minAmountMl": 5, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "cu_metal",
+          "minAmountMl": 5,
+          "maxAmountMl": 15
+        },
         "hint": "Take copper turnings from the shelf and dispense a small amount into the test tube.",
         "onWrongAction": "The second metal goes into the test tube, not the beaker. The beaker already holds the zinc result — keep the two separate so they can be compared fairly."
       },
       {
         "n": 5,
         "instruction": "Add the same dilute hydrochloric acid to the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "hcl_1m", "minAmountMl": 10, "maxAmountMl": 25 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "hcl_1m",
+          "minAmountMl": 10,
+          "maxAmountMl": 25
+        },
         "hint": "Add hydrochloric acid to the copper, the same way you did with the zinc.",
         "onWrongAction": "Add hydrochloric acid to the test tube holding the copper. Only the acid changes between the two tubes — everything else about the test has to be identical for the comparison to mean anything."
       },
@@ -251,7 +247,13 @@
       {
         "n": 1,
         "instruction": "Put about 15 mL of copper(II) sulfate solution into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "cuso4_0_5m", "minAmountMl": 10, "maxAmountMl": 20 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "cuso4_0_5m",
+          "minAmountMl": 10,
+          "maxAmountMl": 20
+        },
         "hint": "Take copper(II) sulfate from the shelf and dispense it into the test tube.",
         "onWrongAction": "Start with copper(II) sulfate solution in the test tube. It needs to be there before the zinc goes in."
       },
@@ -265,7 +267,13 @@
       {
         "n": 3,
         "instruction": "Add a little zinc metal to the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "zn_metal", "minAmountMl": 5, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "zn_metal",
+          "minAmountMl": 5,
+          "maxAmountMl": 15
+        },
         "hint": "Take zinc metal from the shelf and drop a small amount into the blue solution.",
         "onWrongAction": "Add the zinc to the same test tube that holds the copper(II) sulfate. Kept apart, the two substances cannot displace anything."
       },
@@ -305,21 +313,39 @@
       {
         "n": 1,
         "instruction": "Put some iron filings into the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "fe_metal", "minAmountMl": 10, "maxAmountMl": 20 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "fe_metal",
+          "minAmountMl": 10,
+          "maxAmountMl": 20
+        },
         "hint": "Take iron filings from the shelf and dispense them into the beaker.",
         "onWrongAction": "Start with iron filings in the beaker — this vessel will get both water and oxygen."
       },
       {
         "n": 2,
         "instruction": "Add distilled water to the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "water_distilled", "minAmountMl": 10, "maxAmountMl": 20 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "water_distilled",
+          "minAmountMl": 10,
+          "maxAmountMl": 20
+        },
         "hint": "Add distilled water to the iron in the beaker.",
         "onWrongAction": "Add water to the beaker with the iron in it. This vessel needs both water and oxygen present at once — that is the condition being tested."
       },
       {
         "n": 3,
         "instruction": "Add oxygen to the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "o2_g", "minAmountMl": 10, "maxAmountMl": 20 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "o2_g",
+          "minAmountMl": 10,
+          "maxAmountMl": 20
+        },
         "hint": "Add oxygen to the same beaker, so the iron now has both water and oxygen around it.",
         "onWrongAction": "Add oxygen to the beaker that already holds the iron and the water. All three have to be together for rust to form."
       },
@@ -333,14 +359,26 @@
       {
         "n": 5,
         "instruction": "Put some iron filings into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "fe_metal", "minAmountMl": 10, "maxAmountMl": 20 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "fe_metal",
+          "minAmountMl": 10,
+          "maxAmountMl": 20
+        },
         "hint": "Take fresh iron filings from the shelf and dispense them into the test tube — this vessel is the dry comparison, with no water at all.",
         "onWrongAction": "Put a fresh sample of iron filings into the test tube. It needs to stay completely separate from the beaker so it can be kept dry."
       },
       {
         "n": 6,
         "instruction": "Add oxygen to the test tube, but no water.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "o2_g", "minAmountMl": 10, "maxAmountMl": 20 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "o2_g",
+          "minAmountMl": 10,
+          "maxAmountMl": 20
+        },
         "hint": "Add oxygen to the dry iron. Do not add any water to this tube — that is exactly what makes it the control.",
         "onWrongAction": "Add oxygen to the test tube. This tube is deliberately kept dry, so leave the water out of it."
       },
@@ -371,14 +409,26 @@
       {
         "n": 1,
         "instruction": "Put about 25 mL of permanent hard water into the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "caso4_aq", "minAmountMl": 20, "maxAmountMl": 30 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "caso4_aq",
+          "minAmountMl": 20,
+          "maxAmountMl": 30
+        },
         "hint": "Take the calcium sulfate solution — the permanent hard water — from the shelf and dispense it into the beaker.",
         "onWrongAction": "Start with the hard water in the beaker. Notice it is completely clear, which is worth remembering once the next step is done."
       },
       {
         "n": 2,
         "instruction": "Add sodium carbonate solution (washing soda) to the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "na2co3_1m", "minAmountMl": 15, "maxAmountMl": 25 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "na2co3_1m",
+          "minAmountMl": 15,
+          "maxAmountMl": 25
+        },
         "hint": "Take sodium carbonate solution from the shelf and add it to the hard water.",
         "onWrongAction": "Add the sodium carbonate solution to the beaker that holds the hard water. Washing soda is the reagent that removes the calcium responsible for the hardness."
       },
@@ -416,14 +466,26 @@
       {
         "n": 1,
         "instruction": "Put about 12 mL of ammonium chloride solution into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "nh4cl_1m", "minAmountMl": 8, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "nh4cl_1m",
+          "minAmountMl": 8,
+          "maxAmountMl": 15
+        },
         "hint": "Take ammonium chloride solution from the shelf and dispense it into the test tube.",
         "onWrongAction": "Start with the ammonium chloride solution in the test tube — it is the unknown salt being tested for ammonium."
       },
       {
         "n": 2,
         "instruction": "Add sodium hydroxide solution to the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "naoh_1m", "minAmountMl": 8, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "naoh_1m",
+          "minAmountMl": 8,
+          "maxAmountMl": 15
+        },
         "hint": "Add sodium hydroxide to the ammonium chloride. Any alkali would do this test — sodium hydroxide is simply the one on the shelf.",
         "onWrongAction": "Add the sodium hydroxide to the same test tube as the ammonium chloride. An alkali is what releases ammonia from an ammonium salt."
       },
@@ -476,7 +538,13 @@
       {
         "n": 1,
         "instruction": "Put about 20 mL of iron(III) chloride solution into the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "fecl3_0_1m", "minAmountMl": 15, "maxAmountMl": 25 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "fecl3_0_1m",
+          "minAmountMl": 15,
+          "maxAmountMl": 25
+        },
         "hint": "Take iron(III) chloride solution from the shelf and dispense it into the beaker.",
         "onWrongAction": "Start with the iron(III) chloride solution in the beaker — it is the ion this test is designed to detect."
       },
@@ -490,7 +558,13 @@
       {
         "n": 3,
         "instruction": "Add potassium thiocyanate solution to the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "kscn_aq", "minAmountMl": 10, "maxAmountMl": 20 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "kscn_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 20
+        },
         "hint": "Add potassium thiocyanate solution to the iron(III) chloride and watch closely as it goes in.",
         "onWrongAction": "Add the potassium thiocyanate to the same beaker as the iron(III) chloride. The two ions have to meet for the colour to appear."
       },
@@ -527,14 +601,26 @@
       {
         "n": 1,
         "instruction": "Put about 20 mL of starch solution into the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "starch_aq", "minAmountMl": 15, "maxAmountMl": 25 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "starch_aq",
+          "minAmountMl": 15,
+          "maxAmountMl": 25
+        },
         "hint": "Take starch solution from the shelf and dispense it into the beaker.",
         "onWrongAction": "Start with starch solution in the beaker — this vessel is the starch half of the comparison."
       },
       {
         "n": 2,
         "instruction": "Add a few mL of iodine solution to the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "i2_aq", "minAmountMl": 5, "maxAmountMl": 10 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "i2_aq",
+          "minAmountMl": 5,
+          "maxAmountMl": 10
+        },
         "hint": "Add iodine solution to the starch — only a small amount is needed for a very obvious colour.",
         "onWrongAction": "Add the iodine solution to the beaker holding the starch. This is the classic iodine test and the colour change is immediate."
       },
@@ -555,14 +641,26 @@
       {
         "n": 5,
         "instruction": "Put about 12 mL of glucose solution into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "glucose_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "glucose_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Take glucose solution from the shelf and dispense it into the test tube.",
         "onWrongAction": "The glucose goes into the test tube, kept separate from the starch in the beaker, so the two results can be compared fairly."
       },
       {
         "n": 6,
         "instruction": "Add a few mL of iodine solution to the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "i2_aq", "minAmountMl": 5, "maxAmountMl": 10 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "i2_aq",
+          "minAmountMl": 5,
+          "maxAmountMl": 10
+        },
         "hint": "Add the same iodine solution to the glucose, the same way you did with the starch.",
         "onWrongAction": "Add iodine solution to the test tube holding the glucose. Everything about this half of the test should match the starch half except the sugar itself."
       },
@@ -600,14 +698,26 @@
       {
         "n": 1,
         "instruction": "Put about 12 mL of glucose solution into the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "glucose_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "glucose_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Take glucose solution from the shelf and dispense it into the beaker.",
         "onWrongAction": "Start with glucose solution in the beaker — this vessel is the reducing-sugar half of the comparison."
       },
       {
         "n": 2,
         "instruction": "Add Fehling's solution to the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "fehlings_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "fehlings_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Add the deep blue Fehling's solution to the glucose.",
         "onWrongAction": "Add Fehling's solution to the beaker holding the glucose. The two need to be together before you warm the mixture."
       },
@@ -628,14 +738,26 @@
       {
         "n": 5,
         "instruction": "Put about 12 mL of starch solution into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "starch_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "starch_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Take starch solution from the shelf and dispense it into the test tube.",
         "onWrongAction": "The starch goes into the test tube, kept separate from the glucose in the beaker."
       },
       {
         "n": 6,
         "instruction": "Add Fehling's solution to the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "fehlings_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "fehlings_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Add the same Fehling's solution to the starch.",
         "onWrongAction": "Add Fehling's solution to the test tube holding the starch, the same way you did with the glucose."
       },
@@ -673,14 +795,26 @@
       {
         "n": 1,
         "instruction": "Put about 20 mL of permanent hard water into the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "caso4_aq", "minAmountMl": 15, "maxAmountMl": 25 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "caso4_aq",
+          "minAmountMl": 15,
+          "maxAmountMl": 25
+        },
         "hint": "Take the calcium sulfate solution — the permanent hard water — from the shelf and dispense it into the beaker.",
         "onWrongAction": "Start with the hard water in the beaker. This vessel is the soap half of the comparison."
       },
       {
         "n": 2,
         "instruction": "Add soap solution to the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "soap_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "soap_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Add soap to the hard water and watch what forms rather than a lather.",
         "onWrongAction": "Add soap to the beaker holding the hard water — that is what this half of the experiment is testing."
       },
@@ -701,14 +835,26 @@
       {
         "n": 5,
         "instruction": "Put about 20 mL of permanent hard water into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "caso4_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "caso4_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Take the same hard water and dispense it into the test tube this time.",
         "onWrongAction": "The second sample of hard water goes into the test tube, kept separate from the soap tube."
       },
       {
         "n": 6,
         "instruction": "Add synthetic detergent solution to the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "detergent_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "detergent_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Add the detergent to the hard water in place of soap.",
         "onWrongAction": "Add the detergent to the test tube holding the hard water, the same way you added soap to the beaker."
       },
@@ -746,14 +892,26 @@
       {
         "n": 1,
         "instruction": "Put about 12 mL of bromine water into the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "br2_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "br2_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Take bromine water from the shelf and dispense it into the beaker. Note its orange-brown colour.",
         "onWrongAction": "Start with bromine water in the beaker — its colour is what this test is watching for a change in."
       },
       {
         "n": 2,
         "instruction": "Add ethene gas to the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "c2h4_g", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "c2h4_g",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Add ethene to the bromine water and watch the colour closely.",
         "onWrongAction": "Add ethene to the beaker holding the bromine water. Ethene is the alkene half of this comparison."
       },
@@ -774,14 +932,26 @@
       {
         "n": 5,
         "instruction": "Put about 12 mL of bromine water into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "br2_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "br2_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Take a second sample of bromine water and dispense it into the test tube.",
         "onWrongAction": "The second sample of bromine water goes into the test tube, kept separate from the beaker."
       },
       {
         "n": 6,
         "instruction": "Add ethane gas to the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "c2h6_g", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "c2h6_g",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Add ethane to the bromine water in place of ethene.",
         "onWrongAction": "Add ethane to the test tube holding the bromine water, the same way you added ethene to the beaker."
       },
@@ -820,14 +990,26 @@
       {
         "n": 1,
         "instruction": "Put about 12 mL of egg albumin solution into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "albumin_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "albumin_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Take egg albumin solution from the shelf and dispense it into the test tube.",
         "onWrongAction": "Start with the egg albumin solution in the test tube — it is the protein this test is designed to detect."
       },
       {
         "n": 2,
         "instruction": "Add biuret reagent to the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "biuret_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "biuret_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Add the pale blue biuret reagent to the albumin and watch closely.",
         "onWrongAction": "Add biuret reagent to the test tube holding the albumin solution. The colour change with a protein is immediate."
       },
@@ -864,14 +1046,26 @@
       {
         "n": 1,
         "instruction": "Put about 12 mL of silver nitrate solution into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "agno3_0_1m", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "agno3_0_1m",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Take silver nitrate solution from the shelf and dispense it into the test tube.",
         "onWrongAction": "Start with silver nitrate solution in the test tube. In the real scheme this stands in for whichever unknown solution is being analysed."
       },
       {
         "n": 2,
         "instruction": "Add dilute hydrochloric acid to the tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "hcl_1m", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "hcl_1m",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Add dilute hydrochloric acid to the silver nitrate solution.",
         "onWrongAction": "Add hydrochloric acid to the tube holding the silver nitrate. This is always the first reagent added in the systematic cation scheme."
       },
@@ -909,14 +1103,26 @@
       {
         "n": 1,
         "instruction": "Put about 18 mL of iron(III) chloride solution into the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "fecl3_0_1m", "minAmountMl": 15, "maxAmountMl": 20 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "fecl3_0_1m",
+          "minAmountMl": 15,
+          "maxAmountMl": 20
+        },
         "hint": "Take iron(III) chloride solution from the shelf and dispense it into the beaker.",
         "onWrongAction": "Start with iron(III) chloride solution in the beaker — it stands in for the Group III cation being identified."
       },
       {
         "n": 2,
         "instruction": "Add ammonia solution to the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "nh4oh_aq", "minAmountMl": 10, "maxAmountMl": 20 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "nh4oh_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 20
+        },
         "hint": "Add ammonia solution to the iron(III) chloride.",
         "onWrongAction": "Add the ammonia solution to the beaker holding the iron(III) chloride. Ammonia, not sodium hydroxide, is used at this stage of the scheme."
       },
@@ -954,14 +1160,26 @@
       {
         "n": 1,
         "instruction": "Put a little aluminium hydroxide into the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "aloh3_s", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "aloh3_s",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Take the white aluminium hydroxide floc from the shelf and dispense it into the beaker.",
         "onWrongAction": "Start with aluminium hydroxide in the beaker — this vessel will get the sodium hydroxide."
       },
       {
         "n": 2,
         "instruction": "Add sodium hydroxide solution to the beaker.",
-        "requiredAction": { "type": "addChemical", "containerType": "beaker", "chemicalId": "naoh_1m", "minAmountMl": 15, "maxAmountMl": 25 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "beaker",
+          "chemicalId": "naoh_1m",
+          "minAmountMl": 15,
+          "maxAmountMl": 25
+        },
         "hint": "Add sodium hydroxide to the aluminium hydroxide and watch the solid closely.",
         "onWrongAction": "Add sodium hydroxide to the beaker holding the aluminium hydroxide. Excess alkali is what tests for amphoteric behaviour."
       },
@@ -982,14 +1200,26 @@
       {
         "n": 5,
         "instruction": "Put a little aluminium hydroxide into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "aloh3_s", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "aloh3_s",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Take a fresh sample of aluminium hydroxide from the shelf and dispense it into the test tube.",
         "onWrongAction": "A fresh sample of aluminium hydroxide goes into the test tube, kept separate from the beaker."
       },
       {
         "n": 6,
         "instruction": "Add ammonia solution to the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "nh4oh_aq", "minAmountMl": 15, "maxAmountMl": 20 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "nh4oh_aq",
+          "minAmountMl": 15,
+          "maxAmountMl": 20
+        },
         "hint": "Add ammonia solution to the aluminium hydroxide in place of sodium hydroxide.",
         "onWrongAction": "Add ammonia solution to the test tube holding the aluminium hydroxide, the same way you added sodium hydroxide to the beaker."
       },
@@ -1027,14 +1257,26 @@
       {
         "n": 1,
         "instruction": "Put a little cobalt(II) chloride hexahydrate into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "cocl2_6h2o_s", "minAmountMl": 3, "maxAmountMl": 8 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "cocl2_6h2o_s",
+          "minAmountMl": 3,
+          "maxAmountMl": 8
+        },
         "hint": "Take the pink cobalt(II) chloride hexahydrate from the shelf and dispense a small amount into the test tube.",
         "onWrongAction": "Start with cobalt(II) chloride hexahydrate in the test tube. Its pink colour is the starting point for the whole demonstration."
       },
       {
         "n": 2,
         "instruction": "Add hydrochloric acid to the tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "hcl_1m", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "hcl_1m",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Add hydrochloric acid to the cobalt(II) chloride and watch the colour shift.",
         "onWrongAction": "Add hydrochloric acid to the tube. Chloride ions are what push the equilibrium towards the blue complex."
       },
@@ -1048,7 +1290,13 @@
       {
         "n": 4,
         "instruction": "Add distilled water to the tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "water_distilled", "minAmountMl": 10, "maxAmountMl": 20 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "water_distilled",
+          "minAmountMl": 10,
+          "maxAmountMl": 20
+        },
         "hint": "Add distilled water to dilute the chloride and push the equilibrium back the other way.",
         "onWrongAction": "Add distilled water to the tube. Diluting the chloride is what reverses the colour change."
       },
@@ -1080,21 +1328,39 @@
       {
         "n": 1,
         "instruction": "Put a little propanone into the test tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "ch3coch3_l", "minAmountMl": 5, "maxAmountMl": 10 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "ch3coch3_l",
+          "minAmountMl": 5,
+          "maxAmountMl": 10
+        },
         "hint": "Take propanone (acetone) from the shelf and dispense a small amount into the test tube.",
         "onWrongAction": "Start with propanone in the test tube — it is the compound this test identifies."
       },
       {
         "n": 2,
         "instruction": "Add iodine solution to the tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "i2_aq", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "i2_aq",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Add the brown iodine solution to the propanone.",
         "onWrongAction": "Add iodine solution to the tube holding the propanone. Both iodine and alkali are needed for this test."
       },
       {
         "n": 3,
         "instruction": "Add sodium hydroxide solution to the tube.",
-        "requiredAction": { "type": "addChemical", "containerType": "test_tube", "chemicalId": "naoh_1m", "minAmountMl": 10, "maxAmountMl": 15 },
+        "requiredAction": {
+          "type": "addChemical",
+          "containerType": "test_tube",
+          "chemicalId": "naoh_1m",
+          "minAmountMl": 10,
+          "maxAmountMl": 15
+        },
         "hint": "Add sodium hydroxide to the mixture and watch for a solid forming.",
         "onWrongAction": "Add sodium hydroxide to the tube. The alkali is what drives the reaction all the way to the yellow precipitate."
       },
