@@ -6518,5 +6518,197 @@
     "explanation": "Sand, soda and limestone at about 1500 °C — far beyond a school burner, so the app asks only for heat and leaves the real figure here. Silica on its own would need over 1700 °C because its network is unbroken; the sodium and calcium ions get in among it and snap some of those Si—O—Si links, which is what brings the working temperature down far enough to be practical. That is also why glass SOFTENS gradually instead of melting at one sharp temperature, and why it can be blown and drawn. Compare the reactants with the cement kiln: limestone and sand give cement, and adding soda to the same two gives glass.",
     "levels": ["fsc", "bs"],
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silicate glasses; Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries"
+  },
+  {
+    "id": "rxn_clay_water_plastic",
+    "reactants": ["clay_dry_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["clay_plastic_s"],
+    "equation": "dry clay + water → plastic, workable clay",
+    "type": "hydration",
+    "effects": {
+      "colorToHex": "#B5A48C",
+      "precipitate": "a damp grey-brown mass that holds whatever shape it is pushed into",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Clay you can throw on a wheel, and nothing has reacted to make it. Kaolinite is built in sheets stacked like paper, and water slips between them and acts as a lubricant so they slide over each other and stay where they are pushed. Because it is only lubrication, it undoes itself: let the pot dry and the water leaves and it is powder again. Everything a potter does before firing is reversible, which is the point of the next three entries.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — clay plasticity"
+  },
+  {
+    "id": "rxn_clay_dehydroxylation",
+    "reactants": ["clay_plastic_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 500, "catalyst": null },
+    "products": ["metakaolin_s", "water"],
+    "equation": "Al₂Si₂O₅(OH)₄ →(500 °C) Al₂Si₂O₇ + 2H₂O",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#E4DACB",
+      "precipitate": "a pale cream solid that will never soften in water again",
+      "gas": "steam",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The first firing stage, and the point of no return. The water leaving here is NOT the water the potter added — that went at 100 °C and took nothing with it. These are the OH groups written into the mineral's own formula, chemically bonded into the sheets, and driving them out at 500 °C collapses the layered structure into a disordered one. With the OH groups gone there is nothing for water to reattach to, which is why a fired pot can never be turned back into clay. Firing is chemistry; drying was not.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — dehydroxylation of kaolinite"
+  },
+  {
+    "id": "rxn_clay_to_mullite",
+    "reactants": ["metakaolin_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["mullite_s", "sio2_s"],
+    "equation": "3Al₂Si₂O₇ →(1100 °C+) 3Al₂O₃·2SiO₂ + 4SiO₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#D9C4A8",
+      "precipitate": "a hard cream ceramic, ringing when struck",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The second firing stage, above about 1100 °C — beyond a school burner, so the app asks only for heat and leaves the real figure here. Needle-shaped crystals of MULLITE grow through the body and interlock, with glassy silica filling the spaces between them, and it is that interlocking that makes fired pottery hard and able to ring when struck. Mullite is not present in the clay at all; the kiln builds it. So the pot is genuinely a different material from what went in, not a dried version of it — which is the same thing setting cement did with a different set of crystals.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — mullite formation"
+  },
+  {
+    "id": "rxn_none_mullite_water",
+    "reactants": ["mullite_s", "water_distilled"],
+    "noReaction": true,
+    "explanation": "Nothing — and after the first entry that should be the whole argument for firing. Dry clay put in water became workable in seconds; this, which was that same clay, ignores it completely. The difference is that the OH groups the sheets used to carry have been driven out and mullite crystals have grown in their place, and neither change can be undone by water. A pot survives rain and a lump of unfired clay does not, and the reason is chemical rather than a matter of how thoroughly it was dried.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — irreversibility of firing"
+  },
+  {
+    "id": "rxn_calcination_aloh3",
+    "reactants": ["aloh3_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 300, "catalyst": null },
+    "products": ["al2o3_s", "water"],
+    "equation": "2Al(OH)₃ →(heat) Al₂O₃ + 3H₂O",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#F0EFE9",
+      "precipitate": "a hard white powder where the jelly used to be",
+      "gas": "steam",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The soft jelly-like floc that settles dirt out of drinking water becomes, on heating, one of the hardest and most heat-resistant oxides there is — used for furnace linings, spark plug insulators and grinding powder. Same aluminium, same oxygen, and the only change is losing water. It is worth pausing on how far apart the two materials are given how small the chemical step between them is, and it is the same calcination step that turns bauxite into the feedstock for aluminium smelting.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — calcination of aluminium hydroxide"
+  },
+  {
+    "id": "rxn_refractory_silica_attacked",
+    "reactants": ["cao_s", "sio2_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["ca_silicate_slag_s"],
+    "equation": "CaO + SiO₂ →(furnace heat) CaSiO₃",
+    "type": "acid_base",
+    "effects": {
+      "colorToHex": "#8A8578",
+      "precipitate": "a dull grey slag where the silica lining used to be",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "An ACIDIC oxide meeting a BASIC one — and at furnace temperature they simply react, exactly as an acid and a base do in a beaker. In a blast furnace this is arranged on purpose: lime is added to take up the silica impurity as a slag that floats off the iron. But run the same reaction on a furnace LINED with silica and it is the wall being eaten. Nothing about the chemistry differs; only which silica was consumed. The next two entries are what a lining engineer does about it.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — acidic and basic oxides in slags"
+  },
+  {
+    "id": "rxn_none_mgo_lime",
+    "reactants": ["cao_s", "mgo_s"],
+    "noReaction": true,
+    "explanation": "Nothing, at the temperature that just destroyed a silica lining. Both of these are BASIC oxides, and two bases have nothing to offer each other — the same reason sodium hydroxide and calcium oxide sit together untroubled in a beaker. So a furnace running a lime-rich, basic charge is lined with magnesia, and the lining survives because it is chemically on the same side as what it contains. Choosing a refractory is an acid-base question first and a melting point question second.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — basic refractories"
+  },
+  {
+    "id": "rxn_refractory_magnesia_attacked",
+    "reactants": ["mgo_s", "sio2_s"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["mg_silicate_s"],
+    "equation": "2MgO + SiO₂ →(furnace heat) Mg₂SiO₄",
+    "type": "acid_base",
+    "effects": {
+      "colorToHex": "#9AA391",
+      "precipitate": "a dull olive grey solid where the magnesia lining used to be",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "And now the magnesia is the one being eaten, because this time the charge is acidic. Put the three entries together and the rule falls out: silica lining plus basic charge fails, magnesia lining plus basic charge survives, magnesia lining plus acidic charge fails. Neither lining is better. A refractory is only refractory RELATIVE to what sits next to it, and picking one is a question about the process rather than about the material in isolation — which is a more useful idea than any melting point.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — refractory attack by slags"
+  },
+  {
+    "id": "rxn_gypsum_to_plaster",
+    "reactants": ["gypsum_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 150, "catalyst": null },
+    "products": ["plaster_s", "water"],
+    "equation": "2CaSO₄·2H₂O →(150 °C) 2CaSO₄·½H₂O + 3H₂O",
+    "type": "dehydration",
+    "effects": {
+      "colorToHex": "#FAF7F0",
+      "precipitate": "a dry white powder",
+      "gas": "steam",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Three quarters of the water is driven off, leaving a HALF molecule per formula unit — which is a genuinely odd number and not a rounding; two formula units share one water molecule between them. Getting the temperature right matters: too hot and the last of the water goes too, giving a form that sets far more slowly or not at all. The half-water state is a deliberate target rather than merely a stage on the way to dry.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries; CRC Handbook of Chemistry and Physics, 97th ed."
+  },
+  {
+    "id": "rxn_plaster_setting",
+    "reactants": ["plaster_s", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "maxTempC": 100, "catalyst": null },
+    "products": ["gypsum_s"],
+    "equation": "2CaSO₄·½H₂O + 3H₂O → 2CaSO₄·2H₂O",
+    "type": "hydration",
+    "effects": {
+      "colorToHex": "#F2EFE6",
+      "precipitate": "a hard chalky white solid, set within minutes",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 7,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Add the water back and it sets hard in minutes, which is why plaster is used for casts and mouldings. Two things are worth noticing. It gets WARM as it sets — a plaster cast on a broken arm is noticeably so — because bonds are being made as the crystal rebuilds. And it expands very slightly on setting, which is unusual and is exactly what makes it good for a mould: it presses into every detail rather than shrinking away from it. It will not set in a hot oven, though, and the app enforces that: above about 100 °C the half-water form is the stable one, so the water leaves as fast as it arrives. Set beside the ceramic entries, this is a hydration that fully reverses, where firing clay never does.",
+    "levels": ["fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries; CRC Handbook of Chemistry and Physics, 97th ed."
   }
 ]

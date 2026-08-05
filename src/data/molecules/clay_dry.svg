@@ -1,0 +1,10 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dry clay: sheets of aluminium silicate stacked directly on one another with nothing between them. The OH groups written into its formula are chemically bonded inside those sheets, not damp on the surface">
+  <rect x="12" y="23" width="136" height="14" rx="4" fill="#C9BCA6" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="34" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">Al–Si–O sheet</text>
+  <rect x="12" y="45" width="136" height="14" rx="4" fill="#C9BCA6" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="56" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">Al–Si–O sheet</text>
+  <rect x="12" y="67" width="136" height="14" rx="4" fill="#C9BCA6" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="78" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#161A19">Al–Si–O sheet</text>
+  <text x="80" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">sheets stacked tight — a dry powder</text>
+  <text x="80" y="100" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">the OH groups are INSIDE the sheets</text>
+</svg>

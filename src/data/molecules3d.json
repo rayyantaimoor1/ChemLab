@@ -5697,5 +5697,192 @@
       { "from": "na", "to": "oe0", "type": "ionic" },
       { "from": "ca", "to": "oe2", "type": "ionic" }
     ]
+  },
+  "clay_dry_s": {
+    "note": "Two sheets shown as rows of grey blocks, stacked directly on one another. What holds a stack like this together is only weak attraction between the sheets - there are no strong bonds running from one to the next, and that is exactly why something can get in between them. The OH groups the formula names live INSIDE each sheet, which is why they take 500 degrees to remove rather than a warm afternoon.",
+    "atoms": [
+      { "id": "t0", "element": "group", "x": -3.2, "y": 1.1, "z": 0 },
+      { "id": "t1", "element": "group", "x": -1.6, "y": 1.1, "z": 0 },
+      { "id": "t2", "element": "group", "x": 0, "y": 1.1, "z": 0 },
+      { "id": "t3", "element": "group", "x": 1.6, "y": 1.1, "z": 0 },
+      { "id": "t4", "element": "group", "x": 3.2, "y": 1.1, "z": 0 },
+      { "id": "b0", "element": "group", "x": -3.2, "y": -1.1, "z": 0 },
+      { "id": "b1", "element": "group", "x": -1.6, "y": -1.1, "z": 0 },
+      { "id": "b2", "element": "group", "x": 0, "y": -1.1, "z": 0 },
+      { "id": "b3", "element": "group", "x": 1.6, "y": -1.1, "z": 0 },
+      { "id": "b4", "element": "group", "x": 3.2, "y": -1.1, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "t0", "to": "t1", "type": "covalent" },
+      { "from": "t1", "to": "t2", "type": "covalent" },
+      { "from": "t2", "to": "t3", "type": "covalent" },
+      { "from": "t3", "to": "t4", "type": "covalent" },
+      { "from": "b0", "to": "b1", "type": "covalent" },
+      { "from": "b1", "to": "b2", "type": "covalent" },
+      { "from": "b2", "to": "b3", "type": "covalent" },
+      { "from": "b3", "to": "b4", "type": "covalent" }
+    ]
+  },
+  "clay_plastic_s": {
+    "note": "The same two sheets, now pushed further apart with water molecules sitting between them. Compare the gap with the dry clay model - that is the whole of what makes clay workable. The water is lubricating, not bonding, and no bond within either sheet has changed, which is why letting it dry puts everything back as it was.",
+    "atoms": [
+      { "id": "t0", "element": "group", "x": -3.2, "y": 2, "z": 0 },
+      { "id": "t1", "element": "group", "x": -1.6, "y": 2, "z": 0 },
+      { "id": "t2", "element": "group", "x": 0, "y": 2, "z": 0 },
+      { "id": "t3", "element": "group", "x": 1.6, "y": 2, "z": 0 },
+      { "id": "t4", "element": "group", "x": 3.2, "y": 2, "z": 0 },
+      { "id": "b0", "element": "group", "x": -3.2, "y": -2, "z": 0 },
+      { "id": "b1", "element": "group", "x": -1.6, "y": -2, "z": 0 },
+      { "id": "b2", "element": "group", "x": 0, "y": -2, "z": 0 },
+      { "id": "b3", "element": "group", "x": 1.6, "y": -2, "z": 0 },
+      { "id": "b4", "element": "group", "x": 3.2, "y": -2, "z": 0 },
+      { "id": "w0", "element": "O", "x": -2.85, "y": 0, "z": 0.3 },
+      { "id": "w1", "element": "O", "x": -0.95, "y": 0, "z": 0.3 },
+      { "id": "w2", "element": "O", "x": 0.95, "y": 0, "z": 0.3 },
+      { "id": "w3", "element": "O", "x": 2.85, "y": 0, "z": 0.3 }
+    ],
+    "bonds": [
+      { "from": "t0", "to": "t1", "type": "covalent" },
+      { "from": "t1", "to": "t2", "type": "covalent" },
+      { "from": "t2", "to": "t3", "type": "covalent" },
+      { "from": "t3", "to": "t4", "type": "covalent" },
+      { "from": "b0", "to": "b1", "type": "covalent" },
+      { "from": "b1", "to": "b2", "type": "covalent" },
+      { "from": "b2", "to": "b3", "type": "covalent" },
+      { "from": "b3", "to": "b4", "type": "covalent" }
+    ]
+  },
+  "metakaolin_s": {
+    "note": "The stack has gone. Turn it and there is no longer a top sheet and a bottom sheet - just blocks in no particular arrangement, which is what \"disordered\" means and what losing the OH groups did to the structure. Nothing here can take water back in, and that is why firing is one-way.",
+    "atoms": [
+      { "id": "a", "element": "group", "x": -3, "y": 1.4, "z": 0.6 },
+      { "id": "b", "element": "group", "x": -1.2, "y": 2.2, "z": -0.8 },
+      { "id": "c", "element": "group", "x": 1, "y": 1, "z": 0.9 },
+      { "id": "d", "element": "group", "x": 2.8, "y": 2, "z": -0.4 },
+      { "id": "e", "element": "group", "x": -2.2, "y": -1.2, "z": -0.9 },
+      { "id": "f", "element": "group", "x": 0.2, "y": -1.8, "z": 0.5 },
+      { "id": "g", "element": "group", "x": 2.4, "y": -0.8, "z": -1 }
+    ],
+    "bonds": [
+      { "from": "a", "to": "b", "type": "covalent" },
+      { "from": "b", "to": "c", "type": "covalent" },
+      { "from": "c", "to": "d", "type": "covalent" },
+      { "from": "a", "to": "e", "type": "covalent" },
+      { "from": "e", "to": "f", "type": "covalent" },
+      { "from": "f", "to": "c", "type": "covalent" },
+      { "from": "f", "to": "g", "type": "covalent" }
+    ]
+  },
+  "mullite_s": {
+    "note": "Aluminium and silicon linked through oxygens into a rigid framework - the repeating piece of a mullite needle. In the fired pot thousands of these needles grow across each other and lock together, and that interlocking is the hardness. None of this existed in the clay; the kiln built it.",
+    "atoms": [
+      { "id": "al1", "element": "Al", "x": -2.4, "y": 0.8, "z": 0 },
+      { "id": "al2", "element": "Al", "x": 2.4, "y": 0.8, "z": 0 },
+      { "id": "si", "element": "Si", "x": 0, "y": -1, "z": 0 },
+      { "id": "o1", "element": "O", "x": -1.2, "y": -0.2, "z": 0.4 },
+      { "id": "o2", "element": "O", "x": 1.2, "y": -0.2, "z": 0.4 },
+      { "id": "o3", "element": "O", "x": 0, "y": 1.6, "z": -0.3 },
+      { "id": "o4", "element": "O", "x": -3.4, "y": 2, "z": 0.3 },
+      { "id": "o5", "element": "O", "x": 3.4, "y": 2, "z": -0.3 },
+      { "id": "o6", "element": "O", "x": 0, "y": -2.4, "z": -0.6 }
+    ],
+    "bonds": [
+      { "from": "al1", "to": "o1", "type": "covalent" },
+      { "from": "o1", "to": "si", "type": "covalent" },
+      { "from": "si", "to": "o2", "type": "covalent" },
+      { "from": "o2", "to": "al2", "type": "covalent" },
+      { "from": "al1", "to": "o3", "type": "covalent" },
+      { "from": "o3", "to": "al2", "type": "covalent" },
+      { "from": "al1", "to": "o4", "type": "covalent" },
+      { "from": "al2", "to": "o5", "type": "covalent" },
+      { "from": "si", "to": "o6", "type": "covalent" }
+    ]
+  },
+  "ca_silicate_slag_s": {
+    "note": "A silicate tetrahedron with calcium beside it. The point is not the geometry but the pairing: an acidic oxide and a basic one have combined, exactly as an acid and a base do in a beaker, only at furnace temperature and in the solid state.",
+    "atoms": [
+      { "id": "si", "element": "Si", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 1.3, "y": 0.6, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.1, "y": 0.9, "z": 0.4 },
+      { "id": "o3", "element": "O", "x": -0.3, "y": -1.3, "z": -0.6 },
+      { "id": "ca", "element": "Ca", "x": 3.2, "y": 1.4, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "si", "to": "o1", "type": "covalent" },
+      { "from": "si", "to": "o2", "type": "covalent" },
+      { "from": "si", "to": "o3", "type": "covalent" },
+      { "from": "ca", "to": "o1", "type": "ionic" }
+    ]
+  },
+  "mg_silicate_s": {
+    "note": "The same arrangement with TWO magnesiums instead of one calcium - magnesium is smaller and carries the same charge, so more of them pack round each silicate. Structurally unremarkable; what matters is that the lining, not the charge, is what got consumed to make it.",
+    "atoms": [
+      { "id": "si", "element": "Si", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 1.25, "y": 0.6, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.25, "y": 0.6, "z": 0 },
+      { "id": "o3", "element": "O", "x": 0, "y": -1.3, "z": 0.5 },
+      { "id": "o4", "element": "O", "x": 0, "y": -0.4, "z": -1.3 },
+      { "id": "mg1", "element": "Mg", "x": 2.9, "y": 1.5, "z": 0 },
+      { "id": "mg2", "element": "Mg", "x": -2.9, "y": 1.5, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "si", "to": "o1", "type": "covalent" },
+      { "from": "si", "to": "o2", "type": "covalent" },
+      { "from": "si", "to": "o3", "type": "covalent" },
+      { "from": "si", "to": "o4", "type": "covalent" },
+      { "from": "mg1", "to": "o1", "type": "ionic" },
+      { "from": "mg2", "to": "o2", "type": "ionic" }
+    ]
+  },
+  "gypsum_s": {
+    "note": "A sulfate tetrahedron, a calcium, and TWO water molecules - and those waters are at definite positions rather than floating anywhere. That is what makes this a hydrate: the water is part of the crystal, which is why removing it needs 150 degrees and why the solid stays dry to the touch.",
+    "atoms": [
+      { "id": "s", "element": "S", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.85, "y": 0.85, "z": 0.85 },
+      { "id": "o2", "element": "O", "x": -0.85, "y": -0.85, "z": 0.85 },
+      { "id": "o3", "element": "O", "x": -0.85, "y": 0.85, "z": -0.85 },
+      { "id": "o4", "element": "O", "x": 0.85, "y": -0.85, "z": -0.85 },
+      { "id": "ca", "element": "Ca", "x": -2.9, "y": 0, "z": 0 },
+      { "id": "w1", "element": "O", "x": 2.7, "y": 1.6, "z": 0.6 },
+      { "id": "h1", "element": "H", "x": 3.5, "y": 2.2, "z": 0.9 },
+      { "id": "w2", "element": "O", "x": 2.7, "y": -1.6, "z": -0.6 },
+      { "id": "h2", "element": "H", "x": 3.5, "y": -2.2, "z": -0.9 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "ca", "to": "o2", "type": "ionic" },
+      { "from": "w1", "to": "h1", "type": "covalent" },
+      { "from": "w2", "to": "h2", "type": "covalent" }
+    ]
+  },
+  "plaster_s": {
+    "note": "TWO sulfate units and ONE water between them - which is what \"half a water each\" actually means, and it is easier to see here than in the formula. Compare with the gypsum model, which carries two waters for a single unit. The gap left behind is what the water rushes back into when plaster sets, and why it sets in minutes rather than hours.",
+    "atoms": [
+      { "id": "sa", "element": "S", "x": -2.6, "y": 0, "z": 0 },
+      { "id": "a1", "element": "O", "x": -1.8, "y": 1.1, "z": 0.5 },
+      { "id": "a2", "element": "O", "x": -3.4, "y": -1.1, "z": 0.5 },
+      { "id": "a3", "element": "O", "x": -3.4, "y": 1, "z": -0.8 },
+      { "id": "sb", "element": "S", "x": 2.6, "y": 0, "z": 0 },
+      { "id": "b1", "element": "O", "x": 1.8, "y": 1.1, "z": 0.5 },
+      { "id": "b2", "element": "O", "x": 3.4, "y": -1.1, "z": 0.5 },
+      { "id": "b3", "element": "O", "x": 3.4, "y": 1, "z": -0.8 },
+      { "id": "w", "element": "O", "x": 0, "y": -1.6, "z": 0 },
+      { "id": "hw", "element": "H", "x": 0.8, "y": -2.3, "z": 0.3 },
+      { "id": "ca", "element": "Ca", "x": 0, "y": 2.4, "z": -0.4 }
+    ],
+    "bonds": [
+      { "from": "sa", "to": "a1", "type": "covalent" },
+      { "from": "sa", "to": "a2", "type": "covalent" },
+      { "from": "sa", "to": "a3", "type": "covalent" },
+      { "from": "sb", "to": "b1", "type": "covalent" },
+      { "from": "sb", "to": "b2", "type": "covalent" },
+      { "from": "sb", "to": "b3", "type": "covalent" },
+      { "from": "w", "to": "hw", "type": "covalent" },
+      { "from": "ca", "to": "a1", "type": "ionic" },
+      { "from": "ca", "to": "b1", "type": "ionic" }
+    ]
   }
 }
