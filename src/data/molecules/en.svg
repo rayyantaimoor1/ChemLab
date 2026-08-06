@@ -1,0 +1,17 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ethane-1,2-diamine: two nitrogen donors joined by a short carbon bridge, so one molecule can bind a metal twice">
+  <circle cx="34" cy="62" r="12" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="34" y="67" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="64" cy="48" r="11" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="64" y="52" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="96" cy="48" r="11" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="96" y="52" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="126" cy="62" r="12" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="126" y="67" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">N</text>
+  <line x1="34" y1="62" x2="64" y2="48" stroke="#161A19" stroke-width="2"/>
+  <line x1="64" y1="48" x2="96" y2="48" stroke="#161A19" stroke-width="2"/>
+  <line x1="96" y1="48" x2="126" y2="62" stroke="#161A19" stroke-width="2"/>
+  <line x1="34" y1="74" x2="80" y2="92" stroke="#4A4A4A" stroke-width="1.6" stroke-dasharray="4,2"/>
+  <line x1="126" y1="74" x2="80" y2="92" stroke="#4A4A4A" stroke-width="1.6" stroke-dasharray="4,2"/>
+  <text x="80" y="106" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">TWO grips, joined together</text>
+  <text x="80" y="116" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">that joining is the whole chelate effect</text>
+</svg>

@@ -7503,5 +7503,283 @@
       { "from": "br1", "to": "br2", "type": "covalent" },
       { "from": "br2", "to": "f2", "type": "covalent" }
     ]
+  },
+  "edta_aq": {
+    "note": "Six donor atoms — two nitrogens and four oxygens — held together by one carbon skeleton, drawn here closed around a lump standing in for a metal ion. Everything about EDTA follows from that skeleton: the six grips arrive together and, more importantly, they can only leave together. Prising one arm off achieves nothing while the other five hold.",
+    "atoms": [
+      { "id": "m", "element": "group", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": 2.2, "y": 0.6, "z": 0 },
+      { "id": "n2", "element": "N", "x": -2.2, "y": 0.6, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": -2.2, "z": 0.8 },
+      { "id": "o2", "element": "O", "x": 0, "y": -2.2, "z": -0.8 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 1.4, "z": 1.6 },
+      { "id": "o4", "element": "O", "x": -1.2, "y": 1.4, "z": -1.6 },
+      { "id": "c1", "element": "C", "x": 0.8, "y": 1.9, "z": 0 },
+      { "id": "c2", "element": "C", "x": -0.8, "y": 1.9, "z": 0 },
+      { "id": "c3", "element": "C", "x": 1.9, "y": -0.8, "z": 0.8 },
+      { "id": "c4", "element": "C", "x": -1.9, "y": -0.8, "z": -0.8 }
+    ],
+    "bonds": [
+      { "from": "m", "to": "n1", "type": "covalent" },
+      { "from": "m", "to": "n2", "type": "covalent" },
+      { "from": "m", "to": "o1", "type": "covalent" },
+      { "from": "m", "to": "o2", "type": "covalent" },
+      { "from": "m", "to": "o3", "type": "covalent" },
+      { "from": "m", "to": "o4", "type": "covalent" },
+      { "from": "n1", "to": "c1", "type": "covalent" },
+      { "from": "n2", "to": "c2", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "n1", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "o1", "type": "covalent" },
+      { "from": "n2", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "o2", "type": "covalent" },
+      { "from": "n1", "to": "o3", "type": "covalent" },
+      { "from": "n2", "to": "o4", "type": "covalent" }
+    ]
+  },
+  "ca_edta_aq": {
+    "note": "Calcium inside the cage. Nothing has been taken out of the water and nothing precipitated; the ion is simply enclosed, and an enclosed ion cannot make scum, cannot deposit as scale, cannot be precipitated by carbonate. Because exactly one EDTA takes exactly one calcium, counting the drops needed measures the hardness.",
+    "atoms": [
+      { "id": "m", "element": "Ca", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": 2.2, "y": 0.6, "z": 0 },
+      { "id": "n2", "element": "N", "x": -2.2, "y": 0.6, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": -2.2, "z": 0.8 },
+      { "id": "o2", "element": "O", "x": 0, "y": -2.2, "z": -0.8 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 1.4, "z": 1.6 },
+      { "id": "o4", "element": "O", "x": -1.2, "y": 1.4, "z": -1.6 },
+      { "id": "c1", "element": "C", "x": 0.8, "y": 1.9, "z": 0 },
+      { "id": "c2", "element": "C", "x": -0.8, "y": 1.9, "z": 0 },
+      { "id": "c3", "element": "C", "x": 1.9, "y": -0.8, "z": 0.8 },
+      { "id": "c4", "element": "C", "x": -1.9, "y": -0.8, "z": -0.8 }
+    ],
+    "bonds": [
+      { "from": "m", "to": "n1", "type": "covalent" },
+      { "from": "m", "to": "n2", "type": "covalent" },
+      { "from": "m", "to": "o1", "type": "covalent" },
+      { "from": "m", "to": "o2", "type": "covalent" },
+      { "from": "m", "to": "o3", "type": "covalent" },
+      { "from": "m", "to": "o4", "type": "covalent" },
+      { "from": "n1", "to": "c1", "type": "covalent" },
+      { "from": "n2", "to": "c2", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "n1", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "o1", "type": "covalent" },
+      { "from": "n2", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "o2", "type": "covalent" },
+      { "from": "n1", "to": "o3", "type": "covalent" },
+      { "from": "n2", "to": "o4", "type": "covalent" }
+    ]
+  },
+  "cu_edta_aq": {
+    "note": "Copper inside the cage. Compare it with the tetraamminecopper model: there, four separate ammonia molecules each hold on at one point through a nitrogen. Here the donors are the same kind of atom doing the same kind of job — and yet EDTA takes copper off ammonia and ammonia cannot take it back. Being joined together is the only difference, and it decides the contest.",
+    "atoms": [
+      { "id": "m", "element": "Cu", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": 2.2, "y": 0.6, "z": 0 },
+      { "id": "n2", "element": "N", "x": -2.2, "y": 0.6, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": -2.2, "z": 0.8 },
+      { "id": "o2", "element": "O", "x": 0, "y": -2.2, "z": -0.8 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 1.4, "z": 1.6 },
+      { "id": "o4", "element": "O", "x": -1.2, "y": 1.4, "z": -1.6 },
+      { "id": "c1", "element": "C", "x": 0.8, "y": 1.9, "z": 0 },
+      { "id": "c2", "element": "C", "x": -0.8, "y": 1.9, "z": 0 },
+      { "id": "c3", "element": "C", "x": 1.9, "y": -0.8, "z": 0.8 },
+      { "id": "c4", "element": "C", "x": -1.9, "y": -0.8, "z": -0.8 }
+    ],
+    "bonds": [
+      { "from": "m", "to": "n1", "type": "covalent" },
+      { "from": "m", "to": "n2", "type": "covalent" },
+      { "from": "m", "to": "o1", "type": "covalent" },
+      { "from": "m", "to": "o2", "type": "covalent" },
+      { "from": "m", "to": "o3", "type": "covalent" },
+      { "from": "m", "to": "o4", "type": "covalent" },
+      { "from": "n1", "to": "c1", "type": "covalent" },
+      { "from": "n2", "to": "c2", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "n1", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "o1", "type": "covalent" },
+      { "from": "n2", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "o2", "type": "covalent" },
+      { "from": "n1", "to": "o3", "type": "covalent" },
+      { "from": "n2", "to": "o4", "type": "covalent" }
+    ]
+  },
+  "fe_edta_aq": {
+    "note": "Iron(III) inside the cage, and this is what masking looks like. The iron is present, unchanged, still iron(III) — and completely unreachable, so the thiocyanate test that gives the sharpest red in inorganic analysis finds nothing at all. Hiding an interfering ion rather than removing it is a standard move in real analysis.",
+    "atoms": [
+      { "id": "m", "element": "Fe", "x": 0, "y": 0, "z": 0 },
+      { "id": "n1", "element": "N", "x": 2.2, "y": 0.6, "z": 0 },
+      { "id": "n2", "element": "N", "x": -2.2, "y": 0.6, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": -2.2, "z": 0.8 },
+      { "id": "o2", "element": "O", "x": 0, "y": -2.2, "z": -0.8 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": 1.4, "z": 1.6 },
+      { "id": "o4", "element": "O", "x": -1.2, "y": 1.4, "z": -1.6 },
+      { "id": "c1", "element": "C", "x": 0.8, "y": 1.9, "z": 0 },
+      { "id": "c2", "element": "C", "x": -0.8, "y": 1.9, "z": 0 },
+      { "id": "c3", "element": "C", "x": 1.9, "y": -0.8, "z": 0.8 },
+      { "id": "c4", "element": "C", "x": -1.9, "y": -0.8, "z": -0.8 }
+    ],
+    "bonds": [
+      { "from": "m", "to": "n1", "type": "covalent" },
+      { "from": "m", "to": "n2", "type": "covalent" },
+      { "from": "m", "to": "o1", "type": "covalent" },
+      { "from": "m", "to": "o2", "type": "covalent" },
+      { "from": "m", "to": "o3", "type": "covalent" },
+      { "from": "m", "to": "o4", "type": "covalent" },
+      { "from": "n1", "to": "c1", "type": "covalent" },
+      { "from": "n2", "to": "c2", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "n1", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "o1", "type": "covalent" },
+      { "from": "n2", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "o2", "type": "covalent" },
+      { "from": "n1", "to": "o3", "type": "covalent" },
+      { "from": "n2", "to": "o4", "type": "covalent" }
+    ]
+  },
+  "ni_nh3_aq": {
+    "note": "Six ammonia molecules at the corners of an octahedron around one nickel. Six SEPARATE molecules — that is the thing to hold in mind before looking at the ethylenediamine model, where the same six nitrogens are joined together in pairs and the complex behaves quite differently for it.",
+    "atoms": [
+      { "id": "m", "element": "Ni", "x": 0, "y": 0, "z": 0 },
+      { "id": "l1", "element": "N", "x": 2.1, "y": 0, "z": 0 },
+      { "id": "l2", "element": "N", "x": -2.1, "y": 0, "z": 0 },
+      { "id": "l3", "element": "N", "x": 0, "y": 2.1, "z": 0 },
+      { "id": "l4", "element": "N", "x": 0, "y": -2.1, "z": 0 },
+      { "id": "l5", "element": "N", "x": 0, "y": 0, "z": 2.1 },
+      { "id": "l6", "element": "N", "x": 0, "y": 0, "z": -2.1 }
+    ],
+    "bonds": [
+      { "from": "m", "to": "l1", "type": "covalent" },
+      { "from": "m", "to": "l2", "type": "covalent" },
+      { "from": "m", "to": "l3", "type": "covalent" },
+      { "from": "m", "to": "l4", "type": "covalent" },
+      { "from": "m", "to": "l5", "type": "covalent" },
+      { "from": "m", "to": "l6", "type": "covalent" }
+    ]
+  },
+  "en_aq": {
+    "note": "Two nitrogen donors with a two-carbon bridge between them. Short enough that both nitrogens can reach the same metal ion, long enough that they are not strained doing it. This is the simplest chelating ligand there is, and the cleanest control for the chelate effect: it donates through nitrogen exactly as ammonia does, so any difference in behaviour comes from the bridge and nothing else.",
+    "atoms": [
+      { "id": "n1", "element": "N", "x": -2.2, "y": 0.4, "z": 0 },
+      { "id": "c1", "element": "C", "x": -0.75, "y": -0.3, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0.75, "y": 0.3, "z": 0 },
+      { "id": "n2", "element": "N", "x": 2.2, "y": -0.4, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n1", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "n2", "type": "covalent" }
+    ]
+  },
+  "ni_en_aq": {
+    "note": "Still one nickel and still six nitrogens at the corners of an octahedron — but now joined in pairs by carbon bridges. Count the nitrogens against the ammonia model and they are the same; only the bridges are new. That is enough to change the colour from blue to violet, and enough to make the complex far harder to pull apart, because three molecules have to be removed instead of six.",
+    "atoms": [
+      { "id": "m", "element": "Ni", "x": 0, "y": 0, "z": 0 },
+      { "id": "l1", "element": "N", "x": 2.1, "y": 0, "z": 0 },
+      { "id": "l2", "element": "N", "x": -2.1, "y": 0, "z": 0 },
+      { "id": "l3", "element": "N", "x": 0, "y": 2.1, "z": 0 },
+      { "id": "l4", "element": "N", "x": 0, "y": -2.1, "z": 0 },
+      { "id": "l5", "element": "N", "x": 0, "y": 0, "z": 2.1 },
+      { "id": "l6", "element": "N", "x": 0, "y": 0, "z": -2.1 },
+      { "id": "b1", "element": "C", "x": 1.3, "y": 1.3, "z": 0 },
+      { "id": "b2", "element": "C", "x": -1.3, "y": -1.3, "z": 0 },
+      { "id": "b3", "element": "C", "x": 0, "y": 1.3, "z": 1.3 }
+    ],
+    "bonds": [
+      { "from": "m", "to": "l1", "type": "covalent" },
+      { "from": "m", "to": "l2", "type": "covalent" },
+      { "from": "m", "to": "l3", "type": "covalent" },
+      { "from": "m", "to": "l4", "type": "covalent" },
+      { "from": "m", "to": "l5", "type": "covalent" },
+      { "from": "m", "to": "l6", "type": "covalent" },
+      { "from": "l1", "to": "b1", "type": "covalent" },
+      { "from": "b1", "to": "l3", "type": "covalent" },
+      { "from": "l2", "to": "b2", "type": "covalent" },
+      { "from": "b2", "to": "l4", "type": "covalent" },
+      { "from": "l5", "to": "b3", "type": "covalent" },
+      { "from": "b3", "to": "l6", "type": "covalent" }
+    ]
+  },
+  "ptcl4_aq": {
+    "note": "Four chlorides around platinum, and every atom lies in ONE PLANE — turn the model edge-on and it disappears to a line. Four-coordinate complexes are usually tetrahedral, and platinum(II) is one of the important exceptions. Flatness is not a curiosity here: it is what allows two ligands to be either next to each other or opposite each other.",
+    "atoms": [
+      { "id": "pt", "element": "Pt", "x": 0, "y": 0, "z": 0 },
+      { "id": "l0", "element": "Cl", "x": 2.3, "y": 0, "z": 0 },
+      { "id": "l1", "element": "Cl", "x": -2.3, "y": 0, "z": 0 },
+      { "id": "l2", "element": "Cl", "x": 0, "y": 2.3, "z": 0 },
+      { "id": "l3", "element": "Cl", "x": 0, "y": -2.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "pt", "to": "l0", "type": "covalent" },
+      { "from": "pt", "to": "l1", "type": "covalent" },
+      { "from": "pt", "to": "l2", "type": "covalent" },
+      { "from": "pt", "to": "l3", "type": "covalent" }
+    ]
+  },
+  "cisplatin_s": {
+    "note": "Two chlorides and two nitrogens on a flat square, with the two chlorides ADJACENT. Rotate the model and check that: they sit at ninety degrees, not opposite. The isomer with them opposite contains exactly the same atoms in exactly the same numbers and is medically useless, because the two bonds the drug has to make to DNA must be made to neighbouring bases.",
+    "atoms": [
+      { "id": "pt", "element": "Pt", "x": 0, "y": 0, "z": 0 },
+      { "id": "l0", "element": "Cl", "x": 2.3, "y": 0, "z": 0 },
+      { "id": "l1", "element": "N", "x": -2.3, "y": 0, "z": 0 },
+      { "id": "l2", "element": "Cl", "x": 0, "y": 2.3, "z": 0 },
+      { "id": "l3", "element": "N", "x": 0, "y": -2.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "pt", "to": "l0", "type": "covalent" },
+      { "from": "pt", "to": "l1", "type": "covalent" },
+      { "from": "pt", "to": "l2", "type": "covalent" },
+      { "from": "pt", "to": "l3", "type": "covalent" }
+    ]
+  },
+  "pt_dna_adduct_s": {
+    "note": "Platinum bonded to two bases that sit next to each other on the same strand, with the backbone bent sharply where it has been pulled together. A cell copying DNA has to run along it, and it cannot get past this. Notice the geometry doing the work: the two platinum bonds point ninety degrees apart, which is why only the cis isomer can reach two neighbouring bases at once.",
+    "atoms": [
+      { "id": "pt", "element": "Pt", "x": 0, "y": 2.6, "z": 0 },
+      { "id": "n1", "element": "N", "x": -1.6, "y": 1.2, "z": 0 },
+      { "id": "n2", "element": "N", "x": 1.6, "y": 1.2, "z": 0 },
+      { "id": "a1", "element": "N", "x": -2.4, "y": 2.9, "z": 0 },
+      { "id": "a2", "element": "N", "x": 2.4, "y": 2.9, "z": 0 },
+      { "id": "s1", "element": "group", "x": -4.2, "y": -0.4, "z": 0 },
+      { "id": "s2", "element": "group", "x": -1.8, "y": -0.9, "z": 0 },
+      { "id": "s3", "element": "group", "x": 1.8, "y": -0.9, "z": 0 },
+      { "id": "s4", "element": "group", "x": 4.2, "y": -0.4, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "pt", "to": "n1", "type": "covalent" },
+      { "from": "pt", "to": "n2", "type": "covalent" },
+      { "from": "pt", "to": "a1", "type": "covalent" },
+      { "from": "pt", "to": "a2", "type": "covalent" },
+      { "from": "n1", "to": "s2", "type": "covalent" },
+      { "from": "n2", "to": "s3", "type": "covalent" },
+      { "from": "s1", "to": "s2", "type": "covalent" },
+      { "from": "s2", "to": "s3", "type": "covalent" },
+      { "from": "s3", "to": "s4", "type": "covalent" }
+    ]
+  },
+  "na2s2o8_aq": {
+    "note": "Two sulfate groups joined through a single oxygen-oxygen bond, drawn slightly longer than the rest. That bond is weak and breaking it is what makes persulfate such a powerful oxidiser. It is also a doubly negative ion, which is the whole problem in the reaction with iodide: two negative ions have to collide, and they push each other away instead.",
+    "atoms": [
+      { "id": "s1", "element": "S", "x": -2.4, "y": 0, "z": 0 },
+      { "id": "s2", "element": "S", "x": 2.4, "y": 0, "z": 0 },
+      { "id": "ob1", "element": "O", "x": -0.8, "y": 0.3, "z": 0 },
+      { "id": "ob2", "element": "O", "x": 0.8, "y": -0.3, "z": 0 },
+      { "id": "a1", "element": "O", "x": -3.4, "y": 1.4, "z": 0.4 },
+      { "id": "a2", "element": "O", "x": -3.2, "y": -1.2, "z": -0.6 },
+      { "id": "a3", "element": "O", "x": -2, "y": 0.4, "z": 1.6 },
+      { "id": "b1", "element": "O", "x": 3.4, "y": -1.4, "z": -0.4 },
+      { "id": "b2", "element": "O", "x": 3.2, "y": 1.2, "z": 0.6 },
+      { "id": "b3", "element": "O", "x": 2, "y": -0.4, "z": -1.6 }
+    ],
+    "bonds": [
+      { "from": "s1", "to": "ob1", "type": "covalent" },
+      { "from": "ob1", "to": "ob2", "type": "covalent" },
+      { "from": "ob2", "to": "s2", "type": "covalent" },
+      { "from": "s1", "to": "a1", "type": "covalent" },
+      { "from": "s1", "to": "a2", "type": "covalent" },
+      { "from": "s1", "to": "a3", "type": "covalent" },
+      { "from": "s2", "to": "b1", "type": "covalent" },
+      { "from": "s2", "to": "b2", "type": "covalent" },
+      { "from": "s2", "to": "b3", "type": "covalent" }
+    ]
   }
 }

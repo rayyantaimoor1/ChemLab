@@ -8263,5 +8263,197 @@
     "explanation": "No purple ring, and for a test this unselective that is a strong statement. Molisch's test responds to any carbohydrate at all, so a negative result does not merely fail to identify a sugar — it says there is no carbohydrate present of any kind. An amino acid has no sugar ring to dehydrate, so nothing forms. A test that cannot tell sugars apart is still worth running first, precisely because its negative is so decisive.",
     "levels": ["bs"],
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — Molisch's test"
+  },
+  {
+    "id": "rxn_complex_nioh2_ammonia",
+    "reactants": ["nioh2_s", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["ni_nh3_aq"],
+    "equation": "Ni(OH)₂ + 6NH₃ → [Ni(NH₃)₆]²⁺ + 2OH⁻",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#6C7FD0",
+      "precipitate": null,
+      "dissolves": "the pale green solid went, leaving a clear blue solution",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 11.0
+    },
+    "hazard": null,
+    "explanation": "Add more ammonia and the green precipitate dissolves to a blue solution — the same pattern as zinc hydroxide, and the reason a little of a reagent and a lot of it can give opposite results. Six ammonia molecules take up positions around the nickel at the corners of an octahedron. Compare the blue here with the green of nickel in plain water: identical ion, identical number of ligands, different colour, because what surrounds a metal decides its colour rather than the metal alone.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — ammine complexes"
+  },
+  {
+    "id": "rxn_chelate_ni_en",
+    "reactants": ["ni_nh3_aq", "en_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["ni_en_aq"],
+    "equation": "[Ni(NH₃)₆]²⁺ + 3en → [Ni(en)₃]²⁺ + 6NH₃",
+    "type": "ligand_exchange",
+    "effects": {
+      "colorToHex": "#8E5BA6",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 11.5
+    },
+    "hazard": null,
+    "explanation": "Blue turns violet, and the swap is the cleanest demonstration of the chelate effect there is. Ethane-1,2-diamine binds through nitrogen exactly as ammonia does, so the individual bonds are of the same kind and strength — the only difference is that its two nitrogens are joined together. Three of these molecules replace six ammonias, and the reaction goes strongly in that direction because it frees six particles and ties up only three. More freedom for the same bonding is what drives it.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the chelate effect"
+  },
+  {
+    "id": "rxn_edta_hardness_ca",
+    "reactants": ["cahco3_aq", "edta_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["ca_edta_aq"],
+    "equation": "Ca²⁺ + EDTA⁴⁻ → [Ca(EDTA)]²⁻",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": null,
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 8.0
+    },
+    "hazard": null,
+    "explanation": "Nothing to see, and the water is now soft. The calcium has not been removed — it is still there, wrapped inside an EDTA molecule and unable to reach anything. It will not make scum with soap, will not deposit as scale, will not precipitate with carbonate. Because one EDTA takes exactly one calcium, adding it drop by drop until the water stops being hard measures the hardness precisely, which is how water hardness is actually determined.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — EDTA titrations"
+  },
+  {
+    "id": "rxn_edta_displaces_ammonia_cu",
+    "reactants": ["cu_nh3_aq", "edta_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cu_edta_aq"],
+    "equation": "[Cu(NH₃)₄]²⁺ + EDTA⁴⁻ → [Cu(EDTA)]²⁻ + 4NH₃",
+    "type": "ligand_exchange",
+    "effects": {
+      "colorToHex": "#2E6DA4",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 6.0
+    },
+    "hazard": null,
+    "explanation": "EDTA turns the deep blue ammonia complex out and takes the copper for itself. Both ligands bind through nitrogen, so this is not a matter of one forming stronger bonds than the other — it is that EDTA arrives as one molecule holding six grips, and four separate ammonias have to be in the right place all at once and stay there. Once EDTA has hold, letting go means breaking six attachments together. Now try to reverse it.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the chelate effect"
+  },
+  {
+    "id": "rxn_none_ammonia_reverses_edta",
+    "reactants": ["cu_edta_aq", "nh4oh_aq"],
+    "noReaction": true,
+    "explanation": "Nothing — and this is the other half of the proof. Ammonia took the copper readily enough when EDTA was not involved, and EDTA took it straight back off the ammonia a moment ago. Yet however much ammonia is added here, it cannot get the copper back. A tug-of-war that only runs one way is exactly what the chelate effect means, and it is why EDTA is used to pull lead out of a poisoned patient and to hold metal ions harmlessly in shampoo and tinned food.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the chelate effect"
+  },
+  {
+    "id": "rxn_edta_masks_iron_thiocyanate",
+    "reactants": ["fescn_aq", "edta_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["fe_edta_aq", "kscn_aq"],
+    "equation": "[Fe(SCN)]²⁺ + EDTA⁴⁻ → [Fe(EDTA)]⁻ + SCN⁻",
+    "type": "ligand_exchange",
+    "effects": {
+      "colorToHex": "#E8C547",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 5.0
+    },
+    "hazard": null,
+    "explanation": "The blood red vanishes on the spot and leaves a faint yellow — one of the most striking things in this app to watch. The iron has not gone anywhere and is still iron(III); EDTA has simply taken it away from the thiocyanate, and a test that gave the sharpest positive in inorganic analysis a moment ago now reports nothing. Chemists call this MASKING and use it deliberately: when an interfering ion would ruin an analysis, they wrap it up rather than remove it.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — masking agents in analysis"
+  },
+  {
+    "id": "rxn_none_edta_sodium",
+    "reactants": ["nacl_1m", "edta_aq"],
+    "noReaction": true,
+    "explanation": "EDTA does nothing at all to sodium, and that indifference is useful rather than disappointing. Holding a metal in a six-armed cage depends on the ion pulling those arms in hard, and a singly charged ion of that size simply does not pull hard enough. So EDTA in a tin of food ties up the traces of iron and copper that would turn the contents rancid while leaving the salt entirely alone. A reagent that grabs everything would be no use to anyone.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — stability constants of EDTA complexes"
+  },
+  {
+    "id": "rxn_cisplatin_formation",
+    "reactants": ["ptcl4_aq", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cisplatin_s"],
+    "equation": "[PtCl₄]²⁻ + 2NH₃ → cis-[Pt(NH₃)₂Cl₂] + 2Cl⁻",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#E8C547",
+      "precipitate": "yellow crystals",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 8.0
+    },
+    "hazard": null,
+    "explanation": "Two ammonias replace two chlorides on a FLAT SQUARE platinum — flat rather than tetrahedral, which is unusual for four ligands and is the whole point. On a flat square the two ammonias can end up next to each other or opposite each other, and those are genuinely different substances made of exactly the same atoms. The one formed here has them adjacent. Its mirror-arrangement, trans-platin, is medically worthless. Look at the next reaction to see why the difference matters so much.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — square planar platinum(II)"
+  },
+  {
+    "id": "rxn_cisplatin_binds_dna",
+    "reactants": ["cisplatin_s", "dna_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["pt_dna_adduct_s"],
+    "equation": "cis-[Pt(NH₃)₂Cl₂] + DNA → Pt(NH₃)₂–DNA + 2Cl⁻",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#F2EDE0",
+      "precipitate": "an off-white solid as the DNA clumps and kinks",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "explanation": "And here is why the geometry decides everything. The platinum loses both chlorides and bonds to two neighbouring bases on the same DNA strand, putting a sharp kink in the helix that the cell cannot copy past — so a dividing cell fails and dies, which is why the drug hits fast-dividing cells hardest. Binding to two ADJACENT bases requires two bonding positions that are adjacent, and only the cis isomer has them. Trans-platin carries the same atoms to the same place and cannot make the second bond.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the mechanism of cisplatin"
+  },
+  {
+    "id": "rxn_catalysis_persulfate_iodide",
+    "reactants": ["na2s2o8_aq", "ki_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": "feso4_aq" },
+    "products": ["na2so4_aq", "i2_aq"],
+    "equation": "S₂O₈²⁻ + 2I⁻ →(Fe²⁺/Fe³⁺) 2SO₄²⁻ + I₂",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#7A4A1E",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 6.0
+    },
+    "hazard": null,
+    "explanation": "This is the reaction that explains why transition metals make such good catalysts. Persulfate and iodide are both NEGATIVE, so they repel one another and can barely meet, however favourable the reaction would be. Iron solves it by taking the two halves separately: iron(II) hands electrons to the persulfate and becomes iron(III), then iron(III) takes electrons from the iodide and becomes iron(II) again. Every step is now between opposite charges. The iron ends exactly as it began, and it could only do this because it has two oxidation states of similar stability — which is the d-block's defining trick. Add starch to see the iodine appear.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — catalysis by variable oxidation state"
   }
 ]

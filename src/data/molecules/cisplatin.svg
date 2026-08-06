@@ -1,0 +1,18 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cisplatin: two ammonias and two chlorides on a flat square platinum, with the two chlorides next to each other">
+  <line x1="80" y1="58" x2="44" y2="58" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="58" x2="116" y2="58" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="58" x2="80" y2="26" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="58" x2="80" y2="90" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="58" r="15" fill="#C9CDD1" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="64" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#161A19">Pt</text>
+  <circle cx="44" cy="58" r="10" fill="#27AE60" stroke="#161A19" stroke-width="2"/>
+  <text x="44" y="62" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Cl</text>
+  <circle cx="80" cy="90" r="10" fill="#27AE60" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="94" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Cl</text>
+  <circle cx="116" cy="58" r="10" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="116" y="62" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="80" cy="26" r="10" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="30" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">N</text>
+  <text x="80" y="108" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">the two chlorides are ADJACENT</text>
+  <text x="80" y="118" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">put them opposite and the drug stops working</text>
+</svg>
