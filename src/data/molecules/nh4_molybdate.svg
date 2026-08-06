@@ -1,0 +1,18 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The molybdate ion: molybdenum with four oxygens, carrying two negative charges. Twelve of these will wrap around a single phosphate">
+  <line x1="80" y1="58" x2="80" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="58" x2="50" y2="76" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="58" x2="110" y2="76" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="58" x2="80" y2="88" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="58" r="16" fill="#6B7A8F" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="64" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Mo</text>
+  <circle cx="80" cy="30" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="34" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="50" cy="76" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="50" y="80" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="110" cy="76" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="110" y="80" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="80" cy="88" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="92" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">O</text>
+  <text x="108" y="38" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">2-</text>
+  <text x="80" y="110" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">twelve of these make the cage</text>
+</svg>

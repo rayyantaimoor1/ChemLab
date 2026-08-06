@@ -7466,5 +7466,191 @@
     "explanation": "No aluminium appears on the steel, no matter how long the current runs — you cannot electroplate aluminium out of water. Aluminium ions are far harder to discharge than hydrogen ions, so the water is broken down in preference and hydrogen simply bubbles off the cathode instead. This is the same rule that decides the products of brine electrolysis, and it is exactly why extracting aluminium needs molten cryolite at 950 °C rather than a solution at room temperature. There is no bath you can mix that gets round it.",
     "levels": ["bs"],
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — discharge preference and the extraction of aluminium"
+  },
+  {
+    "id": "rxn_none_agbr_ammonia",
+    "reactants": ["agbr_s", "nh4oh_aq"],
+    "noReaction": true,
+    "explanation": "The cream precipitate stays put, and at this point a student could be forgiven for concluding they have an iodide. They do not. Silver bromide sits between the chloride and the iodide in solubility, and dilute ammonia is simply not strong enough to pull the silver out of it — but concentrated ammonia is. This is why the test has two stages and why the strength of the reagent has to be recorded: a negative result with dilute ammonia rules out chloride, and nothing more than that.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the silver halides"
+  },
+  {
+    "id": "rxn_agbr_dissolves_conc_ammonia",
+    "reactants": ["agbr_s", "nh3_conc_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["agnh3_aq"],
+    "equation": "AgBr + 2NH₃ → [Ag(NH₃)₂]⁺ + Br⁻",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "dissolves": "the cream solid went, leaving a clear colourless solution — where dilute ammonia had left it untouched",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 12.5
+    },
+    "hazard": null,
+    "explanation": "The same complex ion as with the chloride, and the same two ammonia molecules doing the work — but it takes fifteen molar ammonia to achieve here what one molar managed there. That is the whole discrimination. Run the three halides side by side: the chloride dissolves in dilute ammonia, the bromide only in concentrated, and the iodide in neither. A test that answers three questions with one reagent at two strengths is worth more than three separate tests.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — distinguishing the silver halides"
+  },
+  {
+    "id": "rxn_none_agi_conc_ammonia",
+    "reactants": ["agi_s", "nh3_conc_aq"],
+    "noReaction": true,
+    "explanation": "Still nothing, even at fifteen molar — and this is the result that completes the table. Silver iodide is less soluble than the bromide by a very wide margin, so no strength of ammonia will lift the silver ion out of it. Having watched the bromide give way to concentrated ammonia a moment ago, this refusal is now genuine evidence rather than a failed experiment: the only halide it can be is iodide.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the silver halides"
+  },
+  {
+    "id": "rxn_qa_carbonate_acid",
+    "reactants": ["na2co3_s", "hcl_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nacl_aq", "water", "co2_g"],
+    "equation": "Na₂CO₃ + 2HCl → 2NaCl + H₂O + CO₂",
+    "type": "acid_base",
+    "effects": {
+      "colorToHex": null,
+      "precipitate": null,
+      "dissolves": "the white solid fizzed away completely",
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 6.5
+    },
+    "hazard": null,
+    "explanation": "Brisk effervescence the moment the acid touches it, and the anion test that costs nothing to run — which is why carbonate is looked for first in any salt analysis. But fizzing alone only tells you a gas came off. Bubble it through limewater and the milkiness confirms it is carbon dioxide, and only then is carbonate established. Sulfites fizz too, and their gas turns limewater milky as well, so the smell has to be checked: carbon dioxide has none and sulfur dioxide is unmistakable.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the carbonate ion"
+  },
+  {
+    "id": "rxn_none_baso4_acid",
+    "reactants": ["baso4_s", "hcl_1m"],
+    "noReaction": true,
+    "explanation": "The white precipitate does not shift, and that refusal IS the confirmation. Any number of barium salts are white and insoluble in water; barium sulfate is one of the very few that dilute acid cannot touch. So a white precipitate with barium chloride is only a suspicion, and a white precipitate that survives dilute hydrochloric acid is a sulfate. This is also why barium sulfate can be swallowed as a medical X-ray contrast agent while barium compounds in general are poisonous — stomach acid cannot dissolve it, so no barium ions are ever released.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — confirmation of sulfate"
+  },
+  {
+    "id": "rxn_qa_sulfite_bacl2",
+    "reactants": ["na2so3_aq", "bacl2_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["baso3_s", "nacl_aq"],
+    "equation": "Na₂SO₃ + BaCl₂ → BaSO₃↓ + 2NaCl",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F5F3EE",
+      "precipitate": "a white precipitate, indistinguishable by eye from barium sulfate",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 8.5
+    },
+    "hazard": null,
+    "explanation": "Compare this tube with the sulfate one and there is nothing to choose between them: the same white precipitate, the same texture, both refusing to dissolve in water. A student who stopped at this point would report a sulfate and be wrong. This is the single most useful lesson in qualitative analysis — a precipitate is a question, not an answer, and the confirmatory step is not optional. Add dilute acid to each and they part company immediately.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the sulfite ion"
+  },
+  {
+    "id": "rxn_qa_sulfite_acid",
+    "reactants": ["baso3_s", "hcl_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["bacl2_0_1m", "so2_g", "water"],
+    "equation": "BaSO₃ + 2HCl → BaCl₂ + SO₂ + H₂O",
+    "type": "acid_base",
+    "effects": {
+      "colorToHex": null,
+      "precipitate": null,
+      "dissolves": "the white solid dissolved away, with a choking smell of burnt matches",
+      "gas": "sulfur dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 2.0
+    },
+    "hazard": null,
+    "explanation": "And there is the difference. The sulfite precipitate dissolves in dilute acid and gives off sulfur dioxide; the sulfate precipitate in the other tube has not moved. Two solids that looked identical five seconds ago have now identified themselves. The smell is the giveaway a textbook cannot print — sharp and choking, the smell of a struck match — and it is why a sulfite is never confused with a carbonate for long, even though both fizz and both turn limewater milky.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — distinguishing sulfite from sulfate"
+  },
+  {
+    "id": "rxn_qa_nitrate_brown_ring",
+    "reactants": ["feso4_aq", "kno3_aq", "h2so4_conc"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["brown_ring_s"],
+    "equation": "NO₃⁻ + 3Fe²⁺ + 4H⁺ → NO + 3Fe³⁺ + 2H₂O,  then  Fe²⁺ + NO → [Fe(H₂O)₅(NO)]²⁺",
+    "type": "complex_formation",
+    "effects": {
+      "colorToHex": "#5A3A1E",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 25,
+      "resultPH": 0.5
+    },
+    "hazard": null,
+    "explanation": "The brown ring test, and the reason it produces a RING rather than a brown tube is worth more than the result itself. The concentrated acid is dense, so it sinks and forms a separate layer; the reaction can only happen where the two layers meet, because that is the only place with both nitrogen monoxide being made and iron(II) still unoxidised. Everything about the technique — pouring the acid down the side, not shaking — exists to keep that boundary sharp. Shake the tube and the ring is gone.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the brown ring test for nitrate"
+  },
+  {
+    "id": "rxn_qa_nitrite_warm_acid",
+    "reactants": ["nano2_aq", "hcl_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": 12, "catalyst": null },
+    "products": ["nacl_aq", "no_g", "no2_g", "water"],
+    "equation": "2HNO₂ → NO + NO₂ + H₂O",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#A0522D",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": "nitrogen dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 2.5
+    },
+    "hazard": null,
+    "explanation": "Brown fumes, immediately, from nothing more than dilute acid — and a nitrate in the next tube gives you nothing at all. That is the cheapest way there is to tell the two apart. What is happening is that nitrous acid is too unstable to exist at room temperature and falls apart as fast as it is made. Stand the same tube in ice and it survives instead, which is not a laboratory nicety: it is the entire reason diazotisation is done at 0–5 °C. The same pair of reagents, two temperatures, two completely different outcomes.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the nitrite ion"
+  },
+  {
+    "id": "rxn_none_nitrate_dilute_acid",
+    "reactants": ["kno3_aq", "hcl_1m"],
+    "noReaction": true,
+    "explanation": "Nothing at all — no fizzing, no fumes, no colour. That matters because a nitrite in the same tube would have given brown fumes immediately with dilute acid, and the two anions are otherwise easy to confuse. Nitrate is the stable one: it needs concentrated sulfuric acid and iron(II) before it will admit to anything, which is exactly what the brown ring test provides. Doing the cheap dilute-acid test first and getting nothing is how you know to reach for the expensive one.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — distinguishing nitrate from nitrite"
+  },
+  {
+    "id": "rxn_qa_phosphate_molybdate",
+    "reactants": ["na3po4_aq", "nh4_molybdate_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["phosphomolybdate_s"],
+    "equation": "PO₄³⁻ + 12MoO₄²⁻ + 3NH₄⁺ + 24H⁺ → (NH₄)₃[PMo₁₂O₄₀]↓ + 12H₂O",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F5D000",
+      "precipitate": "a startling canary yellow precipitate",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "explanation": "A colour no other common anion test produces, which is why this one has survived unchanged for over a century. Look at the equation rather than the colour, though: twelve molybdate ions assemble into a cage around a single phosphate, and the whole assembly is one ion. It is by far the largest species in this app. The reagent has to be made up in nitric acid because the cage only forms in strongly acidic conditions — in neutral solution the molybdate simply stays as molybdate and nothing happens.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — confirmation of phosphate"
   }
 ]

@@ -614,11 +614,47 @@ test('every real chemical carries a source too', async () => {
   }
 });
 
-test('no two real reactions claim the same set of reactants', async () => {
+test('no two real reactions could fire for the same mixture', async () => {
   const { engine } = await import('../src/core/engine.js');
 
-  const keys = engine.getAllReactions().map((reaction) => speciesKey(reaction.reactants));
-  assert.equal(new Set(keys).size, keys.length, 'two reactions would match the same mixture');
+  // Two rules sharing a reactant set are only safe if they can never both be
+  // unblocked, because which one wins would otherwise be arbitrary. The one
+  // honest way to share a set is a temperature WINDOW: nitrous acid survives
+  // under ice and falls apart into brown fumes above about 10 °C, so the same
+  // two reagents genuinely have two outcomes and the vessel's temperature
+  // picks between them. Anything else sharing a set is a content mistake.
+  const window = (reaction) => {
+    const conditions = reaction.conditions || {};
+    return [
+      typeof conditions.minTempC === 'number' ? conditions.minTempC : -Infinity,
+      typeof conditions.maxTempC === 'number' ? conditions.maxTempC : Infinity,
+    ];
+  };
+  const disjoint = (a, b) => {
+    const [aMin, aMax] = window(a);
+    const [bMin, bMax] = window(b);
+    return aMax < bMin || bMax < aMin;
+  };
+
+  const byReactants = new Map();
+  for (const reaction of engine.getAllReactions()) {
+    const key = speciesKey(reaction.reactants);
+    if (!byReactants.has(key)) byReactants.set(key, []);
+    byReactants.get(key).push(reaction);
+  }
+
+  for (const [key, sharing] of byReactants) {
+    if (sharing.length === 1) continue;
+    for (let i = 0; i < sharing.length; i++) {
+      for (let j = i + 1; j < sharing.length; j++) {
+        assert.ok(
+          disjoint(sharing[i], sharing[j]),
+          `${sharing[i].id} and ${sharing[j].id} both match [${key}] and their ` +
+            'temperature ranges overlap, so which one fires is arbitrary'
+        );
+      }
+    }
+  }
 });
 
 test('every substance a reaction names actually exists in chemicals.json', async () => {

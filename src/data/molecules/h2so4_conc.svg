@@ -1,0 +1,24 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sulfuric acid: sulfur with four oxygens, two of them carrying hydrogens. In the brown ring test it acts as a dehydrating agent and an oxidiser rather than simply as an acid">
+  <line x1="80" y1="58" x2="80" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="58" x2="80" y2="86" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="58" x2="50" y2="58" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="58" x2="110" y2="58" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="58" r="15" fill="#F1C40F" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="64" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#161A19">S</text>
+  <circle cx="80" cy="30" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="34" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="80" cy="86" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="90" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="50" cy="58" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="50" y="62" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="110" cy="58" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="110" y="62" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="32" cy="44" r="7" fill="#ECF0F1" stroke="#161A19" stroke-width="2"/>
+  <text x="32" y="47" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="128" cy="44" r="7" fill="#ECF0F1" stroke="#161A19" stroke-width="2"/>
+  <text x="128" y="47" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#161A19">H</text>
+  <line x1="50" y1="58" x2="32" y2="44" stroke="#161A19" stroke-width="2"/>
+  <line x1="110" y1="58" x2="128" y2="44" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="108" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">concentrated: an oxidiser and a dehydrator</text>
+  <text x="80" y="117" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">not merely a source of protons</text>
+</svg>

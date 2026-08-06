@@ -7,8 +7,8 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **319 chemicals, 322 reactions
-> (47 of them `noReaction`), 18 guided experiments, 274 tests passing.**
+> Snapshot as of the last entry below: **327 chemicals, 333 reactions
+> (51 of them `noReaction`), 18 guided experiments, 274 tests passing.**
 
 ---
 
@@ -69,6 +69,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 12 | `0725610` | Metallurgy — why each metal is won by the method it is |
 | 13 | `12c4662` | Steelmaking, alloys and passivation — protecting metals |
 | 14 | `6fbfca7` | Electroplating and surface finishing |
+| 15 | `PENDING` | Anion analysis — the confirmatory tests |
 
 ## 5. Guided experiments (Phase 7)
 
@@ -132,9 +133,10 @@ has not been asked for yet:
 
 Good fits for this engine, not yet written:
 
-- **More qualitative inorganic analysis** — the cation group separations
-  only partly covered by batch BS-2; extending the scheme to nickel,
-  manganese and the alkali/alkaline-earth groups properly.
+- **The remaining cation groups** — batch BS-2 gave one worked example per
+  group and batch BS-15 did the anions; what is left is extending the
+  cation scheme properly to nickel, manganese, cobalt and the
+  alkali/alkaline-earth groups, plus flame tests.
 - **Biochemistry beyond carbohydrates/proteins** — lipids in more depth,
   nucleic acid components.
 - **Further halogen and Group trends** at BS depth, mirroring the Period 3

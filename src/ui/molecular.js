@@ -76,6 +76,7 @@ const ELEMENT_STYLE = {
   Fe: { fill: '#8A6A4F', text: '#FFFFFF' },
   Ca: { fill: '#6E8FA6', text: '#161A19' },
   Ba: { fill: '#4A6E8A', text: '#FFFFFF' },
+  Mo: { fill: '#6B7A8F', text: '#FFFFFF' },
   V: { fill: '#B5651D', text: '#FFFFFF' },
   Pt: { fill: '#C9CDD1', text: '#161A19' },
   Mn: { fill: '#7D5BA6', text: '#FFFFFF' },

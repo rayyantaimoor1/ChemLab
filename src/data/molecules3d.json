@@ -6540,5 +6540,155 @@
       { "from": "m5", "to": "m7", "type": "covalent" },
       { "from": "m6", "to": "m7", "type": "covalent" }
     ]
+  },
+  "nh3_conc_aq": {
+    "note": "Ammonia, exactly the same pyramidal molecule as in the dilute bottle - the lone pair on the nitrogen is what reaches out and binds the silver ion. Nothing about the molecule changes with concentration. What changes is how many of them there are per unit volume, and for silver bromide that is the difference between dissolving and not.",
+    "atoms": [
+      { "id": "n", "element": "N", "x": 0, "y": 0.25, "z": 0 },
+      { "id": "h1", "element": "H", "x": 0.94, "y": -0.3, "z": 0 },
+      { "id": "h2", "element": "H", "x": -0.47, "y": -0.3, "z": 0.81 },
+      { "id": "h3", "element": "H", "x": -0.47, "y": -0.3, "z": -0.81 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "h1", "type": "covalent" },
+      { "from": "n", "to": "h2", "type": "covalent" },
+      { "from": "n", "to": "h3", "type": "covalent" }
+    ]
+  },
+  "na2so3_aq": {
+    "note": "The sulfite ion. Count the oxygens: three, where sulfate has four, and the position left over carries a lone pair. That single missing oxygen is why sulfite can still be oxidised and why dilute acid can break it apart into sulfur dioxide - two things sulfate cannot do, and the entire basis of telling them apart.",
+    "atoms": [
+      { "id": "s", "element": "S", "x": 0, "y": 0.3, "z": 0 },
+      { "id": "o1", "element": "O", "x": 1.4, "y": -0.3, "z": 0 },
+      { "id": "o2", "element": "O", "x": -0.7, "y": -0.3, "z": 1.2 },
+      { "id": "o3", "element": "O", "x": -0.7, "y": -0.3, "z": -1.2 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" }
+    ]
+  },
+  "baso3_s": {
+    "note": "A barium ion and a sulfite ion. Put this beside the barium sulfate model and the only difference is one oxygen - which is exactly the problem, because the two precipitates are indistinguishable to the eye as well. Everything rests on what dilute acid does next.",
+    "atoms": [
+      { "id": "ba", "element": "Ba", "x": -3, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 1, "y": 0.3, "z": 0 },
+      { "id": "o1", "element": "O", "x": 2.4, "y": -0.3, "z": 0 },
+      { "id": "o2", "element": "O", "x": 0.3, "y": -0.3, "z": 1.2 },
+      { "id": "o3", "element": "O", "x": 0.3, "y": -0.3, "z": -1.2 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "ba", "to": "s", "type": "ionic" }
+    ]
+  },
+  "h2so4_conc": {
+    "note": "Sulfuric acid with all four oxygens and both hydrogens. Concentrated, it does three separate jobs in the brown ring test: it releases nitric acid from the nitrate, it is dense enough to sink and form the layer the ring forms on, and it takes water out of things. Only the first of those has anything to do with being an acid.",
+    "atoms": [
+      { "id": "s", "element": "S", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.5, "z": 0 },
+      { "id": "o2", "element": "O", "x": 0, "y": -1.5, "z": 0 },
+      { "id": "o3", "element": "O", "x": 1.4, "y": 0, "z": 0.6 },
+      { "id": "o4", "element": "O", "x": -1.4, "y": 0, "z": -0.6 },
+      { "id": "h1", "element": "H", "x": 2.2, "y": 0.6, "z": 0.6 },
+      { "id": "h2", "element": "H", "x": -2.2, "y": -0.6, "z": -0.6 }
+    ],
+    "bonds": [
+      { "from": "s", "to": "o1", "type": "covalent" },
+      { "from": "s", "to": "o2", "type": "covalent" },
+      { "from": "s", "to": "o3", "type": "covalent" },
+      { "from": "s", "to": "o4", "type": "covalent" },
+      { "from": "o3", "to": "h1", "type": "covalent" },
+      { "from": "o4", "to": "h2", "type": "covalent" }
+    ]
+  },
+  "brown_ring_s": {
+    "note": "Iron(II) surrounded by five waters, with a nitrogen monoxide molecule in the sixth position. That one substitution is the whole test - swap a water for an NO and a pale green solution becomes intensely brown. Note that this can only assemble where NO is being made AND the iron is still iron(II), which is why the colour appears as a ring at the boundary rather than throughout the tube.",
+    "atoms": [
+      { "id": "fe", "element": "Fe", "x": 0, "y": 0, "z": 0 },
+      { "id": "n", "element": "N", "x": 0, "y": 2.1, "z": 0 },
+      { "id": "no", "element": "O", "x": 0, "y": 3.4, "z": 0 },
+      { "id": "w1", "element": "O", "x": 2.1, "y": 0, "z": 0 },
+      { "id": "w2", "element": "O", "x": -2.1, "y": 0, "z": 0 },
+      { "id": "w3", "element": "O", "x": 0, "y": 0, "z": 2.1 },
+      { "id": "w4", "element": "O", "x": 0, "y": 0, "z": -2.1 },
+      { "id": "w5", "element": "O", "x": 0, "y": -2.1, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "fe", "to": "n", "type": "covalent" },
+      { "from": "n", "to": "no", "type": "covalent" },
+      { "from": "fe", "to": "w1", "type": "covalent" },
+      { "from": "fe", "to": "w2", "type": "covalent" },
+      { "from": "fe", "to": "w3", "type": "covalent" },
+      { "from": "fe", "to": "w4", "type": "covalent" },
+      { "from": "fe", "to": "w5", "type": "covalent" }
+    ]
+  },
+  "na3po4_aq": {
+    "note": "The phosphate ion: a tetrahedron of oxygens around one phosphorus, carrying three negative charges. Worth turning, because this same shape is the repeating link in the backbone of DNA and the mineral part of your bones. Identifying it on a bench is a small thing; the ion itself is not.",
+    "atoms": [
+      { "id": "p", "element": "P", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.6, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.5, "y": -0.5, "z": 0.5 },
+      { "id": "o3", "element": "O", "x": -0.8, "y": -0.6, "z": 1.4 },
+      { "id": "o4", "element": "O", "x": -0.7, "y": -0.6, "z": -1.4 }
+    ],
+    "bonds": [
+      { "from": "p", "to": "o1", "type": "covalent" },
+      { "from": "p", "to": "o2", "type": "covalent" },
+      { "from": "p", "to": "o3", "type": "covalent" },
+      { "from": "p", "to": "o4", "type": "covalent" }
+    ]
+  },
+  "nh4_molybdate_aq": {
+    "note": "The molybdate ion, a tetrahedron like sulfate and phosphate but with molybdenum at the centre. On its own it does nothing visible. Put twelve of them in strongly acidic conditions with one phosphate and they assemble into a cage - which is the next model along.",
+    "atoms": [
+      { "id": "mo", "element": "Mo", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.8, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.7, "y": -0.6, "z": 0.6 },
+      { "id": "o3", "element": "O", "x": -0.9, "y": -0.7, "z": 1.6 },
+      { "id": "o4", "element": "O", "x": -0.8, "y": -0.7, "z": -1.6 }
+    ],
+    "bonds": [
+      { "from": "mo", "to": "o1", "type": "covalent" },
+      { "from": "mo", "to": "o2", "type": "covalent" },
+      { "from": "mo", "to": "o3", "type": "covalent" },
+      { "from": "mo", "to": "o4", "type": "covalent" }
+    ]
+  },
+  "phosphomolybdate_s": {
+    "note": "Twelve molybdenum atoms arranged around a single phosphorus at the centre, and the whole assembly is ONE ion. Turn it and look for the phosphate buried in the middle - it is completely enclosed, which is why the cage is so insoluble and why the yellow is so intense. This is the largest single species in this app, and it forms in seconds from a clear solution.",
+    "atoms": [
+      { "id": "p", "element": "P", "x": 0, "y": 0, "z": 0 },
+      { "id": "mo0", "element": "Mo", "x": 1.44, "y": -3.3, "z": 0 },
+      { "id": "mo1", "element": "Mo", "x": -1.76, "y": -2.7, "z": 1.61 },
+      { "id": "mo2", "element": "Mo", "x": 0.26, "y": -2.1, "z": -2.91 },
+      { "id": "mo3", "element": "Mo", "x": 1.99, "y": -1.5, "z": 2.6 },
+      { "id": "mo4", "element": "Mo", "x": -3.43, "y": -0.9, "z": -0.61 },
+      { "id": "mo5", "element": "Mo", "x": 3.03, "y": -0.3, "z": -1.93 },
+      { "id": "mo6", "element": "Mo", "x": -0.93, "y": 0.3, "z": 3.46 },
+      { "id": "mo7", "element": "Mo", "x": -1.61, "y": 0.9, "z": -3.09 },
+      { "id": "mo8", "element": "Mo", "x": 3.07, "y": 1.5, "z": 1.12 },
+      { "id": "mo9", "element": "Mo", "x": -2.7, "y": 2.1, "z": 1.12 },
+      { "id": "mo10", "element": "Mo", "x": 1.01, "y": 2.7, "z": -2.16 },
+      { "id": "mo11", "element": "Mo", "x": 0.43, "y": 3.3, "z": 1.37 }
+    ],
+    "bonds": [
+      { "from": "p", "to": "mo0", "type": "ionic" },
+      { "from": "p", "to": "mo1", "type": "ionic" },
+      { "from": "p", "to": "mo2", "type": "ionic" },
+      { "from": "p", "to": "mo3", "type": "ionic" },
+      { "from": "p", "to": "mo4", "type": "ionic" },
+      { "from": "p", "to": "mo5", "type": "ionic" },
+      { "from": "p", "to": "mo6", "type": "ionic" },
+      { "from": "p", "to": "mo7", "type": "ionic" },
+      { "from": "p", "to": "mo8", "type": "ionic" },
+      { "from": "p", "to": "mo9", "type": "ionic" },
+      { "from": "p", "to": "mo10", "type": "ionic" },
+      { "from": "p", "to": "mo11", "type": "ionic" }
+    ]
   }
 }

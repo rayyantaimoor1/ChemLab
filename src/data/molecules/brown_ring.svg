@@ -1,0 +1,21 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The nitrosyl iron complex: an iron ion with a nitrogen monoxide molecule bound to it in place of one water. This is what the brown ring actually is">
+  <line x1="80" y1="60" x2="80" y2="30" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="60" x2="50" y2="78" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="60" x2="110" y2="78" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="60" x2="80" y2="92" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="60" r="16" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="66" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <circle cx="80" cy="30" r="11" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="34" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="80" cy="14" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="17" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <line x1="80" y1="30" x2="80" y2="18" stroke="#161A19" stroke-width="2"/>
+  <circle cx="50" cy="78" r="10" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="50" y="82" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="110" cy="78" r="10" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="110" y="82" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="80" cy="92" r="10" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="96" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <text x="104" y="40" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">2+</text>
+  <text x="80" y="110" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">NO has replaced one water - and it is intensely brown</text>
+</svg>
