@@ -1,0 +1,44 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Blister copper: a copper lattice with silver and gold atoms trapped inside it. Two per cent of impurity is enough to ruin the metal for wire, because those atoms scatter the electrons passing through">
+  <line x1="32" y1="30" x2="64" y2="30" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="32" y1="30" x2="32" y2="62" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="64" y1="30" x2="96" y2="30" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="64" y1="30" x2="64" y2="62" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="96" y1="30" x2="128" y2="30" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="96" y1="30" x2="96" y2="62" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="128" y1="30" x2="128" y2="62" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="32" y1="62" x2="64" y2="62" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="32" y1="62" x2="32" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="64" y1="62" x2="96" y2="62" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="64" y1="62" x2="64" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="96" y1="62" x2="128" y2="62" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="96" y1="62" x2="96" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="128" y1="62" x2="128" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="32" y1="94" x2="64" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="64" y1="94" x2="96" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="96" y1="94" x2="128" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <circle cx="32" cy="30" r="13" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="32" y="35" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="64" cy="30" r="13" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="64" y="35" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="96" cy="30" r="13" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="96" y="35" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="128" cy="30" r="13" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="128" y="35" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="32" cy="62" r="13" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="32" y="67" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="64" cy="62" r="13" fill="#B0B7BD" stroke="#161A19" stroke-width="2"/>
+  <text x="64" y="67" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Ag</text>
+  <circle cx="96" cy="62" r="13" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="96" y="67" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="128" cy="62" r="13" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="128" y="67" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="32" cy="94" r="13" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="32" y="99" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="64" cy="94" r="13" fill="#B0B7BD" stroke="#161A19" stroke-width="2"/>
+  <text x="64" y="99" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#161A19">Ag</text>
+  <circle cx="96" cy="94" r="13" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="96" y="99" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="128" cy="94" r="13" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="128" y="99" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <text x="80" y="114" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">about 2 % impurity - and that is enough to ruin it</text>
+</svg>

@@ -2707,5 +2707,1365 @@
         ]
       }
     ]
+  },
+  "anim_electroplating_copper": {
+    "equation": "Cu → Cu²⁺ + 2e⁻ → Cu",
+    "viewBox": [
+      0,
+      0,
+      340,
+      190
+    ],
+    "particles": [
+      {
+        "id": "cathode",
+        "label": "−",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "anode",
+        "label": "+",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "m1",
+        "label": "Cu",
+        "element": "Cu",
+        "r": 17
+      },
+      {
+        "id": "m2",
+        "label": "Cu",
+        "element": "Cu",
+        "r": 17
+      },
+      {
+        "id": "m3",
+        "label": "Cu",
+        "element": "Cu",
+        "r": 17
+      },
+      {
+        "id": "a1",
+        "label": "SO4",
+        "element": "S",
+        "r": 15
+      }
+    ],
+    "steps": [
+      {
+        "durationMs": 2000,
+        "caption": "Three parts, and every plating cell has the same three: the steel object on the left wired as the CATHODE, a bar of the plating metal on the right as the anode, and a solution of that metal's salt between them.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            150,
+            58
+          ],
+          "m2": [
+            190,
+            100
+          ],
+          "m3": [
+            160,
+            138
+          ],
+          "a1": [
+            225,
+            70
+          ]
+        },
+        "charges": {
+          "m1": "2+",
+          "m2": "2+",
+          "m3": "2+",
+          "a1": "2−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2000,
+        "caption": "Switch on. Copper ions are positive, so they travel to the negative electrode — which is the object. That is why the thing being plated is always the cathode, in every plating cell there is.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            110,
+            56
+          ],
+          "m2": [
+            112,
+            100
+          ],
+          "m3": [
+            108,
+            140
+          ],
+          "a1": [
+            258,
+            72
+          ]
+        },
+        "charges": {
+          "m1": "2+",
+          "m2": "2+",
+          "m3": "2+",
+          "a1": "2−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "Each copper ion collects two electrons at the surface and becomes a copper atom, locked into place where it lands. Arriving slowly and evenly is what makes the coat stick; dropped in by displacement instead, the same copper comes out as loose powder.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            78,
+            56
+          ],
+          "m2": [
+            78,
+            100
+          ],
+          "m3": [
+            78,
+            140
+          ],
+          "a1": [
+            270,
+            74
+          ]
+        },
+        "charges": {
+          "a1": "2−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2400,
+        "caption": "Meanwhile the anode has been dissolving at exactly the rate the object plates, putting back every ion taken out. The bath is unchanged and the cell can run for months — the copper in the coat is literally the metal that left the anode.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            68,
+            54
+          ],
+          "m2": [
+            68,
+            100
+          ],
+          "m3": [
+            68,
+            142
+          ],
+          "a1": [
+            266,
+            74
+          ]
+        },
+        "charges": {
+          "a1": "2−"
+        },
+        "bonds": []
+      }
+    ]
+  },
+  "anim_electroplating_silver": {
+    "equation": "Ag → Ag⁺ + e⁻ → Ag",
+    "viewBox": [
+      0,
+      0,
+      340,
+      190
+    ],
+    "particles": [
+      {
+        "id": "cathode",
+        "label": "−",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "anode",
+        "label": "+",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "m1",
+        "label": "Ag",
+        "element": "Ag",
+        "r": 17
+      },
+      {
+        "id": "m2",
+        "label": "Ag",
+        "element": "Ag",
+        "r": 17
+      },
+      {
+        "id": "m3",
+        "label": "Ag",
+        "element": "Ag",
+        "r": 17
+      },
+      {
+        "id": "a1",
+        "label": "NO3",
+        "element": "N",
+        "r": 15
+      }
+    ],
+    "steps": [
+      {
+        "durationMs": 2000,
+        "caption": "The same cell as copper with all three parts swapped for their silver equivalents. Watch how little else changes — that is the difference between understanding a principle and memorising a recipe.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            150,
+            58
+          ],
+          "m2": [
+            190,
+            100
+          ],
+          "m3": [
+            160,
+            138
+          ],
+          "a1": [
+            225,
+            70
+          ]
+        },
+        "charges": {
+          "m1": "+",
+          "m2": "+",
+          "m3": "+",
+          "a1": "−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2000,
+        "caption": "Silver ions carry a single positive charge, not two. They drift to the cathode just as the copper ions did.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            110,
+            56
+          ],
+          "m2": [
+            112,
+            100
+          ],
+          "m3": [
+            108,
+            140
+          ],
+          "a1": [
+            258,
+            72
+          ]
+        },
+        "charges": {
+          "m1": "+",
+          "m2": "+",
+          "m3": "+",
+          "a1": "−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "One electron each is enough to discharge them, so for the same current twice as many silver atoms arrive as copper atoms would. Electron count per ion is what sets plating speed.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            78,
+            56
+          ],
+          "m2": [
+            78,
+            100
+          ],
+          "m3": [
+            78,
+            140
+          ],
+          "a1": [
+            270,
+            74
+          ]
+        },
+        "charges": {
+          "a1": "−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2400,
+        "caption": "The silver anode has wasted away by exactly what the article gained. Nothing was created or lost; the metal has only moved from one electrode to the other.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            68,
+            54
+          ],
+          "m2": [
+            68,
+            100
+          ],
+          "m3": [
+            68,
+            142
+          ],
+          "a1": [
+            266,
+            74
+          ]
+        },
+        "charges": {
+          "a1": "−"
+        },
+        "bonds": []
+      }
+    ]
+  },
+  "anim_electroplating_nickel": {
+    "equation": "Ni → Ni²⁺ + 2e⁻ → Ni",
+    "viewBox": [
+      0,
+      0,
+      340,
+      190
+    ],
+    "particles": [
+      {
+        "id": "cathode",
+        "label": "−",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "anode",
+        "label": "+",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "m1",
+        "label": "Ni",
+        "element": "Ni",
+        "r": 17
+      },
+      {
+        "id": "m2",
+        "label": "Ni",
+        "element": "Ni",
+        "r": 17
+      },
+      {
+        "id": "m3",
+        "label": "Ni",
+        "element": "Ni",
+        "r": 17
+      },
+      {
+        "id": "a1",
+        "label": "Cl",
+        "element": "Cl",
+        "r": 15
+      }
+    ],
+    "steps": [
+      {
+        "durationMs": 2000,
+        "caption": "Nickel plating, and the same soluble-anode arrangement once more: object as cathode, nickel bar as anode, nickel salt in between.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            150,
+            58
+          ],
+          "m2": [
+            190,
+            100
+          ],
+          "m3": [
+            160,
+            138
+          ],
+          "a1": [
+            225,
+            70
+          ]
+        },
+        "charges": {
+          "m1": "2+",
+          "m2": "2+",
+          "m3": "2+",
+          "a1": "−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2000,
+        "caption": "Nickel ions carry two positive charges and move to the cathode. Chloride ions go the other way.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            110,
+            56
+          ],
+          "m2": [
+            112,
+            100
+          ],
+          "m3": [
+            108,
+            140
+          ],
+          "a1": [
+            258,
+            72
+          ]
+        },
+        "charges": {
+          "m1": "2+",
+          "m2": "2+",
+          "m3": "2+",
+          "a1": "−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "The nickel deposit builds up thick, level and free of pores. That is its virtue — it is the nickel, not the chromium that will go on top of it, that actually keeps water away from the steel.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            78,
+            56
+          ],
+          "m2": [
+            78,
+            100
+          ],
+          "m3": [
+            78,
+            140
+          ],
+          "a1": [
+            270,
+            74
+          ]
+        },
+        "charges": {
+          "a1": "−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2400,
+        "caption": "The anode dissolves to keep the bath fed. Almost every chrome-plated object you have handled is really this: nickel-plated steel, with a flash of chromium over it.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            68,
+            54
+          ],
+          "m2": [
+            68,
+            100
+          ],
+          "m3": [
+            68,
+            142
+          ],
+          "a1": [
+            266,
+            74
+          ]
+        },
+        "charges": {
+          "a1": "−"
+        },
+        "bonds": []
+      }
+    ]
+  },
+  "anim_electrogalvanising_zinc": {
+    "equation": "Zn → Zn²⁺ + 2e⁻ → Zn",
+    "viewBox": [
+      0,
+      0,
+      340,
+      190
+    ],
+    "particles": [
+      {
+        "id": "cathode",
+        "label": "−",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "anode",
+        "label": "+",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "m1",
+        "label": "Zn",
+        "element": "Zn",
+        "r": 17
+      },
+      {
+        "id": "m2",
+        "label": "Zn",
+        "element": "Zn",
+        "r": 17
+      },
+      {
+        "id": "m3",
+        "label": "Zn",
+        "element": "Zn",
+        "r": 17
+      },
+      {
+        "id": "a1",
+        "label": "SO4",
+        "element": "S",
+        "r": 15
+      }
+    ],
+    "steps": [
+      {
+        "durationMs": 2000,
+        "caption": "Galvanising by electricity rather than by dipping the steel in a bath of molten zinc. Same three parts as every cell before it.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            150,
+            58
+          ],
+          "m2": [
+            190,
+            100
+          ],
+          "m3": [
+            160,
+            138
+          ],
+          "a1": [
+            225,
+            70
+          ]
+        },
+        "charges": {
+          "m1": "2+",
+          "m2": "2+",
+          "m3": "2+",
+          "a1": "2−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2000,
+        "caption": "Zinc ions travel to the steel. Nothing here is different in kind from the copper cell — only the metal has changed.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            110,
+            56
+          ],
+          "m2": [
+            112,
+            100
+          ],
+          "m3": [
+            108,
+            140
+          ],
+          "a1": [
+            258,
+            72
+          ]
+        },
+        "charges": {
+          "m1": "2+",
+          "m2": "2+",
+          "m3": "2+",
+          "a1": "2−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "A thin, even, smooth layer of zinc goes down. Compare a hot-dipped coat, which is thicker and rougher: this one is smooth enough to press into a car body panel and paint.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            78,
+            56
+          ],
+          "m2": [
+            78,
+            100
+          ],
+          "m3": [
+            78,
+            140
+          ],
+          "a1": [
+            270,
+            74
+          ]
+        },
+        "charges": {
+          "a1": "2−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2400,
+        "caption": "The protection is identical either way, because it is the zinc that does the work — it corrodes in the iron's place, and goes on doing so even where the coat is scratched. Only the coat differs, and it is chosen to suit the job.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            68,
+            54
+          ],
+          "m2": [
+            68,
+            100
+          ],
+          "m3": [
+            68,
+            142
+          ],
+          "a1": [
+            266,
+            74
+          ]
+        },
+        "charges": {
+          "a1": "2−"
+        },
+        "bonds": []
+      }
+    ]
+  },
+  "anim_electrorefining_copper": {
+    "equation": "Cu(impure) → Cu²⁺ + 2e⁻ → Cu(pure)",
+    "viewBox": [
+      0,
+      0,
+      340,
+      190
+    ],
+    "particles": [
+      {
+        "id": "cathode",
+        "label": "−",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "anode",
+        "label": "+",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "m1",
+        "label": "Cu",
+        "element": "Cu",
+        "r": 17
+      },
+      {
+        "id": "m2",
+        "label": "Cu",
+        "element": "Cu",
+        "r": 17
+      },
+      {
+        "id": "ag",
+        "label": "Ag",
+        "element": "Ag",
+        "r": 15
+      },
+      {
+        "id": "au",
+        "label": "Au",
+        "element": "Au",
+        "r": 15
+      }
+    ],
+    "steps": [
+      {
+        "durationMs": 2200,
+        "caption": "The refining cell: a slab of impure copper as the anode on the right, a thin sheet of pure copper as the cathode on the left. The impurities to watch are the silver and gold locked inside that slab.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            258,
+            62
+          ],
+          "m2": [
+            262,
+            128
+          ],
+          "ag": [
+            278,
+            92
+          ],
+          "au": [
+            276,
+            60
+          ]
+        },
+        "charges": {},
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "The voltage is set just high enough to lift copper into solution and no higher. Copper dissolves and heads for the cathode. The silver and gold are harder to oxidise, so the current cannot touch them at all.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            180,
+            60
+          ],
+          "m2": [
+            184,
+            130
+          ],
+          "ag": [
+            286,
+            118
+          ],
+          "au": [
+            284,
+            96
+          ]
+        },
+        "charges": {
+          "m1": "2+",
+          "m2": "2+"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "Copper ions are discharged on the cathode as metal of about 99.99 per cent purity — pure enough for wire, because nothing else in the tank can be discharged at this voltage.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            78,
+            62
+          ],
+          "m2": [
+            78,
+            128
+          ],
+          "ag": [
+            290,
+            142
+          ],
+          "au": [
+            288,
+            128
+          ]
+        },
+        "charges": {},
+        "bonds": []
+      },
+      {
+        "durationMs": 2400,
+        "caption": "The undissolved silver and gold simply fall off the wasting anode and lie on the floor of the tank as anode mud. Recovering them often pays the refinery's entire electricity bill — one setting on one knob did the whole separation.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "m1": [
+            68,
+            60
+          ],
+          "m2": [
+            68,
+            130
+          ],
+          "ag": [
+            286,
+            166
+          ],
+          "au": [
+            306,
+            166
+          ]
+        },
+        "charges": {},
+        "bonds": []
+      }
+    ]
+  },
+  "anim_electroplating_chromium": {
+    "equation": "Cr⁶⁺ + 6e⁻ → Cr;  2H₂O → O₂ + 4H⁺ + 4e⁻",
+    "viewBox": [
+      0,
+      0,
+      340,
+      190
+    ],
+    "particles": [
+      {
+        "id": "cathode",
+        "label": "−",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "anode",
+        "label": "+",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "cr1",
+        "label": "Cr",
+        "element": "Cr",
+        "r": 17
+      },
+      {
+        "id": "cr2",
+        "label": "Cr",
+        "element": "Cr",
+        "r": 17
+      },
+      {
+        "id": "o1",
+        "label": "O",
+        "element": "O",
+        "r": 14
+      },
+      {
+        "id": "o2",
+        "label": "O",
+        "element": "O",
+        "r": 14
+      }
+    ],
+    "steps": [
+      {
+        "durationMs": 2200,
+        "caption": "The odd one out. The article on the left is already nickel-plated; the anode on the right is lead, and it is INSOLUBLE — it will not dissolve to feed the bath the way copper, silver, nickel and zinc anodes all did.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "cr1": [
+            156,
+            62
+          ],
+          "cr2": [
+            162,
+            130
+          ],
+          "o1": [
+            230,
+            76
+          ],
+          "o2": [
+            232,
+            118
+          ]
+        },
+        "charges": {
+          "cr1": "6+",
+          "cr2": "6+",
+          "o1": "2−",
+          "o2": "2−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "Chromium species move to the cathode, and oxide ions from the water move to the anode.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "cr1": [
+            112,
+            60
+          ],
+          "cr2": [
+            116,
+            132
+          ],
+          "o1": [
+            262,
+            74
+          ],
+          "o2": [
+            264,
+            120
+          ]
+        },
+        "charges": {
+          "cr1": "6+",
+          "cr2": "6+",
+          "o1": "2−",
+          "o2": "2−"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2400,
+        "caption": "Six electrons per chromium atom — against one for silver. The same current therefore lays chromium down six times more slowly, which is why the layer ends up a fraction of a micron thick and power-hungry to produce.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "cr1": [
+            78,
+            60
+          ],
+          "cr2": [
+            78,
+            132
+          ],
+          "o1": [
+            282,
+            70
+          ],
+          "o2": [
+            282,
+            112
+          ]
+        },
+        "charges": {},
+        "bonds": [
+          {
+            "from": "o1",
+            "to": "o2",
+            "type": "covalent"
+          }
+        ]
+      },
+      {
+        "durationMs": 2400,
+        "caption": "Oxygen bubbles off the anode instead of metal dissolving into the bath, so nothing replaces what plated out and this bath genuinely runs down. The thin chromium layer barely protects anything — the nickel under it does that — but it stays bright and resists scratching.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "cr1": [
+            68,
+            58
+          ],
+          "cr2": [
+            68,
+            134
+          ],
+          "o1": [
+            292,
+            46
+          ],
+          "o2": [
+            308,
+            30
+          ]
+        },
+        "charges": {},
+        "bonds": [
+          {
+            "from": "o1",
+            "to": "o2",
+            "type": "covalent"
+          }
+        ]
+      }
+    ]
+  },
+  "anim_electropolishing_steel": {
+    "equation": "Fe → Fe²⁺ + 2e⁻   (metal removed, not added)",
+    "viewBox": [
+      0,
+      0,
+      340,
+      190
+    ],
+    "particles": [
+      {
+        "id": "cathode",
+        "label": "−",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "anode",
+        "label": "+",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "f1",
+        "label": "Fe",
+        "element": "Fe",
+        "r": 17
+      },
+      {
+        "id": "f2",
+        "label": "Fe",
+        "element": "Fe",
+        "r": 17
+      },
+      {
+        "id": "h1",
+        "label": "H",
+        "element": "H",
+        "r": 12
+      },
+      {
+        "id": "h2",
+        "label": "H",
+        "element": "H",
+        "r": 12
+      }
+    ],
+    "steps": [
+      {
+        "durationMs": 2200,
+        "caption": "Look at the wiring before anything else. The steel workpiece is on the RIGHT, connected as the anode — the reverse of every plating cell in this batch. Nothing is going to be added to it.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "f1": [
+            276,
+            62
+          ],
+          "f2": [
+            278,
+            128
+          ],
+          "h1": [
+            180,
+            70
+          ],
+          "h2": [
+            184,
+            122
+          ]
+        },
+        "charges": {
+          "h1": "+",
+          "h2": "+"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "Switch on and iron leaves the workpiece as ions. The rough peaks of the surface reach furthest into the solution, so they are attacked fastest — the process removes exactly what needs removing.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "f1": [
+            236,
+            60
+          ],
+          "f2": [
+            238,
+            130
+          ],
+          "h1": [
+            120,
+            66
+          ],
+          "h2": [
+            124,
+            126
+          ]
+        },
+        "charges": {
+          "f1": "2+",
+          "f2": "2+",
+          "h1": "+",
+          "h2": "+"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "Hydrogen ions collect electrons at the cathode and bubble off as gas. Nothing useful is happening on that side at all — the entire point of this cell is at the anode.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "f1": [
+            190,
+            58
+          ],
+          "f2": [
+            194,
+            132
+          ],
+          "h1": [
+            70,
+            62
+          ],
+          "h2": [
+            70,
+            120
+          ]
+        },
+        "charges": {
+          "f1": "2+",
+          "f2": "2+"
+        },
+        "bonds": [
+          {
+            "from": "h1",
+            "to": "h2",
+            "type": "covalent"
+          }
+        ]
+      },
+      {
+        "durationMs": 2400,
+        "caption": "As the peaks go the surface flattens, and a flatter surface is attacked more slowly — so the process limits itself and stops at a mirror. No abrasive can match it, which is why surgical instruments and dairy pipework are finished this way: a scratch is somewhere for bacteria to live.",
+        "positions": {
+          "cathode": [
+            40,
+            95
+          ],
+          "anode": [
+            300,
+            95
+          ],
+          "f1": [
+            160,
+            56
+          ],
+          "f2": [
+            164,
+            136
+          ],
+          "h1": [
+            62,
+            44
+          ],
+          "h2": [
+            80,
+            30
+          ]
+        },
+        "charges": {
+          "f1": "2+",
+          "f2": "2+"
+        },
+        "bonds": [
+          {
+            "from": "h1",
+            "to": "h2",
+            "type": "covalent"
+          }
+        ]
+      }
+    ]
   }
 }

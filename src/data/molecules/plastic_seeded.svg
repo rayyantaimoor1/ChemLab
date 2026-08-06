@@ -1,0 +1,33 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Copper-coated plastic: a polymer chain with a thin copper film grown onto it chemically. The plastic could not be electroplated until it conducted, and now it does">
+  <circle cx="24" cy="30" r="7" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="24" y="33" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="40" cy="30" r="7" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="40" y="33" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="56" cy="30" r="7" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="56" y="33" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="72" cy="30" r="7" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="72" y="33" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="88" cy="30" r="7" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="88" y="33" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="104" cy="30" r="7" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="104" y="33" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="120" cy="30" r="7" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="120" y="33" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="136" cy="30" r="7" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="136" y="33" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="152" cy="30" r="7" fill="#B5651D" stroke="#161A19" stroke-width="2"/>
+  <text x="152" y="33" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Cu</text>
+  <circle cx="40" cy="68" r="11" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="40" y="72" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="60" cy="68" r="11" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="60" y="72" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="80" cy="68" r="11" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="72" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="100" cy="68" r="11" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="100" y="72" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="120" cy="68" r="11" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="120" y="72" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">C</text>
+  <line x1="40" y1="68" x2="120" y2="68" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="100" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">a polymer, which conducts nothing at all</text>
+  <text x="80" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">until this first coat goes on without a current</text>
+</svg>

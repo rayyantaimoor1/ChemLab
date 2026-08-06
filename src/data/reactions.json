@@ -7056,7 +7056,7 @@
       "colorToHex": "#C9CDD2",
       "precipitate": null,
       "dissolves": null,
-      "gas": null,
+      "gas": "hydrogen",
       "bubbles": true,
       "smoke": false,
       "tempDeltaC": 3,
@@ -7141,5 +7141,330 @@
     "explanation": "Swap the zinc for tin and the victim swaps too. Tin is BELOW iron in the reactivity series, so once the two are in contact in wet air the iron gives up its electrons first and rusts faster than bare iron would. An unbroken tin coat protects a food can perfectly well by keeping the air out — but only while it is unbroken. Scratch a tin can and it rots at the scratch; scratch a galvanised bucket and nothing happens. Whether a coating saves the iron or condemns it depends entirely on which side of iron the coating metal sits.",
     "levels": ["matric", "fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry X — corrosion and its prevention; Housecroft & Sharpe, Inorganic Chemistry 4th ed."
+  },
+  {
+    "id": "rxn_electroplating_copper",
+    "reactants": ["cuso4_0_5m", "cu_metal", "steel_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["cu_plated_s"],
+    "equation": "Cu(anode) → Cu²⁺ + 2e⁻   then   Cu²⁺ + 2e⁻ → Cu(cathode)",
+    "type": "electrolysis",
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "Cu²⁺",
+        "attractsName": "copper ions",
+        "halfEquation": "Cu²⁺ + 2e⁻ → Cu",
+        "product": "cu_plated_s",
+        "observation": "Copper arrives on the steel atom by atom and builds an even, tightly bonded coat. The object to be plated is always the cathode."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "SO₄²⁻",
+        "attractsName": "sulfate ions",
+        "halfEquation": "Cu → Cu²⁺ + 2e⁻",
+        "product": "cu_plated_s",
+        "observation": "The copper anode dissolves instead of oxygen being released — so the copper in the finished coat is literally the metal that left the anode, ferried across as ions."
+      }
+    },
+    "effects": {
+      "colorToHex": "#C1783F",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": "anim_electroplating_copper",
+    "explanation": "Every plating cell is the same three things: the object as the cathode, the plating metal as the anode, and a solution of that metal's salt between them. The elegance is that the anode dissolves exactly as fast as the cathode plates, so the bath's composition never changes and it can run for months — contrast the inert-electrode electrolysis of copper sulfate, where oxygen comes off instead and the blue colour steadily fades. Note also what the current buys you: iron dropped into copper sulfate plates copper too, by displacement, but it comes out as loose brown powder. Controlling how fast the atoms arrive is what makes a coat stick.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — electrodeposition and soluble anodes"
+  },
+  {
+    "id": "rxn_electrorefining_copper",
+    "reactants": ["cuso4_0_5m", "cu_impure_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["cu_metal", "anode_mud_s"],
+    "equation": "Cu(impure) → Cu²⁺ + 2e⁻ → Cu(pure)",
+    "type": "electrolysis",
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "Cu²⁺",
+        "attractsName": "copper ions",
+        "halfEquation": "Cu²⁺ + 2e⁻ → Cu",
+        "product": "cu_metal",
+        "observation": "Copper of about 99.99 per cent purity builds up — pure enough for wire, because only copper ions are being discharged here."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "SO₄²⁻",
+        "attractsName": "sulfate ions",
+        "halfEquation": "Cu → Cu²⁺ + 2e⁻",
+        "product": "anode_mud_s",
+        "observation": "The impure block dissolves away, and what will not dissolve falls to the floor of the tank as a dark sludge."
+      }
+    },
+    "effects": {
+      "colorToHex": "#4A4139",
+      "precipitate": "a dark brown sludge collecting under the anode",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": "anim_electrorefining_copper",
+    "explanation": "The same cell as plating, with the impure metal as the anode — and the separation happens for free, because the voltage is set just high enough to lift copper into solution and no higher. Zinc and iron impurities dissolve but are too hard to discharge, so they stay in solution; silver, gold and platinum are too hard to oxidise, so they never dissolve at all and drop off as anode mud. One knob does the whole separation. Recovering the precious metals from that mud frequently pays the electricity bill for the entire refinery.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — electrolytic refining of copper"
+  },
+  {
+    "id": "rxn_electroplating_silver",
+    "reactants": ["agno3_0_1m", "ag_metal", "steel_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["ag_plated_s"],
+    "equation": "Ag(anode) → Ag⁺ + e⁻   then   Ag⁺ + e⁻ → Ag(cathode)",
+    "type": "electrolysis",
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "Ag⁺",
+        "attractsName": "silver ions",
+        "halfEquation": "Ag⁺ + e⁻ → Ag",
+        "product": "ag_plated_s",
+        "observation": "A bright silver skin spreads over the steel. One electron per ion here, against two for copper — so the same current delivers twice as many atoms."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "NO₃⁻",
+        "attractsName": "nitrate ions",
+        "halfEquation": "Ag → Ag⁺ + e⁻",
+        "product": "ag_plated_s",
+        "observation": "The silver anode wastes away by exactly as much as the article gains. Nothing is lost — the metal has only moved."
+      }
+    },
+    "effects": {
+      "colorToHex": "#D8DCE0",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": "anim_electroplating_silver",
+    "explanation": "The same arrangement again, and worth doing after copper purely to see how little changes: swap all three components for the silver equivalents and the cell behaves identically. That is the point of understanding a principle rather than memorising a recipe. This is what cutlery, trophies and old teapots are — a few microns of silver over a base metal that supplies all the strength, so you buy silver's appearance for a tiny fraction of silver's cost.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — decorative electroplating"
+  },
+  {
+    "id": "rxn_electroplating_nickel",
+    "reactants": ["nicl2_aq", "ni_metal", "steel_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["ni_plated_s"],
+    "equation": "Ni(anode) → Ni²⁺ + 2e⁻   then   Ni²⁺ + 2e⁻ → Ni(cathode)",
+    "type": "electrolysis",
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "Ni²⁺",
+        "attractsName": "nickel ions",
+        "halfEquation": "Ni²⁺ + 2e⁻ → Ni",
+        "product": "ni_plated_s",
+        "observation": "Nickel builds up thick, level and free of pores — which is what actually keeps water away from the steel."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "Cl⁻",
+        "attractsName": "chloride ions",
+        "halfEquation": "Ni → Ni²⁺ + 2e⁻",
+        "product": "ni_plated_s",
+        "observation": "The nickel anode dissolves to keep the bath topped up, exactly as the copper one did."
+      }
+    },
+    "effects": {
+      "colorToHex": "#A9B5B0",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": "anim_electroplating_nickel",
+    "explanation": "Nickel is almost never the finish — it is the layer underneath the finish. It deposits thick, level and pore-free, so it is the nickel that genuinely keeps the water out, and the chromium laid over it is thin and mostly cosmetic. Nearly every chrome-plated object you have handled is really nickel-plated steel with a flash of chromium on top. Plate the chromium on next and see.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — nickel–chromium plating systems"
+  },
+  {
+    "id": "rxn_electroplating_chromium",
+    "reactants": ["chromic_acid_aq", "ni_plated_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["cr_plated_s", "o2_g"],
+    "equation": "Cr⁶⁺ + 6e⁻ → Cr   at the cathode; O₂ released at the anode",
+    "type": "electrolysis",
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "Cr⁶⁺",
+        "attractsName": "chromium(VI) species",
+        "halfEquation": "Cr⁶⁺ + 6e⁻ → Cr",
+        "product": "cr_plated_s",
+        "observation": "A thin, hard, mirror-bright chromium layer forms over the nickel. Six electrons per atom is a great many, which is why chromium plating is so slow and so power-hungry."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "O²⁻",
+        "attractsName": "oxide ions from the water",
+        "halfEquation": "2H₂O → O₂ + 4H⁺ + 4e⁻",
+        "product": "o2_g",
+        "observation": "Oxygen bubbles off an insoluble lead anode. Nothing dissolves to replace what is plating out, so this bath — unlike the others — genuinely runs down."
+      }
+    },
+    "effects": {
+      "colorToHex": "#D2D8DD",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": "oxygen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": "anim_electroplating_chromium",
+    "explanation": "The exception that proves the rule. Every other bath in this batch uses an anode of the metal being plated, so the bath replenishes itself; chromium uses insoluble anodes, oxygen comes off instead, and the bath is steadily consumed. Notice the electron count too — six per chromium atom against one for silver, so the same current lays down chromium six times more slowly. That is why the chromium layer is measured in fractions of a micron and does almost no protecting: the nickel underneath is doing that work.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hard and decorative chromium plating"
+  },
+  {
+    "id": "rxn_electrogalvanising_zinc",
+    "reactants": ["znso4_aq", "zn_metal", "steel_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["zn_plated_s"],
+    "equation": "Zn(anode) → Zn²⁺ + 2e⁻   then   Zn²⁺ + 2e⁻ → Zn(cathode)",
+    "type": "electrolysis",
+    "electrodes": {
+      "cathode": {
+        "sign": "negative",
+        "attracts": "Zn²⁺",
+        "attractsName": "zinc ions",
+        "halfEquation": "Zn²⁺ + 2e⁻ → Zn",
+        "product": "zn_plated_s",
+        "observation": "A thin, even matt grey coat of zinc — smooth enough to be pressed into a car body panel and painted."
+      },
+      "anode": {
+        "sign": "positive",
+        "attracts": "SO₄²⁻",
+        "attractsName": "sulfate ions",
+        "halfEquation": "Zn → Zn²⁺ + 2e⁻",
+        "product": "zn_plated_s",
+        "observation": "The zinc anode dissolves to feed the bath, the same soluble-anode arrangement as copper, silver and nickel."
+      }
+    },
+    "effects": {
+      "colorToHex": "#C4C9CC",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": "anim_electrogalvanising_zinc",
+    "explanation": "The second way to galvanise steel, and the chemistry of the protection is identical to dipping it in molten zinc — the zinc still corrodes in the iron's place, still works after a scratch. What the current buys is control of the coat rather than any change in how it protects: thin, even and smooth here, suitable for a car panel that will be painted; thick, rough and long-lasting from hot dipping, suitable for a roof. Same protection, different coat, chosen by the job.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — zinc coatings"
+  },
+  {
+    "id": "rxn_electropolishing_steel",
+    "reactants": ["steel_s", "h3po4_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["steel_polished_s"],
+    "equation": "Fe → Fe²⁺ + 2e⁻   (metal removed, not added)",
+    "type": "electrolysis",
+    "electrodes": {
+      "anode": {
+        "sign": "positive",
+        "attracts": "PO₄³⁻",
+        "attractsName": "phosphate ions",
+        "halfEquation": "Fe → Fe²⁺ + 2e⁻",
+        "product": "steel_polished_s",
+        "observation": "The steel is the ANODE here, so it dissolves — and the peaks of a rough surface dissolve fastest because they reach furthest into the solution."
+      },
+      "cathode": {
+        "sign": "negative",
+        "attracts": "H⁺",
+        "attractsName": "hydrogen ions",
+        "halfEquation": "2H⁺ + 2e⁻ → H₂",
+        "product": "steel_polished_s",
+        "observation": "Hydrogen bubbles off the other electrode. Nothing useful happens on this side — the whole point of the cell is at the anode."
+      }
+    },
+    "effects": {
+      "colorToHex": "#C8CDD2",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": "hydrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": "anim_electropolishing_steel",
+    "explanation": "Plating run backwards: connect the workpiece as the anode and metal comes OFF. It smooths rather than roughens because the high points of the surface stick furthest into the solution and dissolve fastest, so the process removes exactly what needs removing and slows as the surface flattens — a self-limiting attack. It gets a finish no abrasive can match, which is why surgical instruments and dairy pipework are finished this way: a scratch is somewhere for bacteria to live.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — anodic dissolution and electropolishing"
+  },
+  {
+    "id": "rxn_none_plating_plastic",
+    "reactants": ["cuso4_0_5m", "polythene_s"],
+    "noReaction": true,
+    "explanation": "Nothing at all, however long the current is left on — and the reason is the one thing every electroplating cell takes for granted. The object being plated is an electrode, and an electrode has to carry current. Poly(ethene) is an insulator, so no electrons can reach its surface and no ions can be discharged there. Dip the conductivity tester in and the problem is visible directly. This is not a chemistry failure but a circuit failure: the cell is simply not complete.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — electroless deposition on non-conductors"
+  },
+  {
+    "id": "rxn_electroless_copper_plastic",
+    "reactants": ["polythene_s", "cuso4_0_5m", "hcho_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["plastic_seeded_s"],
+    "equation": "Cu²⁺ + HCHO + base → Cu + HCOO⁻",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#9E6B4A",
+      "precipitate": "a dull copper film creeping over the plastic",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": null
+    },
+    "hazard": null,
+    "explanation": "The way round the previous problem, and note what is missing from the conditions: no current. Methanal is a reducing agent, so it hands electrons to the copper ions chemically and the copper deposits wherever the solution touches — conductor or not. Once that first film is down the plastic conducts, and everything afterwards can be electroplated normally. Every plastic car badge and bathroom fitting that looks like chrome was started this way, with no electricity involved at all.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — electroless copper deposition"
+  },
+  {
+    "id": "rxn_none_electroplating_aluminium",
+    "reactants": ["alcl3_aq", "steel_s"],
+    "noReaction": true,
+    "explanation": "No aluminium appears on the steel, no matter how long the current runs — you cannot electroplate aluminium out of water. Aluminium ions are far harder to discharge than hydrogen ions, so the water is broken down in preference and hydrogen simply bubbles off the cathode instead. This is the same rule that decides the products of brine electrolysis, and it is exactly why extracting aluminium needs molten cryolite at 950 °C rather than a solution at room temperature. There is no bath you can mix that gets round it.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — discharge preference and the extraction of aluminium"
   }
 ]

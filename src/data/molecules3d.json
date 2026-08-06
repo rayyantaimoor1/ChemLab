@@ -6253,5 +6253,292 @@
       { "from": "m5", "to": "m7", "type": "covalent" },
       { "from": "m6", "to": "m7", "type": "covalent" }
     ]
+  },
+  "cu_plated_s": {
+    "note": "Steel with a copper coat laid on by electrolysis. The atoms are the same ones you would get by dropping iron into copper sulfate, but there they arrive all at once and pile up as loose powder. Here they arrive one at a time, slowly enough to settle into place - and that, not the chemistry, is what the current buys you.",
+    "atoms": [
+      { "id": "m0", "element": "Fe", "x": -1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m1", "element": "Fe", "x": -1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m2", "element": "Fe", "x": -1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m3", "element": "Fe", "x": -1.35, "y": 1.35, "z": 1.35 },
+      { "id": "m4", "element": "Fe", "x": 1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m5", "element": "Fe", "x": 1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m6", "element": "Fe", "x": 1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m7", "element": "Fe", "x": 1.35, "y": 1.35, "z": 1.35 },
+      { "id": "c0", "element": "Cu", "x": -1.35, "y": 3.3, "z": -1.35 },
+      { "id": "c1", "element": "Cu", "x": 1.35, "y": 3.3, "z": -1.35 },
+      { "id": "c2", "element": "Cu", "x": -1.35, "y": 3.3, "z": 1.35 },
+      { "id": "c3", "element": "Cu", "x": 1.35, "y": 3.3, "z": 1.35 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
+  },
+  "ag_plated_s": {
+    "note": "Steel under silver. Turn it and note how little silver there actually is: the coat on a real piece of cutlery may be a thousandth of its thickness, which is the entire economic point. The base metal gives the strength and the silver gives the appearance.",
+    "atoms": [
+      { "id": "m0", "element": "Fe", "x": -1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m1", "element": "Fe", "x": -1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m2", "element": "Fe", "x": -1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m3", "element": "Fe", "x": -1.35, "y": 1.35, "z": 1.35 },
+      { "id": "m4", "element": "Fe", "x": 1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m5", "element": "Fe", "x": 1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m6", "element": "Fe", "x": 1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m7", "element": "Fe", "x": 1.35, "y": 1.35, "z": 1.35 },
+      { "id": "c0", "element": "Ag", "x": -1.35, "y": 3.3, "z": -1.35 },
+      { "id": "c1", "element": "Ag", "x": 1.35, "y": 3.3, "z": -1.35 },
+      { "id": "c2", "element": "Ag", "x": -1.35, "y": 3.3, "z": 1.35 },
+      { "id": "c3", "element": "Ag", "x": 1.35, "y": 3.3, "z": 1.35 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
+  },
+  "ni_plated_s": {
+    "note": "Steel under nickel, and almost always a halfway stage rather than a finished article. Nickel goes down thick, level and without pores, so this is the layer that genuinely keeps water off the steel. What goes on top of it is mostly for looks.",
+    "atoms": [
+      { "id": "m0", "element": "Fe", "x": -1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m1", "element": "Fe", "x": -1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m2", "element": "Fe", "x": -1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m3", "element": "Fe", "x": -1.35, "y": 1.35, "z": 1.35 },
+      { "id": "m4", "element": "Fe", "x": 1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m5", "element": "Fe", "x": 1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m6", "element": "Fe", "x": 1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m7", "element": "Fe", "x": 1.35, "y": 1.35, "z": 1.35 },
+      { "id": "c0", "element": "Ni", "x": -1.35, "y": 3.3, "z": -1.35 },
+      { "id": "c1", "element": "Ni", "x": 1.35, "y": 3.3, "z": -1.35 },
+      { "id": "c2", "element": "Ni", "x": -1.35, "y": 3.3, "z": 1.35 },
+      { "id": "c3", "element": "Ni", "x": 1.35, "y": 3.3, "z": 1.35 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
+  },
+  "zn_plated_s": {
+    "note": "Steel under an electroplated zinc coat. Chemically identical in its protection to a hot-dipped one - the zinc corrodes in the iron's place either way - but thinner, smoother and more even, because a current can be controlled and a dipping tank cannot.",
+    "atoms": [
+      { "id": "m0", "element": "Fe", "x": -1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m1", "element": "Fe", "x": -1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m2", "element": "Fe", "x": -1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m3", "element": "Fe", "x": -1.35, "y": 1.35, "z": 1.35 },
+      { "id": "m4", "element": "Fe", "x": 1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m5", "element": "Fe", "x": 1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m6", "element": "Fe", "x": 1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m7", "element": "Fe", "x": 1.35, "y": 1.35, "z": 1.35 },
+      { "id": "c0", "element": "Zn", "x": -1.35, "y": 3.3, "z": -1.35 },
+      { "id": "c1", "element": "Zn", "x": 1.35, "y": 3.3, "z": -1.35 },
+      { "id": "c2", "element": "Zn", "x": -1.35, "y": 3.3, "z": 1.35 },
+      { "id": "c3", "element": "Zn", "x": 1.35, "y": 3.3, "z": 1.35 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
+  },
+  "cr_plated_s": {
+    "note": "Three layers, and the order matters. Steel at the bottom, then nickel, then chromium. Almost everyone assumes the chromium is what stops the rust; look at how thin it is against the nickel. The nickel keeps the water out and the chromium keeps the shine.",
+    "atoms": [
+      { "id": "m0", "element": "Fe", "x": -1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m1", "element": "Fe", "x": -1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m2", "element": "Fe", "x": -1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m3", "element": "Fe", "x": -1.35, "y": 1.35, "z": 1.35 },
+      { "id": "m4", "element": "Fe", "x": 1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m5", "element": "Fe", "x": 1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m6", "element": "Fe", "x": 1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m7", "element": "Fe", "x": 1.35, "y": 1.35, "z": 1.35 },
+      { "id": "c0", "element": "Ni", "x": -1.35, "y": 3.3, "z": -1.35 },
+      { "id": "c1", "element": "Ni", "x": 1.35, "y": 3.3, "z": -1.35 },
+      { "id": "c2", "element": "Ni", "x": -1.35, "y": 3.3, "z": 1.35 },
+      { "id": "c3", "element": "Ni", "x": 1.35, "y": 3.3, "z": 1.35 },
+      { "id": "c4", "element": "Cr", "x": -1.35, "y": 5.199999999999999, "z": -1.35 },
+      { "id": "c5", "element": "Cr", "x": 1.35, "y": 5.199999999999999, "z": -1.35 },
+      { "id": "c6", "element": "Cr", "x": -1.35, "y": 5.199999999999999, "z": 1.35 },
+      { "id": "c7", "element": "Cr", "x": 1.35, "y": 5.199999999999999, "z": 1.35 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
+  },
+  "cu_impure_s": {
+    "note": "Copper with silver atoms sitting in the lattice in place of copper ones. Two per cent impurity sounds negligible and is not: copper is worth using because electrons move through it so freely, and every foreign atom in the lattice is something for those electrons to scatter off. Wire made from this would waste a noticeable fraction of everything sent down it.",
+    "atoms": [
+      { "id": "m0", "element": "Cu", "x": -1.3, "y": -1.3, "z": -1.3 },
+      { "id": "m1", "element": "Cu", "x": -1.3, "y": -1.3, "z": 1.3 },
+      { "id": "m2", "element": "Ag", "x": -1.3, "y": 1.3, "z": -1.3 },
+      { "id": "m3", "element": "Cu", "x": -1.3, "y": 1.3, "z": 1.3 },
+      { "id": "m4", "element": "Cu", "x": 1.3, "y": -1.3, "z": -1.3 },
+      { "id": "m5", "element": "Ag", "x": 1.3, "y": -1.3, "z": 1.3 },
+      { "id": "m6", "element": "Cu", "x": 1.3, "y": 1.3, "z": -1.3 },
+      { "id": "m7", "element": "Cu", "x": 1.3, "y": 1.3, "z": 1.3 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
+  },
+  "anode_mud_s": {
+    "note": "Loose silver and gold atoms with no bonds between them, because they were never dissolved and never rebuilt into anything - they simply fell off the wasting anode. Both are harder to oxidise than copper, so the refining voltage could not touch them. This is where a large share of the world's silver actually comes from.",
+    "atoms": [
+      { "id": "ag1", "element": "Ag", "x": -2.4, "y": 0.9, "z": 0.4 },
+      { "id": "au1", "element": "Au", "x": 0.3, "y": 1.7, "z": -0.9 },
+      { "id": "ag2", "element": "Ag", "x": 2.6, "y": 0.5, "z": 0.7 },
+      { "id": "au2", "element": "Au", "x": -1.2, "y": -1.7, "z": -0.5 },
+      { "id": "ag3", "element": "Ag", "x": 1.7, "y": -1.9, "z": 0.8 }
+    ],
+    "bonds": []
+  },
+  "ni_metal": {
+    "note": "A lattice of nickel atoms in a solid bar. The same element as the hydrogenation catalyst elsewhere in this app, and the physical form is the entire difference: a catalyst is made as finely divided as possible to offer surface area and is not consumed, while this bar is meant to dissolve steadily and feed the plating bath.",
+    "atoms": [
+      { "id": "m0", "element": "Ni", "x": -1.25, "y": -1.25, "z": -1.25 },
+      { "id": "m1", "element": "Ni", "x": -1.25, "y": -1.25, "z": 1.25 },
+      { "id": "m2", "element": "Ni", "x": -1.25, "y": 1.25, "z": -1.25 },
+      { "id": "m3", "element": "Ni", "x": -1.25, "y": 1.25, "z": 1.25 },
+      { "id": "m4", "element": "Ni", "x": 1.25, "y": -1.25, "z": -1.25 },
+      { "id": "m5", "element": "Ni", "x": 1.25, "y": -1.25, "z": 1.25 },
+      { "id": "m6", "element": "Ni", "x": 1.25, "y": 1.25, "z": -1.25 },
+      { "id": "m7", "element": "Ni", "x": 1.25, "y": 1.25, "z": 1.25 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
+  },
+  "chromic_acid_aq": {
+    "note": "Chromium bonded to three oxygens, with the chromium at its highest oxidation state of +6. Count what has to happen for this to become chromium metal: six electrons per atom. Silver needs one. That single number is why chromium plating is slow, power-hungry, and laid down in fractions of a micron.",
+    "atoms": [
+      { "id": "cr", "element": "Cr", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.7, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.5, "y": -0.9, "z": 0.4 },
+      { "id": "o3", "element": "O", "x": -1.5, "y": -0.9, "z": -0.4 }
+    ],
+    "bonds": [
+      { "from": "cr", "to": "o1", "type": "covalent" },
+      { "from": "cr", "to": "o2", "type": "covalent" },
+      { "from": "cr", "to": "o3", "type": "covalent" }
+    ]
+  },
+  "plastic_seeded_s": {
+    "note": "A polymer chain, drawn as lumped repeat units, with a film of copper grown over it. No current was involved in putting that film there - a reducing agent in the solution handed the copper ions their electrons chemically. It had to be done that way, because an electroplating cell needs the object to be an electrode and a plastic carries no current at all. Once this film is down, everything after it can be plated normally.",
+    "atoms": [
+      { "id": "p0", "element": "group", "x": -3.6, "y": -1.4, "z": 0 },
+      { "id": "p1", "element": "group", "x": -1.2000000000000002, "y": -1.4, "z": 0 },
+      { "id": "p2", "element": "group", "x": 1.1999999999999997, "y": -1.4, "z": 0 },
+      { "id": "p3", "element": "group", "x": 3.599999999999999, "y": -1.4, "z": 0 },
+      { "id": "cu0", "element": "Cu", "x": -3.6, "y": 1.6, "z": 0 },
+      { "id": "cu1", "element": "Cu", "x": -1.2000000000000002, "y": 1.6, "z": 0 },
+      { "id": "cu2", "element": "Cu", "x": 1.1999999999999997, "y": 1.6, "z": 0 },
+      { "id": "cu3", "element": "Cu", "x": 3.599999999999999, "y": 1.6, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "p0", "to": "p1", "type": "covalent" },
+      { "from": "p1", "to": "p2", "type": "covalent" },
+      { "from": "p2", "to": "p3", "type": "covalent" }
+    ]
+  },
+  "steel_polished_s": {
+    "note": "Steel whose top face is now flat, because the atoms that stood proud of it were dissolved away. This is plating run backwards - the workpiece is the anode, so metal comes off - and it levels rather than roughens because a peak reaches further into the solution than a valley and is attacked faster. The flatter it gets the slower it goes, so the process stops itself at a mirror.",
+    "atoms": [
+      { "id": "m0", "element": "Fe", "x": -1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m1", "element": "Fe", "x": -1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m2", "element": "Fe", "x": -1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m3", "element": "Fe", "x": -1.35, "y": 1.35, "z": 1.35 },
+      { "id": "m4", "element": "Fe", "x": 1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m5", "element": "Fe", "x": 1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m6", "element": "Fe", "x": 1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m7", "element": "Fe", "x": 1.35, "y": 1.35, "z": 1.35 },
+      { "id": "top1", "element": "Fe", "x": -1.35, "y": 3.1, "z": -1.35 },
+      { "id": "top2", "element": "Fe", "x": 1.35, "y": 3.1, "z": -1.35 },
+      { "id": "top3", "element": "Fe", "x": -1.35, "y": 3.1, "z": 1.35 },
+      { "id": "top4", "element": "Fe", "x": 1.35, "y": 3.1, "z": 1.35 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
   }
 }

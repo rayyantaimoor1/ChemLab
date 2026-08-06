@@ -1,0 +1,39 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Electropolished steel: the peaks of the rough surface have been dissolved away, leaving a level one. Metal was taken off, not put on">
+  <text x="80" y="18" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">rough: peaks reach furthest into the solution</text>
+  <circle cx="40" cy="34" r="9" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="40" y="37" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <circle cx="72" cy="28" r="9" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="72" y="31" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <circle cx="104" cy="36" r="9" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="104" y="39" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <circle cx="128" cy="30" r="9" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="128" y="33" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <line x1="24" y1="52" x2="136" y2="52" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="38" y1="66" x2="66" y2="66" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="38" y1="66" x2="38" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="66" y1="66" x2="94" y2="66" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="66" y1="66" x2="66" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="94" y1="66" x2="122" y2="66" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="94" y1="66" x2="94" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="122" y1="66" x2="122" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="38" y1="94" x2="66" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="66" y1="94" x2="94" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="94" y1="94" x2="122" y2="94" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <circle cx="38" cy="66" r="13" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="38" y="71" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <circle cx="66" cy="66" r="13" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="66" y="71" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <circle cx="94" cy="66" r="13" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="94" y="71" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <circle cx="122" cy="66" r="13" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="122" y="71" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <circle cx="38" cy="94" r="13" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="38" y="99" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <circle cx="66" cy="94" r="13" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="66" y="99" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <circle cx="94" cy="94" r="13" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="94" y="99" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <circle cx="122" cy="94" r="13" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="122" y="99" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <text x="80" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">levelled - and it stops once it is flat</text>
+</svg>
