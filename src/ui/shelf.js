@@ -55,21 +55,27 @@ const LEVELS = [
 ];
 
 /**
- * Shelf drawers. The wording is what a student would look for rather than
- * what a chemist would file under - "Test reagents" rather than "analytical
- * reagents", and "Made materials" for the alloys, plastics and ceramics.
+ * Shelf drawers, in the order they are offered. The wording is what a student
+ * would look for rather than what a chemist would file under - "Test reagents"
+ * rather than "analytical reagents", and "Made materials" for the alloys,
+ * plastics and ceramics.
+ *
+ * Only drawers that actually hold a reagent are offered, worked out from the
+ * data below. Most coordination complexes, for instance, are things a student
+ * MAKES rather than takes off a shelf, so that drawer is thin here and would
+ * be an empty dead end on a shelf that happened to stock none of them.
  */
-const CATEGORIES = [
-  { value: 'all', label: 'All kinds' },
-  { value: 'acid', label: 'Acids' },
-  { value: 'base', label: 'Bases and alkalis' },
-  { value: 'salt', label: 'Salts' },
-  { value: 'oxide', label: 'Oxides' },
-  { value: 'element', label: 'Elements' },
-  { value: 'organic', label: 'Organic compounds' },
-  { value: 'reagent', label: 'Test reagents' },
-  { value: 'material', label: 'Made materials' },
-  { value: 'other', label: 'Other' },
+const CATEGORY_LABELS = [
+  ['acid', 'Acids'],
+  ['base', 'Bases and alkalis'],
+  ['salt', 'Salts'],
+  ['oxide', 'Oxides'],
+  ['element', 'Elements'],
+  ['organic', 'Organic compounds'],
+  ['complex', 'Complexes'],
+  ['reagent', 'Test reagents'],
+  ['material', 'Made materials'],
+  ['other', 'Other'],
 ];
 
 /**
@@ -115,8 +121,21 @@ export function mountShelf({ root, dispatch }) {
     return select;
   };
 
+  // Reagents only. chemicals.json also describes what reactions PRODUCE
+  // (precipitates, gases, salts in solution) and those are not things a
+  // student can take off the shelf - see engine.getShelfChemicals.
+  const chemicals = engine.getShelfChemicals();
+
+  const stocked = new Set(chemicals.map((chemical) => chemical.category));
+  const categoryOptions = [
+    { value: 'all', label: 'All kinds' },
+    ...CATEGORY_LABELS
+      .filter(([value]) => stocked.has(value))
+      .map(([value, label]) => ({ value, label })),
+  ];
+
   const levelSelect = makeSelect(LEVELS, 'Filter reagents by level');
-  const categorySelect = makeSelect(CATEGORIES, 'Filter reagents by kind');
+  const categorySelect = makeSelect(categoryOptions, 'Filter reagents by kind');
 
   controls.appendChild(dropdowns);
   root.appendChild(controls);
@@ -132,10 +151,6 @@ export function mountShelf({ root, dispatch }) {
   const list = document.createElement('ul');
   list.className = 'shelf-list';
 
-  // Reagents only. chemicals.json also describes what reactions produce
-  // (precipitates, gases, salts in solution) and those are not things a
-  // student can take off the shelf - see engine.getShelfChemicals.
-  const chemicals = engine.getShelfChemicals();
   const bottles = [];
 
   for (const chemical of chemicals) {

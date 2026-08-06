@@ -2524,7 +2524,7 @@
     "structure": "molecules/agnh3.svg",
     "description": "The colourless solution formed when silver chloride dissolves in ammonia. Two ammonia molecules attach themselves to the silver ion, holding it in solution as a complex ion — which is how a precipitate that would not dissolve in water can be made to disappear. Silver bromide needs concentrated ammonia to do the same, and silver iodide will not dissolve at all.",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, distinguishing the silver halides",
-    "category": "reagent"
+    "category": "complex"
   },
   {
     "id": "chloramine_g",
@@ -2588,7 +2588,7 @@
     "structure": "molecules/fescn.svg",
     "description": "The intense blood-red complex formed when a thiocyanate ion attaches to an iron(III) ion. The colour is far stronger than either starting solution, which is what makes the test so sensitive. Colour this deep from a complex ion is characteristic of the transition metals and is the reason they are the coloured part of the periodic table.",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, complex ions and colour",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "cu_nh3_aq",
@@ -2610,7 +2610,7 @@
     "description": "The deep royal blue formed when four ammonia molecules replace the water around a copper(II) ion. Set it against ordinary copper(II) sulfate's pale blue and the difference is startling — same metal, same oxidation state, different ligands, completely different colour. That is the clearest evidence there is that in a transition metal complex the colour belongs to the whole ion, not to the metal alone.",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, complex formation and ligand exchange",
     "flameElements": ["copper"],
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "k2cr2o7_aq",
@@ -4099,7 +4099,7 @@
     "description": "The same copper ion as in blue copper sulfate, wearing different ligands. Four chlorides have pushed the six water molecules off, and with them go both the colour and the SHAPE — the aqua ion is octahedral with six ligands, this is tetrahedral with four. Chloride is a bigger ligand and only four will fit. Both facts matter: the colour of a transition metal ion is a property of the whole complex, not of the metal alone, which is why the same copper can look blue, green or deep violet depending only on what is bonded to it.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — tetrahalometallates; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["copper"],
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "co_h2o_aq",
@@ -4120,7 +4120,7 @@
     "structure": "molecules/co_h2o.svg",
     "description": "Cobalt(II) with six water molecules around it, octahedral, and pale pink. This is what cobalt chloride looks like in ordinary dilute solution, and it is one half of the most quoted equilibrium in inorganic chemistry. Add concentrated chloride and it turns blue; dilute it again and the pink returns. Nothing is created or destroyed in either direction — the same cobalt simply swaps one set of ligands for another.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — aqua ions and ligand substitution; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "cocl4_aq",
@@ -4141,7 +4141,7 @@
     "structure": "molecules/cocl4.svg",
     "description": "The other half of the cobalt equilibrium: tetrahedral, four chlorides, and an intense blue. The colour change from pink is so complete and so easily reversed that this is the standard demonstration of Le Chatelier's principle. It is also, incidentally, why cobalt chloride paper tests for water — the blue dry paper turns pink the moment water displaces the chloride.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — tetrahalometallates and the cobalt(II) equilibrium; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "nicl2_aq",
@@ -4204,7 +4204,7 @@
     "structure": "molecules/ni_dmg.svg",
     "description": "A striking rose-red solid, and one of the few precipitates clean enough to be weighed directly. Two dimethylglyoxime molecules grip one nickel between them, the whole thing is flat and square, and because it is uncharged it will not dissolve in water at all. Its composition is exact and reproducible, which is what makes gravimetric analysis possible: filter it, dry it, weigh it, and you know how much nickel was in the sample to four figures.",
     "source": "Vogel's Textbook of Quantitative Chemical Analysis 6th ed. — gravimetric determination of nickel; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
-    "category": "organic"
+    "category": "complex"
   },
   {
     "id": "aloh4_aq",
@@ -4225,7 +4225,7 @@
     "structure": "molecules/aloh4.svg",
     "description": "What aluminium hydroxide becomes in excess alkali: a soluble complex ion, and the proof that aluminium hydroxide is AMPHOTERIC. It dissolves in acid, as any base does, and it dissolves in alkali too, which no ordinary base does. This is also the basis of the Bayer process for purifying bauxite: the aluminium oxide dissolves in hot alkali and the iron oxide impurity does not, so the two separate cleanly on that single difference.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — amphoteric hydroxides and the Bayer process; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "znoh2_s",
@@ -4267,7 +4267,7 @@
     "structure": "molecules/znoh4.svg",
     "description": "Zinc hydroxide dissolved in excess alkali, and proof that zinc hydroxide is amphoteric just as aluminium's is. On its own this result cannot tell zinc from aluminium, because both give a colourless solution that looks identical. Chemistry is often like this: a test that gives the same answer for two things has told you something, but not what you wanted to know.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — zincate chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "zn_nh3_aq",
@@ -4288,7 +4288,7 @@
     "structure": "molecules/zn_nh3.svg",
     "description": "Zinc held by four ammonia molecules, and the answer to the aluminium problem. Zinc forms this readily; aluminium forms nothing of the kind, so its hydroxide simply sits there in ammonia unchanged. Note that this complex is COLOURLESS where the copper equivalent is deep blue — zinc has a full d shell with no room for the electron jumps that give transition metal complexes their colour, which is the standard argument for not counting zinc as a true transition metal.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — zinc ammine complexes and the d10 configuration; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "na2cr2o7_aq",
@@ -4353,7 +4353,7 @@
     "structure": "molecules/ag_s2o3.svg",
     "description": "Silver, which is famously insoluble as the halide, held in solution by two thiosulfate ions. This complex is what carried photography for a century and a half: the unexposed silver bromide on a film has to be washed away or the picture goes black in daylight, and nothing else removes it so cleanly. It is also why photographic waste is worth collecting — the silver is recovered from exactly this solution.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silver thiosulfate complexes; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "pbcl2_aq",
@@ -6889,7 +6889,7 @@
     "structure": "molecules/brown_ring.svg",
     "description": "The brown ring itself. Nitrogen monoxide, made from the nitrate by the concentrated acid, replaces one water molecule on an iron(II) complex and the result is intensely brown. It forms only at the boundary between the two liquid layers — where the nitrogen monoxide is being produced and the iron(II) is still unoxidised — which is why the test gives a ring rather than a uniformly coloured tube.",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the brown ring test for nitrate",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "na3po4_aq",
@@ -6953,7 +6953,7 @@
     "structure": "molecules/phosphomolybdate.svg",
     "description": "A startling canary yellow precipitate, and one of the largest ions a student is likely to meet: twelve molybdenum atoms and forty oxygens wrapped around a single phosphate at the centre. The colour is so distinctive and the solubility so low that this remains the standard confirmation for phosphate more than a century after it was first used.",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — confirmation of phosphate",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "nioh2_s",
@@ -7628,7 +7628,7 @@
     "structure": "molecules/ca_edta.svg",
     "description": "Calcium locked inside an EDTA molecule and no longer able to do anything — it cannot form scum with soap, cannot deposit as scale in a kettle, cannot precipitate with carbonate. Nothing has been removed from the water; the ion is simply wrapped up. This is what water softening by sequestration means, and it is how a titration can measure hardness exactly.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — EDTA complexes",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "cu_edta_aq",
@@ -7649,7 +7649,7 @@
     "structure": "molecules/cu_edta.svg",
     "description": "Copper held by one EDTA molecule at six points at once. Compare it with the tetraamminecopper complex, where four separate ammonia molecules do a similar job through nitrogen: the colours are close, and yet EDTA displaces the ammonia and ammonia cannot displace EDTA. Same kind of bond, same donor atoms, completely different strength of grip — that asymmetry is the chelate effect and nothing else.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the chelate effect",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "fe_edta_aq",
@@ -7670,7 +7670,7 @@
     "structure": "molecules/fe_edta.svg",
     "description": "Iron(III) wrapped in EDTA, and pale yellow rather than the blood red it makes with thiocyanate. Chemists call this masking: the iron is still in the solution and still iron(III), but it can no longer react with anything else, so a test that would have found it now finds nothing. Masking an interfering ion is routine in analysis, and it depends entirely on one ligand gripping harder than another.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — masking agents in analysis",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "ni_nh3_aq",
@@ -7691,7 +7691,7 @@
     "structure": "molecules/ni_nh3.svg",
     "description": "Six ammonia molecules arranged around a nickel ion at the corners of an octahedron. Note the colour against the green of nickel in plain water: exactly the same nickel ion, six ligands either way, and a different colour — because the colour of a complex is set by which ligands surround the metal, not by the metal alone.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — ammine complexes",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "en_aq",
@@ -7733,7 +7733,7 @@
     "structure": "molecules/ni_en.svg",
     "description": "Three chelating molecules round one nickel, still six nitrogens and still an octahedron — and yet violet where the ammonia complex was blue. The nitrogens are held slightly closer, and that small change in how hard the ligands press on the metal changes the colour. Colour is a remarkably sensitive report of the environment a metal ion is sitting in.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the spectrochemical series",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "ptcl4_aq",
@@ -7754,7 +7754,7 @@
     "structure": "molecules/ptcl4.svg",
     "description": "Platinum(II) with four chlorides arranged in a FLAT SQUARE, not a tetrahedron — which is unusual and worth noticing, because most four-coordinate complexes are tetrahedral. Being flat is what makes two different arrangements of a mixed complex possible, and that difference turned out to matter enormously.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — square planar platinum(II); CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "cisplatin_s",
@@ -7775,7 +7775,7 @@
     "structure": "molecules/cisplatin.svg",
     "description": "Two ammonias and two chlorides on a flat square platinum, with the two chlorides NEXT TO each other. The isomer with them opposite each other is the same atoms in the same numbers and is useless as a drug. Cisplatin is one of the most effective anticancer agents ever found; trans-platin does nothing. Geometry alone separates them.",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — cisplatin; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
-    "category": "salt"
+    "category": "complex"
   },
   {
     "id": "pt_dna_adduct_s",

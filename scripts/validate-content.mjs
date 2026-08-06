@@ -297,7 +297,7 @@ for (const chemical of chemicals) {
  * ------------------------------------------------------------------ */
 
 const CATEGORIES = new Set([
-  'acid', 'base', 'salt', 'oxide', 'element', 'organic', 'reagent', 'material', 'other',
+  'acid', 'base', 'salt', 'oxide', 'element', 'organic', 'complex', 'reagent', 'material', 'other',
 ]);
 
 for (const chemical of chemicals) {

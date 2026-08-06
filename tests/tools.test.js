@@ -604,7 +604,7 @@ test('every reagent on the shelf can be reached by the level and kind filters', 
   const { engine } = await import('../src/core/engine.js');
 
   const categories = new Set([
-    'acid', 'base', 'salt', 'oxide', 'element', 'organic', 'reagent', 'material', 'other',
+    'acid', 'base', 'salt', 'oxide', 'element', 'organic', 'complex', 'reagent', 'material', 'other',
   ]);
   const levels = new Set(['matric', 'fsc', 'bs']);
 
@@ -623,12 +623,19 @@ test('every reagent on the shelf can be reached by the level and kind filters', 
   }
 });
 
-test('no shelf category is left empty, so no filter option is a dead end', async () => {
+test('the shelf offers no drawer it cannot fill', async () => {
   const { engine } = await import('../src/core/engine.js');
 
-  const used = new Set(engine.getShelfChemicals().map((chemical) => chemical.category));
-  // "other" is deliberately tiny (water) but must still have something in it.
-  for (const category of ['acid', 'base', 'salt', 'oxide', 'element', 'organic', 'reagent', 'material', 'other']) {
-    assert.ok(used.has(category), `no reagent on the shelf is category "${category}"`);
+  // shelf.js builds its "kind" dropdown from the categories actually stocked,
+  // so the invariant worth holding is the other way round: nothing on the
+  // shelf may carry a category the dropdown has no label for.
+  const labelled = new Set([
+    'acid', 'base', 'salt', 'oxide', 'element', 'organic', 'complex', 'reagent', 'material', 'other',
+  ]);
+  const stocked = new Set(engine.getShelfChemicals().map((chemical) => chemical.category));
+
+  for (const category of stocked) {
+    assert.ok(labelled.has(category), `the shelf stocks category "${category}" but the filter has no label for it`);
   }
+  assert.ok(stocked.size >= 5, 'the kind filter is pointless if the shelf only stocks a couple of kinds');
 });

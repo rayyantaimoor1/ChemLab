@@ -133,8 +133,9 @@ These are contracts. Adding content must never require changing engine code.
 
 `category` is which drawer of the shelf a reagent belongs in, for the
 shelf's "kind" filter: one of **acid, base, salt, oxide, element, organic,
-reagent** (indicators and test reagents), **material** (alloys, plastics,
-ceramics, plated articles) or **other**.
+complex** (coordination compounds), **reagent** (indicators and test
+reagents), **material** (alloys, plastics, ceramics, plated articles) or
+**other**.
 
 It is a shelf label rather than a claim about chemistry — ethanoic acid is
 both organic and an acid, and it is filed under acid because that is the
@@ -142,7 +143,11 @@ drawer a student would open. But it is still **curated, not deduced**:
 working out "is this an acid" from a formula is the guessing §6.1 forbids,
 and a first attempt at deriving it put every sulfate in the organic drawer
 because "sulfate" contains "fat". A test and the validator both check that
-every reagent carries one of the nine values.
+every reagent carries one of the ten values.
+
+The shelf offers only the drawers it actually stocks, so a category with no
+reagent in it never appears as an empty option. Most complexes, for example,
+are things a student **makes** rather than takes off a shelf.
 
 ### `reactions.json`
 
