@@ -6930,5 +6930,216 @@
     "explanation": "Nothing at all — and the end of the series is as informative as the top of it. Gold sits so low that no single acid will touch it, which is why gold is found in the ground AS GOLD, needing no extraction chemistry at all, and why a coin from a shipwreck looks new beside an iron nail that has vanished. Put the batch end to end and the pattern is complete: gold needs nothing, mercury needs only heat, copper reduces itself with air, iron and zinc need carbon, and aluminium needs electricity. The method is not a matter of engineering taste. Each metal is won by the cheapest thing strong enough to beat it, and where it sits in the reactivity series decides what that is.",
     "levels": ["fsc", "bs"],
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the coinage metals and native occurrence"
+  },
+  {
+    "id": "rxn_bof_decarburisation",
+    "reactants": ["pig_iron_s", "o2_g"],
+    "conditions": { "requiresHeat": true, "minTempC": 1600, "catalyst": null },
+    "products": ["steel_s", "co2_g"],
+    "equation": "C (dissolved in the iron) + O₂ → CO₂",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#71757A",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 60,
+      "resultPH": null
+    },
+    "hazard": null,
+    "explanation": "Oxygen blown through the molten pig iron burns the dissolved carbon out as carbon dioxide, and the metal left behind is steel. Notice which way the temperature goes: burning the carbon RELEASES heat, so the process warms itself and no fuel is needed once it starts — the impurity being removed is also what pays for removing it. This is the basic oxygen process, and it takes about forty minutes to do what used to take a day.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the basic oxygen steelmaking process"
+  },
+  {
+    "id": "rxn_steel_cementite",
+    "reactants": ["fe_metal", "c_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 700, "catalyst": null },
+    "products": ["cementite_s"],
+    "equation": "3Fe + C → Fe₃C",
+    "type": "combination",
+    "effects": {
+      "colorToHex": "#8A8D90",
+      "precipitate": "hard pale grey particles of iron carbide through the metal",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "explanation": "This is what the leftover carbon in steel is actually doing. It does not sit around as soot — it combines with iron into hard, brittle particles of cementite scattered through the metal. A soft metal bends because its layers of atoms slide over one another, and cementite particles get in the way of that sliding. So more carbon means more cementite means a harder, more brittle steel. That single compound is the difference between a car body panel and a chisel.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the iron–carbon system"
+  },
+  {
+    "id": "rxn_dephosphorisation_slag",
+    "reactants": ["p4o10_s", "cao_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 1000, "catalyst": null },
+    "products": ["ca3po42_s"],
+    "equation": "P₄O₁₀ + 6CaO → 2Ca₃(PO₄)₂",
+    "type": "acid_base",
+    "effects": {
+      "colorToHex": "#F2F0E8",
+      "precipitate": "an off-white slag floating clear of the metal",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 15,
+      "resultPH": null
+    },
+    "hazard": null,
+    "explanation": "Phosphorus makes steel brittle, so it has to come out. Blowing oxygen turns it into P₄O₁₀, which is an ACIDIC oxide — so quicklime, a basic oxide, mops it up as a phosphate slag that floats off and is skimmed away. This is why the furnace lining must be basic rather than silica: an acidic lining would simply be eaten by the lime. That is the whole reason it is called the BASIC oxygen process. The slag is then sold as fertiliser.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — dephosphorisation and basic linings"
+  },
+  {
+    "id": "rxn_passivation_aluminium",
+    "reactants": ["al_metal", "o2_g"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "maxTempC": 600, "catalyst": null },
+    "products": ["al_oxide_layer_s"],
+    "equation": "4Al + 3O₂ → 2Al₂O₃",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#E8E9E6",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": null
+    },
+    "hazard": null,
+    "explanation": "Aluminium sits high in the reactivity series, above iron, above zinc — so why does a window frame outlast an iron gate? Because it oxidises instantly and then stops. The oxide crystals are close enough in size to the metal's own that the film forms an unbroken skin, sealing the surface a few atoms thick. Rust cannot do this: it is bulkier than the iron it came from, so it flakes off and exposes fresh metal underneath. The difference between a metal that corrodes away and one that does not is not reactivity — it is whether the oxide fits. Note that this quiet filming-over is a COLD-metal effect: get aluminium hot enough and the film is no protection at all, which is why aluminium powder is used as a fuel and why thermite works.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — passivation of aluminium"
+  },
+  {
+    "id": "rxn_none_aluminium_water",
+    "reactants": ["al_metal", "water_distilled"],
+    "noReaction": true,
+    "explanation": "Nothing happens — and by the reactivity series something should. Aluminium is above iron and only a little below magnesium, yet it sits in water indefinitely, which is why aluminium pans and kettles exist at all. The oxide film formed the instant the metal met air is doing all of it: the water never reaches the aluminium. Strip that film off under mercury and the same metal attacks water vigorously. The unreactivity is a coat, not a character.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — aluminium and its oxide film"
+  },
+  {
+    "id": "rxn_anodising_aluminium",
+    "reactants": ["al_oxide_layer_s"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
+    "products": ["anodised_al_s"],
+    "equation": "2Al + 3H₂O → Al₂O₃ + 6H⁺ + 6e⁻",
+    "type": "electrolysis",
+    "electrodes": {
+      "anode": {
+        "sign": "positive",
+        "attracts": "O²⁻",
+        "attractsName": "oxide ions from the water",
+        "halfEquation": "2Al + 3H₂O → Al₂O₃ + 6H⁺ + 6e⁻",
+        "product": "anodised_al_s",
+        "observation": "The aluminium article is itself the anode — the oxide layer grows on it and thickens, going from a few atoms to a few thousand."
+      },
+      "cathode": {
+        "sign": "negative",
+        "attracts": "H⁺",
+        "attractsName": "hydrogen ions",
+        "halfEquation": "2H⁺ + 2e⁻ → H₂",
+        "product": "anodised_al_s",
+        "observation": "Hydrogen bubbles off the other electrode. Nothing is being deposited here — the useful change is all at the anode."
+      }
+    },
+    "effects": {
+      "colorToHex": "#C9CDD2",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": null
+    },
+    "hazard": null,
+    "molecularAnimation": "anim_anodising_aluminium",
+    "explanation": "Anodising is electroplating run backwards in spirit: instead of adding a coat of another metal, the current forces the article to grow a thicker coat of its own oxide. Note the name — the aluminium is the ANODE, not the cathode, which is the opposite of every plating process. The thickened film is far more scratch-resistant, and because it is slightly porous as it grows, dye can be soaked in and then sealed. Every coloured aluminium phone case and window frame you have seen was made this way.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — anodising of aluminium"
+  },
+  {
+    "id": "rxn_passivation_chromium",
+    "reactants": ["cr_metal", "o2_g"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["cr2o3_s"],
+    "equation": "4Cr + 3O₂ → 2Cr₂O₃",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#3E7A5A",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": null
+    },
+    "hazard": null,
+    "explanation": "Chromium does what aluminium does, and this film has one extra virtue: it heals. Scratch through the chrome on a bumper and the freshly exposed metal oxidises again within seconds, so the protection comes back on its own. That is what a coat of paint cannot do, and it is the entire reason chromium is worth alloying into steel. On a real surface the layer is far too thin to show the green colour it has in bulk, which is why chrome looks like bright metal.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — chromium and self-healing passive films"
+  },
+  {
+    "id": "rxn_none_stainless_rusting",
+    "reactants": ["stainless_s", "o2_g", "water_distilled"],
+    "noReaction": true,
+    "explanation": "Water and oxygen on iron, and no rust — compare this with the plain iron in the other vessel, where the same two things do their worst. Nothing about the iron has changed; it is exactly as eager to rust as it ever was. It simply never meets the water, because about eighteen per cent chromium is enough for the chromium's oxide film to cover the whole surface, iron included. Protection here is a surface arrangement, not a change of heart in the metal underneath.",
+    "levels": ["fsc", "bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — stainless steels"
+  },
+  {
+    "id": "rxn_galvanised_sacrificial",
+    "reactants": ["fe_metal", "zn_metal", "o2_g", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["zno_s", "fe_metal"],
+    "equation": "2Zn + O₂ → 2ZnO   (the iron is untouched)",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#F7F5EE",
+      "precipitate": "a white bloom on the zinc, while the iron stays bright",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "explanation": "Iron and zinc together in wet air, and it is the ZINC that corrodes — the iron comes through untouched. Zinc is above iron in the reactivity series, so it gives up its electrons first and the iron simply never gets oxidised. This is galvanising, and the crucial point is that it is not a barrier: scratch a galvanised bucket down to bare iron and it still does not rust, because the surrounding zinc goes on corroding in its place. The zinc is being spent to save the iron, which is why it is called sacrificial protection.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry X — corrosion and its prevention; Housecroft & Sharpe, Inorganic Chemistry 4th ed."
+  },
+  {
+    "id": "rxn_tinplate_scratched",
+    "reactants": ["fe_metal", "sn_metal", "o2_g", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["rust_s", "sn_metal"],
+    "equation": "4Fe + 3O₂ + 2xH₂O → 2Fe₂O₃·xH₂O   (the tin is untouched)",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#8B4A2B",
+      "precipitate": "reddish brown rust on the iron, spreading from the scratch, while the tin stays bright",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "explanation": "Swap the zinc for tin and the victim swaps too. Tin is BELOW iron in the reactivity series, so once the two are in contact in wet air the iron gives up its electrons first and rusts faster than bare iron would. An unbroken tin coat protects a food can perfectly well by keeping the air out — but only while it is unbroken. Scratch a tin can and it rots at the scratch; scratch a galvanised bucket and nothing happens. Whether a coating saves the iron or condemns it depends entirely on which side of iron the coating metal sits.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "Punjab Curriculum and Textbook Board, Chemistry X — corrosion and its prevention; Housecroft & Sharpe, Inorganic Chemistry 4th ed."
   }
 ]

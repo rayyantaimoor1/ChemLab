@@ -6016,5 +6016,242 @@
       { "from": "g5", "to": "g7", "type": "covalent" },
       { "from": "g6", "to": "g7", "type": "covalent" }
     ]
+  },
+  "pig_iron_s": {
+    "note": "Iron atoms in a lattice, with carbon atoms sitting in the gaps between them rather than bonded into a compound. Turn the model and look at how crowded those gaps are. A metal bends because its layers of atoms slide past one another, and there is no room here for that to happen - so pig iron snaps instead. Compare it directly with the steel model.",
+    "atoms": [
+      { "id": "m0", "element": "Fe", "x": -1.3, "y": -1.3, "z": -1.3 },
+      { "id": "m1", "element": "Fe", "x": -1.3, "y": -1.3, "z": 1.3 },
+      { "id": "m2", "element": "Fe", "x": -1.3, "y": 1.3, "z": -1.3 },
+      { "id": "m3", "element": "Fe", "x": -1.3, "y": 1.3, "z": 1.3 },
+      { "id": "m4", "element": "Fe", "x": 1.3, "y": -1.3, "z": -1.3 },
+      { "id": "m5", "element": "Fe", "x": 1.3, "y": -1.3, "z": 1.3 },
+      { "id": "m6", "element": "Fe", "x": 1.3, "y": 1.3, "z": -1.3 },
+      { "id": "m7", "element": "Fe", "x": 1.3, "y": 1.3, "z": 1.3 },
+      { "id": "c1", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "c2", "element": "C", "x": 0, "y": 2.6, "z": 0 },
+      { "id": "c3", "element": "C", "x": 2.6, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
+  },
+  "steel_s": {
+    "note": "The same lattice as pig iron with one carbon atom in it instead of three. That is the entire difference between a metal that shatters and one that can be rolled into car-body sheet, drawn into wire and welded - and it is why steelmaking is a process of taking things out rather than putting things in.",
+    "atoms": [
+      { "id": "m0", "element": "Fe", "x": -1.3, "y": -1.3, "z": -1.3 },
+      { "id": "m1", "element": "Fe", "x": -1.3, "y": -1.3, "z": 1.3 },
+      { "id": "m2", "element": "Fe", "x": -1.3, "y": 1.3, "z": -1.3 },
+      { "id": "m3", "element": "Fe", "x": -1.3, "y": 1.3, "z": 1.3 },
+      { "id": "m4", "element": "Fe", "x": 1.3, "y": -1.3, "z": -1.3 },
+      { "id": "m5", "element": "Fe", "x": 1.3, "y": -1.3, "z": 1.3 },
+      { "id": "m6", "element": "Fe", "x": 1.3, "y": 1.3, "z": -1.3 },
+      { "id": "m7", "element": "Fe", "x": 1.3, "y": 1.3, "z": 1.3 },
+      { "id": "c1", "element": "C", "x": 0, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
+  },
+  "cementite_s": {
+    "note": "Iron carbide, and the reason the last one per cent of carbon matters so much. Particles of this hard, brittle compound sit scattered through steel and obstruct the sliding of the iron layers, which is what hardness is. More carbon means more of these particles: harder steel, and more brittle with it. The whole difference between a car panel and a chisel is how much of this there is.",
+    "atoms": [
+      { "id": "c", "element": "C", "x": 0, "y": 0, "z": 0 },
+      { "id": "fe1", "element": "Fe", "x": 0, "y": 2.1, "z": 0 },
+      { "id": "fe2", "element": "Fe", "x": -1.9, "y": -1.1, "z": 0.4 },
+      { "id": "fe3", "element": "Fe", "x": 1.9, "y": -1.1, "z": -0.4 }
+    ],
+    "bonds": [
+      { "from": "c", "to": "fe1", "type": "covalent" },
+      { "from": "c", "to": "fe2", "type": "covalent" },
+      { "from": "c", "to": "fe3", "type": "covalent" }
+    ]
+  },
+  "ca3po42_s": {
+    "note": "A phosphate tetrahedron with calcium ions around it. Phosphorus oxide is acidic and quicklime is basic, so the two combine and the phosphorus leaves the metal as this slag - which is exactly why the steel furnace has to be lined with something basic rather than silica. The same compound is the mineral part of bone, which is why bone meal worked as a fertiliser long before anyone knew why.",
+    "atoms": [
+      { "id": "p", "element": "P", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.6, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.5, "y": -0.5, "z": 0.5 },
+      { "id": "o3", "element": "O", "x": -0.8, "y": -0.6, "z": 1.4 },
+      { "id": "o4", "element": "O", "x": -0.7, "y": -0.6, "z": -1.4 },
+      { "id": "ca1", "element": "Ca", "x": 3.4, "y": 1.4, "z": 0 },
+      { "id": "ca2", "element": "Ca", "x": -3.4, "y": -1.4, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "p", "to": "o1", "type": "covalent" },
+      { "from": "p", "to": "o2", "type": "covalent" },
+      { "from": "p", "to": "o3", "type": "covalent" },
+      { "from": "p", "to": "o4", "type": "covalent" }
+    ]
+  },
+  "al_oxide_layer_s": {
+    "note": "Aluminium metal with a single layer of oxygen sealing the top face - roughly to scale, because the real film is only a few atoms thick. The point to see is that it is UNBROKEN. Aluminium oxide crystals are close enough in size to the metal that the film covers everything; rust is bulkier than the iron it came from, so it flakes and lets the next layer be attacked. Same idea, opposite outcome.",
+    "atoms": [
+      { "id": "m0", "element": "Al", "x": -1.4, "y": -1.4, "z": -1.4 },
+      { "id": "m1", "element": "Al", "x": -1.4, "y": -1.4, "z": 1.4 },
+      { "id": "m2", "element": "Al", "x": -1.4, "y": 1.4, "z": -1.4 },
+      { "id": "m3", "element": "Al", "x": -1.4, "y": 1.4, "z": 1.4 },
+      { "id": "m4", "element": "Al", "x": 1.4, "y": -1.4, "z": -1.4 },
+      { "id": "m5", "element": "Al", "x": 1.4, "y": -1.4, "z": 1.4 },
+      { "id": "m6", "element": "Al", "x": 1.4, "y": 1.4, "z": -1.4 },
+      { "id": "m7", "element": "Al", "x": 1.4, "y": 1.4, "z": 1.4 },
+      { "id": "o0", "element": "O", "x": -1.4, "y": 3.4, "z": -1.4 },
+      { "id": "o1", "element": "O", "x": 1.4, "y": 3.4, "z": -1.4 },
+      { "id": "o2", "element": "O", "x": -1.4, "y": 3.4, "z": 1.4 },
+      { "id": "o3", "element": "O", "x": 1.4, "y": 3.4, "z": 1.4 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
+  },
+  "anodised_al_s": {
+    "note": "The same metal under a film grown several times thicker by electrolysis - and on a real article the difference is a factor of about a thousand, more than can be drawn here. Note which electrode does it: the aluminium is the ANODE, the opposite of every plating process, which is where the name comes from. The thickened film resists scratching, and takes dye while it is still porous.",
+    "atoms": [
+      { "id": "m0", "element": "Al", "x": -1.4, "y": -1.4, "z": -1.4 },
+      { "id": "m1", "element": "Al", "x": -1.4, "y": -1.4, "z": 1.4 },
+      { "id": "m2", "element": "Al", "x": -1.4, "y": 1.4, "z": -1.4 },
+      { "id": "m3", "element": "Al", "x": -1.4, "y": 1.4, "z": 1.4 },
+      { "id": "m4", "element": "Al", "x": 1.4, "y": -1.4, "z": -1.4 },
+      { "id": "m5", "element": "Al", "x": 1.4, "y": -1.4, "z": 1.4 },
+      { "id": "m6", "element": "Al", "x": 1.4, "y": 1.4, "z": -1.4 },
+      { "id": "m7", "element": "Al", "x": 1.4, "y": 1.4, "z": 1.4 },
+      { "id": "o0", "element": "O", "x": -1.4, "y": 3.4, "z": -1.4 },
+      { "id": "o1", "element": "O", "x": 1.4, "y": 3.4, "z": -1.4 },
+      { "id": "o2", "element": "O", "x": -1.4, "y": 3.4, "z": 1.4 },
+      { "id": "o3", "element": "O", "x": 1.4, "y": 3.4, "z": 1.4 },
+      { "id": "o4", "element": "O", "x": -1.4, "y": 5, "z": -1.4 },
+      { "id": "o5", "element": "O", "x": 1.4, "y": 5, "z": -1.4 },
+      { "id": "o6", "element": "O", "x": -1.4, "y": 5, "z": 1.4 },
+      { "id": "o7", "element": "O", "x": 1.4, "y": 5, "z": 1.4 },
+      { "id": "o8", "element": "O", "x": -1.4, "y": 6.6, "z": -1.4 },
+      { "id": "o9", "element": "O", "x": 1.4, "y": 6.6, "z": -1.4 },
+      { "id": "o10", "element": "O", "x": -1.4, "y": 6.6, "z": 1.4 },
+      { "id": "o11", "element": "O", "x": 1.4, "y": 6.6, "z": 1.4 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
+  },
+  "cr_metal": {
+    "atoms": [
+      { "id": "m0", "element": "Cr", "x": -1.25, "y": -1.25, "z": -1.25 },
+      { "id": "m1", "element": "Cr", "x": -1.25, "y": -1.25, "z": 1.25 },
+      { "id": "m2", "element": "Cr", "x": -1.25, "y": 1.25, "z": -1.25 },
+      { "id": "m3", "element": "Cr", "x": -1.25, "y": 1.25, "z": 1.25 },
+      { "id": "m4", "element": "Cr", "x": 1.25, "y": -1.25, "z": -1.25 },
+      { "id": "m5", "element": "Cr", "x": 1.25, "y": -1.25, "z": 1.25 },
+      { "id": "m6", "element": "Cr", "x": 1.25, "y": 1.25, "z": -1.25 },
+      { "id": "m7", "element": "Cr", "x": 1.25, "y": 1.25, "z": 1.25 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ],
+    "note": "A lattice of chromium atoms. On paper this metal should corrode - it sits well above copper in the reactivity series - and in practice a chrome bumper stays bright for decades, because of a film too thin to draw at this scale. Reactivity predicts what a metal wants to do, not always what happens to it."
+  },
+  "cr2o3_s": {
+    "note": "Chromium and oxide ions alternating. This is the film that makes stainless steel stainless, and its special virtue is repair: break it and the chromium exposed underneath oxidises again in seconds, so the protection returns on its own. Paint cannot do that, and neither can a tin coating - which is the whole reason chromium is worth alloying into steel.",
+    "atoms": [
+      { "id": "cr1", "element": "Cr", "x": -2.2, "y": 1.1, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.5, "z": 1 },
+      { "id": "cr2", "element": "Cr", "x": 2.2, "y": 1.1, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.1, "y": -1.3, "z": -1 },
+      { "id": "o3", "element": "O", "x": 1.1, "y": -1.3, "z": 1 },
+      { "id": "cr3", "element": "Cr", "x": 0, "y": -2.4, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "cr1", "to": "o1", "type": "ionic" },
+      { "from": "o1", "to": "cr2", "type": "ionic" },
+      { "from": "cr1", "to": "o2", "type": "ionic" },
+      { "from": "cr2", "to": "o3", "type": "ionic" },
+      { "from": "o2", "to": "cr3", "type": "ionic" },
+      { "from": "o3", "to": "cr3", "type": "ionic" }
+    ]
+  },
+  "stainless_s": {
+    "note": "An iron lattice with some sites taken by chromium, and oxygen sealing the surface. Find the iron atoms and note that nothing has been done to them - they are as ready to rust as they ever were. Enough chromium is present that its oxide film covers the whole surface, so water and oxygen never reach the iron at all. The protection is an arrangement at the surface, not a change in the metal underneath.",
+    "atoms": [
+      { "id": "m0", "element": "Fe", "x": -1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m1", "element": "Cr", "x": -1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m2", "element": "Fe", "x": -1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m3", "element": "Fe", "x": -1.35, "y": 1.35, "z": 1.35 },
+      { "id": "m4", "element": "Fe", "x": 1.35, "y": -1.35, "z": -1.35 },
+      { "id": "m5", "element": "Fe", "x": 1.35, "y": -1.35, "z": 1.35 },
+      { "id": "m6", "element": "Cr", "x": 1.35, "y": 1.35, "z": -1.35 },
+      { "id": "m7", "element": "Fe", "x": 1.35, "y": 1.35, "z": 1.35 },
+      { "id": "o0", "element": "O", "x": -1.35, "y": 3.3, "z": -1.35 },
+      { "id": "o1", "element": "O", "x": 1.35, "y": 3.3, "z": -1.35 },
+      { "id": "o2", "element": "O", "x": -1.35, "y": 3.3, "z": 1.35 },
+      { "id": "o3", "element": "O", "x": 1.35, "y": 3.3, "z": 1.35 }
+    ],
+    "bonds": [
+      { "from": "m0", "to": "m1", "type": "covalent" },
+      { "from": "m0", "to": "m2", "type": "covalent" },
+      { "from": "m0", "to": "m4", "type": "covalent" },
+      { "from": "m1", "to": "m3", "type": "covalent" },
+      { "from": "m1", "to": "m5", "type": "covalent" },
+      { "from": "m2", "to": "m3", "type": "covalent" },
+      { "from": "m2", "to": "m6", "type": "covalent" },
+      { "from": "m3", "to": "m7", "type": "covalent" },
+      { "from": "m4", "to": "m5", "type": "covalent" },
+      { "from": "m4", "to": "m6", "type": "covalent" },
+      { "from": "m5", "to": "m7", "type": "covalent" },
+      { "from": "m6", "to": "m7", "type": "covalent" }
+    ]
   }
 }

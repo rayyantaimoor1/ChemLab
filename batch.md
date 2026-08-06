@@ -7,8 +7,8 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **299 chemicals, 302 reactions
-> (43 of them `noReaction`), 18 guided experiments, 274 tests passing.**
+> Snapshot as of the last entry below: **308 chemicals, 312 reactions
+> (45 of them `noReaction`), 18 guided experiments, 274 tests passing.**
 
 ---
 
@@ -67,6 +67,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 10 | `714eb98` | Silicones, and glass — an inorganic backbone |
 | 11 | `c010161` | Ceramics, refractories and plaster |
 | 12 | `0725610` | Metallurgy — why each metal is won by the method it is |
+| 13 | `PENDING` | Steelmaking, alloys and passivation — protecting metals |
 
 ## 5. Guided experiments (Phase 7)
 
@@ -137,9 +138,8 @@ Good fits for this engine, not yet written:
   nucleic acid components.
 - **Further halogen and Group trends** at BS depth, mirroring the Period 3
   batch's approach.
-- **Steelmaking and alloys** — what happens to the pig iron after the
-  blast furnace, and why an alloy behaves differently from the metals in
-  it. Follows directly from batch BS-12.
+- **Electroplating and surface finishing** — the follow-on from batch
+  BS-13, which covered anodising but not plating one metal onto another.
 
 Deliberately **not** forced into this engine — different tooling needed,
 not a content-writing problem:

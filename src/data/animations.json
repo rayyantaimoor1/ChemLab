@@ -2418,5 +2418,294 @@
         ]
       }
     ]
+  },
+  "anim_anodising_aluminium": {
+    "equation": "2Al + 3H₂O → Al₂O₃ + 6H⁺ + 6e⁻",
+    "viewBox": [
+      0,
+      0,
+      340,
+      190
+    ],
+    "particles": [
+      {
+        "id": "cathode",
+        "label": "−",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "anode",
+        "label": "+",
+        "element": "electrode",
+        "w": 26,
+        "h": 140
+      },
+      {
+        "id": "al1",
+        "label": "Al",
+        "element": "Al",
+        "r": 19
+      },
+      {
+        "id": "al2",
+        "label": "Al",
+        "element": "Al",
+        "r": 19
+      },
+      {
+        "id": "o1",
+        "label": "O",
+        "element": "O",
+        "r": 16
+      },
+      {
+        "id": "o2",
+        "label": "O",
+        "element": "O",
+        "r": 16
+      },
+      {
+        "id": "o3",
+        "label": "O",
+        "element": "O",
+        "r": 16
+      },
+      {
+        "id": "h1",
+        "label": "H",
+        "element": "H",
+        "r": 12
+      },
+      {
+        "id": "h2",
+        "label": "H",
+        "element": "H",
+        "r": 12
+      }
+    ],
+    "steps": [
+      {
+        "durationMs": 2000,
+        "caption": "Read the wiring first, because it is the whole name of the process. The aluminium article is connected as the ANODE — the positive side — which is the opposite of electroplating, where the object being coated is always the cathode. Nothing is going to be deposited onto this metal. It is going to grow its own coat.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "al1": [
+            266,
+            64
+          ],
+          "al2": [
+            266,
+            126
+          ],
+          "o1": [
+            170,
+            58
+          ],
+          "o2": [
+            150,
+            120
+          ],
+          "o3": [
+            196,
+            96
+          ],
+          "h1": [
+            120,
+            64
+          ],
+          "h2": [
+            124,
+            126
+          ]
+        },
+        "charges": {
+          "o1": "2−",
+          "o2": "2−",
+          "o3": "2−",
+          "h1": "+",
+          "h2": "+"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2000,
+        "caption": "Switch on, and the water in the bath supplies the ions. Oxide ions are negative so they travel to the positive anode — towards the aluminium. Hydrogen ions are positive and go the other way, to the cathode.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "al1": [
+            266,
+            64
+          ],
+          "al2": [
+            266,
+            126
+          ],
+          "o1": [
+            228,
+            56
+          ],
+          "o2": [
+            228,
+            124
+          ],
+          "o3": [
+            232,
+            94
+          ],
+          "h1": [
+            86,
+            62
+          ],
+          "h2": [
+            86,
+            128
+          ]
+        },
+        "charges": {
+          "o1": "2−",
+          "o2": "2−",
+          "o3": "2−",
+          "h1": "+",
+          "h2": "+"
+        },
+        "bonds": []
+      },
+      {
+        "durationMs": 2200,
+        "caption": "At the anode the oxide ions give up their electrons and combine with the aluminium itself, so the oxide film already there gets thicker from underneath. At the cathode the hydrogen ions collect electrons and bubble off as gas — nothing useful is happening on that side at all.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "al1": [
+            266,
+            64
+          ],
+          "al2": [
+            266,
+            126
+          ],
+          "o1": [
+            282,
+            54
+          ],
+          "o2": [
+            282,
+            136
+          ],
+          "o3": [
+            286,
+            95
+          ],
+          "h1": [
+            62,
+            60
+          ],
+          "h2": [
+            62,
+            120
+          ]
+        },
+        "charges": {},
+        "bonds": [
+          {
+            "from": "al1",
+            "to": "o1",
+            "type": "covalent"
+          },
+          {
+            "from": "al2",
+            "to": "o2",
+            "type": "covalent"
+          },
+          {
+            "from": "h1",
+            "to": "h2",
+            "type": "covalent"
+          }
+        ]
+      },
+      {
+        "durationMs": 2400,
+        "caption": "The film ends up perhaps a thousand times thicker than the one air alone would have made, and far harder to scratch. While it is growing it is slightly porous, so dye can be soaked into it and then sealed by boiling — which is where every coloured aluminium window frame, saucepan and phone case gets its colour.",
+        "positions": {
+          "cathode": [
+            36,
+            95
+          ],
+          "anode": [
+            304,
+            95
+          ],
+          "al1": [
+            258,
+            66
+          ],
+          "al2": [
+            258,
+            124
+          ],
+          "o1": [
+            286,
+            50
+          ],
+          "o2": [
+            286,
+            140
+          ],
+          "o3": [
+            290,
+            95
+          ],
+          "h1": [
+            56,
+            42
+          ],
+          "h2": [
+            74,
+            28
+          ]
+        },
+        "charges": {},
+        "bonds": [
+          {
+            "from": "al1",
+            "to": "o1",
+            "type": "covalent"
+          },
+          {
+            "from": "al2",
+            "to": "o2",
+            "type": "covalent"
+          },
+          {
+            "from": "h1",
+            "to": "h2",
+            "type": "covalent"
+          }
+        ]
+      }
+    ]
   }
 }
