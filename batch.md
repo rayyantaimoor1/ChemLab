@@ -75,7 +75,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 18 | `957e1de` | Lipids, enzymes and the biological tests |
 | 19 | `32e1359` | Nucleic acids — DNA against RNA |
 | 20 | `e877cd5` | The d-block in depth — chelation, geometry and catalysis |
-| 21 | `PENDING` | Group trends — the inert pair, and two trends that oppose |
+| 21 | `89f7139` | Group trends — the inert pair, and two trends that oppose |
 
 ## 5. Guided experiments (Phase 7)
 
