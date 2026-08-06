@@ -2424,7 +2424,7 @@
   },
   {
     "id": "rxn_halide_nacl_h2so4",
-    "reactants": ["h2so4_1m", "nacl_s"],
+    "reactants": ["h2so4_conc", "nacl_s"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nahso4_aq", "hcl_g"],
     "equation": "NaCl + H₂SO₄ → NaHSO₄ + HCl",
@@ -2453,7 +2453,7 @@
   },
   {
     "id": "rxn_halide_nabr_h2so4",
-    "reactants": ["h2so4_1m", "nabr_s"],
+    "reactants": ["h2so4_conc", "nabr_s"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nahso4_aq", "br2_aq", "so2_g", "water"],
     "equation": "2NaBr + 3H₂SO₄ → 2NaHSO₄ + Br₂ + SO₂ + 2H₂O",
@@ -2482,7 +2482,7 @@
   },
   {
     "id": "rxn_halide_nai_h2so4",
-    "reactants": ["h2so4_1m", "nai_s"],
+    "reactants": ["h2so4_conc", "nai_s"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nahso4_aq", "i2_aq", "h2s_g", "water"],
     "equation": "8NaI + 9H₂SO₄ → 8NaHSO₄ + 4I₂ + H₂S + 4H₂O",
@@ -3155,7 +3155,7 @@
   },
   {
     "id": "rxn_sulfonation_benzene",
-    "reactants": ["c6h6_l", "h2so4_1m"],
+    "reactants": ["c6h6_l", "h2so4_conc"],
     "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
     "products": ["c6h5so3h_aq", "water"],
     "equation": "C₆H₆ + H₂SO₄ → C₆H₅SO₃H + H₂O",
@@ -3323,7 +3323,7 @@
   },
   {
     "id": "rxn_dehydration_ethanol",
-    "reactants": ["c2h5oh_aq", "h2so4_1m"],
+    "reactants": ["c2h5oh_aq", "h2so4_conc"],
     "conditions": { "requiresHeat": true, "minTempC": 170, "catalyst": null },
     "products": ["c2h4_g", "water"],
     "equation": "C₂H₅OH → C₂H₄ + H₂O",
@@ -3544,7 +3544,7 @@
   {
     "id": "rxn_esterification",
     "reactants": ["c2h5oh_aq", "ch3cooh_aq"],
-    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "h2so4_1m" },
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "h2so4_conc" },
     "products": ["ester_l", "water"],
     "equation": "CH₃COOH + C₂H₅OH ⇌ CH₃COOC₂H₅ + H₂O",
     "type": "esterification",
@@ -8031,5 +8031,37 @@
     "explanation": "An intense purple on warming, and the nitrogen in that purple dye came out of the amino acid — the reagent strips the amino group and builds it into a coloured molecule, which is why the colour is evidence. Compare with the biuret test, which needs peptide BONDS and therefore finds whole proteins: ninhydrin finds free amino acids instead, so the two tests answer different questions. It is sensitive enough to develop the amino acids left behind in a fingerprint, which is what forensic laboratories use it for.",
     "levels": ["bs"],
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the ninhydrin reaction"
+  },
+  {
+    "id": "rxn_none_nacl_dilute_h2so4",
+    "reactants": ["nacl_s", "h2so4_1m"],
+    "noReaction": true,
+    "explanation": "The salt dissolves and nothing else happens — no misty fumes, no gas. Reach for the CONCENTRATED acid instead. Dilute sulfuric acid is mostly water, so any hydrogen chloride formed simply stays dissolved in it rather than leaving as a gas, and there is nothing to see. The whole halide test depends on the acid being concentrated, and this tube is what proves it.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the halides with sulfuric acid"
+  },
+  {
+    "id": "rxn_none_nabr_dilute_h2so4",
+    "reactants": ["nabr_s", "h2so4_1m"],
+    "noReaction": true,
+    "explanation": "Nothing again, and this one matters more than the chloride. With concentrated acid the bromide reduces the sulfur and the tube fills with brown bromine vapour; with dilute acid there is no oxidising power to speak of and no colour at all. The trend the three halides exist to demonstrate — chloride displaced, bromide oxidised, iodide oxidised further — is a property of CONCENTRATED sulfuric acid, and vanishes entirely without it.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the halides with sulfuric acid"
+  },
+  {
+    "id": "rxn_none_nai_dilute_h2so4",
+    "reactants": ["nai_s", "h2so4_1m"],
+    "noReaction": true,
+    "explanation": "No purple vapour, no smell of bad eggs, nothing. Iodide is the strongest reducing agent of the three halides and it still cannot do anything here, because dilute sulfuric acid is not an oxidising agent — concentrated sulfuric acid is. Swap the reagent and this same tube produces the most dramatic result of the three.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the halides with sulfuric acid"
+  },
+  {
+    "id": "rxn_none_esterification_dilute",
+    "reactants": ["c2h5oh_aq", "ch3cooh_aq", "h2so4_1m"],
+    "noReaction": true,
+    "explanation": "No smell of pear drops, however long it is warmed. A trace of ester does form — dilute acid supplies hydrogen ions and they do catalyse the reaction — but esterification is an equilibrium that gives off water, and dilute acid brings a great deal of water with it, so the equilibrium sits far over on the left and there is nothing to notice. Concentrated sulfuric acid works because it takes that water OUT, which is a quite different job from supplying protons. Use it instead and the smell is unmistakable.",
+    "levels": ["fsc", "bs"],
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Fischer esterification and the role of the acid"
   }
 ]

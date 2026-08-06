@@ -146,24 +146,7 @@ has not been asked for yet:
   both silver and lead precipitates only one, because a reactant is
   consumed exactly once per resolution rather than by concentration. Same
   root cause blocks a real quantitative titration (§8 below).
-- **Four more rules name dilute sulfuric acid where the chemistry needs it
-  concentrated.** The three nitration rules were switched to `hno3_conc` +
-  `h2so4_conc` on the owner's instruction after batch BS-18; the same
-  audit found these still using `h2so4_1m`:
-  - `rxn_halide_nacl_h2so4`, `rxn_halide_nabr_h2so4`,
-    `rxn_halide_nai_h2so4` — the whole point of this test is that
-    CONCENTRATED sulfuric acid oxidises HBr and HI and merely displaces
-    HCl. Dilute acid would do none of it, so the trend the three rules
-    exist to teach depends on the reagent being concentrated.
-  - `rxn_sulfonation_benzene` — needs concentrated or fuming acid.
-  - `rxn_dehydration_ethanol` — needs concentrated acid at ~170 °C.
-  - `rxn_esterification` — its `catalyst` is concentrated acid, acting as
-    a dehydrating agent rather than as a proton source.
-
-  Left alone pending a decision, exactly as the nitration rules were.
-  Everything else in the dilute-acid list is genuinely dilute
-  (neutralisations, zinc displacement, acid rain, the dichromate and
-  permanganate oxidations) and should stay as it is.
+*(The dilute-acid audit that used to sit here is finished — see §9.)*
 
 ## 8. Remaining / planned batches
 
@@ -200,3 +183,39 @@ not a content-writing problem:
 
 *Add a new row (or a new `##` section for a new level/phase) at the end of
 each batch, and update the snapshot line under the title.*
+
+## 9. The dilute/concentrated acid audit
+
+Adding concentrated sulfuric acid (batch BS-15) and concentrated nitric
+acid (batch BS-18) exposed a set of older rules that named the dilute
+reagents because the concentrated ones did not exist when they were
+written. In several the *prose was already correct* — the benzene
+nitration hazard block has always said "the concentrated acid mixture" —
+so only the reagent ids disagreed with what the rules were teaching.
+
+Switched, on the owner's instruction:
+
+| Rule | Why concentrated is required |
+|---|---|
+| `rxn_nitration_benzene` | generating NO₂⁺ gives off water, so dilute acid never produces the electrophile |
+| `rxn_nitration_toluene` | same |
+| `rxn_nitration_nitrobenzene` | same |
+| `rxn_halide_nacl_h2so4` | HCl only leaves as a gas if there is little water to dissolve it |
+| `rxn_halide_nabr_h2so4` | **the trend depends on it** — only concentrated acid oxidises |
+| `rxn_halide_nai_h2so4` | same, and most dramatically |
+| `rxn_sulfonation_benzene` | needs concentrated or fuming acid |
+| `rxn_dehydration_ethanol` | needs concentrated acid at ~170 °C |
+| `rxn_esterification` (catalyst) | it removes water; supplying protons is a different job |
+
+Switching these left a student who reaches for the wrong bottle with an
+"isn't available in this version yet" dead end, so four `noReaction` rules
+were added to answer that properly — `rxn_none_nacl_dilute_h2so4`,
+`rxn_none_nabr_dilute_h2so4`, `rxn_none_nai_dilute_h2so4` and
+`rxn_none_esterification_dilute`. Each explains that the concentrated
+reagent is the one to use and why, which is the lesson the switch exists
+to teach.
+
+Deliberately **not** switched, because dilute is correct for them:
+neutralisations, zinc displacement, acid rain on marble, liming, the
+dichromate and permanganate oxidations of iron(II), ethanol oxidation to
+ethanal, dissolving vanadium(V) oxide, and the ammonium fertilisers.
