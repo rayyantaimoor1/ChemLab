@@ -7,8 +7,8 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **368 chemicals, 379 reactions
-> (66 of them `noReaction`), 18 guided experiments, 284 tests passing.**
+> Snapshot as of the last entry below: **375 chemicals, 389 reactions
+> (71 of them `noReaction`), 18 guided experiments, 284 tests passing.**
 
 ---
 
@@ -75,6 +75,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 18 | `957e1de` | Lipids, enzymes and the biological tests |
 | 19 | `32e1359` | Nucleic acids — DNA against RNA |
 | 20 | `e877cd5` | The d-block in depth — chelation, geometry and catalysis |
+| 21 | `PENDING` | Group trends — the inert pair, and two trends that oppose |
 
 ## 5. Guided experiments (Phase 7)
 
@@ -154,8 +155,9 @@ has not been asked for yet:
 
 Good fits for this engine, not yet written:
 
-- **Further halogen and Group trends** at BS depth, mirroring the Period 3
-  batch's approach.
+*(Nothing outstanding. Every topic identified as a good fit for this engine
+has now been written — batches BS-1 to BS-21. Further BS content is
+possible but would be extension rather than filling a known gap.)*
 
 Deliberately **not** forced into this engine — different tooling needed,
 not a content-writing problem:

@@ -1,0 +1,14 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tin(II) chloride: tin with only two chlorines and a lone pair, two electrons short of the +4 state it would rather be in">
+  <line x1="80" y1="50" x2="44" y2="76" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="50" x2="116" y2="76" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="50" r="16" fill="#8C9BA5" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="56" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#161A19">Sn</text>
+  <circle cx="44" cy="76" r="12" fill="#27AE60" stroke="#161A19" stroke-width="2"/>
+  <text x="44" y="81" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">Cl</text>
+  <circle cx="116" cy="76" r="12" fill="#27AE60" stroke="#161A19" stroke-width="2"/>
+  <text x="116" y="81" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">Cl</text>
+  <circle cx="80" cy="26" r="4" fill="#2C3E50"/>
+  <circle cx="92" cy="30" r="4" fill="#2C3E50"/>
+  <text x="80" y="100" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">the two dots are the pair tin gives away</text>
+  <text x="80" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">which is why tin(II) is a reducing agent</text>
+</svg>

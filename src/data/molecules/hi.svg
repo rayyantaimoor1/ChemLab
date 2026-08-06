@@ -1,0 +1,9 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hydrogen iodide: a small hydrogen bonded to a very large iodine, so the shared pair sits far from both nuclei and the bond is weak">
+  <line x1="46" y1="58" x2="106" y2="58" stroke="#161A19" stroke-width="2.5"/>
+  <circle cx="46" cy="58" r="9" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="46" y="61" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#161A19">H</text>
+  <circle cx="110" cy="58" r="20" fill="#8E44AD" stroke="#161A19" stroke-width="2"/>
+  <text x="110" y="66" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="bold" fill="#FFFFFF">I</text>
+  <text x="80" y="96" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">a long bond, and a weak one</text>
+  <text x="80" y="108" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">gentle heat is enough to pull it apart</text>
+</svg>

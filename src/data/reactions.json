@@ -8455,5 +8455,162 @@
     "explanation": "This is the reaction that explains why transition metals make such good catalysts. Persulfate and iodide are both NEGATIVE, so they repel one another and can barely meet, however favourable the reaction would be. Iron solves it by taking the two halves separately: iron(II) hands electrons to the persulfate and becomes iron(III), then iron(III) takes electrons from the iodide and becomes iron(II) again. Every step is now between opposite charges. The iron ends exactly as it began, and it could only do this because it has two oxidation states of similar stability — which is the d-block's defining trick. Add starch to see the iodine appear.",
     "levels": ["bs"],
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — catalysis by variable oxidation state"
+  },
+  {
+    "id": "rxn_none_ccl4_water",
+    "reactants": ["ccl4_l", "water_distilled"],
+    "noReaction": true,
+    "explanation": "Two layers, and nothing more — put this beside the silicon tetrachloride tube, which fumes violently with the same water. Both compounds are a Group 14 element with four chlorines, and both would release a great deal of energy by hydrolysing. The carbon one simply has no route in: a water molecule has to attach to the central atom before anything can happen, and carbon is small, crowded by its four chlorines, and has no spare orbitals to accept the water. Silicon is bigger and has them. This is the difference between a reaction being favourable and being possible.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hydrolysis of Group 14 tetrahalides"
+  },
+  {
+    "id": "rxn_sncl2_reduces_fe3",
+    "reactants": ["sncl2_aq", "fecl3_0_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["sncl4_aq", "fecl2_aq"],
+    "equation": "Sn²⁺ + 2Fe³⁺ → Sn⁴⁺ + 2Fe²⁺",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#C7E0C0",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 2.0
+    },
+    "hazard": null,
+    "explanation": "Yellow iron(III) fades to pale green iron(II), so the tin has given electrons away — tin(II) is a reducing agent. The reason is its position: tin sits high enough in Group 14 that +4 is the comfortable oxidation state, so tin(II) is two electrons away from where it would rather be and parts with them readily. Confirm the iron(II) with thiocyanate if you like: the blood red will be gone. Now try the same thing with lead(II).",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the inert pair effect"
+  },
+  {
+    "id": "rxn_none_pbcl2_reduces_fe3",
+    "reactants": ["pbcl2_aq", "fecl3_0_1m"],
+    "noReaction": true,
+    "explanation": "Nothing — the iron(III) stays exactly as yellow as it was, where tin(II) decolourised it at once. Lead is one row below tin, and by that point in the group the +2 state has become the settled one, so lead(II) has no reason to give anything up. The two outermost electrons that tin surrenders willingly are, in lead, held back and effectively out of use. Chemists call them the inert pair, and this tube is what the name is describing.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the inert pair effect"
+  },
+  {
+    "id": "rxn_pbo2_oxidises_hcl",
+    "reactants": ["pbo2_s", "hcl_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["pbcl2_s", "cl2_g", "water"],
+    "equation": "PbO₂ + 4HCl → PbCl₂ + Cl₂ + 2H₂O",
+    "type": "redox",
+    "effects": {
+      "colorToHex": "#F2F2F0",
+      "precipitate": "a white solid, where the dark brown powder used to be",
+      "dissolves": null,
+      "gas": "chlorine",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 8,
+      "resultPH": 1.0
+    },
+    "hazard": {
+      "severity": "high",
+      "type": "toxic_gas",
+      "title": "Chlorine is released, and lead compounds are cumulative poisons",
+      "warning": "Chlorine gas attacks the lungs and there is no safe way to sniff it. Lead compounds are absorbed and build up in the body over years — a small exposure that causes no symptoms today still counts.",
+      "visualEffect": "toxic_cloud",
+      "whatToDoInstead": "Fume cupboard, and lead waste to the labelled heavy metal container — never down the sink. Wash hands before eating, every time."
+    },
+    "explanation": "The dark brown powder goes white and choking green chlorine comes off — so lead(IV) has TAKEN electrons, from chloride ions that are not easy to oxidise. Set this beside the tin tube: tin(II) gave electrons away to climb to +4, and lead(IV) takes them to drop to +2. Same group, opposite direction, and both for the same reason. Going down Group 14 the lower oxidation state steadily becomes the stable one, which is why the roof of a church is lead(II) and never lead(IV).",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — lead(IV) as an oxidising agent"
+  },
+  {
+    "id": "rxn_group2_srco3_decomposition",
+    "reactants": ["srco3_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 1290, "catalyst": null },
+    "products": ["sro_s", "co2_g"],
+    "equation": "SrCO₃ →(1290 °C) SrO + CO₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "a white solid left behind",
+      "dissolves": null,
+      "gas": "carbon dioxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "explanation": "The third step of a trend worth running in order. Magnesium carbonate goes at about 350 °C, calcium at about 900, strontium needs nearly 1300 — the same reaction, needing steadily more heat down the group. The cause is the size of the metal ion: a small ion sits close to the carbonate and distorts it, weakening the bonds inside it, and a large ion barely disturbs it at all. Four carbonates, one property changing smoothly, and a single explanation for all of it.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal stability of Group 2 carbonates"
+  },
+  {
+    "id": "rxn_group2_baco3_decomposition",
+    "reactants": ["baco3_s"],
+    "conditions": { "requiresHeat": true, "minTempC": 1360, "catalyst": null },
+    "products": ["bao_s", "co2_g"],
+    "equation": "BaCO₃ →(1360 °C) BaO + CO₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "a white solid left behind",
+      "dissolves": null,
+      "gas": "carbon dioxide",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "explanation": "The most stubborn of the four, and the end of the trend: 350 °C, 900 °C, 1290 °C, 1360 °C going down the group. Barium has the largest ion of the four and pulls least on the carbonate next to it, so that carbonate holds together longest. Notice that this is a prediction as much as a measurement — knowing only the trend, you could have said before doing it that barium would need the most heat.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal stability of Group 2 carbonates"
+  },
+  {
+    "id": "rxn_none_bacl2_naoh",
+    "reactants": ["bacl2_0_1m", "naoh_1m"],
+    "noReaction": true,
+    "explanation": "No precipitate, and magnesium chloride in the next tube gives a thick white one with the same reagent. Group 2 hydroxides get MORE soluble going down, so magnesium hydroxide drops out and barium hydroxide stays dissolved — barium hydroxide is soluble enough to be used as a standard alkali. Hold that beside the sulfates, which go the other way entirely: magnesium sulfate is freely soluble and barium sulfate is the classic insoluble one. Two trends in the same group running in opposite directions is exactly why solubility has to be learnt rather than guessed.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — solubility trends in Group 2"
+  },
+  {
+    "id": "rxn_none_mgcl2_na2so4",
+    "reactants": ["mgcl2_aq", "na2so4_aq"],
+    "noReaction": true,
+    "explanation": "Nothing happens, because magnesium sulfate is freely soluble — it is Epsom salt, sold by the kilogram to dissolve in a bath. Now recall barium chloride with the same sodium sulfate: a dense white precipitate, the standard test for a sulfate. Same group, same reagent, opposite outcome, and going down the group the sulfates get steadily LESS soluble while the hydroxides get more so.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — solubility trends in Group 2"
+  },
+  {
+    "id": "rxn_decomposition_hi_heat",
+    "reactants": ["hi_g"],
+    "conditions": { "requiresHeat": true, "minTempC": 300, "catalyst": null },
+    "products": ["h2_g", "i2_g"],
+    "equation": "2HI →(heat) H₂ + I₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#9B59B6",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": "iodine",
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "explanation": "Violet vapour fills the tube — the colour that gave iodine its name, and the sign that the molecule has come apart. Going down the halogens the atoms get bigger, the shared pair sits further from both nuclei, and the bond weakens: H–F is almost unbreakable, H–Cl needs well over a thousand degrees, H–Br less, and H–I gives way at a temperature a school burner can reach. One trend in atomic size explains the whole series.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal stability of the hydrogen halides"
+  },
+  {
+    "id": "rxn_none_hcl_heated",
+    "reactants": ["hcl_g"],
+    "noReaction": true,
+    "explanation": "Heat it as hard as this laboratory allows and hydrogen chloride does not budge, while hydrogen iodide in the next tube fills with violet vapour at a few hundred degrees. Chlorine is a much smaller atom than iodine, so the shared pair is held close and tightly by both nuclei. Hydrogen chloride does decompose eventually — at temperatures no school furnace will reach — and the gap between the two tubes is a direct measure of how much bond strength changes down a group.",
+    "levels": ["bs"],
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal stability of the hydrogen halides"
   }
 ]

@@ -1,0 +1,11 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Strontium oxide: what remains after strontium carbonate has finally given up its carbon dioxide">
+  <circle cx="54" cy="58" r="17" fill="#5B8CA6" stroke="#161A19" stroke-width="2"/>
+  <text x="54" y="65" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">Sr</text>
+  <text x="66" y="36" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">2+</text>
+  <line x1="76" y1="58" x2="104" y2="58" stroke="#8A8A8A" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <circle cx="118" cy="58" r="13" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="118" y="63" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">O</text>
+  <text x="130" y="36" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">2-</text>
+  <text x="80" y="100" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">it took nearly 1300 C to get here</text>
+  <text x="80" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">because a big ion barely disturbs a carbonate</text>
+</svg>
