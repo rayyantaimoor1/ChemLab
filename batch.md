@@ -74,7 +74,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 17 | `0704e0a` | Flame tests — built as a **tool**, not reactions (see §6) |
 | 18 | `957e1de` | Lipids, enzymes and the biological tests |
 | 19 | `32e1359` | Nucleic acids — DNA against RNA |
-| 20 | `PENDING` | The d-block in depth — chelation, geometry and catalysis |
+| 20 | `e877cd5` | The d-block in depth — chelation, geometry and catalysis |
 
 ## 5. Guided experiments (Phase 7)
 
