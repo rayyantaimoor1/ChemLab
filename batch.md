@@ -71,7 +71,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 14 | `6fbfca7` | Electroplating and surface finishing |
 | 15 | `0f3635b` | Anion analysis — the confirmatory tests |
 | 16 | `b6b2941` | The remaining cation groups, and why the scheme is ordered as it is |
-| 17 | `PENDING` | Flame tests — built as a **tool**, not reactions (see §6) |
+| 17 | `0704e0a` | Flame tests — built as a **tool**, not reactions (see §6) |
 
 ## 5. Guided experiments (Phase 7)
 
