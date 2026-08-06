@@ -72,7 +72,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 15 | `0f3635b` | Anion analysis — the confirmatory tests |
 | 16 | `b6b2941` | The remaining cation groups, and why the scheme is ordered as it is |
 | 17 | `0704e0a` | Flame tests — built as a **tool**, not reactions (see §6) |
-| 18 | `PENDING` | Lipids, enzymes and the biological tests |
+| 18 | `957e1de` | Lipids, enzymes and the biological tests |
 
 ## 5. Guided experiments (Phase 7)
 
