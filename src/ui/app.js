@@ -59,7 +59,7 @@ const containers = [
 const containersById = new Map(containers.map((container) => [container.id, container]));
 
 const notebook = createNotebook();
-const tools = createTools({ getChemical: engine.getChemical });
+const tools = createTools({ getChemical: engine.getChemical, getFlameTest: engine.getFlameTest });
 const actions = createActions({
   getContainer: (id) => containersById.get(id),
   engine,

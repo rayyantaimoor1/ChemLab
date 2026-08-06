@@ -88,6 +88,7 @@ chemlab/
 │   │   ├── reactions.json
 │   │   ├── equipment.json
 │   │   ├── experiments.json
+│   │   ├── flame-tests.json  ← flame colour per element, read by tools.js
 │   │   └── molecules/        ← .mol files + 2D structure PNGs
 │   ├── ui/                   ← DOM, rendering, effects. Replaceable.
 │   │   ├── bench.js
@@ -276,6 +277,44 @@ correct response — never quantities, procedures, or anything that would help s
 }
 ```
 
+### Flame tests — `flame-tests.json`, and `flameElements` on a chemical
+
+A flame test is **a tool, not a reaction.** It reads what is in a vessel and
+reports a colour; it does not change anything, which is exactly §7's rule for
+tools. So it lives in `tools.js` beside the pH paper, not in `reactions.json`.
+
+Two curated pieces, because the tool is forbidden from working anything out
+for itself:
+
+```json
+// flame-tests.json — what each element does to a flame
+"sodium": {
+  "element": "sodium", "symbol": "Na",
+  "colorName": "golden yellow", "colorHex": "#F4B41A",
+  "note": "Intense, persistent, and the reason flame tests need care...",
+  "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed."
+}
+
+// chemicals.json — which of those an individual substance contains
+"flameElements": ["sodium"]
+```
+
+`flameElements` is an array because some substances carry two — soda-lime
+glass is sodium *and* calcium, Fehling's is copper *and* sodium.
+
+It would be very easy to read `"NaCl"` and deduce sodium. **The tool must
+never do this.** Guessing from a formula is inventing chemistry (§6.1), and
+it would go wrong the moment a formula was written unusually. No
+`flameElements`, no reading — the same contract as `conductivity`.
+
+Absence of a reading is a real result and is worded as one: most cations
+colour no flame at all, so the tool says the flame stayed blue and states
+plainly that this only rules out the seven elements it knows.
+
+Sodium is reported as **masking** other cations rather than silently winning.
+That is the whole reason cobalt-blue glass exists, and hiding it would remove
+the lesson.
+
 ### `experiments.json` (guided mode)
 
 ```json
@@ -355,9 +394,9 @@ owner has confirmed it. Each phase must leave the app in a working state.
 | **7** | Guided mode: experiment runner, step validation, hints | Two full experiments (titration + one precipitation) run end to end |
 | **8** | Content scale-up by level (Matric → FSc → BS) | Content added purely as JSON, zero engine changes needed |
 
-> **Phase 8 note — four approved engine changes.** Content has otherwise gone
+> **Phase 8 note — five approved engine changes.** Content has otherwise gone
 > in as pure JSON with `src/core/` untouched, exactly as the criterion asks.
-> Four exceptions were approved by the project owner, and all four share a
+> Five exceptions were approved by the project owner, and all five share a
 > shape: the data could not express something true, and faking it would have
 > taught something false.
 >
@@ -386,6 +425,16 @@ owner has confirmed it. Each phase must leave the app in a working state.
 >    the ice bath is a nicety. The vessel's heat setting therefore extends to
 >    −1, an ice bath — see §5. It is still one setting, so ice and flame
 >    cannot both be on.
+>
+> 5. **The flame test wire, in `tools.js`.** Group V ends with calcium,
+>    strontium and barium as three white carbonates that no solution test
+>    separates — the scheme genuinely cannot finish without a flame test.
+>    It went in as a **tool rather than a reaction**, because it reads a
+>    sample and changes nothing, which is §7's definition of a tool. Adding
+>    it as reactions would have been the wrong shape: a "reaction" that
+>    consumes nothing and produces nothing. Colours are curated in
+>    `flame-tests.json` and membership in `flameElements` per chemical; the
+>    tool never reads a cation off a formula. See §5.
 >
 > Each is a one-time capability addition. Content written after each one is
 > pure JSON again.

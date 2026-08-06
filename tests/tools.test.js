@@ -24,11 +24,43 @@ const testChemicals = {
   pure_liquid: { id: 'pure_liquid', name: 'Test pure liquid', state: 'liquid', pH: 7.0, conductivity: 'none' },
   metal: { id: 'metal', name: 'Test metal', state: 'solid', pH: null, conductivity: 'metallic' },
   uncharted: { id: 'uncharted', name: 'Uncharted substance', state: 'aqueous', pH: 3.0 },
+
+  // For the flame test wire. Note test_sodium_lookalike: its formula contains
+  // "Na" but it carries no flameElements, which is how we prove the tool reads
+  // curated data instead of parsing formulas.
+  test_sodium: {
+    id: 'test_sodium', name: 'Test sodium salt', formula: 'NaX', state: 'aqueous',
+    pH: 7.0, conductivity: 'strong', flameElements: ['sodium'],
+  },
+  test_potassium: {
+    id: 'test_potassium', name: 'Test potassium salt', formula: 'KX', state: 'aqueous',
+    pH: 7.0, conductivity: 'strong', flameElements: ['potassium'],
+  },
+  test_barium: {
+    id: 'test_barium', name: 'Test barium salt', formula: 'BaX2', state: 'aqueous',
+    pH: 7.0, conductivity: 'strong', flameElements: ['barium'],
+  },
+  test_both: {
+    id: 'test_both', name: 'Test mixed salt', formula: 'NaCuX', state: 'aqueous',
+    pH: 7.0, conductivity: 'strong', flameElements: ['sodium', 'copper'],
+  },
+  test_sodium_lookalike: {
+    id: 'test_sodium_lookalike', name: 'Test uncurated sodium salt', formula: 'NaZ',
+    state: 'aqueous', pH: 7.0, conductivity: 'strong',
+  },
+};
+
+const testFlameTests = {
+  sodium: { element: 'sodium', symbol: 'Na', colorName: 'golden yellow', colorHex: '#F4B41A', note: 'Intense and persistent.' },
+  potassium: { element: 'potassium', symbol: 'K', colorName: 'lilac', colorHex: '#B57EDC', note: 'Pale and easily lost.' },
+  barium: { element: 'barium', symbol: 'Ba', colorName: 'apple green', colorHex: '#7CB342', note: 'Unmistakable in Group V.' },
+  copper: { element: 'copper', symbol: 'Cu', colorName: 'blue-green', colorHex: '#2EC4B6', note: 'Vivid blue-green.' },
 };
 
 const getChemical = (id) => testChemicals[id] || null;
+const getFlameTest = (element) => testFlameTests[element] || null;
 
-const makeTools = () => createTools({ getChemical });
+const makeTools = () => createTools({ getChemical, getFlameTest });
 
 function vessel(options = {}) {
   return createContainer({ id: 'beaker_1', name: 'Beaker', capacityMl: 250, getChemical, ...options });
@@ -38,10 +70,13 @@ function vessel(options = {}) {
  * The tool set itself
  * ------------------------------------------------------------------ */
 
-test('all four tools from UI.md section 7 are present', () => {
+test('all four tools from UI.md section 7 are present, plus the flame test', () => {
   const ids = makeTools().listTools().map((tool) => tool.id);
 
-  assert.deepEqual(ids.sort(), [TOOL.CONDUCTIVITY, TOOL.LITMUS, TOOL.PH_PAPER, TOOL.THERMOMETER].sort());
+  assert.deepEqual(
+    ids.sort(),
+    [TOOL.CONDUCTIVITY, TOOL.LITMUS, TOOL.PH_PAPER, TOOL.THERMOMETER, TOOL.FLAME_TEST].sort()
+  );
 });
 
 test('dipping an unknown tool fails loudly', () => {
@@ -420,4 +455,140 @@ test('real distilled water is neutral on litmus and does not conduct', async () 
 
   assert.equal(tools.dip(TOOL.LITMUS, beaker.snapshot()).colorName, 'purple');
   assert.equal(tools.dip(TOOL.CONDUCTIVITY, beaker.snapshot()).value, 'none');
+});
+
+/* ------------------------------------------------------------------ *
+ * The flame test wire
+ *
+ * The tool exists because Group V ends with three white carbonates that
+ * no solution test separates. Its whole value depends on it never
+ * guessing, so that is what most of these tests check.
+ * ------------------------------------------------------------------ */
+
+test('a flame test on an empty vessel gives no reading', () => {
+  const reading = makeTools().dip(TOOL.FLAME_TEST, vessel().snapshot());
+
+  assert.equal(reading.hasReading, false);
+  assert.equal(reading.quantity, QUANTITY.CATION);
+  assert.match(reading.note, /empty/i);
+});
+
+test('a single flame-active cation is named as well as coloured', () => {
+  const beaker = vessel();
+  beaker.add('test_barium', 20);
+
+  const reading = makeTools().dip(TOOL.FLAME_TEST, beaker.snapshot());
+
+  assert.equal(reading.hasReading, true);
+  assert.equal(reading.value, 'barium');
+  assert.equal(reading.colorName, 'apple green');
+  assert.match(reading.colorHex, /^#[0-9A-F]{6}$/i);
+  // UI.md section 5: the colour must be named in the text, not just carried
+  // as a hex, and the student has to be told which cation it means.
+  assert.match(reading.text, /apple green/);
+  assert.match(reading.text, /barium/);
+});
+
+test('the flame test refuses to read a cation off a formula', () => {
+  // This substance is "NaZ" and has no curated flameElements. A tool that
+  // parsed formulas would report sodium; that is inventing chemistry, which
+  // CLAUDE.md section 6.1 forbids.
+  const beaker = vessel();
+  beaker.add('test_sodium_lookalike', 20);
+
+  const reading = makeTools().dip(TOOL.FLAME_TEST, beaker.snapshot());
+
+  assert.equal(reading.hasReading, false);
+  assert.doesNotMatch(reading.text, /sodium/i);
+  assert.doesNotMatch(reading.text, /yellow/i);
+});
+
+test('most cations colour no flame at all, and that is a real result', () => {
+  const beaker = vessel();
+  beaker.add('strong_acid', 20);
+
+  const reading = makeTools().dip(TOOL.FLAME_TEST, beaker.snapshot());
+
+  assert.equal(reading.hasReading, false);
+  assert.match(reading.text, /normal blue/);
+  // It must not be dressed up as a positive identification.
+  assert.match(reading.note, /rules out/i);
+});
+
+test("sodium's yellow is reported as masking a second cation, not silently dropped", () => {
+  const beaker = vessel();
+  beaker.add('test_sodium', 20);
+  beaker.add('test_potassium', 20);
+
+  const reading = makeTools().dip(TOOL.FLAME_TEST, beaker.snapshot());
+
+  assert.equal(reading.colorName, 'golden yellow');
+  assert.match(reading.text, /swamping/);
+  assert.match(reading.text, /lilac \(potassium\)/);
+  // The cobalt glass is the actual answer a student needs.
+  assert.match(reading.text, /cobalt glass/);
+});
+
+test('two cations that both colour a flame are reported as inseparable', () => {
+  const beaker = vessel();
+  beaker.add('test_barium', 20);
+  beaker.add('test_potassium', 20);
+
+  const reading = makeTools().dip(TOOL.FLAME_TEST, beaker.snapshot());
+
+  assert.match(reading.text, /overlap/);
+  assert.match(reading.note, /one cation at a time/);
+});
+
+test('one chemical carrying two flame-active cations reports both', () => {
+  const beaker = vessel();
+  beaker.add('test_both', 20);
+
+  const reading = makeTools().dip(TOOL.FLAME_TEST, beaker.snapshot());
+
+  assert.equal(reading.value, 'sodium+copper');
+  assert.match(reading.text, /blue-green \(copper\)/);
+});
+
+test('without curated flame data the tool reports nothing rather than guessing', () => {
+  const bare = createTools({ getChemical });
+  const beaker = vessel();
+  beaker.add('test_barium', 20);
+
+  const reading = bare.dip(TOOL.FLAME_TEST, beaker.snapshot());
+
+  assert.equal(reading.hasReading, false);
+});
+
+test('the real Group V carbonates are told apart only by their flame colours', async () => {
+  const { engine } = await import('../src/core/engine.js');
+  const tools = createTools({
+    getChemical: engine.getChemical,
+    getFlameTest: engine.getFlameTest,
+  });
+  const make = (id) => {
+    const tube = createContainer({
+      id: 'tube_1', name: 'Test tube', capacityMl: 25, getChemical: engine.getChemical,
+    });
+    tube.add(id, 5);
+    return tools.dip(TOOL.FLAME_TEST, tube.snapshot());
+  };
+
+  // All three look identical in the vessel — same white solid.
+  const colours = ['caco3_s', 'srco3_s', 'baco3_s'].map((id) => make(id).colorName);
+
+  assert.deepEqual(colours, ['brick red', 'scarlet', 'apple green']);
+  assert.equal(new Set(colours).size, 3, 'the flame test must separate all three');
+});
+
+test('a flame test does not change what is in the vessel', () => {
+  const beaker = vessel();
+  beaker.add('test_sodium', 30);
+  const before = beaker.snapshot();
+
+  makeTools().dip(TOOL.FLAME_TEST, before);
+
+  const after = beaker.snapshot();
+  assert.deepEqual(after.speciesIds, before.speciesIds);
+  assert.equal(after.volumeMl, before.volumeMl);
 });

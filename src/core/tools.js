@@ -1,6 +1,6 @@
 /**
- * tools.js — the measuring instruments: pH paper, thermometer, litmus paper
- * and a conductivity tester.
+ * tools.js — the measuring instruments: pH paper, thermometer, litmus paper,
+ * a conductivity tester and a flame test wire.
  *
  * WHY THIS FILE EXISTS
  * CLAUDE.md section 7 is blunt about it: "Tools read state, never modify it.
@@ -28,6 +28,12 @@
  *     in chemicals.json. This file will NOT guess whether something conducts
  *     from its state or formula - that would be inventing chemistry, which
  *     section 6.1 forbids. No field, no reading.
+ *   - The flame test works the same way, from a curated "flameElements" list
+ *     on each chemical and the colours in data/flame-tests.json. It would be
+ *     easy to read "NaCl" and deduce sodium; that is guessing from a formula
+ *     and this file does not do it. The colours live in a data file rather
+ *     than up here beside the pH scale because they are chemistry - what
+ *     sodium does - and not instrument calibration like the indicator bands.
  *
  * WHEN THERE IS NO ANSWER, SAY SO
  * Every reading can come back with hasReading: false. A pH meter that reads
@@ -38,12 +44,13 @@
  * NO DOM AND NO FILES. This folder is pure logic.
  */
 
-/** The four tools from UI.md section 7's inventory. */
+/** The tools from UI.md section 7's inventory, plus the flame test. */
 export const TOOL = {
   PH_PAPER: 'ph_paper',
   THERMOMETER: 'thermometer',
   LITMUS: 'litmus',
   CONDUCTIVITY: 'conductivity',
+  FLAME_TEST: 'flame_test',
 };
 
 /** What a reading is measuring, used to match an estimate against it. */
@@ -52,6 +59,7 @@ export const QUANTITY = {
   TEMPERATURE: 'temperature',
   ACIDITY: 'acidity',
   CONDUCTIVITY: 'conductivity',
+  CATION: 'cation',
 };
 
 /**
@@ -170,8 +178,10 @@ export const TOLERANCE = {
  *   Pass the engine's getChemical. Without it the conductivity tester has no
  *   curated data to read and will honestly report no reading.
  */
-export function createTools({ getChemical = null } = {}) {
+export function createTools({ getChemical = null, getFlameTest = null } = {}) {
   const lookup = (id) => (typeof getChemical === 'function' ? getChemical(id) : null);
+  const flameFor = (element) =>
+    typeof getFlameTest === 'function' ? getFlameTest(element) : null;
 
   const definitions = {
     [TOOL.PH_PAPER]: {
@@ -334,6 +344,85 @@ export function createTools({ getChemical = null } = {}) {
           ...base,
           value: reading.value,
           text: `Conductivity tester placed in ${snapshot.name}: ${reading.summary}. ${reading.detail}${caveat}`,
+        });
+      },
+    },
+
+    [TOOL.FLAME_TEST]: {
+      id: TOOL.FLAME_TEST,
+      name: 'Flame test wire',
+      quantity: QUANTITY.CATION,
+      read(snapshot) {
+        const base = {
+          toolId: TOOL.FLAME_TEST,
+          toolName: 'Flame test wire',
+          containerId: snapshot.id,
+          containerName: snapshot.name,
+          quantity: QUANTITY.CATION,
+        };
+
+        if (snapshot.speciesIds.length === 0) {
+          return makeReading({
+            ...base,
+            text: `Flame test on ${snapshot.name}: no reading available.`,
+            note: 'The vessel is empty.',
+          });
+        }
+
+        // Which cations colour a flame is curated per chemical, exactly as
+        // conductivity is. This tool will NOT read a formula and work out that
+        // NaCl contains sodium - that is guessing, and CLAUDE.md section 6.1
+        // forbids it. No curated flameElements, no reading.
+        const found = [];
+        for (const speciesId of snapshot.speciesIds) {
+          const chemical = lookup(speciesId);
+          const elements = Array.isArray(chemical?.flameElements) ? chemical.flameElements : [];
+          for (const element of elements) {
+            const entry = flameFor(element);
+            if (entry && !found.some((f) => f.element === entry.element)) found.push(entry);
+          }
+        }
+
+        if (found.length === 0) {
+          return makeReading({
+            ...base,
+            text: `Flame test on ${snapshot.name}: the flame stayed its normal blue.`,
+            note: 'Nothing in this vessel has a curated flame colour. Most cations give no flame colour at all, so this is a real result rather than missing data — but it only rules out the seven that do.',
+          });
+        }
+
+        // Sodium's yellow is so intense it genuinely hides everything else,
+        // which is why potassium is looked for through blue cobalt glass. That
+        // masking is real chemistry a student has to know, so it is reported
+        // rather than quietly resolved by picking a winner.
+        const sodium = found.find((f) => f.element === 'sodium');
+        const masked = sodium ? found.filter((f) => f.element !== 'sodium') : [];
+
+        const name = (f) => `${f.colorName} (${f.element})`;
+        let text;
+        if (found.length === 1) {
+          text = `Flame test on ${snapshot.name}: the flame burned ${found[0].colorName}, which is ${found[0].element}. ${found[0].note}`;
+        } else if (masked.length > 0) {
+          text =
+            `Flame test on ${snapshot.name}: the flame burned ${sodium.colorName} — sodium, and it is swamping ` +
+            `${masked.map(name).join(' and ')}. Sodium has to be filtered out with blue cobalt glass before anything else can be seen.`;
+        } else {
+          text =
+            `Flame test on ${snapshot.name}: more than one cation here colours a flame — ` +
+            `${found.map(name).join(', ')} — so the colours overlap and the test cannot separate them.`;
+        }
+
+        // The reported colour is the one actually dominating the flame.
+        const shown = sodium || found[0];
+        return makeReading({
+          ...base,
+          value: found.map((f) => f.element).join('+'),
+          colorHex: shown.colorHex,
+          colorName: shown.colorName,
+          text,
+          note: found.length > 1 && masked.length === 0
+            ? 'A flame test identifies one cation at a time. Separate the mixture first.'
+            : null,
         });
       },
     },

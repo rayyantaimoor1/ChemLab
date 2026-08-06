@@ -7830,5 +7830,27 @@
     "explanation": "The last cation in the scheme, and it needs its own reagent because nothing earlier would touch it. Look at what the precipitate contains: magnesium, ammonium AND phosphate, three different ions in one crystal, which is what makes the test specific rather than just another white solid. It forms slowly and crystalline rather than as a curd, so a glass rod scratched against the tube helps it start. The same compound is called struvite when it turns up in kidney stones and blocked sewers.",
     "levels": ["fsc", "bs"],
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group VI, confirmation of magnesium"
+  },
+  {
+    "id": "rxn_qa_group5_strontium",
+    "reactants": ["srcl2_0_1m", "nh42co3_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["srco3_s", "nh4cl_1m"],
+    "equation": "SrCl₂ + (NH₄)₂CO₃ → SrCO₃↓ + 2NH₄Cl",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "a white precipitate, identical to the calcium and barium ones",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 8.5
+    },
+    "hazard": null,
+    "explanation": "The third white precipitate of Group V, and with it the wet chemistry runs out of things to say. Calcium, strontium and barium all come down as white carbonates with the same reagent, they all look the same, and no further solution test separates them cleanly. This is the point in the scheme where a different KIND of test has to take over — hold each on a wire in a flame and they answer at once: brick red, scarlet, apple green.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group V"
   }
 ]

@@ -36,6 +36,7 @@
 
 import chemicalData from '../data/chemicals.json' with { type: 'json' };
 import reactionData from '../data/reactions.json' with { type: 'json' };
+import flameTestData from '../data/flame-tests.json' with { type: 'json' };
 
 /** The three outcomes from CLAUDE.md section 6.2. Never add a fourth. */
 export const OUTCOME = {
@@ -585,6 +586,14 @@ export function createEngine({
 
     /** Look up one reaction rule by its id. */
     getReaction: (id) => reactionsById.get(id) || null,
+
+    /**
+     * Look up the curated flame colour for one element, for the flame test
+     * wire in tools.js. Returns null for anything with no curated entry -
+     * most cations give no flame colour at all, and inventing one would be
+     * exactly the guessing section 6.1 forbids.
+     */
+    getFlameTest: (element) => flameTestData[element] || null,
 
     /** Everything currently loaded, products included. */
     getAllChemicals: () => chemicals,

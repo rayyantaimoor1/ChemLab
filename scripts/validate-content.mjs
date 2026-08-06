@@ -289,12 +289,51 @@ for (const chemical of chemicals) {
 }
 
 /* ------------------------------------------------------------------ *
+ * flame-tests.json — the flame test wire reads these (Phase 8)
+ *
+ * The tool refuses to guess a cation from a formula, so it depends
+ * entirely on these two things lining up: every element a chemical
+ * claims must have a curated colour, and every colour must carry a
+ * name as well as a hex (UI.md section 5).
+ * ------------------------------------------------------------------ */
+
+const flameTests = readJson('flame-tests.json') ?? {};
+
+for (const [key, entry] of Object.entries(flameTests)) {
+  for (const field of ['element', 'colorName', 'colorHex', 'note', 'source']) {
+    if (typeof entry[field] !== 'string' || entry[field].trim().length === 0) {
+      problems.push(`flame-tests.json ${key}: missing ${field}`);
+    }
+  }
+  if (entry.element !== key) {
+    problems.push(`flame-tests.json ${key}: element field says "${entry.element}"`);
+  }
+  if (entry.colorHex && !/^#[0-9A-Fa-f]{6}$/.test(entry.colorHex)) {
+    problems.push(`flame-tests.json ${key}: colorHex "${entry.colorHex}" is not a 6-digit hex`);
+  }
+}
+
+for (const chemical of chemicals) {
+  if (chemical.flameElements === undefined) continue;
+  if (!Array.isArray(chemical.flameElements) || chemical.flameElements.length === 0) {
+    problems.push(`${chemical.id}: flameElements must be a non-empty array`);
+    continue;
+  }
+  for (const element of chemical.flameElements) {
+    if (!flameTests[element]) {
+      problems.push(`${chemical.id}: flameElements names "${element}", which has no flame-tests.json entry`);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ *
  * Report
  * ------------------------------------------------------------------ */
 
 console.log('ChemLab content validation');
 console.log('='.repeat(60));
 console.log(`chemicals.json:   ${chemicals.length} entries`);
+console.log(`flame-tests.json: ${Object.keys(flameTests).length} elements, ${chemicals.filter((c) => c.flameElements).length} chemicals tagged`);
 console.log(`reactions.json:   ${reactions.length} entries (${reactions.filter((r) => r.noReaction).length} noReaction)`);
 console.log(`experiments.json: ${experiments.length} entries`);
 console.log(`molecules3d.json: ${Object.keys(molecules3d).length} entries`);

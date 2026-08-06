@@ -1,0 +1,58 @@
+{
+  "lithium": {
+    "element": "lithium",
+    "symbol": "Li",
+    "colorName": "crimson",
+    "colorHex": "#C62828",
+    "note": "Easily confused with strontium, which is very nearly the same red. If both are possible, the flame test alone will not settle it.",
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — flame tests"
+  },
+  "sodium": {
+    "element": "sodium",
+    "symbol": "Na",
+    "colorName": "golden yellow",
+    "colorHex": "#F4B41A",
+    "note": "Intense, persistent, and the reason flame tests need care: almost everything is contaminated with a trace of sodium, so a brief flicker of yellow means nothing. Only a strong, lasting yellow counts.",
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — flame tests"
+  },
+  "potassium": {
+    "element": "potassium",
+    "symbol": "K",
+    "colorName": "lilac",
+    "colorHex": "#B57EDC",
+    "note": "Pale and easily lost. Sodium's yellow drowns it completely, so potassium is looked for through blue cobalt glass, which absorbs yellow and lets the lilac through.",
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — flame tests"
+  },
+  "calcium": {
+    "element": "calcium",
+    "symbol": "Ca",
+    "colorName": "brick red",
+    "colorHex": "#C1440E",
+    "note": "Duller and more orange than the crimson of lithium or strontium. This is how calcium is separated from barium and strontium after Group V has brought all three down together.",
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — flame tests"
+  },
+  "strontium": {
+    "element": "strontium",
+    "symbol": "Sr",
+    "colorName": "scarlet",
+    "colorHex": "#D62828",
+    "note": "The red of distress flares and of red fireworks. Close enough to lithium's crimson that the two are genuinely hard to tell apart by eye.",
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — flame tests"
+  },
+  "barium": {
+    "element": "barium",
+    "symbol": "Ba",
+    "colorName": "apple green",
+    "colorHex": "#7CB342",
+    "note": "A pale yellowish green, and the only green in the alkaline earths — so within Group V it is unmistakable.",
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — flame tests"
+  },
+  "copper": {
+    "element": "copper",
+    "symbol": "Cu",
+    "colorName": "blue-green",
+    "colorHex": "#2EC4B6",
+    "note": "A vivid blue-green, deeper and bluer than barium's apple green. It is what makes a copper pipe flare turquoise in a fire.",
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — flame tests"
+  }
+}

@@ -7,8 +7,8 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **332 chemicals, 343 reactions
-> (54 of them `noReaction`), 18 guided experiments, 274 tests passing.**
+> Snapshot as of the last entry below: **334 chemicals, 344 reactions
+> (54 of them `noReaction`), 18 guided experiments, 284 tests passing.**
 
 ---
 
@@ -71,6 +71,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 14 | `6fbfca7` | Electroplating and surface finishing |
 | 15 | `0f3635b` | Anion analysis — the confirmatory tests |
 | 16 | `b6b2941` | The remaining cation groups, and why the scheme is ordered as it is |
+| 17 | `PENDING` | Flame tests — built as a **tool**, not reactions (see §6) |
 
 ## 5. Guided experiments (Phase 7)
 
@@ -113,6 +114,21 @@ and faking it would have taught something false. In commit order:
    could say a reaction needed heat and never that heat would stop one.
    Diazotisation forced this: above ~5 °C the diazonium salt decomposes
    faster than it forms. The vessel's heat setting now runs −1 (ice) to 3.
+7. **The flame test wire** (batch BS-17) — Group V ends with three white
+   carbonates that no solution test separates, so the scheme could not be
+   finished without one. Built as a TOOL rather than as reactions: it
+   reads a sample and changes nothing, which is §7's definition of a tool,
+   and modelling it as a reaction would have meant a "reaction" that
+   consumes nothing and produces nothing. Colours are curated in
+   `flame-tests.json`, membership in `flameElements` per chemical, and the
+   tool never reads a cation off a formula.
+
+One TEST was also tightened, in batch BS-15 — not an engine change, but
+worth recording next to these. "No two reactions claim the same set of
+reactants" was a flat uniqueness check; nitrous acid genuinely has two
+outcomes on the same reagents depending on temperature, so the test now
+allows a shared reactant set only when the temperature windows are
+provably disjoint.
 
 Each of these is recorded in `CLAUDE.md` §8's Phase 8 note as well — that
 is the authoritative copy; this list exists so the *order* and *reason* are
@@ -134,10 +150,6 @@ has not been asked for yet:
 
 Good fits for this engine, not yet written:
 
-- **Flame tests** — the one part of qualitative analysis batches BS-2, 15
-  and 16 did not reach. Worth deciding first whether a flame test is a
-  reaction at all or belongs with the measuring tools (pH paper,
-  thermometer), since it reads a sample rather than changing it.
 - **Biochemistry beyond carbohydrates/proteins** — lipids in more depth,
   nucleic acid components.
 - **Further halogen and Group trends** at BS depth, mirroring the Period 3
