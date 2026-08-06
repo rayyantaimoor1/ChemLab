@@ -7652,5 +7652,183 @@
     "explanation": "A colour no other common anion test produces, which is why this one has survived unchanged for over a century. Look at the equation rather than the colour, though: twelve molybdate ions assemble into a cage around a single phosphate, and the whole assembly is one ion. It is by far the largest species in this app. The reagent has to be made up in nitric acid because the cage only forms in strongly acidic conditions — in neutral solution the molybdate simply stays as molybdate and nothing happens.",
     "levels": ["bs"],
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — confirmation of phosphate"
+  },
+  {
+    "id": "rxn_qa_group3_aluminium",
+    "reactants": ["alcl3_aq", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["aloh3_s", "nh4cl_1m"],
+    "equation": "AlCl₃ + 3NH₄OH → Al(OH)₃↓ + 3NH₄Cl",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F2F4F2",
+      "precipitate": "a white gelatinous floc that settles very slowly",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 8.5
+    },
+    "hazard": null,
+    "explanation": "Group III with ammonia, and aluminium is the awkward member: the precipitate is a translucent jelly rather than a solid, so it clogs filter papers and traps other ions inside itself. That texture is diagnostic in its own right — no other cation in the scheme gives anything like it. Iron gives reddish brown here and chromium grey-green, so the three members of the group are told apart by colour alone at this stage.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group III"
+  },
+  {
+    "id": "rxn_qa_group3_chromium",
+    "reactants": ["cr2so43_aq", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["croh3_s"],
+    "equation": "Cr₂(SO₄)₃ + 6NH₄OH → 2Cr(OH)₃↓ + 3(NH₄)₂SO₄",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#6B8E7A",
+      "precipitate": "a grey-green precipitate",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 8.5
+    },
+    "hazard": null,
+    "explanation": "The third member of Group III, and the colour is the identification: iron reddish brown, chromium grey-green, aluminium a white jelly. All three come down together when ammonia is added, which is what makes them a group — a group in this scheme means nothing more than a set of ions that one reagent precipitates together, and separating them from each other is a later problem.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group III"
+  },
+  {
+    "id": "rxn_none_feoh3_naoh",
+    "reactants": ["feoh3_s", "naoh_1m"],
+    "noReaction": true,
+    "explanation": "The reddish brown precipitate does not budge in excess sodium hydroxide — and put this beside the aluminium hydroxide tube, which dissolves completely in the same reagent. That is how Group III is broken up. Aluminium hydroxide is amphoteric, meaning it reacts as an acid as readily as it reacts as a base, so a strong alkali dissolves it as aluminate. Iron(III) hydroxide is purely basic and has nothing to offer a base. One reagent, two behaviours, and the group is separated.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — separation within Group III"
+  },
+  {
+    "id": "rxn_qa_nickel_ammonia_unbuffered",
+    "reactants": ["nicl2_aq", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nioh2_s", "nh4cl_1m"],
+    "equation": "NiCl₂ + 2NH₄OH → Ni(OH)₂↓ + 2NH₄Cl",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#7FB069",
+      "precipitate": "a pale apple green precipitate",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 9.0
+    },
+    "hazard": null,
+    "explanation": "A precipitate appears — and in a real analysis this is a mistake, not a result. Nickel belongs to Group IV and should still be in solution at this stage; instead it has come down alongside the Group III hydroxides and ruined the separation. The cause is simply that ammonia on its own makes the solution too alkaline. Do it once deliberately, so that when it happens by accident the pale green is recognised for what it is.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — nickel hydroxide"
+  },
+  {
+    "id": "rxn_qa_nh4cl_suppresses_group4",
+    "reactants": ["nicl2_aq", "nh4oh_aq", "nh4cl_1m"],
+    "noReaction": true,
+    "explanation": "Add ammonium chloride first and the nickel stays in solution, where it belongs. This is the single most confusing instruction in the whole scheme and it is pure Le Chatelier: ammonia is a weak base sitting in equilibrium, and flooding the solution with ammonium ions from the salt pushes that equilibrium back, cutting the hydroxide concentration sharply. There is then just enough hydroxide to bring down the Group III hydroxides, which are far less soluble, and not enough for nickel, manganese or cobalt. The reagent has not changed — only its concentration has, and that is enough to make a separation.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the common ion effect in Group III separation"
+  },
+  {
+    "id": "rxn_none_mn_h2s_acid",
+    "reactants": ["mnso4_aq", "h2s_g"],
+    "noReaction": true,
+    "explanation": "Nothing — and copper in the next tube gives a heavy black precipitate with the same gas. That difference is the whole of the Group II/Group IV split. Hydrogen sulfide is a weak acid, so in acidic solution it barely ionises and the sulfide concentration is minute: only the least soluble sulfides, the Group II ones, can form. Manganese sulfide is far more soluble and needs a much higher sulfide concentration, which is why ammonia is added before Group IV is precipitated. Same gas, same metal, different pH, opposite result.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group II against Group IV"
+  },
+  {
+    "id": "rxn_qa_group4_manganese",
+    "reactants": ["mnso4_aq", "h2s_g", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mns_s"],
+    "equation": "MnSO₄ + H₂S + 2NH₄OH → MnS↓ + (NH₄)₂SO₄ + 2H₂O",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#E8C4A0",
+      "precipitate": "a soft buff pink precipitate",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 8.5
+    },
+    "hazard": null,
+    "explanation": "Make the solution alkaline and the same gas that did nothing a moment ago brings manganese down at once — ammonia removes the hydrogen ions, the weak acid ionises properly, and the sulfide concentration rises far enough for the more soluble sulfides to form. Manganese is then the easiest cation in the scheme to identify, because this buff pink is the only sulfide here that is not black.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group IV"
+  },
+  {
+    "id": "rxn_qa_group4_nickel_sulfide",
+    "reactants": ["nicl2_aq", "h2s_g", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nis_s"],
+    "equation": "NiCl₂ + H₂S + 2NH₄OH → NiS↓ + 2NH₄Cl + 2H₂O",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#1A1A1A",
+      "precipitate": "a black precipitate",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 8.5
+    },
+    "hazard": null,
+    "explanation": "Nickel joins manganese and cobalt in Group IV, but black is a far less useful answer than buff pink: cobalt sulfide looks exactly the same. This is where a group test stops and a specific test has to take over — dimethylglyoxime gives nickel a rose-red colour that nothing else in the scheme produces. A group narrows the field; only a specific reagent closes it.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group IV"
+  },
+  {
+    "id": "rxn_qa_group5_calcium",
+    "reactants": ["cacl2_aq", "nh42co3_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["caco3_s", "nh4cl_1m"],
+    "equation": "CaCl₂ + (NH₄)₂CO₃ → CaCO₃↓ + 2NH₄Cl",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F4F3EF",
+      "precipitate": "a white precipitate",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 8.5
+    },
+    "hazard": null,
+    "explanation": "Group V, and calcium behaves exactly as barium did — the whole group is white carbonates, so the group reagent identifies the group and nothing more. Telling calcium from barium and strontium afterwards is done by flame colour: brick red for calcium, apple green for barium, crimson for strontium. Note also which cation is NOT here. Magnesium is chemically very like calcium and yet stays in solution through this step, which is why it gets a group of its own at the end.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group V"
+  },
+  {
+    "id": "rxn_qa_group6_magnesium",
+    "reactants": ["mgcl2_aq", "na2hpo4_aq", "nh4oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["mgnh4po4_s"],
+    "equation": "MgCl₂ + Na₂HPO₄ + NH₄OH → MgNH₄PO₄↓ + 2NaCl + H₂O",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F7F5F0",
+      "precipitate": "a white crystalline precipitate, forming slowly",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 1,
+      "resultPH": 9.0
+    },
+    "hazard": null,
+    "explanation": "The last cation in the scheme, and it needs its own reagent because nothing earlier would touch it. Look at what the precipitate contains: magnesium, ammonium AND phosphate, three different ions in one crystal, which is what makes the test specific rather than just another white solid. It forms slowly and crystalline rather than as a curd, so a glass rod scratched against the tube helps it start. The same compound is called struvite when it turns up in kidney stones and blocked sewers.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group VI, confirmation of magnesium"
   }
 ]

@@ -1,0 +1,31 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Magnesium ammonium phosphate: three different ions built into one crystal - magnesium, ammonium and phosphate. That combination is what makes the test specific">
+  <circle cx="34" cy="56" r="14" fill="#86A17A" stroke="#161A19" stroke-width="2"/>
+  <text x="34" y="61" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">Mg</text>
+  <text x="44" y="38" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">2+</text>
+  <circle cx="80" cy="30" r="12" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="35" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF">N</text>
+  <text x="92" y="20" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">+</text>
+  <line x1="80" y1="30" x2="68" y2="20" stroke="#161A19" stroke-width="2"/>
+  <circle cx="68" cy="20" r="6" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="68" y="22" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#161A19">H</text>
+  <line x1="80" y1="30" x2="92" y2="20" stroke="#161A19" stroke-width="2"/>
+  <circle cx="92" cy="20" r="6" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="92" y="22" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#161A19">H</text>
+  <line x1="80" y1="30" x2="80" y2="44" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="44" r="6" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="46" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#161A19">H</text>
+  <line x1="120" y1="62" x2="120" y2="40" stroke="#161A19" stroke-width="2"/>
+  <line x1="120" y1="62" x2="102" y2="78" stroke="#161A19" stroke-width="2"/>
+  <line x1="120" y1="62" x2="138" y2="78" stroke="#161A19" stroke-width="2"/>
+  <circle cx="120" cy="62" r="13" fill="#D98E32" stroke="#161A19" stroke-width="2"/>
+  <text x="120" y="67" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">P</text>
+  <circle cx="120" cy="40" r="9" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="120" y="43" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="102" cy="78" r="9" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="102" y="81" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="138" cy="78" r="9" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="138" y="81" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <text x="138" y="48" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">3-</text>
+  <text x="80" y="104" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">THREE ions in one crystal</text>
+  <text x="80" y="115" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">which is why it identifies magnesium</text>
+</svg>

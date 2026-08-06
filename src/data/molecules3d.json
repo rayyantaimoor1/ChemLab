@@ -6690,5 +6690,84 @@
       { "from": "p", "to": "mo10", "type": "ionic" },
       { "from": "p", "to": "mo11", "type": "ionic" }
     ]
+  },
+  "nioh2_s": {
+    "note": "Nickel holding two hydroxides. The chemistry is unremarkable - what matters is WHEN it appears. Nickel is a Group IV cation and should still be dissolved while Group III is being precipitated, so seeing this pale green solid at that stage means the ammonium chloride was forgotten and the separation has already failed.",
+    "atoms": [
+      { "id": "m", "element": "Ni", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 2, "y": 0.4, "z": 0 },
+      { "id": "h1", "element": "H", "x": 2.9, "y": -0.3, "z": 0 },
+      { "id": "o2", "element": "O", "x": -2, "y": 0.4, "z": 0 },
+      { "id": "h2", "element": "H", "x": -2.9, "y": -0.3, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "m", "to": "o1", "type": "ionic" },
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "m", "to": "o2", "type": "ionic" },
+      { "from": "o2", "to": "h2", "type": "covalent" }
+    ]
+  },
+  "mns_s": {
+    "note": "Manganese and sulfide, one ion each. Worth looking at beside the black sulfides in this app, because the useful fact about this compound is not its structure but its colour: nearly every sulfide in the analysis scheme is black, and this soft buff pink is close to an identification on its own.",
+    "atoms": [
+      { "id": "mn", "element": "Mn", "x": -1.6, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 1.6, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "mn", "to": "s", "type": "ionic" }
+    ]
+  },
+  "nis_s": {
+    "note": "Nickel and sulfide. Structurally this is the same arrangement as manganese sulfide and it looks nothing like it - black rather than buff - which is a reminder that colour comes from how the electrons are arranged, not from how the ions are stacked. Cobalt sulfide is the same shape again, and also black, which is exactly the problem this precipitate leaves you with.",
+    "atoms": [
+      { "id": "ni", "element": "Ni", "x": -1.6, "y": 0, "z": 0 },
+      { "id": "s", "element": "S", "x": 1.6, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "ni", "to": "s", "type": "ionic" }
+    ]
+  },
+  "na2hpo4_aq": {
+    "note": "A phosphate tetrahedron with one hydrogen still attached. Ammonia takes that hydrogen off, which is why the magnesium test needs both reagents and not just this one - the fully stripped phosphate is what the magnesium and ammonium ions build into a crystal with.",
+    "atoms": [
+      { "id": "p", "element": "P", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.6, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.5, "y": -0.5, "z": 0.5 },
+      { "id": "o3", "element": "O", "x": -0.8, "y": -0.6, "z": 1.4 },
+      { "id": "o4", "element": "O", "x": -0.7, "y": -0.6, "z": -1.4 },
+      { "id": "h", "element": "H", "x": 0.6, "y": 2.4, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "p", "to": "o1", "type": "covalent" },
+      { "from": "p", "to": "o2", "type": "covalent" },
+      { "from": "p", "to": "o3", "type": "covalent" },
+      { "from": "p", "to": "o4", "type": "covalent" },
+      { "from": "o1", "to": "h", "type": "covalent" }
+    ]
+  },
+  "mgnh4po4_s": {
+    "note": "Count the distinct ions: a magnesium, an ammonium, and a phosphate - three different species locked into one crystal. That is what makes this a confirmation rather than just another white precipitate, because a solid needing three particular ions at once is far harder to produce by accident. The same compound is struvite, which forms in kidney stones and blocks sewage pipes.",
+    "atoms": [
+      { "id": "mg", "element": "Mg", "x": -3.4, "y": 0.4, "z": 0 },
+      { "id": "n", "element": "N", "x": 0.2, "y": 3, "z": 0 },
+      { "id": "nh1", "element": "H", "x": 1.1, "y": 3.5, "z": 0.3 },
+      { "id": "nh2", "element": "H", "x": -0.6, "y": 3.6, "z": 0.5 },
+      { "id": "nh3", "element": "H", "x": 0.1, "y": 2.9, "z": -1 },
+      { "id": "p", "element": "P", "x": 2.4, "y": -0.4, "z": 0 },
+      { "id": "o1", "element": "O", "x": 2.4, "y": 1.2, "z": 0 },
+      { "id": "o2", "element": "O", "x": 3.9, "y": -0.9, "z": 0.5 },
+      { "id": "o3", "element": "O", "x": 1.6, "y": -1, "z": 1.4 },
+      { "id": "o4", "element": "O", "x": 1.7, "y": -1, "z": -1.4 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "nh1", "type": "covalent" },
+      { "from": "n", "to": "nh2", "type": "covalent" },
+      { "from": "n", "to": "nh3", "type": "covalent" },
+      { "from": "p", "to": "o1", "type": "covalent" },
+      { "from": "p", "to": "o2", "type": "covalent" },
+      { "from": "p", "to": "o3", "type": "covalent" },
+      { "from": "p", "to": "o4", "type": "covalent" },
+      { "from": "mg", "to": "o3", "type": "ionic" }
+    ]
   }
 }

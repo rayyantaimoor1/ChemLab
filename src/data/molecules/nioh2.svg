@@ -1,0 +1,19 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nickel(II) hydroxide: a nickel ion holding two hydroxide groups. Pale green, and in a qualitative analysis an unwelcome sight, because nickel belongs to a later group">
+  <line x1="80" y1="58" x2="44" y2="44" stroke="#161A19" stroke-width="2"/>
+  <line x1="80" y1="58" x2="116" y2="44" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="58" r="17" fill="#8FA5A8" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="65" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#161A19">Ni</text>
+  <circle cx="44" cy="44" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="44" y="48" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="28" cy="32" r="7" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="28" y="35" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#161A19">H</text>
+  <line x1="44" y1="44" x2="28" y2="32" stroke="#161A19" stroke-width="2"/>
+  <circle cx="116" cy="44" r="11" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="116" y="48" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="132" cy="32" r="7" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="132" y="35" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#161A19">H</text>
+  <line x1="116" y1="44" x2="132" y2="32" stroke="#161A19" stroke-width="2"/>
+  <text x="92" y="84" font-family="sans-serif" font-size="11" font-weight="bold" fill="#161A19">2+</text>
+  <text x="80" y="104" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">green - and it should not be here yet</text>
+  <text x="80" y="115" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">if it is, the ammonium chloride was forgotten</text>
+</svg>
