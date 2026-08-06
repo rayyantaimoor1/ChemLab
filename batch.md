@@ -146,15 +146,24 @@ has not been asked for yet:
   both silver and lead precipitates only one, because a reactant is
   consumed exactly once per resolution rather than by concentration. Same
   root cause blocks a real quantitative titration (§8 below).
-- **Three nitration rules still name the dilute acids.**
-  `rxn_nitration_benzene`, `rxn_nitration_toluene` and
-  `rxn_nitration_nitrobenzene` were written before concentrated nitric and
-  sulfuric acid existed in the data, so they use `hno3_1m` + `h2so4_1m`.
-  Nitration genuinely needs both concentrated — there is otherwise far too
-  much water for NO₂⁺ to form. Batch BS-18 added
-  `rxn_nitration_benzene_conc` with the correct reagents and left the older
-  rules alone rather than quietly rewriting reviewed content. Worth the
-  owner deciding whether the three should be switched over.
+- **Four more rules name dilute sulfuric acid where the chemistry needs it
+  concentrated.** The three nitration rules were switched to `hno3_conc` +
+  `h2so4_conc` on the owner's instruction after batch BS-18; the same
+  audit found these still using `h2so4_1m`:
+  - `rxn_halide_nacl_h2so4`, `rxn_halide_nabr_h2so4`,
+    `rxn_halide_nai_h2so4` — the whole point of this test is that
+    CONCENTRATED sulfuric acid oxidises HBr and HI and merely displaces
+    HCl. Dilute acid would do none of it, so the trend the three rules
+    exist to teach depends on the reagent being concentrated.
+  - `rxn_sulfonation_benzene` — needs concentrated or fuming acid.
+  - `rxn_dehydration_ethanol` — needs concentrated acid at ~170 °C.
+  - `rxn_esterification` — its `catalyst` is concentrated acid, acting as
+    a dehydrating agent rather than as a proton source.
+
+  Left alone pending a decision, exactly as the nitration rules were.
+  Everything else in the dilute-acid list is genuinely dilute
+  (neutralisations, zinc displacement, acid rain, the dichromate and
+  permanganate oxidations) and should stay as it is.
 
 ## 8. Remaining / planned batches
 

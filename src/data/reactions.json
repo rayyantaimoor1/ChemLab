@@ -3126,8 +3126,8 @@
   },
   {
     "id": "rxn_nitration_benzene",
-    "reactants": ["c6h6_l", "hno3_1m", "h2so4_1m"],
-    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "reactants": ["c6h6_l", "hno3_conc", "h2so4_conc"],
+    "conditions": { "requiresHeat": true, "minTempC": 50, "catalyst": null },
     "products": ["c6h5no2_l", "water"],
     "equation": "C₆H₆ + HNO₃ → C₆H₅NO₂ + H₂O",
     "type": "substitution",
@@ -3149,7 +3149,7 @@
       "whatToDoInstead": "Fume cupboard, gloves and eye protection throughout, and the temperature held below 60 °C in a water bath — a runaway here can produce dinitrobenzene explosively. Never judge nitrobenzene safe because it smells sweet."
     },
     "molecularAnimation": null,
-    "explanation": "Nitration, and the reaction that founded the synthetic dye and explosives industries. Sulfuric acid's job is to take a hydrogen from the nitric acid and generate the nitronium ion, which is what actually attacks the ring — the nitric acid alone is not reactive enough. Note that once again the ring survives: a hydrogen is substituted and the delocalised system is left whole. Nitrobenzene goes on to become aniline and from there most of the early synthetic dyes.",
+    "explanation": "Nitration, and the reaction that founded the synthetic dye and explosives industries. Sulfuric acid's job is to take a hydrogen from the nitric acid and generate the nitronium ion, which is what actually attacks the ring — the nitric acid alone is not reactive enough. Both acids must be CONCENTRATED for that to work: the step throws off water, so dilute acids leave far too much of it about and the equilibrium never delivers any nitronium ion. Note that once again the ring survives: a hydrogen is substituted and the delocalised system is left whole. Nitrobenzene goes on to become aniline and from there most of the early synthetic dyes.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, nitration of benzene"
   },
@@ -5044,7 +5044,7 @@
   },
   {
     "id": "rxn_nitration_toluene",
-    "reactants": ["h2so4_1m", "hno3_1m", "toluene_l"],
+    "reactants": ["h2so4_conc", "hno3_conc", "toluene_l"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nitrotoluene_l", "water"],
     "equation": "C₆H₅CH₃ + HNO₃ →(H₂SO₄) C₆H₄(CH₃)NO₂ + H₂O",
@@ -5073,7 +5073,7 @@
   },
   {
     "id": "rxn_nitration_nitrobenzene",
-    "reactants": ["c6h5no2_l", "h2so4_1m", "hno3_1m"],
+    "reactants": ["c6h5no2_l", "h2so4_conc", "hno3_conc"],
     "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
     "products": ["dinitrobenzene_s", "water"],
     "equation": "C₆H₅NO₂ + HNO₃ →(H₂SO₄, heat) 1,3-C₆H₄(NO₂)₂ + H₂O",
@@ -8009,28 +8009,6 @@
     "explanation": "A bright yellow, and it is nitration — the very same reaction that turns benzene into nitrobenzene, happening here on the aromatic rings of tyrosine and tryptophan inside the protein. So this is a narrower result than the biuret test: yellow means those particular amino acids are present, not merely that some protein is. It is also the reason nitric acid stains skin and fingernails yellow. The acid is nitrating you, by this exact reaction.",
     "levels": ["fsc", "bs"],
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the xanthoproteic test"
-  },
-  {
-    "id": "rxn_nitration_benzene_conc",
-    "reactants": ["c6h6_l", "hno3_conc", "h2so4_conc"],
-    "conditions": { "requiresHeat": true, "minTempC": 50, "catalyst": null },
-    "products": ["c6h5no2_l", "water"],
-    "equation": "C₆H₆ + HNO₃ →(conc H₂SO₄, 50 °C) C₆H₅NO₂ + H₂O",
-    "type": "electrophilic_substitution",
-    "effects": {
-      "colorToHex": "#E8C547",
-      "precipitate": null,
-      "dissolves": null,
-      "gas": null,
-      "bubbles": false,
-      "smoke": false,
-      "tempDeltaC": 20,
-      "resultPH": 1.0
-    },
-    "hazard": null,
-    "explanation": "Nitration done with the reagents it actually requires: both acids CONCENTRATED, and the temperature held near 50 °C. The sulfuric acid is not there as a second acid but to force a proton onto the nitric acid so it sheds water and leaves NO₂⁺, the electrophile that attacks the ring. Dilute acids cannot do this — there is far too much water about, and the equilibrium sits the wrong way. This is the same nitration that turns a protein yellow in the xanthoproteic test, and the same reason concentrated nitric acid stains skin.",
-    "levels": ["fsc", "bs"],
-    "source": "Vogel's Textbook of Practical Organic Chemistry, 5th ed. — nitration of benzene"
   },
   {
     "id": "rxn_ninhydrin_glycine",
