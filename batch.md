@@ -7,8 +7,8 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **334 chemicals, 344 reactions
-> (54 of them `noReaction`), 18 guided experiments, 284 tests passing.**
+> Snapshot as of the last entry below: **345 chemicals, 355 reactions
+> (57 of them `noReaction`), 18 guided experiments, 284 tests passing.**
 
 ---
 
@@ -72,6 +72,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 15 | `0f3635b` | Anion analysis — the confirmatory tests |
 | 16 | `b6b2941` | The remaining cation groups, and why the scheme is ordered as it is |
 | 17 | `0704e0a` | Flame tests — built as a **tool**, not reactions (see §6) |
+| 18 | `PENDING` | Lipids, enzymes and the biological tests |
 
 ## 5. Guided experiments (Phase 7)
 
@@ -145,13 +146,23 @@ has not been asked for yet:
   both silver and lead precipitates only one, because a reactant is
   consumed exactly once per resolution rather than by concentration. Same
   root cause blocks a real quantitative titration (§8 below).
+- **Three nitration rules still name the dilute acids.**
+  `rxn_nitration_benzene`, `rxn_nitration_toluene` and
+  `rxn_nitration_nitrobenzene` were written before concentrated nitric and
+  sulfuric acid existed in the data, so they use `hno3_1m` + `h2so4_1m`.
+  Nitration genuinely needs both concentrated — there is otherwise far too
+  much water for NO₂⁺ to form. Batch BS-18 added
+  `rxn_nitration_benzene_conc` with the correct reagents and left the older
+  rules alone rather than quietly rewriting reviewed content. Worth the
+  owner deciding whether the three should be switched over.
 
 ## 8. Remaining / planned batches
 
 Good fits for this engine, not yet written:
 
-- **Biochemistry beyond carbohydrates/proteins** — lipids in more depth,
-  nucleic acid components.
+- **Nucleic acids** — the one part of biochemistry batch BS-18 did not
+  reach: deoxyribose and ribose, the bases, and the Dische and Bial
+  colour tests.
 - **Further halogen and Group trends** at BS depth, mirroring the Period 3
   batch's approach.
 - **The d-block in more depth** — complex ion shapes and colours beyond the

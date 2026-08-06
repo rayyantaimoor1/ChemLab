@@ -1,0 +1,28 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sudan III: an azo dye with two nitrogen atoms double-bonded together, joining aromatic rings. It dissolves in fat and not in water, which is the whole basis of the test">
+  <line x1="34" y1="39" x2="48.722431864335455" y2="47.5" stroke="#161A19" stroke-width="2"/>
+  <line x1="48.722431864335455" y1="47.5" x2="48.72243186433546" y2="64.5" stroke="#161A19" stroke-width="2"/>
+  <line x1="48.72243186433546" y1="64.5" x2="34" y2="73" stroke="#161A19" stroke-width="2"/>
+  <line x1="34" y1="73" x2="19.277568135664545" y2="64.5" stroke="#161A19" stroke-width="2"/>
+  <line x1="19.277568135664545" y1="64.5" x2="19.277568135664538" y2="47.500000000000014" stroke="#161A19" stroke-width="2"/>
+  <line x1="19.277568135664538" y1="47.500000000000014" x2="34" y2="39" stroke="#161A19" stroke-width="2"/>
+  <circle cx="34" cy="56" r="11" fill="none" stroke="#161A19" stroke-width="1.5"/>
+  <line x1="51" y1="56" x2="66" y2="56" stroke="#161A19" stroke-width="2"/>
+  <circle cx="72" cy="56" r="9" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="72" y="59" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="90" cy="56" r="9" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="90" y="59" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">N</text>
+  <line x1="78" y1="54" x2="84" y2="54" stroke="#161A19" stroke-width="2"/>
+  <line x1="78" y1="58" x2="84" y2="58" stroke="#161A19" stroke-width="2"/>
+  <line x1="96" y1="56" x2="108" y2="56" stroke="#161A19" stroke-width="2"/>
+  <line x1="126" y1="39" x2="140.72243186433545" y2="47.5" stroke="#161A19" stroke-width="2"/>
+  <line x1="140.72243186433545" y1="47.5" x2="140.72243186433545" y2="64.5" stroke="#161A19" stroke-width="2"/>
+  <line x1="140.72243186433545" y1="64.5" x2="126" y2="73" stroke="#161A19" stroke-width="2"/>
+  <line x1="126" y1="73" x2="111.27756813566455" y2="64.5" stroke="#161A19" stroke-width="2"/>
+  <line x1="111.27756813566455" y1="64.5" x2="111.27756813566454" y2="47.500000000000014" stroke="#161A19" stroke-width="2"/>
+  <line x1="111.27756813566454" y1="47.500000000000014" x2="126" y2="39" stroke="#161A19" stroke-width="2"/>
+  <circle cx="126" cy="56" r="11" fill="none" stroke="#161A19" stroke-width="1.5"/>
+  <circle cx="126" cy="30" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="126" y="33" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <text x="80" y="96" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">an azo dye - and it does not react with anything</text>
+  <text x="80" y="108" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">it just dissolves in fat and not in water</text>
+</svg>

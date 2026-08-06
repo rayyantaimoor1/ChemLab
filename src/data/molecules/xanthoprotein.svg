@@ -1,0 +1,21 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A protein aromatic side chain after nitration: a nitro group has been substituted onto the ring, and that is what the yellow colour is">
+  <line x1="64" y1="38" x2="81.32050807568876" y2="48" stroke="#161A19" stroke-width="2"/>
+  <line x1="81.32050807568876" y1="48" x2="81.32050807568878" y2="68" stroke="#161A19" stroke-width="2"/>
+  <line x1="81.32050807568878" y1="68" x2="64" y2="78" stroke="#161A19" stroke-width="2"/>
+  <line x1="64" y1="78" x2="46.67949192431123" y2="68" stroke="#161A19" stroke-width="2"/>
+  <line x1="46.67949192431123" y1="68" x2="46.67949192431122" y2="48.000000000000014" stroke="#161A19" stroke-width="2"/>
+  <line x1="46.67949192431122" y1="48.000000000000014" x2="64" y2="38" stroke="#161A19" stroke-width="2"/>
+  <circle cx="64" cy="58" r="14" fill="none" stroke="#161A19" stroke-width="1.5"/>
+  <line x1="84" y1="58" x2="100" y2="58" stroke="#161A19" stroke-width="2"/>
+  <circle cx="106" cy="58" r="10" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="106" y="62" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="124" cy="46" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="124" y="49" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="124" cy="70" r="8" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="124" y="73" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <line x1="106" y1="58" x2="124" y2="70" stroke="#161A19" stroke-width="2"/>
+  <line x1="112" y1="52" x2="120" y2="46" stroke="#161A19" stroke-width="2"/>
+  <line x1="112" y1="56" x2="120" y2="50" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="96" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">the same nitration that makes nitrobenzene</text>
+  <text x="80" y="108" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">happening on tyrosine inside the protein</text>
+</svg>

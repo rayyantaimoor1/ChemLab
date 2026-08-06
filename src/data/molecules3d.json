@@ -6797,5 +6797,294 @@
       { "from": "c", "to": "o3", "type": "covalent" },
       { "from": "sr", "to": "o3", "type": "ionic" }
     ]
+  },
+  "sudan3_aq": {
+    "note": "An azo dye: two aromatic rings joined by a nitrogen-nitrogen double bond. Nothing here reacts with a lipid at all. The molecule is almost entirely carbon and hydrogen, so it mixes happily with fat and not with water, and the test works purely because the dye goes where it dissolves.",
+    "atoms": [
+      { "id": "a0", "element": "C", "x": -3.1999999999999997, "y": 0, "z": 0 },
+      { "id": "a1", "element": "C", "x": -3.8999999999999995, "y": 1.212435565298214, "z": 0 },
+      { "id": "a2", "element": "C", "x": -5.299999999999999, "y": 1.2124355652982142, "z": 0 },
+      { "id": "a3", "element": "C", "x": -6, "y": 1.7145055188062944e-16, "z": 0 },
+      { "id": "a4", "element": "C", "x": -5.300000000000001, "y": -1.2124355652982137, "z": 0 },
+      { "id": "a5", "element": "C", "x": -3.9000000000000004, "y": -1.2124355652982146, "z": 0 },
+      { "id": "n1", "element": "N", "x": -1.6, "y": 0, "z": 0 },
+      { "id": "n2", "element": "N", "x": -0.3, "y": 0, "z": 0 },
+      { "id": "b0", "element": "C", "x": 4.3, "y": 0, "z": 0 },
+      { "id": "b1", "element": "C", "x": 3.6, "y": 1.212435565298214, "z": 0 },
+      { "id": "b2", "element": "C", "x": 2.2, "y": 1.2124355652982142, "z": 0 },
+      { "id": "b3", "element": "C", "x": 1.5, "y": 1.7145055188062944e-16, "z": 0 },
+      { "id": "b4", "element": "C", "x": 2.1999999999999993, "y": -1.2124355652982137, "z": 0 },
+      { "id": "b5", "element": "C", "x": 3.5999999999999988, "y": -1.2124355652982146, "z": 0 },
+      { "id": "o", "element": "O", "x": 6.6, "y": 1.6, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "a0", "to": "a1", "type": "covalent" },
+      { "from": "a1", "to": "a2", "type": "covalent" },
+      { "from": "a2", "to": "a3", "type": "covalent" },
+      { "from": "a3", "to": "a4", "type": "covalent" },
+      { "from": "a4", "to": "a5", "type": "covalent" },
+      { "from": "a5", "to": "a0", "type": "covalent" },
+      { "from": "a0", "to": "n1", "type": "covalent" },
+      { "from": "n1", "to": "n2", "type": "covalent" },
+      { "from": "n2", "to": "b3", "type": "covalent" },
+      { "from": "b0", "to": "b1", "type": "covalent" },
+      { "from": "b1", "to": "b2", "type": "covalent" },
+      { "from": "b2", "to": "b3", "type": "covalent" },
+      { "from": "b3", "to": "b4", "type": "covalent" },
+      { "from": "b4", "to": "b5", "type": "covalent" },
+      { "from": "b5", "to": "b0", "type": "covalent" },
+      { "from": "b0", "to": "o", "type": "covalent" }
+    ]
+  },
+  "stained_lipid_l": {
+    "note": "A fat molecule with a dye molecule sitting alongside it, drawn as a lump because it is not attached to anything. That is the honest picture: no bond forms in this test. The dye is simply somewhere it is comfortable, and the sharp red of the fat layer is the result.",
+    "atoms": [
+      { "id": "c0", "element": "C", "x": -5, "y": -0.5, "z": 0 },
+      { "id": "c1", "element": "C", "x": -3.7, "y": 0.5, "z": 0 },
+      { "id": "c2", "element": "C", "x": -2.4, "y": -0.5, "z": 0 },
+      { "id": "c3", "element": "C", "x": -1.0999999999999996, "y": 0.5, "z": 0 },
+      { "id": "c4", "element": "C", "x": 0.20000000000000018, "y": -0.5, "z": 0 },
+      { "id": "c5", "element": "C", "x": 1.5, "y": 0.5, "z": 0 },
+      { "id": "c6", "element": "C", "x": 2.8000000000000007, "y": -0.5, "z": 0 },
+      { "id": "c7", "element": "C", "x": 4.1, "y": 0.5, "z": 0 },
+      { "id": "dye", "element": "group", "x": 2.6, "y": 2.4, "z": 0.6 },
+      { "id": "dye2", "element": "group", "x": 4.4, "y": 2, "z": -0.4 }
+    ],
+    "bonds": [
+      { "from": "c0", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" },
+      { "from": "c6", "to": "c7", "type": "covalent" },
+      { "from": "dye", "to": "dye2", "type": "covalent" }
+    ]
+  },
+  "emulsion_aq": {
+    "note": "Droplets of fat scattered through water with nothing joining them, which is why there are no bonds in this model at all. An emulsion is a suspension, not a solution — the droplets are simply too small and too numerous to settle out, and light bouncing off all of them is what makes it look white.",
+    "atoms": [
+      { "id": "d1", "element": "group", "x": -3, "y": 1.4, "z": 0.5 },
+      { "id": "d2", "element": "group", "x": 0.4, "y": 2.2, "z": -1 },
+      { "id": "d3", "element": "group", "x": 3.2, "y": 0.8, "z": 0.8 },
+      { "id": "d4", "element": "group", "x": -1.8, "y": -1.8, "z": -0.6 },
+      { "id": "d5", "element": "group", "x": 2, "y": -2.2, "z": 1 },
+      { "id": "w1", "element": "O", "x": -4.4, "y": -0.6, "z": 1.2 },
+      { "id": "w2", "element": "O", "x": 4.6, "y": -0.8, "z": -1.2 }
+    ],
+    "bonds": []
+  },
+  "oil_unsat_l": {
+    "note": "Follow the chain along and find the double bond: the chain changes direction there and cannot straighten out again. That permanent kink is the whole reason this is a liquid oil and not a solid fat — kinked chains cannot stack together closely, so there is less holding them and the melting point drops below room temperature.",
+    "atoms": [
+      { "id": "c0", "element": "C", "x": -5.2, "y": -0.5, "z": 0 },
+      { "id": "c1", "element": "C", "x": -3.9000000000000004, "y": 0.5, "z": 0 },
+      { "id": "c2", "element": "C", "x": -2.6, "y": -0.5, "z": 0 },
+      { "id": "c3", "element": "C", "x": -1.2999999999999998, "y": 0.5, "z": 0 },
+      { "id": "d1", "element": "C", "x": 0.2, "y": 0.6, "z": 0 },
+      { "id": "d2", "element": "C", "x": 1.5, "y": 1.4, "z": 0 },
+      { "id": "e0", "element": "C", "x": 2.9, "y": 2.2, "z": 0 },
+      { "id": "e1", "element": "C", "x": 4.2, "y": 1.6, "z": 0 },
+      { "id": "e2", "element": "C", "x": 5.5, "y": 2.4, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c0", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "d1", "type": "covalent" },
+      { "from": "d1", "to": "d2", "type": "covalent" },
+      { "from": "d2", "to": "e0", "type": "covalent" },
+      { "from": "e0", "to": "e1", "type": "covalent" },
+      { "from": "e1", "to": "e2", "type": "covalent" }
+    ]
+  },
+  "oil_brominated_l": {
+    "note": "The same chain with a bromine atom on each of the two carbons that used to share the double bond. The bromine has been consumed, which is why its orange colour vanishes, and how much of it an oil can absorb is a direct measure of how many double bonds the oil had.",
+    "atoms": [
+      { "id": "c0", "element": "C", "x": -5, "y": -0.5, "z": 0 },
+      { "id": "c1", "element": "C", "x": -3.7, "y": 0.5, "z": 0 },
+      { "id": "c2", "element": "C", "x": -2.4, "y": -0.5, "z": 0 },
+      { "id": "c3", "element": "C", "x": -1.0999999999999996, "y": 0.5, "z": 0 },
+      { "id": "c4", "element": "C", "x": 0.20000000000000018, "y": -0.5, "z": 0 },
+      { "id": "c5", "element": "C", "x": 1.5, "y": 0.5, "z": 0 },
+      { "id": "c6", "element": "C", "x": 2.8000000000000007, "y": -0.5, "z": 0 },
+      { "id": "c7", "element": "C", "x": 4.1, "y": 0.5, "z": 0 },
+      { "id": "br1", "element": "Br", "x": -0.9, "y": 2.4, "z": 0 },
+      { "id": "br2", "element": "Br", "x": 0.4, "y": -2.4, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c0", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" },
+      { "from": "c6", "to": "c7", "type": "covalent" },
+      { "from": "c3", "to": "br1", "type": "covalent" },
+      { "from": "c4", "to": "br2", "type": "covalent" }
+    ]
+  },
+  "stearic_acid_s": {
+    "note": "A long saturated chain with a carboxylic acid group on the end. Compare it with the soap model: the chain is identical and only the end differs, an -OH here against an -O- Na+ there. That one difference is why soap lathers and this is a hard wax — the salt end is attracted to water and the acid end is not.",
+    "atoms": [
+      { "id": "c0", "element": "C", "x": -6, "y": -0.5, "z": 0 },
+      { "id": "c1", "element": "C", "x": -4.7, "y": 0.5, "z": 0 },
+      { "id": "c2", "element": "C", "x": -3.4, "y": -0.5, "z": 0 },
+      { "id": "c3", "element": "C", "x": -2.0999999999999996, "y": 0.5, "z": 0 },
+      { "id": "c4", "element": "C", "x": -0.7999999999999998, "y": -0.5, "z": 0 },
+      { "id": "c5", "element": "C", "x": 0.5, "y": 0.5, "z": 0 },
+      { "id": "c6", "element": "C", "x": 1.8000000000000007, "y": -0.5, "z": 0 },
+      { "id": "c7", "element": "C", "x": 3.0999999999999996, "y": 0.5, "z": 0 },
+      { "id": "cc", "element": "C", "x": 4.4, "y": 0.5, "z": 0 },
+      { "id": "o1", "element": "O", "x": 5.4, "y": 1.4, "z": 0 },
+      { "id": "o2", "element": "O", "x": 4.8, "y": -0.9, "z": 0 },
+      { "id": "h", "element": "H", "x": 5.9, "y": -1.4, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "c0", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "c4", "type": "covalent" },
+      { "from": "c4", "to": "c5", "type": "covalent" },
+      { "from": "c5", "to": "c6", "type": "covalent" },
+      { "from": "c6", "to": "c7", "type": "covalent" },
+      { "from": "c7", "to": "cc", "type": "covalent" },
+      { "from": "cc", "to": "o1", "type": "covalent" },
+      { "from": "cc", "to": "o2", "type": "covalent" },
+      { "from": "o2", "to": "h", "type": "covalent" }
+    ]
+  },
+  "catalase_aq": {
+    "note": "An enzyme, drawn as lumped residues folded into a shape with a pocket in it. The individual atoms are not the point and there are far too many to draw; the SHAPE is the point. Peroxide fits that pocket and is taken apart in it. Heat the protein and the fold collapses, the pocket is gone, and nothing about the atoms has changed at all - which is exactly why boiling stops the reaction for good.",
+    "atoms": [
+      { "id": "r0", "element": "group", "x": -3.4, "y": -1, "z": 0.4 },
+      { "id": "r1", "element": "group", "x": -2.2, "y": 1.4, "z": -0.6 },
+      { "id": "r2", "element": "group", "x": 0.4, "y": 2.2, "z": 0.5 },
+      { "id": "r3", "element": "group", "x": 2.6, "y": 0.8, "z": -0.4 },
+      { "id": "r4", "element": "group", "x": 2.2, "y": -1.6, "z": 0.6 },
+      { "id": "r5", "element": "group", "x": -0.2, "y": -2.4, "z": -0.5 },
+      { "id": "fe", "element": "Fe", "x": 0.2, "y": -0.1, "z": 0.1 }
+    ],
+    "bonds": [
+      { "from": "r0", "to": "r1", "type": "covalent" },
+      { "from": "r1", "to": "r2", "type": "covalent" },
+      { "from": "r2", "to": "r3", "type": "covalent" },
+      { "from": "r3", "to": "r4", "type": "covalent" },
+      { "from": "r4", "to": "r5", "type": "covalent" },
+      { "from": "r5", "to": "r0", "type": "covalent" }
+    ]
+  },
+  "hno3_conc": {
+    "note": "Nitrogen with three oxygens, one carrying the acidic hydrogen. Concentrated, this molecule does two jobs a dilute acid cannot: it oxidises, and it supplies the group that gets substituted onto an aromatic ring. Both matter in the protein test, and neither has anything to do with donating a proton.",
+    "atoms": [
+      { "id": "n", "element": "N", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.4, "z": 0 },
+      { "id": "o2", "element": "O", "x": -1.2, "y": -0.8, "z": 0 },
+      { "id": "o3", "element": "O", "x": 1.2, "y": -0.8, "z": 0 },
+      { "id": "h", "element": "H", "x": 2, "y": -1.5, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "n", "to": "o1", "type": "covalent" },
+      { "from": "n", "to": "o2", "type": "covalent" },
+      { "from": "n", "to": "o3", "type": "covalent" },
+      { "from": "o3", "to": "h", "type": "covalent" }
+    ]
+  },
+  "xanthoprotein_aq": {
+    "note": "An aromatic ring from inside a protein with a nitro group now attached to it. This is ordinary aromatic nitration - the same reaction that makes nitrobenzene - happening on a tyrosine side chain. So the yellow is narrower evidence than it looks: it reports those particular amino acids, not protein in general.",
+    "atoms": [
+      { "id": "a0", "element": "C", "x": 1.4, "y": 0, "z": 0 },
+      { "id": "a1", "element": "C", "x": 0.7000000000000001, "y": 1.212435565298214, "z": 0 },
+      { "id": "a2", "element": "C", "x": -0.6999999999999996, "y": 1.2124355652982142, "z": 0 },
+      { "id": "a3", "element": "C", "x": -1.4, "y": 1.7145055188062944e-16, "z": 0 },
+      { "id": "a4", "element": "C", "x": -0.7000000000000006, "y": -1.2124355652982137, "z": 0 },
+      { "id": "a5", "element": "C", "x": 0.6999999999999991, "y": -1.2124355652982146, "z": 0 },
+      { "id": "n", "element": "N", "x": 3, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 4, "y": 0.9, "z": 0 },
+      { "id": "o2", "element": "O", "x": 4, "y": -0.9, "z": 0 },
+      { "id": "res", "element": "group", "x": -3, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "a0", "to": "a1", "type": "covalent" },
+      { "from": "a1", "to": "a2", "type": "covalent" },
+      { "from": "a2", "to": "a3", "type": "covalent" },
+      { "from": "a3", "to": "a4", "type": "covalent" },
+      { "from": "a4", "to": "a5", "type": "covalent" },
+      { "from": "a5", "to": "a0", "type": "covalent" },
+      { "from": "a0", "to": "n", "type": "covalent" },
+      { "from": "n", "to": "o1", "type": "covalent" },
+      { "from": "n", "to": "o2", "type": "covalent" },
+      { "from": "a3", "to": "res", "type": "covalent" }
+    ]
+  },
+  "ninhydrin_aq": {
+    "note": "A ring with three carbon-oxygen groups in a row along one edge. That middle carbon is the reactive one, and it is what grabs the amino group off an amino acid. Colourless itself: the colour appears only once it has taken a nitrogen from somewhere.",
+    "atoms": [
+      { "id": "a0", "element": "C", "x": -1, "y": 0, "z": 0 },
+      { "id": "a1", "element": "C", "x": -1.6999999999999997, "y": 1.212435565298214, "z": 0 },
+      { "id": "a2", "element": "C", "x": -3.0999999999999996, "y": 1.2124355652982142, "z": 0 },
+      { "id": "a3", "element": "C", "x": -3.8, "y": 1.7145055188062944e-16, "z": 0 },
+      { "id": "a4", "element": "C", "x": -3.1000000000000005, "y": -1.2124355652982137, "z": 0 },
+      { "id": "a5", "element": "C", "x": -1.7000000000000008, "y": -1.2124355652982146, "z": 0 },
+      { "id": "c1", "element": "C", "x": 0.6, "y": 1.2, "z": 0 },
+      { "id": "c2", "element": "C", "x": 2, "y": 0, "z": 0 },
+      { "id": "c3", "element": "C", "x": 0.6, "y": -1.2, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0.9, "y": 2.6, "z": 0 },
+      { "id": "o2", "element": "O", "x": 3.4, "y": 0, "z": 0 },
+      { "id": "o3", "element": "O", "x": 0.9, "y": -2.6, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "a0", "to": "a1", "type": "covalent" },
+      { "from": "a1", "to": "a2", "type": "covalent" },
+      { "from": "a2", "to": "a3", "type": "covalent" },
+      { "from": "a3", "to": "a4", "type": "covalent" },
+      { "from": "a4", "to": "a5", "type": "covalent" },
+      { "from": "a5", "to": "a0", "type": "covalent" },
+      { "from": "a0", "to": "c1", "type": "covalent" },
+      { "from": "c1", "to": "c2", "type": "covalent" },
+      { "from": "c2", "to": "c3", "type": "covalent" },
+      { "from": "c3", "to": "a5", "type": "covalent" },
+      { "from": "c1", "to": "o1", "type": "covalent" },
+      { "from": "c2", "to": "o2", "type": "covalent" },
+      { "from": "c3", "to": "o3", "type": "covalent" }
+    ]
+  },
+  "ruhemann_purple_aq": {
+    "note": "Two ninhydrin units joined through a single nitrogen atom in the middle. Find that nitrogen: it did not come from the reagent, it came out of the amino acid being tested. The reagent took the amino group and built it into this dye, and that is precisely why the purple counts as evidence rather than as a colour the reagent had all along.",
+    "atoms": [
+      { "id": "a0", "element": "C", "x": -3.0000000000000004, "y": 0, "z": 0 },
+      { "id": "a1", "element": "C", "x": -3.7, "y": 1.212435565298214, "z": 0 },
+      { "id": "a2", "element": "C", "x": -5.1, "y": 1.2124355652982142, "z": 0 },
+      { "id": "a3", "element": "C", "x": -5.800000000000001, "y": 1.7145055188062944e-16, "z": 0 },
+      { "id": "a4", "element": "C", "x": -5.100000000000001, "y": -1.2124355652982137, "z": 0 },
+      { "id": "a5", "element": "C", "x": -3.700000000000001, "y": -1.2124355652982146, "z": 0 },
+      { "id": "n", "element": "N", "x": 0, "y": 0, "z": 0 },
+      { "id": "b0", "element": "C", "x": 5.800000000000001, "y": 0, "z": 0 },
+      { "id": "b1", "element": "C", "x": 5.1000000000000005, "y": 1.212435565298214, "z": 0 },
+      { "id": "b2", "element": "C", "x": 3.7000000000000006, "y": 1.2124355652982142, "z": 0 },
+      { "id": "b3", "element": "C", "x": 3.0000000000000004, "y": 1.7145055188062944e-16, "z": 0 },
+      { "id": "b4", "element": "C", "x": 3.6999999999999997, "y": -1.2124355652982137, "z": 0 },
+      { "id": "b5", "element": "C", "x": 5.1, "y": -1.2124355652982146, "z": 0 },
+      { "id": "o1", "element": "O", "x": -5.6, "y": 2.4, "z": 0 },
+      { "id": "o2", "element": "O", "x": 5.6, "y": 2.4, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "a0", "to": "a1", "type": "covalent" },
+      { "from": "a1", "to": "a2", "type": "covalent" },
+      { "from": "a2", "to": "a3", "type": "covalent" },
+      { "from": "a3", "to": "a4", "type": "covalent" },
+      { "from": "a4", "to": "a5", "type": "covalent" },
+      { "from": "a5", "to": "a0", "type": "covalent" },
+      { "from": "b0", "to": "b1", "type": "covalent" },
+      { "from": "b1", "to": "b2", "type": "covalent" },
+      { "from": "b2", "to": "b3", "type": "covalent" },
+      { "from": "b3", "to": "b4", "type": "covalent" },
+      { "from": "b4", "to": "b5", "type": "covalent" },
+      { "from": "b5", "to": "b0", "type": "covalent" },
+      { "from": "a0", "to": "n", "type": "covalent" },
+      { "from": "n", "to": "b3", "type": "covalent" },
+      { "from": "a2", "to": "o1", "type": "covalent" },
+      { "from": "b1", "to": "o2", "type": "covalent" }
+    ]
   }
 }

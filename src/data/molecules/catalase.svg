@@ -1,0 +1,13 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Catalase: an enzyme, drawn as a folded chain of amino acid residues with a pocket. The shape is where the catalytic power lives, which is why heat destroys it">
+  <path d="M34 74 C 44 40, 70 30, 86 44 C 100 56, 96 78, 78 80 C 62 82, 56 66, 68 60" fill="none" stroke="#8A8F98" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="40" cy="66" r="6" fill="#B9BEC6" stroke="#161A19" stroke-width="1.5"/>
+  <circle cx="58" cy="42" r="6" fill="#B9BEC6" stroke="#161A19" stroke-width="1.5"/>
+  <circle cx="82" cy="40" r="6" fill="#B9BEC6" stroke="#161A19" stroke-width="1.5"/>
+  <circle cx="94" cy="62" r="6" fill="#B9BEC6" stroke="#161A19" stroke-width="1.5"/>
+  <circle cx="74" cy="80" r="6" fill="#B9BEC6" stroke="#161A19" stroke-width="1.5"/>
+  <circle cx="72" cy="60" r="9" fill="none" stroke="#161A19" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="112" y="46" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">active</text>
+  <text x="112" y="56" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">site</text>
+  <text x="80" y="100" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">the folded shape IS the catalyst</text>
+  <text x="80" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">unfold it with heat and it never works again</text>
+</svg>

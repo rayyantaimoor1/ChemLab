@@ -1,0 +1,23 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stearic acid: a long saturated chain ending in a carboxylic acid group. This is what a fat breaks into, and as the free acid it is a hard wax rather than soap">
+  <line x1="20" y1="41" x2="34" y2="59" stroke="#161A19" stroke-width="2"/>
+  <line x1="34" y1="59" x2="48" y2="41" stroke="#161A19" stroke-width="2"/>
+  <line x1="48" y1="41" x2="62" y2="59" stroke="#161A19" stroke-width="2"/>
+  <line x1="62" y1="59" x2="76" y2="41" stroke="#161A19" stroke-width="2"/>
+  <line x1="76" y1="41" x2="90" y2="59" stroke="#161A19" stroke-width="2"/>
+  <line x1="90" y1="59" x2="104" y2="41" stroke="#161A19" stroke-width="2"/>
+  <line x1="104" y1="41" x2="118" y2="59" stroke="#161A19" stroke-width="2"/>
+  <circle cx="118" cy="50" r="10" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="118" y="54" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="132" cy="36" r="9" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="132" y="39" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="132" cy="64" r="9" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="132" y="67" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <line x1="118" y1="50" x2="132" y2="64" stroke="#161A19" stroke-width="2"/>
+  <line x1="120" y1="42" x2="130" y2="36" stroke="#161A19" stroke-width="2"/>
+  <line x1="120" y1="46" x2="130" y2="40" stroke="#161A19" stroke-width="2"/>
+  <circle cx="146" cy="64" r="6" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="146" y="66" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#161A19">H</text>
+  <line x1="132" y1="64" x2="146" y2="64" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="88" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">the ACID, not its sodium salt</text>
+  <text x="80" y="102" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">the salt would be soap; this is a hard wax</text>
+</svg>

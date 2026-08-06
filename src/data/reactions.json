@@ -7852,5 +7852,206 @@
     "explanation": "The third white precipitate of Group V, and with it the wet chemistry runs out of things to say. Calcium, strontium and barium all come down as white carbonates with the same reagent, they all look the same, and no further solution test separates them cleanly. This is the point in the scheme where a different KIND of test has to take over — hold each on a wire in a flame and they answer at once: brick red, scarlet, apple green.",
     "levels": ["fsc", "bs"],
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group V"
+  },
+  {
+    "id": "rxn_lipid_emulsion_test",
+    "reactants": ["fat_l", "c2h5oh_aq", "water_distilled"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["emulsion_aq"],
+    "equation": "fat (dissolved in ethanol) + water → fat droplets suspended in water",
+    "type": "physical",
+    "effects": {
+      "colorToHex": "#F2F2EE",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "explanation": "A milky cloudiness, and notice that no equation was needed for it — nothing has reacted. The fat dissolves in ethanol but not in water, so diluting the ethanol drops it out of solution as droplets too fine to settle and numerous enough to scatter light. That scattering is the white. Milk is the same arrangement. The order matters: ethanol first to dissolve the fat, then water to force it back out.",
+    "levels": ["fsc", "bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — the emulsion test for lipids"
+  },
+  {
+    "id": "rxn_sudan3_lipid",
+    "reactants": ["fat_l", "sudan3_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["stained_lipid_l"],
+    "equation": "the dye dissolves preferentially in the fat layer",
+    "type": "physical",
+    "effects": {
+      "colorToHex": "#D4453B",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": null
+    },
+    "hazard": null,
+    "explanation": "The fat layer turns bright red and the water layer stays clear. Again no reaction has taken place — Sudan III simply dissolves in fat and not in water, so it collects where the fat is. A test that works purely by solubility is a different idea from every other test in this app, and it is worth noticing that a sharp answer does not always require a chemical change.",
+    "levels": ["fsc", "bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — lipid identification"
+  },
+  {
+    "id": "rxn_none_sudan3_glucose",
+    "reactants": ["glucose_aq", "sudan3_aq"],
+    "noReaction": true,
+    "explanation": "The dye stays evenly spread and nothing separates or brightens — the control that makes the fat result mean something. Glucose is soluble in water and there is no fat layer for the dye to gather in, so there is nowhere for a red colour to concentrate. Run this tube beside the fat one: a stain test is only evidence if you have seen what a negative looks like.",
+    "levels": ["fsc", "bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — lipid identification"
+  },
+  {
+    "id": "rxn_hydrolysis_fat_acid",
+    "reactants": ["fat_l", "hcl_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": 80, "catalyst": null },
+    "products": ["glycerol_l", "stearic_acid_s"],
+    "equation": "C₃H₅(OOCC₁₇H₃₅)₃ + 3H₂O → C₃H₅(OH)₃ + 3C₁₇H₃₅COOH",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": "#F5F2EA",
+      "precipitate": "a waxy white solid separating out on cooling",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 2.0
+    },
+    "hazard": null,
+    "explanation": "The same fat, split at the same three ester bonds as in soap-making, and yet the product is a hard white wax that will not lather. Acid hydrolysis gives the fatty ACID; saponification with alkali gives its sodium SALT, which is soap. The bond that breaks is identical in both — what differs is only what the fragment picks up afterwards, a proton or a sodium ion. Run both and compare: it is the clearest demonstration there is that a reaction's usefulness can hinge on the counter-ion.",
+    "levels": ["fsc", "bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — lipid hydrolysis"
+  },
+  {
+    "id": "rxn_bromine_unsaturated_oil",
+    "reactants": ["oil_unsat_l", "br2_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["oil_brominated_l"],
+    "equation": "—CH=CH— + Br₂ → —CHBr—CHBr—",
+    "type": "addition",
+    "effects": {
+      "colorToHex": "#EFEADA",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": null
+    },
+    "hazard": null,
+    "explanation": "The orange bromine water is decolourised — exactly as it is by ethene, and for exactly the same reason. There is nothing special about a lipid here: a carbon–carbon double bond is a carbon–carbon double bond whether it sits in a gas jar or halfway down a fatty acid chain. How much bromine an oil absorbs is a real measurement called the iodine number, and it is how the unsaturation of a cooking oil is quoted on a label.",
+    "levels": ["fsc", "bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — the iodine number"
+  },
+  {
+    "id": "rxn_none_bromine_saturated_fat",
+    "reactants": ["fat_l", "br2_aq"],
+    "noReaction": true,
+    "explanation": "The bromine stays orange, and the pair of tubes has just told you the difference between an oil and a fat. This fat's chains are saturated — no double bonds, so nothing for bromine to add across. That same absence is why the chains pack together neatly and the fat is solid at room temperature, while the kinked unsaturated chains of the oil cannot pack and stay liquid. One structural feature explains both the test result and the melting point.",
+    "levels": ["fsc", "bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — saturated and unsaturated lipids"
+  },
+  {
+    "id": "rxn_catalase_h2o2",
+    "reactants": ["h2o2_aq", "catalase_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "maxTempC": 55, "catalyst": null },
+    "products": ["water", "o2_g"],
+    "equation": "2H₂O₂ → 2H₂O + O₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": null,
+      "precipitate": null,
+      "dissolves": null,
+      "gas": "oxygen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 6,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "explanation": "Violent frothing, immediately. This is the same decomposition that manganese(IV) oxide catalyses elsewhere in this lab, and catalase does it far faster — one enzyme molecule handles millions of peroxide molecules a second. Every living cell carries it, because respiration keeps producing peroxide and peroxide would otherwise wreck the cell. Note the enzyme is not in the products: like any catalyst it comes through unchanged, and the same liver sample will froth again with fresh peroxide.",
+    "levels": ["fsc", "bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — enzyme catalysis"
+  },
+  {
+    "id": "rxn_none_catalase_denatured",
+    "reactants": ["h2o2_aq", "catalase_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": 60, "catalyst": null },
+    "noReaction": true,
+    "explanation": "Boil the liver first and the peroxide just sits there. Nothing has been used up — the enzyme is still in the tube — but it no longer works, because an enzyme is a protein and its power comes entirely from its folded shape. Heat unfolds it, the active site is gone, and it cannot be folded back: this is the one change in the batch that does not reverse on cooling. Compare with manganese(IV) oxide, which catalyses the same reaction and does not care how hot it gets. That is the difference between a catalyst and a biological catalyst.",
+    "levels": ["fsc", "bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — enzyme denaturation"
+  },
+  {
+    "id": "rxn_xanthoproteic_protein",
+    "reactants": ["albumin_aq", "hno3_conc"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["xanthoprotein_aq"],
+    "equation": "aromatic side chains + HNO₃ → nitrated rings",
+    "type": "substitution",
+    "effects": {
+      "colorToHex": "#E8C547",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 5,
+      "resultPH": 2.0
+    },
+    "hazard": null,
+    "explanation": "A bright yellow, and it is nitration — the very same reaction that turns benzene into nitrobenzene, happening here on the aromatic rings of tyrosine and tryptophan inside the protein. So this is a narrower result than the biuret test: yellow means those particular amino acids are present, not merely that some protein is. It is also the reason nitric acid stains skin and fingernails yellow. The acid is nitrating you, by this exact reaction.",
+    "levels": ["fsc", "bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — the xanthoproteic test"
+  },
+  {
+    "id": "rxn_nitration_benzene_conc",
+    "reactants": ["c6h6_l", "hno3_conc", "h2so4_conc"],
+    "conditions": { "requiresHeat": true, "minTempC": 50, "catalyst": null },
+    "products": ["c6h5no2_l", "water"],
+    "equation": "C₆H₆ + HNO₃ →(conc H₂SO₄, 50 °C) C₆H₅NO₂ + H₂O",
+    "type": "electrophilic_substitution",
+    "effects": {
+      "colorToHex": "#E8C547",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 20,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "explanation": "Nitration done with the reagents it actually requires: both acids CONCENTRATED, and the temperature held near 50 °C. The sulfuric acid is not there as a second acid but to force a proton onto the nitric acid so it sheds water and leaves NO₂⁺, the electrophile that attacks the ring. Dilute acids cannot do this — there is far too much water about, and the equilibrium sits the wrong way. This is the same nitration that turns a protein yellow in the xanthoproteic test, and the same reason concentrated nitric acid stains skin.",
+    "levels": ["fsc", "bs"],
+    "source": "Vogel's Textbook of Practical Organic Chemistry, 5th ed. — nitration of benzene"
+  },
+  {
+    "id": "rxn_ninhydrin_glycine",
+    "reactants": ["glycine_aq", "ninhydrin_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["ruhemann_purple_aq"],
+    "equation": "amino acid + ninhydrin → Ruhemann's purple + CO₂ + aldehyde",
+    "type": "condensation",
+    "effects": {
+      "colorToHex": "#6A3D9A",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": "carbon dioxide",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 5.0
+    },
+    "hazard": null,
+    "explanation": "An intense purple on warming, and the nitrogen in that purple dye came out of the amino acid — the reagent strips the amino group and builds it into a coloured molecule, which is why the colour is evidence. Compare with the biuret test, which needs peptide BONDS and therefore finds whole proteins: ninhydrin finds free amino acids instead, so the two tests answer different questions. It is sensitive enough to develop the amino acids left behind in a fingerprint, which is what forensic laboratories use it for.",
+    "levels": ["bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — the ninhydrin reaction"
   }
 ]
