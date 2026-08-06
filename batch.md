@@ -68,7 +68,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 11 | `c010161` | Ceramics, refractories and plaster |
 | 12 | `0725610` | Metallurgy — why each metal is won by the method it is |
 | 13 | `12c4662` | Steelmaking, alloys and passivation — protecting metals |
-| 14 | `PENDING` | Electroplating and surface finishing |
+| 14 | `6fbfca7` | Electroplating and surface finishing |
 
 ## 5. Guided experiments (Phase 7)
 
