@@ -1,0 +1,21 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Orcinol: a benzene ring with two hydroxyl groups and a methyl group. With iron(III) it gives the green of Bial test with ribose">
+  <line x1="72" y1="34" x2="91.05255888325765" y2="45" stroke="#161A19" stroke-width="2"/>
+  <line x1="91.05255888325765" y1="45" x2="91.05255888325766" y2="67" stroke="#161A19" stroke-width="2"/>
+  <line x1="91.05255888325766" y1="67" x2="72" y2="78" stroke="#161A19" stroke-width="2"/>
+  <line x1="72" y1="78" x2="52.947441116742354" y2="67" stroke="#161A19" stroke-width="2"/>
+  <line x1="52.947441116742354" y1="67" x2="52.94744111674234" y2="45.000000000000014" stroke="#161A19" stroke-width="2"/>
+  <line x1="52.94744111674234" y1="45.000000000000014" x2="72" y2="34" stroke="#161A19" stroke-width="2"/>
+  <circle cx="72" cy="56" r="16" fill="none" stroke="#161A19" stroke-width="1.5"/>
+  <circle cx="50" cy="32" r="9" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="50" y="35" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="94" cy="32" r="9" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="94" y="35" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <line x1="58" y1="40" x2="50" y2="32" stroke="#161A19" stroke-width="2"/>
+  <line x1="86" y1="40" x2="94" y2="32" stroke="#161A19" stroke-width="2"/>
+  <circle cx="72" cy="82" r="9" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="72" y="85" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">C</text>
+  <circle cx="126" cy="62" r="11" fill="#8A6A4F" stroke="#161A19" stroke-width="2"/>
+  <text x="126" y="66" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">Fe</text>
+  <text x="80" y="102" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">the iron(III) is not a spectator -</text>
+  <text x="80" y="113" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">without it no colour develops at all</text>
+</svg>

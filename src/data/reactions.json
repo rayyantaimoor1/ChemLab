@@ -8063,5 +8063,205 @@
     "explanation": "No smell of pear drops, however long it is warmed. A trace of ester does form — dilute acid supplies hydrogen ions and they do catalyse the reaction — but esterification is an equilibrium that gives off water, and dilute acid brings a great deal of water with it, so the equilibrium sits far over on the left and there is nothing to notice. Concentrated sulfuric acid works because it takes that water OUT, which is a quite different job from supplying protons. Use it instead and the smell is unmistakable.",
     "levels": ["fsc", "bs"],
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Fischer esterification and the role of the acid"
+  },
+  {
+    "id": "rxn_dna_ethanol_precipitation",
+    "reactants": ["dna_aq", "c2h5oh_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["dna_fibres_s"],
+    "equation": "DNA(aq) + ethanol → DNA(s)",
+    "type": "physical",
+    "effects": {
+      "colorToHex": "#F7F7F2",
+      "precipitate": "white stringy threads that can be lifted out on a glass rod",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "explanation": "The moment DNA stops being a diagram and becomes something you can see. Nothing has reacted — this is the emulsion test's idea again, a substance forced out of solution by changing the solvent. DNA carries a negative charge along its entire backbone, and water surrounds those charges and keeps the strands apart; ethanol cannot, so the strands clump and come out as threads. Cold ethanol works better, which is why the bottle is kept in ice.",
+    "levels": ["fsc", "bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — nucleic acid isolation"
+  },
+  {
+    "id": "rxn_dische_dna",
+    "reactants": ["dna_aq", "diphenylamine_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["dische_blue_aq"],
+    "equation": "deoxyribose + 2 diphenylamine →(H⁺, heat) blue condensation product",
+    "type": "condensation",
+    "effects": {
+      "colorToHex": "#1F4E9C",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "explanation": "A deep blue on warming, and note what is actually being detected: not DNA, but DEOXYRIBOSE. The acid breaks the sugar down to a small fragment and two diphenylamine molecules condense onto it. Since deoxyribose is found in nothing else, identifying the sugar identifies the nucleic acid. The depth of the colour tracks how much is present, which is how DNA was measured for decades before it could be sequenced.",
+    "levels": ["bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — the Dische diphenylamine test"
+  },
+  {
+    "id": "rxn_none_dische_rna",
+    "reactants": ["rna_aq", "diphenylamine_aq"],
+    "noReaction": true,
+    "explanation": "No blue, however long it is warmed — and that silence is the result. RNA is built on ribose, which has one more oxygen than deoxyribose and cannot break down to the fragment diphenylamine needs. One oxygen decides the whole test. Run this beside the DNA tube and the pair distinguishes the two nucleic acids on a single reagent.",
+    "levels": ["bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — the Dische diphenylamine test"
+  },
+  {
+    "id": "rxn_bial_rna",
+    "reactants": ["rna_aq", "orcinol_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
+    "products": ["bial_green_aq"],
+    "equation": "ribose + orcinol →(Fe³⁺, HCl, heat) green condensation product",
+    "type": "condensation",
+    "effects": {
+      "colorToHex": "#2E8B57",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 4,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "explanation": "The mirror image of the Dische test: this reagent answers to ribose, so a bluish green means RNA. The iron(III) in the reagent is not a spectator — it oxidises the intermediate into the coloured form, and without it nothing appears. Two reagents, two sugars, two colours: between them the Dische and Bial tests settle which nucleic acid is in an unknown.",
+    "levels": ["bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — Bial's orcinol test"
+  },
+  {
+    "id": "rxn_none_bial_dna",
+    "reactants": ["dna_aq", "orcinol_aq"],
+    "noReaction": true,
+    "explanation": "No green appears. Deoxyribose does not give the reaction that produces Bial's colour, so the diagnostic green is simply absent. Put this tube beside the other three and the square is complete: diphenylamine finds DNA and ignores RNA, orcinol finds RNA and ignores DNA. Neither reagent alone would be trustworthy; the pair of them is.",
+    "levels": ["bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — Bial's orcinol test"
+  },
+  {
+    "id": "rxn_dna_melting",
+    "reactants": ["dna_aq"],
+    "conditions": { "requiresHeat": true, "minTempC": 90, "catalyst": null },
+    "products": ["dna_single_aq"],
+    "equation": "double helix →(heat) two separate strands",
+    "type": "denaturation",
+    "effects": {
+      "colorToHex": null,
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "explanation": "Near boiling the two strands come apart. There is nothing to see by colour, and the notebook says so honestly — the change you would actually notice in a real laboratory is that the solution goes thin, because a DNA solution is strikingly viscous and separated strands are not. Only hydrogen bonds have broken; every covalent bond in both backbones is untouched, which is why this is called melting rather than destruction. Compare it with the egg albumin in the other vessel, ruined for good by the same treatment. Now cool this one down and watch what happens.",
+    "levels": ["bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — DNA melting"
+  },
+  {
+    "id": "rxn_dna_annealing",
+    "reactants": ["dna_single_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "maxTempC": 60, "catalyst": null },
+    "products": ["dna_aq"],
+    "equation": "two separate strands →(cooling) double helix",
+    "type": "equilibrium",
+    "effects": {
+      "colorToHex": null,
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 7.0
+    },
+    "hazard": null,
+    "explanation": "Cool it and the helix rebuilds itself. This is the point of the whole pair: a denaturation that REVERSES, which the boiled egg white cannot do. The strands find their partners because each base can only pair with one other, so every strand carries the instructions for rebuilding its own opposite. Heating to separate the strands and cooling to let them re-pair is exactly the cycle that PCR runs millions of times to copy DNA.",
+    "levels": ["bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — DNA reannealing"
+  },
+  {
+    "id": "rxn_hydrolysis_dna_acid",
+    "reactants": ["dna_aq", "hcl_1m"],
+    "conditions": { "requiresHeat": true, "minTempC": 90, "catalyst": null },
+    "products": ["deoxyribose_aq", "nucleobase_aq", "h3po4_aq"],
+    "equation": "DNA + H₂O →(H⁺, heat) deoxyribose + bases + H₃PO₄",
+    "type": "hydrolysis",
+    "effects": {
+      "colorToHex": null,
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 1.5
+    },
+    "hazard": null,
+    "explanation": "Hot acid takes the whole molecule apart into its three kinds of component: the sugar, the bases and phosphoric acid. This is destruction rather than melting — covalent bonds are broken and nothing reassembles on cooling. It is also how the parts were identified in the first place, long before any structure was known: break the thing up and test the pieces. The phosphate can be confirmed straight away with ammonium molybdate.",
+    "levels": ["bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — nucleic acid hydrolysis"
+  },
+  {
+    "id": "rxn_qa_phosphate_molybdate_acid",
+    "reactants": ["h3po4_aq", "nh4_molybdate_aq"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["phosphomolybdate_s"],
+    "equation": "H₃PO₄ + 12MoO₄²⁻ + 3NH₄⁺ → (NH₄)₃[PMo₁₂O₄₀]↓ + 12H₂O",
+    "type": "precipitation",
+    "effects": {
+      "colorToHex": "#F5D000",
+      "precipitate": "a canary yellow precipitate",
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 2,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "explanation": "The same canary yellow cage as the phosphate test in the inorganic scheme, forming here on phosphate that has just been cut out of DNA. That is worth pausing on: a reagent from qualitative inorganic analysis confirming a fragment of a biological molecule, with no change to the method at all. Phosphate is phosphate, whether it came from a fertiliser bag or from a chromosome.",
+    "levels": ["bs"],
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — confirmation of phosphate"
+  },
+  {
+    "id": "rxn_molisch_carbohydrate",
+    "reactants": ["glucose_aq", "molisch_aq", "h2so4_conc"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["molisch_purple_aq"],
+    "equation": "sugar →(conc H₂SO₄) furfural, then + naphthol → purple product",
+    "type": "condensation",
+    "effects": {
+      "colorToHex": "#7B3F9D",
+      "precipitate": null,
+      "dissolves": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 18,
+      "resultPH": 1.0
+    },
+    "hazard": null,
+    "explanation": "A purple ring at the boundary between the layers — the same arrangement as the brown ring test for nitrate, and for the same reason: the concentrated acid is dense, sinks, and the reaction happens only where the two liquids meet. The acid dehydrates the sugar to a furfural and the naphthol condenses onto it. EVERY carbohydrate does this, which makes the test useless for telling sugars apart and ideal for ruling carbohydrate out.",
+    "levels": ["bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — Molisch's test"
+  },
+  {
+    "id": "rxn_none_molisch_amino_acid",
+    "reactants": ["glycine_aq", "molisch_aq", "h2so4_conc"],
+    "noReaction": true,
+    "explanation": "No purple ring, and for a test this unselective that is a strong statement. Molisch's test responds to any carbohydrate at all, so a negative result does not merely fail to identify a sugar — it says there is no carbohydrate present of any kind. An amino acid has no sugar ring to dehydrate, so nothing forms. A test that cannot tell sugars apart is still worth running first, precisely because its negative is so decisive.",
+    "levels": ["bs"],
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — Molisch's test"
   }
 ]

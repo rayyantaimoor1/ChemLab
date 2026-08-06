@@ -7,8 +7,8 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **345 chemicals, 355 reactions
-> (57 of them `noReaction`), 18 guided experiments, 284 tests passing.**
+> Snapshot as of the last entry below: **357 chemicals, 369 reactions
+> (64 of them `noReaction`), 18 guided experiments, 284 tests passing.**
 
 ---
 
@@ -73,6 +73,7 @@ condition-gated, no-arithmetic model — see §6 for the topics that were
 | 16 | `b6b2941` | The remaining cation groups, and why the scheme is ordered as it is |
 | 17 | `0704e0a` | Flame tests — built as a **tool**, not reactions (see §6) |
 | 18 | `957e1de` | Lipids, enzymes and the biological tests |
+| 19 | `PENDING` | Nucleic acids — DNA against RNA |
 
 ## 5. Guided experiments (Phase 7)
 
@@ -152,9 +153,6 @@ has not been asked for yet:
 
 Good fits for this engine, not yet written:
 
-- **Nucleic acids** — the one part of biochemistry batch BS-18 did not
-  reach: deoxyribose and ribose, the bases, and the Dische and Bial
-  colour tests.
 - **Further halogen and Group trends** at BS depth, mirroring the Period 3
   batch's approach.
 - **The d-block in more depth** — complex ion shapes and colours beyond the

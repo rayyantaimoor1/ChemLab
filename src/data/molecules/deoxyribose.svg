@@ -1,0 +1,15 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Deoxyribose: a five-membered sugar ring. The carbon at the lower right carries only a hydrogen where ribose has a hydroxyl, which is what deoxy means">
+  <line x1="80" y1="30" x2="104.727469423674" y2="47.96555814625137" stroke="#161A19" stroke-width="2"/>
+  <line x1="104.727469423674" y1="47.96555814625137" x2="95.2824165596043" y2="77.03444185374863" stroke="#161A19" stroke-width="2"/>
+  <line x1="95.2824165596043" y1="77.03444185374863" x2="64.7175834403957" y2="77.03444185374863" stroke="#161A19" stroke-width="2"/>
+  <line x1="64.7175834403957" y1="77.03444185374863" x2="55.272530576326005" y2="47.96555814625137" stroke="#161A19" stroke-width="2"/>
+  <line x1="55.272530576326005" y1="47.96555814625137" x2="80" y2="30" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="30" r="10" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="34" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="44" cy="72" r="9" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="44" y="75" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <circle cx="118" cy="84" r="7" fill="#F5F5F0" stroke="#161A19" stroke-width="2"/>
+  <text x="118" y="87" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#161A19">H</text>
+  <text x="80" y="100" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">an H here, where ribose has an OH</text>
+  <text x="80" y="112" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">one missing oxygen - and DNA outlasts RNA for it</text>
+</svg>

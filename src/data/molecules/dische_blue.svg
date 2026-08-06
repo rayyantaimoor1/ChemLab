@@ -1,0 +1,30 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Dische blue product: two diphenylamine units joined across a conjugated bridge, which is what makes it coloured">
+  <line x1="32" y1="40" x2="45.856406460551014" y2="48" stroke="#161A19" stroke-width="2"/>
+  <line x1="45.856406460551014" y1="48" x2="45.85640646055102" y2="64" stroke="#161A19" stroke-width="2"/>
+  <line x1="45.85640646055102" y1="64" x2="32" y2="72" stroke="#161A19" stroke-width="2"/>
+  <line x1="32" y1="72" x2="18.143593539448986" y2="64" stroke="#161A19" stroke-width="2"/>
+  <line x1="18.143593539448986" y1="64" x2="18.143593539448975" y2="48.00000000000001" stroke="#161A19" stroke-width="2"/>
+  <line x1="18.143593539448975" y1="48.00000000000001" x2="32" y2="40" stroke="#161A19" stroke-width="2"/>
+  <circle cx="32" cy="56" r="10" fill="none" stroke="#161A19" stroke-width="1.5"/>
+  <line x1="128" y1="40" x2="141.85640646055103" y2="48" stroke="#161A19" stroke-width="2"/>
+  <line x1="141.85640646055103" y1="48" x2="141.85640646055103" y2="64" stroke="#161A19" stroke-width="2"/>
+  <line x1="141.85640646055103" y1="64" x2="128" y2="72" stroke="#161A19" stroke-width="2"/>
+  <line x1="128" y1="72" x2="114.14359353944899" y2="64" stroke="#161A19" stroke-width="2"/>
+  <line x1="114.14359353944899" y1="64" x2="114.14359353944897" y2="48.00000000000001" stroke="#161A19" stroke-width="2"/>
+  <line x1="114.14359353944897" y1="48.00000000000001" x2="128" y2="40" stroke="#161A19" stroke-width="2"/>
+  <circle cx="128" cy="56" r="10" fill="none" stroke="#161A19" stroke-width="1.5"/>
+  <circle cx="60" cy="56" r="9" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="60" y="59" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">N</text>
+  <circle cx="100" cy="56" r="9" fill="#2E86C1" stroke="#161A19" stroke-width="2"/>
+  <text x="100" y="59" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">N</text>
+  <line x1="48" y1="56" x2="51" y2="56" stroke="#161A19" stroke-width="2"/>
+  <line x1="112" y1="56" x2="109" y2="56" stroke="#161A19" stroke-width="2"/>
+  <line x1="69" y1="56" x2="76" y2="56" stroke="#161A19" stroke-width="2"/>
+  <line x1="76" y1="54" x2="84" y2="54" stroke="#161A19" stroke-width="2"/>
+  <line x1="76" y1="58" x2="84" y2="58" stroke="#161A19" stroke-width="2"/>
+  <line x1="84" y1="56" x2="91" y2="56" stroke="#161A19" stroke-width="2"/>
+  <circle cx="80" cy="34" r="8" fill="#2C3E50" stroke="#161A19" stroke-width="2"/>
+  <text x="80" y="37" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">C</text>
+  <text x="80" y="92" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">a long conjugated bridge</text>
+  <text x="80" y="104" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">and conjugation is what makes a dye coloured</text>
+</svg>

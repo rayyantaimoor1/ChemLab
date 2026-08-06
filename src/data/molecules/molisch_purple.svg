@@ -1,0 +1,28 @@
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Molisch purple product: a naphthol unit joined to a furfural ring through a conjugated bridge, forming at the boundary between two liquid layers">
+  <line x1="40" y1="33" x2="54.722431864335455" y2="41.5" stroke="#161A19" stroke-width="2"/>
+  <line x1="54.722431864335455" y1="41.5" x2="54.72243186433546" y2="58.5" stroke="#161A19" stroke-width="2"/>
+  <line x1="54.72243186433546" y1="58.5" x2="40" y2="67" stroke="#161A19" stroke-width="2"/>
+  <line x1="40" y1="67" x2="25.277568135664545" y2="58.50000000000001" stroke="#161A19" stroke-width="2"/>
+  <line x1="25.277568135664545" y1="58.50000000000001" x2="25.277568135664538" y2="41.500000000000014" stroke="#161A19" stroke-width="2"/>
+  <line x1="25.277568135664538" y1="41.500000000000014" x2="40" y2="33" stroke="#161A19" stroke-width="2"/>
+  <circle cx="40" cy="50" r="11" fill="none" stroke="#161A19" stroke-width="1.5"/>
+  <line x1="74" y1="33" x2="88.72243186433546" y2="41.5" stroke="#161A19" stroke-width="2"/>
+  <line x1="88.72243186433546" y1="41.5" x2="88.72243186433546" y2="58.5" stroke="#161A19" stroke-width="2"/>
+  <line x1="88.72243186433546" y1="58.5" x2="74" y2="67" stroke="#161A19" stroke-width="2"/>
+  <line x1="74" y1="67" x2="59.277568135664545" y2="58.50000000000001" stroke="#161A19" stroke-width="2"/>
+  <line x1="59.277568135664545" y1="58.50000000000001" x2="59.27756813566454" y2="41.500000000000014" stroke="#161A19" stroke-width="2"/>
+  <line x1="59.27756813566454" y1="41.500000000000014" x2="74" y2="33" stroke="#161A19" stroke-width="2"/>
+  <circle cx="74" cy="50" r="11" fill="none" stroke="#161A19" stroke-width="1.5"/>
+  <line x1="91" y1="50" x2="104" y2="50" stroke="#161A19" stroke-width="2"/>
+  <line x1="104" y1="48" x2="116" y2="48" stroke="#161A19" stroke-width="2"/>
+  <line x1="104" y1="52" x2="116" y2="52" stroke="#161A19" stroke-width="2"/>
+  <line x1="130" y1="49" x2="142.363734711837" y2="57.982779073125684" stroke="#161A19" stroke-width="2"/>
+  <line x1="142.363734711837" y1="57.982779073125684" x2="137.64120827980216" y2="72.51722092687432" stroke="#161A19" stroke-width="2"/>
+  <line x1="137.64120827980216" y1="72.51722092687432" x2="122.35879172019786" y2="72.51722092687432" stroke="#161A19" stroke-width="2"/>
+  <line x1="122.35879172019786" y1="72.51722092687432" x2="117.636265288163" y2="57.982779073125684" stroke="#161A19" stroke-width="2"/>
+  <line x1="117.636265288163" y1="57.982779073125684" x2="130" y2="49" stroke="#161A19" stroke-width="2"/>
+  <circle cx="130" cy="49" r="7" fill="#E74C3C" stroke="#161A19" stroke-width="2"/>
+  <text x="130" y="52" text-anchor="middle" font-family="sans-serif" font-size="7" font-weight="bold" fill="#FFFFFF">O</text>
+  <text x="80" y="96" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">forms only where the two layers meet</text>
+  <text x="80" y="108" text-anchor="middle" font-family="sans-serif" font-size="8" font-style="italic" fill="#4A4A4A">shake the tube and the ring is lost</text>
+</svg>
