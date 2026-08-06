@@ -31,11 +31,46 @@
  * for each letter typed, which is exactly the sort of thing CLAUDE.md
  * section 9's performance budget is there to prevent on integrated graphics.
  *
- * No level/type filter yet (UI.md section 7 lists those too) - every reagent
- * is searchable, unfiltered, for this placeholder.
+ * LEVEL AND CATEGORY (the other two filters UI.md section 7 asks for)
+ * Both read curated fields and neither works anything out for itself. The
+ * level comes from each chemical's "levels" array, so a Matric student can
+ * hide the university reagents. The category comes from the "category" field
+ * added for this purpose - a shelf drawer label rather than a claim about
+ * chemistry, and curated because deducing "is this an acid" from a formula is
+ * the sort of guessing CLAUDE.md section 6.1 rules out.
+ *
+ * The three filters are ANDed: whatever is typed narrows further within the
+ * level and category chosen, and the count under the box always says how many
+ * bottles survived all three.
  */
 
 import { engine } from '../core/engine.js';
+
+/** The levels a chemical can be tagged with, coarsest first. */
+const LEVELS = [
+  { value: 'all', label: 'All levels' },
+  { value: 'matric', label: 'Matric' },
+  { value: 'fsc', label: 'FSc' },
+  { value: 'bs', label: 'BS' },
+];
+
+/**
+ * Shelf drawers. The wording is what a student would look for rather than
+ * what a chemist would file under - "Test reagents" rather than "analytical
+ * reagents", and "Made materials" for the alloys, plastics and ceramics.
+ */
+const CATEGORIES = [
+  { value: 'all', label: 'All kinds' },
+  { value: 'acid', label: 'Acids' },
+  { value: 'base', label: 'Bases and alkalis' },
+  { value: 'salt', label: 'Salts' },
+  { value: 'oxide', label: 'Oxides' },
+  { value: 'element', label: 'Elements' },
+  { value: 'organic', label: 'Organic compounds' },
+  { value: 'reagent', label: 'Test reagents' },
+  { value: 'material', label: 'Made materials' },
+  { value: 'other', label: 'Other' },
+];
 
 /**
  * Folds a string into the form both the search box and the bottle labels are
@@ -53,12 +88,38 @@ export function mountShelf({ root, dispatch }) {
   heading.textContent = 'Reagent shelf';
   root.appendChild(heading);
 
+  const controls = document.createElement('div');
+  controls.className = 'shelf-filters';
+
   const search = document.createElement('input');
   search.type = 'search';
   search.className = 'shelf-search';
   search.placeholder = 'Search: hcl, hydrochloric…';
   search.setAttribute('aria-label', 'Search reagents by name or formula');
-  root.appendChild(search);
+  controls.appendChild(search);
+
+  const dropdowns = document.createElement('div');
+  dropdowns.className = 'shelf-filters__row';
+
+  const makeSelect = (options, label) => {
+    const select = document.createElement('select');
+    select.className = 'shelf-filter';
+    select.setAttribute('aria-label', label);
+    for (const option of options) {
+      const element = document.createElement('option');
+      element.value = option.value;
+      element.textContent = option.label;
+      select.appendChild(element);
+    }
+    dropdowns.appendChild(select);
+    return select;
+  };
+
+  const levelSelect = makeSelect(LEVELS, 'Filter reagents by level');
+  const categorySelect = makeSelect(CATEGORIES, 'Filter reagents by kind');
+
+  controls.appendChild(dropdowns);
+  root.appendChild(controls);
 
   // Screen readers get told how many bottles are left after each keystroke;
   // sighted students can see it, so this is polite rather than assertive.
@@ -115,6 +176,8 @@ export function mountShelf({ root, dispatch }) {
     bottles.push({
       item,
       name: normalise(chemical.name),
+      levels: Array.isArray(chemical.levels) ? chemical.levels : [],
+      category: chemical.category || 'other',
       haystack: normalise([
         chemical.name,
         chemical.formula,
@@ -129,7 +192,8 @@ export function mountShelf({ root, dispatch }) {
   const empty = document.createElement('p');
   empty.className = 'shelf-search__empty';
   empty.hidden = true;
-  empty.textContent = 'No reagent matches that. Try the formula instead, or part of the name.';
+  empty.textContent =
+    'No reagent matches. Try the formula instead of the name, or widen the level and kind above.';
 
   /**
    * How good a match this is, lowest first. Typing "hcl" matches the formula
@@ -145,13 +209,18 @@ export function mountShelf({ root, dispatch }) {
   function applyFilter() {
     const query = normalise(search.value).trim();
     const terms = query.split(/\s+/).filter(Boolean);
+    const level = levelSelect.value;
+    const category = categorySelect.value;
     const matched = [];
     const rest = [];
 
     for (const bottle of bottles) {
-      // Every term must appear, so a second word narrows the search rather
-      // than widening it.
-      const matches = terms.every((term) => bottle.haystack.includes(term));
+      // All three filters must pass, and every search term must appear, so
+      // each thing the student adds narrows the shelf further.
+      const matches =
+        (level === 'all' || bottle.levels.includes(level)) &&
+        (category === 'all' || bottle.category === category) &&
+        terms.every((term) => bottle.haystack.includes(term));
       bottle.item.hidden = !matches;
       (matches ? matched : rest).push(bottle);
     }
@@ -167,13 +236,16 @@ export function mountShelf({ root, dispatch }) {
     for (const bottle of [...matched, ...rest]) order.appendChild(bottle.item);
     list.appendChild(order);
 
+    const filtering = terms.length > 0 || level !== 'all' || category !== 'all';
     empty.hidden = matched.length > 0;
-    status.textContent = terms.length === 0
-      ? `${chemicals.length} reagents`
-      : `${matched.length} of ${chemicals.length} reagents match`;
+    status.textContent = filtering
+      ? `${matched.length} of ${chemicals.length} reagents`
+      : `${chemicals.length} reagents`;
   }
 
   search.addEventListener('input', applyFilter);
+  levelSelect.addEventListener('change', applyFilter);
+  categorySelect.addEventListener('change', applyFilter);
 
   root.appendChild(list);
   root.appendChild(empty);

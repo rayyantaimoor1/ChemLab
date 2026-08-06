@@ -88,17 +88,44 @@ body {
 }
 
 /*
- * Shelf search (UI.md section 7). Sticky so it stays reachable while the
- * reagent list scrolls underneath it - with 177 bottles the box would
- * otherwise scroll away the moment you started looking.
+ * Shelf search, level and kind filters (UI.md section 7). The whole block is
+ * sticky so it stays reachable while the reagent list scrolls underneath -
+ * with 177 bottles it would otherwise scroll away the moment you started
+ * looking.
  */
-.shelf-search {
+.shelf-filters {
   position: sticky;
   top: 0;
   z-index: 1;
+  padding-bottom: 4px;
+  background: #fff;
+}
+
+.shelf-filters__row {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.shelf-filter {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 4px 2px;
+  border: 1px solid #999;
+  background: #fff;
+  font: inherit;
+  font-size: 0.85em;
+}
+
+.shelf-filter:focus {
+  outline: 2px solid #333;
+  outline-offset: -1px;
+}
+
+.shelf-search {
   box-sizing: border-box;
   width: 100%;
-  margin: 0 0 4px;
+  margin: 0;
   padding: 6px 8px;
   border: 1px solid #999;
   background: #fff;

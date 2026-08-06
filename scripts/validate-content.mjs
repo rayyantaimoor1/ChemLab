@@ -289,6 +289,26 @@ for (const chemical of chemicals) {
 }
 
 /* ------------------------------------------------------------------ *
+ * category — the shelf's "kind" filter reads this
+ *
+ * A shelf drawer label, not a claim about chemistry, but it still has
+ * to be curated: the filter shows nothing useful if entries drift into
+ * spellings it does not offer.
+ * ------------------------------------------------------------------ */
+
+const CATEGORIES = new Set([
+  'acid', 'base', 'salt', 'oxide', 'element', 'organic', 'reagent', 'material', 'other',
+]);
+
+for (const chemical of chemicals) {
+  if (!CATEGORIES.has(chemical.category)) {
+    problems.push(
+      `${chemical.id}: category ${JSON.stringify(chemical.category)} is not one the shelf filter offers`
+    );
+  }
+}
+
+/* ------------------------------------------------------------------ *
  * flame-tests.json — the flame test wire reads these (Phase 8)
  *
  * The tool refuses to guess a cation from a formula, so it depends

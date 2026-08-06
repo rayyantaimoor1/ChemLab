@@ -124,11 +124,25 @@ These are contracts. Adding content must never require changing engine code.
   "solubility": "miscible",
   "hazards": ["corrosive"],
   "levels": ["matric", "fsc"],
+  "category": "acid",
   "structure": "molecules/hcl.png",
   "description": "Strong monoprotic acid. Common laboratory reagent.",
   "source": "CRC Handbook 97th ed."
 }
 ```
+
+`category` is which drawer of the shelf a reagent belongs in, for the
+shelf's "kind" filter: one of **acid, base, salt, oxide, element, organic,
+reagent** (indicators and test reagents), **material** (alloys, plastics,
+ceramics, plated articles) or **other**.
+
+It is a shelf label rather than a claim about chemistry — ethanoic acid is
+both organic and an acid, and it is filed under acid because that is the
+drawer a student would open. But it is still **curated, not deduced**:
+working out "is this an acid" from a formula is the guessing §6.1 forbids,
+and a first attempt at deriving it put every sulfate in the organic drawer
+because "sulfate" contains "fat". A test and the validator both check that
+every reagent carries one of the nine values.
 
 ### `reactions.json`
 

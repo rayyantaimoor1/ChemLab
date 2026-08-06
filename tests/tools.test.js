@@ -592,3 +592,43 @@ test('a flame test does not change what is in the vessel', () => {
   assert.deepEqual(after.speciesIds, before.speciesIds);
   assert.equal(after.volumeMl, before.volumeMl);
 });
+
+/* ------------------------------------------------------------------ *
+ * The shelf's filter fields
+ *
+ * shelf.js filters on these two and works nothing out for itself, so
+ * the guarantee it needs is that every reagent actually carries them.
+ * ------------------------------------------------------------------ */
+
+test('every reagent on the shelf can be reached by the level and kind filters', async () => {
+  const { engine } = await import('../src/core/engine.js');
+
+  const categories = new Set([
+    'acid', 'base', 'salt', 'oxide', 'element', 'organic', 'reagent', 'material', 'other',
+  ]);
+  const levels = new Set(['matric', 'fsc', 'bs']);
+
+  for (const chemical of engine.getShelfChemicals()) {
+    assert.ok(
+      categories.has(chemical.category),
+      `${chemical.id} has category ${JSON.stringify(chemical.category)}, which the shelf filter does not offer`
+    );
+    assert.ok(
+      Array.isArray(chemical.levels) && chemical.levels.length > 0,
+      `${chemical.id} has no levels, so no level filter would ever show it`
+    );
+    for (const level of chemical.levels) {
+      assert.ok(levels.has(level), `${chemical.id} claims unknown level ${JSON.stringify(level)}`);
+    }
+  }
+});
+
+test('no shelf category is left empty, so no filter option is a dead end', async () => {
+  const { engine } = await import('../src/core/engine.js');
+
+  const used = new Set(engine.getShelfChemicals().map((chemical) => chemical.category));
+  // "other" is deliberately tiny (water) but must still have something in it.
+  for (const category of ['acid', 'base', 'salt', 'oxide', 'element', 'organic', 'reagent', 'material', 'other']) {
+    assert.ok(used.has(category), `no reagent on the shelf is category "${category}"`);
+  }
+});
