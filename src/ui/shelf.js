@@ -87,7 +87,7 @@ function normalise(text) {
   return String(text || '').toLowerCase().replace(/sulph/g, 'sulf');
 }
 
-export function mountShelf({ root, dispatch }) {
+export function mountShelf({ root, getState, dispatch, subscribe }) {
   root.innerHTML = '';
 
   const heading = document.createElement('h2');
@@ -293,4 +293,59 @@ export function mountShelf({ root, dispatch }) {
   root.appendChild(empty);
 
   applyFilter();
+
+  /* ------------------------------------------------------------------ *
+   * The apparatus tray: glassware and bench furniture, below the reagent
+   * list. Every button calls straight through to app.js's addVessel /
+   * addEquipment - this file does not decide what a beaker or a burner is,
+   * it only offers the list app.js's getState() hands it, the same
+   * read-only pattern the reagent list above already follows.
+   * ------------------------------------------------------------------ */
+
+  const apparatus = document.createElement('div');
+  apparatus.className = 'apparatus-tray';
+
+  const apparatusHeading = document.createElement('h3');
+  apparatusHeading.textContent = 'Apparatus';
+  apparatus.appendChild(apparatusHeading);
+
+  const apparatusGrid = document.createElement('div');
+  apparatusGrid.className = 'apparatus-tray__grid';
+  apparatus.appendChild(apparatusGrid);
+
+  root.appendChild(apparatus);
+
+  function renderApparatus() {
+    const state = getState();
+    apparatusGrid.innerHTML = '';
+
+    for (const { type, label } of state.vesselTypes) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'apparatus-item';
+      button.textContent = `+ ${label}`;
+      button.disabled = state.vesselLimitReached;
+      button.title = state.vesselLimitReached
+        ? 'The bench already holds as much glassware as it can.'
+        : `Take a ${label.toLowerCase()} from the tray`;
+      button.addEventListener('click', () => dispatch.addVessel(type));
+      apparatusGrid.appendChild(button);
+    }
+
+    for (const { kind, label } of state.equipmentTypes) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'apparatus-item apparatus-item--furniture';
+      button.textContent = `+ ${label}`;
+      button.disabled = state.equipmentLimitReached;
+      button.title = state.equipmentLimitReached
+        ? 'The bench already holds as much furniture as it can.'
+        : `Set up a ${label.toLowerCase()} on the bench`;
+      button.addEventListener('click', () => dispatch.addEquipment(kind));
+      apparatusGrid.appendChild(button);
+    }
+  }
+
+  subscribe(renderApparatus);
+  renderApparatus();
 }

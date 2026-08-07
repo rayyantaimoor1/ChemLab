@@ -44,15 +44,24 @@ const HEAT_LEVELS = [-1, 0, 1, 2, 3];
 export function mountBench({ root, getState, dispatch, subscribe }) {
   /** @type {Map<string, object>} containerId -> the DOM refs built for it */
   const containerEls = new Map();
-
-  const containersWrapper = document.createElement('div');
-  containersWrapper.className = 'containers';
+  /** @type {Map<string, object>} equipmentId -> the DOM refs built for it */
+  const equipmentEls = new Map();
 
   const heading = document.createElement('h2');
   heading.textContent = 'Bench';
-
   root.appendChild(heading);
+
+  // Furniture above the glassware, the way it would sit on a real bench -
+  // a beaker's heat comes from what it is standing on, so the thing doing
+  // the heating is shown before the thing being heated.
+  const equipmentWrapper = document.createElement('div');
+  equipmentWrapper.className = 'equipment-row';
+  root.appendChild(equipmentWrapper);
+
+  const containersWrapper = document.createElement('div');
+  containersWrapper.className = 'containers';
   root.appendChild(containersWrapper);
+
   // The tool tray has no animation to preserve across renders, so it is
   // simple to rebuild wholesale each time - see renderToolTray.
   const toolTrayHost = document.createElement('div');
@@ -61,13 +70,119 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
   function render() {
     const state = getState();
 
+    const seenEquipment = new Set();
+    for (const item of state.equipment) {
+      seenEquipment.add(item.id);
+      const refs = ensureEquipmentRefs(item);
+      updateEquipment(refs, item, state);
+    }
+    // An equipment tile that has been "put away" (removeEquipment) has to
+    // actually leave the DOM, unlike a container - vessels are never
+    // removed once created, but equipment is, and a stale tile left behind
+    // would go on offering a "Stand on" option for furniture that no
+    // longer exists.
+    for (const [id, refs] of equipmentEls) {
+      if (!seenEquipment.has(id)) {
+        refs.el.remove();
+        equipmentEls.delete(id);
+      }
+    }
+
+    const seenContainers = new Set();
     for (const container of state.containers) {
+      seenContainers.add(container.id);
       const refs = ensureContainerRefs(container);
       updateContainer(refs, container, state);
+    }
+    // Reset returns to the original beaker and test tube, and anything
+    // taken from the apparatus tray in between has to actually leave the
+    // DOM - the two base vessels are never removed, but an added one now
+    // can be, the same way an equipment tile already was above.
+    for (const [id, refs] of containerEls) {
+      if (!seenContainers.has(id)) {
+        refs.el.remove();
+        containerEls.delete(id);
+      }
     }
 
     toolTrayHost.innerHTML = '';
     toolTrayHost.appendChild(renderToolTray(state));
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Equipment: burner, ice bath, rack. Each is a small tile with its own
+   * level control (only the burner actually has one - see EQUIPMENT_TYPES
+   * in app.js) and a "Put away" button. Standing a vessel on one is done
+   * from the VESSEL's own card (the "Stand on" select below), the same way
+   * you would pick the glass up and set it down, not the other way round.
+   * ------------------------------------------------------------------ */
+
+  function ensureEquipmentRefs(item) {
+    const existing = equipmentEls.get(item.id);
+    if (existing) return existing;
+
+    const el = document.createElement('div');
+    el.className = `equipment equipment--${item.kind}`;
+    el.dataset.equipmentId = item.id;
+
+    const title = document.createElement('h4');
+    title.textContent = `${item.label} — ${item.id}`;
+    el.appendChild(title);
+
+    const levelRow = document.createElement('div');
+    levelRow.className = 'equipment__level';
+    el.appendChild(levelRow);
+
+    const removeButton = document.createElement('button');
+    removeButton.type = 'button';
+    removeButton.className = 'equipment__remove';
+    removeButton.textContent = 'Put away';
+    removeButton.title = 'Remove this from the bench. Anything standing on it is lifted off first.';
+    removeButton.addEventListener('click', () => dispatch.removeEquipment(item.id));
+    el.appendChild(removeButton);
+
+    equipmentWrapper.appendChild(el);
+    const refs = { el, title, levelRow, lastKind: null };
+    equipmentEls.set(item.id, refs);
+    return refs;
+  }
+
+  function updateEquipment(refs, item, state) {
+    if (refs.lastKind === item.kind) {
+      // Only the level buttons' active state can change on a re-render;
+      // the buttons themselves are built once per equipment id below.
+      for (const button of refs.levelRow.querySelectorAll('button')) {
+        button.classList.toggle('heat-level--active', Number(button.dataset.level) === item.level);
+      }
+      return;
+    }
+    refs.lastKind = item.kind;
+    refs.levelRow.innerHTML = '';
+
+    if (!item.canSetLevel) {
+      // Ice bath and rack do not have a level of their own - ice is always
+      // -1 to whatever stands on it, and a rack never heats at all. Saying
+      // so in words rather than leaving the row empty, per the same
+      // "colour is never the only signal" spirit UI.md section 5 states
+      // for chemistry: a control that quietly does nothing is confusing.
+      const note = document.createElement('p');
+      note.className = 'equipment__note';
+      note.textContent = item.kind === 'ice_bath' ? 'Keeps anything on it at ice-bath cold.' : 'A resting place - it does not heat.';
+      refs.levelRow.appendChild(note);
+      return;
+    }
+
+    for (const level of [0, 1, 2, 3]) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'heat-level';
+      button.dataset.level = String(level);
+      button.textContent = level === 0 ? 'Off' : String(level);
+      button.title = level === 0 ? 'Turn the gas off' : `Burner level ${level}`;
+      button.classList.toggle('heat-level--active', level === item.level);
+      button.addEventListener('click', () => dispatch.setEquipmentLevel(item.id, level));
+      refs.levelRow.appendChild(button);
+    }
   }
 
   /* ------------------------------------------------------------------ *
@@ -86,6 +201,23 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const title = document.createElement('h3');
     title.textContent = `${container.type.replace('_', ' ')} — ${container.id}`;
     el.appendChild(title);
+
+    // Which piece of equipment (if any) this vessel is standing on. Left
+    // free-standing, a vessel keeps its own direct heat control below
+    // exactly as it always has; standing it on a burner or ice bath hands
+    // that control to the furniture instead - see standOn in app.js.
+    const standRow = document.createElement('div');
+    standRow.className = 'container__stand';
+    const standLabel = document.createElement('label');
+    standLabel.textContent = 'Stand on: ';
+    const standSelect = document.createElement('select');
+    standSelect.setAttribute('aria-label', `What ${container.id} is standing on`);
+    standLabel.appendChild(standSelect);
+    standRow.appendChild(standLabel);
+    standSelect.addEventListener('change', () => {
+      dispatch.standOn(container.id, standSelect.value || null);
+    });
+    el.appendChild(standRow);
 
     // The vessel: a bounded box holding the liquid crossfade layers and the
     // particle layers effects.js draws into. Purely visual - nothing here
@@ -161,6 +293,13 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const flame = document.createElement('span');
     flame.className = 'fx-flame';
     heatSection.appendChild(flame);
+    // Shown instead of the buttons while standing on equipment - a vessel
+    // cannot both take its heat from a burner and be given a different
+    // level by hand at the same time, so only one control is ever active.
+    const heatNote = document.createElement('span');
+    heatNote.className = 'container__heat-note';
+    heatNote.hidden = true;
+    heatSection.appendChild(heatNote);
     const heatButtons = HEAT_LEVELS.map((level) => {
       const button = document.createElement('button');
       button.type = 'button';
@@ -239,8 +378,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     const refs = {
       el, liquidBase, liquidIncoming, precipitateLayer, bubbleLayer, gasLayer, pourMouth,
-      contentsList, volumeEl, tempEl, phEl, colorLabel, flame, heatButtons, dip, molecularView,
-      electrodeLayer, ionLayer, power,
+      contentsList, volumeEl, tempEl, phEl, colorLabel, flame, heatButtons, heatSection, heatNote,
+      dip, molecularView, electrodeLayer, ionLayer, power, standSelect,
       lastCapacityMl: container.capacityMl,
     };
     containerEls.set(container.id, refs);
@@ -289,9 +428,33 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       refs.liquidIncoming.style.height = refs.liquidBase.style.height;
     }
 
+    // Rebuilt on every render - the equipment list can gain or lose an
+    // entry at any time, and there are never more than four, so this is
+    // cheap next to the animation work the rest of render() already does.
+    const standingOn = container.standOn;
+    refs.standSelect.innerHTML = '';
+    const freeOption = document.createElement('option');
+    freeOption.value = '';
+    freeOption.textContent = 'Bench (free-standing)';
+    refs.standSelect.appendChild(freeOption);
+    for (const item of state.equipment) {
+      const option = document.createElement('option');
+      option.value = item.id;
+      option.textContent = `${item.label} — ${item.id}`;
+      refs.standSelect.appendChild(option);
+    }
+    refs.standSelect.value = standingOn || '';
+
+    const standingItem = standingOn ? state.equipment.find((item) => item.id === standingOn) : null;
+    const heatInherited = !!standingItem;
     for (const button of refs.heatButtons) {
+      button.hidden = heatInherited;
       const active = Number(button.dataset.level) === container.heatLevel;
       button.classList.toggle('heat-level--active', active);
+    }
+    refs.heatNote.hidden = !heatInherited;
+    if (standingItem) {
+      refs.heatNote.textContent = `Heat comes from the ${standingItem.label.toLowerCase()}.`;
     }
     setFlameLevel(refs.flame, container.heatLevel);
 

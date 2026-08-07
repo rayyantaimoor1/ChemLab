@@ -40,23 +40,169 @@ import { setReduceAnimation } from './effects.js';
  * beaker, one test tube.
  * ------------------------------------------------------------------ */
 
-const containers = [
-  createContainer({
-    id: 'beaker_1',
-    name: 'Beaker',
-    type: 'beaker',
-    capacityMl: 250,
-    getChemical: engine.getChemical,
-  }),
-  createContainer({
-    id: 'tube_1',
-    name: 'Test tube',
-    type: 'test_tube',
-    capacityMl: 50,
-    getChemical: engine.getChemical,
-  }),
+/**
+ * The vessel types the apparatus tray offers, and the equipment a vessel
+ * can be stood on. Both are UI-only presets over the same createContainer
+ * factory src/core/container.js already exports - adding a type here never
+ * touches src/core/, it only decides what name/capacity is passed in.
+ *
+ * EQUIPMENT AND WHY IT DRIVES HEAT
+ * Standing a vessel on a piece of furniture is what actually turns its
+ * burner on or drops it in ice - dispatch.setHeat(containerId, level) is the
+ * exact same action the vessel's own heat buttons already call, so nothing
+ * new had to be added to actions.js/container.js for this. `heats` says what
+ * a kind of furniture does to whatever is standing on it: a burner supplies
+ * whatever level its own knob is set to, an ice bath is always -1, and a
+ * rack does not heat at all (0) - it exists only as a tidy resting place for
+ * test tubes, the way it would on a real bench.
+ */
+const VESSEL_TYPES = {
+  beaker: { label: 'Beaker 250 mL', name: 'Beaker', capacityMl: 250 },
+  beaker_small: { label: 'Beaker 100 mL', name: 'Small beaker', capacityMl: 100 },
+  test_tube: { label: 'Test tube', name: 'Test tube', capacityMl: 50 },
+  boiling_tube: { label: 'Boiling tube', name: 'Boiling tube', capacityMl: 120 },
+  flask: { label: 'Conical flask', name: 'Conical flask', capacityMl: 250 },
+  flask_small: { label: 'Small conical flask', name: 'Small flask', capacityMl: 100 },
+  cylinder: { label: 'Measuring cylinder', name: 'Measuring cylinder', capacityMl: 100 },
+  burette: { label: 'Burette 50 mL', name: 'Burette', capacityMl: 50 },
+  dish: { label: 'Evaporating dish', name: 'Evaporating dish', capacityMl: 60 },
+};
+
+const EQUIPMENT_TYPES = {
+  burner: { label: 'Bunsen burner + tripod', name: 'Bunsen burner', heats: 1 },
+  ice_bath: { label: 'Ice bath', name: 'Ice bath', heats: -1 },
+  rack: { label: 'Test-tube rack', name: 'Test-tube rack', heats: 0 },
+};
+
+const MAX_VESSELS = 7;
+const MAX_EQUIPMENT = 4;
+
+/* Free Lab mode has no experiment telling it what apparatus to lay out
+   (experiments.js is still an empty placeholder outside guided mode), so
+   this is just a reasonable fixed starting bench: one beaker, one test
+   tube. These two are never removed - Reset returns to exactly this pair -
+   while addVessel() below can add more from the apparatus tray. */
+const BASE_CONTAINER_DEFS = [
+  { id: 'beaker_1', name: 'Beaker', type: 'beaker', capacityMl: 250 },
+  { id: 'tube_1', name: 'Test tube', type: 'test_tube', capacityMl: 50 },
 ];
+
+function buildContainer(def) {
+  return createContainer({ ...def, getChemical: engine.getChemical });
+}
+
+const containers = BASE_CONTAINER_DEFS.map(buildContainer);
 const containersById = new Map(containers.map((container) => [container.id, container]));
+
+// Bench furniture: burner, ice bath, rack. Purely UI-layer state - the
+// mockup's own header comment calls containers/hazard/notebook/mode/guided
+// "UI.md section 1 verbatim"; this is additional presentational state
+// layered on top of that contract, the same way selectedToolId and
+// viewingChemicalId already are below.
+const equipment = [];
+let nextVesselNumber = {};
+let nextEquipmentNumber = {};
+
+// Which equipment (if any) each vessel is standing on, containerId ->
+// equipmentId. A vessel not in this map is not standing on anything, and
+// keeps its own direct heat control exactly as it always has - standing on
+// furniture is an addition, not a requirement, so nothing already working
+// stops working the moment the apparatus tray exists.
+const standOnByContainer = new Map();
+
+function addVessel(type) {
+  const def = VESSEL_TYPES[type];
+  if (!def || containers.length >= MAX_VESSELS) return null;
+  const n = (nextVesselNumber[type] = (nextVesselNumber[type] || 0) + 1);
+  const id = `${type === 'test_tube' ? 'tube' : type}_${n}`;
+  const container = buildContainer({ id, name: def.name, type, capacityMl: def.capacityMl });
+  containers.push(container);
+  containersById.set(id, container);
+  notebook.logAction({
+    text: `A ${def.name.toLowerCase()} was taken from the apparatus tray and put on the bench.`,
+    containerId: id,
+    action: 'addVessel',
+  });
+  notify();
+  return id;
+}
+
+function addEquipment(kind) {
+  const def = EQUIPMENT_TYPES[kind];
+  if (!def || equipment.length >= MAX_EQUIPMENT) return null;
+  const n = (nextEquipmentNumber[kind] = (nextEquipmentNumber[kind] || 0) + 1);
+  const id = `${kind}_${n}`;
+  equipment.push({ id, kind, level: 0 });
+  notebook.logAction({
+    text: `A ${def.name.toLowerCase()} was set up on the bench.`,
+    containerId: null,
+    action: 'addEquipment',
+  });
+  notify();
+  return id;
+}
+
+/**
+ * Stands a vessel on a piece of equipment, or takes it off (equipmentId
+ * null). This is the one place that turns "furniture" into "temperature":
+ * it calls the exact same dispatch.setHeat every vessel's own heat buttons
+ * already call, so container.js never has to know equipment exists at all.
+ */
+function standOn(containerId, equipmentId) {
+  const container = containersById.get(containerId);
+  if (!container) return;
+
+  if (!equipmentId) {
+    standOnByContainer.delete(containerId);
+    dispatch.setHeat(containerId, 0);
+    notebook.logAction({
+      text: `${container.name} was lifted off the bench furniture.`,
+      containerId,
+      action: 'standOn',
+    });
+    return;
+  }
+
+  const item = equipment.find((eq) => eq.id === equipmentId);
+  const def = item && EQUIPMENT_TYPES[item.kind];
+  if (!item || !def) return;
+
+  standOnByContainer.set(containerId, equipmentId);
+  const level = def.heats === 1 ? item.level : def.heats;
+  dispatch.setHeat(containerId, level);
+  notebook.logAction({
+    text: `${container.name} was stood on the ${def.name.toLowerCase()}.`,
+    containerId,
+    action: 'standOn',
+  });
+}
+
+/**
+ * Turns a burner's own knob, and immediately re-applies that level to
+ * every vessel currently standing on it - the whole point of the burner
+ * being separate furniture rather than a button on each vessel's own card.
+ */
+function setEquipmentLevel(equipmentId, level) {
+  const item = equipment.find((eq) => eq.id === equipmentId);
+  if (!item || EQUIPMENT_TYPES[item.kind].heats !== 1) return;
+  item.level = level;
+  for (const [containerId, standingOn] of standOnByContainer) {
+    if (standingOn === equipmentId) dispatch.setHeat(containerId, level);
+  }
+  notify();
+}
+
+function removeEquipment(equipmentId) {
+  const index = equipment.findIndex((eq) => eq.id === equipmentId);
+  if (index === -1) return;
+  // Nothing should keep reporting a temperature from furniture that no
+  // longer exists, so every vessel standing on it comes off first.
+  for (const [containerId, standingOn] of [...standOnByContainer]) {
+    if (standingOn === equipmentId) standOn(containerId, null);
+  }
+  equipment.splice(index, 1);
+  notify();
+}
 
 const notebook = createNotebook();
 const tools = createTools({ getChemical: engine.getChemical, getFlameTest: engine.getFlameTest });
@@ -376,8 +522,26 @@ function getState() {
         // animation, so bench.js can offer to replay it right there. Null
         // until something animatable has actually happened in it.
         lastAnimatedReactionId: lastAnimatedReactionByContainer.get(snapshot.id) || null,
+        // Which piece of bench furniture (if any) this vessel is standing
+        // on - null means it is free-standing, using its own direct heat
+        // control exactly as every vessel always has.
+        standOn: standOnByContainer.get(snapshot.id) || null,
       };
     }),
+    // Bench furniture from the apparatus tray. burnerLevel/canHeat let
+    // bench.js draw each tile's own control without recomputing
+    // EQUIPMENT_TYPES itself - that table is this file's, not bench.js's.
+    equipment: equipment.map((item) => ({
+      id: item.id,
+      kind: item.kind,
+      label: EQUIPMENT_TYPES[item.kind].name,
+      level: item.level,
+      canSetLevel: EQUIPMENT_TYPES[item.kind].heats === 1,
+    })),
+    vesselTypes: Object.entries(VESSEL_TYPES).map(([type, def]) => ({ type, label: def.label })),
+    equipmentTypes: Object.entries(EQUIPMENT_TYPES).map(([kind, def]) => ({ kind, label: def.label })),
+    vesselLimitReached: containers.length >= MAX_VESSELS,
+    equipmentLimitReached: equipment.length >= MAX_EQUIPMENT,
     activeHazard,
     notebook: notebook.getEntries(),
     mode: guided ? 'guided' : 'free',
@@ -417,17 +581,21 @@ function currentReadingFor(containerId, toolId) {
  * for a single student action).
  */
 function resetBenchState() {
-  // container.empty() deliberately leaves temperature and the burner alone
-  // (see its comment in container.js: "the glassware leaves the glassware
-  // warm", correct for tipping a vessel out mid-session). Resetting the
-  // whole bench for a new session is a different intent, so those are put
-  // back to their starting values here too, explicitly.
-  for (const container of containers) {
-    container.empty();
-    container.setTemperatureC(ROOM_TEMPERATURE_C);
-    container.setHeatLevel(0);
-    container.setElectrified(false);
-  }
+  // Rebuilt from scratch rather than emptied in place: a freshly created
+  // container is already empty, at room temperature, unheated and
+  // unelectrified, so this is simpler than resetting each field by hand AND
+  // it is what "anything taken from the apparatus tray goes back to the
+  // tray" actually means - the original beaker and test tube are the only
+  // two that always come back, by id, so a guided experiment step written
+  // against "the beaker" still finds it.
+  containers.length = 0;
+  containers.push(...BASE_CONTAINER_DEFS.map(buildContainer));
+  containersById.clear();
+  for (const container of containers) containersById.set(container.id, container);
+  equipment.length = 0;
+  standOnByContainer.clear();
+  nextVesselNumber = {};
+  nextEquipmentNumber = {};
   notebook.clear();
   activeHazard = null;
   selectedToolId = null;
@@ -583,6 +751,21 @@ const dispatch = {
   dismissGuidedSummary: wrap(() => {
     guidedSummaryDismissed = true;
   }),
+
+  // The apparatus tray, UI.md section 7's inventory of shelf controls. None
+  // of these four are one of section 1's fixed names - that list predates
+  // there being more than a fixed pair of vessels - so each follows the
+  // same pattern as viewProperties/startExperiment above: pure interface
+  // state, plain function, not validated against anything the engine knows.
+  // addVessel/addEquipment already call notify() themselves (see above);
+  // standOn and setEquipmentLevel notify by way of the dispatch.setHeat
+  // they call internally, which is the same action every vessel's own heat
+  // buttons already use.
+  addVessel,
+  addEquipment,
+  standOn,
+  setEquipmentLevel,
+  removeEquipment,
 };
 
 /* ------------------------------------------------------------------ *
@@ -592,7 +775,10 @@ const dispatch = {
 mountGuidedBar({ root: document.getElementById('guided-bar'), getState, dispatch, subscribe });
 mountGuidedStepCard({ root: document.getElementById('guided-stepcard'), getState, dispatch, subscribe });
 mountGuidedSummary({ root: document.getElementById('guided-summary'), getState, dispatch, subscribe });
-mountShelf({ root: document.getElementById('shelf'), dispatch });
+// getState/subscribe are new here - the apparatus tray at the bottom of the
+// shelf needs to grey out "+ Beaker" once the bench is full, which the
+// static reagent list above it never needed to know about.
+mountShelf({ root: document.getElementById('shelf'), getState, dispatch, subscribe });
 mountBench({ root: document.getElementById('bench'), getState, dispatch, subscribe });
 mountPanels({ root: document.getElementById('notebook'), getState, dispatch, subscribe });
 mountHazardAlert({

@@ -529,6 +529,145 @@ select:focus-visible,
 }
 
 /* ------------------------------------------------------------------ *
+ * The apparatus tray: glassware and bench furniture, below the reagent
+ * list. Same drawer language as the reagent bottles above it - a labelled
+ * band on a slightly darker cream, so it reads as a distinct shelf
+ * fixture rather than more of the scrolling list.
+ * ------------------------------------------------------------------ */
+
+.apparatus-tray {
+  flex: none;
+  padding: 10px 13px 12px;
+  background: var(--panel-dim);
+  border-top: 1.5px solid var(--ink-18);
+}
+
+.apparatus-tray > h3 {
+  margin: 0 0 7px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-70);
+}
+
+.apparatus-tray__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.apparatus-item {
+  height: 36px;
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  background: #FFFFFF;
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
+}
+
+.apparatus-item:hover:not(:disabled) {
+  border-color: var(--ink-45);
+}
+
+.apparatus-item:disabled {
+  color: var(--ink-45);
+  cursor: not-allowed;
+}
+
+.apparatus-item--furniture {
+  border-left: 4px solid var(--accent);
+}
+
+/* ------------------------------------------------------------------ *
+ * Equipment: the burner, ice bath and rack from the apparatus tray. Sits
+ * above the glassware, on its own row - furniture the glass stands on,
+ * not one more thing bolted onto a vessel's own card.
+ * ------------------------------------------------------------------ */
+
+.equipment-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 14px 0;
+}
+
+.equipment-row:empty {
+  display: none;
+}
+
+.equipment {
+  width: 170px;
+  padding: 8px 10px 10px;
+  background: #2C3532;
+  color: var(--panel-90);
+  border: 1.5px solid rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius);
+}
+
+/* A warm border for the burner, a cool one for the ice bath - decoration
+   on top of the label, which already says which is which (UI.md section 5). */
+.equipment--burner {
+  border-top: 3px solid var(--accent);
+}
+
+.equipment--ice_bath {
+  border-top: 3px solid #4C7E93;
+}
+
+.equipment--rack {
+  border-top: 3px solid var(--glass);
+}
+
+.equipment > h4 {
+  margin: 0 0 7px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--panel-90);
+}
+
+.equipment__level {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.equipment__level .heat-level {
+  height: 28px;
+  min-width: 28px;
+  padding: 0 6px;
+  font-size: 12px;
+}
+
+.equipment__note {
+  margin: 0 0 8px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--panel-80);
+}
+
+.equipment__remove {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  background: transparent;
+  color: var(--panel-80);
+  border: 1.5px solid var(--glass-34);
+  border-radius: var(--radius-sm);
+}
+
+.equipment__remove:hover {
+  border-color: var(--glass-80);
+  color: var(--panel-90);
+}
+
+/* ------------------------------------------------------------------ *
  * The bench: instrument cards on the dark benchtop.
  * ------------------------------------------------------------------ */
 
@@ -571,6 +710,28 @@ select:focus-visible,
   background: #F2F0EA;
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 1.5px;
+}
+
+.container__stand {
+  margin: 0 0 8px;
+  font-size: 12.5px;
+  color: var(--panel-80);
+}
+
+.container__stand select {
+  height: 26px;
+  margin-left: 4px;
+  padding: 0 4px;
+  font-size: 12.5px;
+  background: #2C3532;
+  color: var(--panel-90);
+  border: 1.5px solid rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-sm);
+}
+
+.container__heat-note {
+  font-size: 12.5px;
+  color: var(--panel-80);
 }
 
 .vessel {
