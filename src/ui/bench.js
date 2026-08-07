@@ -41,6 +41,14 @@ import {
 // as a temperature scale: coldest, off, then hotter.
 const HEAT_LEVELS = [-1, 0, 1, 2, 3];
 
+// Which vessel types have a pouring lip - the mockup's VESSEL_TYPES table
+// again (spout:true), matching real glassware: the two beakers and the
+// measuring cylinder have one, nothing else does. Width/height/radius/
+// clip-path for every type live in bench.css as .vessel--{type}, since
+// those never change per-instance; this is the one shape fact that isn't
+// expressible as a shared class alone.
+const SPOUTED_VESSEL_TYPES = new Set(['beaker', 'beaker_small', 'cylinder']);
+
 export function mountBench({ root, getState, dispatch, subscribe }) {
   /** @type {Map<string, object>} containerId -> the DOM refs built for it */
   const containerEls = new Map();
@@ -223,7 +231,20 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // particle layers effects.js draws into. Purely visual - nothing here
     // is read back as state.
     const vessel = document.createElement('div');
-    vessel.className = 'vessel';
+    vessel.className = `vessel vessel--${container.type}`;
+
+    // The rim and (where the real glassware has one) the pouring spout,
+    // both purely decorative outlines - see the VESSEL_TYPES table in
+    // app.js for which types get a spout, and bench.css for the exact
+    // per-type sizing (.vessel--{type} .vessel__rim).
+    const vesselRim = document.createElement('div');
+    vesselRim.className = 'vessel__rim';
+    vessel.appendChild(vesselRim);
+    if (SPOUTED_VESSEL_TYPES.has(container.type)) {
+      const vesselSpout = document.createElement('div');
+      vesselSpout.className = 'vessel__spout';
+      vessel.appendChild(vesselSpout);
+    }
 
     const liquidBase = document.createElement('div');
     liquidBase.className = 'vessel__liquid vessel__liquid--base';
@@ -257,7 +278,14 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     ionLayer.className = 'vessel__layer vessel__ions';
     electrodeLayer.append(cathodeRod, anodeRod, ionLayer);
 
-    vessel.append(liquidBase, liquidIncoming, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
+    // Everything that must be clipped to the glass's own shape - a beaker's
+    // liquid must never show past its rounded corners, and a conical
+    // flask's must never show past its polygon shoulder. This is a separate
+    // element from .vessel itself so the rim above can sit outside the clip.
+    const glass = document.createElement('div');
+    glass.className = 'vessel__glass';
+    glass.append(liquidBase, liquidIncoming, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
+    vessel.appendChild(glass);
     el.appendChild(vessel);
 
     const contentsList = document.createElement('ul');

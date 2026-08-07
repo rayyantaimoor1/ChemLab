@@ -735,9 +735,42 @@ select:focus-visible,
 }
 
 .vessel {
+  /* The outer, unclipped box: sized per type below, and holding the rim
+     and spout as siblings that sit above the glass's own top edge. Only
+     the inner .vessel__glass clips its contents - if this element clipped
+     too, the rim (top: -3px, deliberately above y=0) would be cut off,
+     exactly matching the mockup's own two-layer structure. */
   position: relative;
-  height: 96px;
-  margin: 0 0 8px;
+  margin: 0 auto 20px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Vessel shapes, one rule per apparatus-tray type, taken verbatim from
+ * the mockup's own VESSEL_TYPES table (width, height, border-radius,
+ * and the conical flask's clip-path) - a beaker and a test tube must
+ * not read as the same shape wearing a different label.
+ * ------------------------------------------------------------------ */
+
+.vessel--beaker { width: 110px; height: 118px; }
+.vessel--beaker_small { width: 82px; height: 92px; }
+.vessel--test_tube { width: 42px; height: 150px; }
+.vessel--boiling_tube { width: 56px; height: 166px; }
+.vessel--flask { width: 116px; height: 130px; }
+.vessel--flask_small { width: 88px; height: 104px; }
+.vessel--cylinder { width: 50px; height: 152px; }
+.vessel--burette { width: 30px; height: 200px; }
+.vessel--dish { width: 96px; height: 44px; }
+
+/* The clipped glass body: same footprint as .vessel, holds the glass tint
+   and every liquid/precipitate/bubble/gas/electrode layer, and is where
+   the per-type border-radius or (conical flask) clip-path actually cuts
+   the shape - keeping that off the outer box is what lets the rim poke
+   out above it instead of being clipped away. */
+.vessel__glass {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   background: linear-gradient(
     90deg,
     rgba(201, 214, 218, 0.2),
@@ -745,12 +778,71 @@ select:focus-visible,
     rgba(201, 214, 218, 0.04) 70%,
     rgba(201, 214, 218, 0.22)
   );
-  border-radius: 3px 3px 6px 6px;
   box-shadow:
     inset 0 0 0 2px rgba(201, 214, 218, 0.5),
     inset -7px 0 12px -6px rgba(255, 255, 255, 0.3),
     inset 7px 0 12px -6px rgba(255, 255, 255, 0.12);
-  overflow: hidden;
+}
+
+.vessel--beaker .vessel__glass { border-radius: 4px 4px 12px 12px; }
+.vessel--beaker_small .vessel__glass { border-radius: 4px 4px 10px 10px; }
+.vessel--test_tube .vessel__glass { border-radius: 3px 3px 21px 21px; }
+.vessel--boiling_tube .vessel__glass { border-radius: 3px 3px 28px 28px; }
+
+.vessel--flask .vessel__glass,
+.vessel--flask_small .vessel__glass {
+  border-radius: 0;
+  clip-path: polygon(36% 0, 64% 0, 64% 36%, 100% 92%, 96% 100%, 4% 100%, 0 92%);
+  /* The flask's shoulder is drawn by the clip-path, not by a bounding box
+     that already looks like a flask, so the glass tint has to fill a
+     taller box than the visible shape and let the polygon cut it out. */
+  box-shadow: none;
+}
+
+.vessel--cylinder .vessel__glass { border-radius: 2px 2px 5px 5px; }
+.vessel--burette .vessel__glass { border-radius: 2px 2px 7px 7px; }
+.vessel--dish .vessel__glass { border-radius: 6px 6px 46px 46px; }
+
+/* The rim: a highlight bar wider than the glass beneath it, exactly the
+   way a real lip overhangs the body of a beaker or flask. Widths are the
+   mockup's own rimW per type. Positioned against the unclipped .vessel,
+   not .vessel__glass, so top: -3px is actually visible. */
+.vessel__rim {
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  height: 6px;
+  transform: translateX(-50%);
+  border-radius: 3px;
+  background: linear-gradient(180deg, rgba(230, 242, 246, 0.72), rgba(201, 214, 218, 0.32));
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.vessel--beaker .vessel__rim { width: 124px; }
+.vessel--beaker_small .vessel__rim { width: 94px; }
+.vessel--test_tube .vessel__rim { width: 50px; }
+.vessel--boiling_tube .vessel__rim { width: 64px; }
+.vessel--flask .vessel__rim { width: 48px; }
+.vessel--flask_small .vessel__rim { width: 40px; }
+.vessel--cylinder .vessel__rim { width: 58px; }
+.vessel--burette .vessel__rim { width: 38px; }
+.vessel--dish .vessel__rim { width: 104px; }
+
+/* The pouring spout - only the beakers and the measuring cylinder have
+   one (VESSEL_TYPES' spout:true), matching real glassware. */
+.vessel__spout {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 16px;
+  height: 11px;
+  margin-left: -32px;
+  border-top: 2px solid rgba(201, 214, 218, 0.6);
+  border-left: 2px solid rgba(201, 214, 218, 0.6);
+  border-radius: 6px 0 0 0;
+  transform: rotate(-24deg);
+  pointer-events: none;
 }
 
 .vessel__liquid {
