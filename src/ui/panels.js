@@ -22,6 +22,23 @@ import { flashHazardEdge, shakeElement } from './effects.js';
 // chemical up by id rather than app.js resolving it into state, so this
 // stays a plain lookup, not a chemistry decision.
 import { engine } from '../core/engine.js';
+
+/**
+ * Plain-English names for the curated "category" field, matching the wording
+ * the shelf's kind filter uses so the two never disagree.
+ */
+const CATEGORY_NAMES = {
+  acid: 'Acid',
+  base: 'Base or alkali',
+  salt: 'Salt',
+  oxide: 'Oxide',
+  element: 'Element',
+  organic: 'Organic compound',
+  complex: 'Coordination complex',
+  reagent: 'Test reagent',
+  material: 'Made material',
+  other: 'Other',
+};
 // Only used to check whether a 3D model exists, so the "View in 3D" button
 // can be left out honestly rather than opening a viewer with nothing in it.
 import { getMolecule3D } from './molecular3d.js';
@@ -629,6 +646,11 @@ export function mountPropertiesCard({ root, getState, dispatch, subscribe }) {
       labelled('Formula', chemical.formula),
       labelled('Concentration', chemical.concentration),
       labelled('State', chemical.state),
+      // The shelf's "kind" filter only reaches the 177 reagents a student can
+      // pick up. Showing the same curated field here covers the other 198 as
+      // well - the precipitates, gases and complexes that only ever appear as
+      // products, which is where most of the complexes actually live.
+      labelled('Kind', CATEGORY_NAMES[chemical.category] || null),
       // Section 5: colour is never shown without its name - the swatch is
       // decoration on top of the word, not a replacement for it.
       chemical.colorName ? swatchRow(chemical.colorHex, chemical.colorName) : null,

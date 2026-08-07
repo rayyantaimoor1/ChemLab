@@ -208,7 +208,18 @@ pour interaction, drag ghost, drop target highlight.
 **Shelf:** reagent bottle (amber/clear, printed label), level filter (Matric/FSc/BS), category
 filter, search.
 
-**Tools:** pH paper strip + colour chart, thermometer, litmus paper, conductivity tester.
+> All three shelf controls are **already built and working** in the placeholder
+> (`src/ui/shelf.js`) — a search box, a level dropdown and a kind dropdown,
+> stacked and sticky at the top of the shelf, ANDed together, with a live count
+> and a "nothing matched" line. A redesign should restyle them, not reinvent
+> the behaviour. Two things in there are easy to lose by accident and are worth
+> keeping: the search matches formula as well as name (so "hcl" works), and it
+> folds "sulph-" onto "sulf-" so the British spelling in Pakistani textbooks
+> finds the reagent. The kind dropdown lists only drawers the shelf actually
+> stocks, so it never offers an empty option.
+
+**Tools:** pH paper strip + colour chart, thermometer, litmus paper, conductivity tester,
+flame test wire.
 
 **Panels:** properties card (name, formula, state, colour name, pH, molar mass, hazards, uses),
 molecular view (2D structure → 3D ball-and-stick), notebook entry, compare-with-reference reveal,
