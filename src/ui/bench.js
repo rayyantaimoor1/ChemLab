@@ -147,6 +147,13 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     colorLabel.className = 'container__colour-label';
     el.appendChild(colorLabel);
 
+    // Every control below reads as one instrument panel rather than five
+    // separate buttons scattered down the card - purely a grouping wrapper
+    // for layout, nothing here changes what each control dispatches.
+    const controls = document.createElement('div');
+    controls.className = 'container__controls';
+    el.appendChild(controls);
+
     // Burner: a flame indicator plus the level control. setHeat is dispatched
     // straight from here; there was previously no UI path to it at all.
     const heatSection = document.createElement('div');
@@ -174,7 +181,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       heatSection.appendChild(button);
       return button;
     });
-    el.appendChild(heatSection);
+    controls.appendChild(heatSection);
 
     // The electrolysis power supply. Sits next to the burner because it is
     // the same kind of control: a switch that decides which rules are
@@ -188,7 +195,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       const now = getState().containers.find((c) => c.id === container.id);
       withEffects(container.id, () => dispatch.setPower(container.id, !now.electrified));
     });
-    el.appendChild(power);
+    controls.appendChild(power);
 
     // stir(containerId) - UI.md section 1's fixed dispatch name. There was
     // previously no control for it at all (the same gap setHeat's comment
@@ -202,7 +209,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     stir.addEventListener('click', () => {
       withEffects(container.id, () => dispatch.stir(container.id));
     });
-    el.appendChild(stir);
+    controls.appendChild(stir);
 
     const dip = document.createElement('button');
     dip.type = 'button';
@@ -213,7 +220,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       if (!state.selectedToolId) return;
       dispatch.dipTool(state.selectedToolId, container.id);
     });
-    el.appendChild(dip);
+    controls.appendChild(dip);
 
     // Appears only once a reaction with a scripted animation has actually
     // happened in THIS vessel - see lastAnimatedReactionId in app.js.
@@ -226,7 +233,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       const reactionId = molecularView.dataset.reactionId;
       if (reactionId) dispatch.viewReactionAnimation(reactionId);
     });
-    el.appendChild(molecularView);
+    controls.appendChild(molecularView);
 
     wireDragAndDrop(el, container.id);
 

@@ -8,6 +8,15 @@
 <body>
   <header class="topbar">
     <!--
+      The brand mark - UI.md section 2's "bench-top instrument, not a web
+      app" concept, stated in one glance before anything else on screen.
+      Purely decorative: no id, nothing reads it, nothing dispatches from it.
+    -->
+    <div class="topbar__brand">
+      <span class="topbar__brand-mark" aria-hidden="true"></span>
+      <span class="topbar__brand-name">Virtual Chemistry Lab</span>
+    </div>
+    <!--
       Guided mode's topbar chrome, UI.md section 3: "MODE: Free Lab / Guided
       Experiment ▾". Owned entirely by mountGuidedBar in guided.js so the
       mode text and the picker stay in sync with the same state everything

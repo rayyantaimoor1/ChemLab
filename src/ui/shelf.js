@@ -97,29 +97,39 @@ export function mountShelf({ root, dispatch }) {
   const controls = document.createElement('div');
   controls.className = 'shelf-filters';
 
+  // Level is a row of toggle pills rather than a <select> - with only four
+  // values it reads faster as buttons a student can see all of at once, and
+  // it is the filter used most often (a Matric student sets it once and
+  // leaves it), so it earns the more prominent control.
+  const levelRow = document.createElement('div');
+  levelRow.className = 'shelf-filters__levels';
+  let currentLevel = 'all';
+  const levelButtons = LEVELS.map(({ value, label }) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'shelf-level';
+    button.textContent = label;
+    button.setAttribute('aria-pressed', String(value === currentLevel));
+    button.addEventListener('click', () => {
+      currentLevel = value;
+      for (const other of levelRow.querySelectorAll('.shelf-level')) {
+        other.classList.toggle('shelf-level--active', other === button);
+        other.setAttribute('aria-pressed', String(other === button));
+      }
+      applyFilter();
+    });
+    levelRow.appendChild(button);
+    return button;
+  });
+  levelButtons[0].classList.add('shelf-level--active');
+  controls.appendChild(levelRow);
+
   const search = document.createElement('input');
   search.type = 'search';
   search.className = 'shelf-search';
   search.placeholder = 'Search: hcl, hydrochloric…';
   search.setAttribute('aria-label', 'Search reagents by name or formula');
   controls.appendChild(search);
-
-  const dropdowns = document.createElement('div');
-  dropdowns.className = 'shelf-filters__row';
-
-  const makeSelect = (options, label) => {
-    const select = document.createElement('select');
-    select.className = 'shelf-filter';
-    select.setAttribute('aria-label', label);
-    for (const option of options) {
-      const element = document.createElement('option');
-      element.value = option.value;
-      element.textContent = option.label;
-      select.appendChild(element);
-    }
-    dropdowns.appendChild(select);
-    return select;
-  };
 
   // Reagents only. chemicals.json also describes what reactions PRODUCE
   // (precipitates, gases, salts in solution) and those are not things a
@@ -134,10 +144,16 @@ export function mountShelf({ root, dispatch }) {
       .map(([value, label]) => ({ value, label })),
   ];
 
-  const levelSelect = makeSelect(LEVELS, 'Filter reagents by level');
-  const categorySelect = makeSelect(categoryOptions, 'Filter reagents by kind');
-
-  controls.appendChild(dropdowns);
+  const categorySelect = document.createElement('select');
+  categorySelect.className = 'shelf-filter';
+  categorySelect.setAttribute('aria-label', 'Filter reagents by kind');
+  for (const option of categoryOptions) {
+    const element = document.createElement('option');
+    element.value = option.value;
+    element.textContent = option.label;
+    categorySelect.appendChild(element);
+  }
+  controls.appendChild(categorySelect);
   root.appendChild(controls);
 
   // Screen readers get told how many bottles are left after each keystroke;
@@ -159,18 +175,32 @@ export function mountShelf({ root, dispatch }) {
     item.draggable = true;
     item.dataset.chemicalId = chemical.id;
     item.title = chemical.description || '';
+    // A coloured spine down the left edge of the bottle, printed-label
+    // style. Decoration on top of the swatch/text below it, never the only
+    // signal (UI.md section 5) - the formula and concentration are always
+    // there in words underneath.
+    item.style.setProperty('--spine', chemical.colorHex || '#C9D6DA');
 
     const name = document.createElement('span');
     name.className = 'reagent-bottle__name';
     name.textContent = chemical.name;
     item.appendChild(name);
 
+    const meta = document.createElement('span');
+    meta.className = 'reagent-bottle__meta';
+    const swatch = document.createElement('span');
+    swatch.className = 'reagent-bottle__swatch';
+    swatch.style.background = chemical.colorHex || '#C9D6DA';
+    swatch.setAttribute('aria-hidden', 'true');
+    meta.appendChild(swatch);
+    meta.append(chemical.formula || '');
     if (chemical.concentration) {
       const concentration = document.createElement('span');
       concentration.className = 'reagent-bottle__concentration';
       concentration.textContent = ` (${chemical.concentration})`;
-      item.appendChild(concentration);
+      meta.appendChild(concentration);
     }
+    item.appendChild(meta);
 
     item.addEventListener('dragstart', (event) => {
       event.dataTransfer.setData('text/plain', chemical.id);
@@ -185,9 +215,7 @@ export function mountShelf({ root, dispatch }) {
     propertiesButton.addEventListener('click', () => dispatch.viewProperties(chemical.id));
     item.appendChild(propertiesButton);
 
-    // The formula is searchable but not shown on the bottle, so that typing
-    // "h2so4" finds the acid without the label becoming a wall of symbols.
-    // The name is kept separately as well, for ranking.
+    // name is kept separately from the full haystack below, for ranking.
     bottles.push({
       item,
       name: normalise(chemical.name),
@@ -224,7 +252,7 @@ export function mountShelf({ root, dispatch }) {
   function applyFilter() {
     const query = normalise(search.value).trim();
     const terms = query.split(/\s+/).filter(Boolean);
-    const level = levelSelect.value;
+    const level = currentLevel;
     const category = categorySelect.value;
     const matched = [];
     const rest = [];
@@ -259,7 +287,6 @@ export function mountShelf({ root, dispatch }) {
   }
 
   search.addEventListener('input', applyFilter);
-  levelSelect.addEventListener('change', applyFilter);
   categorySelect.addEventListener('change', applyFilter);
 
   root.appendChild(list);

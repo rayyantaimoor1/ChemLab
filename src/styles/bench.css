@@ -1,15 +1,132 @@
 /*
- * bench.css — deliberately plain. This is the Phase 3 placeholder from
- * CLAUDE.md's build phases, not the real design (that is Phase 9, in
- * Claude Design, against UI.md). Just enough layout to make the three
- * zones from UI.md section 3 usable: reagent shelf, bench, lab notebook.
+ * bench.css — Phase 9's real design, built against UI.md against the
+ * "bench-top instrument, not a web app" concept in its section 2: machined
+ * surfaces, printed labels, the muted lab palette in section 5, and the
+ * three type roles in section 7 (a condensed grotesque for labels, a mono
+ * face for readouts, a serif for the notebook). Every colour and font role
+ * below is UI.md's own — nothing invented here.
  *
- * The vessel/fx-* rules below are Phase 5's effects layer. Per UI.md
- * section 6, every animation here uses only `transform` and `opacity` -
- * both are handled entirely by the compositor, so they cost nothing on a
- * repaint even on integrated graphics. No `filter: blur()`, no animated
- * box-shadow, no WebGL anywhere in this file.
+ * FONTS ARE BUNDLED, NOT LINKED. UI.md's Typography section: "all bundled
+ * locally (no web fonts — the app is offline)." The nine files this loads
+ * live under src/assets/fonts/ (SIL OFL licensed, see the README there) and
+ * are the only asset requests this stylesheet makes - CLAUDE.md section 2:
+ * "Zero network calls at runtime. No telemetry, no CDN fonts."
+ *
+ * PERFORMANCE (CLAUDE.md section 9 / UI.md section 6): every animation in
+ * this file, and every one-shot effect driven from effects.js, animates
+ * `transform` and `opacity` only. No `filter: blur()`, no animated
+ * box-shadow, no WebGL anywhere. Both a la carte compositor properties, so
+ * a repaint costs nothing even on the integrated graphics the hardware
+ * floor requires.
  */
+
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-sans-condensed-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-sans-condensed-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-sans-condensed-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-sans-condensed-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-mono-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-mono-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../assets/fonts/ibm-plex-mono-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/source-serif-4-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/source-serif-4-italic-400.woff2') format('woff2');
+}
+
+/* ------------------------------------------------------------------ *
+ * Design tokens - UI.md section 5's palette, unmodified, plus the
+ * opacities the design work layered on top of it for hierarchy on light
+ * and dark surfaces. Nothing here is decorative invention; every hex is
+ * traceable to UI.md's own table.
+ * ------------------------------------------------------------------ */
+
+:root {
+  /* UI.md section 5 palette */
+  --ink: #161A19;              /* printed bottle label black */
+  --bench: #26302D;            /* dark phenolic resin benchtop */
+  --bench-deep: #202824;       /* a shade under the bench surface, for recessed bands */
+  --panel: #EDEAE3;            /* lab wall tile, off-white */
+  --panel-dim: #E3DFD5;        /* a half-step down from --panel, for banded sub-sections */
+  --notebook: #F7F5EE;         /* notebook paper stock, warmer/lighter than --panel */
+  --glass: #C9D6DA;            /* borosilicate edge tint */
+  --accent: #A8702B;           /* amber reagent-bottle glass */
+  --accent-hover: #C98A3D;
+  --hazard: #D0342C;           /* GHS pictogram red - reserved exclusively, section 4 */
+
+  /* Ink at reduced opacity, for hierarchy on the light surfaces (shelf,
+     notebook, panels) without inventing a second colour. */
+  --ink-70: rgba(22, 26, 25, 0.7);
+  --ink-60: rgba(22, 26, 25, 0.6);
+  --ink-45: rgba(22, 26, 25, 0.45);
+  --ink-32: rgba(22, 26, 25, 0.32);
+  --ink-18: rgba(22, 26, 25, 0.18);
+
+  /* Panel ink (--panel) at reduced opacity, for hierarchy on the dark bench. */
+  --panel-90: rgba(237, 234, 227, 0.9);
+  --panel-80: rgba(237, 234, 227, 0.8);
+  --panel-55: rgba(237, 234, 227, 0.55);
+  --glass-80: rgba(201, 214, 218, 0.8);
+  --glass-34: rgba(201, 214, 218, 0.34);
+  --glass-16: rgba(201, 214, 218, 0.16);
+
+  --font-label: 'IBM Plex Sans Condensed', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-notebook: 'Source Serif 4', Georgia, serif;
+
+  --radius: 3px;
+  --radius-sm: 2px;
+}
 
 * {
   box-sizing: border-box;
@@ -21,290 +138,460 @@ html, body {
 
 body {
   margin: 0;
-  font-family: sans-serif;
-  color: #222;
-  /* A flex column, topbar/step-card/layout stacked, rather than .layout
-     assuming a fixed topbar height. Guided mode's step card (added this
-     phase) does not have a fixed height - it grows with the instruction
-     and hint text - so a hardcoded "100vh minus one magic number" would
-     have started clipping the bench the moment guided mode was active. */
+  font-family: var(--font-label);
+  font-size: 14.5px;
+  color: var(--ink);
+  background: #0F1413;
   display: flex;
   flex-direction: column;
+  -webkit-font-smoothing: antialiased;
 }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-label);
+}
+
+button, input, select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Topbar
+ * ------------------------------------------------------------------ */
 
 .topbar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 16px;
-  border-bottom: 1px solid #ccc;
+  align-items: stretch;
+  gap: 0;
+  min-height: 46px;
+  background: var(--panel);
+  color: var(--ink);
+  border-bottom: 3px solid var(--bench);
   flex: none;
+}
+
+.topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 14px;
+  border-right: 1px solid var(--ink-18);
+}
+
+.topbar__brand-mark {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: inset 0 0 0 3px var(--panel), 0 0 0 1.5px var(--accent);
+}
+
+.topbar__brand-name {
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.guided-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  flex: 1;
+  min-width: 0;
+  border-right: 1px solid var(--ink-18);
+}
+
+.guided-bar__mode {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.guided-bar__picker {
+  height: 30px;
+  min-width: 220px;
+  max-width: 340px;
+  padding: 0 6px;
+  font-size: 13.5px;
+  background: #FFFFFF;
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
 }
 
 .topbar__reduce-motion {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   min-height: 40px;
+  padding: 0 14px;
+  font-size: 13.5px;
+  border-right: 1px solid var(--ink-18);
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .topbar__reduce-motion input {
-  /* UI.md section 8: click targets at least 40x40px. The native checkbox
-     square is much smaller than that; the label text is part of the same
-     click target via <label>, so the whole row - not just the box - is
-     what needs to clear 40px tall. */
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
+  accent-color: var(--bench);
+  cursor: pointer;
 }
+
+#reset-bench {
+  padding: 0 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  background: var(--bench);
+  color: var(--panel);
+  border: none;
+  border-left: 1px solid var(--ink-18);
+}
+
+#reset-bench:hover {
+  background: #31403B;
+}
+
+/* ------------------------------------------------------------------ *
+ * The three-zone layout
+ * ------------------------------------------------------------------ */
 
 .layout {
   display: flex;
   align-items: stretch;
   flex: 1;
-  /* Lets the zones' own overflow-y: auto actually take effect inside a
-     flex child, instead of the flex item growing to fit its content and
-     pushing the page itself into a second scrollbar. */
   min-height: 0;
 }
 
 .zone {
   overflow-y: auto;
-  padding: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-34) transparent;
+}
+
+.zone::-webkit-scrollbar {
+  width: 9px;
+}
+
+.zone::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.zone::-webkit-scrollbar-thumb {
+  background: var(--glass-34);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.zone > h2 {
+  margin: 0;
+  padding: 11px 13px 9px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .zone--shelf {
-  width: 22%;
-  border-right: 1px solid #ccc;
+  width: 336px;
+  flex: none;
+  background: var(--panel);
+  color: var(--ink);
+  border-right: 3px solid var(--bench);
+}
+
+.zone--shelf > h2 {
+  border-bottom: 1.5px solid var(--ink-18);
 }
 
 .zone--bench {
-  width: 52%;
+  width: auto;
+  flex: 1;
+  min-width: 0;
+  background: var(--bench);
+  color: var(--panel-90);
+  padding-bottom: 14px;
+}
+
+.zone--bench > h2 {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--panel-80);
+  background: var(--bench-deep);
+  border-bottom: 1px solid var(--glass-16);
 }
 
 .zone--notebook {
-  width: 26%;
-  border-left: 1px solid #ccc;
+  width: 340px;
+  flex: none;
+  background: var(--notebook);
+  color: var(--ink);
+  border-left: 3px solid var(--bench);
+  /* The grid-ruled paper background UI.md section 5 asks for: a faint
+     5mm graph rule plus a red margin line, drawn once here rather than
+     redrawn per entry. */
+  background-image:
+    repeating-linear-gradient(0deg, rgba(93, 124, 109, 0.14) 0 1px, transparent 1px 19px),
+    repeating-linear-gradient(90deg, rgba(93, 124, 109, 0.14) 0 1px, transparent 1px 19px),
+    linear-gradient(90deg, transparent 34px, rgba(208, 52, 44, 0.22) 34px, rgba(208, 52, 44, 0.22) 36px, transparent 36px);
 }
 
-/*
- * Shelf search, level and kind filters (UI.md section 7). The whole block is
- * sticky so it stays reachable while the reagent list scrolls underneath -
- * with 177 bottles it would otherwise scroll away the moment you started
- * looking.
- */
+.zone--notebook > h2 {
+  background: var(--panel);
+  border-bottom: 1.5px solid var(--ink-18);
+}
+
+/* ------------------------------------------------------------------ *
+ * Shelf: search, level pills, kind select, the bottle list.
+ * Sticky so the controls stay reachable while ~180 bottles scroll
+ * underneath - without this the box would scroll away the moment a
+ * student started looking.
+ * ------------------------------------------------------------------ */
+
 .shelf-filters {
   position: sticky;
   top: 0;
   z-index: 1;
-  padding-bottom: 4px;
-  background: #fff;
-}
-
-.shelf-filters__row {
   display: flex;
-  gap: 4px;
-  margin-top: 4px;
+  flex-direction: column;
+  gap: 6px;
+  padding: 9px 13px 8px;
+  background: var(--panel);
+  border-bottom: 1.5px solid var(--ink-18);
 }
 
-.shelf-filter {
-  flex: 1 1 0;
-  min-width: 0;
-  padding: 4px 2px;
-  border: 1px solid #999;
-  background: #fff;
-  font: inherit;
-  font-size: 0.85em;
+.shelf-filters__levels {
+  display: flex;
+  gap: 5px;
 }
 
-.shelf-filter:focus {
-  outline: 2px solid #333;
-  outline-offset: -1px;
+.shelf-level {
+  flex: 1;
+  height: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: #FFFFFF;
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
+}
+
+.shelf-level--active {
+  background: var(--bench);
+  color: var(--panel);
+  border-color: var(--ink);
 }
 
 .shelf-search {
   box-sizing: border-box;
   width: 100%;
+  height: 30px;
   margin: 0;
-  padding: 6px 8px;
-  border: 1px solid #999;
-  background: #fff;
-  font: inherit;
+  padding: 0 9px;
+  font-size: 13.5px;
+  color: var(--ink);
+  background: #FFFFFF;
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
 }
 
-.shelf-search:focus {
-  outline: 2px solid #333;
-  outline-offset: -1px;
+.shelf-search::placeholder {
+  color: var(--ink-45);
+}
+
+.shelf-filter {
+  width: 100%;
+  height: 30px;
+  padding: 0 6px;
+  font-size: 13.5px;
+  color: var(--ink);
+  background: #FFFFFF;
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
 }
 
 .shelf-search__status {
-  margin: 0 0 8px;
-  font-size: 0.8em;
-  color: #555;
+  margin: 7px 13px 0;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-60);
 }
 
 .shelf-search__empty {
-  margin: 8px 0;
-  font-size: 0.9em;
-  color: #555;
+  margin: 8px 13px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-60);
 }
 
 .shelf-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 8px 11px 12px;
 }
 
 .reagent-bottle {
-  padding: 6px 8px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34px;
+  align-items: stretch;
   margin-bottom: 6px;
-  border: 1px solid #999;
+  background: #FFFFFF;
+  border: 1.5px solid var(--ink-18);
+  border-left: 8px solid var(--spine, var(--glass));
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 0 rgba(22, 26, 25, 0.1);
   cursor: grab;
-  background: #fafafa;
+}
+
+.reagent-bottle:hover {
+  border-color: var(--ink-45);
 }
 
 .reagent-bottle:active {
   cursor: grabbing;
 }
 
-.container {
-  border: 1px solid #999;
-  padding: 10px;
-  margin-bottom: 12px;
+.reagent-bottle__name {
+  grid-column: 1;
+  padding: 6px 0 1px 9px;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
-.container--drag-over {
-  border-color: #333;
-  border-style: dashed;
-  background: #f0f4ff;
-}
-
-.container__contents {
-  margin: 6px 0;
-  padding-left: 18px;
-}
-
-.container__readout {
-  font-family: monospace;
-  margin: 6px 0 0;
-}
-
-.notebook-entries {
-  list-style: none;
-  margin: 0 0 12px;
-  padding: 0;
-}
-
-.notebook-entry {
-  border-bottom: 1px solid #eee;
-  padding: 6px 0;
-}
-
-.notebook-entry--observation {
-  background: #fafafa;
-}
-
-.notebook-entry__reference {
-  font-style: italic;
-  margin: 4px 0 0;
-}
-
-.observation-form {
+.reagent-bottle__meta {
+  grid-column: 1;
   display: flex;
+  align-items: center;
   gap: 6px;
+  padding: 0 8px 6px 9px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-70);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.observation-form input {
-  flex: 1;
+.reagent-bottle__swatch {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  border: 1px solid var(--ink-32);
 }
 
-.tool-tray {
-  border-top: 1px solid #ccc;
-  margin-top: 16px;
-  padding-top: 10px;
+.reagent-bottle__concentration {
+  color: var(--ink-60);
 }
 
-.tool {
-  margin: 0 6px 6px 0;
-  padding: 8px 10px;
-  border: 1px solid #999;
-  background: #fafafa;
-  cursor: pointer;
+.reagent-bottle__properties {
+  grid-column: 2;
+  align-self: stretch;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: #F2F0EA;
+  color: var(--ink);
+  border: none;
+  border-left: 1.5px solid var(--ink-18);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
 }
 
-.tool--selected {
-  border-color: #333;
-  border-width: 2px;
-  font-weight: bold;
-  background: #e8eefc;
-}
-
-.tool-tray__hint {
-  margin: 4px 0 0;
-  font-size: 0.9em;
-}
-
-.container__stir {
-  margin-top: 6px;
-  margin-right: 6px;
-  padding: 6px 12px;
-}
-
-.container__dip {
-  margin-top: 6px;
-  padding: 6px 12px;
-}
-
-.estimate-form {
-  border-top: 1px solid #ccc;
-  margin-top: 12px;
-  padding-top: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.estimate-form h3 {
-  width: 100%;
-  margin: 0;
-}
-
-.estimate-form input {
-  width: 90px;
-}
-
-.notebook-entry__yours,
-.notebook-entry__reference {
-  margin: 4px 0 0;
-}
-
-.notebook-entry__rating {
-  margin: 4px 0 0;
-  font-weight: bold;
+.reagent-bottle__properties:hover {
+  background: var(--panel-dim);
 }
 
 /* ------------------------------------------------------------------ *
- * The vessel: a bounded box the liquid and particle layers are clipped to.
+ * The bench: instrument cards on the dark benchtop.
  * ------------------------------------------------------------------ */
 
 .containers {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 16px;
+  padding: 14px;
+}
+
+.container {
+  width: 300px;
+  padding: 10px 12px 12px;
+  background: var(--bench-deep);
+  color: var(--panel-90);
+  border: 1.5px solid rgba(0, 0, 0, 0.45);
+  border-radius: var(--radius);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.container--drag-over {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent), 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* The container's title - a cream printed-label chip, the one warm-toned
+   surface inside an otherwise dark instrument card. */
+.container > h3 {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 0 0 8px;
+  padding: 3px 7px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  color: var(--ink);
+  background: #F2F0EA;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 1.5px;
 }
 
 .vessel {
   position: relative;
-  height: 90px;
-  margin: 8px 0;
-  border: 1px solid #999;
-  background: #fff;
+  height: 96px;
+  margin: 0 0 8px;
+  background: linear-gradient(
+    90deg,
+    rgba(201, 214, 218, 0.2),
+    rgba(201, 214, 218, 0.05) 26%,
+    rgba(201, 214, 218, 0.04) 70%,
+    rgba(201, 214, 218, 0.22)
+  );
+  border-radius: 3px 3px 6px 6px;
+  box-shadow:
+    inset 0 0 0 2px rgba(201, 214, 218, 0.5),
+    inset -7px 0 12px -6px rgba(255, 255, 255, 0.3),
+    inset 7px 0 12px -6px rgba(255, 255, 255, 0.12);
   overflow: hidden;
 }
 
-/* The two crossfade layers effects.js's crossfadeColor animates between -
-   only ever opacity and (for the level rise) transform, never a
-   background-color transition. See effects.js's file header for why. */
 .vessel__liquid {
   position: absolute;
   left: 0;
@@ -312,6 +599,17 @@ body {
   bottom: 0;
   height: 0%;
   transform-origin: bottom;
+}
+
+.vessel__liquid--base::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 6px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .vessel__liquid--incoming {
@@ -339,7 +637,7 @@ body {
   width: 6px;
   height: 14px;
   border-radius: 45%;
-  background: rgba(210, 210, 210, 0.65);
+  background: rgba(240, 246, 248, 0.65);
 }
 
 .fx-precipitate {
@@ -353,36 +651,60 @@ body {
   position: absolute;
   top: 0;
   left: 50%;
-  width: 3px;
-  height: 18px;
-  margin-left: -1.5px;
-  background: #7fa8e0;
+  width: 4px;
+  height: 20px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), #7fa8e0);
   transform-origin: top;
 }
 
+.container__contents {
+  margin: 0 0 6px;
+  padding-left: 18px;
+  font-size: 13px;
+}
+
+.container__readout {
+  margin: 0 0 3px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--panel-90);
+}
+
 .container__colour-label {
-  margin: 4px 0 0;
-  font-size: 0.9em;
+  margin: 0 0 8px;
+  font-size: 13.5px;
+  color: var(--panel-80);
+}
+
+.container__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--glass-16);
 }
 
 /* ------------------------------------------------------------------ *
  * Burner: a flame indicator (ambient CSS animation, not one-shot WAAPI -
- * see effects.js's setFlameLevel) plus the 0-3 level control.
+ * see effects.js's setFlameLevel) plus the -1..3 level control.
  * ------------------------------------------------------------------ */
 
 .container__heat {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 8px;
+  gap: 4px;
 }
 
 .fx-flame {
   display: inline-block;
   width: 14px;
   height: 14px;
+  flex: none;
   border-radius: 50% 50% 50% 0;
-  background: #d98a2b;
+  background: radial-gradient(60% 74% at 50% 82%, #F6E3A8, #E8952B 70%, rgba(232, 149, 43, 0) 100%);
   opacity: 0;
   transform: rotate(-45deg) scale(0.6);
 }
@@ -415,17 +737,43 @@ body {
   50% { transform: rotate(-45deg) scale(1.18); }
 }
 
-/* Two ways to silence the flicker: the OS setting, and the in-app "Reduce
-   animation" toggle (html.reduce-motion, set by effects.js's
-   setReduceAnimation). Every animate()-driven effect already checks both the
-   same way in JS; this is that same OR, written for a CSS animation that
-   never goes through animate() at all. */
 @media (prefers-reduced-motion: reduce) {
   .fx-flame--1,
   .fx-flame--2,
   .fx-flame--3 {
     animation: none;
   }
+}
+
+html.reduce-motion .fx-flame--1,
+html.reduce-motion .fx-flame--2,
+html.reduce-motion .fx-flame--3 {
+  animation: none;
+}
+
+.heat-level {
+  height: 30px;
+  min-width: 30px;
+  padding: 0 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  background: #2C3532;
+  color: var(--panel-90);
+  border: 1.5px solid rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-sm);
+}
+
+.heat-level--active {
+  background: var(--accent);
+  color: #FFFFFF;
+  border-color: var(--ink);
+}
+
+/* The ice bath. A cold tint rather than the burner's warm one, but the
+   button also says "Ice" - the colour is a reinforcement, never the only
+   channel (UI.md section 5). */
+.heat-level--ice.heat-level--active {
+  background: #4C7E93;
 }
 
 /* ------------------------------------------------------------------ *
@@ -440,8 +788,8 @@ body {
   height: 78%;
   /* Both rods the same grey on purpose - the sign says which is which,
      not the colour (UI.md section 5). */
-  background: #4A4A4A;
-  border: 1px solid #161A19;
+  background: linear-gradient(90deg, #5A5F5C, #2A2E2C);
+  border: 1px solid var(--ink);
   border-radius: 2px;
   display: flex;
   justify-content: center;
@@ -453,7 +801,7 @@ body {
 
 .electrode__sign {
   color: #FFFFFF;
-  font-family: sans-serif;
+  font-family: var(--font-mono);
   font-size: 12px;
   font-weight: bold;
   line-height: 1;
@@ -463,15 +811,11 @@ body {
 .ion {
   position: absolute;
   left: 50%;
-  font-family: sans-serif;
+  font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: bold;
-  color: #161A19;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid #4A4A4A;
-  border-radius: 9px;
-  padding: 0 4px;
-  white-space: nowrap;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* The drift. Negative ions travel right to the anode, positive ones left
@@ -524,46 +868,279 @@ html.reduce-motion .ion--cathode { transform: translateX(-46px); }
 html.reduce-motion .ion--anode { transform: translateX(46px); }
 
 .container__power {
-  margin-top: 6px;
-  margin-right: 6px;
-  min-height: 40px;
-  padding: 6px 12px;
-  border: 1px solid #999;
-  background: #fff;
-  cursor: pointer;
+  height: 30px;
+  padding: 0 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  background: #2C3532;
+  color: var(--panel-90);
+  border: 1.5px solid rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-sm);
 }
 
 .container__power--on {
-  background: #A8702B;
+  background: var(--accent);
   color: #FFFFFF;
-  border-color: #161A19;
+  border-color: var(--ink);
 }
 
-html.reduce-motion .fx-flame--1,
-html.reduce-motion .fx-flame--2,
-html.reduce-motion .fx-flame--3 {
-  animation: none;
+.container__stir,
+.container__dip,
+.container__molecular {
+  height: 30px;
+  padding: 0 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  background: #2C3532;
+  color: var(--panel-90);
+  border: 1.5px solid rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-sm);
 }
 
-.heat-level {
-  padding: 4px 8px;
-  border: 1px solid #999;
-  background: #fafafa;
-  cursor: pointer;
+.container__stir:hover,
+.container__dip:hover,
+.container__molecular:hover,
+.container__power:hover,
+.heat-level:hover {
+  border-color: var(--glass-80);
 }
 
-.heat-level--active {
-  border-color: #333;
-  border-width: 2px;
-  font-weight: bold;
-  background: #ffe8d1;
+.container__molecular:focus-visible,
+.reagent-bottle__properties:focus-visible,
+.properties-panel__view-3d:focus-visible,
+.properties-panel__close:focus-visible,
+.hazard-panel__acknowledge:focus-visible,
+.molecular-panel__close:focus-visible,
+.molecular-panel__replay:focus-visible,
+.molecular3d-panel__close:focus-visible,
+.guided-summary-panel__close:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
 }
 
-/* The ice bath. A cold tint rather than the burner's warm one, but the
-   button also says "Ice" - the colour is a reinforcement, never the only
-   channel (UI.md section 5). */
-.heat-level--ice.heat-level--active {
-  background: #d6ecf5;
+/* ------------------------------------------------------------------ *
+ * The tool tray.
+ * ------------------------------------------------------------------ */
+
+.tool-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 14px 0;
+  padding-top: 12px;
+  border-top: 2px solid var(--glass-16);
+}
+
+.tool-tray > h3 {
+  flex: 0 0 100%;
+  margin: 0 0 2px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--panel-80);
+}
+
+.tool {
+  height: 38px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #2C3532;
+  color: var(--panel-90);
+  border: 1.5px solid rgba(0, 0, 0, 0.5);
+  border-radius: var(--radius-sm);
+}
+
+.tool--selected {
+  background: var(--accent);
+  color: #FFFFFF;
+  border-color: var(--ink);
+}
+
+.tool-tray__hint {
+  flex: 0 0 100%;
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--panel-80);
+}
+
+/* ------------------------------------------------------------------ *
+ * Lab notebook.
+ * ------------------------------------------------------------------ */
+
+.notebook-entries {
+  list-style: none;
+  margin: 0 0 4px;
+  padding: 10px 14px 4px 40px;
+}
+
+.notebook-entry {
+  position: relative;
+  margin: 0 0 12px;
+  padding-left: 9px;
+  border-left: 2px solid var(--ink-32);
+}
+
+.notebook-entry--observation {
+  border-left-color: var(--accent);
+}
+
+.notebook-entry time {
+  display: block;
+  margin-bottom: 2px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-60);
+}
+
+.notebook-entry__text {
+  margin: 0;
+  font-family: var(--font-notebook);
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.notebook-empty {
+  margin: 6px 14px 0 40px;
+  font-family: var(--font-notebook);
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-60);
+}
+
+.notebook-entry__compare {
+  margin-top: 6px;
+}
+
+.notebook-entry__compare button {
+  height: 32px;
+  padding: 0 11px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1.5px solid var(--ink-45);
+  border-radius: var(--radius-sm);
+}
+
+.notebook-entry__compare button:hover {
+  background: var(--panel-dim);
+}
+
+.notebook-entry__yours,
+.notebook-entry__reference {
+  margin: 5px 0 0;
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+
+.notebook-entry__rating {
+  display: inline-block;
+  margin: 6px 0 0;
+  padding: 2px 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: rgba(168, 112, 43, 0.16);
+  border: 1px solid rgba(168, 112, 43, 0.5);
+  border-radius: var(--radius-sm);
+}
+
+.observation-form {
+  display: flex;
+  gap: 5px;
+  margin: 0 14px 10px 14px;
+  padding-top: 10px;
+  border-top: 1.5px solid var(--ink-18);
+}
+
+.observation-form input {
+  flex: 1;
+  min-width: 0;
+  height: 33px;
+  padding: 0 9px;
+  font-family: var(--font-notebook);
+  font-size: 14px;
+  background: #FFFFFF;
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
+}
+
+.observation-form button {
+  flex: none;
+  height: 33px;
+  padding: 0 14px;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  background: var(--bench);
+  color: var(--panel);
+  border: none;
+  border-radius: var(--radius-sm);
+}
+
+.observation-form button:hover {
+  background: #31403B;
+}
+
+.estimate-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0 14px 12px;
+}
+
+.estimate-form h3 {
+  flex: 0 0 100%;
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-70);
+}
+
+.estimate-form select {
+  flex: 1;
+  min-width: 90px;
+  height: 33px;
+  padding: 0 5px;
+  font-size: 13px;
+  background: #FFFFFF;
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
+}
+
+.estimate-form input {
+  width: 84px;
+  height: 33px;
+  padding: 0 5px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: #FFFFFF;
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
+}
+
+.estimate-form button {
+  height: 33px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1.5px solid var(--ink-45);
+  border-radius: var(--radius-sm);
+}
+
+.estimate-form button:hover {
+  background: var(--panel-dim);
 }
 
 /* ------------------------------------------------------------------ *
@@ -572,13 +1149,13 @@ html.reduce-motion .fx-flame--3 {
  * #D0342C is UI.md section 4's hazard red, and section 4 reserves it
  * exclusively for danger: "It never appears as a button colour, an accent,
  * a highlight, or decoration." These rules are the only place in this
- * stylesheet that colour appears, and the pH-paper red in tools.js is
- * deliberately a different hex (#C0392B) so the two can never be confused.
+ * stylesheet the colour appears (the pH-paper red in tools.js is a
+ * deliberately different hex, #C0392B, so the two can never be confused).
  *
  * Nothing here is animated by CSS. The flash and shake are one-shot
  * animations driven from effects.js, which respects prefers-reduced-motion
- * for both - so there is no ambient pulsing or throbbing to turn a warning
- * into a spectacle.
+ * for both, so there is no ambient pulsing to turn a warning into a
+ * spectacle.
  * ------------------------------------------------------------------ */
 
 .hazard-edge {
@@ -586,7 +1163,7 @@ html.reduce-motion .fx-flame--3 {
   inset: 0;
   z-index: 1000;
   pointer-events: none;
-  border: 14px solid #D0342C;
+  border: 14px solid var(--hazard);
   opacity: 0;
 }
 
@@ -607,17 +1184,18 @@ html.reduce-motion .fx-flame--3 {
 .hazard-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(22, 26, 25, 0.55);
+  background: rgba(10, 14, 13, 0.66);
 }
 
 .hazard-panel {
   position: relative;
   max-width: 540px;
   padding: 20px 24px 24px;
-  background: #EDEAE3;
-  border: 2px solid #161A19;
-  border-top: 10px solid #D0342C;
-  color: #161A19;
+  background: var(--panel);
+  border: 2px solid var(--hazard);
+  border-radius: var(--radius);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+  color: var(--ink);
 }
 
 .hazard-panel__head {
@@ -632,87 +1210,71 @@ html.reduce-motion .fx-flame--3 {
 
 .hazard-panel__label {
   margin: 0;
-  font-weight: bold;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--hazard);
 }
 
 .hazard-panel__severity {
   margin: 2px 0 0;
-  font-size: 0.95em;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-70);
 }
 
 .hazard-panel__title {
-  margin: 14px 0 0;
-  font-size: 1.35em;
+  margin: 13px 0 0;
+  font-size: 21px;
+  line-height: 1.2;
 }
 
 .hazard-panel__warning {
   margin: 10px 0 0;
+  font-family: var(--font-notebook);
+  font-size: 15px;
   line-height: 1.5;
 }
 
 .hazard-panel__advice-heading {
-  margin: 18px 0 0;
-  font-size: 1em;
+  margin: 16px 0 0;
+  font-size: 13px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+  color: var(--ink-70);
 }
 
 .hazard-panel__advice {
-  margin: 6px 0 0;
+  margin: 5px 0 0;
+  font-family: var(--font-notebook);
+  font-size: 15px;
   line-height: 1.5;
   padding-left: 12px;
-  border-left: 3px solid #161A19;
+  border-left: 3px solid var(--ink);
 }
 
 .hazard-panel__acknowledge {
-  margin-top: 22px;
-  /* UI.md section 8: click targets at least 40x40px. */
+  margin-top: 20px;
   min-height: 40px;
-  padding: 8px 20px;
-  font-size: 1em;
-  border: 2px solid #161A19;
-  background: #FFFFFF;
-  cursor: pointer;
+  padding: 8px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  background: var(--bench);
+  color: var(--panel);
+  border: none;
+  border-radius: var(--radius-sm);
 }
 
-.hazard-panel__acknowledge:focus-visible {
-  /* Section 8 again: a visible focus ring, not the browser default. */
-  outline: 3px solid #161A19;
-  outline-offset: 2px;
-}
-
-/* ------------------------------------------------------------------ *
- * The "Properties" button on each shelf bottle.
- * ------------------------------------------------------------------ */
-
-.reagent-bottle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.reagent-bottle__properties {
-  flex: none;
-  padding: 4px 8px;
-  font-size: 0.85em;
-  border: 1px solid #999;
-  background: #fff;
-  cursor: pointer;
-}
-
-.reagent-bottle__properties:focus-visible {
-  outline: 3px solid #161A19;
-  outline-offset: 2px;
+.hazard-panel__acknowledge:hover {
+  background: #31403B;
 }
 
 /* ------------------------------------------------------------------ *
- * The properties card. Same overlay/backdrop/panel structure as the
- * hazard alert, deliberately - one visual language for "a modal appeared",
- * not two competing ones - but its own colours: nothing here is a warning,
- * so hazard red never appears in this panel (see UI.md section 4: that red
- * is reserved for danger alone).
+ * The properties card. Same overlay/backdrop/panel shape as the hazard
+ * alert - one visual language for "a modal appeared" - but its own
+ * colours: nothing here is a warning, so hazard red never appears in
+ * this panel (UI.md section 4: that red is reserved for danger alone).
  * ------------------------------------------------------------------ */
 
 .properties-overlay {
@@ -728,18 +1290,20 @@ html.reduce-motion .fx-flame--3 {
 .properties-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(22, 26, 25, 0.5);
+  background: rgba(10, 14, 13, 0.55);
 }
 
 .properties-panel {
   position: relative;
-  max-width: 420px;
+  max-width: 440px;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
   padding: 20px 24px 24px;
-  background: #EDEAE3;
-  border: 2px solid #161A19;
-  color: #161A19;
+  background: var(--notebook);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+  color: var(--ink);
 }
 
 .properties-panel__close {
@@ -747,66 +1311,94 @@ html.reduce-motion .fx-flame--3 {
   top: 10px;
   right: 10px;
   min-width: 40px;
-  min-height: 40px;
+  min-height: 34px;
   padding: 6px 10px;
-  border: 1px solid #161A19;
-  background: #FFFFFF;
-  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
 }
 
-.properties-panel__close:focus-visible {
-  outline: 3px solid #161A19;
-  outline-offset: 2px;
+.properties-panel__close:hover {
+  background: var(--panel-dim);
 }
 
 .properties-panel__title {
-  margin: 0 40px 12px 0;
-  font-size: 1.3em;
+  margin: 0 44px 4px 0;
+  font-size: 19px;
+  line-height: 1.2;
 }
 
 .properties-panel__structure {
-  margin: 0 0 14px;
+  margin: 6px 0 14px;
   text-align: center;
 }
 
 .properties-panel__structure img {
   max-width: 100%;
   height: auto;
-  border: 1px solid #ccc;
-  background: #fff;
+  background: #FFFFFF;
+  border: 1px solid var(--ink-18);
+  border-radius: var(--radius-sm);
 }
 
 .properties-panel__facts {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
 }
 
 .properties-panel__row {
-  margin: 4px 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0;
+  padding: 5px 0;
+  font-size: 13.5px;
+  border-bottom: 1px solid var(--ink-18);
 }
 
 .properties-panel__label {
-  font-weight: bold;
+  flex: none;
+  font-weight: 600;
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+.properties-panel__row {
+  font-family: var(--font-mono);
 }
 
 .properties-panel__swatch {
   display: inline-block;
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   margin-right: 6px;
   vertical-align: middle;
-  border: 1px solid #161A19;
+  border: 1px solid var(--ink-32);
+  border-radius: 2px;
 }
 
 .properties-panel__subheading {
-  margin: 14px 0 4px;
-  font-size: 1em;
+  margin: 14px 0 5px;
+  font-size: 13px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
+  color: var(--ink-70);
+}
+
+.properties-panel__subheading:has(+ .properties-panel__hazards) {
+  color: var(--hazard);
 }
 
 .properties-panel__hazards {
   margin: 0;
   padding-left: 20px;
+  font-size: 14px;
 }
 
 .properties-panel__hazards li {
@@ -815,41 +1407,38 @@ html.reduce-motion .fx-flame--3 {
 
 .properties-panel__description {
   margin: 4px 0 0;
+  font-family: var(--font-notebook);
+  font-size: 15px;
   line-height: 1.5;
 }
 
 .properties-panel__source {
   margin: 14px 0 0;
-  font-size: 0.85em;
-  font-style: italic;
-  color: #4A4A4A;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-60);
+}
+
+.properties-panel__view-3d {
+  display: block;
+  margin: 0 0 14px;
+  min-height: 38px;
+  padding: 6px 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
+}
+
+.properties-panel__view-3d:hover {
+  background: var(--panel-dim);
 }
 
 /* ------------------------------------------------------------------ *
- * The molecular view.
- *
- * Same overlay/backdrop/panel shape as the properties card, so a student
- * meets one visual language for "a modal opened" rather than several. The
- * stage itself is plain SVG positioned entirely by transform from
- * molecular.js - there is no CSS animation here at all, so nothing needs a
- * prefers-reduced-motion rule: molecular.js decides whether to play, and
- * draws the final frame plus the written steps when it should not.
+ * The molecular view - the scripted 2D animation.
  * ------------------------------------------------------------------ */
-
-.container__molecular {
-  margin-top: 6px;
-  margin-left: 6px;
-  min-height: 40px;
-  padding: 6px 12px;
-  border: 1px solid #999;
-  background: #fff;
-  cursor: pointer;
-}
-
-.container__molecular:focus-visible {
-  outline: 3px solid #161A19;
-  outline-offset: 2px;
-}
 
 .molecular-overlay {
   position: fixed;
@@ -864,19 +1453,21 @@ html.reduce-motion .fx-flame--3 {
 .molecular-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(22, 26, 25, 0.5);
+  background: rgba(10, 14, 13, 0.62);
 }
 
 .molecular-panel {
   position: relative;
   width: 100%;
-  max-width: 520px;
+  max-width: 560px;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
   padding: 20px 24px 24px;
-  background: #EDEAE3;
-  border: 2px solid #161A19;
-  color: #161A19;
+  background: var(--bench-deep);
+  border: 1.5px solid var(--glass-34);
+  border-radius: var(--radius);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+  color: var(--panel-90);
 }
 
 .molecular-panel__close {
@@ -884,88 +1475,78 @@ html.reduce-motion .fx-flame--3 {
   top: 10px;
   right: 10px;
   min-width: 40px;
-  min-height: 40px;
+  min-height: 34px;
   padding: 6px 10px;
-  border: 1px solid #161A19;
-  background: #FFFFFF;
-  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(237, 234, 227, 0.1);
+  color: var(--panel);
+  border: 1.5px solid var(--glass-34);
+  border-radius: var(--radius-sm);
 }
 
-.molecular-panel__close:focus-visible,
-.molecular-panel__replay:focus-visible {
-  outline: 3px solid #161A19;
-  outline-offset: 2px;
+.molecular-panel__close:hover,
+.molecular-panel__replay:hover {
+  background: rgba(237, 234, 227, 0.22);
 }
 
 .molecular-panel__title {
   margin: 0 60px 4px 0;
-  font-size: 1.2em;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .molecular-panel__equation {
-  margin: 0 0 10px;
-  font-family: monospace;
-  font-size: 1.05em;
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  color: var(--glass-80);
 }
 
 .molecular-panel__stage {
   display: block;
   width: 100%;
   height: auto;
-  background: #FFFFFF;
-  border: 1px solid #ccc;
+  background: radial-gradient(70% 70% at 50% 46%, rgba(201, 214, 218, 0.09), transparent 70%);
+  border: 1px solid var(--glass-16);
+  border-radius: var(--radius-sm);
 }
 
 .molecular-panel__caption {
-  /* Reserves room for two lines so the panel does not jump about as the
-     caption changes length between steps. */
   min-height: 3em;
-  margin: 10px 0 0;
+  margin: 12px 0 0;
+  font-family: var(--font-notebook);
+  font-size: 14.5px;
   line-height: 1.5;
 }
 
 .molecular-panel__steps {
   margin: 10px 0 0;
   padding-left: 20px;
+  font-size: 13.5px;
   line-height: 1.5;
+  color: var(--glass-80);
 }
 
 .molecular-panel__replay {
   margin-top: 12px;
-  min-height: 40px;
-  padding: 8px 20px;
-  border: 2px solid #161A19;
-  background: #FFFFFF;
-  cursor: pointer;
+  min-height: 38px;
+  padding: 8px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: rgba(237, 234, 227, 0.1);
+  color: var(--panel);
+  border: 1.5px solid var(--glass-34);
+  border-radius: var(--radius-sm);
 }
 
 /* ------------------------------------------------------------------ *
- * "View in 3D" button on the properties card.
- * ------------------------------------------------------------------ */
-
-.properties-panel__view-3d {
-  display: block;
-  margin: 0 0 14px;
-  min-height: 40px;
-  padding: 6px 16px;
-  border: 1px solid #999;
-  background: #fff;
-  cursor: pointer;
-}
-
-.properties-panel__view-3d:focus-visible {
-  outline: 3px solid #161A19;
-  outline-offset: 2px;
-}
-
-/* ------------------------------------------------------------------ *
- * The 3D ball-and-stick view.
- *
- * Same overlay/backdrop/panel shape as the other two molecular modals.
- * `perspective` on the stage and `transform-style: preserve-3d` on the
- * scene are what turn plain translate3d/rotateX/rotateY into an actual 3D
- * scene - everything else here is the same flat CSS as the rest of the
- * app. No WebGL, no canvas, no filter, no box-shadow.
+ * The 3D ball-and-stick view. `perspective` on the stage and
+ * `transform-style: preserve-3d` on the scene are what turn plain
+ * translate3d/rotateX/rotateY into an actual 3D scene - everything else
+ * here is flat CSS, matching the rest of the app. No WebGL, no canvas,
+ * no filter, no box-shadow.
  * ------------------------------------------------------------------ */
 
 .molecular3d-overlay {
@@ -981,7 +1562,7 @@ html.reduce-motion .fx-flame--3 {
 .molecular3d-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(22, 26, 25, 0.5);
+  background: rgba(10, 14, 13, 0.55);
 }
 
 .molecular3d-panel {
@@ -991,9 +1572,11 @@ html.reduce-motion .fx-flame--3 {
   max-height: calc(100vh - 80px);
   overflow-y: auto;
   padding: 20px 24px 24px;
-  background: #EDEAE3;
-  border: 2px solid #161A19;
-  color: #161A19;
+  background: var(--notebook);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+  color: var(--ink);
 }
 
 .molecular3d-panel__close {
@@ -1001,28 +1584,27 @@ html.reduce-motion .fx-flame--3 {
   top: 10px;
   right: 10px;
   min-width: 40px;
-  min-height: 40px;
+  min-height: 34px;
   padding: 6px 10px;
-  border: 1px solid #161A19;
-  background: #FFFFFF;
-  cursor: pointer;
-}
-
-.molecular3d-panel__close:focus-visible {
-  outline: 3px solid #161A19;
-  outline-offset: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
 }
 
 .molecular3d-panel__title {
-  margin: 0 60px 10px 0;
-  font-size: 1.15em;
+  margin: 0 60px 8px 0;
+  font-size: 16px;
 }
 
 .molecular3d-panel__note {
   margin: 0 0 12px;
-  font-size: 0.85em;
+  font-family: var(--font-notebook);
+  font-size: 13.5px;
   font-style: italic;
-  color: #4A4A4A;
+  color: var(--ink-60);
 }
 
 .molecular3d__stage {
@@ -1031,8 +1613,9 @@ html.reduce-motion .fx-flame--3 {
   /* How dramatic the 3D perspective looks - closer atoms appear larger. A
      small value would exaggerate foreshortening; this keeps it subtle. */
   perspective: 700px;
-  background: #FFFFFF;
-  border: 1px solid #ccc;
+  background: var(--bench-deep);
+  border: 1px solid var(--ink-18);
+  border-radius: var(--radius-sm);
   cursor: grab;
   touch-action: none;
   user-select: none;
@@ -1059,13 +1642,16 @@ html.reduce-motion .fx-flame--3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow:
+    inset -4px -5px 10px rgba(0, 0, 0, 0.36),
+    inset 4px 4px 9px rgba(255, 255, 255, 0.3);
 }
 
 .molecular3d__label {
-  font-family: sans-serif;
+  font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: bold;
-  color: #161A19;
+  font-weight: 700;
+  color: var(--ink);
   text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
   pointer-events: none;
 }
@@ -1079,14 +1665,14 @@ html.reduce-motion .fx-flame--3 {
 }
 
 .molecular3d__bond--covalent {
-  background: #7f8c8d;
+  background: linear-gradient(180deg, #DEE7EA, #8A9599);
 }
 
 .molecular3d__bond--ionic {
   background: repeating-linear-gradient(
     to bottom,
-    #8A8A8A 0,
-    #8A8A8A 5px,
+    #C9D6DA 0,
+    #C9D6DA 5px,
     transparent 5px,
     transparent 9px
   );
@@ -1094,51 +1680,40 @@ html.reduce-motion .fx-flame--3 {
 
 .molecular3d-panel__hint {
   margin: 10px 0 0;
-  font-size: 0.85em;
-  color: #4A4A4A;
+  font-size: 12.5px;
+  color: var(--ink-60);
   text-align: center;
 }
 
 /* ------------------------------------------------------------------ *
- * Guided mode - Phase 7. The topbar picker, the persistent step card,
- * and the completion summary modal. See src/ui/guided.js.
+ * Guided mode: the topbar picker (styled above with .guided-bar), the
+ * persistent step card, and the completion summary modal.
  * ------------------------------------------------------------------ */
 
-.guided-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.guided-bar__mode {
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-.guided-bar__picker {
-  min-height: 40px;
-  padding: 4px 8px;
-}
-
 .guided-stepcard {
-  padding: 10px 16px;
-  border-bottom: 1px solid #ccc;
-  background: #EDEAE3;
-  color: #161A19;
+  padding: 9px 16px 11px;
+  background: var(--panel);
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  border-left: 5px solid var(--accent);
   flex: none;
 }
 
 .guided-stepcard__progress {
-  margin: 0 0 4px;
-  font-size: 0.85em;
-  font-weight: bold;
+  margin: 0 0 5px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--ink-70);
 }
 
 .guided-progress {
-  height: 8px;
+  height: 6px;
   margin-bottom: 8px;
-  background: #D8D3C6;
-  border: 1px solid #999;
+  background: var(--ink-18);
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 .guided-progress__fill {
@@ -1147,12 +1722,14 @@ html.reduce-motion .fx-flame--3 {
      transition - UI.md section 6's performance budget applies here too,
      and a step only ever advances on a deliberate student action, never
      on a timer, so there is nothing worth easing between. */
-  background: #A8702B;
+  background: var(--accent);
 }
 
 .guided-stepcard__instruction {
   margin: 0 0 6px;
-  font-size: 1.05em;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
 }
 
 .guided-stepcard__hint {
@@ -1161,20 +1738,27 @@ html.reduce-motion .fx-flame--3 {
 
 .guided-stepcard__hint summary {
   cursor: pointer;
-  min-height: 40px;
+  min-height: 34px;
   display: inline-flex;
   align-items: center;
+  font-size: 13.5px;
+  font-weight: 600;
 }
 
 .guided-stepcard__hint p {
-  margin: 4px 0 0;
-  color: #4A4A4A;
+  margin: 5px 0 0;
+  font-family: var(--font-notebook);
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--ink-70);
 }
 
 .guided-stepcard__feedback {
   margin: 6px 0 0;
   padding: 6px 10px;
-  border-left: 3px solid #161A19;
+  font-size: 13.5px;
+  line-height: 1.35;
+  border-left: 3px solid var(--ink);
   background: #FFFFFF;
   /* Deliberately not colour-coded by judgement (correct/wrong/ahead/
      repeat) - UI.md section 4's "one hard rule" reserves red exclusively
@@ -1196,18 +1780,20 @@ html.reduce-motion .fx-flame--3 {
 .guided-summary-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(22, 26, 25, 0.5);
+  background: rgba(10, 14, 13, 0.55);
 }
 
 .guided-summary-panel {
   position: relative;
-  max-width: 640px;
+  max-width: 660px;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
   padding: 20px 24px 24px;
-  background: #EDEAE3;
-  border: 2px solid #161A19;
-  color: #161A19;
+  background: var(--notebook);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+  color: var(--ink);
 }
 
 .guided-summary-panel__close {
@@ -1215,15 +1801,19 @@ html.reduce-motion .fx-flame--3 {
   top: 10px;
   right: 10px;
   min-width: 40px;
-  min-height: 40px;
+  min-height: 34px;
   padding: 6px 10px;
-  border: 1px solid #161A19;
-  background: #FFFFFF;
-  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
 }
 
 .guided-summary-panel__title {
-  margin: 0 30px 16px 0;
+  margin: 0 34px 16px 0;
+  font-size: 18px;
 }
 
 .guided-summary-panel__columns {
@@ -1239,32 +1829,40 @@ html.reduce-motion .fx-flame--3 {
 
 .guided-summary-panel__column h3 {
   margin: 0 0 8px;
-  font-size: 1em;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-70);
 }
 
 .guided-summary-panel__vessel {
   margin: 12px 0 4px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .guided-summary-panel__facts {
   margin: 0 0 4px;
+  font-size: 13.5px;
 }
 
 .guided-summary-panel__facts dt {
-  font-weight: bold;
+  font-weight: 600;
   margin-top: 6px;
+  color: var(--ink-70);
 }
 
 .guided-summary-panel__facts dd {
-  margin: 0 0 0 0;
+  margin: 0;
+  font-family: var(--font-mono);
 }
 
 .guided-summary-panel__note {
   margin: 16px 0 0;
-  font-size: 0.85em;
+  font-family: var(--font-notebook);
+  font-size: 13.5px;
   font-style: italic;
-  color: #4A4A4A;
+  color: var(--ink-60);
 }
 
 /* ------------------------------------------------------------------ *
@@ -1286,26 +1884,30 @@ html.reduce-motion .fx-flame--3 {
 .amount-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(22, 26, 25, 0.5);
+  background: rgba(10, 14, 13, 0.55);
 }
 
 .amount-panel {
   position: relative;
   width: 280px;
-  padding: 20px 24px 24px;
-  background: #EDEAE3;
-  border: 2px solid #161A19;
-  color: #161A19;
+  padding: 18px 22px 22px;
+  background: var(--panel);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  color: var(--ink);
 }
 
 .amount-panel__title {
   margin: 0 0 14px;
-  font-size: 1.05em;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .amount-panel__form label {
   display: block;
   margin-bottom: 6px;
+  font-size: 13.5px;
 }
 
 .amount-panel__row {
@@ -1317,9 +1919,14 @@ html.reduce-motion .fx-flame--3 {
 
 .amount-panel__row input {
   flex: 1;
-  min-height: 40px;
+  min-height: 36px;
   padding: 4px 8px;
-  font-size: 1em;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  background: #FFFFFF;
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
 }
 
 .amount-panel__buttons {
@@ -1330,15 +1937,22 @@ html.reduce-motion .fx-flame--3 {
 
 .amount-panel__buttons button {
   min-width: 40px;
-  min-height: 40px;
+  min-height: 36px;
   padding: 6px 14px;
-  border: 1px solid #161A19;
+  font-size: 13.5px;
+  font-weight: 600;
   background: #FFFFFF;
-  cursor: pointer;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-sm);
 }
 
 .amount-panel__buttons button[type="submit"] {
-  background: #A8702B;
+  background: var(--accent);
   color: #FFFFFF;
-  border-color: #161A19;
+  border-color: var(--ink);
+}
+
+.amount-panel__buttons button[type="submit"]:hover {
+  background: var(--accent-hover);
 }
