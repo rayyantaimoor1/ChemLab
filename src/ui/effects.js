@@ -414,14 +414,18 @@ export function shakeElement(el, { duration = 200, amplitude = 6 } = {}) {
   // anything else - the vessel effects all animate elements inside it.
   for (const previous of el.getAnimations()) previous.cancel();
 
+  // The mockup's own fx-shake keyframe: six unevenly-spaced steps (not
+  // five evenly-spaced ones) with a small +2px recoil on the way back to
+  // rest, not a straight return to 0.
   const animation = animate(
     el,
     [
-      { transform: 'translateX(0)' },
-      { transform: `translateX(-${amplitude}px)` },
-      { transform: `translateX(${amplitude}px)` },
-      { transform: `translateX(-${amplitude * 0.5}px)` },
-      { transform: 'translateX(0)' },
+      { transform: 'translateX(0)', offset: 0 },
+      { transform: `translateX(-${amplitude}px)`, offset: 0.18 },
+      { transform: `translateX(${amplitude}px)`, offset: 0.38 },
+      { transform: `translateX(-${amplitude * 0.5}px)`, offset: 0.58 },
+      { transform: `translateX(${amplitude / 3}px)`, offset: 0.8 },
+      { transform: 'translateX(0)', offset: 1 },
     ],
     { duration, easing: 'ease-in-out' }
   );

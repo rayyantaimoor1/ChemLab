@@ -27,7 +27,16 @@
       <input type="checkbox" id="reduce-animation" />
       Reduce animation
     </label>
-    <button id="reset-bench" type="button">Reset</button>
+    <!--
+      "Contract trace" - a developer-facing strip (see .trace-strip in
+      bench.js) showing which dispatch call last ran. Not a chemistry
+      feature; off by default, the same way it is in the mockup.
+    -->
+    <label class="topbar__reduce-motion">
+      <input type="checkbox" id="contract-trace" />
+      Contract trace
+    </label>
+    <button id="reset-bench" type="button">Reset bench</button>
   </header>
 
   <!--

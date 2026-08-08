@@ -175,7 +175,7 @@ select:focus-visible,
   display: flex;
   align-items: stretch;
   gap: 0;
-  min-height: 46px;
+  height: 50px;
   background: var(--panel);
   color: var(--ink);
   border-bottom: 3px solid var(--bench);
@@ -185,14 +185,14 @@ select:focus-visible,
 .topbar__brand {
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
   padding: 0 14px;
   border-right: 1px solid var(--ink-18);
 }
 
 .topbar__brand-mark {
-  width: 12px;
-  height: 12px;
+  width: 13px;
+  height: 13px;
   flex: none;
   border-radius: 50%;
   background: var(--accent);
@@ -200,9 +200,9 @@ select:focus-visible,
 }
 
 .topbar__brand-name {
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -211,39 +211,70 @@ select:focus-visible,
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0 14px;
+  padding: 0 0 0 14px;
   flex: 1;
   min-width: 0;
   border-right: 1px solid var(--ink-18);
 }
 
-.guided-bar__mode {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+/* The static "MODE" caption and its value sit in their own bordered
+   block, separate from the picker beside it - two dividers, matching
+   the mockup's own two-block header rather than one merged string. */
+.guided-bar__mode-group {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding-right: 14px;
+  height: 100%;
+  border-right: 1px solid rgba(22, 26, 25, 0.16);
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+}
+
+.guided-bar__mode-caption {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--ink-70);
+}
+
+.guided-bar__mode-value {
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .guided-bar__picker {
-  height: 30px;
-  min-width: 220px;
+  height: 32px;
+  min-width: 280px;
   max-width: 340px;
   padding: 0 6px;
-  font-size: 13.5px;
+  font-size: 14px;
   background: #FFFFFF;
   color: var(--ink);
-  border: 1.5px solid var(--ink-32);
+  border: 1.5px solid var(--ink-45, rgba(22, 26, 25, 0.4));
   border-radius: var(--radius-sm);
+}
+
+.guided-bar__leave {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink-45, rgba(22, 26, 25, 0.4));
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.guided-bar__leave:hover {
+  background: var(--panel-dim);
 }
 
 .topbar__reduce-motion {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  min-height: 40px;
   padding: 0 14px;
   font-size: 13.5px;
   border-right: 1px solid var(--ink-18);
@@ -262,7 +293,7 @@ select:focus-visible,
   padding: 0 18px;
   font-size: 13.5px;
   font-weight: 600;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   background: var(--bench);
   color: var(--panel);
   border: none;
@@ -317,25 +348,67 @@ select:focus-visible,
 .zone--shelf {
   width: 336px;
   flex: none;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
   background: var(--panel);
   color: var(--ink);
   border-right: 3px solid var(--bench);
 }
 
-.zone--shelf > h2 {
+/* The one part of the shelf that scrolls - everything else (filters,
+   DISPENSE strip, the apparatus tray below) stays on screen regardless of
+   how far this list is scrolled. */
+.shelf-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.apparatus-tray {
+  flex: none;
+}
+
+.zone--shelf > .shelf-heading-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
   border-bottom: 1.5px solid var(--ink-18);
+}
+
+/* Same baseline look as every other zone's h2 (.zone > h2 above) - just
+   sharing its row with the live count instead of standing alone. */
+.zone--shelf > .shelf-heading-row > h2 {
+  margin: 0;
+  padding: 11px 13px 9px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.shelf-heading-row__count {
+  padding-right: 13px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-60);
+  white-space: nowrap;
 }
 
 .zone--bench {
   width: auto;
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
   background: var(--bench);
   color: var(--panel-90);
   padding-bottom: 14px;
 }
 
 .zone--bench > h2 {
+  flex: none;
   font-size: 13px;
   letter-spacing: 0.14em;
   color: var(--panel-80);
@@ -349,18 +422,32 @@ select:focus-visible,
   background: var(--notebook);
   color: var(--ink);
   border-left: 3px solid var(--bench);
-  /* The grid-ruled paper background UI.md section 5 asks for: a faint
-     5mm graph rule plus a red margin line, drawn once here rather than
-     redrawn per entry. */
-  background-image:
-    repeating-linear-gradient(0deg, rgba(93, 124, 109, 0.14) 0 1px, transparent 1px 19px),
-    repeating-linear-gradient(90deg, rgba(93, 124, 109, 0.14) 0 1px, transparent 1px 19px),
-    linear-gradient(90deg, transparent 34px, rgba(208, 52, 44, 0.22) 34px, rgba(208, 52, 44, 0.22) 36px, transparent 36px);
 }
 
-.zone--notebook > h2 {
+.zone--notebook > .notebook-heading-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
   background: var(--panel);
   border-bottom: 1.5px solid var(--ink-18);
+}
+
+.zone--notebook > .notebook-heading-row > h2 {
+  margin: 0;
+  padding: 11px 13px 9px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.notebook-heading-row__count {
+  padding-right: 13px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-60);
+  white-space: nowrap;
 }
 
 /* ------------------------------------------------------------------ *
@@ -434,11 +521,72 @@ select:focus-visible,
   border-radius: var(--radius-sm);
 }
 
-.shelf-search__status {
-  margin: 7px 13px 0;
+/* ------------------------------------------------------------------ *
+ * DISPENSE - Ask amount / Auto-pour, and the quickAmount stepper.
+ * ------------------------------------------------------------------ */
+
+.shelf-dispense {
+  position: sticky;
+  top: 79px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 13px;
+  background: var(--panel);
+  border-bottom: 1.5px solid var(--ink-18);
+}
+
+.shelf-dispense__label {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+.shelf-dispense__mode {
+  height: 26px;
+  padding: 0 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  background: #FFFFFF;
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
+}
+
+.shelf-dispense__mode--active {
+  background: var(--bench);
+  color: var(--panel);
+  border-color: var(--bench);
+}
+
+.shelf-dispense__stepper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
   font-family: var(--font-mono);
   font-size: 12.5px;
-  color: var(--ink-60);
+}
+
+.shelf-dispense__stepper button {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 700;
+  background: #FFFFFF;
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
+}
+
+.shelf-dispense__stepper span {
+  min-width: 42px;
+  text-align: center;
 }
 
 .shelf-search__empty {
@@ -456,12 +604,12 @@ select:focus-visible,
 
 .reagent-bottle {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 34px;
+  grid-template-columns: minmax(0, 1fr) 40px;
   align-items: stretch;
   margin-bottom: 6px;
   background: #FFFFFF;
-  border: 1.5px solid var(--ink-18);
-  border-left: 8px solid var(--spine, var(--glass));
+  border: 1.5px solid rgba(22, 26, 25, 0.24);
+  border-left: 9px solid var(--spine, var(--glass));
   border-radius: var(--radius-sm);
   box-shadow: 0 1px 0 rgba(22, 26, 25, 0.1);
   cursor: grab;
@@ -478,9 +626,12 @@ select:focus-visible,
 .reagent-bottle__name {
   grid-column: 1;
   padding: 6px 0 1px 9px;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.2;
+  max-height: 2.4em;
+  overflow: hidden;
+  overflow-wrap: anywhere;
 }
 
 .reagent-bottle__meta {
@@ -490,8 +641,8 @@ select:focus-visible,
   gap: 6px;
   padding: 0 8px 6px 9px;
   font-family: var(--font-mono);
-  font-size: 12.5px;
-  color: var(--ink-70);
+  font-size: 14px;
+  color: var(--ink-74, var(--ink-70));
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -499,29 +650,23 @@ select:focus-visible,
 
 .reagent-bottle__swatch {
   flex: none;
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: 2px;
-  border: 1px solid var(--ink-32);
-}
-
-.reagent-bottle__concentration {
-  color: var(--ink-60);
+  border: 1px solid var(--ink-35, var(--ink-32));
 }
 
 .reagent-bottle__properties {
   grid-column: 2;
+  grid-row: 1 / span 2;
   align-self: stretch;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 0.02em;
   background: #F2F0EA;
   color: var(--ink);
   border: none;
   border-left: 1.5px solid var(--ink-18);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
 }
 
 .reagent-bottle__properties:hover {
@@ -543,43 +688,60 @@ select:focus-visible,
 }
 
 .apparatus-tray > h3 {
-  margin: 0 0 7px;
-  font-size: 13px;
+  margin: 0 0 6px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ink-70);
+  color: rgba(22, 26, 25, 0.76);
 }
 
+/* Compact and capped: the tray is always on screen, but it never takes
+   more than a few rows' worth of the shelf - it scrolls within itself
+   instead of pushing the reagent list down to a couple of bottles. */
 .apparatus-tray__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5px;
+  gap: 4px;
+  max-height: 132px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink-32) transparent;
+}
+
+.apparatus-tray__grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.apparatus-tray__grid::-webkit-scrollbar-thumb {
+  background: var(--ink-32);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 .apparatus-item {
-  height: 36px;
-  padding: 0 8px;
-  font-size: 13px;
+  height: 30px;
+  padding: 0 7px;
+  font-size: 12.5px;
   font-weight: 600;
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background: #FFFFFF;
   color: var(--ink);
-  border: 1.5px solid var(--ink-32);
+  border: 1.5px solid rgba(22, 26, 25, 0.28);
   border-radius: var(--radius-sm);
 }
 
 .apparatus-item:hover:not(:disabled) {
-  border-color: var(--ink-45);
+  border-color: rgba(22, 26, 25, 0.55);
 }
 
 .apparatus-item:disabled {
-  color: var(--ink-45);
+  color: rgba(22, 26, 25, 0.4);
   cursor: not-allowed;
-}
-
-.apparatus-item--furniture {
-  border-left: 4px solid var(--accent);
 }
 
 /* ------------------------------------------------------------------ *
@@ -588,151 +750,462 @@ select:focus-visible,
  * not one more thing bolted onto a vessel's own card.
  * ------------------------------------------------------------------ */
 
-.equipment-row {
+/* ------------------------------------------------------------------ *
+ * The bench canvas: every vessel and every piece of furniture is a bare
+ * object positioned on the bench top and dragged with the pointer. No
+ * cards - see bench.js's header for why the interaction model IS the
+ * design here.
+ * ------------------------------------------------------------------ */
+
+.bench-canvas {
+  position: relative;
+  flex: 1;
+  min-height: 420px;
+  margin: 0;
+  overflow: hidden;
+  /* A darker strip along the foot, so the bench reads as a surface with a
+     front edge rather than a flat panel. */
+  background:
+    linear-gradient(180deg, transparent calc(100% - 58px), rgba(0, 0, 0, 0.34) 100%);
+}
+
+.bench-object {
+  position: absolute;
+  left: 0;
+  top: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 14px 14px 0;
+  align-items: flex-end;
+  gap: 9px;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
 }
 
-.equipment-row:empty {
-  display: none;
+.bench-object:active {
+  cursor: grabbing;
 }
 
-.equipment {
-  width: 170px;
-  padding: 8px 10px 10px;
-  background: #2C3532;
-  color: var(--panel-90);
-  border: 1.5px solid rgba(0, 0, 0, 0.5);
-  border-radius: var(--radius);
+/* Selected: a quiet cream outline. Drop target: the amber dashed one, so
+   "let go here and something happens" is never mistaken for "this is the
+   one you picked". */
+.bench-object.is-selected::after {
+  content: '';
+  position: absolute;
+  left: -7px;
+  right: -7px;
+  top: -7px;
+  bottom: -7px;
+  border: 1.5px solid rgba(237, 234, 227, 0.55);
+  border-radius: 4px;
+  pointer-events: none;
 }
 
-/* A warm border for the burner, a cool one for the ice bath - decoration
-   on top of the label, which already says which is which (UI.md section 5). */
-.equipment--burner {
-  border-top: 3px solid var(--accent);
+.bench-object.is-drop-target::before {
+  content: '';
+  position: absolute;
+  left: -9px;
+  right: -9px;
+  top: -30px;
+  bottom: -9px;
+  border: 2px dashed rgba(232, 149, 43, 0.9);
+  border-radius: 5px;
+  pointer-events: none;
+  z-index: 2;
 }
 
-.equipment--ice_bath {
-  border-top: 3px solid #4C7E93;
-}
-
-.equipment--rack {
-  border-top: 3px solid var(--glass);
-}
-
-.equipment > h4 {
-  margin: 0 0 7px;
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--panel-90);
-}
-
-.equipment__level {
+/* The floating label beside each object - name, live readout and whatever
+   else is true of it right now. */
+.object-chip {
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-bottom: 8px;
+  flex-direction: column;
+  gap: 1px;
+  padding: 3px 7px;
+  background: rgba(20, 26, 25, 0.82);
+  border: 1px solid rgba(201, 214, 218, 0.24);
+  border-radius: 2px;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
-.equipment__level .heat-level {
-  height: 28px;
-  min-width: 28px;
-  padding: 0 6px;
+.object-chip__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(237, 234, 227, 0.94);
+}
+
+.object-chip__id {
+  font-family: var(--font-mono);
   font-size: 12px;
+  font-weight: 400;
+  color: rgba(201, 214, 218, 0.72);
 }
 
-.equipment__note {
-  margin: 0 0 8px;
+.object-chip__status,
+.object-chip__readout {
+  font-family: var(--font-mono);
   font-size: 12.5px;
-  line-height: 1.35;
-  color: var(--panel-80);
+  font-variant-numeric: tabular-nums;
+  color: rgba(201, 214, 218, 0.85);
 }
 
-.equipment__remove {
-  height: 28px;
-  padding: 0 10px;
+.object-chip__colour {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  color: rgba(237, 234, 227, 0.94);
+}
+
+.object-chip__colour.is-empty {
+  color: rgba(201, 214, 218, 0.6);
+}
+
+.object-chip__swatch {
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border-radius: 2px;
+  border: 1px solid rgba(237, 234, 227, 0.45);
+}
+
+.object-chip__precipitate {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #F5EFD8;
+}
+
+.object-chip__capacity {
+  align-self: flex-start;
+  padding: 1px 6px;
   font-size: 12px;
   font-weight: 600;
-  background: transparent;
-  color: var(--panel-80);
-  border: 1.5px solid var(--glass-34);
-  border-radius: var(--radius-sm);
+  color: #F6D9D6;
+  background: rgba(208, 52, 44, 0.26);
+  border: 1px solid rgba(208, 52, 44, 0.7);
+  border-radius: 2px;
 }
 
-.equipment__remove:hover {
-  border-color: var(--glass-80);
-  color: var(--panel-90);
+.object-chip__capacity.is-full {
+  background: rgba(208, 52, 44, 0.4);
+}
+
+.object-chip__stand {
+  font-size: 12px;
+  color: rgba(201, 214, 218, 0.72);
+}
+
+/* The last reading, on the bench beside the glass rather than only in the
+   notebook. Colour always paired with its name (UI.md section 5). */
+.object-chip__reading {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 2px;
+  padding-top: 3px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: #F5EFD8;
+  border-top: 1px solid rgba(201, 214, 218, 0.2);
+}
+
+.object-chip__reading-swatch {
+  width: 11px;
+  height: 11px;
+  flex: none;
+  border-radius: 2px;
+  border: 1px solid rgba(237, 234, 227, 0.5);
+}
+
+/* What the current is doing, when it is doing nothing visible. Yellow to
+   match the "Current on" control, and wrapped rather than truncated -
+   the engine's sentences are worth reading. */
+.object-chip__power {
+  max-width: 210px;
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.35;
+  white-space: normal;
+  color: #F7E9BC;
+}
+
+/* ------------------------------------------------------------------ *
+ * The one control strip, along the foot of the bench: the controls for
+ * whatever single object is selected, and nothing else.
+ * ------------------------------------------------------------------ */
+
+.bench-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 58px;
+  padding: 8px 14px;
+  background: rgba(20, 26, 25, 0.92);
+  border-top: 1px solid rgba(201, 214, 218, 0.18);
+}
+
+.bench-controls__text {
+  flex: none;
+  min-width: 150px;
+  max-width: 210px;
+}
+
+.bench-controls__title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: rgba(237, 234, 227, 0.94);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bench-controls__sub {
+  font-size: 12px;
+  line-height: 1.3;
+  color: rgba(201, 214, 218, 0.72);
+}
+
+.bench-controls__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-width: 0;
+}
+
+.bench-control {
+  height: 34px;
+  padding: 0 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: rgba(237, 234, 227, 0.07);
+  color: rgba(237, 234, 227, 0.92);
+  border: 1px solid rgba(201, 214, 218, 0.3);
+  border-radius: 2px;
+}
+
+.bench-control:hover:not(:disabled) {
+  background: rgba(237, 234, 227, 0.14);
+}
+
+.bench-control:disabled {
+  color: rgba(237, 234, 227, 0.42);
+  cursor: not-allowed;
+}
+
+.bench-control--accent:not(:disabled) {
+  background: rgba(168, 112, 43, 0.32);
+  border-color: rgba(168, 112, 43, 0.8);
+  color: #F0DCC0;
+}
+
+.bench-control--heat.is-active {
+  background: rgba(232, 149, 43, 0.34);
+  border-color: rgba(232, 149, 43, 0.9);
+  color: #FBEBD2;
+}
+
+.bench-control--power.is-active {
+  background: rgba(241, 196, 15, 0.28);
+  border-color: rgba(241, 196, 15, 0.8);
+  color: #F7E9BC;
+}
+
+.bench-control--tap-open {
+  background: rgba(208, 52, 44, 0.34);
+  border-color: rgba(208, 52, 44, 0.9);
+  color: #F6D9D6;
+}
+
+/* The floating amount/pour panel, placed at the point of the drop. */
+.bench-float {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 20;
+}
+
+/* ------------------------------------------------------------------ *
+ * The apparatus's own silhouette - the mockup's own literal shapes and
+ * exact tile sizes from its EQUIPMENT_TYPES table (burner 78x104, ice
+ * bath 136x54, rack 122x66), not a redrawn approximation.
+ * ------------------------------------------------------------------ */
+
+.equipment__art {
+  position: relative;
+  flex: none;
+}
+
+.equipment--burner .equipment__art { width: 78px; height: 104px; }
+.equipment--ice_bath .equipment__art { width: 136px; height: 54px; }
+.equipment--rack .equipment__art { width: 122px; height: 66px; }
+
+.equipment__part {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Burner: ring, two tripod legs, a base foot, a barrel and a gas collar. */
+.equipment__part--burner-ring {
+  left: 2px;
+  right: 2px;
+  top: 4px;
+  height: 5px;
+  background: #4A4F4C;
+  border: 1px solid #141716;
+  border-radius: 2px;
+}
+.equipment__part--burner-leg {
+  top: 8px;
+  width: 5px;
+  height: 88px;
+  background: linear-gradient(90deg, #4E5350, #2A2E2C);
+  border: 1px solid #141716;
+}
+.equipment__part--burner-leg-left { left: 6px; }
+.equipment__part--burner-leg-right { right: 6px; }
+.equipment__part--burner-foot {
+  left: 50%;
+  bottom: 0;
+  width: 46px;
+  margin-left: -23px;
+  height: 7px;
+  background: #3B3F3D;
+  border: 1px solid #141716;
+  border-radius: 2px;
+}
+.equipment__part--burner-barrel {
+  left: 50%;
+  bottom: 6px;
+  width: 13px;
+  margin-left: -6.5px;
+  height: 34px;
+  background: linear-gradient(90deg, #565B58, #31352F);
+  border-left: 1px solid #141716;
+  border-right: 1px solid #141716;
+}
+.equipment__part--burner-collar {
+  left: 50%;
+  bottom: 38px;
+  width: 17px;
+  margin-left: -8.5px;
+  height: 6px;
+  background: #4A4F4C;
+  border: 1px solid #141716;
+  border-radius: 2px 2px 0 0;
+}
+
+/* The flame: an upright teardrop standing on the barrel, with the pale
+   blue inner cone inside it. It grows with the knob - the mockup's own
+   sizing, 20+6·level wide and 26+13·level tall, so "Heat 3" is visibly a
+   roaring flame and "Heat 1" is a small one.
+
+   It deliberately does NOT use .fx-flame: that class is the tiny inline
+   heat indicator, permanently rotated -45° to sit in a line of text, and
+   inheriting it is what made this flame lie on its side. */
+.equipment__part--flame-cone {
+  position: absolute;
+  left: 50%;
+  bottom: 43px;
+  width: calc(20px + var(--burner-level, 0) * 6px);
+  height: calc(26px + var(--burner-level, 0) * 13px);
+  margin-left: calc((20px + var(--burner-level, 0) * 6px) / -2);
+  border-radius: 50% 50% 42% 42%;
+  background: radial-gradient(60% 74% at 50% 82%, #F6E3A8, #E8952B 46%, rgba(232, 149, 43, 0) 78%);
+  transform-origin: 50% 100%;
+  opacity: 0;
+}
+
+.equipment__part--flame-inner {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: calc(10px + var(--burner-level, 0) * 3px);
+  height: calc(13px + var(--burner-level, 0) * 6px);
+  margin-left: calc((10px + var(--burner-level, 0) * 3px) / -2);
+  border-radius: 50% 50% 40% 40%;
+  background: radial-gradient(60% 80% at 50% 84%, #BFE8F5, #5AA6D6 58%, rgba(90, 166, 214, 0) 82%);
+  transform-origin: 50% 100%;
+}
+
+.equipment__art--lit .equipment__part--flame-cone {
+  opacity: 1;
+  animation: fx-burner-flame 620ms ease-in-out infinite;
+}
+
+.equipment__art--lit .equipment__part--flame-inner {
+  animation: fx-burner-flame 460ms ease-in-out infinite;
+}
+
+/* Licking upward from the barrel, never tilting - a flame that leans is a
+   draught, not a Bunsen burner. Only `transform`, per UI.md section 6. */
+@keyframes fx-burner-flame {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  50% { transform: scaleY(1.12) scaleX(0.93); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .equipment__art--lit .equipment__part--flame-cone,
+  .equipment__art--lit .equipment__part--flame-inner {
+    animation: none;
+  }
+}
+
+html.reduce-motion .equipment__art--lit .equipment__part--flame-cone,
+html.reduce-motion .equipment__art--lit .equipment__part--flame-inner {
+  animation: none;
+}
+
+/* Ice bath: a blue-tinted basin and three tumbled ice cubes. */
+.equipment__part--ice-basin {
+  inset: 0;
+  border: 2px solid rgba(201, 214, 218, 0.55);
+  border-radius: 4px 4px 8px 8px;
+  background: linear-gradient(180deg, rgba(151, 201, 219, 0.4), rgba(151, 201, 219, 0.66));
+  box-shadow: inset 0 4px 0 rgba(255, 255, 255, 0.26);
+}
+.equipment__part--ice-cube {
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.6);
+}
+.equipment__part--ice-cube-1 { left: 12px; top: 8px; width: 16px; height: 11px; background: rgba(255, 255, 255, 0.66); transform: rotate(-12deg); }
+.equipment__part--ice-cube-2 { left: 38px; top: 14px; width: 19px; height: 12px; background: rgba(255, 255, 255, 0.5); transform: rotate(8deg); }
+.equipment__part--ice-cube-3 { right: 16px; top: 9px; width: 15px; height: 12px; background: rgba(255, 255, 255, 0.6); transform: rotate(18deg); }
+
+/* Rack: top and bottom rails, two legs, three tube-slot markers. */
+.equipment__part--rack-rail {
+  left: 0;
+  right: 0;
+  height: 9px;
+  background: #8A6A45;
+  border: 1px solid #3A2C1C;
+  border-radius: 2px;
+}
+.equipment__part--rack-rail-top { top: 10px; }
+.equipment__part--rack-rail-bottom { bottom: 0; }
+.equipment__part--rack-leg {
+  top: 14px;
+  bottom: 6px;
+  width: 7px;
+  background: #7A5C3C;
+  border: 1px solid #3A2C1C;
+}
+.equipment__part--rack-leg-left { left: 8px; }
+.equipment__part--rack-leg-right { right: 8px; }
+.equipment__part--rack-slot {
+  top: 12px;
+  width: 20px;
+  height: 5px;
+  background: #241B12;
+  border-radius: 3px;
 }
 
 /* ------------------------------------------------------------------ *
  * The bench: instrument cards on the dark benchtop.
  * ------------------------------------------------------------------ */
-
-.containers {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 14px;
-}
-
-.container {
-  width: 300px;
-  padding: 10px 12px 12px;
-  background: var(--bench-deep);
-  color: var(--panel-90);
-  border: 1.5px solid rgba(0, 0, 0, 0.45);
-  border-radius: var(--radius);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-}
-
-.container--drag-over {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px var(--accent), 0 3px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* The container's title - a cream printed-label chip, the one warm-toned
-   surface inside an otherwise dark instrument card. */
-.container > h3 {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  margin: 0 0 8px;
-  padding: 3px 7px;
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: capitalize;
-  color: var(--ink);
-  background: #F2F0EA;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  border-radius: 1.5px;
-}
-
-.container__stand {
-  margin: 0 0 8px;
-  font-size: 12.5px;
-  color: var(--panel-80);
-}
-
-.container__stand select {
-  height: 26px;
-  margin-left: 4px;
-  padding: 0 4px;
-  font-size: 12.5px;
-  background: #2C3532;
-  color: var(--panel-90);
-  border: 1.5px solid rgba(0, 0, 0, 0.5);
-  border-radius: var(--radius-sm);
-}
-
-.container__heat-note {
-  font-size: 12.5px;
-  color: var(--panel-80);
-}
 
 .vessel {
   /* The outer, unclipped box: sized per type below, and holding the rim
@@ -741,7 +1214,7 @@ select:focus-visible,
      too, the rim (top: -3px, deliberately above y=0) would be cut off,
      exactly matching the mockup's own two-layer structure. */
   position: relative;
-  margin: 0 auto 20px;
+  flex: none;
 }
 
 /* ------------------------------------------------------------------ *
@@ -771,6 +1244,10 @@ select:focus-visible,
   width: 100%;
   height: 100%;
   overflow: hidden;
+  /* Tipped by bench.js while the vessel is dragged over another one - the
+     promise that letting go will pour, made before anything is committed. */
+  transform-origin: 20% 100%;
+  transition: transform 260ms ease-out;
   background: linear-gradient(
     90deg,
     rgba(201, 214, 218, 0.2),
@@ -780,8 +1257,8 @@ select:focus-visible,
   );
   box-shadow:
     inset 0 0 0 2px rgba(201, 214, 218, 0.5),
-    inset -7px 0 12px -6px rgba(255, 255, 255, 0.3),
-    inset 7px 0 12px -6px rgba(255, 255, 255, 0.12);
+    inset -7px 0 12px -6px rgba(255, 255, 255, 0.34),
+    inset 7px 0 12px -6px rgba(255, 255, 255, 0.14);
 }
 
 .vessel--beaker .vessel__glass { border-radius: 4px 4px 12px 12px; }
@@ -830,19 +1307,209 @@ select:focus-visible,
 .vessel--dish .vessel__rim { width: 104px; }
 
 /* The pouring spout - only the beakers and the measuring cylinder have
-   one (VESSEL_TYPES' spout:true), matching real glassware. */
+   one (VESSEL_TYPES' spout:true), matching real glassware. Each type's
+   margin-left is the mockup's own spoutML (w/2 - 15), which is what puts
+   the spout at the vessel's right-hand edge instead of centred. */
 .vessel__spout {
   position: absolute;
   left: 50%;
   top: 0;
   width: 16px;
   height: 11px;
-  margin-left: -32px;
   border-top: 2px solid rgba(201, 214, 218, 0.6);
   border-left: 2px solid rgba(201, 214, 218, 0.6);
   border-radius: 6px 0 0 0;
   transform: rotate(-24deg);
   pointer-events: none;
+}
+
+.vessel--beaker .vessel__spout { margin-left: 40px; }
+.vessel--beaker_small .vessel__spout { margin-left: 26px; }
+.vessel--cylinder .vessel__spout { margin-left: 10px; }
+
+/* The contact shadow under free-standing glassware - hidden while a
+   vessel is standing on furniture (bench.js toggles [hidden] via
+   container.standOn), matching the mockup's own showShadow: !stand. */
+.vessel__shadow {
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  height: 11px;
+  border-radius: 50%;
+  background: radial-gradient(50% 50%, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 72%);
+  pointer-events: none;
+}
+
+.vessel--beaker .vessel__shadow { width: 134px; margin-left: -67px; }
+.vessel--beaker_small .vessel__shadow { width: 106px; margin-left: -53px; }
+.vessel--test_tube .vessel__shadow { width: 66px; margin-left: -33px; }
+.vessel--boiling_tube .vessel__shadow { width: 80px; margin-left: -40px; }
+.vessel--flask .vessel__shadow { width: 140px; margin-left: -70px; }
+.vessel--flask_small .vessel__shadow { width: 112px; margin-left: -56px; }
+.vessel--cylinder .vessel__shadow { width: 74px; margin-left: -37px; }
+.vessel--burette .vessel__shadow { width: 54px; margin-left: -27px; }
+.vessel--dish .vessel__shadow { width: 120px; margin-left: -60px; }
+
+/* Graduation ticks on a cylinder or burette - alternating long/short
+   marks, positioned inline per-tick from bench.js (their spacing depends
+   on that type's own height, which only bench.js currently knows). */
+.vessel__tick {
+  position: absolute;
+  left: 0;
+  height: 1px;
+  background: rgba(237, 234, 227, 0.5);
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* ------------------------------------------------------------------ *
+ * Dipping a tool. The instrument descends into the liquid, sits there and
+ * comes back out; the reading is reported when it comes out, not when the
+ * button was pressed - see beginDip in app.js.
+ *
+ * Drawn OUTSIDE .vessel__glass on purpose, so it is not clipped by the
+ * glass shape while it is still on its way down.
+ * ------------------------------------------------------------------ */
+
+.vessel__dip {
+  position: absolute;
+  left: 50%;
+  top: -22px;
+  z-index: 4;
+  pointer-events: none;
+  animation: fx-dip-in 1250ms cubic-bezier(0.4, 0.1, 0.4, 1) both;
+}
+
+@keyframes fx-dip-in {
+  0% { transform: translateY(-26px); opacity: 0; }
+  18% { opacity: 1; }
+  38%, 68% { transform: translateY(46px); opacity: 1; }
+  100% { transform: translateY(-26px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vessel__dip { animation: none; transform: translateY(30px); }
+}
+
+html.reduce-motion .vessel__dip {
+  animation: none;
+  transform: translateY(30px);
+}
+
+/* pH paper and litmus: a narrow paper strip, cream on the way in. */
+.vessel__dip--ph_paper,
+.vessel__dip--litmus {
+  width: 12px;
+  height: 54px;
+  margin-left: -6px;
+}
+
+.vessel__dip-strip-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 38%;
+  background: #EDEAE3;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.vessel__dip-strip-tip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 62%;
+  bottom: 0;
+  background: #DED8C7;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Thermometer: a stem with a bulb on the end. */
+.vessel__dip--thermometer {
+  width: 10px;
+  height: 62px;
+  margin-left: -5px;
+}
+
+.vessel__dip-therm-stem {
+  position: absolute;
+  inset: 0 0 6px 0;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #F2F0EA, #CFCBC0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.vessel__dip-therm-bulb {
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: #8FB7C9;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+}
+
+/* Conductivity tester: two carbon rods and the lamp between them. */
+.vessel__dip--conductivity {
+  width: 30px;
+  height: 58px;
+  margin-left: -15px;
+}
+
+.vessel__dip-rod {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(90deg, #5A5F5C, #2E322F);
+  border: 1px solid #141716;
+  border-radius: 1px;
+}
+
+.vessel__dip-rod--left { left: 0; }
+.vessel__dip-rod--right { right: 0; }
+
+.vessel__dip-lamp {
+  position: absolute;
+  left: 50%;
+  top: -13px;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: #F1C40F;
+  box-shadow: 0 0 7px 2px rgba(241, 196, 15, 0.5);
+}
+
+/* Flame test: a nichrome wire with a small loop on the end. */
+.vessel__dip--flame_test {
+  width: 10px;
+  height: 60px;
+  margin-left: -5px;
+}
+
+.vessel__dip-wire {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 8px;
+  width: 3px;
+  margin-left: -1.5px;
+  background: linear-gradient(90deg, #9AA3A6, #5C6467);
+  border-radius: 1px;
+}
+
+.vessel__dip-wire-loop {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border: 2px solid #9AA3A6;
+  border-radius: 50%;
 }
 
 .vessel__liquid {
@@ -854,15 +1521,33 @@ select:focus-visible,
   transform-origin: bottom;
 }
 
+/* The meniscus. This is what actually makes a colourless liquid readable
+   in a glass - the surface line, not the fill - so it is drawn on the
+   base layer and stays crisp however transparent the liquid itself is
+   (see liquidFillFor in bench.js). */
 .vessel__liquid--base::before {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
-  height: 6px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  height: 7px;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0));
+  border-top: 1.5px solid rgba(255, 255, 255, 0.72);
+}
+
+/* Depth: liquid sitting in a vessel is darker towards the bottom. Gives
+   a clear liquid some body without tinting it any particular colour. */
+.vessel__liquid--base::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  pointer-events: none;
 }
 
 .vessel__liquid--incoming {
@@ -880,8 +1565,8 @@ select:focus-visible,
   position: absolute;
   bottom: 4px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.85);
 }
 
 .fx-gas {
@@ -912,37 +1597,9 @@ select:focus-visible,
   transform-origin: top;
 }
 
-.container__contents {
-  margin: 0 0 6px;
-  padding-left: 18px;
-  font-size: 13px;
-}
-
-.container__readout {
-  margin: 0 0 3px;
-  font-family: var(--font-mono);
-  font-size: 13.5px;
-  font-variant-numeric: tabular-nums;
-  color: var(--panel-90);
-}
-
-.container__colour-label {
-  margin: 0 0 8px;
-  font-size: 13.5px;
-  color: var(--panel-80);
-}
-
-.container__controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding-top: 8px;
-  border-top: 1px solid var(--glass-16);
-}
-
 /* ------------------------------------------------------------------ *
- * Burner: a flame indicator (ambient CSS animation, not one-shot WAAPI -
- * see effects.js's setFlameLevel) plus the -1..3 level control.
+ * The flame (ambient CSS animation, not one-shot WAAPI - see effects.js's
+ * setFlameLevel). It burns on the BURNER now, not on a vessel's own card.
  * ------------------------------------------------------------------ */
 
 .container__heat {
@@ -1004,30 +1661,6 @@ html.reduce-motion .fx-flame--3 {
   animation: none;
 }
 
-.heat-level {
-  height: 30px;
-  min-width: 30px;
-  padding: 0 8px;
-  font-size: 12.5px;
-  font-weight: 600;
-  background: #2C3532;
-  color: var(--panel-90);
-  border: 1.5px solid rgba(0, 0, 0, 0.5);
-  border-radius: var(--radius-sm);
-}
-
-.heat-level--active {
-  background: var(--accent);
-  color: #FFFFFF;
-  border-color: var(--ink);
-}
-
-/* The ice bath. A cold tint rather than the burner's warm one, but the
-   button also says "Ice" - the colour is a reinforcement, never the only
-   channel (UI.md section 5). */
-.heat-level--ice.heat-level--active {
-  background: #4C7E93;
-}
 
 /* ------------------------------------------------------------------ *
  * Electrolysis: two electrodes in the vessel and the ions drifting to
@@ -1036,21 +1669,21 @@ html.reduce-motion .fx-flame--3 {
 
 .electrode {
   position: absolute;
-  top: 6%;
-  width: 12px;
-  height: 78%;
+  top: 6px;
+  bottom: 24%;
+  width: 9px;
   /* Both rods the same grey on purpose - the sign says which is which,
      not the colour (UI.md section 5). */
-  background: linear-gradient(90deg, #5A5F5C, #2A2E2C);
-  border: 1px solid var(--ink);
+  background: linear-gradient(90deg, #4E5350, #2A2E2C);
+  border: 1px solid #141716;
   border-radius: 2px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 
-.electrode--cathode { left: 14%; }
-.electrode--anode { right: 14%; }
+.electrode--cathode { left: 22%; }
+.electrode--anode { right: 22%; }
 
 .electrode__sign {
   color: #FFFFFF;
@@ -1065,8 +1698,8 @@ html.reduce-motion .fx-flame--3 {
   position: absolute;
   left: 50%;
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
   color: #FFFFFF;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
@@ -1075,25 +1708,25 @@ html.reduce-motion .fx-flame--3 {
    to the cathode - the direction itself is carrying the teaching point,
    which is why each has its own keyframe rather than one shared one. */
 .ion--cathode {
-  animation: ion-to-cathode 3.4s linear infinite;
+  animation: ion-to-cathode 2100ms linear infinite;
 }
 
 .ion--anode {
-  animation: ion-to-anode 3.4s linear infinite;
+  animation: ion-to-anode 2100ms linear infinite;
 }
 
 @keyframes ion-to-cathode {
   0% { transform: translateX(10px); opacity: 0; }
   15% { opacity: 1; }
   80% { opacity: 1; }
-  100% { transform: translateX(-58px); opacity: 0; }
+  100% { transform: translateX(-42px); opacity: 0; }
 }
 
 @keyframes ion-to-anode {
   0% { transform: translateX(-10px); opacity: 0; }
   15% { opacity: 1; }
   80% { opacity: 1; }
-  100% { transform: translateX(58px); opacity: 0; }
+  100% { transform: translateX(42px); opacity: 0; }
 }
 
 /* The ions stop travelling but stay on screen, sitting nearer their own
@@ -1120,45 +1753,7 @@ html.reduce-motion .ion--anode {
 html.reduce-motion .ion--cathode { transform: translateX(-46px); }
 html.reduce-motion .ion--anode { transform: translateX(46px); }
 
-.container__power {
-  height: 30px;
-  padding: 0 12px;
-  font-size: 12.5px;
-  font-weight: 600;
-  background: #2C3532;
-  color: var(--panel-90);
-  border: 1.5px solid rgba(0, 0, 0, 0.5);
-  border-radius: var(--radius-sm);
-}
-
-.container__power--on {
-  background: var(--accent);
-  color: #FFFFFF;
-  border-color: var(--ink);
-}
-
-.container__stir,
-.container__dip,
-.container__molecular {
-  height: 30px;
-  padding: 0 12px;
-  font-size: 12.5px;
-  font-weight: 600;
-  background: #2C3532;
-  color: var(--panel-90);
-  border: 1.5px solid rgba(0, 0, 0, 0.5);
-  border-radius: var(--radius-sm);
-}
-
-.container__stir:hover,
-.container__dip:hover,
-.container__molecular:hover,
-.container__power:hover,
-.heat-level:hover {
-  border-color: var(--glass-80);
-}
-
-.container__molecular:focus-visible,
+.bench-control:focus-visible,
 .reagent-bottle__properties:focus-visible,
 .properties-panel__view-3d:focus-visible,
 .properties-panel__close:focus-visible,
@@ -1175,18 +1770,22 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
  * The tool tray.
  * ------------------------------------------------------------------ */
 
-.tool-tray {
+.tool-tray-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 20px;
   margin: 14px 14px 0;
   padding-top: 12px;
   border-top: 2px solid var(--glass-16);
 }
 
+.tool-tray {
+  flex: 1 1 288px;
+  max-width: 288px;
+}
+
 .tool-tray > h3 {
-  flex: 0 0 100%;
-  margin: 0 0 2px;
+  margin: 0 0 6px;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -1194,28 +1793,151 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   color: var(--panel-80);
 }
 
+.tool-tray__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
 .tool {
-  height: 38px;
-  padding: 0 12px;
-  font-size: 13px;
+  height: 40px;
+  padding: 0 7px;
+  font-size: 13.5px;
   font-weight: 600;
-  background: #2C3532;
-  color: var(--panel-90);
-  border: 1.5px solid rgba(0, 0, 0, 0.5);
+  text-align: left;
+  line-height: 1.15;
+  background: rgba(237, 234, 227, 0.06);
+  color: rgba(237, 234, 227, 0.88);
+  border: 1.5px solid rgba(201, 214, 218, 0.26);
   border-radius: var(--radius-sm);
 }
 
 .tool--selected {
-  background: var(--accent);
-  color: #FFFFFF;
-  border-color: var(--ink);
+  background: rgba(168, 112, 43, 0.34);
+  color: #F5E7CE;
+  border-color: rgba(168, 112, 43, 0.85);
 }
 
 .tool-tray__hint {
-  flex: 0 0 100%;
-  margin: 2px 0 0;
+  margin: 8px 0 0;
   font-size: 13px;
   color: var(--panel-80);
+}
+
+/* The universal indicator chart - a reference chart, not a reading tied
+   to any one vessel, so it sits beside the tool tray as its own column. */
+.indicator-chart {
+  flex: 1 1 260px;
+  max-width: 320px;
+}
+
+.indicator-chart > h3 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--panel-80);
+}
+
+.indicator-chart__bar {
+  display: flex;
+  height: 38px;
+  border: 1.5px solid rgba(201, 214, 218, 0.3);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.indicator-chart__segment {
+  flex: 1;
+}
+
+.indicator-chart__labels {
+  display: flex;
+  margin-top: 4px;
+}
+
+.indicator-chart__label {
+  flex: 1;
+  font-size: 10.5px;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--panel-80);
+}
+
+/* ------------------------------------------------------------------ *
+ * READINGS - a running echo of the last few tool dips.
+ * ------------------------------------------------------------------ */
+
+.readings-panel {
+  margin: 14px 14px 0;
+  padding-top: 12px;
+  border-top: 2px solid var(--glass-16);
+}
+
+.readings-panel > h3 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--panel-80);
+}
+
+.readings-panel__empty {
+  margin: 0;
+  font-size: 13px;
+  color: var(--panel-80);
+}
+
+.readings-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.readings-panel__item {
+  padding: 4px 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--panel-90);
+  background: rgba(237, 234, 227, 0.06);
+  border: 1px solid rgba(201, 214, 218, 0.2);
+  border-radius: var(--radius-sm);
+}
+
+/* ------------------------------------------------------------------ *
+ * "Contract trace" - a developer-facing strip, off by default (see the
+ * topbar checkbox). Not a chemistry feature.
+ * ------------------------------------------------------------------ */
+
+.trace-strip {
+  flex: none;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 12px;
+  background: #141A19;
+  border-top: 1px solid rgba(201, 214, 218, 0.12);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: rgba(140, 196, 168, 0.95);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.trace-strip__label {
+  flex: none;
+  color: rgba(201, 214, 218, 0.76);
+}
+
+.trace-strip__value {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ------------------------------------------------------------------ *
@@ -1232,24 +1954,42 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   position: relative;
   margin: 0 0 12px;
   padding-left: 9px;
-  border-left: 2px solid var(--ink-32);
+  /* Set inline per entry from app.js's own notebookTagFor - see
+     TAG_ACCENT in panels.js - so every entry type (warning/action/
+     reaction/observation/measurement/estimate/milestone) gets its own
+     colour instead of only "auto" vs "observation" telling apart. */
+  border-left: 2px solid var(--tag-accent, var(--ink-32));
 }
 
-.notebook-entry--observation {
-  border-left-color: var(--accent);
+.notebook-entry__meta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.notebook-entry__tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tag-text, var(--ink-60));
 }
 
 .notebook-entry time {
-  display: block;
-  margin-bottom: 2px;
   font-family: var(--font-mono);
   font-size: 12.5px;
   color: var(--ink-60);
 }
 
+/* Plain sans, not serif - the mockup's own default "plain-sheet" look
+   (its notebookTreatment prop defaults away from the serif+graph-paper
+   "graph-serif" variant), matching every other label in the app rather
+   than reading as a separate, fancier typeface. */
 .notebook-entry__text {
   margin: 0;
-  font-family: var(--font-notebook);
+  font-family: var(--font-label);
   font-size: 14.5px;
   line-height: 1.45;
   color: var(--ink);
@@ -1257,7 +1997,7 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 
 .notebook-empty {
   margin: 6px 14px 0 40px;
-  font-family: var(--font-notebook);
+  font-family: var(--font-label);
   font-size: 14.5px;
   line-height: 1.5;
   color: var(--ink-60);
@@ -1297,9 +2037,19 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  background: rgba(168, 112, 43, 0.16);
-  border: 1px solid rgba(168, 112, 43, 0.5);
+  color: var(--ink);
+  background: rgba(22, 26, 25, 0.14);
   border-radius: var(--radius-sm);
+}
+
+/* Green for a match, yellow for a near miss, the neutral default above
+   stands for a miss - matching notebook.js's own three-way MATCH constant. */
+.notebook-entry__rating--match {
+  background: rgba(39, 174, 96, 0.24);
+}
+
+.notebook-entry__rating--near-miss {
+  background: rgba(241, 196, 15, 0.3);
 }
 
 .observation-form {
@@ -1341,20 +2091,35 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 }
 
 .estimate-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
   margin: 0 14px 12px;
 }
 
-.estimate-form h3 {
-  flex: 0 0 100%;
+.estimate-form__heading-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   margin: 0 0 4px;
+}
+
+.estimate-form h3 {
+  margin: 0;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-70);
+}
+
+.estimate-form__subtitle {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--ink-60);
+}
+
+.estimate-form__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .estimate-form select {
@@ -1369,8 +2134,16 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   border-radius: var(--radius-sm);
 }
 
+/* The tool picker gets a fixed width rather than sharing the flex:1 the
+   vessel picker uses - the mockup's own two widths, since a tool name is
+   always short and does not need to compete for space. */
+.estimate-form__tool {
+  flex: none;
+  width: 92px;
+}
+
 .estimate-form input {
-  width: 84px;
+  width: 56px;
   height: 33px;
   padding: 0 5px;
   font-family: var(--font-mono);
@@ -1416,7 +2189,9 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   inset: 0;
   z-index: 1000;
   pointer-events: none;
-  border: 14px solid var(--hazard);
+  box-shadow:
+    inset 0 0 0 9px var(--hazard),
+    inset 0 0 44px 9px rgba(208, 52, 44, 0.6);
   opacity: 0;
 }
 
@@ -1442,8 +2217,9 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 
 .hazard-panel {
   position: relative;
-  max-width: 540px;
-  padding: 20px 24px 24px;
+  width: 520px;
+  max-width: 100%;
+  padding: 22px 24px 20px;
   background: var(--panel);
   border: 2px solid var(--hazard);
   border-radius: var(--radius);
@@ -1455,6 +2231,7 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   display: flex;
   align-items: center;
   gap: 14px;
+  margin-bottom: 13px;
 }
 
 .hazard-icon {
@@ -1476,15 +2253,15 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 }
 
 .hazard-panel__title {
-  margin: 13px 0 0;
-  font-size: 21px;
+  margin: 0 0 9px;
+  font-size: 22px;
   line-height: 1.2;
 }
 
 .hazard-panel__warning {
-  margin: 10px 0 0;
+  margin: 0 0 14px;
   font-family: var(--font-notebook);
-  font-size: 15px;
+  font-size: 15.5px;
   line-height: 1.5;
 }
 
@@ -1493,24 +2270,22 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--ink-70);
 }
 
 .hazard-panel__advice {
-  margin: 5px 0 0;
+  margin: 0 0 18px;
   font-family: var(--font-notebook);
-  font-size: 15px;
+  font-size: 15.5px;
   line-height: 1.5;
-  padding-left: 12px;
-  border-left: 3px solid var(--ink);
 }
 
 .hazard-panel__acknowledge {
-  margin-top: 20px;
-  min-height: 40px;
-  padding: 8px 22px;
-  font-size: 14px;
+  margin-top: 4px;
+  height: 40px;
+  padding: 0 22px;
+  font-size: 14.5px;
   font-weight: 700;
   letter-spacing: 0.03em;
   background: var(--bench);
@@ -1543,15 +2318,15 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 .properties-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(10, 14, 13, 0.55);
+  background: rgba(10, 14, 13, 0.62);
 }
 
 .properties-panel {
   position: relative;
-  max-width: 440px;
-  max-height: calc(100vh - 80px);
+  width: 520px;
+  max-width: 100%;
+  max-height: 640px;
   overflow-y: auto;
-  padding: 20px 24px 24px;
   background: var(--notebook);
   border: 1.5px solid var(--ink);
   border-radius: var(--radius);
@@ -1559,16 +2334,59 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   color: var(--ink);
 }
 
+.properties-panel__missing {
+  margin: 40px 24px;
+}
+
+/* The sticky header band: a coloured spine, the name and formula/
+   concentration subtitle, and Close, all in one row on the panel colour -
+   distinct from the notebook-cream body scrolling beneath it. */
+.properties-panel__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 50px 14px 15px;
+  background: var(--panel);
+  border-bottom: 1.5px solid var(--ink-20, rgba(22, 26, 25, 0.2));
+}
+
+.properties-panel__spine {
+  flex: none;
+  width: 14px;
+  height: 34px;
+  border-radius: 2px;
+}
+
+.properties-panel__header-text {
+  min-width: 0;
+}
+
+.properties-panel__title {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.2;
+}
+
+.properties-panel__subtitle {
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-70);
+}
+
 .properties-panel__close {
   position: absolute;
   top: 10px;
   right: 10px;
   min-width: 40px;
-  min-height: 34px;
+  height: 31px;
   padding: 6px 10px;
   font-size: 13px;
   font-weight: 600;
-  background: var(--panel);
+  background: #FFFFFF;
   color: var(--ink);
   border: 1.5px solid var(--ink-32);
   border-radius: var(--radius-sm);
@@ -1578,14 +2396,12 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   background: var(--panel-dim);
 }
 
-.properties-panel__title {
-  margin: 0 44px 4px 0;
-  font-size: 19px;
-  line-height: 1.2;
+.properties-panel__body {
+  padding: 16px 24px 24px;
 }
 
 .properties-panel__structure {
-  margin: 6px 0 14px;
+  margin: 0 0 14px;
   text-align: center;
 }
 
@@ -1597,42 +2413,70 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   border-radius: var(--radius-sm);
 }
 
+/* Six facts in a two-column spec-sheet grid - state, pH, molar mass,
+   conductivity, solubility, level - each its own caption-over-value cell.
+   Formula/concentration live in the header subtitle; colour gets its own
+   highlighted box below, not a seventh cell here. */
 .properties-panel__facts {
-  margin: 0 0 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  margin: 0 0 14px;
 }
 
-.properties-panel__row {
+.properties-panel__fact {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
-  margin: 0;
-  padding: 5px 0;
-  font-size: 13.5px;
+  flex-direction: column;
+  gap: 1px;
+  padding-bottom: 6px;
   border-bottom: 1px solid var(--ink-18);
 }
 
-.properties-panel__label {
-  flex: none;
+.properties-panel__fact-label {
+  font-size: 11.5px;
   font-weight: 600;
-  font-size: 12.5px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink-60);
 }
 
-.properties-panel__row {
+.properties-panel__fact-value {
   font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.properties-panel__colour-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  padding: 9px 11px;
+  background: var(--panel);
+  border: 1px solid var(--ink-18);
+  border-radius: var(--radius-sm);
 }
 
 .properties-panel__swatch {
-  display: inline-block;
-  width: 13px;
-  height: 13px;
-  margin-right: 6px;
-  vertical-align: middle;
+  flex: none;
+  width: 30px;
+  height: 30px;
   border: 1px solid var(--ink-32);
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.properties-panel__colour-caption {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+
+.properties-panel__colour-name {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .properties-panel__subheading {
@@ -1650,11 +2494,7 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 
 .properties-panel__hazards {
   margin: 0;
-  padding-left: 20px;
   font-size: 14px;
-}
-
-.properties-panel__hazards li {
   text-transform: capitalize;
 }
 
@@ -1706,21 +2546,30 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 .molecular-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(10, 14, 13, 0.62);
+  background: rgba(10, 14, 13, 0.72);
 }
 
 .molecular-panel {
   position: relative;
   width: 100%;
-  max-width: 560px;
+  max-width: 660px;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
-  padding: 20px 24px 24px;
   background: var(--bench-deep);
   border: 1.5px solid var(--glass-34);
   border-radius: var(--radius);
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
   color: var(--panel-90);
+}
+
+/* Title, equation and Close all in one row, on their own border-separated
+   band - not three stacked elements sharing the panel's outer padding. */
+.molecular-panel__header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 11px 50px 11px 15px;
+  border-bottom: 1px solid var(--glass-16);
 }
 
 .molecular-panel__close {
@@ -1744,31 +2593,47 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 }
 
 .molecular-panel__title {
-  margin: 0 60px 4px 0;
+  margin: 0;
   font-size: 17px;
   font-weight: 700;
   letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .molecular-panel__equation {
-  margin: 0 0 12px;
+  flex: 1;
+  min-width: 0;
+  margin: 0;
   font-family: var(--font-mono);
   font-size: 13.5px;
-  color: var(--glass-80);
+  color: rgba(201, 214, 218, 0.82);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
+/* Edge-to-edge, no side padding, and a fixed height rather than one driven
+   by the SVG's own viewBox - matching the mockup's own fixed 250px stage. */
 .molecular-panel__stage {
   display: block;
   width: 100%;
-  height: auto;
+  height: 250px;
   background: radial-gradient(70% 70% at 50% 46%, rgba(201, 214, 218, 0.09), transparent 70%);
-  border: 1px solid var(--glass-16);
-  border-radius: var(--radius-sm);
+  border-top: 1px solid var(--glass-16);
+  border-bottom: 1px solid var(--glass-16);
+}
+
+.molecular-panel__missing {
+  margin: 16px;
+}
+
+.molecular-panel__footer {
+  padding: 12px 15px 15px;
 }
 
 .molecular-panel__caption {
   min-height: 3em;
-  margin: 12px 0 0;
+  margin: 0;
   font-family: var(--font-notebook);
   font-size: 14.5px;
   line-height: 1.5;
@@ -1782,8 +2647,14 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   color: var(--glass-80);
 }
 
-.molecular-panel__replay {
+.molecular-panel__controls {
+  display: flex;
+  gap: 8px;
   margin-top: 12px;
+}
+
+.molecular-panel__replay,
+.molecular-panel__next-stage {
   min-height: 38px;
   padding: 8px 18px;
   font-size: 13.5px;
@@ -1792,6 +2663,10 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   color: var(--panel);
   border: 1.5px solid var(--glass-34);
   border-radius: var(--radius-sm);
+}
+
+.molecular-panel__next-stage:hover {
+  background: rgba(237, 234, 227, 0.22);
 }
 
 /* ------------------------------------------------------------------ *
@@ -1944,7 +2819,7 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
  * ------------------------------------------------------------------ */
 
 .guided-stepcard {
-  padding: 9px 16px 11px;
+  padding: 0 0 11px;
   background: var(--panel);
   color: var(--ink);
   border-bottom: 1.5px solid var(--ink);
@@ -1952,54 +2827,111 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   flex: none;
 }
 
-.guided-stepcard__progress {
-  margin: 0 0 5px;
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: var(--ink-70);
+/* The header band: step label/title on one side, hint toggle and leave
+   button on the other, on its own slightly darker strip - distinct from
+   the card body below it, matching the mockup's own two-tone card. */
+.guided-stepcard__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--panel-dim);
+  border-bottom: 1px solid var(--ink-18);
 }
 
-.guided-progress {
-  height: 6px;
-  margin-bottom: 8px;
-  background: var(--ink-18);
-  border-radius: 3px;
+.guided-stepcard__heading {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
   overflow: hidden;
 }
 
-.guided-progress__fill {
-  height: 100%;
-  /* A static width recalculated on every render, not an animated
-     transition - UI.md section 6's performance budget applies here too,
-     and a step only ever advances on a deliberate student action, never
-     on a timer, so there is nothing worth easing between. */
+.guided-stepcard__progress {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  color: var(--ink-70);
+}
+
+.guided-stepcard__title {
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.guided-stepcard__header-controls {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.guided-stepcard__hint-toggle {
+  height: 30px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #FFFFFF;
+  color: var(--ink);
+  border: 1.5px solid var(--ink-45, rgba(22, 26, 25, 0.4));
+  border-radius: var(--radius-sm);
+}
+
+.guided-stepcard__hint-toggle:hover {
+  background: var(--panel-dim);
+}
+
+.guided-stepcard__leave {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+  background: transparent;
+  color: var(--ink-70);
+  border: none;
+}
+
+.guided-stepcard__leave:hover {
+  color: var(--ink);
+}
+
+.guided-progress {
+  display: flex;
+  gap: 4px;
+  margin: 10px 16px 8px;
+}
+
+.guided-progress__pip {
+  flex: 1;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--ink-18);
+}
+
+.guided-progress__pip--done {
   background: var(--accent);
 }
 
+.guided-progress__pip--current {
+  background: var(--bench);
+}
+
 .guided-stepcard__instruction {
-  margin: 0 0 6px;
+  margin: 0 16px 6px;
   font-size: 15px;
   font-weight: 600;
   line-height: 1.35;
 }
 
 .guided-stepcard__hint {
-  margin: 0 0 6px;
-}
-
-.guided-stepcard__hint summary {
-  cursor: pointer;
-  min-height: 34px;
-  display: inline-flex;
-  align-items: center;
-  font-size: 13.5px;
-  font-weight: 600;
-}
-
-.guided-stepcard__hint p {
-  margin: 5px 0 0;
+  margin: 0 16px 6px;
   font-family: var(--font-notebook);
   font-size: 13.5px;
   line-height: 1.4;
@@ -2007,17 +2939,26 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 }
 
 .guided-stepcard__feedback {
-  margin: 6px 0 0;
+  margin: 6px 16px 0;
   padding: 6px 10px;
   font-size: 13.5px;
   line-height: 1.35;
   border-left: 3px solid var(--ink);
   background: #FFFFFF;
-  /* Deliberately not colour-coded by judgement (correct/wrong/ahead/
-     repeat) - UI.md section 4's "one hard rule" reserves red exclusively
-     for the hazard alert, and green/red as a pass/fail signal would be
-     exactly the kind of invented grading colour system section 4 never
-     calls for. The words already say what happened. */
+}
+
+/* Green for "on track" (correct/ahead/repeat), amber for "not this step" -
+   never the hazard red UI.md section 4 reserves exclusively for danger.
+   The message text already says what happened; this is reinforcement,
+   not the only signal (section 5). */
+.guided-stepcard__feedback--ok {
+  background: rgba(39, 174, 96, 0.16);
+  border-left-color: #27AE60;
+}
+
+.guided-stepcard__feedback--wrong {
+  background: rgba(168, 112, 43, 0.16);
+  border-left-color: var(--accent);
 }
 
 .guided-summary-overlay {
@@ -2142,7 +3083,7 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 
 .amount-panel {
   position: relative;
-  width: 280px;
+  width: 216px;
   padding: 18px 22px 22px;
   background: var(--panel);
   border: 1.5px solid var(--ink);
@@ -2152,34 +3093,76 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 }
 
 .amount-panel__title {
-  margin: 0 0 14px;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.amount-panel__form label {
-  display: block;
-  margin-bottom: 6px;
+  margin: 0;
   font-size: 13.5px;
+  font-weight: 600;
 }
 
-.amount-panel__row {
+.amount-panel__destination {
+  margin: 2px 0 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-70);
+}
+
+.amount-panel__stepper {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
-.amount-panel__row input {
-  flex: 1;
-  min-height: 36px;
-  padding: 4px 8px;
-  font-family: var(--font-mono);
-  font-size: 14px;
+.amount-panel__step {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  font-size: 18px;
+  font-weight: 700;
   background: #FFFFFF;
   color: var(--ink);
   border: 1.5px solid var(--ink-32);
   border-radius: var(--radius-sm);
+}
+
+.amount-panel__value {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.amount-panel__presets {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.amount-panel__preset {
+  flex: 1;
+  height: 26px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  background: #FFFFFF;
+  color: var(--ink);
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
+}
+
+.amount-panel__preset--active {
+  background: var(--bench);
+  color: var(--panel);
+  border-color: var(--bench);
+}
+
+.amount-panel__overflow {
+  margin: 0 0 12px;
+  padding: 6px 8px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--ink);
+  background: rgba(208, 52, 44, 0.14);
+  border-left: 3px solid var(--hazard);
 }
 
 .amount-panel__buttons {
@@ -2190,22 +3173,24 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 
 .amount-panel__buttons button {
   min-width: 40px;
-  min-height: 36px;
-  padding: 6px 14px;
+  height: 32px;
+  padding: 0 12px;
   font-size: 13.5px;
   font-weight: 600;
-  background: #FFFFFF;
+  background: transparent;
   color: var(--ink);
-  border: 1.5px solid var(--ink);
+  border: 1.5px solid var(--ink-32);
   border-radius: var(--radius-sm);
 }
 
-.amount-panel__buttons button[type="submit"] {
-  background: var(--accent);
-  color: #FFFFFF;
-  border-color: var(--ink);
+.amount-panel__buttons .amount-panel__dispense {
+  background: var(--bench);
+  color: var(--panel);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-color: var(--bench);
 }
 
-.amount-panel__buttons button[type="submit"]:hover {
-  background: var(--accent-hover);
+.amount-panel__buttons .amount-panel__dispense:hover {
+  background: var(--bench-deep);
 }

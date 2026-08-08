@@ -19,7 +19,7 @@
  * here - see UI.md section 1's "test of the boundary".
  */
 
-import { engine, ROOM_TEMPERATURE_C } from '../core/engine.js';
+import { engine, ROOM_TEMPERATURE_C, OUTCOME } from '../core/engine.js';
 import { createContainer } from '../core/container.js';
 import { createActions } from '../core/actions.js';
 import { createNotebook } from '../core/notebook.js';
@@ -57,35 +57,37 @@ import { setReduceAnimation } from './effects.js';
  * test tubes, the way it would on a real bench.
  */
 const VESSEL_TYPES = {
-  beaker: { label: 'Beaker 250 mL', name: 'Beaker', capacityMl: 250 },
-  beaker_small: { label: 'Beaker 100 mL', name: 'Small beaker', capacityMl: 100 },
-  test_tube: { label: 'Test tube', name: 'Test tube', capacityMl: 50 },
-  boiling_tube: { label: 'Boiling tube', name: 'Boiling tube', capacityMl: 120 },
-  flask: { label: 'Conical flask', name: 'Conical flask', capacityMl: 250 },
-  flask_small: { label: 'Small conical flask', name: 'Small flask', capacityMl: 100 },
-  cylinder: { label: 'Measuring cylinder', name: 'Measuring cylinder', capacityMl: 100 },
-  burette: { label: 'Burette 50 mL', name: 'Burette', capacityMl: 50 },
-  dish: { label: 'Evaporating dish', name: 'Evaporating dish', capacityMl: 60 },
+  beaker: { label: 'Beaker 250 mL', name: 'Beaker', capacityMl: 250, w: 110, h: 118 },
+  beaker_small: { label: 'Beaker 100 mL', name: 'Small beaker', capacityMl: 100, w: 82, h: 92 },
+  test_tube: { label: 'Test tube', name: 'Test tube', capacityMl: 50, w: 42, h: 150 },
+  boiling_tube: { label: 'Boiling tube', name: 'Boiling tube', capacityMl: 120, w: 56, h: 166 },
+  flask: { label: 'Conical flask', name: 'Conical flask', capacityMl: 250, w: 116, h: 130 },
+  flask_small: { label: 'Small conical flask', name: 'Small flask', capacityMl: 100, w: 88, h: 104 },
+  cylinder: { label: 'Measuring cylinder', name: 'Measuring cylinder', capacityMl: 100, w: 50, h: 152 },
+  burette: { label: 'Burette 50 mL', name: 'Burette', capacityMl: 50, w: 30, h: 200 },
+  dish: { label: 'Evaporating dish', name: 'Evaporating dish', capacityMl: 60, w: 96, h: 44 },
 };
 
+// topY is how far below the furniture's own top edge a vessel's BASE sits
+// when it is stood on it - a burner's tripod ring is near its top, an ice
+// bath's rim is 16px down, and so on. Standing a vessel is pure geometry
+// from these three numbers; see standOn below.
 const EQUIPMENT_TYPES = {
-  burner: { label: 'Bunsen burner + tripod', name: 'Bunsen burner', heats: 1 },
-  ice_bath: { label: 'Ice bath', name: 'Ice bath', heats: -1 },
-  rack: { label: 'Test-tube rack', name: 'Test-tube rack', heats: 0 },
+  burner: { label: 'Bunsen burner + tripod', name: 'Bunsen burner', heats: 1, w: 78, h: 104, topY: 6 },
+  ice_bath: { label: 'Ice bath', name: 'Ice bath', heats: -1, w: 136, h: 54, topY: 16 },
+  rack: { label: 'Test-tube rack', name: 'Test-tube rack', heats: 0, w: 122, h: 66, topY: 14 },
 };
 
 const MAX_VESSELS = 7;
 const MAX_EQUIPMENT = 4;
 
-/* Free Lab mode has no experiment telling it what apparatus to lay out
-   (experiments.js is still an empty placeholder outside guided mode), so
-   this is just a reasonable fixed starting bench: one beaker, one test
-   tube. These two are never removed - Reset returns to exactly this pair -
-   while addVessel() below can add more from the apparatus tray. */
-const BASE_CONTAINER_DEFS = [
-  { id: 'beaker_1', name: 'Beaker', type: 'beaker', capacityMl: 250 },
-  { id: 'tube_1', name: 'Test tube', type: 'test_tube', capacityMl: 50 },
-];
+/* The bench starts with nothing on it, in Free Lab and in guided mode
+   alike - the mockup's own initial state is containers: [], and Reset
+   returns to that same empty bench. Everything on it, glassware included,
+   comes from the apparatus tray (addVessel below) or, for a guided
+   experiment, is laid out automatically from that experiment's own
+   curated apparatus list - see startExperiment's dispatch entry. */
+const BASE_CONTAINER_DEFS = [];
 
 function buildContainer(def) {
   return createContainer({ ...def, getChemical: engine.getChemical });
@@ -103,12 +105,107 @@ const equipment = [];
 let nextVesselNumber = {};
 let nextEquipmentNumber = {};
 
+/* ------------------------------------------------------------------ *
+ * The bench is a canvas, not a list.
+ *
+ * Every vessel and every piece of furniture has its own x/y on the bench
+ * top, and a student moves it by dragging it - onto another vessel to
+ * pour, onto a burner to heat it. That is the whole interaction model, so
+ * position is real state rather than a layout detail, and it lives here
+ * with everything else rather than being invented by the renderer.
+ *
+ * bench.js reports the canvas's own size through setBenchSize, because
+ * where a new vessel can be put down depends on how big the bench is and
+ * this file is not allowed to touch the DOM to find out.
+ * ------------------------------------------------------------------ */
+
+const positionByContainer = new Map();
+let benchSize = { width: 710, height: 530 };
+
 // Which equipment (if any) each vessel is standing on, containerId ->
-// equipmentId. A vessel not in this map is not standing on anything, and
-// keeps its own direct heat control exactly as it always has - standing on
-// furniture is an addition, not a requirement, so nothing already working
-// stops working the moment the apparatus tray exists.
+// equipmentId. A vessel not in this map is free-standing on the bench, and
+// a free-standing vessel has NO heat control at all - there is nothing
+// under it to supply heat, exactly as at a real bench.
 const standOnByContainer = new Map();
+
+// Which vessel or piece of furniture is currently selected. Only one of
+// the two is ever set - selecting a vessel clears the equipment selection
+// and vice versa - because the control strip at the foot of the bench
+// shows the controls for exactly one thing at a time.
+let selectedVesselId = null;
+let selectedEquipmentId = null;
+
+// Which vessel a burette is currently clamped above, buretteId -> targetId.
+const clampedOverByContainer = new Map();
+
+/* ------------------------------------------------------------------ *
+ * Dipping a tool is a gesture, not a button press.
+ *
+ * The instrument goes into the liquid, sits there, and comes out again
+ * before it reports anything - the reading is the END of the gesture. So
+ * dipTool is not dispatched the instant the button is clicked: the vessel
+ * is marked as being dipped (which is what bench.js draws), and the real
+ * read happens when the instrument comes back out.
+ *
+ * The last reading then STAYS on the vessel, so the answer is visible on
+ * the bench beside the glass rather than only as a line in the notebook.
+ * ------------------------------------------------------------------ */
+
+const DIP_DURATION_MS = 1250;
+
+// containerId -> the toolId currently in it, while the dip is running.
+const dippingByContainer = new Map();
+// containerId -> the last reading taken from it, shown beside the vessel.
+const stripByContainer = new Map();
+
+/**
+ * What the current is doing in each electrified vessel, containerId ->
+ * the engine's own sentence about it.
+ *
+ * Switching the power on in something that cannot be electrolysed is a
+ * real, correct outcome - the engine says "No observable change." or, for
+ * a combination with no rule at all, that it is not in this version of the
+ * lab yet. But with no ions to draw, the bench showed nothing whatsoever,
+ * so a student could not tell a working cell from a broken app. This puts
+ * the engine's OWN words on the vessel; nothing here is invented.
+ */
+const powerNoteByContainer = new Map();
+
+function beginDip(toolId, containerId) {
+  if (!toolId || !containersById.has(containerId)) return;
+  if (dippingByContainer.has(containerId)) return;
+
+  dippingByContainer.set(containerId, toolId);
+  notify();
+
+  setTimeout(() => {
+    dippingByContainer.delete(containerId);
+    // The vessel may have been put away mid-dip.
+    if (!containersById.has(containerId)) {
+      notify();
+      return;
+    }
+    // The real read, through the ordinary dispatch: it logs to the
+    // notebook, feeds the readings strip and lets guided mode judge the
+    // step, exactly as it always did - only later.
+    const result = dispatch.dipTool(toolId, containerId);
+    if (result && result.reading) stripByContainer.set(containerId, result.reading);
+    notify();
+  }, DIP_DURATION_MS);
+}
+
+/** Where a newly-placed object's base sits: on the bench top, clear of the
+ *  control strip along the bottom. */
+function benchFloorY(h) {
+  return Math.max(8, benchSize.height - 62 - 14 - h);
+}
+
+/** A free-ish spot along the bench for the nth object, wrapping when it
+ *  runs out of width rather than marching off the edge. */
+function freeX(w, index) {
+  const width = benchSize.width - 116;
+  return Math.max(8, Math.min(width - w, 16 + ((index * 134) % Math.max(140, width - w - 16))));
+}
 
 function addVessel(type) {
   const def = VESSEL_TYPES[type];
@@ -118,6 +215,12 @@ function addVessel(type) {
   const container = buildContainer({ id, name: def.name, type, capacityMl: def.capacityMl });
   containers.push(container);
   containersById.set(id, container);
+  positionByContainer.set(id, {
+    x: freeX(def.w, containers.length + equipment.length - 1),
+    y: benchFloorY(def.h),
+  });
+  selectedVesselId = id;
+  selectedEquipmentId = null;
   notebook.logAction({
     text: `A ${def.name.toLowerCase()} was taken from the apparatus tray and put on the bench.`,
     containerId: id,
@@ -132,7 +235,15 @@ function addEquipment(kind) {
   if (!def || equipment.length >= MAX_EQUIPMENT) return null;
   const n = (nextEquipmentNumber[kind] = (nextEquipmentNumber[kind] || 0) + 1);
   const id = `${kind}_${n}`;
-  equipment.push({ id, kind, level: 0 });
+  equipment.push({
+    id,
+    kind,
+    level: 0,
+    x: freeX(def.w, containers.length + equipment.length),
+    y: benchFloorY(def.h),
+  });
+  selectedEquipmentId = id;
+  selectedVesselId = null;
   notebook.logAction({
     text: `A ${def.name.toLowerCase()} was set up on the bench.`,
     containerId: null,
@@ -145,14 +256,19 @@ function addEquipment(kind) {
 /**
  * Stands a vessel on a piece of equipment, or takes it off (equipmentId
  * null). This is the one place that turns "furniture" into "temperature":
- * it calls the exact same dispatch.setHeat every vessel's own heat buttons
- * already call, so container.js never has to know equipment exists at all.
+ * it calls the exact same dispatch.setHeat the burner's own knob calls, so
+ * container.js never has to know equipment exists at all.
+ *
+ * It also snaps the vessel physically onto the furniture, centred on it and
+ * sitting at its topY - a beaker on a tripod is actually resting on the
+ * tripod, not merely flagged as associated with it.
  */
 function standOn(containerId, equipmentId) {
   const container = containersById.get(containerId);
   if (!container) return;
 
   if (!equipmentId) {
+    if (!standOnByContainer.has(containerId)) return;
     standOnByContainer.delete(containerId);
     dispatch.setHeat(containerId, 0);
     notebook.logAction({
@@ -165,9 +281,18 @@ function standOn(containerId, equipmentId) {
 
   const item = equipment.find((eq) => eq.id === equipmentId);
   const def = item && EQUIPMENT_TYPES[item.kind];
-  if (!item || !def) return;
+  const vesselDef = VESSEL_TYPES[container.type];
+  if (!item || !def || !vesselDef) return;
 
   standOnByContainer.set(containerId, equipmentId);
+  positionByContainer.set(containerId, {
+    x: Math.round(item.x + (def.w - vesselDef.w) / 2),
+    y: Math.round(item.y + def.topY - vesselDef.h),
+  });
+  clampedOverByContainer.delete(containerId);
+  selectedVesselId = containerId;
+  selectedEquipmentId = null;
+
   const level = def.heats === 1 ? item.level : def.heats;
   dispatch.setHeat(containerId, level);
   notebook.logAction({
@@ -175,6 +300,79 @@ function standOn(containerId, equipmentId) {
     containerId,
     action: 'standOn',
   });
+}
+
+/** Moves a vessel to a new spot, which by definition lifts it off whatever
+ *  it was standing on - you cannot carry a beaker away and have it still be
+ *  on the tripod. */
+function moveVessel(containerId, x, y) {
+  if (!containersById.has(containerId)) return;
+  positionByContainer.set(containerId, { x, y });
+  if (standOnByContainer.has(containerId)) {
+    standOnByContainer.delete(containerId);
+    dispatch.setHeat(containerId, 0);
+  }
+  clampedOverByContainer.delete(containerId);
+  notify();
+}
+
+/** Moves a piece of furniture, carrying anything standing on it along with
+ *  it - picking up a tripod does not leave the beaker hanging in mid-air. */
+function moveEquipment(equipmentId, x, y) {
+  const item = equipment.find((eq) => eq.id === equipmentId);
+  if (!item) return;
+  const dx = x - item.x;
+  const dy = y - item.y;
+  item.x = x;
+  item.y = y;
+  for (const [containerId, standingOn] of standOnByContainer) {
+    if (standingOn !== equipmentId) continue;
+    const at = positionByContainer.get(containerId);
+    if (at) positionByContainer.set(containerId, { x: at.x + dx, y: at.y + dy });
+  }
+  notify();
+}
+
+/** Clamps a burette above another vessel, so its tap delivers into it. */
+function clampOver(buretteId, targetId) {
+  const burette = containersById.get(buretteId);
+  const target = containersById.get(targetId);
+  const buretteDef = burette && VESSEL_TYPES[burette.type];
+  const targetDef = target && VESSEL_TYPES[target.type];
+  const targetAt = positionByContainer.get(targetId);
+  if (!burette || !target || !targetAt) return;
+
+  positionByContainer.set(buretteId, {
+    x: Math.round(targetAt.x + (targetDef.w - buretteDef.w) / 2),
+    y: Math.max(4, Math.round(targetAt.y - buretteDef.h - 26)),
+  });
+  clampedOverByContainer.set(buretteId, targetId);
+  standOnByContainer.delete(buretteId);
+  selectedVesselId = buretteId;
+  selectedEquipmentId = null;
+  notebook.logAction({
+    text: `The burette was clamped above the ${target.name.toLowerCase()}.`,
+    containerId: buretteId,
+    action: 'clampOver',
+  });
+  notify();
+}
+
+function unclamp(buretteId) {
+  clampedOverByContainer.delete(buretteId);
+  notify();
+}
+
+function selectVessel(containerId) {
+  selectedVesselId = containerId;
+  selectedEquipmentId = null;
+  notify();
+}
+
+function selectEquipment(equipmentId) {
+  selectedEquipmentId = equipmentId;
+  selectedVesselId = null;
+  notify();
 }
 
 /**
@@ -201,6 +399,71 @@ function removeEquipment(equipmentId) {
     if (standingOn === equipmentId) standOn(containerId, null);
   }
   equipment.splice(index, 1);
+  if (selectedEquipmentId === equipmentId) selectedEquipmentId = null;
+  notify();
+}
+
+/** Puts a vessel back in the tray, with whatever was in it. */
+function removeVessel(containerId) {
+  const index = containers.findIndex((c) => c.id === containerId);
+  if (index === -1) return;
+  const name = containers[index].name;
+  containers.splice(index, 1);
+  containersById.delete(containerId);
+  positionByContainer.delete(containerId);
+  standOnByContainer.delete(containerId);
+  clampedOverByContainer.delete(containerId);
+  for (const [buretteId, over] of [...clampedOverByContainer]) {
+    if (over === containerId) clampedOverByContainer.delete(buretteId);
+  }
+  if (selectedVesselId === containerId) selectedVesselId = null;
+  notebook.logAction({
+    text: `The ${name.toLowerCase()} was put away.`,
+    containerId: null,
+    action: 'removeVessel',
+  });
+  notify();
+}
+
+/**
+ * Empties and rinses a vessel, leaving it on the bench.
+ *
+ * Rebuilt rather than emptied in place, for the same reason resetBench
+ * rebuilds the whole bench: a freshly created container is already empty,
+ * at room temperature, unheated and unelectrified, so this needs no new
+ * "clear yourself" method on container.js.
+ */
+function emptyVessel(containerId) {
+  const index = containers.findIndex((c) => c.id === containerId);
+  const old = containers[index];
+  if (!old) return;
+  const def = VESSEL_TYPES[old.type];
+  const fresh = buildContainer({
+    id: old.id,
+    name: old.name,
+    type: old.type,
+    capacityMl: def ? def.capacityMl : old.capacityMl,
+  });
+  containers[index] = fresh;
+  containersById.set(containerId, fresh);
+  lastAnimatedReactionByContainer.delete(containerId);
+  lastElectrolysisByContainer.delete(containerId);
+  // A rinsed vessel's old reading no longer describes what is in it, and
+  // a fresh container is not electrified, so its power note goes too.
+  stripByContainer.delete(containerId);
+  powerNoteByContainer.delete(containerId);
+  // Still standing on whatever it was standing on, so put the heat back.
+  const standingOn = standOnByContainer.get(containerId);
+  const item = standingOn ? equipment.find((eq) => eq.id === standingOn) : null;
+  if (item) {
+    const equipDef = EQUIPMENT_TYPES[item.kind];
+    dispatch.setHeat(containerId, equipDef.heats === 1 ? item.level : equipDef.heats);
+  }
+  notebook.logAction({
+    text: `The ${old.name.toLowerCase()} was emptied and rinsed.`,
+    containerId,
+    action: 'emptyVessel',
+  });
   notify();
 }
 
@@ -235,6 +498,16 @@ let selectedToolId = null;
 // is not theirs. Deliberately not reset by resetBench(): it is a display
 // preference, not lab state.
 let reduceAnimationEnabled = false;
+
+// The shelf's DISPENSE strip: 'ask' opens the amount panel every time (the
+// long-standing default, and the only way to add a solid's exact grams);
+// 'quick' skips straight to adding quickAmount mL of whatever was dropped,
+// for a student who is adding the same 10 mL of the same acid over and
+// over and does not want to confirm it each time. Purely an interface
+// convenience - it never changes what gets added, only how many clicks
+// getting there takes - so it lives here rather than in src/core/.
+let dispenseMode = 'ask';
+let quickAmount = 10;
 
 // Which chemical's properties card is open, if any - UI.md section 3's
 // properties card overlay. Only the id is kept here; panels.js looks the
@@ -278,6 +551,77 @@ const lastAnimatedReactionByContainer = new Map();
 // long as the power is on, so remembering the reaction is also the more
 // truthful of the two.
 const lastElectrolysisByContainer = new Map();
+
+/* ------------------------------------------------------------------ *
+ * Notebook entry tags - the mockup colour-codes every log line by what
+ * kind of thing it is (warning / action / reaction / observation /
+ * measurement / estimate / milestone). None of that is chemistry, so it
+ * does not belong in notebook.js: it is worked out here, once, from data
+ * actions.js and experiments.js already hand back on every dispatch
+ * (engineResult.outcome, a hazard on one of the steps, the action name
+ * itself) - never guessed later by pattern-matching the entry's text.
+ * Kept in a side table keyed by notebook entry id, since notebook.js's own
+ * entry shape (UI.md section 1) has no field for it.
+ * ------------------------------------------------------------------ */
+const notebookEntryTags = new Map();
+
+function tagAutoEntry(entryId, engineResult) {
+  const hasHazard = engineResult?.steps?.some((step) => step.reaction?.hazard);
+  if (hasHazard) {
+    notebookEntryTags.set(entryId, 'warning');
+  } else if (engineResult?.outcome === OUTCOME.REACTION) {
+    notebookEntryTags.set(entryId, 'reaction');
+  }
+}
+
+// The three guided-mode milestones (experiments.js's own action names),
+// plus dipTool, are recognisable from the entry alone with no side table.
+const MILESTONE_ACTIONS = new Set(['experimentStart', 'experimentStep', 'experimentComplete']);
+
+function notebookTagFor(entry) {
+  if (entry.type === 'observation') return entry.quantity != null ? 'estimate' : 'observation';
+  if (entry.action === 'dipTool') return 'measurement';
+  if (MILESTONE_ACTIONS.has(entry.action)) return 'milestone';
+  return notebookEntryTags.get(entry.id) || 'action';
+}
+
+// The last few tool readings, for the bench's own READINGS strip - a
+// separate, purely presentational echo of what dipTool already wrote to
+// the notebook, not a second source of truth. Newest first, capped at 4
+// the way the mockup's own panel is.
+const READINGS_LIMIT = 4;
+let readings = [];
+
+function recordReading(result) {
+  if (!result || result.action !== 'dipTool' || !result.reading) return;
+  readings = [
+    {
+      toolId: result.toolId,
+      containerId: result.containerId,
+      text: result.reading.text,
+      hasReading: result.reading.hasReading,
+    },
+    ...readings,
+  ].slice(0, READINGS_LIMIT);
+}
+
+// "Contract trace" - the mockup's own developer-facing strip showing which
+// dispatch call just fired, off by default. Not a chemistry feature; kept
+// as plain interface state the same way reduceAnimationEnabled is.
+let traceEnabled = false;
+let traceLine = '';
+
+function formatTraceArg(value) {
+  if (typeof value === 'string') return `'${value}'`;
+  if (value === null || value === undefined) return String(value);
+  if (typeof value === 'object') return '{…}';
+  return String(value);
+}
+
+function recordTrace(actionName, args) {
+  if (!actionName) return;
+  traceLine = `${actionName}(${args.map(formatTraceArg).join(', ')})`;
+}
 
 // Which reaction's animation is open, if any.
 let viewingReactionId = null;
@@ -381,19 +725,53 @@ function guidedPayload(actionName, args) {
  * @param {Function} fn
  * @param {string}   [actionName] one of GUIDED_ACTION_NAMES, or left out for
  *   dispatch functions guided mode has no opinion about.
+ * @param {string}   [traceName] what "Contract trace" prints for this call -
+ *   defaults to actionName, but every dispatch entry needs one of its own
+ *   even where actionName is left out (resetBench, selectTool, and the
+ *   rest guided mode has no opinion about are still worth tracing).
  */
-function wrap(fn, actionName = null) {
+function wrap(fn, actionName = null, traceName = actionName) {
   return (...args) => {
     const result = fn(...args);
     if (result && result.engineResult) {
       trackHazard(result.engineResult);
       trackAnimatedReaction(result);
     }
+    if (result && result.notebookEntry) {
+      // actions.js's emitNotebookEntry returns the plain object it built
+      // for onNotebookEntry, not notebook.logAction's own public entry - it
+      // has no `id` field. Every wrapped call here logs at most one entry
+      // synchronously, so the notebook's own last entry (fetched fresh
+      // right now) is reliably the one this call just wrote - reading it
+      // back from the notebook instance rather than reaching into
+      // src/core/ to change what emitNotebookEntry returns.
+      const entries = notebook.getEntries();
+      const lastEntry = entries[entries.length - 1];
+      if (lastEntry) tagAutoEntry(lastEntry.id, result.engineResult);
+    }
+    if (result && result.action === 'dipTool') {
+      recordReading(result);
+    }
+    // Keep each electrified vessel's "what the current is doing" note in
+    // step with whatever the engine last said about that vessel, so adding
+    // a reagent to a live cell updates it rather than leaving stale words.
+    if (result && result.engineResult) {
+      const noteFor = result.containerId ?? result.toId;
+      if (noteFor) {
+        const container = containersById.get(noteFor);
+        if (result.action === 'setPower' && !result.on) {
+          powerNoteByContainer.delete(noteFor);
+        } else if (container && container.snapshot().electrified) {
+          powerNoteByContainer.set(noteFor, result.engineResult.message || null);
+        }
+      }
+    }
     if (actionName && GUIDED_ACTION_NAMES.has(actionName) && experimentRunner.isRunning()) {
       const payload = guidedPayload(actionName, args);
       const judged = experimentRunner.recordAction(payload);
       guidedFeedback = { judgement: judged.judgement, message: judged.message, hint: judged.hint };
     }
+    recordTrace(traceName, args);
     notify();
     return result;
   };
@@ -501,8 +879,13 @@ function getState() {
       const snapshot = container.snapshot();
       return {
         id: snapshot.id,
+        name: snapshot.name,
         type: container.type,
-        position: { slot: index },
+        // Where this vessel actually sits on the bench top. The bench is a
+        // canvas a student drags things around, so this is real state.
+        position: positionByContainer.get(snapshot.id) || { x: 16, y: 16 },
+        width: VESSEL_TYPES[container.type]?.w ?? 110,
+        height: VESSEL_TYPES[container.type]?.h ?? 118,
         contents: snapshot.contents.map((item) => ({ chemicalId: item.id, amount: item.amount })),
         volumeMl: snapshot.volumeMl,
         // Not in UI.md section 1's example, but needed to draw a liquid
@@ -523,27 +906,47 @@ function getState() {
         // until something animatable has actually happened in it.
         lastAnimatedReactionId: lastAnimatedReactionByContainer.get(snapshot.id) || null,
         // Which piece of bench furniture (if any) this vessel is standing
-        // on - null means it is free-standing, using its own direct heat
-        // control exactly as every vessel always has.
+        // on - null means it is free-standing on the bench, with nothing
+        // under it to heat it and so no heat control at all.
         standOn: standOnByContainer.get(snapshot.id) || null,
+        // Which vessel a burette is clamped above, if it is.
+        clampedOver: clampedOverByContainer.get(snapshot.id) || null,
+        // Which tool is in the liquid right now, mid-gesture, and the last
+        // reading this vessel gave - both drawn on the bench by bench.js.
+        dipping: dippingByContainer.get(snapshot.id) || null,
+        strip: stripByContainer.get(snapshot.id) || null,
+        // The engine's own account of what the current is doing here.
+        powerNote: powerNoteByContainer.get(snapshot.id) || null,
       };
     }),
-    // Bench furniture from the apparatus tray. burnerLevel/canHeat let
-    // bench.js draw each tile's own control without recomputing
-    // EQUIPMENT_TYPES itself - that table is this file's, not bench.js's.
+    // Bench furniture from the apparatus tray, each at its own spot on the
+    // bench top. canSetLevel lets bench.js draw the burner's knob without
+    // recomputing EQUIPMENT_TYPES itself - that table is this file's.
     equipment: equipment.map((item) => ({
       id: item.id,
       kind: item.kind,
       label: EQUIPMENT_TYPES[item.kind].name,
       level: item.level,
       canSetLevel: EQUIPMENT_TYPES[item.kind].heats === 1,
+      position: { x: item.x, y: item.y },
+      width: EQUIPMENT_TYPES[item.kind].w,
+      height: EQUIPMENT_TYPES[item.kind].h,
+      // Which vessel (if any) is currently standing on this one.
+      standingVesselId: [...standOnByContainer].find(([, on]) => on === item.id)?.[0] || null,
     })),
+    selectedVesselId,
+    selectedEquipmentId,
     vesselTypes: Object.entries(VESSEL_TYPES).map(([type, def]) => ({ type, label: def.label })),
     equipmentTypes: Object.entries(EQUIPMENT_TYPES).map(([kind, def]) => ({ kind, label: def.label })),
     vesselLimitReached: containers.length >= MAX_VESSELS,
     equipmentLimitReached: equipment.length >= MAX_EQUIPMENT,
     activeHazard,
-    notebook: notebook.getEntries(),
+    notebook: notebook.getEntries().map((entry) => ({ ...entry, tag: notebookTagFor(entry) })),
+    readings,
+    dispenseMode,
+    quickAmount,
+    traceEnabled,
+    traceLine,
     mode: guided ? 'guided' : 'free',
     guided,
     // The catalogue for the topbar's Experiment picker (UI.md section 3).
@@ -594,9 +997,19 @@ function resetBenchState() {
   for (const container of containers) containersById.set(container.id, container);
   equipment.length = 0;
   standOnByContainer.clear();
+  positionByContainer.clear();
+  clampedOverByContainer.clear();
+  dippingByContainer.clear();
+  stripByContainer.clear();
+  powerNoteByContainer.clear();
+  selectedVesselId = null;
+  selectedEquipmentId = null;
   nextVesselNumber = {};
   nextEquipmentNumber = {};
   notebook.clear();
+  notebookEntryTags.clear();
+  readings = [];
+  traceLine = '';
   activeHazard = null;
   selectedToolId = null;
   viewingChemicalId = null;
@@ -628,16 +1041,16 @@ const dispatch = {
   // Deliberately not in GUIDED_ACTION_NAMES: a step should never be
   // satisfied by the burner ticking a degree, only by something the
   // student actually did.
-  warmTo: wrap(actions.warmTo),
+  warmTo: wrap(actions.warmTo, null, 'warmTo'),
   stir: wrap(actions.stir, 'stir'),
   dipTool: wrap(actions.dipTool, 'dipTool'),
   recordObservation: wrap(notebook.recordObservation, 'recordObservation'),
-  revealReference: wrap(notebook.revealReference),
+  revealReference: wrap(notebook.revealReference, null, 'revealReference'),
 
   selectTool: wrap((toolId) => {
     // Clicking the tool you are already holding puts it back down.
     selectedToolId = selectedToolId === toolId ? null : toolId;
-  }),
+  }, null, 'selectTool'),
 
   // Not one of UI.md section 1's dispatch names. Section 1 has no action for
   // clearing activeHazard, but section 6 requires the warning to be held on
@@ -645,7 +1058,7 @@ const dispatch = {
   // is the student saying they have read it.
   dismissHazard: wrap(() => {
     activeHazard = null;
-  }),
+  }, null, 'dismissHazard'),
 
   // Also not a section 1 name: the in-app "Reduce animation" toggle section
   // 6 asks for. setReduceAnimation (effects.js) is called directly here
@@ -655,7 +1068,20 @@ const dispatch = {
   setReduceAnimation: wrap((enabled) => {
     reduceAnimationEnabled = Boolean(enabled);
     setReduceAnimation(reduceAnimationEnabled);
-  }),
+  }, null, 'setReduceAnimation'),
+
+  // The DISPENSE strip and the "Contract trace" checkbox - both purely
+  // interface state, following the same pattern as setReduceAnimation
+  // above: nothing here is a chemistry decision.
+  setDispenseMode: wrap((mode) => {
+    dispenseMode = mode === 'quick' ? 'quick' : 'ask';
+  }, null, 'setDispenseMode'),
+  setQuickAmount: wrap((amount) => {
+    quickAmount = Math.max(1, Number(amount) || quickAmount);
+  }, null, 'setQuickAmount'),
+  setTraceEnabled: wrap((enabled) => {
+    traceEnabled = Boolean(enabled);
+  }, null, 'setTraceEnabled'),
 
   // Also not a section 1 name: UI.md section 3 lists the properties card as
   // a modal overlay, and something has to open and close it. Opening does
@@ -663,30 +1089,30 @@ const dispatch = {
   // an unknown one, and panels.js shows that honestly instead of guessing.
   viewProperties: wrap((chemicalId) => {
     viewingChemicalId = chemicalId;
-  }),
+  }, null, 'viewProperties'),
   closeProperties: wrap(() => {
     viewingChemicalId = null;
-  }),
+  }, null, 'closeProperties'),
 
   // The molecular view, CLAUDE.md section 8's Phase 6 deliverable. Like
   // viewProperties, this does not check the id resolves - molecular.js says
   // so honestly if there is no animation, rather than opening a blank stage.
   viewReactionAnimation: wrap((reactionId) => {
     viewingReactionId = reactionId;
-  }),
+  }, null, 'viewReactionAnimation'),
   closeReactionAnimation: wrap(() => {
     viewingReactionId = null;
-  }),
+  }, null, 'closeReactionAnimation'),
 
   // The 3D ball-and-stick view. Same honesty as viewReactionAnimation: does
   // not check the id resolves or that 3D data exists for it - molecular3d.js
   // says so plainly rather than opening an empty stage.
   view3DStructure: wrap((chemicalId) => {
     viewing3DChemicalId = chemicalId;
-  }),
+  }, null, 'view3DStructure'),
   close3DStructure: wrap(() => {
     viewing3DChemicalId = null;
-  }),
+  }, null, 'close3DStructure'),
 
   /**
    * Records a student's estimate, capturing what the instrument actually says
@@ -708,7 +1134,7 @@ const dispatch = {
       containerId,
       containerName: container ? container.name : null,
     });
-  }),
+  }, null, 'recordEstimate'),
   resetBench: wrap(() => {
     resetBenchState();
     // Resetting mid-experiment restarts that experiment at step 1 rather
@@ -722,7 +1148,7 @@ const dispatch = {
     }
     guidedFeedback = null;
     guidedSummaryDismissed = false;
-  }),
+  }, null, 'resetBench'),
 
   // Not one of UI.md section 1's fixed names - Phase 7's guided mode
   // (CLAUDE.md section 8) needs a way to start and leave a run, and to
@@ -730,15 +1156,27 @@ const dispatch = {
   // "does not validate, the thing underneath reports honestly" pattern as
   // viewProperties/viewReactionAnimation/view3DStructure above.
   startExperiment: wrap((experimentId) => {
-    // A guided run begins from a clean bench, the same way a real
-    // experiment does - leftover chemicals from Free Lab or an earlier
-    // attempt would make the very first step's instruction either already
-    // satisfied by accident or flatly wrong.
+    // A guided run begins from a clean, empty bench, the same way a real
+    // experiment does - leftover chemicals or glassware from Free Lab or
+    // an earlier attempt would make the very first step's instruction
+    // either already satisfied by accident or flatly wrong.
     resetBenchState();
+    // The bench itself starts with nothing on it (see BASE_CONTAINER_DEFS),
+    // so a guided run has to put out whatever glassware it actually needs -
+    // read straight from that experiment's own curated apparatus list in
+    // experiments.json, the same list CLAUDE.md section 5's schema already
+    // defines. Anything in that list that is not a bench object (pH paper,
+    // a thermometer, a stirring rod - the tool tray and the Stir button
+    // already cover those) is silently skipped rather than guessed at.
+    const experiment = experimentRunner.getExperiment(experimentId);
+    for (const item of experiment?.apparatus || []) {
+      if (VESSEL_TYPES[item]) addVessel(item);
+      else if (EQUIPMENT_TYPES[item]) addEquipment(item);
+    }
     experimentRunner.start(experimentId);
     guidedFeedback = null;
     guidedSummaryDismissed = false;
-  }),
+  }, null, 'startExperiment'),
 
   // Leaves the bench exactly as it is. Leaving guided mode is "let me
   // carry on freely from here", not "start over" - Reset stays the
@@ -746,11 +1184,11 @@ const dispatch = {
   stopExperiment: wrap(() => {
     experimentRunner.stop();
     guidedFeedback = null;
-  }),
+  }, null, 'stopExperiment'),
 
   dismissGuidedSummary: wrap(() => {
     guidedSummaryDismissed = true;
-  }),
+  }, null, 'dismissGuidedSummary'),
 
   // The apparatus tray, UI.md section 7's inventory of shelf controls. None
   // of these four are one of section 1's fixed names - that list predates
@@ -766,6 +1204,25 @@ const dispatch = {
   standOn,
   setEquipmentLevel,
   removeEquipment,
+
+  // The bench canvas: moving things about, picking one to work with, and
+  // the burette's clamp. All pure interface state - none of it decides any
+  // chemistry, it only decides where things are and which one is selected.
+  // The dip gesture. dipTool above is still the real read and is what
+  // guided mode judges; this is what a student's click actually starts.
+  beginDip,
+
+  moveVessel,
+  moveEquipment,
+  removeVessel,
+  emptyVessel,
+  selectVessel,
+  selectEquipment,
+  clampOver,
+  unclamp,
+  setBenchSize: (width, height) => {
+    benchSize = { width, height };
+  },
 };
 
 /* ------------------------------------------------------------------ *
@@ -903,11 +1360,19 @@ function ensureBurnerTicking() {
   burnerTimer = setInterval(burnerTick, BURNER_TICK_MS);
 }
 
-// Any state change might have turned a burner on, or emptied a hot vessel
-// that now needs to cool, so the clock is (re)started after every dispatch.
+// Any state change might have turned a burner on, stood a vessel in ice,
+// or emptied a hot vessel that now needs to cool, so the clock is
+// (re)started after every dispatch.
+//
+// The test is "level is not zero", NOT "level is above zero". An ice bath
+// is level -1, so testing for > 0 meant standing a vessel in ice never
+// started the clock at all and the temperature simply sat there - unless a
+// burner happened to have run first and left it away from room
+// temperature, which is what made this look intermittent rather than
+// broken.
 subscribe(() => {
   const needsClock = containers.some(
-    (container) => container.getHeatLevel() > 0
+    (container) => container.getHeatLevel() !== 0
       || Math.abs(container.getTemperatureC() - ROOM_TEMPERATURE_C) >= 0.5
   );
   if (needsClock) ensureBurnerTicking();
@@ -925,6 +1390,14 @@ reduceAnimationCheckbox.addEventListener('change', (event) => {
 // state rather than being fire-and-forget like Reset.
 subscribe(() => {
   reduceAnimationCheckbox.checked = getState().reduceAnimationEnabled;
+});
+
+const traceCheckbox = document.getElementById('contract-trace');
+traceCheckbox.addEventListener('change', (event) => {
+  dispatch.setTraceEnabled(event.target.checked);
+});
+subscribe(() => {
+  traceCheckbox.checked = getState().traceEnabled;
 });
 
 notify();

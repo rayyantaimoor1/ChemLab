@@ -23,34 +23,64 @@ import { flashHazardEdge, shakeElement } from './effects.js';
 // stays a plain lookup, not a chemistry decision.
 import { engine } from '../core/engine.js';
 
-/**
- * Plain-English names for the curated "category" field, matching the wording
- * the shelf's kind filter uses so the two never disagree.
- */
-const CATEGORY_NAMES = {
-  acid: 'Acid',
-  base: 'Base or alkali',
-  salt: 'Salt',
-  oxide: 'Oxide',
-  element: 'Element',
-  organic: 'Organic compound',
-  complex: 'Coordination complex',
-  reagent: 'Test reagent',
-  material: 'Made material',
-  other: 'Other',
-};
 // Only used to check whether a 3D model exists, so the "View in 3D" button
 // can be left out honestly rather than opening a viewer with nothing in it.
 import { getMolecule3D } from './molecular3d.js';
+
+// The mockup's own seven-way accent, one colour per tag - never the
+// hazard red used decoratively (that stays reserved for the hazard
+// alert, UI.md section 4); "warning" earns it here because a hazard
+// actually did fire. Tags themselves are worked out in app.js
+// (notebookTagFor) from data actions.js/experiments.js already return,
+// never guessed here from the entry's text.
+const TAG_ACCENT = {
+  warning: '#D0342C',
+  action: 'rgba(22, 26, 25, 0.22)',
+  reaction: '#A8702B',
+  observation: '#4C6B7A',
+  measurement: 'rgba(22, 26, 25, 0.35)',
+  estimate: '#4C6B7A',
+  milestone: '#A8702B',
+};
+
+// The border accent above is deliberately faint for "action"/"measurement"
+// (a quiet line down the margin for the common case), which would be
+// unreadable as the tag word's own text colour - so the label text uses a
+// solid, legible version of the same hue instead of the accent verbatim.
+const TAG_TEXT_COLOR = {
+  warning: '#D0342C',
+  action: 'var(--ink-60)',
+  reaction: '#A8702B',
+  observation: '#4C6B7A',
+  measurement: 'var(--ink-60)',
+  estimate: '#4C6B7A',
+  milestone: '#A8702B',
+};
+
+const TAG_LABEL = {
+  warning: 'warning',
+  action: 'action',
+  reaction: 'reaction',
+  observation: 'your observation',
+  measurement: 'measurement',
+  estimate: 'your estimate',
+  milestone: 'guided',
+};
 
 export function mountPanels({ root, getState, dispatch, subscribe }) {
   function render() {
     const state = getState();
     root.innerHTML = '';
 
+    const headingRow = document.createElement('div');
+    headingRow.className = 'notebook-heading-row';
     const heading = document.createElement('h2');
     heading.textContent = 'Lab notebook';
-    root.appendChild(heading);
+    const count = document.createElement('span');
+    count.className = 'notebook-heading-row__count';
+    count.textContent = `${state.notebook.length} ${state.notebook.length === 1 ? 'entry' : 'entries'}`;
+    headingRow.append(heading, count);
+    root.appendChild(headingRow);
 
     root.appendChild(renderEntries(state.notebook));
     root.appendChild(renderObservationForm());
@@ -64,7 +94,8 @@ export function mountPanels({ root, getState, dispatch, subscribe }) {
     if (entries.length === 0) {
       const empty = document.createElement('p');
       empty.className = 'notebook-empty';
-      empty.textContent = 'Nothing recorded yet. Do something on the bench.';
+      empty.textContent =
+        'Nothing recorded yet. Take a reagent off the shelf and put it in a vessel — every action you take is written down here.';
       list.appendChild(empty);
       return list;
     }
@@ -78,10 +109,22 @@ export function mountPanels({ root, getState, dispatch, subscribe }) {
   function renderEntry(entry) {
     const li = document.createElement('li');
     li.className = `notebook-entry notebook-entry--${entry.type}`;
+    li.style.setProperty('--tag-accent', TAG_ACCENT[entry.tag] || TAG_ACCENT.action);
+    li.style.setProperty('--tag-text', TAG_TEXT_COLOR[entry.tag] || TAG_TEXT_COLOR.action);
 
+    const metaRow = document.createElement('div');
+    metaRow.className = 'notebook-entry__meta';
+    const tag = document.createElement('span');
+    tag.className = 'notebook-entry__tag';
+    tag.textContent = TAG_LABEL[entry.tag] || entry.tag;
     const time = document.createElement('time');
-    time.textContent = new Date(entry.timestamp).toLocaleTimeString();
-    li.appendChild(time);
+    time.textContent = new Date(entry.timestamp).toLocaleTimeString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    });
+    metaRow.append(tag, time);
+    li.appendChild(metaRow);
 
     const text = document.createElement('p');
     text.className = 'notebook-entry__text';
@@ -136,6 +179,9 @@ export function mountPanels({ root, getState, dispatch, subscribe }) {
 
     if (entry.matched) {
       const rating = document.createElement('p');
+      // near-miss carries the pill's own modifier name (matching MATCH.NEAR_MISS
+      // exactly, hyphen and all - "match"/"miss" already read fine as classes
+      // unmodified).
       rating.className = `notebook-entry__rating notebook-entry__rating--${entry.matched}`;
       // A numeric comparison against the instrument's own precision can be
       // stated plainly. A text one is only a rough keyword steer, so it is
@@ -189,20 +235,30 @@ export function mountPanels({ root, getState, dispatch, subscribe }) {
     const form = document.createElement('form');
     form.className = 'estimate-form';
 
+    const headingRow = document.createElement('div');
+    headingRow.className = 'estimate-form__heading-row';
     const heading = document.createElement('h3');
     heading.textContent = 'Estimate a reading';
-    form.appendChild(heading);
+    const subtitle = document.createElement('span');
+    subtitle.className = 'estimate-form__subtitle';
+    subtitle.textContent = 'guess first, then check';
+    headingRow.append(heading, subtitle);
+    form.appendChild(headingRow);
+
+    const controls = document.createElement('div');
+    controls.className = 'estimate-form__controls';
 
     const containerSelect = document.createElement('select');
     containerSelect.setAttribute('aria-label', 'Which container');
     for (const container of state.containers) {
       const option = document.createElement('option');
       option.value = container.id;
-      option.textContent = container.id;
+      option.textContent = `${container.name} — ${container.id}`;
       containerSelect.appendChild(option);
     }
 
     const toolSelect = document.createElement('select');
+    toolSelect.className = 'estimate-form__tool';
     toolSelect.setAttribute('aria-label', 'Which measurement');
     const numericTools = state.tools.filter(
       (tool) => tool.quantity === 'pH' || tool.quantity === 'temperature'
@@ -217,14 +273,15 @@ export function mountPanels({ root, getState, dispatch, subscribe }) {
     const input = document.createElement('input');
     input.type = 'number';
     input.step = 'any';
-    input.placeholder = 'Your estimate';
+    input.placeholder = 'Value';
     input.setAttribute('aria-label', 'Your estimate');
 
     const submit = document.createElement('button');
     submit.type = 'submit';
-    submit.textContent = 'Record estimate';
+    submit.textContent = 'Check';
 
-    form.append(containerSelect, toolSelect, input, submit);
+    controls.append(containerSelect, toolSelect, input, submit);
+    form.appendChild(controls);
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -276,8 +333,8 @@ const SEVERITY_WORDS = {
 function warningIcon() {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.setAttribute('viewBox', '0 0 24 24');
-  svg.setAttribute('width', '44');
-  svg.setAttribute('height', '44');
+  svg.setAttribute('width', '46');
+  svg.setAttribute('height', '46');
   svg.setAttribute('class', 'hazard-icon');
   // The adjacent text says the same thing, so this is decorative to a
   // screen reader rather than being announced twice.
@@ -561,16 +618,30 @@ export function mountPropertiesCard({ root, getState, dispatch, subscribe }) {
     }
   }
 
-  function labelled(label, value) {
+  /** One cell of the two-column facts grid - a caption over a value,
+   *  matching the mockup's own spec-sheet layout rather than a label
+   *  and value sharing one line. */
+  function fact(label, value) {
     if (value === null || value === undefined || value === '') return null;
-    const row = document.createElement('p');
-    row.className = 'properties-panel__row';
+    const cell = document.createElement('div');
+    cell.className = 'properties-panel__fact';
     const term = document.createElement('span');
-    term.className = 'properties-panel__label';
-    term.textContent = `${label}: `;
-    row.appendChild(term);
-    row.append(String(value));
-    return row;
+    term.className = 'properties-panel__fact-label';
+    term.textContent = label;
+    const val = document.createElement('span');
+    val.className = 'properties-panel__fact-value';
+    val.textContent = String(value);
+    cell.append(term, val);
+    return cell;
+  }
+
+  /** "matric" -> "Matric", "fsc" -> "FSc", "bs" -> "BS" - the level(s) a
+   *  chemical is tagged with, same casing as the topbar's own experiment
+   *  picker (guided.js's LEVEL_LABEL). */
+  const LEVEL_LABEL = { matric: 'Matric', fsc: 'FSc', bs: 'BS' };
+  function levelsText(levels) {
+    if (!Array.isArray(levels) || levels.length === 0) return null;
+    return levels.map((level) => LEVEL_LABEL[level] || level).join(', ');
   }
 
   function buildOverlay(chemical, chemicalId) {
@@ -590,27 +661,65 @@ export function mountPropertiesCard({ root, getState, dispatch, subscribe }) {
     const panel = document.createElement('div');
     panel.className = 'properties-panel';
 
-    const closeButton = document.createElement('button');
-    closeButton.type = 'button';
-    closeButton.className = 'properties-panel__close';
-    closeButton.textContent = 'Close';
-    closeButton.setAttribute('aria-label', 'Close properties card');
-    closeButton.addEventListener('click', () => dispatch.closeProperties());
-    panel.appendChild(closeButton);
-
     if (!chemical) {
+      const closeButton = document.createElement('button');
+      closeButton.type = 'button';
+      closeButton.className = 'properties-panel__close';
+      closeButton.textContent = 'Close';
+      closeButton.setAttribute('aria-label', 'Close properties card');
+      closeButton.addEventListener('click', () => dispatch.closeProperties());
+      panel.appendChild(closeButton);
+
       const missing = document.createElement('p');
+      missing.className = 'properties-panel__missing';
       missing.textContent = `No data found for '${chemicalId}'.`;
       panel.appendChild(missing);
       overlay.appendChild(panel);
       return overlay;
     }
 
+    const body = document.createElement('div');
+    body.className = 'properties-panel__body';
+
+    // The sticky header band: a coloured spine swatch, the name, the
+    // formula/concentration subtitle, and Close - all in one row, so the
+    // card reads as a single instrument label rather than a generic modal
+    // with facts stacked underneath a plain title.
+    const header = document.createElement('div');
+    header.className = 'properties-panel__header';
+
+    const spine = document.createElement('span');
+    spine.className = 'properties-panel__spine';
+    spine.style.background = chemical.colorHex || '#C9D6DA';
+    spine.setAttribute('aria-hidden', 'true');
+    header.appendChild(spine);
+
+    const headerText = document.createElement('div');
+    headerText.className = 'properties-panel__header-text';
     const title = document.createElement('h2');
     title.id = 'properties-title';
     title.className = 'properties-panel__title';
     title.textContent = chemical.name;
-    panel.appendChild(title);
+    headerText.appendChild(title);
+
+    const subtitleParts = [chemical.formula, chemical.concentration].filter(Boolean);
+    if (subtitleParts.length > 0) {
+      const subtitle = document.createElement('p');
+      subtitle.className = 'properties-panel__subtitle';
+      subtitle.textContent = subtitleParts.join(' · ');
+      headerText.appendChild(subtitle);
+    }
+    header.appendChild(headerText);
+
+    const closeButton = document.createElement('button');
+    closeButton.type = 'button';
+    closeButton.className = 'properties-panel__close';
+    closeButton.textContent = 'Close';
+    closeButton.setAttribute('aria-label', 'Close properties card');
+    closeButton.addEventListener('click', () => dispatch.closeProperties());
+    header.appendChild(closeButton);
+
+    panel.appendChild(header);
 
     if (chemical.structure) {
       const figure = document.createElement('figure');
@@ -626,7 +735,7 @@ export function mountPropertiesCard({ root, getState, dispatch, subscribe }) {
       img.width = 160;
       img.height = 120;
       figure.appendChild(img);
-      panel.appendChild(figure);
+      body.appendChild(figure);
     }
 
     if (getMolecule3D(chemicalId)) {
@@ -635,91 +744,82 @@ export function mountPropertiesCard({ root, getState, dispatch, subscribe }) {
       view3D.className = 'properties-panel__view-3d';
       view3D.textContent = 'View in 3D';
       view3D.addEventListener('click', () => dispatch.view3DStructure(chemicalId));
-      panel.appendChild(view3D);
+      body.appendChild(view3D);
     }
 
-    // UI.md section 7's list, in order: name, formula, state, colour name,
-    // pH, molar mass, hazards, uses.
+    // A two-column spec-sheet grid - formula/concentration already moved
+    // to the header subtitle above, so this list is the rest: state, pH,
+    // molar mass, conductivity, solubility, and which level(s) a student
+    // would meet this at.
     const facts = document.createElement('div');
     facts.className = 'properties-panel__facts';
     [
-      labelled('Formula', chemical.formula),
-      labelled('Concentration', chemical.concentration),
-      labelled('State', chemical.state),
-      // The shelf's "kind" filter only reaches the 177 reagents a student can
-      // pick up. Showing the same curated field here covers the other 198 as
-      // well - the precipitates, gases and complexes that only ever appear as
-      // products, which is where most of the complexes actually live.
-      labelled('Kind', CATEGORY_NAMES[chemical.category] || null),
-      // Section 5: colour is never shown without its name - the swatch is
-      // decoration on top of the word, not a replacement for it.
-      chemical.colorName ? swatchRow(chemical.colorHex, chemical.colorName) : null,
-      labelled('pH', chemical.pH === null || chemical.pH === undefined ? 'not applicable' : chemical.pH),
-      labelled('Molar mass', chemical.molarMass != null ? `${chemical.molarMass} g/mol` : null),
-      labelled('Density', chemical.density != null ? `${chemical.density} g/mL` : null),
-      labelled('Solubility', chemical.solubility),
-      labelled('Conductivity', chemical.conductivity),
+      fact('State', chemical.state),
+      fact('pH', chemical.pH === null || chemical.pH === undefined ? 'not applicable' : chemical.pH),
+      fact('Molar mass', chemical.molarMass != null ? `${chemical.molarMass} g/mol` : null),
+      fact('Conductivity', chemical.conductivity),
+      fact('Solubility', chemical.solubility),
+      fact('Level', levelsText(chemical.levels)),
     ]
       .filter(Boolean)
-      .forEach((row) => facts.appendChild(row));
-    panel.appendChild(facts);
+      .forEach((cell) => facts.appendChild(cell));
+    body.appendChild(facts);
+
+    // Colour gets its own highlighted box below the facts grid rather than
+    // being one more row in it - section 5: never shown without its name,
+    // and here given the same weight as the swatch itself.
+    if (chemical.colorName) {
+      const colourBox = document.createElement('div');
+      colourBox.className = 'properties-panel__colour-box';
+      const swatch = document.createElement('span');
+      swatch.className = 'properties-panel__swatch';
+      swatch.style.background = chemical.colorHex || '#C9D6DA';
+      swatch.setAttribute('aria-hidden', 'true');
+      colourBox.appendChild(swatch);
+      const colourText = document.createElement('div');
+      const caption = document.createElement('span');
+      caption.className = 'properties-panel__colour-caption';
+      caption.textContent = 'Colour';
+      const name = document.createElement('span');
+      name.className = 'properties-panel__colour-name';
+      name.textContent = chemical.colorName;
+      colourText.append(caption, name);
+      colourBox.appendChild(colourText);
+      body.appendChild(colourBox);
+    }
 
     if (chemical.hazards && chemical.hazards.length > 0) {
       const hazardsHeading = document.createElement('h3');
       hazardsHeading.className = 'properties-panel__subheading';
       hazardsHeading.textContent = 'Hazards';
-      panel.appendChild(hazardsHeading);
+      body.appendChild(hazardsHeading);
 
-      const hazardsList = document.createElement('ul');
-      hazardsList.className = 'properties-panel__hazards';
-      for (const hazard of chemical.hazards) {
-        const item = document.createElement('li');
-        item.textContent = hazard.replace(/_/g, ' ');
-        hazardsList.appendChild(item);
-      }
-      panel.appendChild(hazardsList);
+      const hazardsText = document.createElement('p');
+      hazardsText.className = 'properties-panel__hazards';
+      hazardsText.textContent = chemical.hazards.map((h) => h.replace(/_/g, ' ')).join(' · ');
+      body.appendChild(hazardsText);
     }
 
     if (chemical.description) {
       const descHeading = document.createElement('h3');
       descHeading.className = 'properties-panel__subheading';
       descHeading.textContent = 'Description';
-      panel.appendChild(descHeading);
+      body.appendChild(descHeading);
 
       const desc = document.createElement('p');
       desc.className = 'properties-panel__description';
       desc.textContent = chemical.description;
-      panel.appendChild(desc);
+      body.appendChild(desc);
     }
 
-    if (chemical.source) {
-      const source = document.createElement('p');
-      source.className = 'properties-panel__source';
-      source.textContent = `Source: ${chemical.source}`;
-      panel.appendChild(source);
-    }
+    const source = document.createElement('p');
+    source.className = 'properties-panel__source';
+    source.textContent = `Source: ${chemical.source || 'reaction product — see reactions.json'}`;
+    body.appendChild(source);
 
+    panel.appendChild(body);
     overlay.appendChild(panel);
     return overlay;
-  }
-
-  function swatchRow(colorHex, colorName) {
-    const row = document.createElement('p');
-    row.className = 'properties-panel__row';
-    const term = document.createElement('span');
-    term.className = 'properties-panel__label';
-    term.textContent = 'Colour: ';
-    row.appendChild(term);
-
-    if (colorHex) {
-      const swatch = document.createElement('span');
-      swatch.className = 'properties-panel__swatch';
-      swatch.style.background = colorHex;
-      swatch.setAttribute('aria-hidden', 'true');
-      row.appendChild(swatch);
-    }
-    row.append(colorName);
-    return row;
   }
 
   root.hidden = true;

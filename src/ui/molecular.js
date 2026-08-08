@@ -113,6 +113,18 @@ function styleFor(element) {
   return ELEMENT_STYLE[element] || FALLBACK_STYLE;
 }
 
+/**
+ * "neutralisation" -> "Neutralisation". Our reactions.json has no separate
+ * curated title field the way the mockup's own reaction data does - the
+ * closest honest substitute is the reaction's own `type`, humanised, not an
+ * invented sentence.
+ */
+function titleFor(reaction) {
+  if (!reaction || !reaction.type) return 'What happens to the particles';
+  const words = reaction.type.replace(/_/g, ' ');
+  return words.charAt(0).toUpperCase() + words.slice(1);
+}
+
 export function getAnimation(animationId) {
   return animationData[animationId] || null;
 }
@@ -368,10 +380,23 @@ export function createMolecularPlayer({ svg, animation, onStep }) {
     frameHandle = requestAnimationFrame(frame);
   }
 
+  /**
+   * Jumps straight to one keyframe with no interpolation and stops any
+   * playback in progress - the "Next stage" button's manual step-through,
+   * for a student who wants to move one step at a time rather than watch
+   * continuous playback.
+   */
+  function stepTo(index) {
+    stop();
+    stepIndex = Math.max(0, Math.min(index, animation.steps.length - 1));
+    drawFrame(scene, animation, stepIndex, 0);
+    if (onStep) onStep(stepIndex, animation.steps[stepIndex]);
+  }
+
   // Draw something immediately so the panel is never blank before playback.
   drawFrame(scene, animation, 0, 0);
 
-  return { play, stop, showFinalFrame, destroy: stop };
+  return { play, stop, showFinalFrame, stepTo, destroy: stop };
 }
 
 /* ==================================================================== *
@@ -455,24 +480,36 @@ export function mountMolecularView({ root, getState, dispatch, subscribe, getRea
 
     const panel = el2('div', 'molecular-panel');
 
+    // The header band: title, the equation inline beside it, and Close, all
+    // in one row - not three stacked elements.
+    const header = el2('div', 'molecular-panel__header');
+
+    const title = document.createElement('h2');
+    title.id = 'molecular-title';
+    title.className = 'molecular-panel__title';
+    title.textContent = titleFor(reaction);
+    header.appendChild(title);
+
+    const equation = document.createElement('p');
+    equation.className = 'molecular-panel__equation';
+    equation.textContent = (animation && animation.equation) || (reaction && reaction.equation) || '';
+    header.appendChild(equation);
+
     const closeButton = document.createElement('button');
     closeButton.type = 'button';
     closeButton.className = 'molecular-panel__close';
     closeButton.textContent = 'Close';
     closeButton.setAttribute('aria-label', 'Close molecular view');
     closeButton.addEventListener('click', () => dispatch.closeReactionAnimation());
-    panel.appendChild(closeButton);
+    header.appendChild(closeButton);
 
-    const title = document.createElement('h2');
-    title.id = 'molecular-title';
-    title.className = 'molecular-panel__title';
-    title.textContent = 'What happens to the particles';
-    panel.appendChild(title);
+    panel.appendChild(header);
 
     if (!animation) {
       // Honest about a gap rather than showing an empty stage, the same way
       // the engine refuses to invent a reaction it has no rule for.
       const missing = document.createElement('p');
+      missing.className = 'molecular-panel__missing';
       missing.textContent = reaction
         ? 'There is no molecular animation for this reaction in this version of the lab yet.'
         : 'That reaction could not be found.';
@@ -481,27 +518,29 @@ export function mountMolecularView({ root, getState, dispatch, subscribe, getRea
       return overlay;
     }
 
-    const equation = document.createElement('p');
-    equation.className = 'molecular-panel__equation';
-    equation.textContent = animation.equation || (reaction && reaction.equation) || '';
-    panel.appendChild(equation);
-
     const svg = document.createElementNS(SVG_NS, 'svg');
     svg.setAttribute('class', 'molecular-panel__stage');
     svg.setAttribute('role', 'img');
     svg.setAttribute('aria-label', `Scripted animation of ${animation.equation}`);
     panel.appendChild(svg);
 
+    // Everything below the stage sits in its own footer band, separated by
+    // a rule - the caption and the playback controls, not just more content
+    // stacked under the SVG.
+    const footer = el2('div', 'molecular-panel__footer');
+
     const caption = document.createElement('p');
     caption.className = 'molecular-panel__caption';
-    panel.appendChild(caption);
+    footer.appendChild(caption);
 
     const reduced = prefersReducedMotion();
+    let currentStep = 0;
 
     player = createMolecularPlayer({
       svg,
       animation,
       onStep: (index, step) => {
+        currentStep = index;
         caption.textContent = `${index + 1}. ${step.caption}`;
       },
     });
@@ -520,18 +559,32 @@ export function mountMolecularView({ root, getState, dispatch, subscribe, getRea
         item.textContent = step.caption;
         list.appendChild(item);
       }
-      panel.appendChild(list);
+      footer.appendChild(list);
     } else {
+      const controls = el2('div', 'molecular-panel__controls');
+
       const replay = document.createElement('button');
       replay.type = 'button';
       replay.className = 'molecular-panel__replay';
-      replay.textContent = 'Play again';
+      replay.textContent = 'Replay';
       replay.addEventListener('click', () => player.play());
-      panel.appendChild(replay);
+      controls.appendChild(replay);
+
+      // Lets a student move through the reaction one keyframe at a time
+      // instead of only watching it play continuously.
+      const nextStage = document.createElement('button');
+      nextStage.type = 'button';
+      nextStage.className = 'molecular-panel__next-stage';
+      nextStage.textContent = 'Next stage';
+      nextStage.addEventListener('click', () => player.stepTo(currentStep + 1));
+      controls.appendChild(nextStage);
+
+      footer.appendChild(controls);
 
       player.play();
     }
 
+    panel.appendChild(footer);
     overlay.appendChild(panel);
     return overlay;
   }

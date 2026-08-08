@@ -56,6 +56,11 @@ function formatExpectedValue(key, value) {
   return String(value);
 }
 
+/** How each experiment's own "level" field is printed - "fsc"/"bs" keep
+ *  their real capitalisation rather than being lowercased along with the
+ *  rest of the option text. */
+const LEVEL_LABEL = { matric: 'matric', fsc: 'FSc', bs: 'BS' };
+
 /* ==================================================================== *
  * The topbar area: mode text + experiment picker
  * ==================================================================== */
@@ -71,17 +76,25 @@ export function mountGuidedBar({ root, getState, dispatch, subscribe }) {
     const state = getState();
     root.innerHTML = '';
 
-    const modeLabel = document.createElement('span');
-    modeLabel.className = 'guided-bar__mode';
-    modeLabel.textContent =
-      state.mode === 'guided' && state.guided
-        ? `MODE: Guided — ${state.guided.title}`
-        : 'MODE: Free Lab';
-    root.appendChild(modeLabel);
+    const isGuided = state.mode === 'guided' && !!state.guided;
+
+    // A static "MODE" caption and the value that changes, as two separate
+    // elements rather than one combined string - the experiment's own
+    // title belongs on the step card below, not folded into this label.
+    const modeGroup = document.createElement('span');
+    modeGroup.className = 'guided-bar__mode-group';
+    const modeCaption = document.createElement('span');
+    modeCaption.className = 'guided-bar__mode-caption';
+    modeCaption.textContent = 'MODE';
+    const modeValue = document.createElement('span');
+    modeValue.className = 'guided-bar__mode-value';
+    modeValue.textContent = isGuided ? 'Guided' : 'Free Lab';
+    modeGroup.append(modeCaption, modeValue);
+    root.appendChild(modeGroup);
 
     const picker = document.createElement('select');
     picker.className = 'guided-bar__picker';
-    picker.setAttribute('aria-label', 'Experiment');
+    picker.setAttribute('aria-label', 'Choose an experiment');
 
     const freeOption = document.createElement('option');
     freeOption.value = '';
@@ -91,11 +104,11 @@ export function mountGuidedBar({ root, getState, dispatch, subscribe }) {
     for (const experiment of state.experiments) {
       const option = document.createElement('option');
       option.value = experiment.id;
-      option.textContent = `${experiment.title} (${experiment.level})`;
+      option.textContent = `${experiment.title} (${LEVEL_LABEL[experiment.level] || experiment.level})`;
       picker.appendChild(option);
     }
 
-    picker.value = state.mode === 'guided' && state.guided ? state.guided.experimentId : '';
+    picker.value = isGuided ? state.guided.experimentId : '';
 
     picker.addEventListener('change', () => {
       if (picker.value === '') {
@@ -106,6 +119,15 @@ export function mountGuidedBar({ root, getState, dispatch, subscribe }) {
     });
 
     root.appendChild(picker);
+
+    if (isGuided) {
+      const leaveButton = document.createElement('button');
+      leaveButton.type = 'button';
+      leaveButton.className = 'guided-bar__leave';
+      leaveButton.textContent = 'Leave guided mode';
+      leaveButton.addEventListener('click', () => dispatch.stopExperiment());
+      root.appendChild(leaveButton);
+    }
   }
 
   subscribe(render);
@@ -134,7 +156,22 @@ export function mountGuidedBar({ root, getState, dispatch, subscribe }) {
  * hazard alert in panels.js already applies to a safety warning, just
  * without the alarm.
  */
+// Judgements experiments.js can return (see JUDGEMENT in experiments.js).
+// Grouped into "the student is on track" vs "that was not the step" for the
+// feedback strip's colour - never the hazard red UI.md section 4 reserves
+// exclusively for danger, just a green/amber distinction, matching the
+// mockup's own kind:'ok'/'wrong' split.
+const ON_TRACK_JUDGEMENTS = new Set(['correct', 'ahead', 'repeat']);
+
 export function mountGuidedStepCard({ root, getState, dispatch, subscribe }) {
+  // Whether the hint disclosure is open, and which step it was opened on -
+  // kept outside render() since render() rebuilds the DOM from scratch each
+  // time and a plain <button> toggle has nowhere else to remember its own
+  // state. Reset the moment the step changes, so a hint left open on step 2
+  // does not stay open on step 3.
+  let hintOpen = false;
+  let hintOpenForStepKey = null;
+
   function render() {
     const state = getState();
     root.innerHTML = '';
@@ -148,46 +185,92 @@ export function mountGuidedStepCard({ root, getState, dispatch, subscribe }) {
     root.hidden = false;
 
     const guided = state.guided;
+    const stepKey = `${guided.experimentId}:${guided.stepIndex}`;
+    if (stepKey !== hintOpenForStepKey) {
+      hintOpen = false;
+      hintOpenForStepKey = stepKey;
+    }
+
     const card = document.createElement('div');
     card.className = 'guided-stepcard';
 
-    const progressText = document.createElement('p');
-    progressText.className = 'guided-stepcard__progress';
-    progressText.textContent = `Step ${guided.stepIndex + 1} of ${guided.totalSteps}`;
-    card.appendChild(progressText);
+    // The header band: step label + title on the left, the hint toggle and
+    // leave button on the right - one row, matching the mockup's own
+    // distinct header strip rather than three stacked lines.
+    const header = document.createElement('div');
+    header.className = 'guided-stepcard__header';
 
-    const bar = document.createElement('div');
-    bar.className = 'guided-progress';
-    bar.setAttribute('role', 'progressbar');
-    bar.setAttribute('aria-valuemin', '0');
-    bar.setAttribute('aria-valuemax', String(guided.totalSteps));
-    bar.setAttribute('aria-valuenow', String(guided.stepIndex));
-    const fill = document.createElement('div');
-    fill.className = 'guided-progress__fill';
-    fill.style.width = `${Math.round((guided.stepIndex / guided.totalSteps) * 100)}%`;
-    bar.appendChild(fill);
-    card.appendChild(bar);
+    const heading = document.createElement('div');
+    heading.className = 'guided-stepcard__heading';
+    const progressText = document.createElement('span');
+    progressText.className = 'guided-stepcard__progress';
+    progressText.textContent = `STEP ${guided.stepIndex + 1} / ${guided.totalSteps}`;
+    const titleText = document.createElement('span');
+    titleText.className = 'guided-stepcard__title';
+    titleText.textContent = guided.title;
+    heading.append(progressText, titleText);
+    header.appendChild(heading);
+
+    const headerControls = document.createElement('div');
+    headerControls.className = 'guided-stepcard__header-controls';
+
+    if (guided.hint) {
+      const hintToggle = document.createElement('button');
+      hintToggle.type = 'button';
+      hintToggle.className = 'guided-stepcard__hint-toggle';
+      hintToggle.textContent = hintOpen ? 'Hide hint' : 'Show hint';
+      hintToggle.addEventListener('click', () => {
+        hintOpen = !hintOpen;
+        render();
+      });
+      headerControls.appendChild(hintToggle);
+    }
+
+    const leaveButton = document.createElement('button');
+    leaveButton.type = 'button';
+    leaveButton.className = 'guided-stepcard__leave';
+    leaveButton.textContent = '×';
+    leaveButton.setAttribute('aria-label', 'Leave guided mode');
+    leaveButton.addEventListener('click', () => dispatch.stopExperiment());
+    headerControls.appendChild(leaveButton);
+
+    header.appendChild(headerControls);
+    card.appendChild(header);
+
+    // Segmented progress - one pip per step, not a continuous bar, so
+    // "how far through" reads as discrete steps the way the instruction
+    // above it does.
+    const pips = document.createElement('div');
+    pips.className = 'guided-progress';
+    pips.setAttribute('role', 'progressbar');
+    pips.setAttribute('aria-valuemin', '0');
+    pips.setAttribute('aria-valuemax', String(guided.totalSteps));
+    pips.setAttribute('aria-valuenow', String(guided.stepIndex));
+    for (let i = 0; i < guided.totalSteps; i += 1) {
+      const pip = document.createElement('span');
+      pip.className = 'guided-progress__pip';
+      if (i < guided.stepIndex) pip.classList.add('guided-progress__pip--done');
+      else if (i === guided.stepIndex) pip.classList.add('guided-progress__pip--current');
+      pips.appendChild(pip);
+    }
+    card.appendChild(pips);
 
     const instruction = document.createElement('p');
     instruction.className = 'guided-stepcard__instruction';
     instruction.textContent = guided.instruction;
     card.appendChild(instruction);
 
-    if (guided.hint) {
-      const details = document.createElement('details');
-      details.className = 'guided-stepcard__hint';
-      const summary = document.createElement('summary');
-      summary.textContent = 'Need a hint?';
-      details.appendChild(summary);
+    if (guided.hint && hintOpen) {
       const hintText = document.createElement('p');
+      hintText.className = 'guided-stepcard__hint';
       hintText.textContent = guided.hint;
-      details.appendChild(hintText);
-      card.appendChild(details);
+      card.appendChild(hintText);
     }
 
     if (guided.feedback) {
+      const onTrack = ON_TRACK_JUDGEMENTS.has(guided.feedback.judgement);
       const feedback = document.createElement('p');
-      feedback.className = `guided-stepcard__feedback guided-stepcard__feedback--${guided.feedback.judgement}`;
+      feedback.className = `guided-stepcard__feedback guided-stepcard__feedback--${onTrack ? 'ok' : 'wrong'}`;
       feedback.textContent = guided.feedback.message;
       card.appendChild(feedback);
     }
