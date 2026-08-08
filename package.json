@@ -1,6 +1,6 @@
 {
   "name": "chemlab",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Offline virtual chemistry lab for Pakistani school and college students",
   "main": "main.js",
   "type": "module",
@@ -17,7 +17,7 @@
   },
   "build": {
     "appId": "com.chemlab.app",
-    "productName": "ChemLab",
+    "productName": "Virtual Chemistry Lab",
     "directories": {
       "output": "build"
     },
@@ -26,12 +26,17 @@
       "preload.js",
       "src/**/*"
     ],
+    "icon": "src/assets/icon.ico",
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "src/assets/icon.ico"
     },
     "nsis": {
       "oneClick": false,
-      "allowToChangeInstallationDirectory": true
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "src/assets/icon.ico",
+      "uninstallerIcon": "src/assets/icon.ico",
+      "shortcutName": "Virtual Chemistry Lab"
     }
   }
 }

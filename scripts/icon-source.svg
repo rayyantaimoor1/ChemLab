@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!--
+    The app icon. Deliberately the same conical-flask silhouette already
+    coded in src/styles/bench.css's .vessel--flask clip-path, in the same
+    palette CLAUDE.md/UI.md define (bench #26302D, glass #C9D6DA, accent
+    #A8702B, panel #EDEAE3) - not a generic beaker glyph, the actual shape
+    a student sees on the actual bench.
+  -->
+  <defs>
+    <clipPath id="flask">
+      <path d="M112,40 L144,40 L144,92 L208,196 L200,213 L56,213 L48,196 L112,92 Z" />
+    </clipPath>
+    <linearGradient id="glassTint" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#C9D6DA" stop-opacity="0.22" />
+      <stop offset="26%" stop-color="#C9D6DA" stop-opacity="0.05" />
+      <stop offset="70%" stop-color="#C9D6DA" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#C9D6DA" stop-opacity="0.24" />
+    </linearGradient>
+    <linearGradient id="rimShine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E6F2F6" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#C9D6DA" stop-opacity="0.4" />
+    </linearGradient>
+  </defs>
+
+  <!-- Bench-green rounded-square ground, Windows 11 icon convention. -->
+  <rect x="0" y="0" width="256" height="256" rx="52" fill="#26302D" />
+  <rect x="0" y="0" width="256" height="256" rx="52" fill="url(#glassTint)" opacity="0.5" />
+
+  <!-- The flask body: glass tint above the liquid, amber liquid below. -->
+  <g clip-path="url(#flask)">
+    <rect x="20" y="20" width="216" height="200" fill="url(#glassTint)" />
+    <rect x="20" y="140" width="216" height="80" fill="#A8702B" />
+    <rect x="20" y="140" width="216" height="10" fill="#C98A3D" opacity="0.6" />
+    <!-- Bubbles rising through the liquid. -->
+    <circle cx="112" cy="188" r="7" fill="#EDEAE3" opacity="0.85" />
+    <circle cx="140" cy="168" r="5" fill="#EDEAE3" opacity="0.75" />
+    <circle cx="128" cy="202" r="4" fill="#EDEAE3" opacity="0.65" />
+  </g>
+
+  <!-- The glass outline, on top of the fill. -->
+  <path d="M112,40 L144,40 L144,92 L208,196 L200,213 L56,213 L48,196 L112,92 Z"
+        fill="none" stroke="#EDEAE3" stroke-width="7" stroke-linejoin="round" opacity="0.92" />
+
+  <!-- The rim: a highlight bar wider than the neck, the same lip every
+       vessel in the app has (see .vessel__rim in bench.css). -->
+  <rect x="98" y="30" width="60" height="12" rx="6" fill="url(#rimShine)" />
+</svg>
