@@ -195,6 +195,27 @@ and it would be wrong: sulfur burning in oxygen fits that description exactly,
 and so does sodium skidding about on water. Whether a vanishing solid is worth
 writing down is a judgement about the chemistry, so it belongs here.
 
+### `sources` — the second-source audit
+
+`source` says where a rule came from. The optional `sources` array records
+references somebody **actually consulted** to check it (BUILD_PHASE_2.md
+stage 2.1.1):
+
+```json
+"sources": [
+  { "ref": "Jim Clark, chemguide — Reactions of the Group 2 elements with water",
+    "url": "https://www.chemguide.co.uk/inorganic/group2/reacth2o.html",
+    "checked": "2026-11-02",
+    "covers": ["products", "precipitate", "gas"] }
+]
+```
+
+`covers` says which parts of the rule that reference confirms, using fixed
+words the validator knows. A web page carries its `url`. A printed book is
+entered only by a person who had it open, with no `url` — a book citation
+that nobody checked is exactly what this field exists to replace. Claude
+cannot open printed books, so Claude adds web references only.
+
 ### Temperature conditions
 
 `conditions.minTempC` and `conditions.maxTempC` are a floor and a ceiling, and

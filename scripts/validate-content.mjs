@@ -60,6 +60,12 @@ const missingExplanation = [];
 
 const MIN_SOURCE_LENGTH = 10; // "textbook, ch. 3" is about this long; "x" is not a source
 
+// What a `sources` entry on a reaction may say it confirms - see checkSources.
+const SOURCE_COVERS = new Set([
+  'products', 'equation', 'conditions', 'colour', 'precipitate', 'gas',
+  'temperature', 'pH', 'hazard', 'explanation', 'noReaction',
+]);
+
 function nonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
 }
@@ -212,7 +218,50 @@ const reactions = readJson('reactions.json') ?? [];
         }
       }
     }
+
+    if ('sources' in reaction) checkSources(id, reaction.sources);
   }
+}
+
+/* ------------------------------------------------------------------ *
+ * `sources` - the second-source audit (BUILD_PHASE_2.md stage 2.1.1).
+ *
+ * Optional, and kept beside `source` rather than replacing it. Each entry
+ * records a reference somebody ACTUALLY consulted to check this rule: what
+ * it is, where to find it, when it was checked, and which parts of the rule
+ * it confirms. A web page carries its URL; a printed book is entered by a
+ * person who held it, with no URL. An entry that cannot say what it covers
+ * is not evidence of anything, so `covers` is required and must use the
+ * fixed words (SOURCE_COVERS, near the top of this file).
+ * ------------------------------------------------------------------ */
+function checkSources(id, sources) {
+  if (!Array.isArray(sources) || sources.length === 0) {
+    problems.push(`${id}: sources must be a non-empty array when present`);
+    return;
+  }
+  sources.forEach((entry, index) => {
+    const where = `${id}: sources[${index}]`;
+    if (!entry || typeof entry !== 'object') {
+      problems.push(`${where} is not an object`);
+      return;
+    }
+    if (!nonEmptyString(entry.ref) || entry.ref.trim().length < MIN_SOURCE_LENGTH) {
+      problems.push(`${where}: ref is missing or too short to identify the reference`);
+    }
+    if ('url' in entry && !/^https:\/\/\S+$/.test(entry.url ?? '')) {
+      problems.push(`${where}: url must be an https:// link`);
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(entry.checked ?? '')) {
+      problems.push(`${where}: checked must be the date it was consulted, as YYYY-MM-DD`);
+    }
+    if (!Array.isArray(entry.covers) || entry.covers.length === 0) {
+      problems.push(`${where}: covers must list what this reference confirms`);
+    } else {
+      for (const word of entry.covers) {
+        if (!SOURCE_COVERS.has(word)) problems.push(`${where}: "${word}" is not one of ${[...SOURCE_COVERS].join(', ')}`);
+      }
+    }
+  });
 }
 
 /* ------------------------------------------------------------------ *

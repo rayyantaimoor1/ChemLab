@@ -8,7 +8,7 @@
 > date the way a comment would.
 >
 > Snapshot as of the last entry below: **375 chemicals, 389 reactions
-> (71 of them `noReaction`), 18 guided experiments, 284 tests passing.**
+> (71 of them `noReaction`), 18 guided experiments, 311 tests passing.**
 
 ---
 
@@ -218,3 +218,55 @@ Deliberately **not** switched, because dilute is correct for them:
 neutralisations, zinc displacement, acid rain on marble, liming, the
 dichromate and permanganate oxidations of iron(II), ethanol oxidation to
 ethanal, dissolving vanadium(V) oxide, and the ammonium fertilisers.
+
+## 10. The second-source audit (BUILD_PHASE_2.md stage 2.1.1)
+
+Every reaction is being re-checked, 25 at a time in file order, for
+products, equation balance, conditions, colours, precipitates, temperature,
+pH and hazard text. Disagreements go to the project owner to decide;
+nothing is changed silently.
+
+**What counts as a second source.** Only a reference somebody actually
+consulted, recorded in the reaction's `sources` array with what it confirms
+(see `CLAUDE.md` §5). Claude cannot open printed books, so Claude records
+web references with their links; book references are added by a person
+who checked the book (stage 2.1.5). The existing `source` fields were
+written alongside the content and have not been checked against the books
+they name — `sources` is the evidence, `source` is the claim.
+
+**Equation balance** is checked mechanically for every equation that can be
+parsed (210 of 318 confirmed balanced at the start of the audit). The rest
+contain words ("polymer", "starch") or unusual notation and are balanced by
+hand as their batch comes up. That checker becomes part of the validator in
+stage 2.1.2.
+
+**One rule for temperatures**, agreed during batch 1: `tempDeltaC` assumes
+equal volumes of the solutions as labelled. Values that disagree with
+standard enthalpy data on that basis are corrected; the full set is
+re-checked in stage 2.2, once the engine tracks amounts.
+
+### Batch 1 — reactions 1–25
+
+20 sound as written, 5 corrected (plus 1 found elsewhere). Owner approved
+all recommendations on 2026-11-02.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_oxidation_mg_steam` | A vessel at 100 °C is boiling water, not steam: magnesium gives the hydroxide with water and burns to the oxide only in steam (chemguide). The rule showed the steam result. | Products → `mgoh2_s` + `h2_g`; equation, effects, hazard and explanation rewritten to teach water → hydroxide, steam → oxide. Id kept so nothing that refers to it breaks. |
+| `rxn_gastest_co2_limewater` | "Nothing else in ordinary school chemistry does this" — false: sulfur dioxide also turns limewater milky. | Explanation now says so, and how the two gases are told apart. |
+| `rxn_reaction_ca_water` | Explanation described a cloudy white suspension; effects had no precipitate, so the vessel looked clear. | `effects.precipitate` and a white colour added. Done in effects rather than with a new `caoh2_s` chemical, which would have created new "not available yet" combinations for no visible gain. |
+| `rxn_precipitation_pbno3_ki` | Called plain mixing "the golden rain experiment"; golden rain is recrystallising the precipitate from hot water. | One sentence reworded. |
+| `rxn_carbonate_na2co3_hcl`, `rxn_carbonate_caco3_hcl`, `rxn_neutralisation_naoh_h2so4` | Temperature rises of +5, +6 and +14 °C. Standard enthalpies give ≈ −2 kJ/mol for carbonate + acid, and for equal volumes of 1 M H₂SO₄ and NaOH the alkali runs out first. | +1, +1 and +7 °C. The H₂SO₄ explanation now says why the per-molecule doubling does not show up in the tube. |
+| `rxn_reduction_nabh4_ethanal` *(outside batch 1)* | `CH₃CHO + [H] → C₂H₅OH` is unbalanced. | `+ 2[H]`. |
+
+Confirmed and left alone: `rxn_neutralisation_hcl_naoh` (+7 °C) and
+`rxn_neutralisation_cuo_hcl` (+8 °C) both match standard enthalpies; the
+endothermic `rxn_carbonate_nahco3_hcl` matches in sign. Noted but not
+changed: magnesium in copper(II) sulfate usually fizzes a little too, and
+copper(II) oxide dissolves faster in warm acid.
+
+Deferred for the owner: the four Grignard equations (`rxn_grignard_*`) are
+written as net "after work-up" equations without the magnesium salt — a
+common textbook shorthand, kept as it is.
+
+Reactions with a `sources` entry after batch 1: 10 of 389.

@@ -19,7 +19,10 @@
     "molecularAnimation": "anim_neutralisation",
     "explanation": "H⁺ ions from the acid combine with OH⁻ ions from the base to form water. Na⁺ and Cl⁻ stay dissolved as spectator ions, so the mixture ends up as ordinary salt water. Nothing changes colour and no gas is given off, but the tube becomes noticeably warm because the reaction releases heat.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — acids, bases and salts; CRC Handbook of Chemistry and Physics, 97th ed. (standard enthalpy of neutralisation, about −57 kJ per mole)"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — acids, bases and salts; CRC Handbook of Chemistry and Physics, 97th ed. (standard enthalpy of neutralisation, about −57 kJ per mole)",
+    "sources": [
+      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-02", "covers": ["temperature"] }
+    ]
   },
   {
     "id": "rxn_precipitation_pbno3_ki",
@@ -46,9 +49,12 @@
       "whatToDoInstead": "Handle lead solutions with gloves and wash your hands afterwards. Collect all lead waste in the labelled heavy-metal waste container so it can be disposed of properly instead of entering the water supply."
     },
     "molecularAnimation": "anim_precipitation_pbi2",
-    "explanation": "Two solutions that were both clear produce a bright yellow solid. Pb²⁺ ions from the lead nitrate meet I⁻ ions from the potassium iodide and join together as lead(II) iodide, which is insoluble in water and so drops out as a precipitate. K⁺ and NO₃⁻ take no part and stay dissolved as spectator ions. This is often demonstrated as the golden rain experiment.",
+    "explanation": "Two solutions that were both clear produce a bright yellow solid. Pb²⁺ ions from the lead nitrate meet I⁻ ions from the potassium iodide and join together as lead(II) iodide, which is insoluble in water and so drops out as a precipitate. K⁺ and NO₃⁻ take no part and stay dissolved as spectator ions. Lead(II) iodide is much more soluble in hot water than in cold, so dissolving this precipitate in near-boiling water and letting it cool slowly makes glittering golden crystals form — the famous golden rain demonstration.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — solubility rules and double displacement reactions; CRC Handbook of Chemistry and Physics, 97th ed. (solubility of lead(II) iodide)"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — solubility rules and double displacement reactions; CRC Handbook of Chemistry and Physics, 97th ed. (solubility of lead(II) iodide)",
+    "sources": [
+      { "ref": "Andy Brunning, Compound Interest — The lead iodide golden rain reaction", "url": "https://www.compoundchem.com/2015/04/23/golden-rain/", "checked": "2026-11-02", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_precipitation_agno3_nacl",
@@ -241,8 +247,8 @@
     "equation": "Ca + 2H₂O → Ca(OH)₂ + H₂",
     "type": "displacement",
     "effects": {
-      "colorToHex": "#EEF3F5",
-      "precipitate": null,
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white calcium hydroxide that does not all dissolve, so the water turns cloudy",
       "gas": "hydrogen",
       "bubbles": true,
       "smoke": false,
@@ -260,36 +266,42 @@
     "molecularAnimation": null,
     "explanation": "Calcium is reactive enough to displace hydrogen from cold water, which magnesium cannot do. The granule sinks and fizzes steadily, giving off hydrogen, and the water becomes cloudy white because calcium hydroxide is only slightly soluble — the little that dissolves gives the strongly alkaline solution known as limewater, and the rest stays as a white suspension. Sodium and potassium do the same thing far more violently, which is why they are demonstrated only by a teacher.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with water"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with water",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Reactions of the Group 2 elements with water", "url": "https://www.chemguide.co.uk/inorganic/group2/reacth2o.html", "checked": "2026-11-02", "covers": ["products", "precipitate", "gas"] }
+    ]
   },
   {
     "id": "rxn_oxidation_mg_steam",
     "reactants": ["mg_metal", "water_distilled"],
     "conditions": { "requiresHeat": true, "minTempC": 100, "catalyst": null },
-    "products": ["mgo_s", "h2_g"],
-    "equation": "Mg + H₂O(steam) → MgO + H₂",
-    "type": "oxidation",
+    "products": ["mgoh2_s", "h2_g"],
+    "equation": "Mg + 2H₂O → Mg(OH)₂ + H₂",
+    "type": "displacement",
     "effects": {
       "colorToHex": "#F4F3EF",
-      "precipitate": "white magnesium oxide",
+      "precipitate": "white magnesium hydroxide",
       "gas": "hydrogen",
       "bubbles": true,
       "smoke": false,
-      "tempDeltaC": 25,
+      "tempDeltaC": 0,
       "resultPH": 10
     },
     "hazard": {
       "severity": "moderate",
       "type": "flammable_gas",
       "title": "Flammable hydrogen gas, and the apparatus is hot",
-      "warning": "This reaction needs steam, so the apparatus is at boiling point throughout, and the hydrogen given off burns very easily.",
+      "warning": "The water has to be boiling for this reaction to be seen, so the apparatus is hot throughout, and the hydrogen given off burns very easily.",
       "visualEffect": null,
-      "whatToDoInstead": "Keep flames away from where the hydrogen escapes, and let the apparatus cool before handling it. Never seal the tube — trapped steam and gas must be able to escape."
+      "whatToDoInstead": "Keep flames away from where the hydrogen escapes, and let the apparatus cool before handling it. Never seal the tube — steam and gas must be able to escape."
     },
     "molecularAnimation": null,
-    "explanation": "Magnesium hardly touches cold water, but it reacts readily with steam. That is why nothing happens in this vessel until it is heated to about 100 °C. Once steam is present, the magnesium is oxidised to white magnesium oxide and hydrogen is driven off. The oxide is basic, so the little that dissolves leaves the water alkaline. This contrast — nothing in cold water, a clear reaction in steam — is exactly why the reactivity series has to be read alongside the conditions.",
+    "explanation": "Magnesium hardly touches cold water: a thin layer of almost insoluble magnesium hydroxide forms on the metal and stops the reaction. In boiling water the reaction is faster, so slow bubbles of hydrogen rise from the ribbon and white magnesium hydroxide forms, leaving the water alkaline. Steam is different again: magnesium heated in steam burns with a bright white light and gives magnesium OXIDE instead — a metal reacting with water gives its hydroxide, a metal reacting with steam gives its oxide. That needs the metal heated in a stream of steam, not a beaker of boiling water. The contrast — almost nothing cold, slow bubbles hot, burning in steam — is why the reactivity series has to be read alongside the conditions.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with water and steam"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with water and steam",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Reactions of the Group 2 elements with water", "url": "https://www.chemguide.co.uk/inorganic/group2/reacth2o.html", "checked": "2026-11-02", "covers": ["products", "explanation"] }
+    ]
   },
   {
     "id": "rxn_none_cu_hcl",
@@ -328,14 +340,17 @@
       "gas": "carbon dioxide",
       "bubbles": true,
       "smoke": false,
-      "tempDeltaC": 5,
+      "tempDeltaC": 1,
       "resultPH": 7
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Every acid reacts with every carbonate in the same way: acid plus carbonate gives a salt, water and carbon dioxide. The carbonate ion takes two H⁺ ions from the acid to make carbonic acid, which is so unstable that it immediately falls apart into water and carbon dioxide — which is why you see fizzing rather than anything staying in solution. The gas that bubbles off turns limewater milky, and that is how you prove it is carbon dioxide.",
+    "explanation": "Every acid reacts with every carbonate in the same way: acid plus carbonate gives a salt, water and carbon dioxide. The carbonate ion takes two H⁺ ions from the acid to make carbonic acid, which is so unstable that it immediately falls apart into water and carbon dioxide — which is why you see fizzing rather than anything staying in solution. Unlike a neutralisation with an alkali, the tube hardly warms at all: the heat given out is very small. The gas that bubbles off turns limewater milky, and that is how you prove it is carbon dioxide.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with carbonates"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with carbonates",
+    "sources": [
+      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-02", "covers": ["temperature"] }
+    ]
   },
   {
     "id": "rxn_carbonate_caco3_hcl",
@@ -350,14 +365,17 @@
       "gas": "carbon dioxide",
       "bubbles": true,
       "smoke": false,
-      "tempDeltaC": 6,
+      "tempDeltaC": 1,
       "resultPH": 7
     },
     "hazard": null,
     "molecularAnimation": null,
     "explanation": "Marble chips are calcium carbonate, and they fizz steadily in dilute hydrochloric acid, giving off carbon dioxide and slowly shrinking away. Because the chips are solid lumps the reaction proceeds at a rate you can watch and time, which is why this exact combination is the standard experiment for studying how surface area, concentration and temperature change the speed of a reaction. This is also the reaction that eats away limestone buildings in acid rain.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with carbonates"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with carbonates",
+    "sources": [
+      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-02", "covers": ["temperature"] }
+    ]
   },
   {
     "id": "rxn_carbonate_nahco3_hcl",
@@ -379,7 +397,10 @@
     "molecularAnimation": null,
     "explanation": "A hydrogencarbonate fizzes with acid just as a carbonate does, but it only needs one H⁺ per formula unit because it already carries one of its own hydrogens. The striking thing here is the temperature: the mixture gets COLDER, not hotter. Most acid–base reactions give out heat, so this is a rare and useful example of an endothermic reaction — one that takes heat in from its surroundings. That is why an instant cold pack can be made from much the same chemistry.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with hydrogencarbonates; Chemistry 9 — exothermic and endothermic changes"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with hydrogencarbonates; Chemistry 9 — exothermic and endothermic changes",
+    "sources": [
+      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-02", "covers": ["temperature"] }
+    ]
   },
   {
     "id": "rxn_gastest_co2_limewater",
@@ -399,9 +420,13 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "This is THE test for carbon dioxide. Limewater is a clear solution of calcium hydroxide; bubbling carbon dioxide through it produces calcium carbonate, which is almost insoluble, so it appears as a fine white solid that makes the clear liquid turn milky. Nothing else in ordinary school chemistry does this, which is what makes the test reliable. If you keep bubbling gas through for a long time the milkiness clears again, because excess carbon dioxide converts the carbonate into soluble calcium hydrogencarbonate.",
+    "explanation": "This is THE test for carbon dioxide. Limewater is a clear solution of calcium hydroxide; bubbling carbon dioxide through it produces calcium carbonate, which is almost insoluble, so it appears as a fine white solid that makes the clear liquid turn milky. Be careful: sulfur dioxide turns limewater milky too, by forming white calcium sulfite. The two are told apart because sulfur dioxide has a sharp, choking smell and turns orange acidified potassium dichromate green, while carbon dioxide is odourless and leaves the dichromate orange. If you keep bubbling gas through for a long time the milkiness clears again, because excess carbon dioxide converts the carbonate into soluble calcium hydrogencarbonate.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, the limewater test for carbon dioxide"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, the limewater test for carbon dioxide",
+    "sources": [
+      { "ref": "Wikipedia — Limewater (sulfur dioxide forms solid calcium sulfite; excess CO₂ clears the milkiness)", "url": "https://en.wikipedia.org/wiki/Limewater", "checked": "2026-11-02", "covers": ["explanation"] },
+      { "ref": "StudyMind — Identifying common gases (acidified dichromate turns orange to green with sulfur dioxide)", "url": "https://studymind.co.uk/notes/identifying-common-gases/", "checked": "2026-11-02", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_neutralisation_cuo_hcl",
@@ -423,7 +448,10 @@
     "molecularAnimation": null,
     "explanation": "A metal oxide is a base, so it neutralises an acid to give a salt and water — and nothing else. Black copper(II) oxide will not dissolve in water at all, but it dissolves readily in acid, and the colourless acid turns blue-green as copper(II) chloride forms. Notice there are no bubbles: that is the clearest way to tell a metal oxide from a carbonate, since a carbonate would fizz.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with metal oxides"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with metal oxides",
+    "sources": [
+      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-02", "covers": ["temperature"] }
+    ]
   },
   {
     "id": "rxn_neutralisation_mgo_hcl",
@@ -460,14 +488,17 @@
       "gas": null,
       "bubbles": false,
       "smoke": false,
-      "tempDeltaC": 14,
+      "tempDeltaC": 7,
       "resultPH": 7
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Sulfuric acid is dibasic — each molecule gives away two H⁺ ions — so it takes two formula units of sodium hydroxide to neutralise one of acid, and the equation needs those coefficients to balance. Because twice as much water is being formed for each acid molecule, this releases noticeably more heat than the same amount of hydrochloric acid does. The salt left behind, sodium sulfate, is neutral, so the end point sits at pH 7.",
+    "explanation": "Sulfuric acid is dibasic — each molecule gives away two H⁺ ions — so it takes two formula units of sodium hydroxide to neutralise one of acid, and the equation needs those coefficients to balance. Each molecule of sulfuric acid therefore makes twice as much water, and twice as much heat, as a molecule of hydrochloric acid. But the heat depends on how much water actually forms: with equal volumes of 1 M acid and 1 M alkali, the alkali runs out first, so the tube warms by about the same amount as with hydrochloric acid. The salt left behind, sodium sulfate, is neutral, so the end point sits at pH 7.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, neutralisation and basicity of acids"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, neutralisation and basicity of acids",
+    "sources": [
+      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-02", "covers": ["temperature"] }
+    ]
   },
   {
     "id": "rxn_neutralisation_naoh_hno3",
@@ -4908,7 +4939,7 @@
     "reactants": ["ch3cho_l", "nabh4_aq"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["c2h5oh_aq"],
-    "equation": "CH₃CHO + [H] → C₂H₅OH",
+    "equation": "CH₃CHO + 2[H] → C₂H₅OH",
     "type": "reduction",
     "effects": {
       "colorToHex": "#EEF3F5",
