@@ -73,7 +73,8 @@ chemlab/
 ├── BUILD_PROMPTS.md          ← build sequence
 ├── package.json
 ├── main.js                   ← Electron main process (window, menu, file paths)
-├── preload.js                ← contextBridge; no nodeIntegration in renderer
+├── main/                     ← main-process helpers: IPC switchboard, argument checks, file writing
+├── preload.cjs               ← contextBridge (4 functions on window.chemlab); sandboxed renderer
 ├── src/
 │   ├── index.html
 │   ├── core/                 ← PURE LOGIC. No DOM access anywhere in this folder.

@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Content-Security-Policy: the page may only load scripts, styles, fonts
+       and images bundled with the app. Nothing from the internet, and no
+       inline <script> or <style>. CLAUDE.md §2: zero network at runtime. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'" />
   <title>Virtual Chemistry Lab</title>
   <link rel="icon" type="image/png" href="assets/icon-32.png" />
   <link rel="stylesheet" href="styles/bench.css" />

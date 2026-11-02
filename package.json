@@ -23,7 +23,8 @@
     },
     "files": [
       "main.js",
-      "preload.js",
+      "main/**/*",
+      "preload.cjs",
       "src/**/*"
     ],
     "icon": "src/assets/icon.ico",
