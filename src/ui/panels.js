@@ -67,6 +67,15 @@ const TAG_LABEL = {
   milestone: 'guided',
 };
 
+/** The word the notebook shows for an entry's tag - also used by the export. */
+export function notebookTagLabel(entry) {
+  return TAG_LABEL[entry.tag] || entry.tag;
+}
+
+const NEW_SESSION_QUESTION =
+  'Start a new session?\n\nThis clears the notebook and the bench for the next student. '
+  + 'Use "Export" first if you want to keep a copy of this notebook.';
+
 export function mountPanels({ root, getState, dispatch, subscribe }) {
   function render() {
     const state = getState();
@@ -82,9 +91,56 @@ export function mountPanels({ root, getState, dispatch, subscribe }) {
     headingRow.append(heading, count);
     root.appendChild(headingRow);
 
+    root.appendChild(renderToolbar(state));
     root.appendChild(renderEntries(state.notebook));
     root.appendChild(renderObservationForm());
     root.appendChild(renderEstimateForm(state));
+  }
+
+  /**
+   * Export and New session, plus one line saying anything the student needs
+   * to know about where their notebook is kept. Saving itself is automatic
+   * and silent - there is no Save button to forget to press.
+   */
+  function renderToolbar(state) {
+    const { available, error, exportMessage } = state.notebookStorage;
+    const toolbar = document.createElement('div');
+    toolbar.className = 'notebook-toolbar';
+
+    const buttons = document.createElement('div');
+    buttons.className = 'notebook-toolbar__buttons';
+
+    if (available) {
+      const exportButton = document.createElement('button');
+      exportButton.type = 'button';
+      exportButton.textContent = 'Export';
+      exportButton.title = 'Save a copy of the notebook as a text file';
+      exportButton.addEventListener('click', () => dispatch.exportNotebook());
+      buttons.appendChild(exportButton);
+    }
+
+    const newSessionButton = document.createElement('button');
+    newSessionButton.type = 'button';
+    newSessionButton.textContent = 'New session';
+    newSessionButton.title = 'Clear the notebook and the bench for the next student';
+    newSessionButton.addEventListener('click', () => {
+      if (window.confirm(NEW_SESSION_QUESTION)) dispatch.newSession();
+    });
+    buttons.appendChild(newSessionButton);
+    toolbar.appendChild(buttons);
+
+    const status = error
+      || exportMessage
+      || (available ? null : 'Not being saved: this notebook only lasts until the page is closed.');
+    if (status) {
+      const line = document.createElement('p');
+      line.className = `notebook-toolbar__status${error ? ' notebook-toolbar__status--error' : ''}`;
+      line.setAttribute('role', 'status');
+      line.textContent = status;
+      toolbar.appendChild(line);
+    }
+
+    return toolbar;
   }
 
   function renderEntries(entries) {
@@ -116,7 +172,7 @@ export function mountPanels({ root, getState, dispatch, subscribe }) {
     metaRow.className = 'notebook-entry__meta';
     const tag = document.createElement('span');
     tag.className = 'notebook-entry__tag';
-    tag.textContent = TAG_LABEL[entry.tag] || entry.tag;
+    tag.textContent = notebookTagLabel(entry);
     const time = document.createElement('time');
     time.textContent = new Date(entry.timestamp).toLocaleTimeString('en-GB', {
       hour: '2-digit',

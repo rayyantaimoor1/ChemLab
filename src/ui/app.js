@@ -27,7 +27,15 @@ import { createTools } from '../core/tools.js';
 import { createExperimentRunner, STATUS as EXPERIMENT_STATUS } from '../core/experiments.js';
 import { mountShelf } from './shelf.js';
 import { mountBench } from './bench.js';
-import { mountPanels, mountHazardAlert, mountPropertiesCard } from './panels.js';
+import { mountPanels, mountHazardAlert, mountPropertiesCard, notebookTagLabel } from './panels.js';
+import {
+  storageAvailable,
+  loadSavedNotebook,
+  createNotebookSaver,
+  logUnknownCombination,
+  exportNotebookText,
+} from './notebook-storage.js';
+import { formatNotebookForExport } from './notebook-export.js';
 import { mountMolecularView } from './molecular.js';
 import { mountMolecular3DView } from './molecular3d.js';
 import { mountGuidedBar, mountGuidedStepCard, mountGuidedSummary } from './guided.js';
@@ -467,13 +475,50 @@ function emptyVessel(containerId) {
   notify();
 }
 
-const notebook = createNotebook();
+/* ------------------------------------------------------------------ *
+ * The notebook, and keeping it on disk.
+ *
+ * In the desktop app the notebook is loaded from disk before anything is
+ * drawn, so a student who closes the app and comes back finds their work
+ * where they left it. notebook-storage.js does the talking to the main
+ * process; this file only decides WHEN to save - whenever the notebook
+ * changes - by marking it changed and letting the subscriber near the end
+ * of this file send one save after the change has fully landed (tags
+ * included).
+ * ------------------------------------------------------------------ */
+
+const savedNotebook = await loadSavedNotebook();
+const notebook = createNotebook({ load: async () => savedNotebook.entries });
+await notebook.restore();
+
+let notebookChanged = false;
+function markNotebookChanged() {
+  notebookChanged = true;
+}
+
+// Shown under the notebook heading: a save that failed, the result of an
+// export, or (in a plain browser) that nothing is being kept. Interface
+// state only - the notebook itself never knows about any of it.
+// A load problem stays up for the whole session; a save problem clears as
+// soon as a save works again.
+const notebookLoadError = savedNotebook.error;
+let notebookSaveError = null;
+let notebookExportMessage = null;
+
+// Every automatic line - from actions.js and from guided mode - goes
+// through here, so none of them can be written without being saved.
+function writeToNotebook(actionEntry) {
+  const entry = notebook.logAction(actionEntry);
+  markNotebookChanged();
+  return entry;
+}
+
 const tools = createTools({ getChemical: engine.getChemical, getFlameTest: engine.getFlameTest });
 const actions = createActions({
   getContainer: (id) => containersById.get(id),
   engine,
   tools,
-  onNotebookEntry: notebook.logAction,
+  onNotebookEntry: writeToNotebook,
 });
 
 // Phase 7's guided-mode state machine. It never touches the bench itself -
@@ -483,7 +528,7 @@ const actions = createActions({
 // a guided milestone lands in the same notebook as everything else.
 const experimentRunner = createExperimentRunner({
   getContainer: (id) => containersById.get(id),
-  onNotebookEntry: notebook.logAction,
+  onNotebookEntry: writeToNotebook,
 });
 
 // Which tool the student has picked up, if any. This is pure interface state -
@@ -564,6 +609,24 @@ const lastElectrolysisByContainer = new Map();
  * entry shape (UI.md section 1) has no field for it.
  * ------------------------------------------------------------------ */
 const notebookEntryTags = new Map();
+
+// Tags saved with the notebook last time (main/validate.js has already
+// checked each one names a real entry and a real tag).
+for (const [entryId, tag] of Object.entries(savedNotebook.tags)) {
+  notebookEntryTags.set(Number(entryId), tag);
+}
+
+// A reopened notebook gets one line marking the join, because the bench
+// itself is not saved - every vessel the lines above talk about is gone,
+// and a student scrolling back should be able to see where that happened.
+if (!notebook.isEmpty()) {
+  writeToNotebook({
+    text: 'The lab was reopened. The bench starts empty again; everything above was recorded earlier.',
+    containerId: null,
+    action: 'sessionResumed',
+    timestamp: Date.now(),
+  });
+}
 
 function tagAutoEntry(entryId, engineResult) {
   const hasHazard = engineResult?.steps?.some((step) => step.reaction?.hazard);
@@ -712,6 +775,19 @@ function guidedPayload(actionName, args) {
   }
 }
 
+// The dispatch entries that write the student's own words or a revealed
+// comparison into the notebook directly (everything automatic already goes
+// through writeToNotebook). Matched by trace name because two of them have
+// no guided-mode action name.
+const STUDENT_NOTEBOOK_WRITES = new Set(['recordObservation', 'revealReference', 'recordEstimate']);
+
+// The unknown-combinations log (CLAUDE.md §6.3) records what students try to
+// put TOGETHER, so only the two actions that bring chemicals together feed
+// it. Heating an unknown mixture asks the engine about it again on every
+// burner tick; logging those would bury one real attempt under a hundred
+// repeats of it.
+const COMBINING_ACTIONS = new Set(['addChemical', 'pour']);
+
 /**
  * Wraps a dispatch function so every call updates the hazard and molecular
  * animation tracking (if the result carries an engineResult), tells the
@@ -733,6 +809,14 @@ function guidedPayload(actionName, args) {
 function wrap(fn, actionName = null, traceName = actionName) {
   return (...args) => {
     const result = fn(...args);
+    if (STUDENT_NOTEBOOK_WRITES.has(traceName)) markNotebookChanged();
+    if (
+      result
+      && COMBINING_ACTIONS.has(actionName)
+      && result.engineResult?.outcome === OUTCOME.UNKNOWN
+    ) {
+      logUnknownCombination(result.engineResult.species);
+    }
     if (result && result.engineResult) {
       trackHazard(result.engineResult);
       trackAnimatedReaction(result);
@@ -942,6 +1026,13 @@ function getState() {
     equipmentLimitReached: equipment.length >= MAX_EQUIPMENT,
     activeHazard,
     notebook: notebook.getEntries().map((entry) => ({ ...entry, tag: notebookTagFor(entry) })),
+    // Beyond UI.md section 1's shape: whether the notebook is being kept on
+    // disk, and anything the student should know about that.
+    notebookStorage: {
+      available: storageAvailable,
+      error: notebookSaveError ?? notebookLoadError,
+      exportMessage: notebookExportMessage,
+    },
     readings,
     dispenseMode,
     quickAmount,
@@ -1006,8 +1097,10 @@ function resetBenchState() {
   selectedEquipmentId = null;
   nextVesselNumber = {};
   nextEquipmentNumber = {};
-  notebook.clear();
-  notebookEntryTags.clear();
+  // The notebook is deliberately NOT cleared here. It is saved to disk now,
+  // so a Reset (or starting a guided experiment, which also clears the
+  // bench) wiping it would throw away a student's whole record. Clearing
+  // it is New session's job - see newSession below.
   readings = [];
   traceLine = '';
   activeHazard = null;
@@ -1137,6 +1230,12 @@ const dispatch = {
   }, null, 'recordEstimate'),
   resetBench: wrap(() => {
     resetBenchState();
+    writeToNotebook({
+      text: 'The bench was reset. Every vessel went back to the tray; everything above happened before the reset.',
+      containerId: null,
+      action: 'resetBench',
+      timestamp: Date.now(),
+    });
     // Resetting mid-experiment restarts that experiment at step 1 rather
     // than silently leaving guided mode. Without this the step card would
     // go on asking for "step 4: dip the thermometer" over a bench that
@@ -1149,6 +1248,32 @@ const dispatch = {
     guidedFeedback = null;
     guidedSummaryDismissed = false;
   }, null, 'resetBench'),
+
+  // Not one of UI.md section 1's names: the notebook is saved to disk now,
+  // so starting over properly - a fresh notebook as well as a fresh bench,
+  // for the next student at this computer - needs its own deliberate
+  // action. panels.js asks "are you sure?" before dispatching it.
+  newSession: wrap(() => {
+    if (experimentRunner.isRunning()) experimentRunner.stop();
+    resetBenchState();
+    notebook.clear();
+    notebookEntryTags.clear();
+    markNotebookChanged();
+    notebookExportMessage = null;
+    guidedFeedback = null;
+    guidedSummaryDismissed = false;
+  }, null, 'newSession'),
+
+  // Opens the Save dialog for a plain-text copy of the notebook. The dialog
+  // is asynchronous, so the result message arrives with a second notify()
+  // once the student has chosen where to save (or cancelled).
+  exportNotebook: wrap(() => {
+    const text = formatNotebookForExport(getState().notebook, notebookTagLabel);
+    exportNotebookText(text).then((message) => {
+      notebookExportMessage = message;
+      notify();
+    });
+  }, null, 'exportNotebook'),
 
   // Not one of UI.md section 1's fixed names - Phase 7's guided mode
   // (CLAUDE.md section 8) needs a way to start and leave a run, and to
@@ -1379,6 +1504,27 @@ subscribe(() => {
 });
 
 document.getElementById('reset-bench').addEventListener('click', () => dispatch.resetBench());
+
+// Saving the notebook. A subscriber rather than a save inside each dispatch,
+// so the save goes out after the whole change has landed - an automatic
+// line's colour tag is added after the line itself, and saving in between
+// would store the line without its tag.
+const notebookSaver = createNotebookSaver({
+  getSnapshot: () => ({
+    entries: notebook.toJSON(),
+    tags: Object.fromEntries(notebookEntryTags),
+  }),
+  onError: (message) => {
+    if (message === notebookSaveError) return;
+    notebookSaveError = message;
+    notify();
+  },
+});
+subscribe(() => {
+  if (!notebookChanged) return;
+  notebookChanged = false;
+  notebookSaver.save();
+});
 
 const reduceAnimationCheckbox = document.getElementById('reduce-animation');
 reduceAnimationCheckbox.addEventListener('change', (event) => {

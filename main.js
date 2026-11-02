@@ -13,6 +13,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import chemicals from './src/data/chemicals.json' with { type: 'json' };
 import { registerBridge } from './main/ipc.js';
+import { installMenu } from './main/menu.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const indexPath = path.join(__dirname, 'src', 'index.html');
@@ -58,6 +59,7 @@ app.whenReady().then(() => {
     indexUrl: pathToFileURL(indexPath).href,
     knownChemicalIds: new Set(chemicals.map((chemical) => chemical.id)),
   });
+  installMenu({ getDataFolder: () => app.getPath('userData') });
 
   createWindow();
 

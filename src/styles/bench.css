@@ -2052,6 +2052,50 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   background: rgba(241, 196, 15, 0.3);
 }
 
+/* Export / New session, under the notebook heading. 40px tall: UI.md
+   section 2's minimum click target on a shared, mouse-only lab PC. */
+.notebook-toolbar {
+  margin: 0 14px;
+  padding: 8px 0;
+  border-bottom: 1.5px solid var(--ink-18);
+}
+
+.notebook-toolbar__buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.notebook-toolbar__buttons button {
+  height: 40px;
+  padding: 0 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1.5px solid var(--ink-45);
+  border-radius: var(--radius-sm);
+}
+
+.notebook-toolbar__buttons button:hover {
+  background: var(--panel-dim);
+}
+
+.notebook-toolbar__status {
+  margin: 7px 0 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--ink-60);
+}
+
+/* Not hazard red: UI.md section 4 reserves that for chemical danger only.
+   A notebook that failed to save is serious, but it is not a hazard. */
+.notebook-toolbar__status--error {
+  padding-left: 8px;
+  font-weight: 700;
+  color: var(--ink);
+  border-left: 3px solid var(--ink);
+}
+
 .observation-form {
   display: flex;
   gap: 5px;
