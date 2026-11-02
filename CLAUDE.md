@@ -195,6 +195,17 @@ and it would be wrong: sulfur burning in oxygen fits that description exactly,
 and so does sodium skidding about on water. Whether a vanishing solid is worth
 writing down is a judgement about the chemistry, so it belongs here.
 
+**`tempDeltaC` has a fixed basis**, because the engine has no amounts and a
+temperature rise means nothing without one (agreed during the
+second-source audit, `batch.md` §10):
+
+- **Two solutions:** equal volumes of the solutions as labelled.
+- **A solid in water:** 10 g of the solid in 100 mL of water.
+- **A gas into a solution:** enough gas to use up the solution's reagent.
+
+Work the value out from standard enthalpies on that basis, and say in the
+explanation when the number assumes something a student might not do.
+
 ### `sources` — the second-source audit
 
 `source` says where a rule came from. The optional `sources` array records

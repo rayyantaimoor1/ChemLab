@@ -7,7 +7,7 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **375 chemicals, 389 reactions
+> Snapshot as of the last entry below: **375 chemicals, 390 reactions
 > (71 of them `noReaction`), 18 guided experiments, 311 tests passing.**
 
 ---
@@ -291,3 +291,34 @@ salt; much more dilute solutions give some oxygen with the chlorine, but at
 1 M chlorine is the main product.
 
 Reactions with a `sources` entry after batch 2: 14 of 389.
+
+### Batch 3 — reactions 51–75
+
+19 sound as written, 6 corrected, 1 rule added. Owner approved all
+recommendations on 2026-11-03.
+
+**Second temperature rule**, agreed in this batch: a solid dissolving in
+water assumes **10 g of solid in 100 mL of water**; a gas into a solution
+assumes enough gas to use up the solution's reagent. All three rules now
+live in `CLAUDE.md` §5. On the solid basis, four existing values were
+already right — potassium nitrate −8, ammonium chloride −6, calcium
+chloride +18, sodium hydroxide +25 °C — which suggests this is the basis
+they were originally written on.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_dissolution_kno3`, and `kno3_s`'s description | Said potassium nitrate cools "less sharply than ammonium nitrate", contradicting the enthalpies quoted in the same entries: +34.9 against +25.7 kJ/mol, so it is the MORE endothermic per mole and about equal per gram. Ammonium nitrate gets colder only because far more of it dissolves. | Both texts now give the true reason. |
+| `rxn_smoke_nh3_hcl` | The white smoke needs hydrogen chloride as a GAS; the rule used 1 M hydrochloric acid solution, in which ammonia simply dissolves and is neutralised — and the explanation itself said "no water involved anywhere". | Reactant changed from `hcl_1m` to `hcl_g` (made in the lab from salt and concentrated sulfuric acid); explanation says why both must be gases. |
+| *(new)* `rxn_neutralisation_nh3_hcl_aq` | Without it, ammonia into dilute acid would have become an "isn't available yet" dead end. | Added: NH₃ + 1 M HCl → ammonium chloride solution, +21 °C (ΔH −86.6 kJ/mol from OpenStax, on the gas basis above), pH 4.6, no smoke. Engine checked: dilute acid neutralises; two gases smoke, including after the salt + concentrated sulfuric acid route. |
+| `rxn_dissolution_cacl2` | "The chemistry inside a reusable hand warmer" — calcium chloride is used in single-use hot packs; reusable warmers crystallise sodium acetate. | Corrected; the road-salt sentence softened to "helps". |
+| `rxn_slaking_quicklime` | Showed clear liquid, though most of the calcium hydroxide stays as a white paste (the same gap as calcium + water in batch 1); +40 °C. | White paste added as the precipitate; +27 °C on the solid basis (ΔH −64.5 kJ/mol from OpenStax). |
+| `rxn_dissolution_nh4no3` | −15 °C is about double the value for 10 g in 100 mL. | −8 °C; explanation now says cold packs use it because it is so soluble. |
+| `rxn_decomposition_nahco3` | "Turns baking soda into washing soda" — washing soda is the decahydrate; heating leaves anhydrous sodium carbonate. | Reworded. |
+
+Noted but not changed: the temporary-hardness rule shows limescale forming
+only at 100 °C, while real kettles and hot-water pipes scale up below
+boiling. The sources that could be opened did not settle a temperature, so
+the condition is left as it is. "Carbon dioxide itself is not poisonous"
+(`rxn_combustion_carbon`) is kept as a fair school-level statement.
+
+Reactions with a `sources` entry after batch 3: 21 of 390.

@@ -1874,7 +1874,7 @@
     "onShelf": true,
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/kno3.svg",
-    "description": "White solid, once called saltpetre. Dissolving it cools the water, though less sharply than ammonium nitrate. Its solubility rises steeply with temperature, which makes it the standard salt for showing how a hot saturated solution crystallises as it cools.",
+    "description": "White solid, once called saltpetre. Dissolving it cools the water — mole for mole even more than ammonium nitrate does, though ammonium nitrate gets colder in practice because far more of it can dissolve. Its solubility rises steeply with temperature, which makes it the standard salt for showing how a hot saturated solution crystallises as it cools.",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility, enthalpy of solution +34.9 kJ/mol); PubChem, National Library of Medicine — Potassium nitrate",
     "flameElements": ["potassium"],
     "category": "salt"

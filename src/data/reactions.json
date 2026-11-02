@@ -1596,7 +1596,7 @@
   },
   {
     "id": "rxn_smoke_nh3_hcl",
-    "reactants": ["hcl_1m", "nh3_g"],
+    "reactants": ["hcl_g", "nh3_g"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nh4cl_s"],
     "equation": "NH₃ + HCl → NH₄Cl",
@@ -1612,9 +1612,34 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Two colourless things meet and produce a dense white smoke out of apparently nothing — which is why this is a demonstration people remember. The smoke is a cloud of tiny solid ammonium chloride particles. It is also an acid–base reaction with no water involved anywhere: the ammonia takes a hydrogen ion directly from the hydrogen chloride. That is exactly the case the Arrhenius definition of an acid cannot describe and the Brønsted–Lowry definition can, which is the main reason the definition had to be widened.",
+    "explanation": "Two colourless gases meet and produce a dense white smoke out of apparently nothing — which is why this is a demonstration people remember. The smoke is a cloud of tiny solid ammonium chloride particles. Both reactants have to be GASES: the classroom version puts cotton wool soaked in concentrated hydrochloric acid at one end of a tube and concentrated ammonia at the other, and a white ring forms where the two gases meet. Bubble ammonia into dilute acid instead and it simply dissolves and is neutralised, with no smoke at all. It is also an acid–base reaction with no water involved anywhere: the ammonia takes a hydrogen ion directly from the hydrogen chloride. That is exactly the case the Arrhenius definition of an acid cannot describe and the Brønsted–Lowry definition can, which is the main reason the definition had to be widened.",
     "levels": ["matric", "fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Acids and bases, the Brønsted–Lowry definition"
+  },
+  {
+    "id": "rxn_neutralisation_nh3_hcl_aq",
+    "reactants": ["hcl_1m", "nh3_g"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["nh4cl_aq"],
+    "equation": "NH₃ + HCl → NH₄Cl",
+    "type": "neutralisation",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 21,
+      "resultPH": 4.6
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "Ammonia gas bubbled into dilute hydrochloric acid does not make the famous white smoke — that needs hydrogen chloride as a gas too. Instead the ammonia dissolves and takes a hydrogen ion from the acid, leaving ammonium chloride dissolved in the water. Nothing changes colour and nothing precipitates, but the solution warms noticeably: the figure here assumes enough ammonia is passed in to neutralise all of the acid. The solution ends up slightly acidic rather than neutral, because ammonia is a weak base and the ammonium ion it leaves behind gives a little hydrogen ion back to the water.",
+    "levels": ["matric", "fsc", "bs"],
+    "source": "OpenStax Chemistry 2e, Appendix G — standard enthalpies of formation of NH₃(g) and NH₄⁺(aq), used for the temperature rise (−86.6 kJ per mole of ammonia); written during the BUILD_PHASE_2.md second-source audit, batch 3",
+    "sources": [
+      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-03", "covers": ["temperature"] }
+    ]
   },
   {
     "id": "rxn_ammonia_dissolves",
@@ -1656,7 +1681,7 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Heating baking soda turns it into washing soda, driving off water and carbon dioxide. This is the reaction that makes a cake rise: the carbon dioxide released inside the batter is what lifts it, and the residue left behind is harmless. Industrially it is the last step of the Solvay process, which manufactures sodium carbonate from salt and limestone. Test the gas with limewater — turning milky confirms carbon dioxide.",
+    "explanation": "Heating baking soda turns it into sodium carbonate, driving off water and carbon dioxide. (Washing soda is the same compound with water of crystallisation, Na₂CO₃·10H₂O; heating leaves the anhydrous form, also called soda ash.) This is the reaction that makes a cake rise: the carbon dioxide released inside the batter is what lifts it, and the residue left behind is harmless. Industrially it is the last step of the Solvay process, which manufactures sodium carbonate from salt and limestone. Test the gas with limewater — turning milky confirms carbon dioxide.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry, the Solvay process; thermal decomposition of hydrogencarbonates"
   },
@@ -1674,14 +1699,17 @@
       "gas": null,
       "bubbles": false,
       "smoke": false,
-      "tempDeltaC": -15,
+      "tempDeltaC": -8,
       "resultPH": 5
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "An ENDOTHERMIC change, and one you can feel. Dissolving takes two steps: pulling the ions out of the crystal costs energy, and letting water molecules cluster round them releases it. For ammonium nitrate the first costs more than the second gives back, so the difference is taken from the surroundings and the beaker turns genuinely cold to hold. This is exactly what is inside an instant cold pack — squeeze it, the inner bag of water breaks, and the injury gets cooled with no freezer anywhere. It is also the clearest possible answer to the idea that reactions always give out heat.",
+    "explanation": "An ENDOTHERMIC change, and one you can feel. Dissolving takes two steps: pulling the ions out of the crystal costs energy, and letting water molecules cluster round them releases it. For ammonium nitrate the first costs more than the second gives back, so the difference is taken from the surroundings and the beaker turns cold to hold. This is exactly what is inside an instant cold pack — squeeze it, the inner bag of water breaks, and the injury gets cooled with no freezer anywhere. Cold packs use ammonium nitrate because it is so extremely soluble: far more of it will dissolve in a little water than almost any other salt, and the more that dissolves, the colder it gets. It is also the clearest possible answer to the idea that reactions always give out heat.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, enthalpy of solution; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution +25.7 kJ/mol)"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, enthalpy of solution; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution +25.7 kJ/mol)",
+    "sources": [
+      { "ref": "LibreTexts (Howard University, General Chemistry: An Atoms First Approach) 9.05 — Enthalpies of Solution (ΔH_soln table; calcium chloride instant hot packs, ammonium nitrate cold packs)", "url": "https://chem.libretexts.org/Courses/Howard_University/General_Chemistry%3A_An_Atoms_First_Approach/Unit_4%3A__Thermochemistry/09%3A_Thermochemistry/Chapter_9.05%3A_Enthalpies_of_Solution", "checked": "2026-11-03", "covers": ["temperature", "explanation"] }
+    ]
   },
   {
     "id": "rxn_dissolution_kno3",
@@ -1702,9 +1730,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Also endothermic, but less sharply so than ammonium nitrate — put the two side by side and the difference in how cold each beaker gets is the enthalpy of solution being measured by hand. Potassium nitrate is also the salt to use for showing solubility against temperature: very much more of it dissolves in hot water than cold, so a hot saturated solution left to cool grows crystals as it goes.",
+    "explanation": "Also endothermic — and, mole for mole, MORE so than ammonium nitrate: 34.9 kJ is taken in for every mole that dissolves, against 25.7 kJ. Gram for gram the two cool the water by about the same amount. Ammonium nitrate only feels colder in practice because so much more of it can dissolve, which is a useful lesson: how cold a beaker gets depends on how much dissolves as well as on the enthalpy of solution. Potassium nitrate is also the salt to use for showing solubility against temperature: very much more of it dissolves in hot water than cold, so a hot saturated solution left to cool grows crystals as it goes.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry and Solutions, enthalpy of solution and solubility curves; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution +34.9 kJ/mol)"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry and Solutions, enthalpy of solution and solubility curves; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution +34.9 kJ/mol)",
+    "sources": [
+      { "ref": "LibreTexts (Howard University, General Chemistry: An Atoms First Approach) 9.05 — Enthalpies of Solution (ΔH_soln table; calcium chloride instant hot packs, ammonium nitrate cold packs)", "url": "https://chem.libretexts.org/Courses/Howard_University/General_Chemistry%3A_An_Atoms_First_Approach/Unit_4%3A__Thermochemistry/09%3A_Thermochemistry/Chapter_9.05%3A_Enthalpies_of_Solution", "checked": "2026-11-03", "covers": ["temperature", "explanation"] }
+    ]
   },
   {
     "id": "rxn_dissolution_nh4cl",
@@ -1727,7 +1758,10 @@
     "molecularAnimation": null,
     "explanation": "The mildest of the three endothermic dissolutions here, cooling the water by a few degrees. Having three of them at different strengths is the point: the enthalpy of solution is a property of the particular salt, not something that all dissolving does. The solution left is acidic, because the ammonium ion gives a hydrogen ion back to the water.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, enthalpy of solution; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution +14.8 kJ/mol)"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, enthalpy of solution; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution +14.8 kJ/mol)",
+    "sources": [
+      { "ref": "LibreTexts (Howard University, General Chemistry: An Atoms First Approach) 9.05 — Enthalpies of Solution (ΔH_soln table; calcium chloride instant hot packs, ammonium nitrate cold packs)", "url": "https://chem.libretexts.org/Courses/Howard_University/General_Chemistry%3A_An_Atoms_First_Approach/Unit_4%3A__Thermochemistry/09%3A_Thermochemistry/Chapter_9.05%3A_Enthalpies_of_Solution", "checked": "2026-11-03", "covers": ["temperature"] }
+    ]
   },
   {
     "id": "rxn_dissolution_cacl2",
@@ -1748,9 +1782,13 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "The same two steps as ammonium nitrate, coming out the other way round. Calcium chloride's ions are small and doubly charged, so water molecules cluster round them very tightly and release more energy than it cost to break the crystal apart — the beaker gets hot. This is the chemistry inside a reusable hand warmer, and it is also why bags of calcium chloride are spread on icy roads.",
+    "explanation": "The same two steps as ammonium nitrate, coming out the other way round. Calcium chloride's ions are small and doubly charged, so water molecules cluster round them very tightly and release more energy than it cost to break the crystal apart — the beaker gets hot. This is the chemistry inside a single-use instant hot pack, and the heat it gives out also helps calcium chloride melt ice on roads. (Reusable hand warmers work differently: they contain sodium acetate, which gives out heat as it crystallises and is reset by heating.)",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, enthalpy of solution and hydration; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution −81.3 kJ/mol)"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, enthalpy of solution and hydration; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution −81.3 kJ/mol)",
+    "sources": [
+      { "ref": "LibreTexts (Howard University, General Chemistry: An Atoms First Approach) 9.05 — Enthalpies of Solution (ΔH_soln table; calcium chloride instant hot packs, ammonium nitrate cold packs)", "url": "https://chem.libretexts.org/Courses/Howard_University/General_Chemistry%3A_An_Atoms_First_Approach/Unit_4%3A__Thermochemistry/09%3A_Thermochemistry/Chapter_9.05%3A_Enthalpies_of_Solution", "checked": "2026-11-03", "covers": ["temperature", "explanation"] },
+      { "ref": "University of Wisconsin–Madison chemistry demonstrations — Reusable Heat Pack (sodium acetate crystallisation, reset in boiling water)", "url": "https://www2.chem.wisc.edu/deptfiles/genchem/demonstrations/Gen_Chem_Pages/06thermopage/reusable_heat_pack.htm", "checked": "2026-11-03", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_dissolution_naoh",
@@ -1780,7 +1818,10 @@
     "molecularAnimation": null,
     "explanation": "Strongly exothermic — dissolving sodium hydroxide in only a little water can drive it close to boiling. Notice this is dissolving, not neutralising: no acid is involved and no new substance is made, yet a great deal of heat comes out. That is worth separating from the enthalpy of neutralisation, which is a different quantity measured for a different change and often confused with it.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, enthalpy of solution; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution −44.5 kJ/mol)"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, enthalpy of solution; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of solution −44.5 kJ/mol)",
+    "sources": [
+      { "ref": "LibreTexts (Howard University, General Chemistry: An Atoms First Approach) 9.05 — Enthalpies of Solution (ΔH_soln table; calcium chloride instant hot packs, ammonium nitrate cold packs)", "url": "https://chem.libretexts.org/Courses/Howard_University/General_Chemistry%3A_An_Atoms_First_Approach/Unit_4%3A__Thermochemistry/09%3A_Thermochemistry/Chapter_9.05%3A_Enthalpies_of_Solution", "checked": "2026-11-03", "covers": ["temperature"] }
+    ]
   },
   {
     "id": "rxn_slaking_quicklime",
@@ -1790,12 +1831,12 @@
     "equation": "CaO + H₂O → Ca(OH)₂",
     "type": "combination",
     "effects": {
-      "colorToHex": "#EEF3F5",
-      "precipitate": null,
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white calcium hydroxide paste — only a little of it dissolves",
       "gas": null,
       "bubbles": true,
       "smoke": true,
-      "tempDeltaC": 40,
+      "tempDeltaC": 27,
       "resultPH": 12.4
     },
     "hazard": {
@@ -1809,7 +1850,10 @@
     "molecularAnimation": null,
     "explanation": "Slaking, and about the most violently exothermic thing a school laboratory demonstrates without setting light to anything. The lump swells, cracks and steams, and a thermometer in the water climbs dozens of degrees on its own. It is the middle step of the lime cycle that has been used in building for thousands of years: roast limestone to quicklime, slake it to make lime putty, and the putty then slowly absorbs carbon dioxide from the air and hardens back into limestone.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, exothermic reactions; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of reaction −63.7 kJ/mol)"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, exothermic reactions; CRC Handbook of Chemistry and Physics, 97th ed. (enthalpy of reaction −63.7 kJ/mol)",
+    "sources": [
+      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-03", "covers": ["temperature"] }
+    ]
   },
   {
     "id": "rxn_hydration_cuso4",
