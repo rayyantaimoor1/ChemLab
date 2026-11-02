@@ -1880,7 +1880,7 @@
   {
     "id": "rxn_dehydration_cuso4",
     "reactants": ["cuso4_5h2o_s"],
-    "conditions": { "requiresHeat": true, "minTempC": 100, "catalyst": null },
+    "conditions": { "requiresHeat": true, "minTempC": 200, "catalyst": null },
     "products": ["cuso4_anhydrous_s", "water"],
     "equation": "CuSO₄·5H₂O → CuSO₄ + 5H₂O",
     "type": "dehydration",
@@ -1895,9 +1895,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Heating the blue crystals drives the water of crystallisation out of them and the colour drains away to white. The water does not vanish — it condenses on the cool upper part of the tube, where you can see it and test it. This is endothermic: it takes energy to pull that water out, which is why it needs a burner. Add water to the white powder afterwards and the blue comes straight back, which is what makes this pair the clearest demonstration of a hydrate there is.",
+    "explanation": "Heating the blue crystals drives the water of crystallisation out of them and the colour drains away to white. The water leaves in stages — two molecules at about 63 °C, two more at about 109 °C, and the last only at about 200 °C — which is why the powder needs strong heating, not just boiling-water temperature, before it is truly white. The water does not vanish — it condenses on the cool upper part of the tube, where you can see it and test it. This is endothermic: it takes energy to pull that water out, which is why it needs a burner. Add water to the white powder afterwards and the blue comes straight back, which is what makes this pair the clearest demonstration of a hydrate there is.",
     "levels": ["matric", "fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — water of crystallisation and its removal by heating"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — water of crystallisation and its removal by heating",
+    "sources": [
+      { "ref": "Wikipedia — Copper(II) sulfate (the pentahydrate loses water at about 63, 109 and 200 °C; blue to white)", "url": "https://en.wikipedia.org/wiki/Copper(II)_sulfate", "checked": "2026-11-03", "covers": ["conditions", "colour", "explanation"] }
+    ]
   },
   {
     "id": "rxn_hydration_cocl2",
@@ -1917,9 +1920,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "The other test for water, and the one that comes on paper. Filter paper soaked in cobalt(II) chloride and dried is blue; touch it with water and it turns pink at once. It is more convenient than the copper sulfate test because the paper can be dried and used again, and because blue to pink is easier to judge at a glance than white to blue. Both tests answer the same limited question: is there water here, not is this pure water.",
+    "explanation": "The other test for water, and the one that comes on paper. Filter paper soaked in cobalt(II) chloride and dried is blue; touch it with water and it turns pink at once. It is more convenient than the copper sulfate test because the paper can be dried again with gentle warmth, and because blue to pink is easier to judge at a glance than white to blue. Both tests answer the same limited question: is there water here, not is this pure water.",
     "levels": ["matric", "fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Water, cobalt chloride test for water"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Water, cobalt chloride test for water",
+    "sources": [
+      { "ref": "Wikipedia — Cobalt(II) chloride (anhydrous blue, hexahydrate pink; the hydrates lose water on gentle heating; used in moisture test papers)", "url": "https://en.wikipedia.org/wiki/Cobalt(II)_chloride", "checked": "2026-11-03", "covers": ["colour", "explanation"] }
+    ]
   },
   {
     "id": "rxn_dehydration_cocl2",
@@ -1939,9 +1945,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Warming the pink hydrate drives its six waters off and it returns to blue — which is why cobalt chloride paper is reusable in a way copper sulfate is not. Put the two hydrate pairs side by side and the general rule appears: a hydrate's colour belongs to the water built into its crystal, and heating takes the water and the colour away together.",
+    "explanation": "Warming the pink hydrate drives its six waters off and it returns to blue. Both water tests can be reused, but cobalt chloride gives up its water with gentle warming, while copper sulfate needs strong heating to about 200 °C — which is why it is the cobalt chloride that gets made into test papers. Put the two hydrate pairs side by side and the general rule appears: a hydrate's colour belongs to the water built into its crystal, and heating takes the water and the colour away together.",
     "levels": ["matric", "fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — water of crystallisation; Chemistry 10 — cobalt chloride paper"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — water of crystallisation; Chemistry 10 — cobalt chloride paper",
+    "sources": [
+      { "ref": "Wikipedia — Cobalt(II) chloride (anhydrous blue, hexahydrate pink; the hydrates lose water on gentle heating; used in moisture test papers)", "url": "https://en.wikipedia.org/wiki/Cobalt(II)_chloride", "checked": "2026-11-03", "covers": ["colour", "explanation"] }
+    ]
   },
   {
     "id": "rxn_displacement_cu_agno3",
@@ -1983,9 +1992,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "The same silver tree, grown from zinc instead of copper — and it happens faster and gives out more heat. The reason is in the numbers: zinc is at −0.76 V, so the cell voltage here is 0.80 − (−0.76) = +1.56 V, more than three times the copper figure. The further apart two metals sit in the electrochemical series, the larger the voltage and the more vigorous the displacement. Comparing these two reactions side by side is how that relationship stops being a table to memorise and becomes something you can watch.",
+    "explanation": "The same silver tree, grown from zinc instead of copper — and it gives out more heat. The reason is in the numbers: zinc is at −0.76 V, so the cell voltage here is 0.80 − (−0.76) = +1.56 V, more than three times the copper figure. The further apart two metals sit in the electrochemical series, the larger the voltage and the more energy the displacement releases. Be careful what the voltage does NOT tell you: it says whether a reaction can happen and how much energy it gives out, never how fast it goes. Speed depends on other things — the surface of the metal, the concentration, any coating on it — so a bigger voltage is not a promise of a quicker reaction.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series and cell potential; CRC Handbook of Chemistry and Physics, 97th ed. (standard electrode potentials)"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series and cell potential; CRC Handbook of Chemistry and Physics, 97th ed. (standard electrode potentials)",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Making predictions using redox (electrode) potentials (E° values say whether a reaction is feasible, nothing about how fast)", "url": "https://chemguide.co.uk/physical/redoxeqia/predict.html", "checked": "2026-11-03", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_none_ag_cuso4",
@@ -2020,9 +2032,12 @@
       "whatToDoInstead": "Handle with gloves, wash your hands afterwards, and put all lead waste in the labelled heavy-metal container rather than down the sink."
     },
     "molecularAnimation": null,
-    "explanation": "The lead tree — the same idea as the silver tree, with feathery grey crystals instead of bright needles. Zinc is at −0.76 V and lead at −0.13 V, giving a cell voltage of −0.13 − (−0.76) = +0.63 V: positive, so it goes, but a smaller voltage than the silver version and correspondingly less dramatic. Three trees grown side by side — silver from zinc, silver from copper, lead from zinc — put the whole electrochemical series in front of you as a set of visible speeds.",
+    "explanation": "The lead tree — the same idea as the silver tree, with feathery grey crystals instead of bright needles. Zinc is at −0.76 V and lead at −0.13 V, giving a cell voltage of −0.13 − (−0.76) = +0.63 V: positive, so it goes, with less energy released than the silver version. Three trees grown side by side — silver from zinc, silver from copper, lead from zinc — show three positive voltages, so all three go. The voltages rank how much energy each change releases; they do not rank how fast the trees grow.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series; CRC Handbook of Chemistry and Physics, 97th ed. (standard electrode potentials)"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series; CRC Handbook of Chemistry and Physics, 97th ed. (standard electrode potentials)",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Making predictions using redox (electrode) potentials (E° values say whether a reaction is feasible, nothing about how fast)", "url": "https://chemguide.co.uk/physical/redoxeqia/predict.html", "checked": "2026-11-03", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_none_cu_pbno3",
@@ -2050,9 +2065,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Zinc at −0.76 V displaces iron at −0.44 V, a cell voltage of +0.32 V. That is the smallest positive value in this batch and the reaction is correspondingly slow and undramatic — the pale green of the iron(II) solution fades and a dark deposit collects on the zinc. It matters far beyond the beaker: because zinc is the more reactive of the two, a zinc coating on iron protects it even when scratched, which is what galvanising is and why it works when paint alone does not.",
+    "explanation": "Zinc at −0.76 V displaces iron at −0.44 V, a cell voltage of +0.32 V. That is a small positive value, so the change releases relatively little energy, and here it is also slow and undramatic — the pale green of the iron(II) solution fades and a dark deposit collects on the zinc. It matters far beyond the beaker: because zinc is the more reactive of the two, a zinc coating on iron protects it even when scratched, which is what galvanising is and why it works when paint alone does not.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series and sacrificial protection"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series and sacrificial protection",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Making predictions using redox (electrode) potentials (E° values say whether a reaction is feasible, nothing about how fast)", "url": "https://chemguide.co.uk/physical/redoxeqia/predict.html", "checked": "2026-11-03", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_displacement_mg_feso4",
@@ -2072,9 +2090,13 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Magnesium sits right down at −2.37 V, so against iron's −0.44 V the cell voltage is +1.93 V — the largest in this batch, and the reaction is correspondingly the most vigorous, with the mixture warming noticeably. Set this against zinc and iron at +0.32 V and the pattern is unmistakable: the bigger the gap in the series, the bigger the voltage and the more energy comes out. Magnesium's position is also why blocks of it are bolted to ships' hulls and buried pipelines, to corrode away in place of the iron.",
+    "explanation": "Magnesium sits right down at −2.37 V, so against iron's −0.44 V the cell voltage is +1.93 V — a large value, and the mixture warms noticeably. Set this against zinc and iron at +0.32 V and the pattern is unmistakable: the bigger the gap in the series, the bigger the voltage and the more energy comes out (how fast it happens is a separate question the voltage does not answer). Magnesium's position is also why blocks of it are buried beside steel pipelines, and fitted to boats in fresh water, to corrode away in place of the iron. Ships at sea use zinc or aluminium blocks instead, because in salt water magnesium corrodes away too quickly on its own.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series and sacrificial protection"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrochemical series and sacrificial protection",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Making predictions using redox (electrode) potentials (E° values say whether a reaction is feasible, nothing about how fast)", "url": "https://chemguide.co.uk/physical/redoxeqia/predict.html", "checked": "2026-11-03", "covers": ["explanation"] },
+      { "ref": "Wikipedia — Galvanic anode (zinc and aluminium in salt water and on ships; magnesium for buried pipelines and fresh water)", "url": "https://en.wikipedia.org/wiki/Galvanic_anode", "checked": "2026-11-03", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_electrolysis_agno3",
@@ -2099,7 +2121,7 @@
         "attractsName": "silver ions",
         "halfEquation": "Ag⁺ + e⁻ → Ag",
         "product": "ag_metal",
-        "observation": "A bright, even layer of silver plates onto whatever object is made the cathode."
+        "observation": "Silver deposits on whatever object is made the cathode — from plain silver nitrate, as loose glittering crystals rather than a smooth coat."
       },
       "anode": {
         "sign": "positive",
@@ -2112,9 +2134,12 @@
     },
     "hazard": null,
     "molecularAnimation": "anim_electrolysis_agno3",
-    "explanation": "Silver plating, and the reason electroplating is done at all: a cheap object made the cathode comes out covered in an even, hard-wearing layer of an expensive metal. Only one electron is needed per silver ion, unlike two for copper, so the deposit builds quickly. At the anode the nitrate ion is too stable to give up electrons, so hydroxide ions from the water do it instead and oxygen comes off — which is why the solution turns increasingly acidic as the plating goes on.",
+    "explanation": "Silver ions are pulled to the cathode and come out of solution as silver metal — the idea behind electroplating, where a cheap object made the cathode is covered in a layer of an expensive metal. From plain silver nitrate, though, the silver tends to grow as loose, sparkling crystals rather than a smooth coat; industrial silver plating uses a bath of a silver–cyanide complex instead, which releases the silver more gently and gives an even, hard-wearing layer. Only one electron is needed per silver ion, unlike two for copper, so the deposit builds quickly. At the anode the nitrate ion is too stable to give up electrons, so hydroxide ions from the water do it instead and oxygen comes off — which is why the solution turns increasingly acidic as the plating goes on.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electroplating"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electroplating",
+    "sources": [
+      { "ref": "Wikipedia — Electroplating (potassium cyanide as the electrolyte for silver and gold plating)", "url": "https://en.wikipedia.org/wiki/Electroplating", "checked": "2026-11-03", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_electrolysis_cucl2",
@@ -2381,7 +2406,7 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Limestone into quicklime — one of the oldest industrial processes there is, and still one of the largest. It needs about 900 °C, which is why it is done in a kiln and why a Bunsen burner will not manage it however long you leave it: the app will keep telling you the temperature is not high enough, and that is the honest answer. Set against magnesium carbonate at 350 °C, the pair make the Group II trend concrete. The quicklime produced can then be slaked with water, which is where the lime cycle continues.",
+    "explanation": "Limestone into quicklime — one of the oldest industrial processes there is, and still one of the largest. It needs about 900 °C, which is why industry does it in a kiln. In a school laboratory a glass test tube cannot be heated that hot, so the vessels here will keep telling you the temperature is not high enough — but a marble chip held directly in the hottest part of a roaring Bunsen flame for several minutes does turn to quicklime at its surface, which is a standard class practical. Set against magnesium carbonate at 350 °C, the pair make the Group II trend concrete. The quicklime produced can then be slaked with water, which is where the lime cycle continues.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA, thermal stability of carbonates; Chemistry XI — Industrial Chemistry, lime"
   },
@@ -2460,7 +2485,7 @@
   },
   {
     "id": "rxn_prep_chlorine_mno2",
-    "reactants": ["hcl_1m", "mno2_s"],
+    "reactants": ["hcl_conc", "mno2_s"],
     "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
     "products": ["mncl2_aq", "cl2_g", "water"],
     "equation": "MnO₂ + 4HCl → MnCl₂ + Cl₂ + 2H₂O",
@@ -2483,9 +2508,17 @@
       "whatToDoInstead": "Run this only in a fume cupboard, generate no more gas than you need, and pass the excess through sodium hydroxide solution to destroy it rather than letting it into the room."
     },
     "molecularAnimation": null,
-    "explanation": "The standard laboratory preparation of chlorine, and a clean example of redox with both halves visible. Manganese(IV) oxide takes electrons from the chloride ions, so the chloride is oxidised to chlorine gas while the manganese is reduced from +4 down to +2 — which is why the flask ends up holding the very pale pink of a manganese(II) solution. Note that this needs manganese(IV) oxide as a REACTANT, not a catalyst: it is used up here, unlike its role with hydrogen peroxide.",
+    "explanation": "The standard laboratory preparation of chlorine, and a clean example of redox with both halves visible. It needs CONCENTRATED hydrochloric acid, warmed: with the dilute acid there is too little acid and chloride for the manganese(IV) oxide to oxidise, and no chlorine comes off. Manganese(IV) oxide takes electrons from the chloride ions, so the chloride is oxidised to chlorine gas while the manganese is reduced from +4 down to +2 — which is why the flask ends up holding the very pale pink of a manganese(II) solution. Note that this needs manganese(IV) oxide as a REACTANT, not a catalyst: it is used up here, unlike its role with hydrogen peroxide.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, laboratory preparation of chlorine"
+  },
+  {
+    "id": "rxn_none_mno2_dilute_hcl",
+    "reactants": ["hcl_1m", "mno2_s"],
+    "noReaction": true,
+    "explanation": "The black powder just sits in the acid — no gas, no colour change, even when warmed. Reach for the CONCENTRATED hydrochloric acid instead. Manganese(IV) oxide can only pull electrons off chloride ions when there is a great deal of acid and chloride present together; the dilute acid on the bench is mostly water and has nowhere near enough of either. This tube is what proves the concentration is part of the method, not a detail.",
+    "levels": ["fsc", "bs"],
+    "source": "Written during the BUILD_PHASE_2.md second-source audit, batch 4: the standard laboratory preparation uses concentrated hydrochloric acid. Not yet checked against a printed source — to be confirmed by a teacher in stage 2.1.5"
   },
   {
     "id": "rxn_chlorine_cold_alkali",

@@ -202,6 +202,12 @@ second-source audit, `batch.md` §10):
 - **Two solutions:** equal volumes of the solutions as labelled.
 - **A solid in water:** 10 g of the solid in 100 mL of water.
 - **A gas into a solution:** enough gas to use up the solution's reagent.
+- **A solid reacting with a solution** (a metal in acid, a metal displacing
+  another): **deliberately left open.** Any fixed basis gives numbers that
+  are only true for one amount of solid — magnesium using up all of a 1 M
+  acid would warm it by about 56 °C, a small ribbon in excess acid by far
+  less. These values stay as they are until stage 2.2, when the engine
+  knows how much was added and can work them out.
 
 Work the value out from standard enthalpies on that basis, and say in the
 explanation when the number assumes something a student might not do.

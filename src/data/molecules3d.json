@@ -8,6 +8,15 @@
       { "from": "h", "to": "cl", "type": "covalent" }
     ]
   },
+  "hcl_conc": {
+    "atoms": [
+      { "id": "h", "element": "H", "x": -0.7, "y": 0, "z": 0 },
+      { "id": "cl", "element": "Cl", "x": 0.6, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "h", "to": "cl", "type": "covalent" }
+    ]
+  },
   "naoh_1m": {
     "atoms": [
       { "id": "na", "element": "Na", "x": -1.3, "y": 0, "z": 0 },

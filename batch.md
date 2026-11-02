@@ -7,8 +7,8 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **375 chemicals, 390 reactions
-> (71 of them `noReaction`), 18 guided experiments, 311 tests passing.**
+> Snapshot as of the last entry below: **376 chemicals, 391 reactions
+> (72 of them `noReaction`), 18 guided experiments, 311 tests passing.**
 
 ---
 
@@ -322,3 +322,32 @@ the condition is left as it is. "Carbon dioxide itself is not poisonous"
 (`rxn_combustion_carbon`) is kept as a fair school-level statement.
 
 Reactions with a `sources` entry after batch 3: 21 of 390.
+
+### Batch 4 — originally reactions 76–100 (file positions 77–101)
+
+18 sound as written, 7 corrected, 1 chemical and 1 rule added. Owner
+approved all recommendations on 2026-11-03.
+
+**Temperatures of a solid reacting with a solution — deferred.** No basis
+gives honest numbers here without amounts: magnesium using up all of a 1 M
+acid would warm it by about 56 °C, a small ribbon in excess acid by far
+less. Agreed: leave every such value as it is (including batch 1's metal +
+acid and displacement reactions) and work them out in stage 2.2. Recorded
+in `CLAUDE.md` §5.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_displacement_zn_agno3`, `rxn_displacement_zn_pbno3`, `rxn_displacement_zn_feso4`, `rxn_displacement_mg_feso4` | Taught that a bigger electrode-potential gap means a FASTER reaction ("a set of visible speeds"). E° says whether a reaction can go and how much energy it releases, never how fast (chemguide). | All four reworded to teach feasibility and energy, with rate named as a separate question. |
+| `rxn_prep_chlorine_mno2` | Used 1 M hydrochloric acid; the preparation needs concentrated acid, as the rule's own hazard text already said. | **New chemical `hcl_conc`** (about 36%, 12 M, density 1.18 — Wikipedia), on the shelf for FSc/BS; the rule now uses it. **New rule `rxn_none_mno2_dilute_hcl`** answers the dilute acid honestly, mirroring §9's sulfuric acid rules. Its `source` says plainly it is awaiting a printed-source check. Engine checked: concentrated + heat → chlorine; cold → "needs heating"; dilute → no change. |
+| `rxn_dehydration_cuso4` | Turned white at 100 °C; the last water leaves at about 200 °C. | `minTempC` 100 → 200 (the burner reaches 500 °C for a dry solid, so it stays reachable); explanation gives the three steps. |
+| `rxn_dehydration_cocl2`, `rxn_hydration_cocl2` | Said cobalt chloride paper is reusable "in a way copper sulfate is not". Both are reusable; cobalt chloride needs only gentle warmth. | Reworded. |
+| `rxn_displacement_mg_feso4` | Magnesium "bolted to ships' hulls" — ships at sea use zinc or aluminium; magnesium protects buried pipelines and fresh-water boats. | Corrected (Wikipedia, Galvanic anode). |
+| `rxn_group2_caco3_decomposition` | "A Bunsen burner will not manage it however long you leave it" — strongly heating a chip in a roaring Bunsen flame is a standard class practical; only a glass tube cannot reach 900 °C. | Reworded. **No `sources` entry:** the RSC practical page would not open, so the evidence is search results only — for a teacher to confirm. |
+| `rxn_electrolysis_agno3` | Promised "a bright, even layer" of silver; real silver plating uses a cyanide-complex bath, and plain silver nitrate tends to give loose crystals. | Explanation and cathode observation softened. Lowest-confidence change in the batch: Wikipedia confirms cyanide baths, but the "loose crystals" detail rests on practitioners' accounts found by search. |
+
+Not adding, though it came up: a rule for concentrated ammonia with
+concentrated hydrochloric acid. Mixing the two solutions in one vessel is a
+violent neutralisation, not the two-gases-meet smoke demonstration; that
+needs gases moving between vessels (stage 2.3).
+
+Reactions with a `sources` entry after batch 4: 29 of 391.

@@ -21,6 +21,27 @@
     "category": "acid"
   },
   {
+    "id": "hcl_conc",
+    "name": "Concentrated hydrochloric acid",
+    "formula": "HCl",
+    "concentration": "concentrated (about 36%, roughly 12 M)",
+    "state": "aqueous",
+    "colorHex": "#EEF3F5",
+    "colorName": "colourless",
+    "pH": -1,
+    "molarMass": 36.46,
+    "density": 1.18,
+    "solubility": "miscible",
+    "conductivity": "strong",
+    "hazards": ["corrosive", "irritant"],
+    "onShelf": true,
+    "levels": ["fsc", "bs"],
+    "structure": "molecules/hcl.svg",
+    "description": "Hydrogen chloride dissolved in water to about twelve times the strength of the dilute acid on the bench. It fumes in air, giving off choking hydrogen chloride, so it is opened only in a fume cupboard. Some reactions need it rather than the dilute acid — preparing chlorine from manganese(IV) oxide is the classic example, because only at this strength is there enough acid and chloride to make the reaction go.",
+    "source": "Wikipedia — Hydrochloric acid (density 1.18 g/mL and about 11.6–12.4 M at 36–38% w/w; fumes in air when concentrated), consulted 2026-11-03",
+    "category": "acid"
+  },
+  {
     "id": "naoh_1m",
     "name": "Sodium hydroxide",
     "formula": "NaOH",
