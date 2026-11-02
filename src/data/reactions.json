@@ -627,7 +627,7 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Silver nitrate is the standard reagent for identifying halide ions, and it tells the three apart by colour: a chloride gives a white precipitate, a bromide a cream one, and an iodide this distinct yellow. All three silver halides are insoluble, so the precipitate appears at once. Potassium and nitrate are spectator ions. Doing all three side by side is the only reliable way to judge the colours, because cream and white are hard to tell apart on their own.",
+    "explanation": "Silver nitrate is the standard reagent for identifying halide ions, and it tells the three apart by colour: a chloride gives a white precipitate, a bromide a cream one, and an iodide this distinct yellow. All three silver halides are insoluble, so the precipitate appears at once. Potassium and nitrate are spectator ions. Doing all three side by side helps, because cream and white are hard to tell apart on their own — and adding ammonia solution then confirms which halide it is: silver chloride dissolves in dilute ammonia, silver bromide only in concentrated ammonia, and silver iodide in neither.",
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — tests for anions, the silver nitrate test for halides"
   },
@@ -759,9 +759,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "A clean demonstration of a solubility rule: all sodium salts are soluble and all carbonates are insoluble EXCEPT those of Group 1 — so mixing a soluble calcium salt with a soluble carbonate must leave calcium carbonate behind as a solid. This is the same reaction that furs up kettles and pipes in hard-water areas, and the same white solid that makes limewater go milky.",
+    "explanation": "A clean demonstration of a solubility rule: all sodium salts are soluble and all carbonates are insoluble EXCEPT those of Group 1 and ammonium —so mixing a soluble calcium salt with a soluble carbonate must leave calcium carbonate behind as a solid. This is the same reaction that furs up kettles and pipes in hard-water areas, and the same white solid that makes limewater go milky.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — solubility rules and double displacement reactions"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — solubility rules and double displacement reactions",
+    "sources": [
+      { "ref": "LibreTexts — E3. Solubility constants for compounds at 25 °C (all sodium, potassium and ammonium salts are soluble)", "url": "https://chem.libretexts.org/Ancillary_Materials/Reference/Reference_Tables/Equilibrium_Constants/E3._Solubility_Constants_for_Compounds_at_25C", "checked": "2026-11-02", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_precipitation_pbno3_nacl",
@@ -847,9 +850,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Copper is unreactive enough that it will not touch oxygen at room temperature — this is why copper roofs and pipes last so long. Heat it strongly, though, and the surface turns from reddish brown to black as copper(II) oxide forms. The colour change is easy to reverse: passing hydrogen over the hot black oxide turns it back to bright copper, which is the standard demonstration of reduction.",
+    "explanation": "Copper is unreactive enough that it reacts only very slowly with oxygen at room temperature — a thin dark tarnish, and over many years the green patina seen on old copper roofs — which is why copper roofs and pipes last so long. Heat it strongly, though, and the surface turns from reddish brown to black as copper(II) oxide forms. The colour change is easy to reverse: passing hydrogen over the hot black oxide turns it back to bright copper, which is the standard demonstration of reduction.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, oxidation as gain of oxygen"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, oxidation as gain of oxygen",
+    "sources": [
+      { "ref": "Wikipedia — Copper (reacts slowly with atmospheric oxygen; green verdigris patina on copper roofs)", "url": "https://en.wikipedia.org/wiki/Copper", "checked": "2026-11-02", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_reduction_cuo_h2",
@@ -873,7 +879,7 @@
       "title": "Hydrogen and a hot tube together",
       "warning": "Hydrogen forms an explosive mixture with air, and this reaction needs the tube to be hot. Air left in the apparatus when the hydrogen is lit is what makes this dangerous rather than the reaction itself.",
       "visualEffect": null,
-      "whatToDoInstead": "Let the hydrogen flow long enough to sweep all the air out of the apparatus before heating, and keep heating until the flow is stopped so no air is drawn back in."
+      "whatToDoInstead": "Let the hydrogen flow long enough to sweep all the air out of the apparatus before heating. At the end, take the burner away but keep the hydrogen flowing until the tube has cooled — if air reaches the copper while it is still hot, it turns straight back into black copper(II) oxide."
     },
     "molecularAnimation": null,
     "explanation": "The mirror image of the reaction above, and the classic demonstration of reduction: the black copper(II) oxide LOSES its oxygen and turns back into bright reddish-brown copper, while the hydrogen GAINS that oxygen and leaves as water. Both halves happen at once — copper oxide is reduced, hydrogen is oxidised. Here hydrogen is acting as the reducing agent, which is exactly the job carbon monoxide does in a blast furnace when iron is extracted from its ore.",
@@ -1123,15 +1129,18 @@
     "hazard": {
       "severity": "high",
       "type": "toxic_gas",
-      "title": "Molten salt at 800 °C, poisonous chlorine, and sodium metal",
-      "warning": "This cell runs at over 800 °C. The chlorine given off is poisonous, and the sodium produced catches fire in air and reacts violently with water. All three hazards are present at once, which is why this is an industrial process and not a school experiment.",
+      "title": "Molten salt at hundreds of degrees, poisonous chlorine, and sodium metal",
+      "warning": "Pure salt has to be heated past 801 °C to melt, and even the industrial cell, which adds calcium chloride to lower the melting point, runs at about 600 °C. The chlorine given off is poisonous, and the sodium produced catches fire in air and reacts violently with water. All three hazards are present at once, which is why this is an industrial process and not a school experiment.",
       "visualEffect": null,
-      "whatToDoInstead": "This is shown here as a simulation of the industrial Down's cell. It is not something to attempt in a school laboratory at all — study the diagram and the half equations instead."
+      "whatToDoInstead": "This is shown here as a simulation of the industrial Downs cell. It is not something to attempt in a school laboratory at all — study the diagram and the half equations instead."
     },
     "molecularAnimation": "anim_electrolysis_molten_nacl",
-    "explanation": "Solid salt does not conduct, because its ions are locked in the crystal and cannot move — which is why this vessel does nothing until it is heated past the melting point of about 801 °C. Once molten, the ions are free, and now the current can pull them apart: sodium ions to the cathode where they become sodium metal, chloride ions to the anode where they become chlorine gas. With no water present there is nothing to be discharged in preference, so this time the sodium really does appear. This is the only practical way to obtain such a reactive metal, and it is how the industrial Down's cell works.",
+    "explanation": "Solid salt does not conduct, because its ions are locked in the crystal and cannot move — which is why this vessel does nothing until it is heated past the melting point of about 801 °C. Once molten, the ions are free, and now the current can pull them apart: sodium ions to the cathode where they become sodium metal, chloride ions to the anode where they become chlorine gas. With no water present there is nothing to be discharged in preference, so this time the sodium really does appear. This is the only practical way to obtain such a reactive metal, and it is how the industrial Downs cell (named after its inventor, James Downs) works — though industry mixes the salt with calcium chloride so that it melts at about 600 °C instead of 801 °C, saving a great deal of energy.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of molten sodium chloride and the Down's cell"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of molten sodium chloride and the Down's cell",
+    "sources": [
+      { "ref": "Wikipedia — Downs cell (named after James Cloyd Downs; calcium chloride added so the melt stays liquid at about 600 °C; sodium floats on the melt)", "url": "https://en.wikipedia.org/wiki/Downs_cell", "checked": "2026-11-02", "covers": ["conditions", "hazard", "explanation"] }
+    ]
   },
   {
     "id": "rxn_electrolysis_cuso4",
@@ -1169,9 +1178,12 @@
     },
     "hazard": null,
     "molecularAnimation": "anim_electrolysis_cuso4",
-    "explanation": "This is the reaction behind electroplating and behind the refining of copper. Copper(II) ions are pulled to the cathode, where they collect electrons and stick to it as a solid layer of copper — so whatever object you make the cathode gets copper-plated. Because the copper is being taken out of the solution, the blue colour fades as the reaction goes on, which makes progress easy to watch. At the anode the sulfate ion is too stable to be discharged, so hydroxide ions from the water give up their electrons instead and oxygen bubbles off, leaving the solution increasingly acidic.",
+    "explanation": "Copper(II) ions are pulled to the cathode, where they collect electrons and stick to it as a solid layer of copper — so whatever object you make the cathode gets copper-plated. Because the copper is being taken out of the solution, the blue colour fades as the reaction goes on, which makes progress easy to watch. At the anode the sulfate ion is too stable to be discharged, so hydroxide ions from the water give up their electrons instead and oxygen bubbles off, leaving the solution increasingly acidic. Electroplating and the refining of copper use this same cathode reaction, but with a copper ANODE: the anode dissolves, putting copper ions back as fast as the cathode takes them out, so no oxygen forms and the blue colour stays the same.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of copper(II) sulfate, electroplating and refining"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of copper(II) sulfate, electroplating and refining",
+    "sources": [
+      { "ref": "Cognito, GCSE Chemistry (Edexcel) 10.7 — Electrolysis of aqueous solutions (copper(II) sulfate with inert and with copper electrodes)", "url": "https://cognito.org/courses/gcse/chemistry-triple/edexcel/higher/notes/TUFoWE1DeWM/10.7-electrolysis-of-aqueous-solutions", "checked": "2026-11-02", "covers": ["products", "gas", "colour", "explanation"] }
+    ]
   },
   {
     "id": "rxn_combustion_sulfur",

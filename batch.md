@@ -270,3 +270,24 @@ written as net "after work-up" equations without the magnesium salt — a
 common textbook shorthand, kept as it is.
 
 Reactions with a `sources` entry after batch 1: 10 of 389.
+
+### Batch 2 — reactions 26–50
+
+19 sound as written, 6 corrected. Owner approved all recommendations on
+2026-11-02.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_reduction_cuo_h2` | **Safety procedure in the wrong order.** Said to keep heating until the hydrogen is stopped; the correct procedure is to remove the burner and keep the hydrogen flowing until the tube cools, or air re-oxidises the hot copper. | `whatToDoInstead` rewritten. **No `sources` entry:** the evidence is an RSC practical sheet ("Reduction of copper(II) oxide by hydrogen") quoted in search results and a Purdue demonstration sheet, but neither page could be opened to check. A teacher should confirm against a printed practical guide in stage 2.1.5. |
+| `rxn_electrolysis_molten_nacl` | "Down's cell" — it is the Downs cell, after James Cloyd Downs. The hazard said the cell runs "at over 800 °C"; the industrial cell adds calcium chloride and runs at about 600 °C. Pure NaCl does melt at 801 °C, so the vessel's `minTempC` is unchanged. | Hazard title, warning, `whatToDoInstead` and explanation corrected. The `source` string is left as written, since that is how the cited textbook may spell it. |
+| `rxn_electrolysis_cuso4` | Called this "the reaction behind electroplating and refining", which use a copper anode that dissolves (the blue stays); this rule has an inert anode (oxygen forms, the blue fades). | Explanation now says the cathode half is shared and explains the difference. |
+| `rxn_oxidation_cu_o2` | "Will not touch oxygen at room temperature" — copper reacts slowly, tarnishing and eventually forming a green patina. | Softened to "reacts only very slowly". |
+| `rxn_precipitation_cacl2_na2co3` | Solubility rule omitted ammonium carbonate as an exception. | "Group 1 and ammonium". |
+| `rxn_precipitation_agno3_ki` | Called comparing colours side by side "the only reliable way"; the confirmatory test is ammonia, which the lab already models. | Explanation now gives the ammonia test. |
+
+Rusting (`rxn_corrosion_iron_rusting`) was balanced by hand — the checker
+cannot read `·xH₂O`. Noted but not changed: brine electrolysis uses 1 M
+salt; much more dilute solutions give some oxygen with the chlorine, but at
+1 M chlorine is the main product.
+
+Reactions with a `sources` entry after batch 2: 14 of 389.
