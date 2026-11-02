@@ -2742,6 +2742,28 @@
     "category": "salt"
   },
   {
+    "id": "kmno4_s",
+    "name": "Potassium permanganate crystals",
+    "formula": "KMnO4",
+    "concentration": "pure",
+    "state": "solid",
+    "colorHex": "#3A1F3D",
+    "colorName": "purplish black",
+    "pH": null,
+    "molarMass": 158.03,
+    "density": 2.7,
+    "solubility": "soluble (about 6.4 g per 100 mL at 20 °C)",
+    "conductivity": "none",
+    "hazards": ["oxidiser", "harmful_if_swallowed", "stains_skin", "environmental_hazard"],
+    "onShelf": true,
+    "levels": ["fsc", "bs"],
+    "structure": "molecules/kmno4.svg",
+    "description": "Dark, glinting purplish-black crystals — the solid that the purple solution on the shelf is made from. Heated dry, the crystals decompose at about 240 °C into green potassium manganate, black manganese(IV) oxide and oxygen, which is one of the laboratory ways of making oxygen. A powerful oxidiser: kept well away from anything that burns.",
+    "source": "Wikipedia — Potassium permanganate (purplish-black crystals; molar mass 158.03 g/mol; density 2.7 g/cm³; solid decomposes on heating at about 240 °C to K₂MnO₄, MnO₂ and O₂), consulted 2026-11-03",
+    "flameElements": ["potassium"],
+    "category": "salt"
+  },
+  {
     "id": "mnso4_aq",
     "name": "Manganese(II) sulfate solution",
     "formula": "MnSO4",

@@ -7,7 +7,7 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **376 chemicals, 391 reactions
+> Snapshot as of the last entry below: **377 chemicals, 391 reactions
 > (72 of them `noReaction`), 18 guided experiments, 311 tests passing.**
 
 ---
@@ -351,3 +351,21 @@ violent neutralisation, not the two-gases-meet smoke demonstration; that
 needs gases moving between vessels (stage 2.3).
 
 Reactions with a `sources` entry after batch 4: 29 of 391.
+
+### Batch 5 — originally reactions 101–125 (file positions 103–127)
+
+22 sound as written, 3 corrected, 1 chemical added. Owner approved all
+recommendations on 2026-11-03.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_decomposition_kmno4` | **Could never fire.** It heated the 0.02 M solution to 240 °C, but a vessel holding liquid cannot pass 100 °C — and chemically it is the dry solid that decomposes. | **New chemical `kmno4_s`** (purplish-black crystals, 158.03 g/mol, density 2.7 — Wikipedia), on the shelf for FSc/BS; the rule now uses it. Engine checked: decomposes at 250 °C, "needs about 240 °C" at 150 °C, and the solution no longer offers a reaction it cannot reach. |
+| `rxn_addition_ethene_bromine` | With bromine WATER, most of the product is 2-bromoethanol rather than 1,2-dibromoethane; the orange still disappears (chemguide). | One sentence added; the simple equation is kept, as chemguide says it can be quoted at this level and the guided experiment depends on it. |
+| `rxn_prep_ethyne_carbide` | Showed clear liquid; the calcium hydroxide left is mostly a white sludge — the same gap as batches 1 and 3. | White suspension added to the effects. |
+
+Noted but not changed: at the end of the permanganate titration
+(`rxn_permanganate_oxidises_iron2`) the app shows "very pale pink", while
+the iron(III) formed probably makes the solution look pale yellow. No
+opened source settled it — left for the teacher review in stage 2.1.5.
+
+Reactions with a `sources` entry after batch 5: 32 of 391.

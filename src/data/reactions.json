@@ -2961,7 +2961,7 @@
   },
   {
     "id": "rxn_decomposition_kmno4",
-    "reactants": ["kmno4_aq"],
+    "reactants": ["kmno4_s"],
     "conditions": { "requiresHeat": true, "minTempC": 240, "catalyst": null },
     "products": ["k2mno4_s", "mno2_s", "o2_g"],
     "equation": "2KMnO₄ → K₂MnO₄ + MnO₂ + O₂",
@@ -2986,7 +2986,10 @@
     "molecularAnimation": null,
     "explanation": "Another laboratory preparation of oxygen, and a display of manganese's oxidation states in one tube. The purple +7 permanganate breaks into green +6 manganate and black +4 manganese(IV) oxide, releasing oxygen as it goes. Four states of one metal — purple at +7, green at +6, black at +4 and pale pink at +2 — each with its own colour. That is the transition metals in a sentence, and it is why they are the coloured part of the periodic table.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, oxidation states of manganese; preparation of oxygen"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, oxidation states of manganese; preparation of oxygen",
+    "sources": [
+      { "ref": "Wikipedia — Potassium permanganate (the solid decomposes on heating, about 240 °C, to K₂MnO₄, MnO₂ and O₂)", "url": "https://en.wikipedia.org/wiki/Potassium_permanganate", "checked": "2026-11-03", "covers": ["conditions", "products"] }
+    ]
   },
   {
     "id": "rxn_substitution_methane_chlorine",
@@ -3054,8 +3057,8 @@
     "equation": "CaC₂ + 2H₂O → C₂H₂ + Ca(OH)₂",
     "type": "hydrolysis",
     "effects": {
-      "colorToHex": "#EEF3F5",
-      "precipitate": null,
+      "colorToHex": "#F4F3EF",
+      "precipitate": "white calcium hydroxide sludge — only a little of it dissolves",
       "gas": "ethyne",
       "bubbles": true,
       "smoke": false,
@@ -3073,7 +3076,10 @@
     "molecularAnimation": null,
     "explanation": "How ethyne is made in a laboratory: drip water onto calcium carbide and the gas comes off at once. Before electric lighting this was how miners' and cyclists' lamps worked — a carbide chamber, a water drip, and a flame at the top. The gas has a strong garlic-like smell, though that comes from phosphine impurities rather than from ethyne itself, which is odourless when pure.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, laboratory preparation of ethyne"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, laboratory preparation of ethyne",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Reactions of the Group 2 elements with water (calcium hydroxide is only slightly soluble and forms a white precipitate)", "url": "https://www.chemguide.co.uk/inorganic/group2/reacth2o.html", "checked": "2026-11-03", "covers": ["precipitate"] }
+    ]
   },
   {
     "id": "rxn_addition_ethene_bromine",
@@ -3093,9 +3099,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "THE test for a carbon–carbon double bond, and it could hardly be easier to read: shake the gas with orange bromine water and the orange disappears. The bromine has added ACROSS the double bond, one atom to each carbon, and the product is colourless. Nothing needs heating, no catalyst is required, and it happens on shaking — that readiness is the whole difference between an unsaturated compound and a saturated one.",
+    "explanation": "THE test for a carbon–carbon double bond, and it could hardly be easier to read: shake the gas with orange bromine water and the orange disappears. The bromine has added ACROSS the double bond, one atom to each carbon, and the product is colourless. (Strictly, with bromine WATER rather than pure bromine, water molecules join in and most of the product is 2-bromoethanol, CH₂BrCH₂OH, rather than 1,2-dibromoethane — but the orange disappears either way, and the simple equation is the one quoted at this level.) Nothing needs heating, no catalyst is required, and it happens on shaking — that readiness is the whole difference between an unsaturated compound and a saturated one.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, addition reactions of alkenes and the test for unsaturation"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, addition reactions of alkenes and the test for unsaturation",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — The halogenation of alkenes (alkenes decolourise bromine water; with bromine water most of the product is 2-bromoethanol)", "url": "https://www.chemguide.co.uk/organicprops/alkenes/halogenation.html", "checked": "2026-11-03", "covers": ["colour", "explanation"] }
+    ]
   },
   {
     "id": "rxn_addition_ethyne_bromine",

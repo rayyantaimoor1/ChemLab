@@ -1769,6 +1769,24 @@
       { "from": "k", "to": "o3", "type": "ionic" }
     ]
   },
+  "kmno4_s": {
+    "note": "Manganese with four oxygens in a tetrahedron, in its highest oxidation state of +7.",
+    "atoms": [
+      { "id": "mn", "element": "Mn", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.6, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.5, "y": -0.55, "z": 0 },
+      { "id": "o3", "element": "O", "x": -0.75, "y": -0.55, "z": 1.3 },
+      { "id": "o4", "element": "O", "x": -0.75, "y": -0.55, "z": -1.3 },
+      { "id": "k", "element": "K", "x": -3.2, "y": 0.8, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "mn", "to": "o1", "type": "covalent" },
+      { "from": "mn", "to": "o2", "type": "covalent" },
+      { "from": "mn", "to": "o3", "type": "covalent" },
+      { "from": "mn", "to": "o4", "type": "covalent" },
+      { "from": "k", "to": "o3", "type": "ionic" }
+    ]
+  },
   "k2mno4_s": {
     "note": "The same manganese-and-four-oxygens unit as permanganate, but carrying two potassium ions instead of one - because the manganese here is +6 rather than +7.",
     "atoms": [
