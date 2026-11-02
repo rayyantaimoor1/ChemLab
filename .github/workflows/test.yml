@@ -1,0 +1,55 @@
+# Runs the tests and the content validator on GitHub's computers every time
+# anything is pushed, so a change that breaks the engine, the bridge, or a
+# reaction's data shows up as a red cross on GitHub straight away - before
+# it ever reaches a lab PC.
+#
+# This file only affects GitHub. It adds nothing to the app or the installer,
+# and the app itself still makes no network calls (CLAUDE.md §2).
+#
+# Windows, because that is the only platform ChemLab ships for: a test that
+# only fails on Windows (file paths, line endings) is one we want to see.
+
+name: Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# Read-only: this workflow never writes to the repository.
+permissions:
+  contents: read
+
+# A newer push to the same branch makes an older, still-running check
+# pointless, so it is cancelled rather than left to finish.
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Tests and content check
+    runs-on: windows-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      # Since Electron 42 the Electron program is downloaded the first time
+      # it is run, not during install - and the tests never run it, so this
+      # stays a quick install.
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run the tests
+        run: npm test
+
+      - name: Check the chemistry data
+        run: npm run validate
