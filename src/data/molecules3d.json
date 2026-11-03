@@ -715,6 +715,15 @@
       { "from": "br1", "to": "br2", "type": "covalent" }
     ]
   },
+  "br2_l": {
+    "atoms": [
+      { "id": "br1", "element": "Br", "x": -1.14, "y": 0, "z": 0 },
+      { "id": "br2", "element": "Br", "x": 1.14, "y": 0, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "br1", "to": "br2", "type": "covalent" }
+    ]
+  },
   "i2_aq": {
     "atoms": [
       { "id": "i1", "element": "I", "x": -1.33, "y": 0, "z": 0 },

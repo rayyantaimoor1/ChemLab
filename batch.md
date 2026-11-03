@@ -7,8 +7,8 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **377 chemicals, 391 reactions
-> (72 of them `noReaction`), 18 guided experiments, 311 tests passing.**
+> Snapshot as of the last entry below: **378 chemicals, 392 reactions
+> (73 of them `noReaction`), 18 guided experiments, 311 tests passing.**
 
 ---
 
@@ -369,3 +369,24 @@ the iron(III) formed probably makes the solution look pale yellow. No
 opened source settled it — left for the teacher review in stage 2.1.5.
 
 Reactions with a `sources` entry after batch 5: 32 of 391.
+
+### Batch 6 — originally reactions 126–150 (file positions 128–152)
+
+20 sound as written, 5 corrected, 1 small clause removed, 1 chemical and
+1 rule added. Owner approved all recommendations on 2026-11-03.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_bromination_benzene` | **Wrong reagent.** Used bromine WATER with an iron(III) bromide catalyst; benzene is brominated by bromine itself with an iron catalyst (chemguide), and water destroys the catalyst — so adding iron(III) bromide to bromine water and benzene gave bromobenzene, which would not happen. | **New chemical `br2_l`** (liquid bromine: dark red-brown, density 3.10 — Wikipedia), on the shelf for FSc/BS; the rule now uses it, and its explanation says why bromine water will not do. **New rule `rxn_none_benzene_bromine_water`**: no reaction, the orange just moves into the benzene layer, with or without the catalyst. Engine checked all four combinations, and ethene still decolourises bromine water. Medium confidence on the water-destroys-the-catalyst point, which rests on search results; the new rule's `source` says so. |
+| `rxn_hydrogenation_benzene` | Called the harsher conditions "the best measure" of benzene's stability; the measure is the enthalpy of hydrogenation (−208 against an expected −360 kJ/mol, about 150 kJ/mol delocalisation energy — chemguide). Also said ethene hydrogenates over nickel "at ordinary temperatures", contradicting the lab's own heated ethene rule. | Rewritten around the enthalpy figures. |
+| `rxn_elimination_bromoethane_naoh` | "Nothing about the reagents predicts which — only the solvent does." The type of halogenoalkane matters most, and a primary one like bromoethane gives mainly substitution even in ethanol (chemguide). | Rule kept (the syllabus example, and some ethene does form); explanation now names all four factors and says the ethene is only part of the product. |
+| `rxn_sulfonation_benzene` | Called benzenesulfonic acid "precisely the structure of a detergent"; real detergents are sulfonated LONG-CHAIN alkylbenzenes (Wikipedia). | Reworded. |
+| `rxn_hydration_ethene` | "This is how most industrial ethanol is made — not by fermentation." Most ethanol today comes from fermentation; the US no longer uses the ethene route (Wikipedia). | Reworded: which route is cheaper depends on oil and crop prices. |
+| `rxn_hydrogenation_ethyne` | Linked stopping at the alkene to "how partially hydrogenated fats came about" — those come from oils, not alkynes. | Clause removed. |
+
+Left as they are for now, by agreement: phenol is "about five orders of
+magnitude" more acidic than ethanol (nearer six — change once a source for
+ethanol's pKa has been opened), and Tollens' "only an aldehyde does this"
+(fructose also gives a mirror — better handled in the sugars batch).
+
+Reactions with a `sources` entry after batch 6: 38 of 392.

@@ -3176,7 +3176,7 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Hydrogen adds to a triple bond one stage at a time: ethyne first becomes ethene, and only with more hydrogen does the ethene go on to ethane. Add hydrogen to this vessel again and you can watch the second stage happen. Stopping cleanly at the alkene is genuinely difficult and needs a deliberately weakened catalyst, which is a real industrial problem rather than a textbook detail — it is how partially hydrogenated fats came about.",
+    "explanation": "Hydrogen adds to a triple bond one stage at a time: ethyne first becomes ethene, and only with more hydrogen does the ethene go on to ethane. Add hydrogen to this vessel again and you can watch the second stage happen. Stopping cleanly at the alkene is genuinely difficult and needs a deliberately weakened catalyst, which is a real industrial problem rather than a textbook detail.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, catalytic hydrogenation of alkynes"
   },
@@ -3198,9 +3198,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Water adds across the double bond over phosphoric acid, and this is how most industrial ethanol is made — not by fermentation. The two routes are worth comparing: this one is fast, continuous and gives a pure product, but starts from crude oil; fermentation is slow and gives a dilute mixture, but starts from sugar and is renewable. Which is better depends on what you are optimising for, and that is a genuine judgement rather than a fact to memorise.",
+    "explanation": "Water adds across the double bond over phosphoric acid, and this is one of the two industrial routes to ethanol — the other is fermentation, which today makes most of the world's ethanol, including the fuel ethanol of Brazil and the United States. Which route is cheaper depends on the prices of oil and of crops, and the ethene route is no longer used in the United States because fermentation of corn costs less. The two routes are worth comparing: this one is fast, continuous and gives a pure product, but starts from crude oil; fermentation is slow and gives a dilute mixture, but starts from sugar and is renewable. Which is better depends on what you are optimising for, and that is a genuine judgement rather than a fact to memorise.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, industrial hydration of ethene"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, industrial hydration of ethene",
+    "sources": [
+      { "ref": "Wikipedia — Ethanol (made both by ethylene hydration and by fermentation; the ethylene route is no longer used in the US because fermentation is cheaper)", "url": "https://en.wikipedia.org/wiki/Ethanol", "checked": "2026-11-03", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_baeyer_test_ethene",
@@ -3226,7 +3229,7 @@
   },
   {
     "id": "rxn_bromination_benzene",
-    "reactants": ["br2_aq", "c6h6_l"],
+    "reactants": ["br2_l", "c6h6_l"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": "febr3_s" },
     "products": ["c6h5br_l", "hbr_g"],
     "equation": "C₆H₆ + Br₂ → C₆H₅Br + HBr",
@@ -3249,9 +3252,20 @@
       "whatToDoInstead": "This is why school laboratories use methylbenzene instead of benzene wherever they can. If benzene must be used it is a fume cupboard job with gloves throughout, and never on an open bench."
     },
     "molecularAnimation": null,
-    "explanation": "The single most important thing about benzene, and it shows up twice here. FIRST: with no catalyst present, nothing happens at all — the app will simply say a catalyst is missing. Shake ethene with bromine water and the orange vanishes on the spot; shake benzene with it and the orange stays. Benzene looks unsaturated on paper and refuses to behave like it, because its six spare electrons are spread evenly round the whole ring and breaking that arrangement costs more than the reaction gains. SECOND: once the catalyst polarises the bromine enough to force a reaction, what happens is SUBSTITUTION, not addition — a hydrogen is swapped out, the ring survives intact, and the hydrogen bromide fuming off is the proof.",
+    "explanation": "The single most important thing about benzene, and it shows up twice here. FIRST: ethene decolourises bromine water on the spot, but benzene does not react with bromine at all on its own — even pure liquid bromine needs a catalyst before anything happens, and the app will say the catalyst is missing. Benzene looks unsaturated on paper and refuses to behave like it, because its six spare electrons are spread evenly round the whole ring and breaking that arrangement costs more than the reaction gains. The catalyst is iron(III) bromide (or iron filings, which make it from the bromine), and it needs PURE bromine: bromine water will not do, because water destroys the catalyst. SECOND: once the catalyst polarises the bromine enough to force a reaction, what happens is SUBSTITUTION, not addition — a hydrogen is swapped out, the ring survives intact, and the hydrogen bromide fuming off is the proof.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, electrophilic substitution and the stability of the ring"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, electrophilic substitution and the stability of the ring",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Halogenation of benzene and methylbenzene (bromine with an iron or iron(III) bromide catalyst, at room temperature)", "url": "https://www.chemguide.co.uk/organicprops/arenes/halogenation.html", "checked": "2026-11-03", "covers": ["conditions", "products"] }
+    ]
+  },
+  {
+    "id": "rxn_none_benzene_bromine_water",
+    "reactants": ["br2_aq", "c6h6_l"],
+    "noReaction": true,
+    "explanation": "No reaction — and this is the famous negative result. Ethene decolourises bromine water on the spot; benzene does not. What you do see is the orange colour moving out of the water and into the benzene, which floats on top as an orange layer: bromine simply dissolves better in benzene than in water. That is a change of solvent, not a reaction, and no hydrogen bromide comes off. Adding iron(III) bromide does not help either, because the water in bromine water destroys the catalyst — brominating benzene needs pure bromine.",
+    "levels": ["fsc", "bs"],
+    "source": "Jim Clark, chemguide — Halogenation of benzene and methylbenzene (bromine with an iron catalyst). The water-destroys-the-catalyst point rests on search results, not an opened source — to be confirmed by a teacher in stage 2.1.5"
   },
   {
     "id": "rxn_nitration_benzene",
@@ -3307,9 +3321,12 @@
       "whatToDoInstead": "Fume cupboard with gloves and a face shield, heated in a water bath rather than over a flame. Add the acid to the benzene slowly and never the reverse."
     },
     "molecularAnimation": null,
-    "explanation": "The third substitution on the ring, and the one with the biggest industrial output. What it produces is a molecule of two halves: a benzene ring that will not mix with water at one end, and a strongly acidic group that dissolves readily at the other. That is precisely the structure of a detergent — the hydrocarbon tail grips grease, the sulfonate head is dragged away by water, and the two together lift the dirt off. Almost every washing-up liquid and washing powder starts here.",
+    "explanation": "The third substitution on the ring, and the one with the biggest industrial output. What it produces is a molecule of two halves: a benzene ring that will not mix with water at one end, and a strongly acidic group that dissolves readily at the other. Benzenesulfonic acid itself is not a detergent — the ring is too small a tail to grip grease. But run exactly the same sulfonation on a benzene ring carrying a LONG hydrocarbon chain (dodecylbenzene, with twelve carbons) and the product is a real detergent: the long tail grips grease, the sulfonate head is dragged away by water, and the two together lift the dirt off. Most washing-up liquids and washing powders are made that way.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, sulfonation and detergent manufacture"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, sulfonation and detergent manufacture",
+    "sources": [
+      { "ref": "Wikipedia — Alkylbenzene sulfonate (detergents made by sulfonating long-chain alkylbenzenes such as dodecylbenzene)", "url": "https://en.wikipedia.org/wiki/Alkylbenzene_sulfonate", "checked": "2026-11-03", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_combustion_benzene",
@@ -3358,9 +3375,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Benzene CAN be made to add hydrogen — but look at what it takes. Ethene does this over nickel at ordinary temperatures; benzene needs about 180 °C and high pressure, and it takes three molecules of hydrogen all at once rather than one. There is no stopping half way at a partly hydrogenated ring, because breaking the delocalisation is the expensive step and once it is paid for the rest follows. That contrast in conditions is the best measure there is of how much the delocalised ring is worth, and the product is a puckered chair-shaped ring rather than a flat one.",
+    "explanation": "Benzene CAN be made to add hydrogen — but it needs a hot nickel catalyst, about 180 °C and high pressure, and it takes three molecules of hydrogen all at once. There is no stopping half way at a partly hydrogenated ring, because breaking the delocalisation is the expensive step and once it is paid for the rest follows. The real measure of what the delocalised ring is worth is the ENERGY: hydrogenating cyclohexene, with one double bond, gives out 120 kJ per mole, so a ring of three ordinary double bonds should give out about 360 kJ. Benzene gives out only about 208 kJ. The missing 150 kJ or so is the delocalisation energy — the extra stability the spread-out electrons give the ring. The product is a puckered chair-shaped ring rather than a flat one.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, hydrogenation and resonance energy"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, hydrogenation and resonance energy",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Bonding in benzene: the Kekulé structure (hydrogenation enthalpies −120, expected −360, actual −208 kJ/mol; about 150 kJ/mol delocalisation energy)", "url": "https://www.chemguide.co.uk/basicorg/bonding/benzene1.html", "checked": "2026-11-03", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_substitution_bromoethane_naoh",
@@ -3382,7 +3402,10 @@
     "molecularAnimation": null,
     "explanation": "Nucleophilic substitution, and half of the most instructive pair in the whole of organic chemistry. The carbon–bromine bond is polar, leaving that carbon slightly positive; the hydroxide ion has a lone pair and is drawn straight to it, pushing the bromide out as it arrives. In WATER this is what happens and you get an alcohol. Now do the identical reaction in ethanol instead and see what changes.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides, nucleophilic substitution"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides, nucleophilic substitution",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Elimination v nucleophilic substitution in halogenoalkanes (primary mainly substitution; ethanol, heat and concentration favour elimination)", "url": "https://chemguide.co.uk/mechanisms/elim/elimvsubst.html", "checked": "2026-11-03", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_elimination_bromoethane_naoh",
@@ -3402,9 +3425,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "The other half of the pair, and the reason conditions get written under arrows. Same halogenoalkane, same sodium hydroxide, same heat — but dissolved in ethanol rather than water, the hydroxide stops behaving as a nucleophile and behaves as a BASE instead. Rather than attacking the carbon, it pulls a hydrogen off the neighbouring one, and the electrons left behind form a double bond as the bromide departs. Substitution gives an alcohol; elimination gives an alkene. Nothing about the reagents predicts which — only the solvent does, and you can confirm the difference by testing the gas with bromine water.",
+    "explanation": "The other half of the pair, and the reason conditions get written under arrows. Same halogenoalkane, same sodium hydroxide, same heat — but dissolved in ethanol rather than water, the hydroxide stops behaving as a nucleophile and behaves as a BASE instead. Rather than attacking the carbon, it pulls a hydrogen off the neighbouring one, and the electrons left behind form a double bond as the bromide departs. Substitution gives an alcohol; elimination gives an alkene, and you can confirm the alkene by testing the gas with bromine water. Be honest about how much you get, though. Four things decide between the two routes: the TYPE of halogenoalkane matters most, and a primary one like bromoethane gives mainly substitution even in ethanol, so the ethene here is only part of the product. Ethanol rather than water, a higher temperature and a more concentrated alkali all push towards elimination. A tertiary halogenoalkane, such as 2-bromo-2-methylpropane, gives mainly elimination.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides, elimination versus substitution"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides, elimination versus substitution",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Elimination v nucleophilic substitution in halogenoalkanes (primary mainly substitution; ethanol, heat and concentration favour elimination)", "url": "https://chemguide.co.uk/mechanisms/elim/elimvsubst.html", "checked": "2026-11-03", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_substitution_bromoethane_ammonia",

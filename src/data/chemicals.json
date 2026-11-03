@@ -1197,6 +1197,27 @@
     "category": "reagent"
   },
   {
+    "id": "br2_l",
+    "name": "Bromine (liquid)",
+    "formula": "Br2",
+    "concentration": "pure",
+    "state": "liquid",
+    "colorHex": "#7A2414",
+    "colorName": "dark red-brown",
+    "pH": null,
+    "molarMass": 159.81,
+    "density": 3.1,
+    "solubility": "slightly soluble in water (about 3.4 g per 100 mL at 20 °C)",
+    "conductivity": "none",
+    "hazards": ["toxic", "corrosive", "oxidising"],
+    "onShelf": true,
+    "levels": ["fsc", "bs"],
+    "structure": "molecules/br2.svg",
+    "description": "Pure bromine: a heavy, dark red-brown liquid that evaporates readily into a vapour of the same colour, with a choking smell. It is what benzene needs to be brominated — bromine WATER will not do, because the water ruins the iron catalyst. Toxic and volatile, so it is handled only in a fume cupboard; most of the time the much milder bromine water does the job instead.",
+    "source": "Wikipedia — Bromine (volatile red-brown liquid at room temperature; density 3.10 g/cm³; toxicity and volatility), consulted 2026-11-03",
+    "category": "element"
+  },
+  {
     "id": "i2_aq",
     "name": "Iodine solution",
     "formula": "I2",
