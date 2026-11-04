@@ -1252,7 +1252,7 @@
     "level": "bs",
     "objective": "Dissolve cobalt(II) chloride hexahydrate in concentrated hydrochloric acid to shift its colour to blue, then add water to shift it back to pink, demonstrating a ligand-exchange equilibrium in both directions.",
     "apparatus": ["test_tube", "stirring_rod"],
-    "reagents": ["cocl2_6h2o_s", "hcl_1m", "water_distilled"],
+    "reagents": ["cocl2_6h2o_s", "hcl_conc", "water_distilled"],
     "steps": [
       {
         "n": 1,
@@ -1269,16 +1269,16 @@
       },
       {
         "n": 2,
-        "instruction": "Add hydrochloric acid to the tube.",
+        "instruction": "Add concentrated hydrochloric acid to the tube.",
         "requiredAction": {
           "type": "addChemical",
           "containerType": "test_tube",
-          "chemicalId": "hcl_1m",
+          "chemicalId": "hcl_conc",
           "minAmountMl": 10,
           "maxAmountMl": 15
         },
-        "hint": "Add hydrochloric acid to the cobalt(II) chloride and watch the colour shift.",
-        "onWrongAction": "Add hydrochloric acid to the tube. Chloride ions are what push the equilibrium towards the blue complex."
+        "hint": "Add concentrated hydrochloric acid to the cobalt(II) chloride and watch the colour shift. Dilute acid will only dissolve it to a pink solution.",
+        "onWrongAction": "Add concentrated hydrochloric acid to the tube. A high concentration of chloride ions is what pushes the equilibrium towards the blue complex."
       },
       {
         "n": 3,

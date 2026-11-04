@@ -7,8 +7,8 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **378 chemicals, 392 reactions
-> (73 of them `noReaction`), 18 guided experiments, 311 tests passing.**
+> Snapshot as of the last entry below: **378 chemicals, 394 reactions
+> (74 of them `noReaction`), 18 guided experiments, 311 tests passing.**
 
 ---
 
@@ -405,3 +405,21 @@ approved all recommendations on 2026-11-04.
 | `rxn_solvay_precipitation` | "Into washing soda" — the process makes sodium carbonate (soda ash); washing soda is its hydrate. | Reworded, matching batch 5's fix to `rxn_decomposition_nahco3`. |
 
 Reactions with a `sources` entry after batch 7: 41 of 392.
+
+### Batch 8 — originally reactions 176–200 (file positions 179–203)
+
+20 sound as written, 3 corrected, 2 rules added, 1 guided experiment
+corrected. Owner approved all recommendations on 2026-11-05.
+
+| Reaction / experiment | Finding | Resolution |
+|---|---|---|
+| `rxn_ligand_exchange_cobalt_to_blue`, and **`exp_cobalt_chloride_equilibrium`** | Used 1 M HCl. The blue tetrachloro complex needs CONCENTRATED hydrochloric acid, because only that supplies enough chloride (chemguide); dilute acid just dissolves the crystals pink. The guided experiment's objective, expected result and safety note already said "concentrated", but its reagent list and step 2 used the 1 M acid — so the step "worked" in a way a real tube would not. | Rule switched to `hcl_conc`. Experiment reagent list, step 2's chemical, instruction, hint and wrong-action text switched to match. **New rule `rxn_dissolution_cocl2_dilute_hcl`**: dilute acid dissolves the crystals to a pale pink solution. Checked by running the experiment's own sequence through the real actions code: pink crystals → deep blue with concentrated acid → pale pink with water. |
+| `rxn_ligand_exchange_cu_chloride` | The same, and its own explanation said "this needs concentrated hydrochloric acid". | Switched to `hcl_conc`. **New rule `rxn_none_cuso4_dilute_hcl`**: the solution stays blue in dilute acid. |
+| `rxn_acidrain_attacks_marble` | Said marble "fizzes away in exactly the same manner" in sulfuric acid. It starts and then almost immediately stops, because the sparingly soluble calcium sulfate coats the chips (chemguide; Wikipedia). | Explanation rewritten; the coating is also what flakes the stone on a building. |
+
+Noted but not changed:
+- `rxn_test_nickel_dmg`: the standard test usually adds a little ammonia to take up the acid released. The page opened (Wikipedia, Dimethylglyoxime) did not state the conditions, so this waits for the teacher review.
+- `rxn_soap_temporary_hard_water` lists sodium hydrogencarbonate as a solid product, though it stays dissolved; fixing it would need a new chemical for little gain.
+- Adding water to most solutions (for example `nacl_aq` + `water_distilled`) gives "not available yet", because dilution is not modelled as a reaction. This is app-wide, not a data error; it belongs with stage 2.2's amounts.
+
+Reactions with a `sources` entry after batch 8: 47 of 394.

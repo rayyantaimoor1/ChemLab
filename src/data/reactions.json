@@ -4360,9 +4360,13 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "The app already knew how to MAKE acid rain — sulfur dioxide from burning coal and diesel, dissolved and oxidised. This is what happens when it lands. Marble and limestone are calcium carbonate, so a building is chemically the same thing as the marble chip in this beaker, and it fizzes away in exactly the same manner. The damage is worse than simple dissolving, because the calcium sulfate left behind takes up more room than the stone it replaced and flakes the surface off, taking carved detail with it. It is why old monuments have blurred faces, and it is a chemistry problem with a political solution: scrub the sulfur out at the chimney.",
+    "explanation": "The app already knew how to MAKE acid rain — sulfur dioxide from burning coal and diesel, dissolved and oxidised. This is what happens when it lands. Marble and limestone are calcium carbonate, so a building is chemically the same thing as the marble chip in this beaker. Watch the chip closely, though: it fizzes at first and then almost stops, unlike marble in hydrochloric acid. Calcium sulfate is only very slightly soluble, so it stays on the surface as a coating that keeps fresh acid away from the stone. On a building that same calcium sulfate does the real damage — it takes up more room than the stone it replaced and flakes the surface off, taking carved detail with it. It is why old monuments have blurred faces, and it is a chemistry problem with a political solution: scrub the sulfur out at the chimney.",
     "levels": ["matric", "fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Environmental chemistry, effects of acid rain"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Environmental chemistry, effects of acid rain",
+    "sources": [
+      { "ref": "Jim Clark, chemguide (Core Chemistry 14–16) — Acids and carbonates (marble in dilute sulfuric acid starts, then almost immediately stops as calcium sulfate coats the chips)", "url": "https://chemguide.co.uk/14to16/acids/carbonates.html", "checked": "2026-11-05", "covers": ["explanation"] },
+      { "ref": "Wikipedia — Calcium sulfate (all forms are sparingly soluble in water; about 2.6 g/L)", "url": "https://en.wikipedia.org/wiki/Calcium_sulfate", "checked": "2026-11-05", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_liming_acid_water",
@@ -4469,7 +4473,7 @@
   },
   {
     "id": "rxn_ligand_exchange_cu_chloride",
-    "reactants": ["cuso4_0_5m", "hcl_1m"],
+    "reactants": ["cuso4_0_5m", "hcl_conc"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["cucl4_aq", "h2so4_aq"],
     "equation": "[Cu(H₂O)₆]²⁺ + 4Cl⁻ ⇌ [CuCl₄]²⁻ + 6H₂O",
@@ -4485,13 +4489,27 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Blue to yellow-green, and not one electron has moved. The copper is +2 before and +2 after; all that has changed is what is bonded to it. Four chlorides have pushed six waters off, and because chloride is the bigger ligand only four will fit — so the SHAPE changes too, from octahedral to tetrahedral. That is why the colour changes so completely: the colour of a transition metal complex comes from the gap between its d orbitals, and that gap is set by the ligands and the geometry, not by the metal alone. In the real laboratory this needs concentrated hydrochloric acid, and the intermediate green shows both complexes present at once.",
+    "explanation": "Blue to yellow-green, and not one electron has moved. The copper is +2 before and +2 after; all that has changed is what is bonded to it. Four chlorides have pushed six waters off, and because chloride is the bigger ligand only four will fit — so the SHAPE changes too, from octahedral to tetrahedral. That is why the colour changes so completely: the colour of a transition metal complex comes from the gap between its d orbitals, and that gap is set by the ligands and the geometry, not by the metal alone. It needs CONCENTRATED hydrochloric acid, because only that supplies enough chloride to push the waters off; the green usually seen is both complexes present at once, and adding water turns it blue again.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — ligand substitution and the spectrochemical series"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — ligand substitution and the spectrochemical series",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Substitution in complex ions: ligand exchange (concentrated hydrochloric acid turns pink cobalt(II) blue and blue copper(II) olive-green/yellow; reversed by adding water)", "url": "https://www.chemguide.co.uk/inorganic/complexions/ligandexch.html", "checked": "2026-11-05", "covers": ["conditions", "colour", "explanation"] }
+    ]
+  },
+  {
+    "id": "rxn_none_cuso4_dilute_hcl",
+    "reactants": ["cuso4_0_5m", "hcl_1m"],
+    "noReaction": true,
+    "explanation": "The solution stays blue. Swapping the water ligands on copper for chloride needs a very high concentration of chloride ions, and the dilute acid on the bench is mostly water — so water stays on the copper and nothing visible happens. Use CONCENTRATED hydrochloric acid and the colour turns yellow-green; add water to that and it turns blue again. The concentration is the whole point.",
+    "levels": ["bs"],
+    "source": "Jim Clark, chemguide — Substitution in complex ions: ligand exchange (concentrated hydrochloric acid is used because it provides a very high chloride concentration), consulted 2026-11-05",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Substitution in complex ions: ligand exchange (concentrated hydrochloric acid turns pink cobalt(II) blue and blue copper(II) olive-green/yellow; reversed by adding water)", "url": "https://www.chemguide.co.uk/inorganic/complexions/ligandexch.html", "checked": "2026-11-05", "covers": ["noReaction", "explanation"] }
+    ]
   },
   {
     "id": "rxn_ligand_exchange_cobalt_to_blue",
-    "reactants": ["cocl2_6h2o_s", "hcl_1m"],
+    "reactants": ["cocl2_6h2o_s", "hcl_conc"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["cocl4_aq", "water"],
     "equation": "[Co(H₂O)₆]²⁺ + 4Cl⁻ ⇌ [CoCl₄]²⁻ + 6H₂O",
@@ -4507,9 +4525,38 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Pink to deep blue. This is the same ligand exchange the copper just did, but with a colour change so complete that it became the standard demonstration of LE CHATELIER'S PRINCIPLE. Adding chloride pushes the equilibrium to the right, and the blue tetrahedral complex takes over. The point of the demonstration is what comes next: nothing has been used up and nothing is irreversible, so adding water pushes it straight back. Try that in the next entry.",
+    "explanation": "Pink to deep blue. This is the same ligand exchange the copper just did, but with a colour change so complete that it became the standard demonstration of LE CHATELIER'S PRINCIPLE. Adding chloride pushes the equilibrium to the right, and the blue tetrahedral complex takes over — but only CONCENTRATED hydrochloric acid supplies enough chloride to do it; dilute acid simply dissolves the crystals to a pink solution. The point of the demonstration is what comes next: nothing has been used up and nothing is irreversible, so adding water pushes it straight back. Try that in the next entry.",
     "levels": ["fsc", "bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the cobalt(II) chloride equilibrium"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the cobalt(II) chloride equilibrium",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Substitution in complex ions: ligand exchange (concentrated hydrochloric acid turns pink cobalt(II) blue and blue copper(II) olive-green/yellow; reversed by adding water)", "url": "https://www.chemguide.co.uk/inorganic/complexions/ligandexch.html", "checked": "2026-11-05", "covers": ["conditions", "colour", "explanation"] }
+    ]
+  },
+  {
+    "id": "rxn_dissolution_cocl2_dilute_hcl",
+    "reactants": ["cocl2_6h2o_s", "hcl_1m"],
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["co_h2o_aq"],
+    "equation": "CoCl₂·6H₂O(s) → [Co(H₂O)₆]²⁺(aq) + 2Cl⁻(aq)",
+    "type": "dissolution",
+    "effects": {
+      "colorToHex": "#E8A0B4",
+      "precipitate": null,
+      "dissolves": "the pink crystals dissolved to a pale pink solution",
+      "gas": null,
+      "bubbles": false,
+      "smoke": false,
+      "tempDeltaC": 0,
+      "resultPH": 1
+    },
+    "hazard": null,
+    "molecularAnimation": null,
+    "explanation": "The crystals dissolve and the solution is pale PINK, not blue. The dilute acid is mostly water, so water molecules stay wrapped round each cobalt ion as the pink hexaaqua complex. Turning it blue means pushing those waters off with chloride, and that needs a very high chloride concentration — which is why the demonstration uses CONCENTRATED hydrochloric acid.",
+    "levels": ["fsc", "bs"],
+    "source": "Jim Clark, chemguide — Substitution in complex ions: ligand exchange (pink hexaaquacobalt(II); concentrated hydrochloric acid turns it blue because it provides a very high chloride concentration), consulted 2026-11-05",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Substitution in complex ions: ligand exchange (concentrated hydrochloric acid turns pink cobalt(II) blue and blue copper(II) olive-green/yellow; reversed by adding water)", "url": "https://www.chemguide.co.uk/inorganic/complexions/ligandexch.html", "checked": "2026-11-05", "covers": ["colour", "explanation"] }
+    ]
   },
   {
     "id": "rxn_ligand_exchange_cobalt_to_pink",
@@ -4531,7 +4578,10 @@
     "molecularAnimation": null,
     "explanation": "And back to pink, by doing nothing but adding water. This is the half of the demonstration that carries the lesson. An equilibrium is not a reaction that has stopped — it is one running both ways at the same rate, and adding more of something on one side simply shifts where that balance sits. Notice also what water is doing here. It is not a solvent standing politely aside; it is a LIGAND, competing with chloride for the cobalt, and it wins when there is enough of it. Warm the pink solution and it goes blue again, because the change to the blue form absorbs heat.",
     "levels": ["fsc", "bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the cobalt(II) chloride equilibrium and Le Chatelier's principle"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the cobalt(II) chloride equilibrium and Le Chatelier's principle",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Substitution in complex ions: ligand exchange (concentrated hydrochloric acid turns pink cobalt(II) blue and blue copper(II) olive-green/yellow; reversed by adding water)", "url": "https://www.chemguide.co.uk/inorganic/complexions/ligandexch.html", "checked": "2026-11-05", "covers": ["colour", "explanation"] }
+    ]
   },
   {
     "id": "rxn_test_nickel_dmg",
