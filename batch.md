@@ -390,3 +390,18 @@ ethanol's pKa has been opened), and Tollens' "only an aldehyde does this"
 (fructose also gives a mirror — better handled in the sugars batch).
 
 Reactions with a `sources` entry after batch 6: 38 of 392.
+
+### Batch 7 — originally reactions 151–175 (file positions 154–178)
+
+20 sound as written, 5 corrected (one of them in `chemicals.json`). Owner
+approved all recommendations on 2026-11-04.
+
+| Reaction / chemical | Finding | Resolution |
+|---|---|---|
+| `rxn_urea_synthesis` | Repeated the "Wöhler myth": that making urea from "two lifeless minerals" ended vitalism. Wöhler made urea from ammonium cyanate, not CO₂ + NH₃, and the claim that it ended vitalism is a textbook myth (Wikipedia). | History sentence rewritten. The industrial chemistry was already right. |
+| `fat_l` (chemical), `rxn_saponification_fat` | Glyceryl tristearate was recorded as a pale yellow LIQUID; it is a white solid melting at 54–72.5 °C (Wikipedia), and the lab's own `rxn_none_bromine_saturated_fat` already says "the fat is solid at room temperature". Saponification also called itself "the oldest deliberate chemical reaction there is". | State → solid, colour → white, pH → none (a solid); description and source updated; id kept so the five rules that use it are untouched. "One of the oldest". Engine checked: saponification and the bromine test behave as before. |
+| `rxn_anhydride_from_acyl_chloride` | Used sodium ethanoate SOLUTION; ethanoyl chloride and the anhydride are both destroyed by water, so the real preparation is done dry (Wikipedia). | Honest note added, in the same style as the PCl₅ entry, rather than a new chemical. |
+| `rxn_hydrolysis_starch` | Called the links between sugars "ester-like"; they are glycosidic links, an ether-type bond (Wikipedia). | Reworded; the point that water splits them stands. |
+| `rxn_solvay_precipitation` | "Into washing soda" — the process makes sodium carbonate (soda ash); washing soda is its hydrate. | Reworded, matching batch 5's fix to `rxn_decomposition_nahco3`. |
+
+Reactions with a `sources` entry after batch 7: 41 of 392.

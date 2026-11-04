@@ -3859,9 +3859,12 @@
       "whatToDoInstead": "Fume cupboard, gloves and eye protection. Keep everything dry, since both compounds are attacked by water."
     },
     "molecularAnimation": null,
-    "explanation": "Two ethanoic acid units joined through a shared oxygen — an ANHYDRIDE, which is the second rung of the ladder. It does everything the acid chloride does, with water, with alcohols and with ammonia, but more slowly and without throwing off corrosive hydrogen chloride. That is exactly why industry prefers it: it is easier to control, cheaper, and it is the reagent used to make aspirin. So the full order of reactivity runs acid chloride, then anhydride, then ester, then amide — and each step down that list means a reaction that needs more persuading.",
+    "explanation": "Two ethanoic acid units joined through a shared oxygen — an ANHYDRIDE, which is the second rung of the ladder. It does everything the acid chloride does, with water, with alcohols and with ammonia, but more slowly and without throwing off corrosive hydrogen chloride. That is exactly why industry prefers it: it is easier to control, cheaper, and it is the reagent used to make aspirin. So the full order of reactivity runs acid chloride, then anhydride, then ester, then amide — and each step down that list means a reaction that needs more persuading. One honest note about this simulation: in a real laboratory the sodium ethanoate must be DRY, not a solution — water would attack the ethanoyl chloride and the anhydride long before they could find each other.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, preparation of anhydrides"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, preparation of anhydrides",
+    "sources": [
+      { "ref": "Wikipedia — Acetic anhydride (not stable in water; its reactions are carried out under anhydrous conditions)", "url": "https://en.wikipedia.org/wiki/Acetic_anhydride", "checked": "2026-11-04", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_ester_hydrolysis_alkaline",
@@ -3939,7 +3942,7 @@
       "whatToDoInstead": "Goggles, not just safety spectacles. Heat gently with stirring, use anti-bumping granules, and never lean over the beaker."
     },
     "molecularAnimation": null,
-    "explanation": "SAPONIFICATION — soap making, and the oldest deliberate chemical reaction there is. Nothing new is happening: a fat IS an ester, three fatty-acid chains joined to one glycerol, and boiling it with alkali hydrolyses it exactly as the last reaction hydrolysed ethyl ethanoate. Three chains come off as the sodium salts, which are the soap, and the glycerol that held them is left behind as a valuable by-product for creams and medicines. Add common salt at the end and the soap, which will not dissolve in brine, rises to the top to be skimmed off.",
+    "explanation": "SAPONIFICATION — soap making, and one of the oldest deliberate chemical reactions there is. Nothing new is happening: a fat IS an ester, three fatty-acid chains joined to one glycerol, and boiling it with alkali hydrolyses it exactly as the last reaction hydrolysed ethyl ethanoate. Three chains come off as the sodium salts, which are the soap, and the glycerol that held them is left behind as a valuable by-product for creams and medicines. Add common salt at the end and the soap, which will not dissolve in brine, rises to the top to be skimmed off.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, saponification and soap manufacture"
   },
@@ -4043,9 +4046,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Boil starch with dilute acid and the chain is cut back to the glucose it was built from — the milky cloudiness clears as it goes. Every link in that chain is an ester-like bond between two sugars, so this is hydrolysis, the same idea that broke the ester and the amide open in the last batch. Your own body does it far more gently, with an enzyme in saliva rather than boiling acid, which is why bread starts to taste sweet if you chew it long enough. IMPORTANT in the real laboratory: neutralise the acid before adding Fehling's, or the alkali in the reagent is simply used up by the acid and the test tells you nothing.",
+    "explanation": "Boil starch with dilute acid and the chain is cut back to the glucose it was built from — the milky cloudiness clears as it goes. Every link in that chain is a glycosidic bond between two sugars — an oxygen bridge of the ether type, not an ester — but water still splits it in the same way, so this is hydrolysis, the same idea that broke the ester and the amide open in the last batch. Your own body does it far more gently, with an enzyme in saliva rather than boiling acid, which is why bread starts to taste sweet if you chew it long enough. IMPORTANT in the real laboratory: neutralise the acid before adding Fehling's, or the alkali in the reagent is simply used up by the acid and the test tells you nothing.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, acid hydrolysis of starch"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, acid hydrolysis of starch",
+    "sources": [
+      { "ref": "Wikipedia — Glycosidic bond (a type of ether bond joining a sugar to another group, formed from a hemiacetal)", "url": "https://en.wikipedia.org/wiki/Glycosidic_bond", "checked": "2026-11-04", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_none_iodine_glucose",
@@ -4176,7 +4182,7 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "The heart of the SOLVAY PROCESS, which turns two of the cheapest substances on earth — salt and limestone — into washing soda. Look at what is in the beaker: sodium, ammonium, chloride and hydrogencarbonate ions, which could pair up four different ways. Only one of those four is barely soluble, and that is the one that drops out as a solid. Nothing forces this reaction; it happens because a single product refuses to stay dissolved, and the whole industry rests on that one fact. Bubbling the gas into cold ammoniated brine, not warm, is what keeps it that way.",
+    "explanation": "The heart of the SOLVAY PROCESS, which turns two of the cheapest substances on earth — salt and limestone — into sodium carbonate (soda ash; washing soda is its hydrated form). Look at what is in the beaker: sodium, ammonium, chloride and hydrogencarbonate ions, which could pair up four different ways. Only one of those four is barely soluble, and that is the one that drops out as a solid. Nothing forces this reaction; it happens because a single product refuses to stay dissolved, and the whole industry rests on that one fact. Bubbling the gas into cold ammoniated brine, not warm, is what keeps it that way.",
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, the Solvay process"
   },
@@ -4227,9 +4233,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Pakistan's largest chemical industry in one line. The ammonia comes from the Haber process and the carbon dioxide is a waste gas from making it, so a plant that would otherwise vent carbon dioxide sells it as fertiliser instead. The real conditions are far beyond a school bench — about 180 °C at 150 atmospheres — and the app simply asks for heat rather than pretending otherwise. This reaction also carries a piece of history: making urea, a compound until then known only from living things, out of two lifeless minerals was what ended the belief that organic matter needed a vital force to create it.",
+    "explanation": "Pakistan's largest chemical industry in one line. The ammonia comes from the Haber process and the carbon dioxide is a waste gas from making it, so a plant that would otherwise vent carbon dioxide sells it as fertiliser instead. The real conditions are far beyond a school bench — about 180 °C at 150 atmospheres — and the app simply asks for heat rather than pretending otherwise. Urea also carries a piece of history, often told wrongly. In 1828 Friedrich Wöhler made it — not from these two gases, but from ammonium cyanate — the first time a compound known from living things had been made from non-living ones. Textbooks often say this single experiment killed off the belief that organic compounds need a 'vital force'; historians say that is a myth, and the idea faded away over the following decades as more such syntheses piled up.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, manufacture of urea"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, manufacture of urea",
+    "sources": [
+      { "ref": "Wikipedia — Wöhler synthesis (urea from ammonium cyanate, 1828; the claim that it ended vitalism is described as a textbook myth)", "url": "https://en.wikipedia.org/wiki/W%C3%B6hler_synthesis", "checked": "2026-11-04", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_ammonium_sulfate_fertiliser",
