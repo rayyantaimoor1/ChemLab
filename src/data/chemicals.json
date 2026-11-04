@@ -5331,12 +5331,12 @@
   },
   {
     "id": "azo_dye_red_s",
-    "name": "4-(phenyldiazenyl)aniline (an azo dye)",
+    "name": "4-(phenyldiazenyl)aniline (Aniline Yellow, an azo dye)",
     "formula": "C6H5N=NC6H4NH2",
     "concentration": null,
     "state": "solid",
-    "colorHex": "#C0392B",
-    "colorName": "deep red",
+    "colorHex": "#E8B71E",
+    "colorName": "yellow",
     "pH": null,
     "molarMass": 197.24,
     "density": 1.28,
@@ -5346,8 +5346,8 @@
     "onShelf": false,
     "levels": ["bs"],
     "structure": "molecules/azo_dye_red.svg",
-    "description": "The same azo backbone as the orange dye with an —NH₂ on the far ring instead of an —OH, and the colour has moved from orange to red. Nothing else about the molecule has changed. That is the whole principle of dye design in one comparison: the coupled system decides that there IS a colour, and the groups hanging off the ends decide which one, so a chemist adjusts a shade by changing a substituent rather than by starting again.",
-    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — azo dyes and colour; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
+    "description": "Aniline Yellow — the first azo dye ever made, in 1861. The same azo backbone as the orange dye with an —NH₂ on the far ring instead of an —OH, and the shade has moved from orange to yellow. Nothing else about the molecule has changed. That is the whole principle of dye design in one comparison: the coupled system decides that there IS a colour, and the groups hanging off the ends decide which one, so a chemist adjusts a shade by changing a substituent rather than by starting again.",
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — azo dyes and colour; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Wikipedia — Aniline Yellow (a yellow azo dye, an orange powder; the first azo dye, 1861), consulted 2026-11-05",
     "category": "organic"
   },
   {

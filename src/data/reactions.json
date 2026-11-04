@@ -5634,7 +5634,7 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Purple to dark green, and the manganese has moved only one step, from +7 to +6. Compare the three: acid takes it five steps down to +2, neutral takes it three steps to +4, alkali takes it one step to +6. The more hydrogen ions there are available, the further the reduction can go, because every one of those half-equations needs them. That is why a redox half-equation is written with H⁺ in it and why 'oxidising power' is not a fixed property of a reagent — it depends on the conditions you give it.",
+    "explanation": "Purple to dark green, and the manganese has moved only one step, from +7 to +6. Compare the three: acid takes it five steps down to +2, neutral takes it three steps to +4, alkali takes it one step to +6. The more hydrogen ions there are available, the further the reduction can go, because the deeper reductions — to +4 and to +2 — are the ones whose half-equations need hydrogen ions or water to take the oxygens away; the single step to +6 needs only an electron. That is why a redox half-equation is written with H⁺ in it and why 'oxidising power' is not a fixed property of a reagent — it depends on the conditions you give it.",
     "levels": ["bs"],
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — manganate(VI) formation in alkali"
   },
@@ -5859,9 +5859,12 @@
       "whatToDoInstead": "Goggles, gloves, and a nickel or iron vessel rather than glass if the alkali is to be boiled for any length of time."
     },
     "molecularAnimation": null,
-    "explanation": "Silica does dissolve, but only in hot concentrated alkali and only slowly — proof that it is an acidic oxide, and proof at the same time of how weakly acidic. The comparison worth making is with phosphorus(V) oxide two places along, which reacts with cold water so violently it hisses. Both are acidic oxides of Period 3. The difference is entirely structural: one is a giant network that must be dismantled, the other is small separate molecules. Structure decides the RATE and the conditions; position in the period decides the acid-base character.",
+    "explanation": "Silica does dissolve, but only in hot CONCENTRATED alkali and only slowly — proof that it is an acidic oxide, and proof at the same time of how weakly acidic. (One honest note about this simulation: the bench shows it with the 1 M alkali, which in a real laboratory attacks sand only very slowly indeed.) The comparison worth making is with phosphorus(V) oxide, the very next element along, which reacts with cold water so violently it hisses. Both are acidic oxides of Period 3. The difference is entirely structural: one is a giant network that must be dismantled, the other is small separate molecules. Structure decides the RATE and the conditions; position in the period decides the acid-base character.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silica and alkali"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silica and alkali",
+    "sources": [
+      { "ref": "Wikipedia — Silicon dioxide (dissolves in hot concentrated alkali or fused hydroxide)", "url": "https://en.wikipedia.org/wiki/Silicon_dioxide", "checked": "2026-11-05", "covers": ["conditions", "explanation"] }
+    ]
   },
   {
     "id": "rxn_period3_p4o10_water",
@@ -5999,7 +6002,7 @@
       "whatToDoInstead": "Keep the flask in ice from start to finish, keep the salt in solution, and use it within minutes. There is no reason to isolate it and no safe way to do so in a teaching laboratory."
     },
     "molecularAnimation": null,
-    "explanation": "DIAZOTISATION, and the temperature is not a detail. Below 5 °C this works; a few degrees warmer and the product decomposes faster than it forms, which is why the app will not let it run out of the ice. What has been made is an amine with two nitrogens on the ring held by a bond that scarcely wants to exist — because nitrogen gas is such a stable thing to become that the group will leave in favour of almost anything. That reluctance is simultaneously why the compound is so useful and why it cannot be kept.",
+    "explanation": "DIAZOTISATION, and the temperature is not a detail. Below 5 °C this works; a few degrees warmer and the product decomposes faster than it forms, which is why the app will not let it run out of the ice. What has been made is no longer an amine but a DIAZONIUM ion: the ring now carries an —N≡N⁺ group, held by a bond that scarcely wants to exist — because nitrogen gas is such a stable thing to become that the group will leave in favour of almost anything. That reluctance is simultaneously why the compound is so useful and why it cannot be kept.",
     "levels": ["bs"],
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — diazotisation of aromatic amines"
   },
@@ -6062,8 +6065,8 @@
     "equation": "C₆H₅N₂⁺ + C₆H₅NH₂ → C₆H₅N=NC₆H₄NH₂ + H⁺",
     "type": "azo_coupling",
     "effects": {
-      "colorToHex": "#C0392B",
-      "precipitate": "a deep red solid",
+      "colorToHex": "#E8B71E",
+      "precipitate": "a yellow solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6079,9 +6082,12 @@
       "whatToDoInstead": "Gloves that aniline does not penetrate, and treat both the reagent and the dye as things to keep off you."
     },
     "molecularAnimation": null,
-    "explanation": "The same coupling with an amine instead of a phenol, and the dye comes out RED where the other came out orange. Nothing else about the molecule has changed — same two rings, same N=N bridge, one group swapped on the far end. That is dye design in a single comparison: the coupled system decides that there will be a colour, and the groups on the ends decide which colour, so a chemist tunes a shade by changing a substituent rather than starting over. Note also that no alkali is needed here; an amine is activating enough on its own.",
+    "explanation": "The same coupling with an amine instead of a phenol, and the dye comes out YELLOW where the other came out orange — this is Aniline Yellow, the very first azo dye, made in 1861. Nothing else about the molecule has changed — same two rings, same N=N bridge, one group swapped on the far end. That is dye design in a single comparison: the coupled system decides that there will be a colour, and the groups on the ends decide which colour, so a chemist tunes a shade by changing a substituent rather than starting over. Note also that no alkali is needed here; an amine is activating enough on its own.",
     "levels": ["bs"],
-    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — azo coupling with amines"
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — azo coupling with amines",
+    "sources": [
+      { "ref": "Wikipedia — Aniline Yellow (4-aminoazobenzene: a yellow azo dye with the appearance of an orange powder; the first azo dye, 1861)", "url": "https://en.wikipedia.org/wiki/Aniline_Yellow", "checked": "2026-11-05", "covers": ["colour", "precipitate", "explanation"] }
+    ]
   },
   {
     "id": "rxn_none_diazonium_benzene",
@@ -6109,9 +6115,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Iodine put onto a benzene ring, which cannot be done directly at all — iodine is too unreactive for the halogen carrier route that works for chlorine and bromine. Here it happens simply by adding potassium iodide, because the diazonium group leaves so readily that the iodide has only to be present. This is what makes diazonium salts worth the trouble of the ice bath: they are a doorway, and what walks through is whatever you put in the flask. Chloride, bromide, cyanide, water and hydroxide all work the same way.",
+    "explanation": "Iodine put onto a benzene ring, which cannot be done directly at all — iodine is too unreactive for the halogen carrier route that works for chlorine and bromine. Here it happens simply by adding potassium iodide, because the diazonium group leaves so readily that the iodide has only to be present. This is what makes diazonium salts worth the trouble of the ice bath: they are a doorway, and what walks through is whatever you put in the flask. Water does too, on warming, giving phenol. Chloride, bromide and cyanide can be put on as well, but they need a copper(I) salt to help — copper(I) chloride, bromide or cyanide — which is the Sandmeyer reaction.",
     "levels": ["bs"],
-    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — substitution of the diazonium group"
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — substitution of the diazonium group",
+    "sources": [
+      { "ref": "Wikipedia — Sandmeyer reaction (aryl chlorides, bromides and nitriles from diazonium salts using CuCl, CuBr and CuCN)", "url": "https://en.wikipedia.org/wiki/Sandmeyer_reaction", "checked": "2026-11-05", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_dye_on_fabric",

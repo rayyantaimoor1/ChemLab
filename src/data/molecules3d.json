@@ -4711,7 +4711,7 @@
     ]
   },
   "azo_dye_red_s": {
-    "note": "Open this beside the orange dye and look for the difference: one atom, at the far right, a nitrogen where the other had an oxygen. Everything else is identical - same two rings, same flat plane, same N=N bridge. One atom moved the colour from orange to red, which is how a dye chemist works.",
+    "note": "Open this beside the orange dye and look for the difference: one atom, at the far right, a nitrogen where the other had an oxygen. Everything else is identical - same two rings, same flat plane, same N=N bridge. One atom moved the shade from orange to yellow, which is how a dye chemist works.",
     "atoms": [
       { "id": "ac1", "element": "C", "x": -3.4, "y": -1.4, "z": 0 },
       { "id": "ac2", "element": "C", "x": -2.19, "y": -0.7, "z": 0 },

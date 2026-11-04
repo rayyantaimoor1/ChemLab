@@ -442,3 +442,22 @@ A web search on the phenol point was refused (it named an explosive); the
 fact was confirmed instead from Wikipedia's article text, fetched directly.
 
 Reactions with a `sources` entry after batch 9: 52 of 394.
+
+### Batch 10 — originally reactions 226–250 (file positions 231–255)
+
+20 sound as written, 5 corrected (one of them also in `chemicals.json`,
+`molecules3d.json` and a structure drawing). Owner approved all
+recommendations on 2026-11-05.
+
+| Reaction / chemical | Finding | Resolution |
+|---|---|---|
+| `rxn_azo_coupling_aniline`, `azo_dye_red_s` | **Wrong colour.** 4-aminoazobenzene was shown and described as deep red; it is Aniline Yellow — a yellow azo dye (an orange powder) and the first azo dye ever made, in 1861 (Wikipedia). | Colour → yellow in the chemical record, the reaction's colour and precipitate, the explanation, the structure drawing's label and the 3D model's note; the explanation now names the dye and its history. The id keeps "red" so nothing that refers to it breaks. |
+| `rxn_diazonium_ki` | Said chloride, bromide and cyanide "all work the same way" as iodide; they need copper(I) salts — the Sandmeyer reaction (Wikipedia). | Corrected, with the reaction named. |
+| `rxn_period3_sio2_naoh` | Put phosphorus "two places along" from silicon — it is the next element. Dissolved sand in 1 M alkali, though its own hazard says hot concentrated alkali is needed (Wikipedia). | "The very next element"; honest note that 1 M alkali attacks sand only very slowly. |
+| `rxn_permanganate_alkaline_fe2` | Said "every one of those half-equations needs" hydrogen ions; the step to +6 (MnO₄⁻ + e⁻ → MnO₄²⁻) needs none. | Reworded: the deeper reductions are the ones that need hydrogen ions or water. |
+| `rxn_diazotisation_aniline` | Called the product "an amine with two nitrogens on the ring"; it is a diazonium ion. | Reworded. |
+
+Ionic equations for the vanadium, chromium and permanganate reductions in
+this batch were balanced by hand, since the checker cannot read them.
+
+Reactions with a `sources` entry after batch 10: 55 of 394.
