@@ -7,8 +7,8 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **378 chemicals, 394 reactions
-> (74 of them `noReaction`), 18 guided experiments, 311 tests passing.**
+> Snapshot as of the last entry below: **379 chemicals, 394 reactions
+> (73 of them `noReaction`), 18 guided experiments, 311 tests passing.**
 
 ---
 
@@ -423,3 +423,22 @@ Noted but not changed:
 - Adding water to most solutions (for example `nacl_aq` + `water_distilled`) gives "not available yet", because dilution is not modelled as a reaction. This is app-wide, not a data error; it belongs with stage 2.2's amounts.
 
 Reactions with a `sources` entry after batch 8: 47 of 394.
+
+### Batch 9 — originally reactions 201–225 (file positions 206–230)
+
+19 sound as written, 6 corrected, 1 chemical added, 1 "no reaction" rule
+turned into a reaction. Owner approved all recommendations on 2026-11-05.
+
+| Reaction / chemical | Finding | Resolution |
+|---|---|---|
+| `rxn_nitration_phenol` | Used DILUTE nitric acid to make 2,4,6-trinitrophenol. Dilute acid gives 2- and 4-nitrophenol; more nitro groups need concentrated acid (Wikipedia, Phenol). Also called the product "thousands of times" more acidic than phenol; the pKa values (0.38 against 9.95) make it billions of times. | Reactant → `hno3_conc`; explanation now says what dilute acid gives and corrects the acidity. Phenol + dilute nitric acid is now an honest "not available yet", logged as an unknown pair, until a nitrophenol chemical is written in a later content batch. |
+| `rxn_none_nabh4_ethanoic_acid` → **`rxn_nabh4_destroyed_by_acid`** | A "no reaction" rule, so the app said "No observable change" — but an acid destroys sodium borohydride and hydrogen fizzes off (Wikipedia). What does hold is that the acid is not reduced. | Turned into a reaction: NaBH₄ + CH₃COOH + 3H₂O → CH₃COONa + H₃BO₃ + 4H₂ (balanced by hand), with a flammable-gas hazard; the chemoselectivity lesson is kept. **New chemical `h3bo3_aq`** (boric acid solution, with a structure drawing and 3D model). `nabh4_aq`'s description now says the acid is not reduced, rather than "left completely alone". The id changed because the rule is no longer a "none"; nothing else referred to it. |
+| `rxn_reduction_nitrobenzene_aniline` | Used 1 M HCl; the method is tin with CONCENTRATED hydrochloric acid under reflux, then sodium hydroxide to free the amine from its salt (chemguide). | Reactant → `hcl_conc`; explanation gives both stages. |
+| `rxn_reduction_lialh4_acid` | Reacted lithium aluminium hydride with aqueous ethanoic acid; LiAlH₄ reacts violently with water, and the real reduction is done in dry ether (Wikipedia). | Honest note added, in the style of the PCl₅ entry. |
+| `rxn_bromination_phenol_water` | Said benzene will not touch bromine water "without iron(III) bromide to help" — since batch 6 the lab correctly says it needs pure bromine, catalyst or not. | Sentence updated. |
+| `rxn_vanadium_v_to_iv` | Said any vanadium solution drifts back to blue in air "whatever you did to it"; only the reduced +2 and +3 states are re-oxidised (chemguide). | Narrowed. |
+
+A web search on the phenol point was refused (it named an explosive); the
+fact was confirmed instead from Wikipedia's article text, fetched directly.
+
+Reactions with a `sources` entry after batch 9: 52 of 394.

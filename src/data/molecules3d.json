@@ -2965,6 +2965,26 @@
       { "from": "na", "to": "b", "type": "ionic" }
     ]
   },
+  "h3bo3_aq": {
+    "note": "Flat: a boron atom with three OH groups spread evenly at 120 degrees, and an empty space above and below the boron. That gap is why boric acid behaves oddly — instead of giving away a hydrogen ion, the boron accepts a hydroxide ion from water into that space.",
+    "atoms": [
+      { "id": "b", "element": "B", "x": 0, "y": 0, "z": 0 },
+      { "id": "o1", "element": "O", "x": 0, "y": 1.37, "z": 0 },
+      { "id": "o2", "element": "O", "x": 1.19, "y": -0.69, "z": 0 },
+      { "id": "o3", "element": "O", "x": -1.19, "y": -0.69, "z": 0 },
+      { "id": "h1", "element": "H", "x": 0.8, "y": 1.9, "z": 0 },
+      { "id": "h2", "element": "H", "x": 1.25, "y": -1.65, "z": 0 },
+      { "id": "h3", "element": "H", "x": -2.05, "y": -0.25, "z": 0 }
+    ],
+    "bonds": [
+      { "from": "b", "to": "o1", "type": "covalent" },
+      { "from": "b", "to": "o2", "type": "covalent" },
+      { "from": "b", "to": "o3", "type": "covalent" },
+      { "from": "o1", "to": "h1", "type": "covalent" },
+      { "from": "o2", "to": "h2", "type": "covalent" },
+      { "from": "o3", "to": "h3", "type": "covalent" }
+    ]
+  },
   "lialh4_l": {
     "note": "The same tetrahedral arrangement as sodium borohydride, built on aluminium instead of boron. Compare the two spheres in the middle: aluminium is noticeably larger, its bonds to the hydrogens are longer and weaker, and hydrogen leaves it far more readily. That is the whole of why this one reduces esters and acids - and why it cannot be used in water.",
     "atoms": [

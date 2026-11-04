@@ -5140,12 +5140,36 @@
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — reduction of carbonyl compounds"
   },
   {
-    "id": "rxn_none_nabh4_ethanoic_acid",
+    "id": "rxn_nabh4_destroyed_by_acid",
     "reactants": ["ch3cooh_aq", "nabh4_aq"],
-    "noReaction": true,
-    "explanation": "Nothing at all — and a reagent that fails is often more valuable than one that works. Sodium borohydride reduces aldehydes and ketones readily and will not touch a carboxylic acid, an ester or an amide. Now picture a molecule containing both a ketone and an ester, which is entirely ordinary in real synthesis. A reagent that reduced everything would leave you with a mess and no way back. This one reduces the ketone and leaves the ester untouched, and that ability to hit one group and spare another is called CHEMOSELECTIVITY. Choosing reagents for what they will not do is most of the craft of building a molecule.",
+    "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
+    "products": ["ch3coona_aq", "h3bo3_aq", "h2_g"],
+    "equation": "NaBH₄ + CH₃COOH + 3H₂O → CH₃COONa + H₃BO₃ + 4H₂",
+    "type": "decomposition",
+    "effects": {
+      "colorToHex": "#EEF3F5",
+      "precipitate": null,
+      "gas": "hydrogen",
+      "bubbles": true,
+      "smoke": false,
+      "tempDeltaC": 3,
+      "resultPH": 5
+    },
+    "hazard": {
+      "severity": "moderate",
+      "type": "flammable_gas",
+      "title": "Hydrogen is given off",
+      "warning": "Acid destroys sodium borohydride and releases hydrogen, which burns easily and forms an explosive mixture with air. The fizzing can be brisk if a lot of borohydride meets a lot of acid.",
+      "visualEffect": null,
+      "whatToDoInstead": "Keep flames away, add one to the other slowly, and work in a well ventilated room so the hydrogen disperses."
+    },
+    "molecularAnimation": null,
+    "explanation": "It fizzes — but look carefully at what the fizzing is. The acid is destroying the borohydride, which gives off hydrogen; the ethanoic acid itself is NOT reduced, and its carbon chain comes out as ethanoate, exactly as it would from any other alkali. That is the useful fact: sodium borohydride reduces aldehydes and ketones readily and does not reduce a carboxylic acid or an amide at all (and an ester only slowly). Now picture a molecule containing both a ketone and an ester, which is entirely ordinary in real synthesis. A reagent that reduced everything would leave you with a mess and no way back. This one reduces the ketone and leaves the ester untouched, and that ability to hit one group and spare another is called CHEMOSELECTIVITY. Choosing reagents for what they will not do is most of the craft of building a molecule.",
     "levels": ["bs"],
-    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — chemoselectivity of hydride reducing agents"
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — chemoselectivity of hydride reducing agents; Wikipedia — Sodium borohydride (hydrogen given off, especially fast at low pH; carboxylic acids not reduced), consulted 2026-11-05",
+    "sources": [
+      { "ref": "Wikipedia — Sodium borohydride (reacts with water with evolution of hydrogen, especially fast at low pH; carboxylic acids and amides are not reduced at all)", "url": "https://en.wikipedia.org/wiki/Sodium_borohydride", "checked": "2026-11-05", "covers": ["products", "gas", "explanation"] }
+    ]
   },
   {
     "id": "rxn_reduction_lialh4_acid",
@@ -5172,9 +5196,12 @@
       "whatToDoInstead": "Dry ether, no flames, add the hydride slowly with cooling to the acid rather than the reverse, and quench the excess dropwise with great care behind a screen."
     },
     "molecularAnimation": null,
-    "explanation": "The carboxylic acid that sodium borohydride would not touch is reduced here without difficulty, all the way to the alcohol. Put the two side by side and the trade-off is plain: lithium aluminium hydride is far more powerful and correspondingly far less discriminating — it reduces aldehydes, ketones, esters, amides and acids alike — while sodium borohydride is weaker and therefore useful precisely because it is fussy. Neither is better. You pick the one whose reach matches the job, and if your molecule has only one reducible group you may as well use the powerful one.",
+    "explanation": "The carboxylic acid that sodium borohydride would not touch is reduced here without difficulty, all the way to the alcohol. Put the two side by side and the trade-off is plain: lithium aluminium hydride is far more powerful and correspondingly far less discriminating — it reduces aldehydes, ketones, esters, amides and acids alike — while sodium borohydride is weaker and therefore useful precisely because it is fussy. Neither is better. You pick the one whose reach matches the job, and if your molecule has only one reducible group you may as well use the powerful one. One honest note about this simulation: in a real laboratory the acid is dissolved in DRY ether, not water — lithium aluminium hydride reacts violently with water, giving off hydrogen, and the reduction is finished by adding dilute acid only afterwards.",
     "levels": ["bs"],
-    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — lithium aluminium hydride reductions"
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — lithium aluminium hydride reductions",
+    "sources": [
+      { "ref": "Wikipedia — Lithium aluminium hydride (reacts violently with water to liberate hydrogen; used as a solution in diethyl ether to reduce carboxylic acids to alcohols)", "url": "https://en.wikipedia.org/wiki/Lithium_aluminium_hydride", "checked": "2026-11-05", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_iodoform_propanone",
@@ -5339,13 +5366,13 @@
       "whatToDoInstead": "Gloves and eye protection, fume cupboard for the bromine, and wash any phenol contact off immediately with plenty of water whether or not it hurts."
     },
     "molecularAnimation": null,
-    "explanation": "Compare this directly with benzene. Benzene will not touch bromine water at all without iron(III) bromide to help — the app will tell you so if you try. Phenol needs no catalyst, no heat, and no waiting: a white precipitate appears instantly, and THREE bromines go on at once. That gap is the measure of how powerfully an OH group activates a ring, and the reason is the oxygen's lone pair being donated into it. The positions taken are 2, 4 and 6 — ortho and para, the same pattern the methyl group gave, because the same kind of donation is behind both.",
+    "explanation": "Compare this directly with benzene. Benzene will not touch bromine water at all — not even with a catalyst; it needs pure bromine and iron(III) bromide before anything happens. Phenol needs no catalyst, no heat, and no waiting: a white precipitate appears instantly, and THREE bromines go on at once. That gap is the measure of how powerfully an OH group activates a ring, and the reason is the oxygen's lone pair being donated into it. The positions taken are 2, 4 and 6 — ortho and para, the same pattern the methyl group gave, because the same kind of donation is behind both.",
     "levels": ["bs"],
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — activation of benzene rings by hydroxyl"
   },
   {
     "id": "rxn_nitration_phenol",
-    "reactants": ["hno3_1m", "phenol_s"],
+    "reactants": ["hno3_conc", "phenol_s"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["picric_s", "water"],
     "equation": "C₆H₅OH + 3HNO₃ → C₆H₂(NO₂)₃OH + 3H₂O",
@@ -5368,9 +5395,13 @@
       "whatToDoInstead": "Leave a dried-out bottle alone, tell someone in charge, and let specialists deal with it. Keep any picric acid wet, away from metal fittings, and never let it dry in a stoppered container."
     },
     "molecularAnimation": null,
-    "explanation": "Phenol is so activated that nitration needs no sulfuric acid to help it and goes straight to THREE nitro groups. Then look at what those three groups do to the molecule they are on: picric acid is a genuinely strong acid, thousands of times stronger than phenol, because the nitro groups pull so hard on the ring that the O–H hydrogen leaves far more readily. That is the whole idea of substituent effects taken to its conclusion — the same OH group, in different company, behaves like a different class of compound. It is also a serious explosive, which is why it is kept wet.",
+    "explanation": "Phenol is so activated that nitration needs no sulfuric acid to help it, and with CONCENTRATED nitric acid it goes straight to THREE nitro groups. (Dilute nitric acid stops much earlier, giving a mixture of 2-nitrophenol and 4-nitrophenol — the concentration decides how far it goes.) Then look at what those three groups do to the molecule they are on: picric acid is a genuinely strong acid — its pKa is about 0.4 against phenol's 10, which makes it billions of times stronger — because the nitro groups pull so hard on the ring that the O–H hydrogen leaves far more readily. That is the whole idea of substituent effects taken to its conclusion — the same OH group, in different company, behaves like a different class of compound. It is also a serious explosive, which is why it is kept wet.",
     "levels": ["bs"],
-    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — substituent effects on aromatic reactivity and acidity"
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — substituent effects on aromatic reactivity and acidity",
+    "sources": [
+      { "ref": "Wikipedia — Phenol (dilute nitric acid gives 2- and 4-nitrophenol; concentrated nitric acid introduces further nitro groups; pKa 9.95)", "url": "https://en.wikipedia.org/wiki/Phenol", "checked": "2026-11-05", "covers": ["conditions", "explanation"] },
+      { "ref": "Wikipedia — Picric acid (pKa 0.38)", "url": "https://en.wikipedia.org/wiki/Picric_acid", "checked": "2026-11-05", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_oxidation_toluene_side_chain",
@@ -5404,7 +5435,7 @@
   },
   {
     "id": "rxn_reduction_nitrobenzene_aniline",
-    "reactants": ["c6h5no2_l", "hcl_1m", "sn_metal"],
+    "reactants": ["c6h5no2_l", "hcl_conc", "sn_metal"],
     "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
     "products": ["aniline_l", "sncl4_aq", "water"],
     "equation": "C₆H₅NO₂ + 6[H] →(Sn/HCl) C₆H₅NH₂ + 2H₂O",
@@ -5428,9 +5459,12 @@
       "whatToDoInstead": "Gloves that aniline does not penetrate, fume cupboard, and treat any skin contact as a real exposure rather than a nuisance."
     },
     "molecularAnimation": null,
-    "explanation": "A nitro group reduced all the way to an amine, and with it the door into the whole of aromatic amine chemistry — dyes, drugs and the diazonium reactions that follow from here. The tin dissolves as it gives up its electrons. It is worth pausing on how completely the ring's character has flipped: nitrobenzene was DEACTIVATED and meta-directing, and aniline is one of the most activated rings there is, ortho–para directing and so eager to react that bromine water attacks it three times over with no catalyst. Same ring, opposite behaviour, and the only difference is what is hanging off it.",
+    "explanation": "A nitro group reduced all the way to an amine, and with it the door into the whole of aromatic amine chemistry — dyes, drugs and the diazonium reactions that follow from here. The tin dissolves in the CONCENTRATED hydrochloric acid as it gives up its electrons, with the mixture heated under reflux. Strictly, what the acid flask holds at this point is the amine's salt, the phenylammonium ion; sodium hydroxide is added next to take that extra hydrogen ion off and set the phenylamine free. It is worth pausing on how completely the ring's character has flipped: nitrobenzene was DEACTIVATED and meta-directing, and aniline is one of the most activated rings there is, ortho–para directing and so eager to react that bromine water attacks it three times over with no catalyst. Same ring, opposite behaviour, and the only difference is what is hanging off it.",
     "levels": ["bs"],
-    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — reduction of nitroarenes to amines"
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — reduction of nitroarenes to amines",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — The preparation of phenylamine (aniline) (tin and concentrated hydrochloric acid under reflux, then sodium hydroxide)", "url": "https://www.chemguide.co.uk/organicprops/aniline/preparation.html", "checked": "2026-11-05", "covers": ["conditions", "explanation"] }
+    ]
   },
   {
     "id": "rxn_bromination_aniline",
@@ -5509,9 +5543,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "Yellow to blue, one electron at a time. Zinc is the reducing agent throughout this series, and the useful thing about it is that it is strong enough to keep going all the way down — add it in excess and the tube will pass through every colour in turn rather than stopping. The blue +4 state is the most stable of the four, which is why a vanadium solution left standing in air drifts back to this colour whatever you did to it.",
+    "explanation": "Yellow to blue, one electron at a time. Zinc is the reducing agent throughout this series, and the useful thing about it is that it is strong enough to keep going all the way down — add it in excess and the tube will pass through every colour in turn rather than stopping. The blue +4 state is the most stable of the four in air: the green +3 and violet +2 solutions you reach further down are slowly re-oxidised by the air, and left standing they drift back towards blue. (A yellow +5 solution does not — it is already above the blue state.)",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — reduction of vanadium(V) by zinc"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — reduction of vanadium(V) by zinc",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Vanadium (yellow +5, blue +4, green +3; the reduced states are re-oxidised by air)", "url": "https://www.chemguide.co.uk/inorganic/transition/vanadium.html", "checked": "2026-11-05", "covers": ["colour", "explanation"] }
+    ]
   },
   {
     "id": "rxn_vanadium_iv_to_iii",
