@@ -600,3 +600,34 @@ uses 1 M; and `ptcl4_aq` is "pinkish brown" where Wikipedia calls the
 salt reddish orange (the solution's colour is not given).
 
 Reactions with a `sources` entry after batch 16: 83 of 394. **The audit is complete.**
+
+## 11. Validator chemistry checks (BUILD_PHASE_2.md stage 2.1.2)
+
+`npm run validate` now reports **errors** (they fail the build, and CI
+runs it) separately from **warnings** (for a person to look at). It
+checks equation balance (atoms and charge), colour names against their
+hex codes, a GHS pictogram for every hazard word
+(`src/data/ghs-hazards.json`, checked against Wikipedia's *GHS hazard
+pictograms*), pH on the 0–14 scale (concentrated acids may go to −1), and
+that every level tag is matric, fsc or bs.
+
+The first run found five unbalanced equations that the audit had missed,
+because the audit's own parser could not read them. Owner approved the
+fixes and the warning clean-ups on 2026-11-08.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_qa_nitrate_brown_ring` | Second step `Fe²⁺ + NO → [Fe(H₂O)₅(NO)]²⁺` left out the water ligands (H 0 → 10, O 1 → 6). | `[Fe(H₂O)₆]²⁺ + NO → [Fe(H₂O)₅(NO)]²⁺ + H₂O`, as Wikipedia's *Nitrate test* writes it; `sources` added. |
+| `rxn_grignard_methanal`, `_ethanal`, `_propanone`, `_co2` | Ended at "(after work-up)" with Mg and Br lost. | Both steps written out: addition to the magnesium alkoxide (or carboxylate), then hydrolysis to the product + Mg(OH)Br. |
+| `rxn_tollens_ethanal` | Ended "+ ...". | Completed: `CH₃CHO + 2[Ag(NH₃)₂]⁺ + 3OH⁻ → CH₃COO⁻ + 2Ag + 4NH₃ + 2H₂O`. |
+| `rxn_electroless_copper_plastic` | Had the word "base" in it. | `Cu²⁺ + HCHO + 3OH⁻ → Cu + HCOO⁻ + 2H₂O`. |
+| six dissolution rules | "+ water" on the left only. | Water written over the arrow: `NaOH(s) →(water) NaOH(aq)`. |
+| `cementite_s` | Named "pale grey" on a mid grey. | "grey". |
+
+Left as warnings (28): 25 equations that genuinely are words (biochemical
+tests, polymers, clay, DNA) and need checking by hand; two yellows that
+share a hex with a differently named yellow (`chi3_s` and `fe_edta_aq`,
+called "pale yellow", share hexes with chemicals called "bright yellow" —
+the notebook is still right, because a reaction names colours from its own
+products first); and `starch_iodine_aq`, whose only hazard, staining,
+carries no GHS pictogram.

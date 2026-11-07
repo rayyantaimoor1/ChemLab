@@ -1690,7 +1690,7 @@
     "reactants": ["nh4no3_s", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nh4no3_aq"],
-    "equation": "NH₄NO₃(s) + water → NH₄NO₃(aq)",
+    "equation": "NH₄NO₃(s) →(water) NH₄NO₃(aq)",
     "type": "dissolution",
     "effects": {
       "colorToHex": "#EEF3F5",
@@ -1716,7 +1716,7 @@
     "reactants": ["kno3_s", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["kno3_aq"],
-    "equation": "KNO₃(s) + water → KNO₃(aq)",
+    "equation": "KNO₃(s) →(water) KNO₃(aq)",
     "type": "dissolution",
     "effects": {
       "colorToHex": "#EEF3F5",
@@ -1742,7 +1742,7 @@
     "reactants": ["nh4cl_s", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nh4cl_aq"],
-    "equation": "NH₄Cl(s) + water → NH₄Cl(aq)",
+    "equation": "NH₄Cl(s) →(water) NH₄Cl(aq)",
     "type": "dissolution",
     "effects": {
       "colorToHex": "#EEF3F5",
@@ -1768,7 +1768,7 @@
     "reactants": ["cacl2_s", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["cacl2_aq"],
-    "equation": "CaCl₂(s) + water → CaCl₂(aq)",
+    "equation": "CaCl₂(s) →(water) CaCl₂(aq)",
     "type": "dissolution",
     "effects": {
       "colorToHex": "#EEF3F5",
@@ -1795,7 +1795,7 @@
     "reactants": ["naoh_s", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["naoh_aq"],
-    "equation": "NaOH(s) + water → NaOH(aq)",
+    "equation": "NaOH(s) →(water) NaOH(aq)",
     "type": "dissolution",
     "effects": {
       "colorToHex": "#EEF3F5",
@@ -3627,7 +3627,7 @@
     "reactants": ["ch3cho_l", "tollens_aq"],
     "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
     "products": ["ag_metal", "ch3coona_aq"],
-    "equation": "CH₃CHO + 2[Ag(NH₃)₂]⁺ → CH₃COO⁻ + 2Ag + ...",
+    "equation": "CH₃CHO + 2[Ag(NH₃)₂]⁺ + 3OH⁻ → CH₃COO⁻ + 2Ag + 4NH₃ + 2H₂O",
     "type": "redox",
     "effects": {
       "colorToHex": "#B7BEC4",
@@ -5034,7 +5034,7 @@
     "reactants": ["etmgbr_l", "hcho_aq"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["propan1ol_aq", "mgohbr_aq"],
-    "equation": "C₂H₅MgBr + HCHO → CH₃CH₂CH₂OH (after work-up)",
+    "equation": "C₂H₅MgBr + HCHO → CH₃CH₂CH₂OMgBr, then CH₃CH₂CH₂OMgBr + H₂O → CH₃CH₂CH₂OH + Mg(OH)Br",
     "type": "nucleophilic_addition",
     "effects": {
       "colorToHex": "#EEF3F5",
@@ -5056,7 +5056,7 @@
     "reactants": ["ch3cho_l", "etmgbr_l"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["butan2ol_aq", "mgohbr_aq"],
-    "equation": "C₂H₅MgBr + CH₃CHO → CH₃CH(OH)C₂H₅ (after work-up)",
+    "equation": "C₂H₅MgBr + CH₃CHO → CH₃CH(OMgBr)C₂H₅, then CH₃CH(OMgBr)C₂H₅ + H₂O → CH₃CH(OH)C₂H₅ + Mg(OH)Br",
     "type": "nucleophilic_addition",
     "effects": {
       "colorToHex": "#EEF3F5",
@@ -5078,7 +5078,7 @@
     "reactants": ["ch3coch3_l", "etmgbr_l"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["mb2ol_aq", "mgohbr_aq"],
-    "equation": "C₂H₅MgBr + (CH₃)₂CO → (CH₃)₂C(OH)C₂H₅ (after work-up)",
+    "equation": "C₂H₅MgBr + (CH₃)₂CO → (CH₃)₂C(OMgBr)C₂H₅, then (CH₃)₂C(OMgBr)C₂H₅ + H₂O → (CH₃)₂C(OH)C₂H₅ + Mg(OH)Br",
     "type": "nucleophilic_addition",
     "effects": {
       "colorToHex": "#EEF3F5",
@@ -5100,7 +5100,7 @@
     "reactants": ["co2_g", "etmgbr_l"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["propanoic_aq", "mgohbr_aq"],
-    "equation": "C₂H₅MgBr + CO₂ → C₂H₅COOH (after work-up)",
+    "equation": "C₂H₅MgBr + CO₂ → C₂H₅COOMgBr, then C₂H₅COOMgBr + H₂O → C₂H₅COOH + Mg(OH)Br",
     "type": "nucleophilic_addition",
     "effects": {
       "colorToHex": "#EEF3F5",
@@ -5901,7 +5901,7 @@
     "reactants": ["nacl_s", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nacl_aq"],
-    "equation": "NaCl(s) + water → Na⁺(aq) + Cl⁻(aq)",
+    "equation": "NaCl(s) →(water) Na⁺(aq) + Cl⁻(aq)",
     "type": "dissolution",
     "effects": {
       "colorToHex": "#EEF3F5",
@@ -7733,7 +7733,7 @@
     "reactants": ["polythene_s", "cuso4_0_5m", "hcho_aq"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["plastic_seeded_s"],
-    "equation": "Cu²⁺ + HCHO + base → Cu + HCOO⁻",
+    "equation": "Cu²⁺ + HCHO + 3OH⁻ → Cu + HCOO⁻ + 2H₂O",
     "type": "redox",
     "effects": {
       "colorToHex": "#9E6B4A",
@@ -7878,7 +7878,7 @@
     "reactants": ["feso4_aq", "kno3_aq", "h2so4_conc"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["brown_ring_s"],
-    "equation": "NO₃⁻ + 3Fe²⁺ + 4H⁺ → NO + 3Fe³⁺ + 2H₂O,  then  Fe²⁺ + NO → [Fe(H₂O)₅(NO)]²⁺",
+    "equation": "NO₃⁻ + 3Fe²⁺ + 4H⁺ → NO + 3Fe³⁺ + 2H₂O,  then  [Fe(H₂O)₆]²⁺ + NO → [Fe(H₂O)₅(NO)]²⁺ + H₂O",
     "type": "complex_formation",
     "effects": {
       "colorToHex": "#5A3A1E",
@@ -7893,7 +7893,10 @@
     "hazard": null,
     "explanation": "The brown ring test, and the reason it produces a RING rather than a brown tube is worth more than the result itself. The concentrated acid is dense, so it sinks and forms a separate layer; the reaction can only happen where the two layers meet, because that is the only place with both nitrogen monoxide being made and iron(II) still unoxidised. Everything about the technique — pouring the acid down the side, not shaking — exists to keep that boundary sharp. Shake the tube and the ring is gone.",
     "levels": ["fsc", "bs"],
-    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the brown ring test for nitrate"
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the brown ring test for nitrate",
+    "sources": [
+      { "ref": "Wikipedia — Nitrate test (brown ring test: nitrate reduced to NO by iron(II); [Fe(H2O)6]2+ + NO → [Fe(H2O)5(NO)]2+ + H2O)", "url": "https://en.wikipedia.org/wiki/Nitrate_test", "checked": "2026-11-08", "covers": ["equation", "products"] }
+    ]
   },
   {
     "id": "rxn_qa_nitrite_warm_acid",

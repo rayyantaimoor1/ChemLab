@@ -90,6 +90,7 @@ chemlab/
 │   │   ├── equipment.json
 │   │   ├── experiments.json
 │   │   ├── flame-tests.json  ← flame colour per element, read by tools.js
+│   │   ├── ghs-hazards.json  ← GHS pictogram(s) for every hazard word; read by the validator
 │   │   └── molecules/        ← .mol files + 2D structure PNGs
 │   ├── ui/                   ← DOM, rendering, effects. Replaceable.
 │   │   ├── bench.js
@@ -98,6 +99,9 @@ chemlab/
 │   │   └── panels.js
 │   ├── styles/
 │   └── assets/               ← bundled fonts, icons, sounds
+├── scripts/
+│   ├── validate-content.mjs  ← `npm run validate`: schema, equation balance, colour names, GHS, pH, levels
+│   └── lib/                  ← the equation-balance and colour-name checkers it uses
 ├── tests/
 └── build/                    ← electron-builder output (gitignored)
 ```

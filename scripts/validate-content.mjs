@@ -11,19 +11,35 @@
  * hand after every content batch, the way `npm test` is run after every code
  * change: cheap, immediate, and specific about what it found wrong.
  *
+ * THE CHEMISTRY CHECKS (BUILD_PHASE_2.md stage 2.1.2)
+ * Beyond "is the field there", it checks the things a machine CAN check:
+ *   - every equation balances, atoms and charge (scripts/lib/equation-balance.mjs)
+ *   - every colour's hex looks like its name (scripts/lib/colour-check.mjs)
+ *   - every hazard word maps to GHS pictograms (src/data/ghs-hazards.json)
+ *   - every pH is on the 0–14 scale
+ *   - every level tag is matric, fsc or bs
+ *
+ * ERRORS AND WARNINGS
+ * An ERROR is something wrong: an equation that does not balance, a
+ * "blue" painted red. The build fails on errors (CI runs this script).
+ * A WARNING is something a person should look at but that may be fine:
+ * an equation written in words that cannot be counted, a "pale" colour
+ * that is darker than most. Warnings are listed but do not fail the build.
+ *
  * WHAT IT DELIBERATELY DOES NOT DO
  * It does not judge whether an explanation is scientifically correct, only
  * whether one exists. CLAUDE.md section 6.5 puts that judgement on a human
  * reading against a textbook — no script can do that part.
  *
  * Run it with:  npm run validate
- * Exits 1 if it found anything, 0 if the content is clean, so it can be
- * wired into a pre-commit hook or CI later without any changes here.
+ * Exits 1 if it found any error, 0 otherwise (warnings alone exit 0).
  */
 
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { checkEquation } from './lib/equation-balance.mjs';
+import { checkColourName } from './lib/colour-check.mjs';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(SCRIPT_DIR, '..');
@@ -57,6 +73,17 @@ const problems = [];
 const missingSource = [];
 const missingColourName = [];
 const missingExplanation = [];
+
+// The 2.1.2 chemistry checks, each kept in its own list so the report can
+// say which kind of problem it is. `warnings` never fails the build.
+const unbalanced = [];
+const colourErrors = [];
+const hazardErrors = [];
+const pHErrors = [];
+const levelErrors = [];
+const warnings = [];
+
+const LEVELS = new Set(['matric', 'fsc', 'bs']);
 
 const MIN_SOURCE_LENGTH = 10; // "textbook, ch. 3" is about this long; "x" is not a source
 
@@ -396,8 +423,150 @@ for (const chemical of chemicals) {
 }
 
 /* ------------------------------------------------------------------ *
+ * Equations balance (stage 2.1.2)
+ *
+ * An equation the checker cannot read — one written partly in words, such
+ * as "starch + I₂ → starch·I₂" — is a warning, never a pass: it is listed
+ * so a person checks it by hand.
+ * ------------------------------------------------------------------ */
+
+for (const reaction of reactions) {
+  if (reaction.noReaction || !nonEmptyString(reaction.equation)) continue;
+  const result = checkEquation(reaction.equation);
+  if (result.status === 'unbalanced') {
+    unbalanced.push(`${reaction.id}: "${reaction.equation}" does not balance (${result.detail})`);
+  } else if (result.status === 'unreadable') {
+    warnings.push(`${reaction.id}: equation cannot be counted automatically — check by hand: "${reaction.equation}"`);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Colours look like their names (stage 2.1.2)
+ * ------------------------------------------------------------------ */
+
+{
+  const named = [
+    ...chemicals.map((c) => [c.id, c.colorName, c.colorHex]),
+    ...Object.entries(flameTests).map(([key, f]) => [`flame-tests.json ${key}`, f.colorName, f.colorHex]),
+  ];
+  for (const [id, name, hex] of named) {
+    for (const finding of checkColourName(name, hex)) {
+      if (finding.level === 'error') colourErrors.push(`${id}: ${finding.message}`);
+      else warnings.push(`${id}: ${finding.message}`);
+    }
+  }
+
+  // One hex, named "pale" by one chemical and "bright" by another. The
+  // notebook names a colour from the reaction's own products first, so
+  // this is not always visible — but both cannot be right.
+  const SHADES = { pale: 'light', light: 'light', bright: 'strong', deep: 'strong', dark: 'strong' };
+  const namesByHex = new Map();
+  for (const c of chemicals) {
+    if (!c.colorHex || !c.colorName) continue;
+    const key = c.colorHex.toUpperCase();
+    if (!namesByHex.has(key)) namesByHex.set(key, new Set());
+    namesByHex.get(key).add(c.colorName);
+  }
+  for (const [hex, names] of namesByHex) {
+    const shades = new Set();
+    for (const name of names) {
+      for (const word of name.toLowerCase().split(/[^a-z]+/)) if (SHADES[word]) shades.add(SHADES[word]);
+    }
+    if (shades.size > 1) {
+      warnings.push(`${hex} is named both ${[...names].map((n) => `"${n}"`).join(' and ')} by different chemicals`);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Hazards map to GHS pictograms (stage 2.1.2)
+ *
+ * The map itself is curated chemistry content, so it lives in
+ * src/data/ghs-hazards.json rather than here. This only checks that every
+ * hazard word used anywhere is in it, and that the map is well formed.
+ * ------------------------------------------------------------------ */
+
+{
+  const ghsFile = readJson('ghs-hazards.json') ?? { pictograms: {}, hazards: {} };
+  const pictograms = ghsFile.pictograms || {};
+  const hazardWords = ghsFile.hazards || {};
+
+  for (const [word, entry] of Object.entries(hazardWords)) {
+    if (!Array.isArray(entry.ghs)) {
+      hazardErrors.push(`ghs-hazards.json ${word}: ghs must be a list of pictogram codes`);
+      continue;
+    }
+    for (const code of entry.ghs) {
+      if (!pictograms[code]) hazardErrors.push(`ghs-hazards.json ${word}: "${code}" is not a GHS pictogram`);
+    }
+    if (entry.ghs.length === 0 && !nonEmptyString(entry.why)) {
+      hazardErrors.push(`ghs-hazards.json ${word}: no pictogram, so it must say why`);
+    }
+  }
+
+  for (const chemical of chemicals) {
+    const words = chemical.hazards || [];
+    for (const word of words) {
+      if (!hazardWords[word]) hazardErrors.push(`${chemical.id}: hazard "${word}" is not in ghs-hazards.json`);
+    }
+    if (words.length > 0 && words.every((w) => hazardWords[w] && hazardWords[w].ghs?.length === 0)) {
+      warnings.push(`${chemical.id}: hazards ${words.join(', ')} carry no GHS pictogram between them`);
+    }
+  }
+  for (const reaction of reactions) {
+    if (!reaction.hazard) continue;
+    if (!hazardWords[reaction.hazard.type]) {
+      hazardErrors.push(`${reaction.id}: hazard type "${reaction.hazard.type}" is not in ghs-hazards.json`);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * pH is on the scale (stage 2.1.2)
+ *
+ * 0 to 14, with one honest exception: a concentrated strong acid really
+ * does read below zero, so a chemical whose concentration is written as
+ * "concentrated ..." may go down to -1. null means "no curated value"
+ * and is always allowed (tools.js then refuses to give a reading).
+ * ------------------------------------------------------------------ */
+
+{
+  const checkPH = (where, value, { concentrated = false } = {}) => {
+    if (value === null || value === undefined) return;
+    const floor = concentrated ? -1 : 0;
+    if (typeof value !== 'number' || Number.isNaN(value)) {
+      pHErrors.push(`${where}: pH ${JSON.stringify(value)} is not a number`);
+    } else if (value < floor || value > 14) {
+      pHErrors.push(`${where}: pH ${value} is off the ${floor}–14 scale`);
+    }
+  };
+  for (const c of chemicals) {
+    checkPH(c.id, c.pH, { concentrated: /^concentrated/i.test(c.concentration ?? '') });
+  }
+  for (const r of reactions) checkPH(`${r.id} resultPH`, r.effects?.resultPH);
+  for (const e of experiments) checkPH(`${e.id} endpointPH`, e.expectedResult?.endpointPH);
+}
+
+/* ------------------------------------------------------------------ *
+ * Level tags (stage 2.1.2)
+ * ------------------------------------------------------------------ */
+
+for (const item of [...chemicals, ...reactions]) {
+  for (const level of item.levels || []) {
+    if (!LEVELS.has(level)) levelErrors.push(`${item.id}: level "${level}" is not matric, fsc or bs`);
+  }
+}
+for (const experiment of experiments) {
+  if (!LEVELS.has(experiment.level)) {
+    levelErrors.push(`${experiment.id}: level "${experiment.level}" is not matric, fsc or bs`);
+  }
+}
+
+/* ------------------------------------------------------------------ *
  * Report
  * ------------------------------------------------------------------ */
+
+const list = (items) => (items.length === 0 ? 'none' : items.map((p) => `  - ${p}`).join('\n'));
 
 console.log('ChemLab content validation');
 console.log('='.repeat(60));
@@ -407,20 +576,37 @@ console.log(`reactions.json:   ${reactions.length} entries (${reactions.filter((
 console.log(`experiments.json: ${experiments.length} entries`);
 console.log(`molecules3d.json: ${Object.keys(molecules3d).length} entries`);
 
-console.log('\n--- entries missing a source ---');
-console.log(missingSource.length === 0 ? 'none' : missingSource.map((id) => `  - ${id}`).join('\n'));
+console.log('\n' + '#'.repeat(60));
+console.log('ERRORS — these fail the build');
+console.log('#'.repeat(60));
 
-console.log('\n--- entries missing a colour name ---');
-console.log(missingColourName.length === 0 ? 'none' : missingColourName.map((id) => `  - ${id}`).join('\n'));
+const errorSections = [
+  ['entries missing a source', missingSource],
+  ['entries missing a colour name', missingColourName],
+  ['entries missing an explanation', missingExplanation],
+  ['equations that do not balance', unbalanced],
+  ['colours that contradict their names', colourErrors],
+  ['hazard words without a GHS mapping', hazardErrors],
+  ['pH values off the scale', pHErrors],
+  ['level tags that are not matric, fsc or bs', levelErrors],
+  ['every other schema and reference problem', problems],
+];
+for (const [title, items] of errorSections) {
+  console.log(`\n--- ${title} ---`);
+  console.log(list(items));
+}
 
-console.log('\n--- entries missing an explanation ---');
-console.log(missingExplanation.length === 0 ? 'none' : missingExplanation.map((id) => `  - ${id}`).join('\n'));
+console.log('\n' + '#'.repeat(60));
+console.log('WARNINGS — for a person to look at; these do not fail the build');
+console.log('#'.repeat(60));
+console.log('\n' + list(warnings));
 
-console.log('\n--- every other schema and reference problem ---');
-console.log(problems.length === 0 ? 'none' : problems.map((p) => `  - ${p}`).join('\n'));
-
-const total = missingSource.length + missingColourName.length + missingExplanation.length + problems.length;
+const errorCount = errorSections.reduce((sum, [, items]) => sum + items.length, 0);
 console.log('\n' + '='.repeat(60));
-console.log(total === 0 ? 'ALL CLEAR — nothing flagged.' : `${total} issue(s) found.`);
+if (errorCount === 0) {
+  console.log(`NO ERRORS.${warnings.length ? ` ${warnings.length} warning(s) to look at.` : ' Nothing flagged.'}`);
+} else {
+  console.log(`${errorCount} error(s), ${warnings.length} warning(s).`);
+}
 
-process.exit(total === 0 ? 0 : 1);
+process.exit(errorCount === 0 ? 0 : 1);
