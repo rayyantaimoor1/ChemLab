@@ -542,3 +542,27 @@ shares a hex with polythene, but the notebook names a colour from the
 rule's own products first, so it correctly reads "milky white".
 
 Reactions with a `sources` entry after batch 14: 66 of 394.
+
+### Batch 15 — originally reactions 351–375 (file positions 356–380)
+
+19 sound as written, 6 corrected (five findings, one covering two rules). Owner approved all
+recommendations on 2026-11-07.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_ninhydrin_glycine` | **Data error in the product record:** `ruhemann_purple_aq` had the formula "C18H9N O6" (a stray space and two oxygens too many) and a molar mass of 335.27 worked out from it. Its 2D drawing and 3D model showed two plain benzene rings joined through N with one O each (12 C, 2 O). Ruhemann's purple is two indane-1,3-dione units joined through the nitrogen: C₁₈H₉NO₄, 303.3 (PubChem CID 71260940, matching the structure German Wikipedia's *Ninhydrin* describes). | Formula → C18H9NO4, molar mass → 303.27. SVG redrawn and 3D model rebuilt with the real skeleton (18 C, 1 N, 4 O; hydrogens not drawn, like the ninhydrin model). |
+| `rxn_qa_phosphate_molybdate_acid` | Equation did not balance (H 15 vs 36, charge −21 vs 0). | 21H⁺ added to the left, as the inorganic rule already shows its H⁺. |
+| `rxn_molisch_carbohydrate`, `rxn_none_molisch_amino_acid` | Said "EVERY carbohydrate" / "any carbohydrate at all" responds; trioses and tetroses do not (Wikipedia). | Reworded to "almost every", naming the exceptions; a negative now means "almost certainly" no carbohydrate. |
+| `rxn_edta_displaces_ammonia_cu` | Said "Both ligands bind through nitrogen"; EDTA binds through two amines and four carboxylates (Wikipedia). And `resultPH` 6, though the reaction frees ammonia into a solution already at pH 11 — an ammonia–ammonium buffer sits near pH 9 (pKa 9.25). | Explanation rewritten around EDTA's two-nitrogen, four-oxygen grip; `resultPH` 6 → 9. |
+| `rxn_edta_hardness_ca` | Said adding EDTA "until the water stops being hard" measures hardness — nothing visible marks that moment without an indicator (Wikipedia, *Complexometric titration*). | Eriochrome Black T named as what shows the end point. |
+
+Noted but not changed, for the teacher review: the copper–EDTA complex
+is named "deep blue" like the ammonia complex it replaces, though it is
+believed to be a paler blue (no opened page settles it); DNA re-pairs
+best on slow cooling, which "Cool it and the helix rebuilds itself" does
+not say; the ninhydrin rule's `bubbles: true` is probably more fizzing
+than the small amount of carbon dioxide gives; and the DNA-derived
+phosphate gives its yellow precipitate unwarmed, the same open question
+as in batch 14.
+
+Reactions with a `sources` entry after batch 15: 75 of 394.
