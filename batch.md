@@ -485,3 +485,21 @@ explain silicon's easy hydrolysis with "empty d orbitals", the standard
 school explanation even though modern texts prefer the size argument.
 
 Reactions with a `sources` entry after batch 11: 59 of 394.
+
+### Batch 12 — originally reactions 276–300 (file positions 281–305)
+
+23 sound as written, 2 corrected (explanations only). Owner approved all
+recommendations on 2026-11-07.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_copper_self_reduction` | Said copper "needs only a wood fire's temperature", so it was smelted thousands of years before iron and "the Bronze Age came first for chemical reasons". Copper was the first metal smelted, but campfires are about 200 °C too cool — it probably first happened in pottery kilns, with charcoal (Wikipedia, Smelting). Self-reduction of sulfide ores is the industrial route, not the origin story. | History sentences rewritten; the chemistry is unchanged. |
+| `rxn_calcination_aloh3` | Said heating to 300 °C gives the hard, heat-resistant alumina used for linings and abrasives; the water starts leaving at a few hundred degrees, but that alumina is made at about 1200 °C (Wikipedia, Bayer process: about 1470 K). | `minTempC` kept (water does start leaving there); explanation now gives the real temperature for the hard form. |
+
+Noted but not changed: `rxn_decomposition_polythene_hot` promises "a
+black char", though polyethylene breaks down mostly to vapour and leaves
+little char — not settled by the source opened, so left for the teacher
+review; `rxn_none_silicone_hot` shows silicone unchanged at 350 °C, roughly
+where it too starts to degrade, though far more slowly than polythene.
+
+Reactions with a `sources` entry after batch 12: 61 of 394.

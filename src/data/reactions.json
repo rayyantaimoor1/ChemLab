@@ -6887,9 +6887,12 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "The soft jelly-like floc that settles dirt out of drinking water becomes, on heating, one of the hardest and most heat-resistant oxides there is — used for furnace linings, spark plug insulators and grinding powder. Same aluminium, same oxygen, and the only change is losing water. It is worth pausing on how far apart the two materials are given how small the chemical step between them is, and it is the same calcination step that turns bauxite into the feedstock for aluminium smelting.",
+    "explanation": "The soft jelly-like floc that settles dirt out of drinking water becomes, on heating, one of the hardest and most heat-resistant oxides there is — used for furnace linings, spark plug insulators and grinding powder. Same aluminium, same oxygen, and the only change is losing water. It is worth pausing on how far apart the two materials are given how small the chemical step between them is. One thing about temperature, though: the water starts leaving at a few hundred degrees, but the hard, heat-resistant alumina used for linings and abrasives is made by heating much more strongly, to about 1200 °C in rotary kilns — the same calcination step that turns the hydroxide from bauxite into the feedstock for aluminium smelting.",
     "levels": ["fsc", "bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — calcination of aluminium hydroxide"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — calcination of aluminium hydroxide",
+    "sources": [
+      { "ref": "Wikipedia — Bayer process (gibbsite converted to aluminium oxide by heating in rotary kilns or calciners to about 1470 K)", "url": "https://en.wikipedia.org/wiki/Bayer_process", "checked": "2026-11-07", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_refractory_silica_attacked",
@@ -7166,9 +7169,12 @@
       "whatToDoInstead": "Fume cupboard, and industrially the gas is captured for sulfuric acid rather than vented."
     },
     "molecularAnimation": null,
-    "explanation": "Copper does something none of the others manage: it goes straight from ore to metal with air alone, no carbon and no second stage. The sulfide is oxidised to sulfur dioxide and the electrons it gives up are the ones that reduce the copper — the ore reduces ITSELF, which is why this is called self-reduction. It also explains a piece of history. Copper needs no reducing agent and only a wood fire's temperature, so it was smelted thousands of years before anyone managed iron, and the Bronze Age came first for chemical reasons rather than accidental ones.",
+    "explanation": "Copper does something none of the others manage: it goes straight from ore to metal with air alone, no carbon and no second stage. The sulfide is oxidised to sulfur dioxide and the electrons it gives up are the ones that reduce the copper — the ore reduces ITSELF, which is why this is called self-reduction. It is also worth keeping the history straight. Copper was the first metal people ever smelted, thousands of years before iron, but not this way and not on a campfire, which is about 200 °C too cool: the first smelting probably happened in pottery kilns, with charcoal as the reducing agent. Self-reduction of sulfide ores is how copper is produced industrially, not how the Bronze Age began.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — self-reduction of copper sulfide ores"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — self-reduction of copper sulfide ores",
+    "sources": [
+      { "ref": "Wikipedia — Smelting (copper was the first metal smelted; campfires are about 200 °C short of the temperature needed, so the first smelting may have been in pottery kilns; charcoal as the reducing agent in earlier times)", "url": "https://en.wikipedia.org/wiki/Smelting", "checked": "2026-11-07", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_decomposition_hgo",
