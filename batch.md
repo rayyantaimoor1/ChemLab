@@ -522,3 +522,23 @@ the ion left in solution — cosmetic, and fixing it would need a separate
 record.
 
 Reactions with a `sources` entry after batch 13: 65 of 394.
+
+### Batch 14 — originally reactions 326–350 (file positions 331–355)
+
+23 sound as written, 2 corrected (wording only). Owner approved both on
+2026-11-07. The cleanest batch of the audit.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_qa_group4_manganese` | Called manganese sulfide's buff pink "the only sulfide here that is not black", though the lab's own `rxn_qa_group4_zinc` makes white zinc sulfide in the same group. | Reworded: white zinc, buff pink manganese, black nickel and cobalt. |
+| `rxn_bromine_unsaturated_oil` | Said the iodine number "is how the unsaturation of a cooking oil is quoted on a label"; it is a laboratory measure of the unsaturation of fats and oils (Wikipedia). | Reworded. |
+
+Noted but not changed: `rxn_qa_phosphate_molybdate` gives the yellow
+precipitate at once, though the usual method warms it (not settled by an
+opened source); the emulsion and Sudan III lipid tests now use the fat
+that batch 7 correctly made a solid, and Sudan's "fat layer" wording is a
+little loose for a solid but the result stands. The emulsion test's colour
+shares a hex with polythene, but the notebook names a colour from the
+rule's own products first, so it correctly reads "milky white".
+
+Reactions with a `sources` entry after batch 14: 66 of 394.

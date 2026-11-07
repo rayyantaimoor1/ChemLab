@@ -8055,7 +8055,7 @@
       "resultPH": 8.5
     },
     "hazard": null,
-    "explanation": "Make the solution alkaline and the same gas that did nothing a moment ago brings manganese down at once — ammonia removes the hydrogen ions, the weak acid ionises properly, and the sulfide concentration rises far enough for the more soluble sulfides to form. Manganese is then the easiest cation in the scheme to identify, because this buff pink is the only sulfide here that is not black.",
+    "explanation": "Make the solution alkaline and the same gas that did nothing a moment ago brings manganese down at once — ammonia removes the hydrogen ions, the weak acid ionises properly, and the sulfide concentration rises far enough for the more soluble sulfides to form. Manganese is then one of the easiest cations in the scheme to identify, because Group IV sulfides come in only three looks: white for zinc, this buff pink for manganese, and black for nickel and cobalt.",
     "levels": ["bs"],
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group IV"
   },
@@ -8239,9 +8239,12 @@
       "resultPH": null
     },
     "hazard": null,
-    "explanation": "The orange bromine water is decolourised — exactly as it is by ethene, and for exactly the same reason. There is nothing special about a lipid here: a carbon–carbon double bond is a carbon–carbon double bond whether it sits in a gas jar or halfway down a fatty acid chain. How much bromine an oil absorbs is a real measurement called the iodine number, and it is how the unsaturation of a cooking oil is quoted on a label.",
+    "explanation": "The orange bromine water is decolourised — exactly as it is by ethene, and for exactly the same reason. There is nothing special about a lipid here: a carbon–carbon double bond is a carbon–carbon double bond whether it sits in a gas jar or halfway down a fatty acid chain. How much halogen an oil absorbs is a real measurement called the iodine number — the standard laboratory measure of how unsaturated a fat or oil is.",
     "levels": ["fsc", "bs"],
-    "source": "Boyer, Concepts in Biochemistry 3rd ed. — the iodine number"
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — the iodine number",
+    "sources": [
+      { "ref": "Wikipedia — Iodine value (used to determine the degree of unsaturation in fats, oils and waxes; double bonds react with the halogen)", "url": "https://en.wikipedia.org/wiki/Iodine_value", "checked": "2026-11-07", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_none_bromine_saturated_fat",
