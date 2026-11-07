@@ -503,3 +503,22 @@ review; `rxn_none_silicone_hot` shows silicone unchanged at 350 °C, roughly
 where it too starts to degrade, though far more slowly than polythene.
 
 Reactions with a `sources` entry after batch 12: 61 of 394.
+
+### Batch 13 — originally reactions 301–325 (file positions 306–330)
+
+21 sound as written, 4 corrected. Owner approved all recommendations on
+2026-11-07.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_anodising_aluminium` | **Data error:** the cathode's `product` was the anodised aluminium itself, though hydrogen forms there; and the rule had no electrolyte, so it fired on bare aluminium with the power on. Real anodising is done in sulfuric acid, which releases hydrogen at the cathode (Wikipedia). | Reactants gain `h2so4_1m`; products gain `h2_g` (and keep the acid, which is not used up); cathode product → `h2_g`; anode now attracts sulfate; overall equation 2Al + 3H₂O → Al₂O₃ + 3H₂; pH 1. Engine checked: anodises in acid, "no change" without it. |
+| `rxn_decomposition_hgo` | Decomposed at 400 °C; mercury(II) oxide decomposes above 500 °C (Wikipedia). | `minTempC` 400 → 500. The burner takes a dry solid to exactly 500 °C, so it stays reachable; engine checked at 450 and 500 °C. |
+| `rxn_electroplating_silver` | Promised a mirror-bright coat from plain silver nitrate — the claim already softened for silver nitrate electrolysis in batch 4. Industry plates silver from a cyanide bath (Wikipedia). | Explanation and cathode observation reworded to match batch 4. |
+| `rxn_electroless_copper_plastic` | Said copper deposits "wherever the solution touches — conductor or not"; the plastic is first primed with a palladium catalyst, and methanal does the job in alkali (Wikipedia). | Honest note added. |
+
+Noted but not changed: `rxn_agbr_dissolves_conc_ammonia` reuses the
+`agnh3_aq` record, whose formula reads [Ag(NH₃)₂]Cl although bromide is
+the ion left in solution — cosmetic, and fixing it would need a separate
+record.
+
+Reactions with a `sources` entry after batch 13: 65 of 394.

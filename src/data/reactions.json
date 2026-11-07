@@ -7179,7 +7179,7 @@
   {
     "id": "rxn_decomposition_hgo",
     "reactants": ["hgo_s"],
-    "conditions": { "requiresHeat": true, "minTempC": 400, "catalyst": null },
+    "conditions": { "requiresHeat": true, "minTempC": 500, "catalyst": null },
     "products": ["hg_l", "o2_g"],
     "equation": "2HgO →(heat) 2Hg + O₂",
     "type": "decomposition",
@@ -7203,7 +7203,10 @@
     "molecularAnimation": null,
     "explanation": "No carbon. No electricity. No reducing agent whatsoever — just a flame, and the oxide falls apart into its elements on its own. That is the bottom of the reactivity series made visible: mercury holds oxygen so weakly that the compound barely wants to exist at ordinary temperatures. Historically this is the reaction that gave us oxygen — Priestley ran it in 1774 and collected the gas, and Lavoisier's account of the same experiment is what finished off the phlogiston theory.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal decomposition of mercury(II) oxide"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal decomposition of mercury(II) oxide",
+    "sources": [
+      { "ref": "Wikipedia — Mercury(II) oxide (decomposes on heating above 500 °C to mercury and oxygen; Priestley, 1774)", "url": "https://en.wikipedia.org/wiki/Mercury(II)_oxide", "checked": "2026-11-07", "covers": ["conditions", "products", "explanation"] }
+    ]
   },
   {
     "id": "rxn_none_gold_acid",
@@ -7311,16 +7314,16 @@
   },
   {
     "id": "rxn_anodising_aluminium",
-    "reactants": ["al_oxide_layer_s"],
+    "reactants": ["al_oxide_layer_s", "h2so4_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null, "requiresElectricity": true },
-    "products": ["anodised_al_s"],
-    "equation": "2Al + 3H₂O → Al₂O₃ + 6H⁺ + 6e⁻",
+    "products": ["anodised_al_s", "h2_g", "h2so4_1m"],
+    "equation": "2Al + 3H₂O → Al₂O₃ + 3H₂",
     "type": "electrolysis",
     "electrodes": {
       "anode": {
         "sign": "positive",
-        "attracts": "O²⁻",
-        "attractsName": "oxide ions from the water",
+        "attracts": "SO₄²⁻",
+        "attractsName": "sulfate ions from the acid (the oxygen in the oxide comes from the water)",
         "halfEquation": "2Al + 3H₂O → Al₂O₃ + 6H⁺ + 6e⁻",
         "product": "anodised_al_s",
         "observation": "The aluminium article is itself the anode — the oxide layer grows on it and thickens, going from a few atoms to a few thousand."
@@ -7330,7 +7333,7 @@
         "attracts": "H⁺",
         "attractsName": "hydrogen ions",
         "halfEquation": "2H⁺ + 2e⁻ → H₂",
-        "product": "anodised_al_s",
+        "product": "h2_g",
         "observation": "Hydrogen bubbles off the other electrode. Nothing is being deposited here — the useful change is all at the anode."
       }
     },
@@ -7342,13 +7345,16 @@
       "bubbles": true,
       "smoke": false,
       "tempDeltaC": 3,
-      "resultPH": null
+      "resultPH": 1
     },
     "hazard": null,
     "molecularAnimation": "anim_anodising_aluminium",
-    "explanation": "Anodising is electroplating run backwards in spirit: instead of adding a coat of another metal, the current forces the article to grow a thicker coat of its own oxide. Note the name — the aluminium is the ANODE, not the cathode, which is the opposite of every plating process. The thickened film is far more scratch-resistant, and because it is slightly porous as it grows, dye can be soaked in and then sealed. Every coloured aluminium phone case and window frame you have seen was made this way.",
+    "explanation": "Anodising is electroplating run backwards in spirit: instead of adding a coat of another metal, the current forces the article to grow a thicker coat of its own oxide. Note the name — the aluminium is the ANODE, not the cathode, which is the opposite of every plating process. The thickened film is far more scratch-resistant, and because it is slightly porous as it grows, dye can be soaked in and then sealed. Every coloured aluminium phone case and window frame you have seen was made this way. The bath is dilute sulfuric acid, the commonest anodising electrolyte; it is not used up — overall, aluminium and water become aluminium oxide and hydrogen.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — anodising of aluminium"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — anodising of aluminium",
+    "sources": [
+      { "ref": "Wikipedia — Anodizing (sulfuric acid is the most common anodizing electrolyte; the current releases hydrogen at the cathode and builds aluminium oxide on the anode)", "url": "https://en.wikipedia.org/wiki/Anodizing", "checked": "2026-11-07", "covers": ["conditions", "products", "gas", "explanation"] }
+    ]
   },
   {
     "id": "rxn_passivation_chromium",
@@ -7520,7 +7526,7 @@
         "attractsName": "silver ions",
         "halfEquation": "Ag⁺ + e⁻ → Ag",
         "product": "ag_plated_s",
-        "observation": "A bright silver skin spreads over the steel. One electron per ion here, against two for copper — so the same current delivers twice as many atoms."
+        "observation": "Silver spreads over the steel — though from plain silver nitrate it tends to grow as a crystalline, poorly-sticking deposit, which is why industry plates from a cyanide bath instead. One electron per ion here, against two for copper — so the same current delivers twice as many atoms."
       },
       "anode": {
         "sign": "positive",
@@ -7543,9 +7549,12 @@
     },
     "hazard": null,
     "molecularAnimation": "anim_electroplating_silver",
-    "explanation": "The same arrangement again, and worth doing after copper purely to see how little changes: swap all three components for the silver equivalents and the cell behaves identically. That is the point of understanding a principle rather than memorising a recipe. This is what cutlery, trophies and old teapots are — a few microns of silver over a base metal that supplies all the strength, so you buy silver's appearance for a tiny fraction of silver's cost.",
+    "explanation": "The same arrangement again, and worth doing after copper purely to see how little changes: swap all three components for the silver equivalents and the cell behaves identically. That is the point of understanding a principle rather than memorising a recipe. One honest note: industry does not plate from plain silver nitrate, which gives loose, crystalline silver — it uses a silver–cyanide complex bath, which releases the silver gently enough to build a smooth, bright coat. This is what cutlery, trophies and old teapots are — a few microns of silver over a base metal that supplies all the strength, so you buy silver's appearance for a tiny fraction of silver's cost.",
     "levels": ["fsc", "bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — decorative electroplating"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — decorative electroplating",
+    "sources": [
+      { "ref": "Wikipedia — Electroplating (potassium cyanide as the electrolyte for silver and gold plating)", "url": "https://en.wikipedia.org/wiki/Electroplating", "checked": "2026-11-07", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_electroplating_nickel",
@@ -7737,9 +7746,12 @@
       "resultPH": null
     },
     "hazard": null,
-    "explanation": "The way round the previous problem, and note what is missing from the conditions: no current. Methanal is a reducing agent, so it hands electrons to the copper ions chemically and the copper deposits wherever the solution touches — conductor or not. Once that first film is down the plastic conducts, and everything afterwards can be electroplated normally. Every plastic car badge and bathroom fitting that looks like chrome was started this way, with no electricity involved at all.",
+    "explanation": "The way round the previous problem, and note what is missing from the conditions: no current. Methanal is a reducing agent, so it hands electrons to the copper ions chemically, with no current needed. Two honest notes about the real process: the plastic is first primed with a trace of palladium, which catalyses the reaction so that copper deposits on the surface rather than anywhere in the bath, and the bath is kept alkaline, because methanal only does this job in alkali. Once that first film is down the plastic conducts, and everything afterwards can be electroplated normally. Every plastic car badge and bathroom fitting that looks like chrome was started this way, with no electricity involved at all.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — electroless copper deposition"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — electroless copper deposition",
+    "sources": [
+      { "ref": "Wikipedia — Electroless copper plating (surfaces primed with a palladium catalyst; copper ions reduced by formaldehyde in alkali, with no current)", "url": "https://en.wikipedia.org/wiki/Electroless_copper_plating", "checked": "2026-11-07", "covers": ["conditions", "explanation"] }
+    ]
   },
   {
     "id": "rxn_none_electroplating_aluminium",
