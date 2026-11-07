@@ -221,7 +221,14 @@ ethanal, dissolving vanadium(V) oxide, and the ammonium fertilisers.
 
 ## 10. The second-source audit (BUILD_PHASE_2.md stage 2.1.1)
 
-Every reaction is being re-checked, 25 at a time in file order, for
+**Status: complete (2026-11-07).** All 389 original reactions were checked
+in 16 batches — 315 sound as written, 74 corrected, with rules, chemicals
+and one guided experiment added where the checking showed a gap. 83 of the
+394 reactions now carry a `sources` entry. What could not be settled from
+an opened page is listed under "Noted but not changed" in each batch, for
+the teacher review in stage 2.1.5.
+
+Every reaction was re-checked, 25 at a time in file order, for
 products, equation balance, conditions, colours, precipitates, temperature,
 pH and hazard text. Disagreements go to the project owner to decide;
 nothing is changed silently.
@@ -566,3 +573,30 @@ phosphate gives its yellow precipitate unwarmed, the same open question
 as in batch 14.
 
 Reactions with a `sources` entry after batch 15: 75 of 394.
+
+### Batch 16 — originally reactions 376–389 (file positions 381–394)
+
+The last batch, 14 reactions: 8 sound as written, 6 corrected. Owner
+approved all recommendations on 2026-11-07.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_cisplatin_formation` | Called transplatin cisplatin's "mirror-arrangement" — cis and trans are geometric isomers, not mirror images — and "medically worthless" (Wikipedia: far less impact on medicinal chemistry). | "The other arrangement … of little use as a drug." |
+| `rxn_cisplatin_binds_dna` | Said transplatin "cannot make the second bond"; it does bind DNA, but cannot form the 1,2-intrastrand cross-link between neighbouring bases (Wikipedia, *Cisplatin*). | Reworded to say exactly that. |
+| `rxn_sncl2_reduces_fe3` | "Confirm the iron(II) with thiocyanate" — thiocyanate detects iron(III); the missing blood red shows iron(III) is gone, not that iron(II) is there. | Reworded. |
+| `rxn_pbo2_oxidises_hcl` | "The roof of a church is lead(II)" — a lead roof is lead metal. | "Almost every lead compound you will meet is lead(II); lead(IV) is a laboratory oxidising agent." |
+| `rxn_decomposition_hi_heat` | `resultPH` 7, and "the molecule has come apart" — hydrogen iodide decomposes only partly, to an equilibrium with hydrogen and iodine (Bodenstein), so most of the acid gas is still in the tube. | `resultPH` → null, like the other gas and solid decompositions; explanation says only some molecules split and why. |
+| `rxn_catalysis_persulfate_iodide` | "Add starch to see the iodine appear", though the brown iodine is already showing. | "Add starch and the brown turns blue-black, confirming that it is iodine." |
+
+Noted but not changed, for the teacher review: cisplatin with DNA gives
+an off-white precipitate at once, though the drug must first lose a
+chloride to water (slow, per Wikipedia) and no opened page describes a
+visible solid; strontium carbonate's 1290 °C is not confirmed by an
+opened page (Wikipedia gives only decomposition on melting, 1494 °C);
+strontium and barium carbonate, like calcium carbonate, need far more
+than the burner's 500 °C, so a student cannot trigger them; lead(IV)
+oxide is usually shown with concentrated hydrochloric acid, and this rule
+uses 1 M; and `ptcl4_aq` is "pinkish brown" where Wikipedia calls the
+salt reddish orange (the solution's colour is not given).
+
+Reactions with a `sources` entry after batch 16: 83 of 394. **The audit is complete.**

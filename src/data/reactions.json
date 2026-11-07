@@ -8715,7 +8715,10 @@
     "noReaction": true,
     "explanation": "EDTA does nothing at all to sodium, and that indifference is useful rather than disappointing. Holding a metal in a six-armed cage depends on the ion pulling those arms in hard, and a singly charged ion of that size simply does not pull hard enough. So EDTA in a tin of food ties up the traces of iron and copper that would turn the contents rancid while leaving the salt entirely alone. A reagent that grabs everything would be no use to anyone.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — stability constants of EDTA complexes"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — stability constants of EDTA complexes",
+    "sources": [
+      { "ref": "Wikipedia — Ethylenediaminetetraacetic acid (added to food to stop metal ions catalysing oxidative spoilage)", "url": "https://en.wikipedia.org/wiki/Ethylenediaminetetraacetic_acid", "checked": "2026-11-07", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_cisplatin_formation",
@@ -8735,9 +8738,13 @@
       "resultPH": 8.0
     },
     "hazard": null,
-    "explanation": "Two ammonias replace two chlorides on a FLAT SQUARE platinum — flat rather than tetrahedral, which is unusual for four ligands and is the whole point. On a flat square the two ammonias can end up next to each other or opposite each other, and those are genuinely different substances made of exactly the same atoms. The one formed here has them adjacent. Its mirror-arrangement, trans-platin, is medically worthless. Look at the next reaction to see why the difference matters so much.",
+    "explanation": "Two ammonias replace two chlorides on a FLAT SQUARE platinum — flat rather than tetrahedral, which is unusual for four ligands and is the whole point. On a flat square the two ammonias can end up next to each other or opposite each other, and those are genuinely different substances made of exactly the same atoms. The one formed here has them adjacent. The other arrangement, transplatin, has the same atoms and is of little use as a drug. Look at the next reaction to see why the difference matters so much.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — square planar platinum(II)"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — square planar platinum(II)",
+    "sources": [
+      { "ref": "Wikipedia — Cisplatin (Peyrone's salt; slow aquation; 1,2-intrastrand cross-links between neighbouring guanines, which transplatin cannot form)", "url": "https://en.wikipedia.org/wiki/Cisplatin", "checked": "2026-11-07", "covers": ["products", "explanation"] },
+      { "ref": "Wikipedia — Transplatin (the trans isomer has had far less impact on medicinal chemistry than cisplatin)", "url": "https://en.wikipedia.org/wiki/Transplatin", "checked": "2026-11-07", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_cisplatin_binds_dna",
@@ -8757,9 +8764,12 @@
       "resultPH": 7.0
     },
     "hazard": null,
-    "explanation": "And here is why the geometry decides everything. The platinum loses both chlorides and bonds to two neighbouring bases on the same DNA strand, putting a sharp kink in the helix that the cell cannot copy past — so a dividing cell fails and dies, which is why the drug hits fast-dividing cells hardest. Binding to two ADJACENT bases requires two bonding positions that are adjacent, and only the cis isomer has them. Trans-platin carries the same atoms to the same place and cannot make the second bond.",
+    "explanation": "And here is why the geometry decides everything. The platinum loses both chlorides and bonds to two neighbouring bases on the same DNA strand, putting a sharp kink in the helix that the cell cannot copy past — so a dividing cell fails and dies, which is why the drug hits fast-dividing cells hardest. Binding to two ADJACENT bases requires two bonding positions that are adjacent, and only the cis isomer has them. Transplatin carries the same atoms to the same place and can still attach to DNA, but its two free positions point in opposite directions, so it cannot bridge two neighbouring bases.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the mechanism of cisplatin"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the mechanism of cisplatin",
+    "sources": [
+      { "ref": "Wikipedia — Cisplatin (Peyrone's salt; slow aquation; 1,2-intrastrand cross-links between neighbouring guanines, which transplatin cannot form)", "url": "https://en.wikipedia.org/wiki/Cisplatin", "checked": "2026-11-07", "covers": ["products", "explanation"] }
+    ]
   },
   {
     "id": "rxn_catalysis_persulfate_iodide",
@@ -8779,7 +8789,7 @@
       "resultPH": 6.0
     },
     "hazard": null,
-    "explanation": "This is the reaction that explains why transition metals make such good catalysts. Persulfate and iodide are both NEGATIVE, so they repel one another and can barely meet, however favourable the reaction would be. Iron solves it by taking the two halves separately: iron(II) hands electrons to the persulfate and becomes iron(III), then iron(III) takes electrons from the iodide and becomes iron(II) again. Every step is now between opposite charges. The iron ends exactly as it began, and it could only do this because it has two oxidation states of similar stability — which is the d-block's defining trick. Add starch to see the iodine appear.",
+    "explanation": "This is the reaction that explains why transition metals make such good catalysts. Persulfate and iodide are both NEGATIVE, so they repel one another and can barely meet, however favourable the reaction would be. Iron solves it by taking the two halves separately: iron(II) hands electrons to the persulfate and becomes iron(III), then iron(III) takes electrons from the iodide and becomes iron(II) again. Every step is now between opposite charges. The iron ends exactly as it began, and it could only do this because it has two oxidation states of similar stability — which is the d-block's defining trick. Add starch and the brown turns blue-black, confirming that it is iodine.",
     "levels": ["bs"],
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — catalysis by variable oxidation state"
   },
@@ -8809,7 +8819,7 @@
       "resultPH": 2.0
     },
     "hazard": null,
-    "explanation": "Yellow iron(III) fades to pale green iron(II), so the tin has given electrons away — tin(II) is a reducing agent. The reason is its position: tin sits high enough in Group 14 that +4 is the comfortable oxidation state, so tin(II) is two electrons away from where it would rather be and parts with them readily. Confirm the iron(II) with thiocyanate if you like: the blood red will be gone. Now try the same thing with lead(II).",
+    "explanation": "Yellow iron(III) fades to pale green iron(II), so the tin has given electrons away — tin(II) is a reducing agent. The reason is its position: tin sits high enough in Group 14 that +4 is the comfortable oxidation state, so tin(II) is two electrons away from where it would rather be and parts with them readily. Check with thiocyanate if you like: no blood red, because no iron(III) is left. Now try the same thing with lead(II).",
     "levels": ["bs"],
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the inert pair effect"
   },
@@ -8846,9 +8856,12 @@
       "visualEffect": "toxic_cloud",
       "whatToDoInstead": "Fume cupboard, and lead waste to the labelled heavy metal container — never down the sink. Wash hands before eating, every time."
     },
-    "explanation": "The dark brown powder goes white and choking green chlorine comes off — so lead(IV) has TAKEN electrons, from chloride ions that are not easy to oxidise. Set this beside the tin tube: tin(II) gave electrons away to climb to +4, and lead(IV) takes them to drop to +2. Same group, opposite direction, and both for the same reason. Going down Group 14 the lower oxidation state steadily becomes the stable one, which is why the roof of a church is lead(II) and never lead(IV).",
+    "explanation": "The dark brown powder goes white and choking green chlorine comes off — so lead(IV) has TAKEN electrons, from chloride ions that are not easy to oxidise. Set this beside the tin tube: tin(II) gave electrons away to climb to +4, and lead(IV) takes them to drop to +2. Same group, opposite direction, and both for the same reason. Going down Group 14 the lower oxidation state steadily becomes the stable one, which is why almost every lead compound you will meet is lead(II), and lead(IV) is a laboratory oxidising agent.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — lead(IV) as an oxidising agent"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — lead(IV) as an oxidising agent",
+    "sources": [
+      { "ref": "Wikipedia — Lead dioxide (PbO₂ + 4HCl → PbCl₂ + 2H₂O + Cl₂)", "url": "https://en.wikipedia.org/wiki/Lead_dioxide", "checked": "2026-11-07", "covers": ["equation", "products", "gas"] }
+    ]
   },
   {
     "id": "rxn_group2_srco3_decomposition",
@@ -8870,7 +8883,10 @@
     "hazard": null,
     "explanation": "The third step of a trend worth running in order. Magnesium carbonate goes at about 350 °C, calcium at about 900, strontium needs nearly 1300 — the same reaction, needing steadily more heat down the group. The cause is the size of the metal ion: a small ion sits close to the carbonate and distorts it, weakening the bonds inside it, and a large ion barely disturbs it at all. Four carbonates, one property changing smoothly, and a single explanation for all of it.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal stability of Group 2 carbonates"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal stability of Group 2 carbonates",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Thermal decomposition of the Group 2 carbonates and nitrates (metal oxide and carbon dioxide; more heat needed down the group)", "url": "https://www.chemguide.co.uk/inorganic/group2/thermstab.html", "checked": "2026-11-07", "covers": ["products", "explanation"] }
+    ]
   },
   {
     "id": "rxn_group2_baco3_decomposition",
@@ -8892,7 +8908,11 @@
     "hazard": null,
     "explanation": "The most stubborn of the four, and the end of the trend: 350 °C, 900 °C, 1290 °C, 1360 °C going down the group. Barium has the largest ion of the four and pulls least on the carbonate next to it, so that carbonate holds together longest. Notice that this is a prediction as much as a measurement — knowing only the trend, you could have said before doing it that barium would need the most heat.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal stability of Group 2 carbonates"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal stability of Group 2 carbonates",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Thermal decomposition of the Group 2 carbonates and nitrates (metal oxide and carbon dioxide; more heat needed down the group)", "url": "https://www.chemguide.co.uk/inorganic/group2/thermstab.html", "checked": "2026-11-07", "covers": ["products", "explanation"] },
+      { "ref": "Wikipedia — Barium carbonate (decomposes from 1360 °C)", "url": "https://en.wikipedia.org/wiki/Barium_carbonate", "checked": "2026-11-07", "covers": ["conditions"] }
+    ]
   },
   {
     "id": "rxn_none_bacl2_naoh",
@@ -8900,7 +8920,10 @@
     "noReaction": true,
     "explanation": "No precipitate, and magnesium chloride in the next tube gives a thick white one with the same reagent. Group 2 hydroxides get MORE soluble going down, so magnesium hydroxide drops out and barium hydroxide stays dissolved — barium hydroxide is soluble enough to be used as a standard alkali. Hold that beside the sulfates, which go the other way entirely: magnesium sulfate is freely soluble and barium sulfate is the classic insoluble one. Two trends in the same group running in opposite directions is exactly why solubility has to be learnt rather than guessed.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — solubility trends in Group 2"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — solubility trends in Group 2",
+    "sources": [
+      { "ref": "Wikipedia — Barium hydroxide (soluble enough to be used for titrating weak acids; clear solutions are carbonate-free)", "url": "https://en.wikipedia.org/wiki/Barium_hydroxide", "checked": "2026-11-07", "covers": ["explanation"] }
+    ]
   },
   {
     "id": "rxn_none_mgcl2_na2so4",
@@ -8925,12 +8948,15 @@
       "bubbles": false,
       "smoke": false,
       "tempDeltaC": 0,
-      "resultPH": 7.0
+      "resultPH": null
     },
     "hazard": null,
-    "explanation": "Violet vapour fills the tube — the colour that gave iodine its name, and the sign that the molecule has come apart. Going down the halogens the atoms get bigger, the shared pair sits further from both nuclei, and the bond weakens: H–F is almost unbreakable, H–Cl needs well over a thousand degrees, H–Br less, and H–I gives way at a temperature a school burner can reach. One trend in atomic size explains the whole series.",
+    "explanation": "Violet vapour fills the tube — the colour that gave iodine its name, and the sign that some of the molecules have come apart. Only some: the hydrogen and iodine recombine as fast as the hydrogen iodide splits, so the tube settles at a balance with most of the hydrogen iodide still there. Going down the halogens the atoms get bigger, the shared pair sits further from both nuclei, and the bond weakens: H–F is almost unbreakable, H–Cl needs well over a thousand degrees, H–Br less, and H–I gives way at a temperature a school burner can reach. One trend in atomic size explains the whole series.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal stability of the hydrogen halides"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal stability of the hydrogen halides",
+    "sources": [
+      { "ref": "Wikipedia — Max Bodenstein (hydrogen iodide decomposes on heating and reaches an equilibrium with hydrogen and iodine)", "url": "https://en.wikipedia.org/wiki/Max_Bodenstein", "checked": "2026-11-07", "covers": ["products", "explanation"] }
+    ]
   },
   {
     "id": "rxn_none_hcl_heated",
