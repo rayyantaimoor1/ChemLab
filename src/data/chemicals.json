@@ -7900,8 +7900,8 @@
     "onShelf": true,
     "levels": ["bs"],
     "structure": "molecules/na2s2o8.svg",
-    "description": "A strong oxidising agent built round an oxygen–oxygen single bond. It will oxidise iodide to iodine easily on paper — and barely does so in practice, because both ions carry a negative charge and repel each other so strongly that they can hardly meet. It is the standard demonstration that being favourable and being fast are different questions.",
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — peroxodisulfate; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
+    "description": "A strong oxidising agent built round an oxygen–oxygen single bond. It will oxidise iodide to iodine easily on paper — and barely does so in practice, because both ions carry a negative charge and repel each other so strongly that they can hardly meet. It is the standard demonstration that being favourable and being fast are different questions. Warmed, that weak oxygen–oxygen bond splits into radicals, which is why industry uses a trace of persulfate to START free-radical polymerisations such as PVC, polystyrene and PTFE.",
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — peroxodisulfate; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Wikipedia — Sodium persulfate (mainly used as a radical initiator for emulsion polymerisation), consulted 2026-11-07",
     "category": "salt"
   },
   {

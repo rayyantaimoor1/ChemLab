@@ -6172,7 +6172,10 @@
     "molecularAnimation": null,
     "explanation": "ADDITION POLYMERISATION, and the whole of it is one idea: the double bond opens, and each carbon uses the electrons it just freed to grab the next molecule along. Thousands of small molecules become one enormous one, and NOTHING is lost — count the atoms in the product and they are exactly the atoms that went in. That is what makes it addition rather than condensation. Note the heat given out: every double bond that opens releases energy, so an industrial reactor's real problem is cooling it, not warming it. The catalyst is not optional: without one this needs something like two thousand atmospheres, and with one it runs at ordinary pressure — which is why the app will not let it go until you add it.",
     "levels": ["fsc", "bs"],
-    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — addition polymerisation"
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — addition polymerisation",
+    "sources": [
+      { "ref": "Wikipedia — Ziegler–Natta catalyst (used in the synthesis of polymers of 1-alkenes such as ethene and propene)", "url": "https://en.wikipedia.org/wiki/Ziegler%E2%80%93Natta_catalyst", "checked": "2026-11-07", "covers": ["conditions"] }
+    ]
   },
   {
     "id": "rxn_none_ethane_polymerise",
@@ -6185,7 +6188,7 @@
   {
     "id": "rxn_polymerisation_chloroethene",
     "reactants": ["ch2chcl_g"],
-    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "ziegler_natta_s" },
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "na2s2o8_aq" },
     "products": ["pvc_s"],
     "equation": "n CH₂=CHCl → -(CH₂CHCl)ₙ-",
     "type": "addition_polymerisation",
@@ -6207,14 +6210,19 @@
       "whatToDoInstead": "This is industrial chemistry handled in closed systems for exactly this reason, not something to do in an open vessel. In a teaching laboratory it is demonstrated, not performed."
     },
     "molecularAnimation": null,
-    "explanation": "Exactly the same reaction as poly(ethene), with one hydrogen swapped for a chlorine on the monomer. That single change makes the finished plastic rigid rather than waxy, and it also makes it burn badly, giving off hydrogen chloride. Worth noticing that the polymer is harmless in a drainpipe while the monomer causes cancer — a polymer is a genuinely different substance from the thing it was made of, not simply a lot of it.",
+    "explanation": "Exactly the same reaction as poly(ethene), with one hydrogen swapped for a chlorine on the monomer. That single change makes the finished plastic rigid rather than waxy, and it also makes it burn badly, giving off hydrogen chloride. Worth noticing that the polymer is harmless in a drainpipe while the monomer causes cancer — a polymer is a genuinely different substance from the thing it was made of, not simply a lot of it. One correction to the picture, though: PVC is not made with the Ziegler–Natta catalyst used for poly(ethene). It is a FREE-RADICAL polymerisation, started by a small amount of an initiator such as a persulfate that breaks into radicals when warmed. Strictly an initiator is not a catalyst — a little of it is used up in starting each chain — but like a catalyst it is needed only in a trace.",
     "levels": ["bs"],
-    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — addition polymers and their properties"
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — addition polymers and their properties",
+    "sources": [
+      { "ref": "Wikipedia — Polyvinyl chloride (made mainly by suspension polymerisation of vinyl chloride with a polymerisation initiator)", "url": "https://en.wikipedia.org/wiki/Polyvinyl_chloride", "checked": "2026-11-07", "covers": ["conditions", "explanation"] },
+      { "ref": "Wikipedia — Sodium persulfate (mainly used as a radical initiator for emulsion polymerisation)", "url": "https://en.wikipedia.org/wiki/Sodium_persulfate", "checked": "2026-11-07", "covers": ["conditions"] },
+      { "ref": "Wikipedia — Ziegler–Natta catalyst (used in the synthesis of polymers of 1-alkenes such as ethene and propene)", "url": "https://en.wikipedia.org/wiki/Ziegler%E2%80%93Natta_catalyst", "checked": "2026-11-07", "covers": ["conditions"] }
+    ]
   },
   {
     "id": "rxn_polymerisation_phenylethene",
     "reactants": ["styrene_l"],
-    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "ziegler_natta_s" },
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "na2s2o8_aq" },
     "products": ["polystyrene_s"],
     "equation": "n C₆H₅CH=CH₂ → -(CH₂CH(C₆H₅))ₙ-",
     "type": "addition_polymerisation",
@@ -6229,14 +6237,18 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "The third time the same reaction, and by now the pattern should be doing the work: find the C=C, open it, join them up. What changes is only what was hanging off the double bond. Here it is a whole benzene ring, and once the chain is made those rings stick out along it and stop the chains packing neatly together — which is why polystyrene is hard and glassy where poly(ethene) is soft and waxy. The shape of a side group is a physical obstruction, and the properties of a plastic follow from it.",
+    "explanation": "The third time the same reaction, and by now the pattern should be doing the work: find the C=C, open it, join them up. What changes is only what was hanging off the double bond. Here it is a whole benzene ring, and once the chain is made those rings stick out along it and stop the chains packing neatly together — which is why polystyrene is hard and glassy where poly(ethene) is soft and waxy. The shape of a side group is a physical obstruction, and the properties of a plastic follow from it. This one, like PVC, is a FREE-RADICAL polymerisation rather than a Ziegler–Natta one: a trace of an initiator such as a persulfate or a peroxide breaks into radicals when warmed and starts the chains, and a little of it is used up doing so.",
     "levels": ["bs"],
-    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — side groups and polymer properties"
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — side groups and polymer properties",
+    "sources": [
+      { "ref": "Wikipedia — Polystyrene (polymerisation initiated with free radicals, e.g. by heat or benzoyl peroxide)", "url": "https://en.wikipedia.org/wiki/Polystyrene", "checked": "2026-11-07", "covers": ["conditions", "explanation"] },
+      { "ref": "Wikipedia — Sodium persulfate (mainly used as a radical initiator for emulsion polymerisation)", "url": "https://en.wikipedia.org/wiki/Sodium_persulfate", "checked": "2026-11-07", "covers": ["conditions"] }
+    ]
   },
   {
     "id": "rxn_polymerisation_tetrafluoroethene",
     "reactants": ["c2f4_g"],
-    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "ziegler_natta_s" },
+    "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": "na2s2o8_aq" },
     "products": ["ptfe_s"],
     "equation": "n CF₂=CF₂ → -(CF₂CF₂)ₙ-",
     "type": "addition_polymerisation",
@@ -6251,9 +6263,13 @@
     },
     "hazard": null,
     "molecularAnimation": null,
-    "explanation": "The same reaction once more, now with every hydrogen replaced by fluorine — and the result is the most chemically inert plastic there is, the non-stick coating on a frying pan. The carbon–fluorine bond is the strongest single bond carbon forms with anything, and the fluorines wrap the chain in a sheath that keeps acids, alkalis and solvents from ever reaching the carbon backbone. It was discovered by accident in 1938, when a cylinder of the gas was found to have polymerised itself in storage.",
+    "explanation": "The same reaction once more, now with every hydrogen replaced by fluorine — and the result is the most chemically inert plastic there is, the non-stick coating on a frying pan. The carbon–fluorine bond is the strongest single bond carbon forms with anything, and the fluorines wrap the chain in a sheath that keeps acids, alkalis and solvents from ever reaching the carbon backbone. It was discovered by accident in 1938, when a cylinder of the gas was found to have polymerised itself in storage. Industrially it is made by FREE-RADICAL polymerisation, started by a trace of a persulfate initiator in water — not by the Ziegler–Natta catalyst that suits ethene.",
     "levels": ["bs"],
-    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — fluoropolymers"
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — fluoropolymers",
+    "sources": [
+      { "ref": "Wikipedia — Polytetrafluoroethylene (produced by free-radical polymerisation of tetrafluoroethylene)", "url": "https://en.wikipedia.org/wiki/Polytetrafluoroethylene", "checked": "2026-11-07", "covers": ["conditions", "explanation"] },
+      { "ref": "Wikipedia — Sodium persulfate (mainly used as a radical initiator for emulsion polymerisation)", "url": "https://en.wikipedia.org/wiki/Sodium_persulfate", "checked": "2026-11-07", "covers": ["conditions"] }
+    ]
   },
   {
     "id": "rxn_polyester_formation",
@@ -6354,7 +6370,7 @@
       "whatToDoInstead": "Goggles rather than spectacles, gloves, and heat gently with anti-bumping granules rather than letting it boil hard."
     },
     "molecularAnimation": null,
-    "explanation": "The polyester comes apart again, back to the two monomers it was built from. It CAN be undone because the links along its chain are ester groups, and an ester is hydrolysed by hot alkali — exactly as ethyl ethanoate was several batches ago. This is chemical recycling as opposed to melting bottles down: the polymer is taken back to its starting materials and rebuilt from them, so the new bottle is as good as the first rather than slightly worse. Acidify the terephthalate afterwards and the dicarboxylic acid is recovered ready to use again.",
+    "explanation": "The polyester comes apart again, back to the two monomers it was built from. It CAN be undone because the links along its chain are ester groups, and an ester is hydrolysed by hot alkali — exactly as ethyl ethanoate was several batches ago. This is chemical recycling as opposed to melting bottles down: the polymer is taken back to its starting materials and rebuilt from them, so the new bottle is as good as the first rather than slightly worse. Acidify the terephthalate afterwards and the dicarboxylic acid is recovered ready to use again. One honest note about this simulation: the bench shows it with the 1 M alkali, but in a real laboratory it needs hot CONCENTRATED sodium hydroxide — dilute alkali attacks a polyester only very slowly.",
     "levels": ["bs"],
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — hydrolysis of polyesters and chemical recycling"
   },

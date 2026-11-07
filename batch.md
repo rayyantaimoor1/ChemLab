@@ -461,3 +461,27 @@ Ionic equations for the vanadium, chromium and permanganate reductions in
 this batch were balanced by hand, since the checker cannot read them.
 
 Reactions with a `sources` entry after batch 10: 55 of 394.
+
+### Batch 11 — originally reactions 251–275 (file positions 256–280)
+
+22 sound as written, 3 corrected (four rules touched). Owner approved all
+recommendations on 2026-11-07.
+
+| Reaction | Finding | Resolution |
+|---|---|---|
+| `rxn_polymerisation_chloroethene`, `rxn_polymerisation_phenylethene`, `rxn_polymerisation_tetrafluoroethene` | All three used a Ziegler–Natta catalyst, which is for polymers of 1-alkenes such as ethene and propene. PVC, polystyrene and PTFE are made by FREE-RADICAL polymerisation, started by an initiator (Wikipedia, on each polymer and on Ziegler–Natta). | Condition switched to `na2s2o8_aq` (sodium persulfate, a radical initiator — Wikipedia — already on the BS shelf, the same level as these rules); each explanation now says so and notes that an initiator, strictly, is used up in a trace. `na2s2o8_aq`'s description gains one sentence on this use. Ethene and isoprene keep Ziegler–Natta, which is right for them. Engine checked. |
+| `rxn_hydrolysis_polyester` | Used 1 M alkali although its own hazard says hot concentrated alkali is needed (the same pattern as sand in batch 10). | Honest note added. |
+
+Side effect worth knowing: vinyl chloride, styrene or tetrafluoroethene
+with the Ziegler–Natta catalyst now give "not available yet" and are logged,
+rather than wrongly polymerising. A "no reaction" rule could teach that
+the catalyst does not work for them, but no opened source said so
+directly, so it is left for a later content batch.
+
+Noted but not changed: `rxn_dye_on_fabric` calls its azo dye "a direct
+dye", which is doubtful for so small a molecule, though the lesson (no
+bond forms, so it can wash out) stands; and the chlorosilane entries
+explain silicon's easy hydrolysis with "empty d orbitals", the standard
+school explanation even though modern texts prefer the size argument.
+
+Reactions with a `sources` entry after batch 11: 59 of 394.
