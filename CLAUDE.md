@@ -70,7 +70,9 @@ the boundary has been violated — stop and fix the boundary instead.
 chemlab/
 ├── CLAUDE.md                 ← this file
 ├── UI.md                     ← UI/design spec
-├── BUILD_PROMPTS.md          ← build sequence
+├── BUILD_PROMPTS.md          ← build sequence (v1)
+├── BUILD_PHASE_2.md          ← v2 plan: accuracy, amounts, gases, separation, technique
+├── BUILD_UI.md               ← UI realism track (Phase 9)
 ├── package.json
 ├── main.js                   ← Electron main process (window, menu, file paths)
 ├── main/                     ← main-process helpers: IPC switchboard, argument checks, file writing
@@ -522,7 +524,7 @@ owner has confirmed it. Each phase must leave the app in a working state.
 >
 > Each is a one-time capability addition. Content written after each one is
 > pure JSON again.
-| **9** | Real UI, designed in Claude Design and integrated | Visual redesign required no changes inside `src/core/` |
+| **9** | Real UI — built by Claude Code as the UI realism track in `BUILD_UI.md` (owner's decision, 2026-11-10; replaces the Claude Design plan) | Visual redesign required no changes inside `src/core/`; the bench never disagrees with the notebook |
 | **10** | Packaging, installer polish, testing on target hardware | Installs and runs on a real 8 GB / i5 5th gen lab PC |
 
 ---

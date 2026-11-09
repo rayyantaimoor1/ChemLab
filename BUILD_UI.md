@@ -1,0 +1,364 @@
+# Build UI — making the bench look and behave like a real lab
+
+> **What this file is.** The plan for the UI track the owner asked for on 2026-11-10: improve the
+> interface stage by stage until the bench looks and behaves like a real school laboratory. It
+> takes the place of CLAUDE.md §8 **Phase 9** ("designed in Claude Design") — the owner chose to
+> have Claude Code build it directly — and absorbs BUILD_PHASE_2.md **Stage 2.7** (Realistic
+> effects), whose five steps appear below in fuller form.
+>
+> It works like BUILD_PHASE_2.md: stages in order, small sub-steps, a model for each, and a
+> **✅ Check** that must pass before the next stage starts. Commit and push at the end of every
+> sub-step.
+
+---
+
+## What "realistic" means here
+
+Not photorealistic 3D, which CLAUDE.md §10 rules out. Realistic means **a student who has stood
+at a real bench recognises what they see**, and a student who has not learns what to expect:
+
+- the right glassware, in the right proportions, with graduations you can read;
+- the liquid the colour and clarity the notebook says, at the level its volume gives;
+- solids that look like what they are — a ribbon, granules, a fine white cloud, a gelatinous
+  floc, a copper coat on zinc, a pool of molten metal;
+- gas coming from where it really forms, at the rate it really forms;
+- heat you can see before the thermometer says so;
+- apparatus that goes together the way it does on a real bench.
+
+## Rules for every stage
+
+1. **The bench and the notebook never disagree.** Anything drawn — a colour, a precipitate, a gas,
+   a level — comes from the same curated data the notebook sentence comes from. Stage UI.1 adds a
+   test that checks this for every reaction, and it stays green from then on.
+2. **No chemistry in the UI.** The UI reads state and curated data; it never works out what
+   happens. A new visual fact the data cannot express yet is a **data** change (curated, sourced,
+   validated, owner-approved), never a guess in the drawing code. CLAUDE.md §4 and §6 still win.
+3. **The hardware floor still wins.** 30 fps on Intel HD integrated graphics at 1366×768; animate
+   `transform` and `opacity` only; no `filter: blur()`, no animated box-shadow, no WebGL on the
+   bench (CLAUDE.md §9, UI.md §6). Shadows, highlights and textures are drawn once, statically.
+4. **Colour is never the only signal** (UI.md §5). Every colour, precipitate and gas keeps its name
+   in text beside it, however realistic the drawing becomes.
+5. **Every effect answers "what would a student see?"** If it is not something a student would
+   see at a real bench, it is decoration and stays out. Hazards show danger and the right
+   response, never spectacle (UI.md §6).
+6. **Before and after.** Every stage ends with screenshots at 1366×768 of the same set-ups,
+   committed under `docs/ui-progress/`, so the improvement can be seen and any regression spotted.
+
+---
+
+## The stages at a glance
+
+| Stage | Theme | Main result | New curated data? |
+|---|---|---|---|
+| **UI.1** | What you see is what happened | Bench always matches the notebook; current display bugs fixed | No |
+| **UI.2** | Glassware that looks like glass | Every vessel redrawn in SVG with real proportions, graduations, meniscus | No |
+| **UI.3** | Liquids and solids | Clarity, colour depth, solids by form, precipitates by texture, layers | **Yes** |
+| **UI.4** | Heat and change of state | Proper Bunsen flame, boiling, steam, condensation, glowing solids | **Yes** (boiling points) |
+| **UI.5** | Gas you can see | Bubbles where and as fast as they form; coloured gases, fumes, smoke | **Yes** (rate) |
+| **UI.6** | Apparatus and handling | Stands, clamps, holders; tilting pours, dropwise addition, swirling | No |
+| **UI.7** | The close look | A magnified view of one vessel against a white tile, meniscus at eye level | No |
+| **UI.8** | The room | Bench, wall, real reagent bottles with GHS labels, fume cupboard, notebook paper | Small |
+| **UI.9** | Sound (optional) | Offline pour, fizz, boil and glass sounds, off by default | No |
+| **UI.10** | Fast, accessible, checked | Quality tiers, fps budget test, keyboard, the realism review | No |
+
+Stages that need new curated data list a **decision needed** at the top. As in BUILD_PHASE_2.md,
+answer it in chat before any code is written, and record it in the decisions log at the end.
+
+---
+
+## Stage UI.1 — What you see is what happened
+
+**Why:** before anything is made prettier, what is drawn has to be right. On 2026-11-10 the app
+was opened at 1366×768 with three vessels, and four problems showed up:
+
+- **Every mixture is drawn grey and labelled "colour not known for this mixture".** The colour is
+  worked out in `appearanceFor` (src/ui/app.js), which only knows a colour when a vessel holds
+  exactly one substance. Almost every reaction leaves two or more, so iron(III) with thiocyanate
+  was drawn colourless while the notebook said, correctly, "The mixture turned blood red". The
+  same happens to Fehling's brick red, the deep-blue copper complex and the starch blue-black.
+- **A precipitate is 10 yellow dots floating near the top of the liquid**, not a solid gathering at
+  the bottom.
+- **Labels overlap.** Vessels taken from the tray land close together, and their label cards sit on
+  top of one another.
+- **Small volumes are nearly invisible.** 20 mL in a 250 mL beaker is a 9-pixel strip.
+
+**UI.1.1 — Sonnet — The vessel's colour comes from the reaction that made it**
+> Move `appearanceFor` out of app.js into a small, DOM-free `src/ui/appearance.js`. When a reaction
+> runs in a vessel, remember that reaction's curated `effects.colorToHex` and the engine's name for
+> it (the same lookup the notebook uses: the rule's own products first), exactly as app.js already
+> remembers the last animated reaction per vessel. Show that colour and name until the contents
+> change again. A mixture no rule describes stays "colour not known" — honest, never guessed.
+
+**UI.1.2 — Sonnet — The bench-notebook agreement test**
+> A test that runs every reaction in `tests/golden/` through a real container, builds its
+> appearance with `appearance.js`, and fails if the colour name drawn on the bench is not the one
+> the notebook sentence names, or if the notebook mentions a precipitate the vessel does not show.
+
+**UI.1.3 — Sonnet — Precipitates that stay**
+> After the forming animation, a precipitate remains as a settled layer at the bottom of the
+> vessel, in its curated colour, with its name on the label card. It stays until the vessel is
+> emptied, dissolved (`effects.dissolves`) or reacted away.
+
+**UI.1.4 — Sonnet — Labels that never overlap; apparatus that lands in free space**
+> New apparatus is placed in the nearest free spot on the bench. Label cards that would overlap
+> stack or shift aside; a selected vessel's card always comes to the front.
+
+**UI.1.5 — Sonnet — Small volumes you can see**
+> Keep the true level, but draw a thin liquid of at least a few pixels with its colour name, and
+> show the volume on the glass's own graduation scale, so 20 mL in a 250 mL beaker reads as what
+> it is rather than as an empty beaker.
+
+**UI.1.6 — Sonnet — Baseline screenshots**
+> Script the six reference set-ups (precipitate, colour change, gas evolution, electrolysis,
+> heating, titration) and save screenshots at 1366×768 to `docs/ui-progress/UI.1/`.
+
+✅ **Check:** the agreement test passes for every reaction; the blood-red, brick-red, deep-blue and
+blue-black results all show on the bench in their colours with their names.
+
+---
+
+## Stage UI.2 — Glassware that looks like glass
+
+**Why:** the vessels are flat outlines today. Real glassware has a rim, a spout, thickness, a
+curved base, and white graduations — and those details are part of what a student is learning.
+
+**UI.2.1 — Sonnet — Redraw every vessel in SVG, to real proportions**
+> Beaker (with spout), conical flask, test tube (round bottom), boiling tube, measuring cylinder
+> (with foot), burette (with stopcock), evaporating dish, plus the shapes later stages need:
+> round-bottom flask, filter funnel, watch glass, dropping pipette. Proportions taken from a
+> supplier catalogue drawing, the page recorded in the file's header.
+
+**UI.2.2 — Sonnet — Glass that reads as glass**
+> A thin rim, darker edges where the glass is seen edge-on, one static highlight stripe from a
+> single consistent light direction, and a soft static shadow underneath. All drawn once in SVG —
+> no blur filters, nothing animated.
+
+**UI.2.3 — Sonnet — Graduations you can read**
+> White printed scales at the real spacing: every 10 mL on a beaker, 1 mL on a measuring cylinder,
+> 0.1 mL on a burette, with numbers large enough at 1366×768.
+
+**UI.2.4 — Sonnet — Liquid that fills the shape**
+> The liquid is clipped to the inside of the vessel — up the curve of a test tube, into the cone of
+> a flask — with a slightly lighter surface ellipse and a visible concave meniscus at the edges.
+
+✅ **Check:** each vessel set side by side with a photograph of the real one (an open-licensed
+image, linked in `docs/ui-progress/UI.2/`) is recognisable at a glance; 30 fps with seven vessels.
+
+---
+
+## Stage UI.3 — Liquids and solids
+
+**Decision needed:** add curated **appearance** fields to `chemicals.json`, each with a source:
+`clarity` (clear / cloudy / milky / opaque) for liquids and solutions; `form` (ribbon, granules,
+powder, chips, crystals, pellets, lump, wire) for solids taken off the shelf; and `texture` (fine,
+crystalline, gelatinous, curdy, metallic) for solids a reaction makes. The validator checks the
+fixed words, as it does for `category`. No engine change.
+
+**UI.3.1 — Opus — Curate the fields**
+> Fill `clarity`, `form` and `texture` for every chemical, using sources actually opened, in
+> batches of 25 the way the audit ran. Limewater is clear and turns milky; starch–iodine is opaque;
+> aluminium hydroxide is a gelatinous floc; silver chloride is curdy; lead iodide is crystalline.
+
+**UI.3.2 — Sonnet — Clarity and depth of colour**
+> A clear solution shows the bench through it; a milky one does not. A colour looks deeper through
+> a wide beaker than a narrow tube — the same solution, drawn honestly. Purely visual.
+
+**UI.3.3 — Sonnet — Solids that look like what they are**
+> Magnesium ribbon as a curled strip, zinc granules as grey lumps, marble chips as white stones,
+> crystals as facets, powder as a heap. A reacting solid shrinks over the reaction's animation.
+
+**UI.3.4 — Sonnet — Precipitates by texture, and solids by kind**
+> Fine ones cloud the whole liquid and settle slowly; crystalline ones glint and settle fast;
+> gelatinous flocs hang in the liquid; curdy ones clump. `solidKind` (already curated) decides
+> where the solid goes: a **deposit** coats the metal or the cathode, a **coating** grows on the
+> surface, a **liquid** pools, **smoke** hangs in the air above the vessel.
+
+**UI.3.5 — Sonnet — Colour that spreads and fades**
+> A reagent poured in colours the liquid from where it enters and spreads; stirring finishes it
+> (2.7.1). A curated `colourFades` drains the colour over the reaction rather than snapping.
+
+**UI.3.6 — Opus — Two layers**
+> Where the data already says two liquids do not mix (the `noReaction` rules for tetrachloromethane
+> and water, oil and water), draw them as two layers, the denser below, by the curated `density`.
+> Shaking makes an emulsion that separates again.
+
+✅ **Check:** the 30 review-pack reactions each show the right clarity, solid form and precipitate
+behaviour; a chemistry teacher shown the screenshots names the reaction without being told.
+
+---
+
+## Stage UI.4 — Heat and change of state
+
+**Decision needed:** add a curated `boilingPointC` to liquids and solutions (and `meltingPointC`
+where a solid visibly melts), with sources, so a liquid boils at the right temperature and not at
+a guessed one. No engine change.
+
+**UI.4.1 — Sonnet — A Bunsen burner that works like one**
+> Barrel, collar and air hole. Air hole closed: a tall, wavering, luminous yellow flame that leaves
+> soot on the glass. Open: a roaring blue flame with a pale inner cone. The teaching note says
+> which to use for heating and why. Flicker by transform only.
+
+**UI.4.2 — Sonnet — Heat you can see**
+> Convection lines in a warming liquid; small bubbles forming on the glass before the boil; a
+> rolling boil at the curated boiling point; steam at the mouth; condensation droplets on the cool
+> glass above — the water from heating blue copper sulfate, the mercury from mercury(II) oxide.
+
+**UI.4.3 — Sonnet — A thermometer that reads**
+> A thermometer stood in the liquid, its column rising with the vessel's temperature and readable
+> against its scale, beside the existing number.
+
+**UI.4.4 — Sonnet — Very hot solids**
+> A dry solid above about 500 °C glows dull red, then orange — a static overlay, faded in. Hot
+> glass looks exactly like cold glass, and the label says so.
+
+**UI.4.5 — Sonnet — Ice bath and water bath**
+> An ice bath with visible ice and water, and a water bath for gentle warming, each holding the
+> vessel at its temperature.
+
+✅ **Check:** heating water shows bubbles forming, then a rolling boil at 100 °C with steam;
+heating blue copper sulfate shows droplets on the cool glass above it.
+
+---
+
+## Stage UI.5 — Gas you can see
+
+**Decision needed:** add a curated `effects.gasRate` (slow / steady / vigorous) to reactions that
+give off a gas, sourced from practical descriptions, so magnesium in acid fizzes harder than iron
+does. No engine change. Gas collection and testing at the mouth are BUILD_PHASE_2.md Stage 2.3
+(an engine stage) and stay there.
+
+**UI.5.1 — Opus — Curate `gasRate`**
+> For every rule with a gas: slow, steady or vigorous, with a source. Magnesium in 1 M acid is
+> vigorous; zinc is steady; iron is slow.
+
+**UI.5.2 — Sonnet — Bubbles where the gas forms**
+> On the surface of the metal for a metal in acid; on each electrode in electrolysis, with
+> hydrogen's stream twice oxygen's where the electrodes block says so; from the chips themselves
+> for a carbonate. Bubble count and speed follow `gasRate`.
+
+**UI.5.3 — Sonnet — Coloured gases, fumes and smoke**
+> Coloured gases gather visibly above the liquid — brown nitrogen dioxide, yellow-green chlorine,
+> violet iodine vapour, brown bromine vapour — always with their names. White ammonium chloride
+> smoke forms where ammonia meets hydrogen chloride; fuming liquids show their mist at the mouth.
+
+✅ **Check:** magnesium, zinc and iron in the same acid side by side are visibly fast, steady and
+slow; electrolysis of water shows twice as many bubbles at the cathode.
+
+---
+
+## Stage UI.6 — Apparatus and handling
+
+**Why:** a real practical is as much about handling apparatus as about the chemistry. Dropwise
+addition and instrument precision are BUILD_PHASE_2.md Stage 2.5; this stage is how they look.
+
+**UI.6.1 — Sonnet — Stands, clamps and holders**
+> Retort stand with boss and clamp holding a burette or a tube at an angle; test-tube holder and
+> rack; tripod with gauze; tongs for a crucible. Vessels snap into place when dropped on them.
+
+**UI.6.2 — Sonnet — Pouring that looks like pouring**
+> The source vessel tilts at its lip, the stream falls in an arc onto the target, the level falls
+> in one and rises in the other; a last drip follows. Pouring from too high splashes (shown, not
+> rewarded).
+
+**UI.6.3 — Sonnet — Dropwise, swirling and stirring**
+> A dropping pipette and a burette stopcock release single visible drops; a conical flask can be
+> swirled; a glass rod stirs. Each matches what the engine already does when it is used.
+
+✅ **Check:** a titration set-up — burette clamped over a flask on a white tile — can be assembled
+from the tray by dragging alone, and looks like the textbook diagram.
+
+---
+
+## Stage UI.7 — The close look
+
+**Why:** at bench scale a precipitate's texture or a meniscus is a few pixels. In a real lab you
+lift the tube and look closely against a white background. One large, detailed vessel costs far
+less than making every vessel on the bench that detailed.
+
+**UI.7.1 — Sonnet — Look closely**
+> Double-click a vessel to open it large beside the bench: its liquid, clarity, precipitate
+> texture, bubbles and meniscus at full detail, against a white tile, with every colour named.
+
+**UI.7.2 — Sonnet — Reading at eye level**
+> In the close look, the meniscus can be read against the graduations; viewed from above or below
+> eye level the reading shifts (parallax), and the label explains why you read at eye level.
+
+✅ **Check:** the close look holds 30 fps with bubbling and settling running; a burette reading
+taken in it matches the volume within the instrument's precision.
+
+---
+
+## Stage UI.8 — The room
+
+**Decision needed:** whether toxic-gas reactions (CLAUDE.md §5 hazard variant) should be done
+inside a drawn fume cupboard when the student chooses to use one — a UI change in where the vessel
+stands, with the hazard text unchanged.
+
+**UI.8.1 — Sonnet — Bench and wall**
+> A dark phenolic resin bench with a faint static texture, a tiled wall behind, consistent light
+> from one side. Static images, compressed, size reported.
+
+**UI.8.2 — Sonnet — Real reagent bottles**
+> Amber and clear bottles, dropper bottles, solid jars and gas cylinders, each with a printed
+> label: name, formula, concentration and the GHS pictograms from `ghs-hazards.json`.
+
+**UI.8.3 — Sonnet — Fume cupboard**
+> If the decision above is yes: a fume cupboard area on the bench; a hazardous reaction done inside
+> it shows the fumes drawn away, and the hazard warning still appears in full.
+
+**UI.8.4 — Sonnet — The notebook as paper**
+> The 5 mm grid paper of UI.md §4, with the student's own entries in a hand-written face (bundled,
+> licence checked) and the app's entries in print.
+
+✅ **Check:** a screenshot of the full screen at 1366×768 reads as a school chemistry lab to
+someone seeing it for the first time.
+
+---
+
+## Stage UI.9 — Sound (optional)
+
+**Decision needed:** whether the app has sound at all (BUILD_PHASE_2.md decisions log, 2.7).
+
+**UI.9.1 — Sonnet — Offline sounds, off by default**
+> Pour, fizz (louder for a vigorous `gasRate`), boil, glass clink and a hazard tone; a mute switch
+> in the top bar, OFF by default on school machines. Every file's licence checked and recorded;
+> the size added to the installer stated.
+
+✅ **Check:** with sound off, nothing is lost: every sound has a visible equivalent.
+
+---
+
+## Stage UI.10 — Fast, accessible, checked
+
+**UI.10.1 — Sonnet — Measure, then tier**
+> An fps and frame-time overlay behind a shortcut. A "low" effects tier (fewer particles, no
+> convection lines, no slosh) switched on automatically below 30 fps for two seconds, and forced
+> by a teacher in settings. The chemistry shown is identical in every tier.
+
+**UI.10.2 — Sonnet — Performance test**
+> A scripted busy bench — four vessels boiling, bubbling and precipitating at once — that fails if
+> average frame time is more than 20% worse than the number recorded in `PERFORMANCE.md`.
+
+**UI.10.3 — Sonnet — Accessibility floor**
+> Every new control reachable by keyboard with a visible focus ring; text scales to 125%; Reduce
+> animation turns off every looping effect; contrast 4.5:1 on all text (UI.md §8).
+
+**UI.10.4 — Opus — The realism review**
+> Compare the reference set-ups with open-licensed photographs of the same practicals, and list
+> every difference a student would notice. Fix the ones that teach something wrong; record the rest.
+
+✅ **Check:** on Intel HD integrated graphics the busy bench holds 30 fps; the realism review
+finds nothing that would teach a student something wrong.
+
+---
+
+## Decisions log
+
+| Stage | Decision | Answer | Date |
+|---|---|---|---|
+| — | Build the UI realism track with Claude Code instead of Claude Design (Phase 9) | Yes (owner) | 2026-11-10 |
+| UI.3 | Curated `clarity`, `form` and `texture` in chemicals.json | | |
+| UI.4 | Curated `boilingPointC` / `meltingPointC` | | |
+| UI.5 | Curated `effects.gasRate` | | |
+| UI.8 | A fume cupboard on the bench | | |
+| UI.9 | Sound in the app | | |

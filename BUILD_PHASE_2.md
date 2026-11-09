@@ -55,7 +55,7 @@ The Phase 1 rule still overrides the table: **no cheap model writes chemistry co
 | **2.4** | Separation techniques | Filtration, evaporation, crystallisation, distillation, separating funnel | **Yes** |
 | **2.5** | Real technique & measurement | Dropwise burette, meniscus reading, instrument precision, sig. figs | Small |
 | **2.6** | Mistakes & lab safety | Contamination, overfilling, wrong order, closed-vessel heating, PPE | **Yes** |
-| **2.7** | Realistic effects | Mixing gradients, boiling, steam, flame types, settling layers, sound | No (UI only) |
+| **2.7** | Realistic effects | Now part of the UI realism track in `BUILD_UI.md` | No (UI only) |
 | **2.8** | Efficiency & performance | Faster start-up, smaller installer, quality tiers, frame budget tests | No |
 | **2.9** | Guided mode depth | Practical-exam mode, viva questions, teacher/projector mode, printable results | Small |
 | **2.10** | Field test & ship v2 | Tested on real lab PCs with real students, v2.0.0 installer | No |
@@ -139,12 +139,17 @@ and keeps catching them as content grows.
 > vessel's state and an optional note from the student to reports.json in userData (via the
 > bridge from 2.0.3). Offline only — the teacher collects the file.
 
-**2.1.5 — Owner — Teacher review**
-> Not a prompt. Give the installer to two chemistry teachers (one Matric, one FSc) with a checklist
-> of the 30 most-used reactions. Every disagreement goes back through 2.1.1's process.
+**2.1.5 — Opus — Self-review against web sources** *(changed 2026-11-10; was a teacher review)*
+> The owner decided not to wait for teachers: Claude does the review itself, with the same method
+> as the 2.1.1 audit — web pages actually opened, recorded in `sources`, nothing from memory. Work
+> through the review pack's 30 most-used reactions (batch.md §14) and its 16 open questions: add an
+> opened source to each reaction that has none, settle each question from an opened source or say
+> plainly that none settles it, and put every disagreement through 2.1.1's process. The pack stays
+> available if a teacher can review later; book references can still be added then.
 
-✅ **Check:** the validator reports zero errors; every reaction has two sources; golden tests pass;
-both teachers' comments are resolved and logged in batch.md.
+✅ **Check:** the validator reports zero errors; golden tests pass; each of the 30 most-used
+reactions has at least one opened web source; each open question is settled or recorded as
+unsettled in batch.md.
 
 ---
 
@@ -324,6 +329,10 @@ of them reads as a reward for doing the wrong thing (UI.md §6).
 
 ## Stage 2.7 — Realistic effects
 
+> **Moved (2026-11-10).** The owner asked for a full UI realism track, written up in `BUILD_UI.md`.
+> All five steps below are included there (UI.3–UI.9), with more detail and the checks that go with
+> them. They are kept here only as the original record; build from `BUILD_UI.md`.
+
 **Why:** the reaction should be the brightest, most alive thing on screen (UI.md §4). Everything
 here is **UI only** — `src/core/` is not touched, and the 30 fps / transform-and-opacity rule
 still applies.
@@ -453,6 +462,8 @@ Fill this in as each decision is made, then copy it into `CLAUDE.md` §8.
 
 | Stage | Decision | Answer | Date |
 |---|---|---|---|
+| 2.1.5 | Replace the teacher review with a self-review against opened web sources | Yes (owner) | 2026-11-10 |
+| 2.7 | Fold realistic effects into a full UI realism track (`BUILD_UI.md`) | Yes (owner) | 2026-11-10 |
 | 2.2 | Add amounts (moles) to the engine | | |
 | 2.2 | How pH after partial neutralisation is found | | |
 | 2.3 | Gases can leave a vessel and travel | | |
