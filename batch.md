@@ -631,3 +631,30 @@ called "pale yellow", share hexes with chemicals called "bright yellow" —
 the notebook is still right, because a reaction names colours from its own
 products first); and `starch_iodine_aq`, whose only hazard, staining,
 carries no GHS pictogram.
+
+## 12. Golden notebook sentences (BUILD_PHASE_2.md stage 2.1.3)
+
+`tests/golden/notebook-sentences.json` holds the exact sentence the
+notebook writes for each of the 394 reactions, with its conditions met,
+plus — for the 136 rules that have conditions — the sentence a student
+reads when they are not ("needs to reach about 900 °C", "needs an electric
+current", "needs to be kept below about 5 °C"). It also records which
+rules fired, so a rule quietly overtaken by another shows up even when the
+words match. `npm test` fails on any difference; an intended change is
+approved with `npm run golden:update` and committed with the change.
+
+Generating the first snapshot confirmed every reaction fires as itself
+when its conditions are met, and every `noReaction` rule answers as
+itself. Five "not met" sentences are not "needs …" messages, and all five
+are correct behaviour: too warm, nitrous acid and the diazonium salt
+decompose by their own rules; catalase too hot is answered by the
+denatured-enzyme rule; and phenol with alkali reacts on its own when the
+coupling is too warm.
+
+Noted for a decision, not changed: the notebook calls every solid
+described in `effects.precipitate` "a precipitate", and about twenty of
+those are not precipitates — molten sodium and aluminium, metal plated on
+a cathode, a silver mirror, residues left on heating, ammonium chloride
+smoke, a char. Changing the wording is a change to `describeEffects` in
+the engine, so it needs the owner's approval; the golden tests will then
+show exactly which sentences move.

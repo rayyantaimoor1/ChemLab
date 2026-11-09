@@ -101,8 +101,10 @@ chemlab/
 │   └── assets/               ← bundled fonts, icons, sounds
 ├── scripts/
 │   ├── validate-content.mjs  ← `npm run validate`: schema, equation balance, colour names, GHS, pH, levels
-│   └── lib/                  ← the equation-balance and colour-name checkers it uses
+│   ├── update-golden.mjs     ← `npm run golden:update`: re-approves the golden notebook sentences
+│   └── lib/                  ← the checkers these use, and the golden-sentence builder
 ├── tests/
+│   └── golden/               ← notebook-sentences.json: the approved sentence for every reaction
 └── build/                    ← electron-builder output (gitignored)
 ```
 
@@ -515,6 +517,11 @@ owner has confirmed it. Each phase must leave the app in a working state.
 - **When something is ambiguous, ask** rather than assuming — especially for chemistry content.
 - **Never add a dependency** without stating what it is, why it's needed, and its install size.
 - **Test the `.exe` build early and often**, not once at the end.
+- **What students read is frozen by the golden tests.** `tests/golden/notebook-sentences.json`
+  holds the approved notebook sentence for every reaction, and `npm test` fails on any change.
+  When a change to a sentence is intended, read the differences the test prints, run
+  `npm run golden:update`, and commit the updated golden file in the same commit as the change.
+  Never run the update just to make a failing test pass without reading what moved.
 - **Performance budget:** no CSS `filter: blur()`, no large box-shadows, no WebGL in the main
   bench view. Animate `transform` and `opacity` only.
 
