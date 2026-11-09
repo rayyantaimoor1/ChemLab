@@ -704,3 +704,53 @@ How to use it: collect `reports.json` from each lab PC with
 `unknown-pairs.json`, and put each report through the same review as the
 second-source audit (§10). A report is a lead, not a verdict — the
 student may be the one who is wrong, and that is worth knowing too.
+
+## 14. Teacher review (BUILD_PHASE_2.md stage 2.1.5) — pack ready, review not yet done
+
+The review pack for the two teachers is a shared document:
+[ChemLab teacher review pack](https://claude.ai/artifact/FT3H4HsYwxXysZusGrc4Zp)
+(private until the owner shares it). It can be printed or exported to
+Word or PDF.
+
+**The 30 reactions, and why these.** There is no usage data (the app
+collects none), so "most used" means the reactions the guided experiments
+actually demonstrate — every student running those experiments triggers
+them — plus the textbook staples a student is most likely to try in Free
+Lab. BS-only rules are left out because both reviewers are school
+teachers.
+
+- Matric teacher, M1–M21: neutralisation; lead iodide; zinc and
+  magnesium with acid; zinc into copper sulfate; marble chips with acid;
+  the limewater test; silver chloride and barium sulfate precipitates;
+  copper(II) and iron(III) hydroxides; burning magnesium; chlorine
+  displacing bromine; electrolysis of water and of copper sulfate;
+  rusting; washing soda and soap with hard water; the ammonium test;
+  starch–iodine; dehydrating cobalt chloride.
+- FSc teacher, F1–F9: thiocyanate; Fehling's with glucose; biuret;
+  denaturing albumin; bromine water with ethene; polymerising ethene;
+  aluminium hydroxide in alkali; cobalt chloride with concentrated acid;
+  electrolysis of silver nitrate.
+
+Each entry shows what to mix, the exact notebook sentence (from
+`tests/golden/`), the explanation and the cited source, and the answer
+sheet asks for a verdict plus the book, edition and page. Teachers also
+run the 13 Matric and FSc guided experiments once each, which covers the
+"no change" comparison rules. The pack also carries the 16 open questions
+from §10 (7 for the school teachers, 9 optional ones for a BS teacher).
+
+**When the answers come back:** a confirmed reaction gets a `sources`
+entry with the book, edition and page and no `url` (the CLAUDE.md §5 rule
+for printed books, entered from the teacher's own record); a "wrong"
+goes through the same review as the audit; and both are logged here.
+
+**Found while preparing the pack, not changed:**
+- The notebook never says when a colour **disappears**. "Colourless" is
+  deliberately left out of notebook lines, so blue copper sulfate fading
+  (zinc or magnesium displacement, electrolysis), bromine water losing
+  its orange to ethene — the whole point of that test — and the iodine
+  end point with thiosulfate are all written up without their key
+  observation. About eight rules are affected; fixing it is an engine
+  change, so it waits for the owner.
+- Reaction **explanations are not shown anywhere in the app** — the
+  notebook gives the observation sentence only. Teachers check them from
+  the pack; showing them to students is a UI decision.
