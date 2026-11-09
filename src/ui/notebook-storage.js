@@ -2,7 +2,7 @@
  * notebook-storage.js — the page's side of the save/load bridge.
  *
  * WHY THIS FILE EXISTS
- * The page cannot touch the disk. In the desktop app, preload.cjs puts four
+ * The page cannot touch the disk. In the desktop app, preload.cjs puts five
  * functions on window.chemlab that ask the Electron main process to save and
  * load for it (see main/ipc.js). This file is the only place in src/ that
  * talks to them, so app.js never has to care whether they are there.
@@ -111,6 +111,25 @@ export async function exportNotebookText(text) {
   } catch (error) {
     console.error('Could not export the notebook:', error);
     return `The copy could not be saved: ${plainReason(error)}`;
+  }
+}
+
+/**
+ * Sends a student's "This looks wrong" report to reports.json in the data
+ * folder (BUILD_PHASE_2.md stage 2.1.4). The report itself is built in
+ * app.js; main/validate.js checks every field before anything is written.
+ * @returns {Promise<{ ok: boolean, message: string }>} what to tell the student
+ */
+export async function sendProblemReport(report) {
+  if (!bridge) {
+    return { ok: false, message: 'Reports can only be saved in the desktop app.' };
+  }
+  try {
+    await bridge.reportProblem(report);
+    return { ok: true, message: 'Thank you. This has been saved for your teacher to look at.' };
+  } catch (error) {
+    console.error('Could not save the report:', error);
+    return { ok: false, message: `The report could not be saved: ${plainReason(error)}` };
   }
 }
 

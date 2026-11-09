@@ -2052,6 +2052,95 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   background: rgba(241, 196, 15, 0.3);
 }
 
+/* "This looks wrong" (BUILD_PHASE_2.md 2.1.4). Deliberately quiet: a text
+   link that sits under a reaction line without competing with it. The form
+   that opens from it uses the same buttons as the rest of the notebook. */
+.problem-report {
+  margin-top: 4px;
+}
+
+.problem-report__link {
+  padding: 2px 0;
+  font-size: 12.5px;
+  color: var(--ink-60);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.problem-report__link:hover {
+  color: var(--ink);
+}
+
+.problem-report__form {
+  margin-top: 4px;
+  padding: 8px;
+  background: var(--panel-dim);
+  border-radius: var(--radius-sm);
+}
+
+.problem-report__explain {
+  margin: 0 0 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-60);
+}
+
+.problem-report__note {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 8px;
+  font-family: var(--font-notebook);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ink);
+  background: #FFFFFF;
+  border: 1.5px solid var(--ink-32);
+  border-radius: var(--radius-sm);
+  resize: vertical;
+}
+
+.problem-report__buttons {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.problem-report__buttons button {
+  height: 32px;
+  padding: 0 11px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--panel);
+  color: var(--ink);
+  border: 1.5px solid var(--ink-45);
+  border-radius: var(--radius-sm);
+}
+
+.problem-report__buttons button[type="submit"] {
+  background: var(--bench);
+  color: var(--panel);
+  border-color: var(--bench);
+}
+
+.problem-report__status {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-60);
+}
+
+/* Not hazard red, for the same reason as the notebook's own save error. */
+.problem-report__status--error {
+  padding-left: 8px;
+  font-weight: 700;
+  color: var(--ink);
+  border-left: 3px solid var(--ink);
+}
+
 /* Export / New session, under the notebook heading. 40px tall: UI.md
    section 2's minimum click target on a shared, mouse-only lab PC. */
 .notebook-toolbar {

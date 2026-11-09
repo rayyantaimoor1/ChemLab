@@ -77,8 +77,22 @@ const NEW_SESSION_QUESTION =
   + 'Use "Export" first if you want to keep a copy of this notebook.';
 
 export function mountPanels({ root, getState, dispatch, subscribe }) {
+  // The note being typed into an open "This looks wrong" box. The whole
+  // panel is rebuilt after every dispatch - including the burner's ticks -
+  // so the text and the cursor are kept here and put back after each
+  // rebuild, or a heating vessel would wipe a half-written note.
+  let reportDraft = '';
+  let reportDraftFor = null;
+  let focusReportNote = false;
+
   function render() {
     const state = getState();
+    // Checked before the rebuild throws the old box away: if the student was
+    // typing in it, the new one gets the cursor back.
+    const active = document.activeElement;
+    if (active && root.contains(active) && active.classList.contains('problem-report__note')) {
+      focusReportNote = true;
+    }
     root.innerHTML = '';
 
     const headingRow = document.createElement('div');
@@ -92,9 +106,24 @@ export function mountPanels({ root, getState, dispatch, subscribe }) {
     root.appendChild(headingRow);
 
     root.appendChild(renderToolbar(state));
-    root.appendChild(renderEntries(state.notebook));
+    root.appendChild(renderEntries(state.notebook, state.problemReport));
     root.appendChild(renderObservationForm());
     root.appendChild(renderEstimateForm(state));
+
+    // Put the cursor back in the report box, at the end of what was typed.
+    // Deferred, and aimed at whichever box exists by then, because one
+    // student action can rebuild the panel twice in a row (a drop selects
+    // the vessel, then pours) and only the last box is still on screen.
+    if (focusReportNote) {
+      queueMicrotask(() => {
+        if (!focusReportNote) return;
+        focusReportNote = false;
+        const note = root.querySelector('.problem-report__note');
+        if (!note) return;
+        note.focus();
+        note.setSelectionRange(note.value.length, note.value.length);
+      });
+    }
   }
 
   /**
@@ -143,7 +172,7 @@ export function mountPanels({ root, getState, dispatch, subscribe }) {
     return toolbar;
   }
 
-  function renderEntries(entries) {
+  function renderEntries(entries, problemReport) {
     const list = document.createElement('ol');
     list.className = 'notebook-entries';
 
@@ -157,12 +186,12 @@ export function mountPanels({ root, getState, dispatch, subscribe }) {
     }
 
     for (const entry of entries) {
-      list.appendChild(renderEntry(entry));
+      list.appendChild(renderEntry(entry, problemReport));
     }
     return list;
   }
 
-  function renderEntry(entry) {
+  function renderEntry(entry, problemReport) {
     const li = document.createElement('li');
     li.className = `notebook-entry notebook-entry--${entry.type}`;
     li.style.setProperty('--tag-accent', TAG_ACCENT[entry.tag] || TAG_ACCENT.action);
@@ -191,7 +220,96 @@ export function mountPanels({ root, getState, dispatch, subscribe }) {
       li.appendChild(renderComparison(entry));
     }
 
+    if (entry.reportable) {
+      li.appendChild(renderProblemReport(entry, problemReport));
+    }
+
     return li;
+  }
+
+  /**
+   * "This looks wrong" (BUILD_PHASE_2.md stage 2.1.4). A small link under
+   * every line a reaction rule produced; clicking it opens a box for an
+   * optional note. What is saved - which rule, the sentence, what was in
+   * the vessel - was captured by app.js when the line was written; this
+   * only adds the student's words. Nothing here judges the report.
+   */
+  function renderProblemReport(entry, problemReport) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'problem-report';
+
+    const status = problemReport?.statusByEntry?.[entry.id];
+    if (status) {
+      const line = document.createElement('p');
+      line.className = `problem-report__status${status.ok ? '' : ' problem-report__status--error'}`;
+      line.setAttribute('role', 'status');
+      line.textContent = status.message;
+      wrapper.appendChild(line);
+      return wrapper;
+    }
+
+    if (problemReport?.openEntryId !== entry.id) {
+      const link = document.createElement('button');
+      link.type = 'button';
+      link.className = 'problem-report__link';
+      link.textContent = 'This looks wrong';
+      link.title = 'Tell your teacher this result looks wrong';
+      link.addEventListener('click', () => {
+        reportDraft = '';
+        reportDraftFor = entry.id;
+        focusReportNote = true;
+        dispatch.openProblemReport(entry.id);
+      });
+      wrapper.appendChild(link);
+      return wrapper;
+    }
+
+    const form = document.createElement('form');
+    form.className = 'problem-report__form';
+
+    const explain = document.createElement('p');
+    explain.className = 'problem-report__explain';
+    explain.textContent =
+      'This saves the result and what was in the vessel to a file your teacher collects. Saying why helps.';
+
+    const note = document.createElement('textarea');
+    note.className = 'problem-report__note';
+    note.rows = 2;
+    note.maxLength = 500;
+    note.placeholder = 'What looks wrong? (optional — e.g. "I expected a white precipitate")';
+    note.setAttribute('aria-label', 'What looks wrong');
+    note.value = reportDraftFor === entry.id ? reportDraft : '';
+    note.addEventListener('input', () => {
+      reportDraft = note.value;
+      reportDraftFor = entry.id;
+    });
+
+    const buttons = document.createElement('div');
+    buttons.className = 'problem-report__buttons';
+    const send = document.createElement('button');
+    send.type = 'submit';
+    send.textContent = 'Send to teacher';
+    const cancel = document.createElement('button');
+    cancel.type = 'button';
+    cancel.textContent = 'Cancel';
+    cancel.addEventListener('click', () => {
+      reportDraft = '';
+      reportDraftFor = null;
+      dispatch.cancelProblemReport();
+    });
+    buttons.append(send, cancel);
+
+    form.append(explain, note, buttons);
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const text = note.value;
+      reportDraft = '';
+      reportDraftFor = null;
+      dispatch.submitProblemReport(entry.id, text);
+    });
+
+    wrapper.appendChild(form);
+    return wrapper;
   }
 
   function renderComparison(entry) {

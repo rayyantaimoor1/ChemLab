@@ -1,9 +1,9 @@
 /**
- * ipc.js — answers the four requests the page is allowed to make.
+ * ipc.js — answers the five requests the page is allowed to make.
  *
  * WHY THIS FILE EXISTS
  * The page cannot touch the disk (contextIsolation, sandbox, no Node). When
- * it needs something saved it calls one of the four functions preload.cjs
+ * it needs something saved it calls one of the five functions preload.cjs
  * puts on window.chemlab, and that arrives here as an IPC message. This file
  * is the switchboard: for each message it
  *   1. checks the message really came from the app's own page (not some
@@ -19,7 +19,7 @@
 import path from 'node:path';
 
 import { CHANNELS } from './channels.js';
-import { validateNotebook, validateChemicalIds, validateExportText } from './validate.js';
+import { validateNotebook, validateChemicalIds, validateExportText, validateProblemReport } from './validate.js';
 import * as storage from './storage.js';
 
 /**
@@ -51,6 +51,8 @@ function todayStamp(now) {
  * @param {Function} deps.getWindow         () => the BrowserWindow to attach dialogs to
  * @param {string}   deps.indexUrl          file:// URL of src/index.html
  * @param {Set<string>} deps.knownChemicalIds every id in chemicals.json
+ * @param {Set<string>} [deps.knownReactionIds] every id in reactions.json
+ * @param {Function} [deps.getAppVersion]  () => the app's version, stamped on reports
  * @param {Function} [deps.log]             where to report damaged files
  * @param {Function} [deps.now]
  */
@@ -62,6 +64,8 @@ export function registerBridge({
   getWindow,
   indexUrl,
   knownChemicalIds,
+  knownReactionIds = new Set(),
+  getAppVersion = () => null,
   log = console.warn,
   now = Date.now,
 }) {
@@ -86,6 +90,13 @@ export function registerBridge({
   handle(CHANNELS.LOG_UNKNOWN, async (chemicalIds) => {
     const ids = validateChemicalIds(chemicalIds, knownChemicalIds);
     await storage.logUnknownCombination(getDataFolder(), ids, { now, onDamaged });
+  });
+
+  // A student's "This looks wrong" report (BUILD_PHASE_2.md 2.1.4). Only
+  // the report's number goes back, for a "Thank you" message.
+  handle(CHANNELS.REPORT_PROBLEM, async (report) => {
+    const checked = validateProblemReport(report, { knownReactionIds, knownChemicalIds });
+    return storage.appendProblemReport(getDataFolder(), checked, { now, onDamaged, appVersion: getAppVersion() });
   });
 
   handle(CHANNELS.EXPORT_NOTEBOOK, async (text) => {

@@ -678,3 +678,29 @@ twice.
 Still open, for the UI phase: the label the bench draws under a vessel
 reads "{colour} solid — {name}" for every one of these, including the
 molten metals.
+
+## 13. "This looks wrong" reports (BUILD_PHASE_2.md stage 2.1.4)
+
+Every notebook line a reaction rule produced — one that ran, one that
+answered "No observable change", or one held back by a condition — now
+carries a small **This looks wrong** link. It opens a box for an optional
+note and a **Send to teacher** button.
+
+What is saved, to `reports.json` in the data folder (File > Open data
+folder), is captured at the moment the line was written, not when the
+student clicks: the rule id(s), the exact sentence they read, and the
+vessel's contents, volume, temperature, heat setting, current and pH,
+plus their note, the time and the app version. Lines with no rule at all
+have no link, because those combinations are already logged
+automatically to `unknown-pairs.json`.
+
+The report travels through a fifth bridge function (`reportProblem`), and
+`main/validate.js` checks every field — real reaction and chemical ids
+only, the note capped at 500 characters, nothing extra. The file holds up
+to 1000 reports and then asks for it to be collected; a damaged file is
+set aside, never deleted.
+
+How to use it: collect `reports.json` from each lab PC with
+`unknown-pairs.json`, and put each report through the same review as the
+second-source audit (§10). A report is a lead, not a verdict — the
+student may be the one who is wrong, and that is worth knowing too.

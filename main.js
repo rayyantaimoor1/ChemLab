@@ -3,7 +3,8 @@
 //
 // The page (src/) cannot reach the disk itself. Saving the notebook, logging
 // combinations the lab has no rule for (CLAUDE.md §6.3) and exporting the
-// notebook all go through the four-function bridge in preload.cjs, answered by
+// notebook and saving a student's "This looks wrong" report all go through the
+// five-function bridge in preload.cjs, answered by
 // main/ipc.js. main/validate.js checks everything the page sends, and
 // main/storage.js does the actual writing.
 
@@ -12,6 +13,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 import chemicals from './src/data/chemicals.json' with { type: 'json' };
+import reactions from './src/data/reactions.json' with { type: 'json' };
 import { registerBridge } from './main/ipc.js';
 import { installMenu } from './main/menu.js';
 
@@ -58,6 +60,8 @@ app.whenReady().then(() => {
     getWindow: () => mainWindow,
     indexUrl: pathToFileURL(indexPath).href,
     knownChemicalIds: new Set(chemicals.map((chemical) => chemical.id)),
+    knownReactionIds: new Set(reactions.map((reaction) => reaction.id)),
+    getAppVersion: () => app.getVersion(),
   });
   installMenu({ getDataFolder: () => app.getPath('userData') });
 

@@ -1,6 +1,7 @@
 /**
- * storage.js — reads and writes the app's three kinds of file: the saved
- * notebook, the unknown-combinations log, and a notebook export.
+ * storage.js — reads and writes the app's four kinds of file: the saved
+ * notebook, the unknown-combinations log, students' "This looks wrong"
+ * reports, and a notebook export.
  *
  * WHY THIS FILE EXISTS
  * CLAUDE.md §4 gives file paths to the main process, never to src/. This
@@ -28,7 +29,11 @@ import { validateNotebook } from './validate.js';
 export const FILE_NAMES = Object.freeze({
   NOTEBOOK: 'notebook.json',
   UNKNOWN_PAIRS: 'unknown-pairs.json',
+  REPORTS: 'reports.json',
 });
+
+/** reports.json stops accepting reports here, until a teacher collects it. */
+export const MAX_REPORTS = 1000;
 
 const FILE_VERSION = 1;
 
@@ -69,6 +74,28 @@ export async function readJsonOrSetAside(filePath, { onDamaged = () => {}, now =
   } catch {
     return setAside(filePath, onDamaged, now);
   }
+}
+
+/**
+ * Read-change-write on one JSON file, queued behind any other write to the
+ * same file so two updates at the same moment cannot overwrite each other.
+ * `change` gets the parsed file (or null if there is none, or it was
+ * damaged and has been set aside) and returns { data, result }: data is
+ * written atomically, result is handed back to the caller.
+ */
+function updateJsonFile(filePath, change, { now = Date.now, onDamaged } = {}) {
+  const previous = writeQueues.get(filePath) ?? Promise.resolve();
+  const update = previous.catch(() => {}).then(async () => {
+    const saved = await readJsonOrSetAside(filePath, { onDamaged, now });
+    const { data, result } = change(saved);
+    await mkdir(path.dirname(filePath), { recursive: true });
+    const tempPath = `${filePath}.tmp`;
+    await writeFile(tempPath, JSON.stringify(data, null, 2), 'utf-8');
+    await rename(tempPath, filePath);
+    return result;
+  });
+  writeQueues.set(filePath, update);
+  return update;
 }
 
 async function setAside(filePath, onDamaged, now) {
@@ -127,11 +154,7 @@ export async function logUnknownCombination(folder, chemicalIds, { now = Date.no
   const key = chemicalIds.join('+');
   const time = new Date(now()).toISOString();
 
-  // Read-modify-write goes through the same queue as the write itself, so
-  // two combinations logged at once cannot each overwrite the other.
-  const previous = writeQueues.get(filePath) ?? Promise.resolve();
-  const update = previous.catch(() => {}).then(async () => {
-    const saved = await readJsonOrSetAside(filePath, { onDamaged, now });
+  return updateJsonFile(filePath, (saved) => {
     const log = saved && saved.version === FILE_VERSION && saved.combinations
       ? saved
       : { version: FILE_VERSION, combinations: {} };
@@ -140,15 +163,41 @@ export async function logUnknownCombination(folder, chemicalIds, { now = Date.no
     log.combinations[key] = existing
       ? { ...existing, count: existing.count + 1, lastSeen: time }
       : { species: chemicalIds, count: 1, firstSeen: time, lastSeen: time };
+    return { data: log, result: log.combinations[key] };
+  }, { now, onDamaged });
+}
 
-    await mkdir(folder, { recursive: true });
-    const tempPath = `${filePath}.tmp`;
-    await writeFile(tempPath, JSON.stringify(log, null, 2), 'utf-8');
-    await rename(tempPath, filePath);
-    return log.combinations[key];
-  });
-  writeQueues.set(filePath, update);
-  return update;
+/* ------------------------------------------------------------------ *
+ * "This looks wrong" reports — BUILD_PHASE_2.md stage 2.1.4.
+ *
+ * Each report is kept whole and in order, because unlike the unknown log
+ * every one is a different moment: a student's note, the exact sentence
+ * they read, and what was in the vessel. The teacher copies reports.json
+ * off the lab PC (File > Open data folder) and it goes back through the
+ * same review as the second-source audit. Capped at MAX_REPORTS so a
+ * stuck key or a game of "report everything" cannot fill the disk.
+ * ------------------------------------------------------------------ */
+
+/**
+ * @param {string} folder
+ * @param {object} report  already validated (validate.js validateProblemReport)
+ * @param {object} [options]
+ * @param {string|null} [options.appVersion]
+ * @returns {Promise<{ number: number }>} which report this was, counting from 1
+ */
+export function appendProblemReport(folder, report, { now = Date.now, onDamaged, appVersion = null } = {}) {
+  const filePath = path.join(folder, FILE_NAMES.REPORTS);
+  return updateJsonFile(filePath, (saved) => {
+    const file = saved && saved.version === FILE_VERSION && Array.isArray(saved.reports)
+      ? saved
+      : { version: FILE_VERSION, reports: [] };
+    if (file.reports.length >= MAX_REPORTS) {
+      throw new TypeError(`reports.json already holds ${MAX_REPORTS} reports. Ask your teacher to collect it.`);
+    }
+    const number = file.reports.length + 1;
+    file.reports.push({ number, reportedAt: new Date(now()).toISOString(), appVersion, ...report });
+    return { data: file, result: { number } };
+  }, { now, onDamaged });
 }
 
 /* ------------------------------------------------------------------ *

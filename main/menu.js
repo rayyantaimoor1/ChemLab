@@ -3,11 +3,13 @@
  *
  * WHY THIS FILE EXISTS
  * Electron's default menu is kept (Edit, View, Window), with one addition a
- * teacher needs: File > Open data folder. That folder holds notebook.json
- * and unknown-pairs.json - the list of combinations students tried that the
- * lab has no rule for yet (CLAUDE.md §6.3). Copying that file onto a USB
- * stick from each lab PC is how the content roadmap gets back to whoever
- * writes the next batch of reactions.
+ * teacher needs: File > Open data folder. That folder holds notebook.json,
+ * unknown-pairs.json - the list of combinations students tried that the
+ * lab has no rule for yet (CLAUDE.md §6.3) - and reports.json, the results
+ * students flagged with "This looks wrong" (BUILD_PHASE_2.md 2.1.4).
+ * Copying those two files onto a USB stick from each lab PC is how the
+ * content roadmap and the error reports get back to whoever maintains the
+ * reactions.
  *
  * It is a menu item and not a button on the bench on purpose: it is for the
  * teacher, not part of the experiment, and should not compete with the

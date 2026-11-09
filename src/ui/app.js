@@ -34,8 +34,10 @@ import {
   createNotebookSaver,
   logUnknownCombination,
   exportNotebookText,
+  sendProblemReport,
 } from './notebook-storage.js';
 import { formatNotebookForExport } from './notebook-export.js';
+import { buildReportContext, withNote } from './problem-report.js';
 import { mountMolecularView } from './molecular.js';
 import { mountMolecular3DView } from './molecular3d.js';
 import { mountGuidedBar, mountGuidedStepCard, mountGuidedSummary } from './guided.js';
@@ -637,6 +639,33 @@ function tagAutoEntry(entryId, engineResult) {
   }
 }
 
+/* ------------------------------------------------------------------ *
+ * "This looks wrong" reports - BUILD_PHASE_2.md stage 2.1.4.
+ *
+ * Any notebook line produced by a reaction rule (one that ran, one that
+ * said "No observable change", or one held back by a condition) can be
+ * flagged by the student. What gets reported is captured AT THE MOMENT the
+ * line was written - which rule(s) the engine used, the sentence the
+ * student read, and the vessel's state right then - because by the time a
+ * student decides something looks wrong they may have added more to the
+ * vessel. Kept in a side table like notebookEntryTags: notebook.js's entry
+ * shape has no room for it, and it is not saved with the notebook (the
+ * bench it describes is not saved either).
+ *
+ * A line the engine had NO rule for is not reportable here: it is already
+ * logged automatically to unknown-pairs.json (CLAUDE.md section 6.3).
+ * ------------------------------------------------------------------ */
+const reportContextByEntry = new Map();
+// Which line's report form is open, and what happened to each sent report.
+let openReportEntryId = null;
+const reportStatusByEntry = new Map();
+
+function rememberReportContext(entryId, result) {
+  const container = containersById.get(result?.containerId ?? result?.toId);
+  const context = buildReportContext(result, container?.snapshot());
+  if (context) reportContextByEntry.set(entryId, context);
+}
+
 // The three guided-mode milestones (experiments.js's own action names),
 // plus dipTool, are recognisable from the entry alone with no side table.
 const MILESTONE_ACTIONS = new Set(['experimentStart', 'experimentStep', 'experimentComplete']);
@@ -831,7 +860,10 @@ function wrap(fn, actionName = null, traceName = actionName) {
       // src/core/ to change what emitNotebookEntry returns.
       const entries = notebook.getEntries();
       const lastEntry = entries[entries.length - 1];
-      if (lastEntry) tagAutoEntry(lastEntry.id, result.engineResult);
+      if (lastEntry) {
+        tagAutoEntry(lastEntry.id, result.engineResult);
+        rememberReportContext(lastEntry.id, result);
+      }
     }
     if (result && result.action === 'dipTool') {
       recordReading(result);
@@ -1025,7 +1057,18 @@ function getState() {
     vesselLimitReached: containers.length >= MAX_VESSELS,
     equipmentLimitReached: equipment.length >= MAX_EQUIPMENT,
     activeHazard,
-    notebook: notebook.getEntries().map((entry) => ({ ...entry, tag: notebookTagFor(entry) })),
+    notebook: notebook.getEntries().map((entry) => ({
+      ...entry,
+      tag: notebookTagFor(entry),
+      // Whether this line can be flagged with "This looks wrong" (2.1.4).
+      reportable: reportContextByEntry.has(entry.id),
+    })),
+    // The "This looks wrong" form: which line it is open on, and what
+    // happened to each report already sent ({ ok, message } per entry id).
+    problemReport: {
+      openEntryId: openReportEntryId,
+      statusByEntry: Object.fromEntries(reportStatusByEntry),
+    },
     // Beyond UI.md section 1's shape: whether the notebook is being kept on
     // disk, and anything the student should know about that.
     notebookStorage: {
@@ -1258,11 +1301,35 @@ const dispatch = {
     resetBenchState();
     notebook.clear();
     notebookEntryTags.clear();
+    reportContextByEntry.clear();
+    reportStatusByEntry.clear();
+    openReportEntryId = null;
     markNotebookChanged();
     notebookExportMessage = null;
     guidedFeedback = null;
     guidedSummaryDismissed = false;
   }, null, 'newSession'),
+
+  // "This looks wrong" (BUILD_PHASE_2.md 2.1.4). Opening and cancelling are
+  // interface state; sending writes the report captured when the line was
+  // written, plus the student's optional note, through the bridge. Like the
+  // export, the answer arrives later and brings its own notify().
+  openProblemReport: wrap((entryId) => {
+    if (reportContextByEntry.has(entryId)) openReportEntryId = entryId;
+  }, null, 'openProblemReport'),
+  cancelProblemReport: wrap(() => {
+    openReportEntryId = null;
+  }, null, 'cancelProblemReport'),
+  submitProblemReport: wrap((entryId, note) => {
+    const context = reportContextByEntry.get(entryId);
+    if (!context) return;
+    openReportEntryId = null;
+    reportStatusByEntry.set(entryId, { ok: true, message: 'Sending…', pending: true });
+    sendProblemReport(withNote(context, note)).then((status) => {
+      reportStatusByEntry.set(entryId, status);
+      notify();
+    });
+  }, null, 'submitProblemReport'),
 
   // Opens the Save dialog for a plain-text copy of the notebook. The dialog
   // is asynchronous, so the result message arrives with a second notify()

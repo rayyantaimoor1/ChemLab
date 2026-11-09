@@ -24,6 +24,8 @@ export const LIMITS = Object.freeze({
   MAX_ID_LENGTH: 64,
   MAX_SPECIES: 10,
   MAX_EXPORT_BYTES: 1_000_000,
+  MAX_NOTE_LENGTH: 500,
+  MAX_VESSEL_SPECIES: 40,
 });
 
 // The colour-codes src/ui/app.js gives notebook lines. Saved alongside the
@@ -152,6 +154,67 @@ export function validateChemicalIds(ids, knownChemicalIds) {
     if (!knownChemicalIds.has(id)) fail(`"${id}" is not a chemical in chemicals.json`);
   }
   return [...new Set(ids)].sort();
+}
+
+/* ------------------------------------------------------------------ *
+ * A "This looks wrong" report (BUILD_PHASE_2.md stage 2.1.4)
+ *
+ * A student flags a reaction result they think is wrong, with an optional
+ * note. The report names the rule(s) that produced it and the state of the
+ * vessel at that moment, so whoever reviews reports.json can reproduce it.
+ * Every id must be real, every field is checked, and nothing else is kept.
+ * ------------------------------------------------------------------ */
+
+const REPORT_OUTCOMES = new Set(['reaction', 'no_reaction']);
+const REPORT_FIELDS = ['reactionIds', 'outcome', 'notebookText', 'note', 'vessel'];
+const VESSEL_FIELDS = ['name', 'speciesIds', 'volumeMl', 'temperatureC', 'heatLevel', 'electrified', 'pH'];
+
+function checkExactFields(value, fields, what) {
+  if (!isPlainObject(value)) fail(`${what} must be a set of named fields`);
+  for (const key of Object.keys(value)) {
+    if (!fields.includes(key)) fail(`${what} has an unexpected field "${key}"`);
+  }
+  for (const key of fields) {
+    if (!(key in value)) fail(`${what} is missing "${key}"`);
+  }
+}
+
+function checkIdList(ids, known, what, max) {
+  if (!Array.isArray(ids) || ids.length === 0) fail(`${what} must list at least one id`);
+  if (ids.length > max) fail(`${what} lists more than ${max} ids`);
+  for (const id of ids) {
+    if (typeof id !== 'string' || id.length > LIMITS.MAX_ID_LENGTH || !CHEMICAL_ID.test(id)) {
+      fail(`${what}: an id must be lower-case letters, digits and underscores`);
+    }
+    if (!known.has(id)) fail(`${what}: "${id}" is not in the lab's data`);
+  }
+}
+
+/**
+ * @param {unknown} report
+ * @param {{ knownReactionIds: Set<string>, knownChemicalIds: Set<string> }} known
+ * @returns {object} the report, exactly as checked
+ */
+export function validateProblemReport(report, { knownReactionIds, knownChemicalIds }) {
+  checkExactFields(report, REPORT_FIELDS, 'a problem report');
+  checkIdList(report.reactionIds, knownReactionIds, 'the report\'s reactions', LIMITS.MAX_SPECIES);
+  if (!REPORT_OUTCOMES.has(report.outcome)) fail('the report\'s outcome must be "reaction" or "no_reaction"');
+  checkText(report.notebookText, 'the reported notebook line');
+  checkText(report.note, 'the student\'s note', { max: LIMITS.MAX_NOTE_LENGTH });
+
+  const vessel = report.vessel;
+  checkExactFields(vessel, VESSEL_FIELDS, 'the reported vessel');
+  checkText(vessel.name, 'the vessel name', { max: LIMITS.MAX_ID_LENGTH });
+  checkIdList(vessel.speciesIds, knownChemicalIds, 'the vessel contents', LIMITS.MAX_VESSEL_SPECIES);
+  if (!Number.isFinite(vessel.volumeMl) || vessel.volumeMl < 0) fail('the vessel volume must be a number, 0 or more');
+  if (!Number.isFinite(vessel.temperatureC)) fail('the vessel temperature must be a number');
+  if (!Number.isInteger(vessel.heatLevel) || vessel.heatLevel < -1 || vessel.heatLevel > 3) {
+    fail('the vessel heat level must be a whole number from -1 to 3');
+  }
+  if (typeof vessel.electrified !== 'boolean') fail('whether the current is on must be true or false');
+  if (vessel.pH !== null && !Number.isFinite(vessel.pH)) fail('the vessel pH must be a number or empty');
+
+  return report;
 }
 
 /** The readable notebook text the student asked to save somewhere. */

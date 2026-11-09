@@ -4,9 +4,10 @@
  *
  * Three layers, tested separately because none of them needs Electron:
  *   main/validate.js — refuses anything that is not a real notebook, a real
- *                      chemical, or a sane export;
- *   main/storage.js  — saves atomically, sets damaged files aside, and keeps
- *                      the unknown-combinations log as one record per pair;
+ *                      chemical, a sane export, or a well-formed report;
+ *   main/storage.js  — saves atomically, sets damaged files aside, keeps
+ *                      the unknown-combinations log as one record per pair,
+ *                      and keeps every "This looks wrong" report in order;
  *   main/ipc.js      — refuses messages from any page but ChemLab's own.
  *
  * Run them with:  npm test
@@ -22,12 +23,14 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createNotebook } from '../src/core/notebook.js';
 import { TOLERANCE } from '../src/core/tools.js';
 import chemicals from '../src/data/chemicals.json' with { type: 'json' };
+import reactions from '../src/data/reactions.json' with { type: 'json' };
 import { CHANNELS } from '../main/channels.js';
 import {
   LIMITS,
   validateNotebook,
   validateChemicalIds,
   validateExportText,
+  validateProblemReport,
 } from '../main/validate.js';
 import * as storage from '../main/storage.js';
 import { registerBridge, isFromAppPage } from '../main/ipc.js';
@@ -35,6 +38,21 @@ import { registerBridge, isFromAppPage } from '../main/ipc.js';
 const projectRoot = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const knownIds = new Set(chemicals.map((chemical) => chemical.id));
 const [idA, idB, idC] = chemicals.map((chemical) => chemical.id);
+const knownReactionIds = new Set(reactions.map((reaction) => reaction.id));
+const known = { knownReactionIds, knownChemicalIds: knownIds };
+
+/** A report shaped exactly as src/ui/app.js builds one. */
+function realReport() {
+  return {
+    reactionIds: [reactions[0].id],
+    outcome: 'reaction',
+    notebookText: 'Added 10 mL of acid to Beaker 1. HCl + NaOH → NaCl + H₂O. The mixture warmed by about 7 °C.',
+    note: 'I expected it to get hotter.',
+    vessel: {
+      name: 'Beaker 1', speciesIds: [idA, idB], volumeMl: 20, temperatureC: 32, heatLevel: 0, electrified: false, pH: 7,
+    },
+  };
+}
 
 /** A notebook holding one of every kind of entry notebook.js can make. */
 function realNotebook() {
@@ -113,6 +131,29 @@ test('an unknown combination is sorted, de-duplicated and limited to real chemic
   assert.throws(() => validateChemicalIds('hcl_1m', knownIds), /at least one/);
   const tooMany = Array.from({ length: LIMITS.MAX_SPECIES + 1 }, () => idA);
   assert.throws(() => validateChemicalIds(tooMany, knownIds), /more than/);
+});
+
+test('a well-formed report passes, and every field is checked', () => {
+  assert.deepEqual(validateProblemReport(realReport(), known), realReport());
+  assert.deepEqual(validateProblemReport({ ...realReport(), note: '' }, known).note, '');
+
+  const cases = [
+    [(r) => { r.extra = 1; }, /unexpected field "extra"/],
+    [(r) => { delete r.note; }, /missing "note"/],
+    [(r) => { r.reactionIds = ['rxn_not_real_xyz']; }, /not in the lab's data/],
+    [(r) => { r.reactionIds = []; }, /at least one id/],
+    [(r) => { r.outcome = 'unknown'; }, /outcome must be/],
+    [(r) => { r.note = 'x'.repeat(LIMITS.MAX_NOTE_LENGTH + 1); }, /longer than/],
+    [(r) => { r.vessel.speciesIds = ['../../etc']; }, /lower-case letters/],
+    [(r) => { r.vessel.heatLevel = 7; }, /heat level/],
+    [(r) => { r.vessel.pH = 'acidic'; }, /pH must be/],
+    [(r) => { r.vessel.secret = true; }, /unexpected field "secret"/],
+  ];
+  for (const [spoil, reason] of cases) {
+    const report = realReport();
+    spoil(report);
+    assert.throws(() => validateProblemReport(report, known), reason);
+  }
 });
 
 test('an export must be text and under 1 MB', () => {
@@ -205,6 +246,44 @@ test('combinations logged at the same moment are all kept', async () => {
   });
 });
 
+test('reports are kept in order, numbered and dated, with no temp file left behind', async () => {
+  await withTempFolder(async (folder) => {
+    const now = () => Date.UTC(2026, 10, 10, 9, 30);
+    assert.deepEqual(await storage.appendProblemReport(folder, realReport(), { now, appVersion: '1.2.3' }), { number: 1 });
+    assert.deepEqual(await storage.appendProblemReport(folder, { ...realReport(), note: 'second' }, { now }), { number: 2 });
+
+    const file = JSON.parse(await readFile(path.join(folder, storage.FILE_NAMES.REPORTS), 'utf-8'));
+    assert.equal(file.reports.length, 2);
+    assert.deepEqual(file.reports[0], { number: 1, reportedAt: '2026-11-10T09:30:00.000Z', appVersion: '1.2.3', ...realReport() });
+    assert.equal(file.reports[1].note, 'second');
+    assert.deepEqual(await readdir(folder), [storage.FILE_NAMES.REPORTS]);
+  });
+});
+
+test('reports sent at the same moment are all kept', async () => {
+  await withTempFolder(async (folder) => {
+    await Promise.all([1, 2, 3].map((n) => storage.appendProblemReport(folder, { ...realReport(), note: `n${n}` })));
+    const file = JSON.parse(await readFile(path.join(folder, storage.FILE_NAMES.REPORTS), 'utf-8'));
+    assert.deepEqual(file.reports.map((r) => r.note).sort(), ['n1', 'n2', 'n3']);
+  });
+});
+
+test('a full reports file refuses more, and says to collect it', async () => {
+  await withTempFolder(async (folder) => {
+    const full = { version: 1, reports: Array.from({ length: storage.MAX_REPORTS }, (_, i) => ({ number: i + 1 })) };
+    await writeFile(path.join(folder, storage.FILE_NAMES.REPORTS), JSON.stringify(full), 'utf-8');
+    await assert.rejects(storage.appendProblemReport(folder, realReport()), /Ask your teacher to collect it/);
+  });
+});
+
+test('a damaged reports file is set aside, not deleted, and a fresh one is started', async () => {
+  await withTempFolder(async (folder) => {
+    await writeFile(path.join(folder, storage.FILE_NAMES.REPORTS), '{ broken', 'utf-8');
+    await storage.appendProblemReport(folder, realReport(), { now: () => 55 });
+    assert.deepEqual((await readdir(folder)).sort(), ['reports.damaged-55.json', 'reports.json']);
+  });
+});
+
 /* ------------------------------------------------------------------ *
  * ipc.js
  * ------------------------------------------------------------------ */
@@ -223,6 +302,8 @@ function fakeBridge(folder, { dialogResult = { canceled: true } } = {}) {
     getWindow: () => null,
     indexUrl,
     knownChemicalIds: knownIds,
+    knownReactionIds,
+    getAppVersion: () => '9.9.9',
     log: () => {},
   });
   return (channel, event, ...args) => handlers.get(channel)(event, ...args);
@@ -270,6 +351,18 @@ test('an export goes only where the Save dialog points, and only the file name c
   });
 });
 
+test('a report through the bridge is checked, then added to reports.json', async () => {
+  await withTempFolder(async (folder) => {
+    const send = fakeBridge(folder);
+    await assert.rejects(send(CHANNELS.REPORT_PROBLEM, fromApp, { ...realReport(), outcome: 'maybe' }), /outcome must be/);
+    assert.deepEqual(await readdir(folder), []);
+
+    assert.deepEqual(await send(CHANNELS.REPORT_PROBLEM, fromApp, realReport()), { number: 1 });
+    const file = JSON.parse(await readFile(path.join(folder, storage.FILE_NAMES.REPORTS), 'utf-8'));
+    assert.equal(file.reports[0].appVersion, '9.9.9');
+  });
+});
+
 /* ------------------------------------------------------------------ *
  * preload.cjs
  * ------------------------------------------------------------------ */
@@ -289,5 +382,5 @@ test('preload.cjs never hands the page ipcRenderer itself', async () => {
   const preload = await readFile(path.join(projectRoot, 'preload.cjs'), 'utf-8');
   const exposed = preload.slice(preload.indexOf('exposeInMainWorld'));
   assert.doesNotMatch(exposed, /:\s*ipcRenderer\s*[,}]/);
-  assert.equal((exposed.match(/ipcRenderer\.invoke\(/g) || []).length, 4);
+  assert.equal((exposed.match(/ipcRenderer\.invoke\(/g) || []).length, Object.keys(CHANNELS).length);
 });

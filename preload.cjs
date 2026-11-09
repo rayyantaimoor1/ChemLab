@@ -9,12 +9,12 @@
 // module.
 //
 // WHAT THE PAGE GETS
-// Exactly four functions on window.chemlab, each sending one fixed message.
+// Exactly five functions on window.chemlab, each sending one fixed message.
 // ipcRenderer itself is never handed over - with it, the page could send any
 // message it liked. Everything sent is checked again in main/validate.js;
 // nothing here is trusted on its own.
 //
-// The four message names must match main/channels.js. They are repeated here
+// The five message names must match main/channels.js. They are repeated here
 // because this file cannot load that one; tests/bridge.test.js checks the two
 // copies agree.
 
@@ -25,6 +25,7 @@ const CHANNELS = {
   SAVE_NOTEBOOK: 'chemlab:notebook-save',
   LOG_UNKNOWN: 'chemlab:unknown-log',
   EXPORT_NOTEBOOK: 'chemlab:notebook-export',
+  REPORT_PROBLEM: 'chemlab:problem-report',
 };
 
 contextBridge.exposeInMainWorld('chemlab', {
@@ -39,4 +40,7 @@ contextBridge.exposeInMainWorld('chemlab', {
 
   /** Opens a Save dialog. @returns {Promise<{ saved: boolean, fileName?: string }>} */
   exportNotebook: (text) => ipcRenderer.invoke(CHANNELS.EXPORT_NOTEBOOK, text),
+
+  /** Adds a student's "This looks wrong" report to reports.json (BUILD_PHASE_2.md 2.1.4). */
+  reportProblem: (report) => ipcRenderer.invoke(CHANNELS.REPORT_PROBLEM, report),
 });
