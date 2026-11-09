@@ -37,21 +37,21 @@
     "fired": [
       "rxn_displacement_zn_cuso4"
     ],
-    "sentence": "Zn + CuSO₄ → ZnSO₄ + Cu. A precipitate formed: reddish brown copper. The mixture warmed by about 8 °C."
+    "sentence": "Zn + CuSO₄ → ZnSO₄ + Cu. A deposit formed: reddish brown copper. The mixture warmed by about 8 °C."
   },
   "rxn_displacement_fe_cuso4": {
     "outcome": "reaction",
     "fired": [
       "rxn_displacement_fe_cuso4"
     ],
-    "sentence": "Fe + CuSO₄ → FeSO₄ + Cu. The mixture turned pale green. A precipitate formed: reddish brown copper. The mixture warmed by about 5 °C."
+    "sentence": "Fe + CuSO₄ → FeSO₄ + Cu. The mixture turned pale green. A deposit formed: reddish brown copper. The mixture warmed by about 5 °C."
   },
   "rxn_displacement_mg_cuso4": {
     "outcome": "reaction",
     "fired": [
       "rxn_displacement_mg_cuso4"
     ],
-    "sentence": "Mg + CuSO₄ → MgSO₄ + Cu. A precipitate formed: reddish brown copper. The mixture warmed by about 15 °C."
+    "sentence": "Mg + CuSO₄ → MgSO₄ + Cu. A deposit formed: reddish brown copper. The mixture warmed by about 15 °C."
   },
   "rxn_displacement_mg_hcl": {
     "outcome": "reaction",
@@ -79,7 +79,7 @@
     "fired": [
       "rxn_oxidation_mg_steam"
     ],
-    "sentence": "Mg + 2H₂O → Mg(OH)₂ + H₂. A precipitate formed: white magnesium hydroxide. Bubbles of hydrogen gas were given off.",
+    "sentence": "Mg + 2H₂O → Mg(OH)₂ + H₂. Left in the vessel: white magnesium hydroxide. Bubbles of hydrogen gas were given off.",
     "notMet": "No observable change. This mixture needs to reach about 100 °C before anything happens."
   },
   "rxn_none_cu_hcl": {
@@ -241,7 +241,7 @@
     "fired": [
       "rxn_oxidation_mg_o2"
     ],
-    "sentence": "2Mg + O₂ → 2MgO. A precipitate formed: white magnesium oxide ash. A cloud of smoke or vapour appeared. The mixture warmed by about 35 °C.",
+    "sentence": "2Mg + O₂ → 2MgO. Left in the vessel: white magnesium oxide ash. A cloud of smoke or vapour appeared. The mixture warmed by about 35 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_oxidation_cu_o2": {
@@ -249,7 +249,7 @@
     "fired": [
       "rxn_oxidation_cu_o2"
     ],
-    "sentence": "2Cu + O₂ → 2CuO. A precipitate formed: black copper(II) oxide. The mixture warmed by about 10 °C.",
+    "sentence": "2Cu + O₂ → 2CuO. A coating formed: black copper(II) oxide. The mixture warmed by about 10 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_reduction_cuo_h2": {
@@ -257,7 +257,7 @@
     "fired": [
       "rxn_reduction_cuo_h2"
     ],
-    "sentence": "CuO + H₂ → Cu + H₂O. A precipitate formed: reddish brown copper. The mixture warmed by about 8 °C.",
+    "sentence": "CuO + H₂ → Cu + H₂O. Left in the vessel: reddish brown copper. The mixture warmed by about 8 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_displacement_cl2_kbr": {
@@ -291,7 +291,7 @@
     "fired": [
       "rxn_corrosion_iron_rusting"
     ],
-    "sentence": "4Fe + 3O₂ + 2xH₂O → 2Fe₂O₃·xH₂O. A precipitate formed: reddish brown flaky rust."
+    "sentence": "4Fe + 3O₂ + 2xH₂O → 2Fe₂O₃·xH₂O. A coating formed: reddish brown flaky rust."
   },
   "rxn_none_fe_o2_dry": {
     "outcome": "no_reaction",
@@ -324,7 +324,7 @@
     "fired": [
       "rxn_electrolysis_molten_nacl"
     ],
-    "sentence": "2NaCl → 2Na + Cl₂. The mixture turned pale yellow-green. A precipitate formed: molten silvery sodium. Bubbles of chlorine gas were given off.",
+    "sentence": "2NaCl → 2Na + Cl₂. The mixture turned pale yellow-green. A liquid formed: molten silvery sodium. Bubbles of chlorine gas were given off.",
     "notMet": "No observable change. This mixture needs to reach about 801 °C before anything happens."
   },
   "rxn_electrolysis_cuso4": {
@@ -332,7 +332,7 @@
     "fired": [
       "rxn_electrolysis_cuso4"
     ],
-    "sentence": "2CuSO₄ + 2H₂O → 2Cu + O₂ + 2H₂SO₄. A precipitate formed: reddish brown copper on the cathode. Bubbles of oxygen gas were given off. The mixture warmed by about 1 °C.",
+    "sentence": "2CuSO₄ + 2H₂O → 2Cu + O₂ + 2H₂SO₄. A deposit formed: reddish brown copper on the cathode. Bubbles of oxygen gas were given off. The mixture warmed by about 1 °C.",
     "notMet": "No observable change. This mixture needs an electric current passed through it before anything happens."
   },
   "rxn_combustion_sulfur": {
@@ -422,7 +422,7 @@
     "fired": [
       "rxn_decomposition_kclo3"
     ],
-    "sentence": "2KClO₃ → 2KCl + 3O₂. A precipitate formed: white potassium chloride residue. Bubbles of oxygen gas were given off.",
+    "sentence": "2KClO₃ → 2KCl + 3O₂. Left in the vessel: white potassium chloride residue. Bubbles of oxygen gas were given off.",
     "notMet": "No observable change. This mixture needs to reach about 200 °C before anything happens."
   },
   "rxn_haber_process": {
@@ -469,7 +469,7 @@
     "fired": [
       "rxn_smoke_nh3_hcl"
     ],
-    "sentence": "NH₃ + HCl → NH₄Cl. A precipitate formed: dense white ammonium chloride smoke. A cloud of smoke or vapour appeared. The mixture warmed by about 6 °C."
+    "sentence": "NH₃ + HCl → NH₄Cl. A solid formed in the air: dense white ammonium chloride smoke. A cloud of smoke or vapour appeared. The mixture warmed by about 6 °C."
   },
   "rxn_neutralisation_nh3_hcl_aq": {
     "outcome": "reaction",
@@ -490,7 +490,7 @@
     "fired": [
       "rxn_decomposition_nahco3"
     ],
-    "sentence": "2NaHCO₃ → Na₂CO₃ + H₂O + CO₂. A precipitate formed: white sodium carbonate residue. Bubbles of carbon dioxide gas were given off.",
+    "sentence": "2NaHCO₃ → Na₂CO₃ + H₂O + CO₂. Left in the vessel: white sodium carbonate residue. Bubbles of carbon dioxide gas were given off.",
     "notMet": "No observable change. This mixture needs to reach about 100 °C before anything happens."
   },
   "rxn_dissolution_nh4no3": {
@@ -533,21 +533,21 @@
     "fired": [
       "rxn_slaking_quicklime"
     ],
-    "sentence": "CaO + H₂O → Ca(OH)₂. A precipitate formed: white calcium hydroxide paste — only a little of it dissolves. Bubbles were given off. A cloud of smoke or vapour appeared. The mixture warmed by about 27 °C."
+    "sentence": "CaO + H₂O → Ca(OH)₂. Left in the vessel: white calcium hydroxide paste — only a little of it dissolves. Bubbles were given off. A cloud of smoke or vapour appeared. The mixture warmed by about 27 °C."
   },
   "rxn_hydration_cuso4": {
     "outcome": "reaction",
     "fired": [
       "rxn_hydration_cuso4"
     ],
-    "sentence": "CuSO₄ + 5H₂O → CuSO₄·5H₂O. A precipitate formed: blue hydrated copper(II) sulfate. The mixture warmed by about 10 °C."
+    "sentence": "CuSO₄ + 5H₂O → CuSO₄·5H₂O. Left in the vessel: blue hydrated copper(II) sulfate. The mixture warmed by about 10 °C."
   },
   "rxn_dehydration_cuso4": {
     "outcome": "reaction",
     "fired": [
       "rxn_dehydration_cuso4"
     ],
-    "sentence": "CuSO₄·5H₂O → CuSO₄ + 5H₂O. A precipitate formed: white anhydrous copper(II) sulfate.",
+    "sentence": "CuSO₄·5H₂O → CuSO₄ + 5H₂O. Left in the vessel: white anhydrous copper(II) sulfate.",
     "notMet": "No observable change. This mixture needs to reach about 200 °C before anything happens."
   },
   "rxn_hydration_cocl2": {
@@ -555,14 +555,14 @@
     "fired": [
       "rxn_hydration_cocl2"
     ],
-    "sentence": "CoCl₂ + 6H₂O → CoCl₂·6H₂O. A precipitate formed: pink hydrated cobalt(II) chloride. The mixture warmed by about 8 °C."
+    "sentence": "CoCl₂ + 6H₂O → CoCl₂·6H₂O. Left in the vessel: pink hydrated cobalt(II) chloride. The mixture warmed by about 8 °C."
   },
   "rxn_dehydration_cocl2": {
     "outcome": "reaction",
     "fired": [
       "rxn_dehydration_cocl2"
     ],
-    "sentence": "CoCl₂·6H₂O → CoCl₂ + 6H₂O. A precipitate formed: blue anhydrous cobalt(II) chloride.",
+    "sentence": "CoCl₂·6H₂O → CoCl₂ + 6H₂O. Left in the vessel: blue anhydrous cobalt(II) chloride.",
     "notMet": "No observable change. This mixture needs to reach about 100 °C before anything happens."
   },
   "rxn_displacement_cu_agno3": {
@@ -570,14 +570,14 @@
     "fired": [
       "rxn_displacement_cu_agno3"
     ],
-    "sentence": "Cu + 2AgNO₃ → Cu(NO₃)₂ + 2Ag. The mixture turned blue. A precipitate formed: glittering silver crystals. The mixture warmed by about 4 °C."
+    "sentence": "Cu + 2AgNO₃ → Cu(NO₃)₂ + 2Ag. The mixture turned blue. A deposit formed: glittering silver crystals. The mixture warmed by about 4 °C."
   },
   "rxn_displacement_zn_agno3": {
     "outcome": "reaction",
     "fired": [
       "rxn_displacement_zn_agno3"
     ],
-    "sentence": "Zn + 2AgNO₃ → Zn(NO₃)₂ + 2Ag. A precipitate formed: glittering silver crystals. The mixture warmed by about 12 °C."
+    "sentence": "Zn + 2AgNO₃ → Zn(NO₃)₂ + 2Ag. A deposit formed: glittering silver crystals. The mixture warmed by about 12 °C."
   },
   "rxn_none_ag_cuso4": {
     "outcome": "no_reaction",
@@ -589,7 +589,7 @@
     "fired": [
       "rxn_displacement_zn_pbno3"
     ],
-    "sentence": "Zn + Pb(NO₃)₂ → Zn(NO₃)₂ + Pb. A precipitate formed: feathery grey lead crystals. The mixture warmed by about 5 °C."
+    "sentence": "Zn + Pb(NO₃)₂ → Zn(NO₃)₂ + Pb. A deposit formed: feathery grey lead crystals. The mixture warmed by about 5 °C."
   },
   "rxn_none_cu_pbno3": {
     "outcome": "no_reaction",
@@ -601,21 +601,21 @@
     "fired": [
       "rxn_displacement_zn_feso4"
     ],
-    "sentence": "Zn + FeSO₄ → ZnSO₄ + Fe. A precipitate formed: dark grey iron. The mixture warmed by about 3 °C."
+    "sentence": "Zn + FeSO₄ → ZnSO₄ + Fe. A deposit formed: dark grey iron. The mixture warmed by about 3 °C."
   },
   "rxn_displacement_mg_feso4": {
     "outcome": "reaction",
     "fired": [
       "rxn_displacement_mg_feso4"
     ],
-    "sentence": "Mg + FeSO₄ → MgSO₄ + Fe. A precipitate formed: dark grey iron. The mixture warmed by about 20 °C."
+    "sentence": "Mg + FeSO₄ → MgSO₄ + Fe. A deposit formed: dark grey iron. The mixture warmed by about 20 °C."
   },
   "rxn_electrolysis_agno3": {
     "outcome": "reaction",
     "fired": [
       "rxn_electrolysis_agno3"
     ],
-    "sentence": "4AgNO₃ + 2H₂O → 4Ag + O₂ + 4HNO₃. A precipitate formed: bright silver plated on the cathode. Bubbles of oxygen gas were given off. The mixture warmed by about 1 °C.",
+    "sentence": "4AgNO₃ + 2H₂O → 4Ag + O₂ + 4HNO₃. A deposit formed: bright silver plated on the cathode. Bubbles of oxygen gas were given off. The mixture warmed by about 1 °C.",
     "notMet": "No observable change. This mixture needs an electric current passed through it before anything happens."
   },
   "rxn_electrolysis_cucl2": {
@@ -623,7 +623,7 @@
     "fired": [
       "rxn_electrolysis_cucl2"
     ],
-    "sentence": "CuCl₂ → Cu + Cl₂. A precipitate formed: reddish brown copper on the cathode. Bubbles of chlorine gas were given off. The mixture warmed by about 1 °C.",
+    "sentence": "CuCl₂ → Cu + Cl₂. A deposit formed: reddish brown copper on the cathode. Bubbles of chlorine gas were given off. The mixture warmed by about 1 °C.",
     "notMet": "No observable change. This mixture needs an electric current passed through it before anything happens."
   },
   "rxn_electrolysis_al2o3": {
@@ -631,7 +631,7 @@
     "fired": [
       "rxn_electrolysis_al2o3"
     ],
-    "sentence": "2Al₂O₃ → 4Al + 3O₂. The mixture turned silvery grey. A precipitate formed: molten aluminium collecting at the base. Bubbles of oxygen gas were given off.",
+    "sentence": "2Al₂O₃ → 4Al + 3O₂. The mixture turned silvery grey. A liquid formed: molten aluminium collecting at the base. Bubbles of oxygen gas were given off.",
     "notMet": "No observable change. This mixture needs to reach about 950 °C before anything happens."
   },
   "rxn_group1_li_water": {
@@ -660,7 +660,7 @@
     "fired": [
       "rxn_group1_li_o2"
     ],
-    "sentence": "4Li + O₂ → 2Li₂O. A precipitate formed: white lithium oxide. A cloud of smoke or vapour appeared. The mixture warmed by about 30 °C.",
+    "sentence": "4Li + O₂ → 2Li₂O. Left in the vessel: white lithium oxide. A cloud of smoke or vapour appeared. The mixture warmed by about 30 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_group1_na_o2": {
@@ -668,7 +668,7 @@
     "fired": [
       "rxn_group1_na_o2"
     ],
-    "sentence": "2Na + O₂ → Na₂O₂. A precipitate formed: pale yellow sodium peroxide. A cloud of smoke or vapour appeared. The mixture warmed by about 30 °C.",
+    "sentence": "2Na + O₂ → Na₂O₂. Left in the vessel: pale yellow sodium peroxide. A cloud of smoke or vapour appeared. The mixture warmed by about 30 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_group2_mgco3_decomposition": {
@@ -676,7 +676,7 @@
     "fired": [
       "rxn_group2_mgco3_decomposition"
     ],
-    "sentence": "MgCO₃ → MgO + CO₂. A precipitate formed: white magnesium oxide. Bubbles of carbon dioxide gas were given off.",
+    "sentence": "MgCO₃ → MgO + CO₂. Left in the vessel: white magnesium oxide. Bubbles of carbon dioxide gas were given off.",
     "notMet": "No observable change. This mixture needs to reach about 350 °C before anything happens."
   },
   "rxn_group2_caco3_decomposition": {
@@ -684,7 +684,7 @@
     "fired": [
       "rxn_group2_caco3_decomposition"
     ],
-    "sentence": "CaCO₃ → CaO + CO₂. A precipitate formed: white quicklime. Bubbles of carbon dioxide gas were given off.",
+    "sentence": "CaCO₃ → CaO + CO₂. Left in the vessel: white quicklime. Bubbles of carbon dioxide gas were given off.",
     "notMet": "No observable change. This mixture needs to reach about 900 °C before anything happens."
   },
   "rxn_group2_mgoh2_decomposition": {
@@ -692,7 +692,7 @@
     "fired": [
       "rxn_group2_mgoh2_decomposition"
     ],
-    "sentence": "Mg(OH)₂ → MgO + H₂O. A precipitate formed: white magnesium oxide.",
+    "sentence": "Mg(OH)₂ → MgO + H₂O. Left in the vessel: white magnesium oxide.",
     "notMet": "No observable change. This mixture needs to reach about 350 °C before anything happens."
   },
   "rxn_precipitation_mgcl2_na2co3": {
@@ -817,7 +817,7 @@
     "fired": [
       "rxn_decomposition_cuoh2"
     ],
-    "sentence": "Cu(OH)₂ → CuO + H₂O. A precipitate formed: black copper(II) oxide.",
+    "sentence": "Cu(OH)₂ → CuO + H₂O. Left in the vessel: black copper(II) oxide.",
     "notMet": "No observable change. This mixture needs to reach about 100 °C before anything happens."
   },
   "rxn_chromate_dichromate": {
@@ -853,7 +853,7 @@
     "fired": [
       "rxn_decomposition_kmno4"
     ],
-    "sentence": "2KMnO₄ → K₂MnO₄ + MnO₂ + O₂. A precipitate formed: dark green and black manganese residue. Bubbles of oxygen gas were given off.",
+    "sentence": "2KMnO₄ → K₂MnO₄ + MnO₂ + O₂. Left in the vessel: dark green and black manganese residue. Bubbles of oxygen gas were given off.",
     "notMet": "No observable change. This mixture needs to reach about 240 °C before anything happens."
   },
   "rxn_substitution_methane_chlorine": {
@@ -877,7 +877,7 @@
     "fired": [
       "rxn_prep_ethyne_carbide"
     ],
-    "sentence": "CaC₂ + 2H₂O → C₂H₂ + Ca(OH)₂. A precipitate formed: white calcium hydroxide sludge — only a little of it dissolves. Bubbles of ethyne gas were given off. The mixture warmed by about 18 °C."
+    "sentence": "CaC₂ + 2H₂O → C₂H₂ + Ca(OH)₂. Left in the vessel: white calcium hydroxide sludge — only a little of it dissolves. Bubbles of ethyne gas were given off. The mixture warmed by about 18 °C."
   },
   "rxn_addition_ethene_bromine": {
     "outcome": "reaction",
@@ -963,7 +963,7 @@
     "fired": [
       "rxn_combustion_benzene"
     ],
-    "sentence": "2C₆H₆ + 15O₂ → 12CO₂ + 6H₂O. A precipitate formed: black soot. Carbon dioxide gas was given off. A cloud of smoke or vapour appeared. The mixture warmed by about 45 °C.",
+    "sentence": "2C₆H₆ + 15O₂ → 12CO₂ + 6H₂O. A solid formed in the air: black soot. Carbon dioxide gas was given off. A cloud of smoke or vapour appeared. The mixture warmed by about 45 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_hydrogenation_benzene": {
@@ -1054,7 +1054,7 @@
     "fired": [
       "rxn_tollens_ethanal"
     ],
-    "sentence": "CH₃CHO + 2[Ag(NH₃)₂]⁺ + 3OH⁻ → CH₃COO⁻ + 2Ag + 4NH₃ + 2H₂O. The mixture turned silvery white. A precipitate formed: a mirror of silver on the glass. The mixture warmed by about 4 °C.",
+    "sentence": "CH₃CHO + 2[Ag(NH₃)₂]⁺ + 3OH⁻ → CH₃COO⁻ + 2Ag + 4NH₃ + 2H₂O. The mixture turned silvery white. A deposit formed: a mirror of silver on the glass. The mixture warmed by about 4 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_none_tollens_propanone": {
@@ -1245,7 +1245,7 @@
     "fired": [
       "rxn_urea_synthesis"
     ],
-    "sentence": "2NH₃ + CO₂ → NH₂CONH₂ + H₂O. A precipitate formed: white crystals of urea. The mixture warmed by about 14 °C.",
+    "sentence": "2NH₃ + CO₂ → NH₂CONH₂ + H₂O. Left in the vessel: white crystals of urea. The mixture warmed by about 14 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_ammonium_sulfate_fertiliser": {
@@ -1267,7 +1267,7 @@
     "fired": [
       "rxn_cement_clinker"
     ],
-    "sentence": "3CaCO₃ + SiO₂ → Ca₃SiO₅ + 3CO₂. A precipitate formed: hard dark grey nodules of clinker. Carbon dioxide gas was given off.",
+    "sentence": "3CaCO₃ + SiO₂ → Ca₃SiO₅ + 3CO₂. Left in the vessel: hard dark grey nodules of clinker. Carbon dioxide gas was given off.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_cement_setting": {
@@ -1275,7 +1275,7 @@
     "fired": [
       "rxn_cement_setting"
     ],
-    "sentence": "Ca₃SiO₅ + H₂O → hydrated calcium silicate + Ca(OH)₂. A precipitate formed: a grey solid mass that hardens as it stands. The mixture warmed by about 8 °C."
+    "sentence": "Ca₃SiO₅ + H₂O → hydrated calcium silicate + Ca(OH)₂. Left in the vessel: a grey solid mass that hardens as it stands. The mixture warmed by about 8 °C."
   },
   "rxn_acidrain_attacks_marble": {
     "outcome": "reaction",
@@ -1694,7 +1694,7 @@
     "fired": [
       "rxn_period3_mgo_water"
     ],
-    "sentence": "MgO + H₂O → Mg(OH)₂. A precipitate formed: a faint white suspension that does not settle out. The mixture warmed by about 3 °C."
+    "sentence": "MgO + H₂O → Mg(OH)₂. Left in the vessel: a faint white suspension that does not settle out. The mixture warmed by about 3 °C."
   },
   "rxn_none_al2o3_water": {
     "outcome": "no_reaction",
@@ -1820,7 +1820,7 @@
     "fired": [
       "rxn_polymerisation_ethene"
     ],
-    "sentence": "n CH₂=CH₂ → -(CH₂CH₂)ₙ-. A precipitate formed: a waxy translucent white solid. The mixture warmed by about 18 °C.",
+    "sentence": "n CH₂=CH₂ → -(CH₂CH₂)ₙ-. Left in the vessel: a waxy translucent white solid. The mixture warmed by about 18 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_none_ethane_polymerise": {
@@ -1833,7 +1833,7 @@
     "fired": [
       "rxn_polymerisation_chloroethene"
     ],
-    "sentence": "n CH₂=CHCl → -(CH₂CHCl)ₙ-. A precipitate formed: a white solid. The mixture warmed by about 16 °C.",
+    "sentence": "n CH₂=CHCl → -(CH₂CHCl)ₙ-. Left in the vessel: a white solid. The mixture warmed by about 16 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_polymerisation_phenylethene": {
@@ -1841,7 +1841,7 @@
     "fired": [
       "rxn_polymerisation_phenylethene"
     ],
-    "sentence": "n C₆H₅CH=CH₂ → -(CH₂CH(C₆H₅))ₙ-. A precipitate formed: a hard glassy white solid. The mixture warmed by about 15 °C.",
+    "sentence": "n C₆H₅CH=CH₂ → -(CH₂CH(C₆H₅))ₙ-. Left in the vessel: a hard glassy white solid. The mixture warmed by about 15 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_polymerisation_tetrafluoroethene": {
@@ -1849,7 +1849,7 @@
     "fired": [
       "rxn_polymerisation_tetrafluoroethene"
     ],
-    "sentence": "n CF₂=CF₂ → -(CF₂CF₂)ₙ-. A precipitate formed: a waxy translucent white solid. The mixture warmed by about 20 °C.",
+    "sentence": "n CF₂=CF₂ → -(CF₂CF₂)ₙ-. Left in the vessel: a waxy translucent white solid. The mixture warmed by about 20 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_polyester_formation": {
@@ -1857,7 +1857,7 @@
     "fired": [
       "rxn_polyester_formation"
     ],
-    "sentence": "n HOCH₂CH₂OH + n HOOCC₆H₄COOH → -(OCH₂CH₂OOCC₆H₄CO)ₙ- + 2n H₂O. A precipitate formed: a tough off-white solid that can be drawn into a fibre. The mixture warmed by about 6 °C.",
+    "sentence": "n HOCH₂CH₂OH + n HOOCC₆H₄COOH → -(OCH₂CH₂OOCC₆H₄CO)ₙ- + 2n H₂O. Left in the vessel: a tough off-white solid that can be drawn into a fibre. The mixture warmed by about 6 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_nylon_formation": {
@@ -1865,7 +1865,7 @@
     "fired": [
       "rxn_nylon_formation"
     ],
-    "sentence": "n ClOC(CH₂)₄COCl + n H₂N(CH₂)₆NH₂ → -(CO(CH₂)₄CONH(CH₂)₆NH)ₙ- + 2n HCl. A precipitate formed: a milky white film at the boundary between the two liquids, which can be pulled out as a continuous thread. Hydrogen chloride gas was given off. A cloud of smoke or vapour appeared. The mixture warmed by about 8 °C."
+    "sentence": "n ClOC(CH₂)₄COCl + n H₂N(CH₂)₆NH₂ → -(CO(CH₂)₄CONH(CH₂)₆NH)ₙ- + 2n HCl. Left in the vessel: a milky white film at the boundary between the two liquids, which can be pulled out as a continuous thread. Hydrogen chloride gas was given off. A cloud of smoke or vapour appeared. The mixture warmed by about 8 °C."
   },
   "rxn_polypeptide_formation": {
     "outcome": "reaction",
@@ -1905,7 +1905,7 @@
     "fired": [
       "rxn_polymerisation_isoprene"
     ],
-    "sentence": "n CH₂=C(CH₃)CH=CH₂ → -(CH₂C(CH₃)=CHCH₂)ₙ-. A precipitate formed: a soft pale amber solid. The mixture warmed by about 16 °C.",
+    "sentence": "n CH₂=C(CH₃)CH=CH₂ → -(CH₂C(CH₃)=CHCH₂)ₙ-. Left in the vessel: a soft pale amber solid. The mixture warmed by about 16 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_rubber_bromine": {
@@ -1927,7 +1927,7 @@
     "fired": [
       "rxn_vulcanisation_rubber"
     ],
-    "sentence": "rubber + S₈ →(heat) rubber cross-linked by -S-S- bridges. A precipitate formed: a tough dark brown solid that springs back when pulled. The mixture warmed by about 10 °C.",
+    "sentence": "rubber + S₈ →(heat) rubber cross-linked by -S-S- bridges. Left in the vessel: a tough dark brown solid that springs back when pulled. The mixture warmed by about 10 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_none_vulcanised_benzene": {
@@ -1940,14 +1940,14 @@
     "fired": [
       "rxn_perishing_rubber_ozone"
     ],
-    "sentence": "rubber + O₃ → chains cut at the double bonds. A precipitate formed: a dull grey solid, cracked and brittle where it was soft. The mixture warmed by about 2 °C."
+    "sentence": "rubber + O₃ → chains cut at the double bonds. Left in the vessel: a dull grey solid, cracked and brittle where it was soft. The mixture warmed by about 2 °C."
   },
   "rxn_bakelite_formation": {
     "outcome": "reaction",
     "fired": [
       "rxn_bakelite_formation"
     ],
-    "sentence": "phenol + HCHO →(heat) cross-linked phenol–methanal network + H₂O. A precipitate formed: a hard dark reddish brown solid. The mixture warmed by about 14 °C.",
+    "sentence": "phenol + HCHO →(heat) cross-linked phenol–methanal network + H₂O. Left in the vessel: a hard dark reddish brown solid. The mixture warmed by about 14 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_none_bakelite_benzene": {
@@ -1967,7 +1967,7 @@
     "fired": [
       "rxn_silicone_condensation"
     ],
-    "sentence": "n (CH₃)₂Si(OH)₂ → -(Si(CH₃)₂-O)ₙ- + n H₂O. A precipitate formed: a clear translucent rubbery solid. The mixture warmed by about 8 °C.",
+    "sentence": "n (CH₃)₂Si(OH)₂ → -(Si(CH₃)₂-O)ₙ- + n H₂O. Left in the vessel: a clear translucent rubbery solid. The mixture warmed by about 8 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_hydrolysis_me3sicl": {
@@ -1994,7 +1994,7 @@
     "fired": [
       "rxn_silicone_resin_network"
     ],
-    "sentence": "n CH₃Si(OH)₃ → cross-linked methylsiloxane network + water. The mixture turned pale translucent grey. A precipitate formed: a hard pale translucent solid. The mixture warmed by about 10 °C.",
+    "sentence": "n CH₃Si(OH)₃ → cross-linked methylsiloxane network + water. The mixture turned pale translucent grey. Left in the vessel: a hard pale translucent solid. The mixture warmed by about 10 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_decomposition_polythene_hot": {
@@ -2002,7 +2002,7 @@
     "fired": [
       "rxn_decomposition_polythene_hot"
     ],
-    "sentence": "-(CH₂CH₂)ₙ- →(strong heat) carbon + hydrocarbon vapours. A precipitate formed: a black char, and the plastic never flows back. Hydrocarbon vapour gas was given off. A cloud of smoke or vapour appeared.",
+    "sentence": "-(CH₂CH₂)ₙ- →(strong heat) carbon + hydrocarbon vapours. Left in the vessel: a black char, and the plastic never flows back. Hydrocarbon vapour gas was given off. A cloud of smoke or vapour appeared.",
     "notMet": "No observable change. This mixture needs to reach about 350 °C before anything happens."
   },
   "rxn_none_silicone_hot": {
@@ -2020,7 +2020,7 @@
     "fired": [
       "rxn_glass_making"
     ],
-    "sentence": "Na₂CO₃ + CaCO₃ + 6SiO₂ →(1500 °C) Na₂O·CaO·6SiO₂ + 2CO₂. A precipitate formed: a clear pale blue-green solid that softened rather than melting sharply. Carbon dioxide gas was given off.",
+    "sentence": "Na₂CO₃ + CaCO₃ + 6SiO₂ →(1500 °C) Na₂O·CaO·6SiO₂ + 2CO₂. Left in the vessel: a clear pale blue-green solid that softened rather than melting sharply. Carbon dioxide gas was given off.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_clay_water_plastic": {
@@ -2028,7 +2028,7 @@
     "fired": [
       "rxn_clay_water_plastic"
     ],
-    "sentence": "dry clay + water → plastic, workable clay. A precipitate formed: a damp grey-brown mass that holds whatever shape it is pushed into. The mixture warmed by about 1 °C."
+    "sentence": "dry clay + water → plastic, workable clay. Left in the vessel: a damp grey-brown mass that holds whatever shape it is pushed into. The mixture warmed by about 1 °C."
   },
   "rxn_clay_dehydroxylation": {
     "outcome": "reaction",
@@ -2036,7 +2036,7 @@
       "rxn_clay_dehydroxylation",
       "rxn_clay_to_mullite"
     ],
-    "sentence": "Al₂Si₂O₅(OH)₄ →(500 °C) Al₂Si₂O₇ + 2H₂O. A precipitate formed: a pale cream solid that will never soften in water again. Steam gas was given off. 3Al₂Si₂O₇ →(1100 °C+) 3Al₂O₃·2SiO₂ + 4SiO₂. A precipitate formed: a hard cream ceramic, ringing when struck.",
+    "sentence": "Al₂Si₂O₅(OH)₄ →(500 °C) Al₂Si₂O₇ + 2H₂O. Left in the vessel: a pale cream solid that will never soften in water again. Steam gas was given off. 3Al₂Si₂O₇ →(1100 °C+) 3Al₂O₃·2SiO₂ + 4SiO₂. Left in the vessel: a hard cream ceramic, ringing when struck.",
     "notMet": "No observable change. This mixture needs to reach about 500 °C before anything happens."
   },
   "rxn_clay_to_mullite": {
@@ -2044,7 +2044,7 @@
     "fired": [
       "rxn_clay_to_mullite"
     ],
-    "sentence": "3Al₂Si₂O₇ →(1100 °C+) 3Al₂O₃·2SiO₂ + 4SiO₂. A precipitate formed: a hard cream ceramic, ringing when struck.",
+    "sentence": "3Al₂Si₂O₇ →(1100 °C+) 3Al₂O₃·2SiO₂ + 4SiO₂. Left in the vessel: a hard cream ceramic, ringing when struck.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_none_mullite_water": {
@@ -2057,7 +2057,7 @@
     "fired": [
       "rxn_calcination_aloh3"
     ],
-    "sentence": "2Al(OH)₃ →(heat) Al₂O₃ + 3H₂O. A precipitate formed: a hard white powder where the jelly used to be. Steam gas was given off.",
+    "sentence": "2Al(OH)₃ →(heat) Al₂O₃ + 3H₂O. Left in the vessel: a hard white powder where the jelly used to be. Steam gas was given off.",
     "notMet": "No observable change. This mixture needs to reach about 300 °C before anything happens."
   },
   "rxn_refractory_silica_attacked": {
@@ -2065,7 +2065,7 @@
     "fired": [
       "rxn_refractory_silica_attacked"
     ],
-    "sentence": "CaO + SiO₂ →(furnace heat) CaSiO₃. A precipitate formed: a dull grey slag where the silica lining used to be.",
+    "sentence": "CaO + SiO₂ →(furnace heat) CaSiO₃. Left in the vessel: a dull grey slag where the silica lining used to be.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_none_mgo_lime": {
@@ -2078,7 +2078,7 @@
     "fired": [
       "rxn_refractory_magnesia_attacked"
     ],
-    "sentence": "2MgO + SiO₂ →(furnace heat) Mg₂SiO₄. A precipitate formed: a dull olive grey solid where the magnesia lining used to be.",
+    "sentence": "2MgO + SiO₂ →(furnace heat) Mg₂SiO₄. Left in the vessel: a dull olive grey solid where the magnesia lining used to be.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_gypsum_to_plaster": {
@@ -2086,7 +2086,7 @@
     "fired": [
       "rxn_gypsum_to_plaster"
     ],
-    "sentence": "2CaSO₄·2H₂O →(150 °C) 2CaSO₄·½H₂O + 3H₂O. A precipitate formed: a dry white powder. Steam gas was given off.",
+    "sentence": "2CaSO₄·2H₂O →(150 °C) 2CaSO₄·½H₂O + 3H₂O. Left in the vessel: a dry white powder. Steam gas was given off.",
     "notMet": "No observable change. This mixture needs to reach about 150 °C before anything happens."
   },
   "rxn_plaster_setting": {
@@ -2094,7 +2094,7 @@
     "fired": [
       "rxn_plaster_setting"
     ],
-    "sentence": "2CaSO₄·½H₂O + 3H₂O → 2CaSO₄·2H₂O. A precipitate formed: a hard chalky white solid, set within minutes. The mixture warmed by about 7 °C.",
+    "sentence": "2CaSO₄·½H₂O + 3H₂O → 2CaSO₄·2H₂O. Left in the vessel: a hard chalky white solid, set within minutes. The mixture warmed by about 7 °C.",
     "notMet": "No observable change. This mixture needs to be kept below about 100 °C before anything happens."
   },
   "rxn_none_zns_carbon": {
@@ -2107,7 +2107,7 @@
     "fired": [
       "rxn_roasting_zinc_blende"
     ],
-    "sentence": "2ZnS + 3O₂ →(roasting) 2ZnO + 2SO₂. A precipitate formed: a white solid where the pale sulfide used to be. Sulfur dioxide gas was given off.",
+    "sentence": "2ZnS + 3O₂ →(roasting) 2ZnO + 2SO₂. Left in the vessel: a white solid where the pale sulfide used to be. Sulfur dioxide gas was given off.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_reduction_zno_carbon": {
@@ -2115,7 +2115,7 @@
     "fired": [
       "rxn_reduction_zno_carbon"
     ],
-    "sentence": "ZnO + C →(1200 °C) Zn + CO. The mixture turned bluish-grey. A precipitate formed: bright metal condensing where the white powder was. Carbon monoxide gas was given off.",
+    "sentence": "ZnO + C →(1200 °C) Zn + CO. The mixture turned bluish-grey. A deposit formed: bright metal condensing where the white powder was. Carbon monoxide gas was given off.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_boudouard_co": {
@@ -2131,7 +2131,7 @@
     "fired": [
       "rxn_blast_furnace_reduction"
     ],
-    "sentence": "Fe₂O₃ + 3CO →(blast furnace) 2Fe + 3CO₂. The mixture turned dark grey. A precipitate formed: molten grey metal, running to the bottom. Carbon dioxide gas was given off.",
+    "sentence": "Fe₂O₃ + 3CO →(blast furnace) 2Fe + 3CO₂. The mixture turned dark grey. A liquid formed: molten grey metal, running to the bottom. Carbon dioxide gas was given off.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_none_al2o3_carbon": {
@@ -2144,7 +2144,7 @@
     "fired": [
       "rxn_thermite"
     ],
-    "sentence": "Fe₂O₃ + 2Al → 2Fe + Al₂O₃. The mixture turned dark grey. A precipitate formed: white-hot molten iron, running out and setting to grey metal. A cloud of smoke or vapour appeared. The mixture warmed by about 90 °C.",
+    "sentence": "Fe₂O₃ + 2Al → 2Fe + Al₂O₃. The mixture turned dark grey. A liquid formed: white-hot molten iron, running out and setting to grey metal. A cloud of smoke or vapour appeared. The mixture warmed by about 90 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_copper_self_reduction": {
@@ -2152,7 +2152,7 @@
     "fired": [
       "rxn_copper_self_reduction"
     ],
-    "sentence": "Cu₂S + O₂ →(heat) 2Cu + SO₂. A precipitate formed: reddish brown metal appearing directly from the dark ore. Sulfur dioxide gas was given off.",
+    "sentence": "Cu₂S + O₂ →(heat) 2Cu + SO₂. Left in the vessel: reddish brown metal appearing directly from the dark ore. Sulfur dioxide gas was given off.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_decomposition_hgo": {
@@ -2160,7 +2160,7 @@
     "fired": [
       "rxn_decomposition_hgo"
     ],
-    "sentence": "2HgO →(heat) 2Hg + O₂. The mixture turned silvery, mirror-like. A precipitate formed: silvery droplets forming on the cool glass above. Oxygen gas was given off.",
+    "sentence": "2HgO →(heat) 2Hg + O₂. The mixture turned silvery, mirror-like. A liquid formed: silvery droplets forming on the cool glass above. Oxygen gas was given off.",
     "notMet": "No observable change. This mixture needs to reach about 500 °C before anything happens."
   },
   "rxn_none_gold_acid": {
@@ -2181,7 +2181,7 @@
     "fired": [
       "rxn_steel_cementite"
     ],
-    "sentence": "3Fe + C → Fe₃C. A precipitate formed: hard pale grey particles of iron carbide through the metal.",
+    "sentence": "3Fe + C → Fe₃C. Left in the vessel: hard pale grey particles of iron carbide through the metal.",
     "notMet": "No observable change. This mixture needs to reach about 700 °C before anything happens."
   },
   "rxn_dephosphorisation_slag": {
@@ -2189,7 +2189,7 @@
     "fired": [
       "rxn_dephosphorisation_slag"
     ],
-    "sentence": "P₄O₁₀ + 6CaO → 2Ca₃(PO₄)₂. A precipitate formed: an off-white slag floating clear of the metal. The mixture warmed by about 15 °C.",
+    "sentence": "P₄O₁₀ + 6CaO → 2Ca₃(PO₄)₂. Left in the vessel: an off-white slag floating clear of the metal. The mixture warmed by about 15 °C.",
     "notMet": "No observable change. This mixture needs to reach about 1000 °C before anything happens."
   },
   "rxn_passivation_aluminium": {
@@ -2230,14 +2230,14 @@
     "fired": [
       "rxn_galvanised_sacrificial"
     ],
-    "sentence": "2Zn + O₂ → 2ZnO   (the iron is untouched). A precipitate formed: a white bloom on the zinc, while the iron stays bright. The mixture warmed by about 2 °C."
+    "sentence": "2Zn + O₂ → 2ZnO   (the iron is untouched). A coating formed: a white bloom on the zinc, while the iron stays bright. The mixture warmed by about 2 °C."
   },
   "rxn_tinplate_scratched": {
     "outcome": "reaction",
     "fired": [
       "rxn_tinplate_scratched"
     ],
-    "sentence": "4Fe + 3O₂ + 2xH₂O → 2Fe₂O₃·xH₂O   (the tin is untouched). A precipitate formed: reddish brown rust on the iron, spreading from the scratch, while the tin stays bright. The mixture warmed by about 2 °C."
+    "sentence": "4Fe + 3O₂ + 2xH₂O → 2Fe₂O₃·xH₂O   (the tin is untouched). A coating formed: reddish brown rust on the iron, spreading from the scratch, while the tin stays bright. The mixture warmed by about 2 °C."
   },
   "rxn_electroplating_copper": {
     "outcome": "reaction",
@@ -2252,7 +2252,7 @@
     "fired": [
       "rxn_electrorefining_copper"
     ],
-    "sentence": "Cu(impure) → Cu²⁺ + 2e⁻ → Cu(pure). A precipitate formed: a dark brown sludge collecting under the anode. The mixture warmed by about 2 °C.",
+    "sentence": "Cu(impure) → Cu²⁺ + 2e⁻ → Cu(pure). Left in the vessel: a dark brown sludge collecting under the anode. The mixture warmed by about 2 °C.",
     "notMet": "No observable change. This mixture needs an electric current passed through it before anything happens."
   },
   "rxn_electroplating_silver": {
@@ -2305,7 +2305,7 @@
     "fired": [
       "rxn_electroless_copper_plastic"
     ],
-    "sentence": "Cu²⁺ + HCHO + 3OH⁻ → Cu + HCOO⁻ + 2H₂O. A precipitate formed: a dull copper film creeping over the plastic. The mixture warmed by about 3 °C."
+    "sentence": "Cu²⁺ + HCHO + 3OH⁻ → Cu + HCOO⁻ + 2H₂O. A deposit formed: a dull copper film creeping over the plastic. The mixture warmed by about 3 °C."
   },
   "rxn_none_electroplating_aluminium": {
     "outcome": "no_reaction",
@@ -2706,7 +2706,7 @@
     "fired": [
       "rxn_pbo2_oxidises_hcl"
     ],
-    "sentence": "PbO₂ + 4HCl → PbCl₂ + Cl₂ + 2H₂O. A precipitate formed: a white solid, where the dark brown powder used to be. Bubbles of chlorine gas were given off. The mixture warmed by about 8 °C.",
+    "sentence": "PbO₂ + 4HCl → PbCl₂ + Cl₂ + 2H₂O. Left in the vessel: a white solid, where the dark brown powder used to be. Bubbles of chlorine gas were given off. The mixture warmed by about 8 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_group2_srco3_decomposition": {
@@ -2714,7 +2714,7 @@
     "fired": [
       "rxn_group2_srco3_decomposition"
     ],
-    "sentence": "SrCO₃ →(1290 °C) SrO + CO₂. A precipitate formed: a white solid left behind. Carbon dioxide gas was given off.",
+    "sentence": "SrCO₃ →(1290 °C) SrO + CO₂. Left in the vessel: white strontium oxide. Carbon dioxide gas was given off.",
     "notMet": "No observable change. This mixture needs to reach about 1290 °C before anything happens."
   },
   "rxn_group2_baco3_decomposition": {
@@ -2722,7 +2722,7 @@
     "fired": [
       "rxn_group2_baco3_decomposition"
     ],
-    "sentence": "BaCO₃ →(1360 °C) BaO + CO₂. A precipitate formed: a white solid left behind. Carbon dioxide gas was given off.",
+    "sentence": "BaCO₃ →(1360 °C) BaO + CO₂. Left in the vessel: white barium oxide. Carbon dioxide gas was given off.",
     "notMet": "No observable change. This mixture needs to reach about 1360 °C before anything happens."
   },
   "rxn_none_bacl2_naoh": {

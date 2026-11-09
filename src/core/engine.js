@@ -61,6 +61,20 @@ export const ROOM_TEMPERATURE_C = 25;
 export const DEFAULT_MAX_CASCADE = 10;
 
 /**
+ * How the notebook introduces the solid a reaction leaves, chosen by a
+ * rule's curated effects.solidKind (see describeEffects). A missing kind
+ * means a precipitate. The validator rejects any kind not listed here.
+ */
+export const SOLID_KIND_OPENINGS = {
+  precipitate: 'A precipitate formed', // a solid forming out of a solution
+  deposit: 'A deposit formed', // metal laid down on a surface: displacement, a cathode, a silver mirror
+  coating: 'A coating formed', // a layer growing on a metal: rust, tarnish, a bloom of oxide
+  liquid: 'A liquid formed', // a molten metal, or mercury condensing
+  smoke: 'A solid formed in the air', // fine solid particles as smoke: ammonium chloride, soot
+  solid: 'Left in the vessel', // everything else: residues after heating, polymers, ceramics, slags
+};
+
+/**
  * Stops anything handing out the loaded data from accidentally editing it.
  * The data files are the source of truth and should be read-only at runtime.
  */
@@ -191,8 +205,18 @@ function describeEffects(reaction, colourNameOf = () => null) {
     observations.push(`The mixture turned ${colourName}.`);
   }
 
+  // `precipitate` describes whatever solid (or, for a molten metal, liquid)
+  // appears, and the UI draws every one of them the same way. But in the
+  // notebook "precipitate" is a technical word with one meaning - a solid
+  // forming out of a solution - and calling molten sodium, a copper plate or
+  // the residue left after heating a "precipitate" teaches the wrong term.
+  // So the curated `solidKind` chooses the opening words. It is never
+  // inferred: whether copper on a zinc strip is a deposit or a precipitate is
+  // a judgement about the chemistry, so it lives in reactions.json. With no
+  // solidKind the solid is a precipitate, as most of them are.
   if (effects.precipitate) {
-    observations.push(`A precipitate formed: ${effects.precipitate}.`);
+    const opening = SOLID_KIND_OPENINGS[effects.solidKind] || SOLID_KIND_OPENINGS.precipitate;
+    observations.push(`${opening}: ${effects.precipitate}.`);
   }
 
   // The opposite of a precipitate, and just as much an observation. A solid

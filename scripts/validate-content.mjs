@@ -40,6 +40,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { checkEquation } from './lib/equation-balance.mjs';
 import { checkColourName } from './lib/colour-check.mjs';
+import { SOLID_KIND_OPENINGS } from '../src/core/engine.js';
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(SCRIPT_DIR, '..');
@@ -227,6 +228,20 @@ const reactions = readJson('reactions.json') ?? [];
         (chemical) => (chemical.colorHex || '').toUpperCase() === colourHex.toUpperCase() && chemical.colorName
       );
       if (!named) problems.push(`${id}: effects.colorToHex "${colourHex}" is not named by any chemical's colorHex`);
+    }
+
+    // solidKind picks the notebook's opening words for the solid a rule
+    // leaves ("A deposit formed", "Left in the vessel"). It means nothing
+    // without a solid to introduce, and a misspelt kind would quietly fall
+    // back to calling the solid a precipitate.
+    const solidKind = reaction.effects?.solidKind;
+    if (solidKind !== undefined) {
+      if (!Object.hasOwn(SOLID_KIND_OPENINGS, solidKind)) {
+        problems.push(`${id}: effects.solidKind "${solidKind}" is not one of ${Object.keys(SOLID_KIND_OPENINGS).join(', ')}`);
+      }
+      if (!reaction.effects.precipitate) {
+        problems.push(`${id}: effects.solidKind is set but there is no effects.precipitate for it to describe`);
+      }
     }
 
     if (reaction.hazard && !nonEmptyString(reaction.hazard.whatToDoInstead)) {

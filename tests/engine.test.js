@@ -1261,6 +1261,49 @@ test('the colour is not said twice when the precipitate already names it', async
   assert.match(result.message, /brick red copper\(I\) oxide/);
 });
 
+// ---------------------------------------------------------------------------
+// Not every solid is a precipitate.
+//
+// "Precipitate" means a solid forming out of a solution. Before these tests
+// the notebook called molten sodium, copper plated on a cathode and the
+// residue left after heating "a precipitate" too, teaching the wrong term.
+// The curated effects.solidKind now picks the opening words.
+// ---------------------------------------------------------------------------
+
+test('solidKind chooses how the notebook introduces the solid', async () => {
+  const { createEngine: create, SOLID_KIND_OPENINGS } = await import('../src/core/engine.js');
+  const rule = (id, solidKind) => ({
+    id,
+    reactants: [`${id}_a`, `${id}_b`],
+    products: [],
+    equation: 'A + B -> C',
+    effects: { precipitate: 'something solid', ...(solidKind ? { solidKind } : {}) },
+  });
+  const kinds = Object.keys(SOLID_KIND_OPENINGS);
+  const engine = create({
+    chemicals: kinds.concat('none').flatMap((k) => [{ id: `${k}_a`, name: 'A' }, { id: `${k}_b`, name: 'B' }]),
+    reactions: [...kinds.map((k) => rule(k, k)), rule('none', null)],
+  });
+
+  assert.match(engine.resolve(['none_a', 'none_b']).message, /A precipitate formed: something solid\./);
+  assert.match(engine.resolve(['deposit_a', 'deposit_b']).message, /A deposit formed: something solid\./);
+  assert.match(engine.resolve(['liquid_a', 'liquid_b']).message, /A liquid formed: something solid\./);
+  assert.match(engine.resolve(['solid_a', 'solid_b']).message, /Left in the vessel: something solid\./);
+  for (const kind of kinds) {
+    assert.ok(engine.resolve([`${kind}_a`, `${kind}_b`]).message.includes(`${SOLID_KIND_OPENINGS[kind]}: something solid.`), kind);
+  }
+});
+
+test('the shipped data no longer calls a metal deposit or a molten metal a precipitate', () => {
+  const engine = createEngine();
+  const copper = engine.resolve(['zn_metal', 'cuso4_0_5m']);
+  assert.match(copper.message, /A deposit formed: reddish brown copper/);
+  assert.doesNotMatch(copper.message, /precipitate/);
+
+  const lead = engine.resolve(['pbno3_0_1m', 'ki_0_1m']);
+  assert.match(lead.message, /A precipitate formed: bright yellow lead\(II\) iodide/);
+});
+
 test('the three shipped colour-only tests all name their colour', async () => {
   const engine = createEngine();
 

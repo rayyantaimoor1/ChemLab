@@ -125,6 +125,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": "reddish brown copper",
+      "solidKind": "deposit",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -147,6 +148,7 @@
     "effects": {
       "colorToHex": "#C7E0C0",
       "precipitate": "reddish brown copper",
+      "solidKind": "deposit",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -169,6 +171,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": "reddish brown copper",
+      "solidKind": "deposit",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -281,6 +284,7 @@
     "effects": {
       "colorToHex": "#F4F3EF",
       "precipitate": "white magnesium hydroxide",
+      "solidKind": "solid",
       "gas": "hydrogen",
       "bubbles": true,
       "smoke": false,
@@ -813,6 +817,7 @@
     "effects": {
       "colorToHex": "#F4F3EF",
       "precipitate": "white magnesium oxide ash",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": true,
@@ -842,6 +847,7 @@
     "effects": {
       "colorToHex": "#1F1D1C",
       "precipitate": "black copper(II) oxide",
+      "solidKind": "coating",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -867,6 +873,7 @@
     "effects": {
       "colorToHex": "#B87333",
       "precipitate": "reddish brown copper",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -970,6 +977,7 @@
     "effects": {
       "colorToHex": "#8B4A2B",
       "precipitate": "reddish brown flaky rust",
+      "solidKind": "coating",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -1102,6 +1110,7 @@
     "effects": {
       "colorToHex": "#DCE8A8",
       "precipitate": "molten silvery sodium",
+      "solidKind": "liquid",
       "gas": "chlorine",
       "bubbles": true,
       "smoke": false,
@@ -1152,6 +1161,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": "reddish brown copper on the cathode",
+      "solidKind": "deposit",
       "gas": "oxygen",
       "bubbles": true,
       "smoke": false,
@@ -1451,6 +1461,7 @@
     "effects": {
       "colorToHex": "#F4F3EF",
       "precipitate": "white potassium chloride residue",
+      "solidKind": "solid",
       "gas": "oxygen",
       "bubbles": true,
       "smoke": false,
@@ -1604,6 +1615,7 @@
     "effects": {
       "colorToHex": "#F4F3EF",
       "precipitate": "dense white ammonium chloride smoke",
+      "solidKind": "smoke",
       "gas": null,
       "bubbles": false,
       "smoke": true,
@@ -1673,6 +1685,7 @@
     "effects": {
       "colorToHex": "#F4F3EF",
       "precipitate": "white sodium carbonate residue",
+      "solidKind": "solid",
       "gas": "carbon dioxide",
       "bubbles": true,
       "smoke": false,
@@ -1833,6 +1846,7 @@
     "effects": {
       "colorToHex": "#F4F3EF",
       "precipitate": "white calcium hydroxide paste — only a little of it dissolves",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": true,
       "smoke": true,
@@ -1865,6 +1879,7 @@
     "effects": {
       "colorToHex": "#1F6FB2",
       "precipitate": "blue hydrated copper(II) sulfate",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -1887,6 +1902,7 @@
     "effects": {
       "colorToHex": "#F0EFE9",
       "precipitate": "white anhydrous copper(II) sulfate",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -1912,6 +1928,7 @@
     "effects": {
       "colorToHex": "#D9838D",
       "precipitate": "pink hydrated cobalt(II) chloride",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -1937,6 +1954,7 @@
     "effects": {
       "colorToHex": "#2E6DA4",
       "precipitate": "blue anhydrous cobalt(II) chloride",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -1962,6 +1980,7 @@
     "effects": {
       "colorToHex": "#2B7CC1",
       "precipitate": "glittering silver crystals",
+      "solidKind": "deposit",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -1984,6 +2003,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": "glittering silver crystals",
+      "solidKind": "deposit",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -2017,6 +2037,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": "feathery grey lead crystals",
+      "solidKind": "deposit",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -2057,6 +2078,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": "dark grey iron",
+      "solidKind": "deposit",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -2082,6 +2104,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": "dark grey iron",
+      "solidKind": "deposit",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -2108,6 +2131,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": "bright silver plated on the cathode",
+      "solidKind": "deposit",
       "gas": "oxygen",
       "bubbles": true,
       "smoke": false,
@@ -2151,6 +2175,7 @@
     "effects": {
       "colorToHex": "#EEF3F5",
       "precipitate": "reddish brown copper on the cathode",
+      "solidKind": "deposit",
       "gas": "chlorine",
       "bubbles": true,
       "smoke": false,
@@ -2198,6 +2223,7 @@
     "effects": {
       "colorToHex": "#CFD3D6",
       "precipitate": "molten aluminium collecting at the base",
+      "solidKind": "liquid",
       "gas": "oxygen",
       "bubbles": true,
       "smoke": false,
@@ -2332,6 +2358,7 @@
     "effects": {
       "colorToHex": "#F4F3EF",
       "precipitate": "white lithium oxide",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": true,
@@ -2354,6 +2381,7 @@
     "effects": {
       "colorToHex": "#F2E8B0",
       "precipitate": "pale yellow sodium peroxide",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": true,
@@ -2376,6 +2404,7 @@
     "effects": {
       "colorToHex": "#F4F3EF",
       "precipitate": "white magnesium oxide",
+      "solidKind": "solid",
       "gas": "carbon dioxide",
       "bubbles": true,
       "smoke": false,
@@ -2398,6 +2427,7 @@
     "effects": {
       "colorToHex": "#F4F3EF",
       "precipitate": "white quicklime",
+      "solidKind": "solid",
       "gas": "carbon dioxide",
       "bubbles": true,
       "smoke": false,
@@ -2420,6 +2450,7 @@
     "effects": {
       "colorToHex": "#F4F3EF",
       "precipitate": "white magnesium oxide",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -2845,6 +2876,7 @@
     "effects": {
       "colorToHex": "#1F1D1C",
       "precipitate": "black copper(II) oxide",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -2969,6 +3001,7 @@
     "effects": {
       "colorToHex": "#1E5E3A",
       "precipitate": "dark green and black manganese residue",
+      "solidKind": "solid",
       "gas": "oxygen",
       "bubbles": true,
       "smoke": false,
@@ -3059,6 +3092,7 @@
     "effects": {
       "colorToHex": "#F4F3EF",
       "precipitate": "white calcium hydroxide sludge — only a little of it dissolves",
+      "solidKind": "solid",
       "gas": "ethyne",
       "bubbles": true,
       "smoke": false,
@@ -3338,6 +3372,7 @@
     "effects": {
       "colorToHex": "#1F1D1C",
       "precipitate": "black soot",
+      "solidKind": "smoke",
       "gas": "carbon dioxide",
       "bubbles": false,
       "smoke": true,
@@ -3632,6 +3667,7 @@
     "effects": {
       "colorToHex": "#B7BEC4",
       "precipitate": "a mirror of silver on the glass",
+      "solidKind": "deposit",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -4225,6 +4261,7 @@
     "effects": {
       "colorToHex": "#FAFAF5",
       "precipitate": "white crystals of urea",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -4301,6 +4338,7 @@
     "effects": {
       "colorToHex": "#6B6B66",
       "precipitate": "hard dark grey nodules of clinker",
+      "solidKind": "solid",
       "gas": "carbon dioxide",
       "bubbles": false,
       "smoke": false,
@@ -4330,6 +4368,7 @@
     "effects": {
       "colorToHex": "#9A9A93",
       "precipitate": "a grey solid mass that hardens as it stands",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -5759,6 +5798,7 @@
     "effects": {
       "colorToHex": "#F4F3EF",
       "precipitate": "a faint white suspension that does not settle out",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6162,6 +6202,7 @@
     "effects": {
       "colorToHex": "#F2F2EE",
       "precipitate": "a waxy translucent white solid",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6195,6 +6236,7 @@
     "effects": {
       "colorToHex": "#FAFAF5",
       "precipitate": "a white solid",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6229,6 +6271,7 @@
     "effects": {
       "colorToHex": "#FAFAF5",
       "precipitate": "a hard glassy white solid",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6255,6 +6298,7 @@
     "effects": {
       "colorToHex": "#F2F2EE",
       "precipitate": "a waxy translucent white solid",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6281,6 +6325,7 @@
     "effects": {
       "colorToHex": "#F0EFE9",
       "precipitate": "a tough off-white solid that can be drawn into a fibre",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6303,6 +6348,7 @@
     "effects": {
       "colorToHex": "#F6F4EC",
       "precipitate": "a milky white film at the boundary between the two liquids, which can be pulled out as a continuous thread",
+      "solidKind": "solid",
       "gas": "hydrogen chloride",
       "bubbles": false,
       "smoke": true,
@@ -6422,6 +6468,7 @@
     "effects": {
       "colorToHex": "#D9C9A3",
       "precipitate": "a soft pale amber solid",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6496,6 +6543,7 @@
     "effects": {
       "colorToHex": "#6B5D4F",
       "precipitate": "a tough dark brown solid that springs back when pulled",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6533,6 +6581,7 @@
     "effects": {
       "colorToHex": "#9C948A",
       "precipitate": "a dull grey solid, cracked and brittle where it was soft",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6562,6 +6611,7 @@
     "effects": {
       "colorToHex": "#5C4033",
       "precipitate": "a hard dark reddish brown solid",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6628,6 +6678,7 @@
     "effects": {
       "colorToHex": "#E6E9E4",
       "precipitate": "a clear translucent rubbery solid",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6716,6 +6767,7 @@
     "effects": {
       "colorToHex": "#D8DCD6",
       "precipitate": "a hard pale translucent solid",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6738,6 +6790,7 @@
     "effects": {
       "colorToHex": "#1F1D1C",
       "precipitate": "a black char, and the plastic never flows back",
+      "solidKind": "solid",
       "gas": "hydrocarbon vapour",
       "bubbles": false,
       "smoke": true,
@@ -6783,6 +6836,7 @@
     "effects": {
       "colorToHex": "#DCE8EA",
       "precipitate": "a clear pale blue-green solid that softened rather than melting sharply",
+      "solidKind": "solid",
       "gas": "carbon dioxide",
       "bubbles": false,
       "smoke": false,
@@ -6805,6 +6859,7 @@
     "effects": {
       "colorToHex": "#B5A48C",
       "precipitate": "a damp grey-brown mass that holds whatever shape it is pushed into",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6827,6 +6882,7 @@
     "effects": {
       "colorToHex": "#E4DACB",
       "precipitate": "a pale cream solid that will never soften in water again",
+      "solidKind": "solid",
       "gas": "steam",
       "bubbles": false,
       "smoke": false,
@@ -6849,6 +6905,7 @@
     "effects": {
       "colorToHex": "#D9C4A8",
       "precipitate": "a hard cream ceramic, ringing when struck",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6879,6 +6936,7 @@
     "effects": {
       "colorToHex": "#F0EFE9",
       "precipitate": "a hard white powder where the jelly used to be",
+      "solidKind": "solid",
       "gas": "steam",
       "bubbles": false,
       "smoke": false,
@@ -6904,6 +6962,7 @@
     "effects": {
       "colorToHex": "#8A8578",
       "precipitate": "a dull grey slag where the silica lining used to be",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6934,6 +6993,7 @@
     "effects": {
       "colorToHex": "#9AA391",
       "precipitate": "a dull olive grey solid where the magnesia lining used to be",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -6956,6 +7016,7 @@
     "effects": {
       "colorToHex": "#FAF7F0",
       "precipitate": "a dry white powder",
+      "solidKind": "solid",
       "gas": "steam",
       "bubbles": false,
       "smoke": false,
@@ -6978,6 +7039,7 @@
     "effects": {
       "colorToHex": "#F2EFE6",
       "precipitate": "a hard chalky white solid, set within minutes",
+      "solidKind": "solid",
       "gas": null,
       "bubbles": false,
       "smoke": false,
@@ -7008,6 +7070,7 @@
     "effects": {
       "colorToHex": "#F7F5EE",
       "precipitate": "a white solid where the pale sulfide used to be",
+      "solidKind": "solid",
       "gas": "sulfur dioxide",
       "bubbles": false,
       "smoke": false,
@@ -7037,6 +7100,7 @@
     "effects": {
       "colorToHex": "#BFC3C6",
       "precipitate": "bright metal condensing where the white powder was",
+      "solidKind": "deposit",
       "gas": "carbon monoxide",
       "bubbles": false,
       "smoke": false,
@@ -7095,6 +7159,7 @@
     "effects": {
       "colorToHex": "#6E6F71",
       "precipitate": "molten grey metal, running to the bottom",
+      "solidKind": "liquid",
       "gas": "carbon dioxide",
       "bubbles": false,
       "smoke": false,
@@ -7125,6 +7190,7 @@
     "effects": {
       "colorToHex": "#6E6F71",
       "precipitate": "white-hot molten iron, running out and setting to grey metal",
+      "solidKind": "liquid",
       "gas": null,
       "bubbles": false,
       "smoke": true,
@@ -7154,6 +7220,7 @@
     "effects": {
       "colorToHex": "#B87333",
       "precipitate": "reddish brown metal appearing directly from the dark ore",
+      "solidKind": "solid",
       "gas": "sulfur dioxide",
       "bubbles": false,
       "smoke": false,
@@ -7186,6 +7253,7 @@
     "effects": {
       "colorToHex": "#C6C7CC",
       "precipitate": "silvery droplets forming on the cool glass above",
+      "solidKind": "liquid",
       "gas": "oxygen",
       "bubbles": false,
       "smoke": false,
@@ -7248,6 +7316,7 @@
     "effects": {
       "colorToHex": "#8A8D90",
       "precipitate": "hard pale grey particles of iron carbide through the metal",
+      "solidKind": "solid",
       "dissolves": null,
       "gas": null,
       "bubbles": false,
@@ -7270,6 +7339,7 @@
     "effects": {
       "colorToHex": "#F2F0E8",
       "precipitate": "an off-white slag floating clear of the metal",
+      "solidKind": "solid",
       "dissolves": null,
       "gas": null,
       "bubbles": false,
@@ -7396,6 +7466,7 @@
     "effects": {
       "colorToHex": "#F7F5EE",
       "precipitate": "a white bloom on the zinc, while the iron stays bright",
+      "solidKind": "coating",
       "dissolves": null,
       "gas": null,
       "bubbles": false,
@@ -7418,6 +7489,7 @@
     "effects": {
       "colorToHex": "#8B4A2B",
       "precipitate": "reddish brown rust on the iron, spreading from the scratch, while the tin stays bright",
+      "solidKind": "coating",
       "dissolves": null,
       "gas": null,
       "bubbles": false,
@@ -7499,6 +7571,7 @@
     "effects": {
       "colorToHex": "#4A4139",
       "precipitate": "a dark brown sludge collecting under the anode",
+      "solidKind": "solid",
       "dissolves": null,
       "gas": null,
       "bubbles": false,
@@ -7738,6 +7811,7 @@
     "effects": {
       "colorToHex": "#9E6B4A",
       "precipitate": "a dull copper film creeping over the plastic",
+      "solidKind": "deposit",
       "dissolves": null,
       "gas": null,
       "bubbles": false,
@@ -8844,6 +8918,7 @@
     "effects": {
       "colorToHex": "#F2F2F0",
       "precipitate": "a white solid, where the dark brown powder used to be",
+      "solidKind": "solid",
       "dissolves": null,
       "gas": "chlorine",
       "bubbles": true,
@@ -8875,7 +8950,8 @@
     "type": "decomposition",
     "effects": {
       "colorToHex": "#F4F3EF",
-      "precipitate": "a white solid left behind",
+      "precipitate": "white strontium oxide",
+      "solidKind": "solid",
       "dissolves": null,
       "gas": "carbon dioxide",
       "bubbles": false,
@@ -8900,7 +8976,8 @@
     "type": "decomposition",
     "effects": {
       "colorToHex": "#F4F3EF",
-      "precipitate": "a white solid left behind",
+      "precipitate": "white barium oxide",
+      "solidKind": "solid",
       "dissolves": null,
       "gas": "carbon dioxide",
       "bubbles": false,

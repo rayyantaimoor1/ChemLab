@@ -651,10 +651,30 @@ decompose by their own rules; catalase too hot is answered by the
 denatured-enzyme rule; and phenol with alkali reacts on its own when the
 coupling is too warm.
 
-Noted for a decision, not changed: the notebook calls every solid
-described in `effects.precipitate` "a precipitate", and about twenty of
-those are not precipitates — molten sodium and aluminium, metal plated on
-a cathode, a silver mirror, residues left on heating, ammonium chloride
-smoke, a char. Changing the wording is a change to `describeEffects` in
-the engine, so it needs the owner's approval; the golden tests will then
-show exactly which sentences move.
+### Not every solid is a precipitate (owner approved 2026-11-10)
+
+The notebook called every solid in `effects.precipitate` "a precipitate".
+Read one by one, 77 of the 141 are not: a precipitate is a solid forming
+out of a solution, and these were metal deposited on zinc or a cathode,
+rust, molten metals, smoke, residues left on heating, polymers, ceramics
+and slags. An engine change approved by the owner (the field stays, so the
+UI draws exactly as before) adds a curated `effects.solidKind` that picks
+the notebook's opening words — see `CLAUDE.md` §5.
+
+| Kind | Opening words | Rules |
+|---|---|---|
+| `deposit` | A deposit formed: | 14 — metal displacement onto zinc, iron and magnesium; copper and silver on a cathode; the silver mirror; electroless copper; zinc condensing |
+| `coating` | A coating formed: | 4 — rust, copper's black oxide layer, the zinc bloom on galvanised iron, rust spreading on scratched tinplate |
+| `liquid` | A liquid formed: | 5 — molten sodium and aluminium from electrolysis, blast furnace iron, thermite iron, mercury from heated mercury(II) oxide |
+| `smoke` | A solid formed in the air: | 2 — ammonium chloride smoke, soot from burning benzene |
+| `solid` | Left in the vessel: | 52 — residues after heating, hydrated and anhydrous salts, burnt metals, polymers, rubber, glass, clay and ceramics, cement, slags |
+
+The other 64 stay precipitates. The golden test failed on exactly these 77
+sentences and no others; they were read and re-approved. Strontium and
+barium carbonate's "a white solid left behind" became "white strontium
+oxide" and "white barium oxide", so the new opening does not say "left"
+twice.
+
+Still open, for the UI phase: the label the bench draws under a vessel
+reads "{colour} solid — {name}" for every one of these, including the
+molten metals.

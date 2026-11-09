@@ -184,7 +184,7 @@ are things a student **makes** rather than takes off a shelf.
 }
 ```
 
-**Two notes on `effects`, because both are easy to get wrong.**
+**Three notes on `effects`, because all three are easy to get wrong.**
 
 `colorToHex` must be a colour some chemical record is actually named by. The
 notebook reports colour changes in words, and it gets the words by looking that
@@ -200,6 +200,18 @@ notice that a solid reactant left no solid product and announce a dissolution,
 and it would be wrong: sulfur burning in oxygen fits that description exactly,
 and so does sodium skidding about on water. Whether a vanishing solid is worth
 writing down is a judgement about the chemistry, so it belongs here.
+
+`precipitate` describes whatever solid a reaction leaves — the UI draws them
+all the same way — but in the notebook *precipitate* is a technical word: a
+solid forming **out of a solution**. Molten sodium, copper on a cathode and
+the residue left after heating are not precipitates, so the optional
+`solidKind` picks the notebook's opening words: `precipitate` (the default
+when it is absent), `deposit` (metal laid down on a surface — displacement,
+a cathode, a silver mirror), `coating` (rust, tarnish, an oxide bloom),
+`liquid` (a molten metal, condensing mercury), `smoke` (solid particles in
+the air) or `solid` ("Left in the vessel:" — residues after heating,
+polymers, ceramics, slags). Like `dissolves`, it is **curated, never
+inferred**, and the validator rejects any other value.
 
 **`tempDeltaC` has a fixed basis**, because the engine has no amounts and a
 temperature rise means nothing without one (agreed during the
