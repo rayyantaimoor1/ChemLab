@@ -754,3 +754,17 @@ goes through the same review as the audit; and both are logged here.
 - Reaction **explanations are not shown anywhere in the app** — the
   notebook gives the observation sentence only. Teachers check them from
   the pack; showing them to students is a UI decision.
+
+**Fixed (owner approved 2026-11-10):** the missing "colour disappeared"
+observation. An engine change approved by the owner adds a curated
+`effects.colourFades`, written into the notebook as "The colour faded: …"
+(see `CLAUDE.md` §5). It is set on 13 rules: zinc and magnesium in copper
+sulfate and in iron(II) sulfate, electrolysis of copper sulfate and
+copper chloride, nitrogen dioxide dissolving, chlorine with hydrogen and
+with methane, bromine with ethene and with benzene, iodine with
+thiosulfate, and the Baeyer test, whose disappearing purple had been
+hidden behind its brown precipitate. Rules where a coloured reagent is
+simply used up without that being the lesson (bleach with acid or
+ammonia, the cloudy Grignard and hydride reagents) were left alone. The
+golden test failed on exactly those 13 sentences; they were read and
+re-approved, and the review pack's M5, M15 and F5 entries were updated.

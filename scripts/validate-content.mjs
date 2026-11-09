@@ -244,6 +244,13 @@ const reactions = readJson('reactions.json') ?? [];
       }
     }
 
+    // colourFades is written into the notebook after "The colour faded:",
+    // so it has to be words, and short enough to read as one clause.
+    const colourFades = reaction.effects?.colourFades;
+    if (colourFades !== undefined && (!nonEmptyString(colourFades) || colourFades.length > 200)) {
+      problems.push(`${id}: effects.colourFades must be a short description, up to 200 characters`);
+    }
+
     if (reaction.hazard && !nonEmptyString(reaction.hazard.whatToDoInstead)) {
       problems.push(`${id}: hazard block has no whatToDoInstead`);
     }

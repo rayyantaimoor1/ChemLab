@@ -184,7 +184,7 @@ are things a student **makes** rather than takes off a shelf.
 }
 ```
 
-**Three notes on `effects`, because all three are easy to get wrong.**
+**Four notes on `effects`, because all four are easy to get wrong.**
 
 `colorToHex` must be a colour some chemical record is actually named by. The
 notebook reports colour changes in words, and it gets the words by looking that
@@ -212,6 +212,14 @@ a cathode, a silver mirror), `coating` (rust, tarnish, an oxide bloom),
 the air) or `solid` ("Left in the vessel:" — residues after heating,
 polymers, ceramics, slags). Like `dissolves`, it is **curated, never
 inferred**, and the validator rejects any other value.
+
+`colourFades` records a colour **disappearing**, which "turned colourless"
+cannot, because "colourless" is never written as a colour change. The
+notebook writes "The colour faded: …" with it: the orange of bromine water
+going with an alkene, the blue leaving copper sulfate as zinc takes the
+copper out, iodine vanishing at a titration's end point. Curated, never
+inferred: a coloured reactant giving a colourless result is not always the
+point (bleach with acid fits that pattern, and its lesson is the chlorine).
 
 **`tempDeltaC` has a fixed basis**, because the engine has no amounts and a
 temperature rise means nothing without one (agreed during the

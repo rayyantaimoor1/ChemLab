@@ -37,7 +37,7 @@
     "fired": [
       "rxn_displacement_zn_cuso4"
     ],
-    "sentence": "Zn + CuSO₄ → ZnSO₄ + Cu. A deposit formed: reddish brown copper. The mixture warmed by about 8 °C."
+    "sentence": "Zn + CuSO₄ → ZnSO₄ + Cu. The colour faded: the blue of the copper(II) sulfate solution went as the copper came out. A deposit formed: reddish brown copper. The mixture warmed by about 8 °C."
   },
   "rxn_displacement_fe_cuso4": {
     "outcome": "reaction",
@@ -51,7 +51,7 @@
     "fired": [
       "rxn_displacement_mg_cuso4"
     ],
-    "sentence": "Mg + CuSO₄ → MgSO₄ + Cu. A deposit formed: reddish brown copper. The mixture warmed by about 15 °C."
+    "sentence": "Mg + CuSO₄ → MgSO₄ + Cu. The colour faded: the blue of the copper(II) sulfate solution went as the copper came out. A deposit formed: reddish brown copper. The mixture warmed by about 15 °C."
   },
   "rxn_displacement_mg_hcl": {
     "outcome": "reaction",
@@ -332,7 +332,7 @@
     "fired": [
       "rxn_electrolysis_cuso4"
     ],
-    "sentence": "2CuSO₄ + 2H₂O → 2Cu + O₂ + 2H₂SO₄. A deposit formed: reddish brown copper on the cathode. Bubbles of oxygen gas were given off. The mixture warmed by about 1 °C.",
+    "sentence": "2CuSO₄ + 2H₂O → 2Cu + O₂ + 2H₂SO₄. The colour faded: the blue of the solution slowly went as copper was plated out. A deposit formed: reddish brown copper on the cathode. Bubbles of oxygen gas were given off. The mixture warmed by about 1 °C.",
     "notMet": "No observable change. This mixture needs an electric current passed through it before anything happens."
   },
   "rxn_combustion_sulfur": {
@@ -385,7 +385,7 @@
     "fired": [
       "rxn_acidrain_no2_water"
     ],
-    "sentence": "4NO₂ + O₂ + 2H₂O → 4HNO₃. The mixture warmed by about 3 °C."
+    "sentence": "4NO₂ + O₂ + 2H₂O → 4HNO₃. The colour faded: the reddish brown gas disappeared into the water. The mixture warmed by about 3 °C."
   },
   "rxn_hardness_boiling_temporary": {
     "outcome": "reaction",
@@ -601,14 +601,14 @@
     "fired": [
       "rxn_displacement_zn_feso4"
     ],
-    "sentence": "Zn + FeSO₄ → ZnSO₄ + Fe. A deposit formed: dark grey iron. The mixture warmed by about 3 °C."
+    "sentence": "Zn + FeSO₄ → ZnSO₄ + Fe. The colour faded: the pale green of the iron(II) sulfate solution went as the iron came out. A deposit formed: dark grey iron. The mixture warmed by about 3 °C."
   },
   "rxn_displacement_mg_feso4": {
     "outcome": "reaction",
     "fired": [
       "rxn_displacement_mg_feso4"
     ],
-    "sentence": "Mg + FeSO₄ → MgSO₄ + Fe. A deposit formed: dark grey iron. The mixture warmed by about 20 °C."
+    "sentence": "Mg + FeSO₄ → MgSO₄ + Fe. The colour faded: the pale green of the iron(II) sulfate solution went as the iron came out. A deposit formed: dark grey iron. The mixture warmed by about 20 °C."
   },
   "rxn_electrolysis_agno3": {
     "outcome": "reaction",
@@ -623,7 +623,7 @@
     "fired": [
       "rxn_electrolysis_cucl2"
     ],
-    "sentence": "CuCl₂ → Cu + Cl₂. A deposit formed: reddish brown copper on the cathode. Bubbles of chlorine gas were given off. The mixture warmed by about 1 °C.",
+    "sentence": "CuCl₂ → Cu + Cl₂. The colour faded: the blue-green of the solution slowly went as copper was plated out. A deposit formed: reddish brown copper on the cathode. Bubbles of chlorine gas were given off. The mixture warmed by about 1 °C.",
     "notMet": "No observable change. This mixture needs an electric current passed through it before anything happens."
   },
   "rxn_electrolysis_al2o3": {
@@ -767,7 +767,7 @@
     "fired": [
       "rxn_synthesis_hcl"
     ],
-    "sentence": "H₂ + Cl₂ → 2HCl. Hydrogen chloride gas was given off. A cloud of smoke or vapour appeared. The mixture warmed by about 35 °C.",
+    "sentence": "H₂ + Cl₂ → 2HCl. The colour faded: the pale yellow-green of the chlorine disappeared. Hydrogen chloride gas was given off. A cloud of smoke or vapour appeared. The mixture warmed by about 35 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_hazard_bleach_acid": {
@@ -861,7 +861,7 @@
     "fired": [
       "rxn_substitution_methane_chlorine"
     ],
-    "sentence": "CH₄ + Cl₂ → CH₃Cl + HCl. Hydrogen chloride gas was given off. A cloud of smoke or vapour appeared. The mixture warmed by about 12 °C.",
+    "sentence": "CH₄ + Cl₂ → CH₃Cl + HCl. The colour faded: the pale yellow-green of the chlorine slowly disappeared. Hydrogen chloride gas was given off. A cloud of smoke or vapour appeared. The mixture warmed by about 12 °C.",
     "notMet": "No observable change. This mixture needs to be heated before anything happens."
   },
   "rxn_combustion_methane": {
@@ -884,7 +884,7 @@
     "fired": [
       "rxn_addition_ethene_bromine"
     ],
-    "sentence": "C₂H₄ + Br₂ → C₂H₄Br₂. The mixture warmed by about 3 °C."
+    "sentence": "C₂H₄ + Br₂ → C₂H₄Br₂. The colour faded: the orange of the bromine water disappeared. The mixture warmed by about 3 °C."
   },
   "rxn_addition_ethyne_bromine": {
     "outcome": "reaction",
@@ -927,14 +927,14 @@
     "fired": [
       "rxn_baeyer_test_ethene"
     ],
-    "sentence": "C₂H₄ + [O] + H₂O → C₂H₄(OH)₂. A precipitate formed: black-brown manganese(IV) oxide. The mixture warmed by about 4 °C."
+    "sentence": "C₂H₄ + [O] + H₂O → C₂H₄(OH)₂. The colour faded: the purple of the potassium permanganate disappeared. A precipitate formed: black-brown manganese(IV) oxide. The mixture warmed by about 4 °C."
   },
   "rxn_bromination_benzene": {
     "outcome": "reaction",
     "fired": [
       "rxn_bromination_benzene"
     ],
-    "sentence": "C₆H₆ + Br₂ → C₆H₅Br + HBr. Bubbles of hydrogen bromide gas were given off. A cloud of smoke or vapour appeared. The mixture warmed by about 6 °C.",
+    "sentence": "C₆H₆ + Br₂ → C₆H₅Br + HBr. The colour faded: the red-brown of the bromine slowly disappeared. Bubbles of hydrogen bromide gas were given off. A cloud of smoke or vapour appeared. The mixture warmed by about 6 °C.",
     "notMet": "No observable change. This mixture needs Iron(III) bromide present as a catalyst before anything happens."
   },
   "rxn_none_benzene_bromine_water": {
@@ -1680,7 +1680,7 @@
     "fired": [
       "rxn_iodine_thiosulfate"
     ],
-    "sentence": "I₂ + 2S₂O₃²⁻ → 2I⁻ + S₄O₆²⁻. The mixture warmed by about 2 °C."
+    "sentence": "I₂ + 2S₂O₃²⁻ → 2I⁻ + S₄O₆²⁻. The colour faded: the brown of the iodine disappeared. The mixture warmed by about 2 °C."
   },
   "rxn_period3_na2o_water": {
     "outcome": "reaction",

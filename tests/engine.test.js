@@ -1304,6 +1304,34 @@ test('the shipped data no longer calls a metal deposit or a molten metal a preci
   assert.match(lead.message, /A precipitate formed: bright yellow lead\(II\) iodide/);
 });
 
+// ---------------------------------------------------------------------------
+// A colour disappearing.
+//
+// "Colourless" is never written as "The mixture turned colourless", so the
+// bromine water test used to be written up without its one observation.
+// The curated effects.colourFades says what faded.
+// ---------------------------------------------------------------------------
+
+test('a curated colourFades is written into the notebook', async () => {
+  const { createEngine: create } = await import('../src/core/engine.js');
+  const engine = create({
+    chemicals: [{ id: 'a', name: 'A' }, { id: 'b', name: 'B' }],
+    reactions: [{
+      id: 'r1', reactants: ['a', 'b'], products: [], equation: 'A + B -> C',
+      effects: { colourFades: 'the orange of the bromine water disappeared' },
+    }],
+  });
+  const message = engine.resolve(['a', 'b']).message;
+  assert.match(message, /The colour faded: the orange of the bromine water disappeared\./);
+  assert.doesNotMatch(message, /no visible change/);
+});
+
+test('the bromine water test now records its decolourisation', () => {
+  const engine = createEngine();
+  const result = engine.resolve(engine.getReaction('rxn_addition_ethene_bromine').reactants);
+  assert.match(result.message, /The colour faded: the orange of the bromine water disappeared/);
+});
+
 test('the three shipped colour-only tests all name their colour', async () => {
   const engine = createEngine();
 

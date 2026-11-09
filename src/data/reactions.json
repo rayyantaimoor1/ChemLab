@@ -124,6 +124,7 @@
     "type": "displacement",
     "effects": {
       "colorToHex": "#EEF3F5",
+      "colourFades": "the blue of the copper(II) sulfate solution went as the copper came out",
       "precipitate": "reddish brown copper",
       "solidKind": "deposit",
       "gas": null,
@@ -170,6 +171,7 @@
     "type": "displacement",
     "effects": {
       "colorToHex": "#EEF3F5",
+      "colourFades": "the blue of the copper(II) sulfate solution went as the copper came out",
       "precipitate": "reddish brown copper",
       "solidKind": "deposit",
       "gas": null,
@@ -1160,6 +1162,7 @@
     "type": "electrolysis",
     "effects": {
       "colorToHex": "#EEF3F5",
+      "colourFades": "the blue of the solution slowly went as copper was plated out",
       "precipitate": "reddish brown copper on the cathode",
       "solidKind": "deposit",
       "gas": "oxygen",
@@ -1350,6 +1353,7 @@
     "type": "acid_formation",
     "effects": {
       "colorToHex": "#EEF3F5",
+      "colourFades": "the reddish brown gas disappeared into the water",
       "precipitate": null,
       "gas": null,
       "bubbles": false,
@@ -2077,6 +2081,7 @@
     "type": "displacement",
     "effects": {
       "colorToHex": "#EEF3F5",
+      "colourFades": "the pale green of the iron(II) sulfate solution went as the iron came out",
       "precipitate": "dark grey iron",
       "solidKind": "deposit",
       "gas": null,
@@ -2103,6 +2108,7 @@
     "type": "displacement",
     "effects": {
       "colorToHex": "#EEF3F5",
+      "colourFades": "the pale green of the iron(II) sulfate solution went as the iron came out",
       "precipitate": "dark grey iron",
       "solidKind": "deposit",
       "gas": null,
@@ -2174,6 +2180,7 @@
     "type": "electrolysis",
     "effects": {
       "colorToHex": "#EEF3F5",
+      "colourFades": "the blue-green of the solution slowly went as copper was plated out",
       "precipitate": "reddish brown copper on the cathode",
       "solidKind": "deposit",
       "gas": "chlorine",
@@ -2700,6 +2707,7 @@
     "type": "combination",
     "effects": {
       "colorToHex": "#EEF3F5",
+      "colourFades": "the pale yellow-green of the chlorine disappeared",
       "precipitate": null,
       "gas": "hydrogen chloride",
       "bubbles": false,
@@ -3033,6 +3041,7 @@
     "type": "substitution",
     "effects": {
       "colorToHex": "#EEF3F5",
+      "colourFades": "the pale yellow-green of the chlorine slowly disappeared",
       "precipitate": null,
       "gas": "hydrogen chloride",
       "bubbles": false,
@@ -3124,6 +3133,7 @@
     "type": "addition",
     "effects": {
       "colorToHex": "#EEF3F5",
+      "colourFades": "the orange of the bromine water disappeared",
       "precipitate": null,
       "gas": null,
       "bubbles": false,
@@ -3248,6 +3258,7 @@
     "type": "oxidation",
     "effects": {
       "colorToHex": "#1A1A1A",
+      "colourFades": "the purple of the potassium permanganate disappeared",
       "precipitate": "black-brown manganese(IV) oxide",
       "gas": null,
       "bubbles": false,
@@ -3270,6 +3281,7 @@
     "type": "substitution",
     "effects": {
       "colorToHex": "#EEF3F5",
+      "colourFades": "the red-brown of the bromine slowly disappeared",
       "precipitate": null,
       "gas": "hydrogen bromide",
       "bubbles": true,
@@ -5745,6 +5757,7 @@
     "type": "redox",
     "effects": {
       "colorToHex": "#EEF3F5",
+      "colourFades": "the brown of the iodine disappeared",
       "precipitate": null,
       "gas": null,
       "bubbles": false,

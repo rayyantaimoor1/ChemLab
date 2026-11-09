@@ -205,6 +205,23 @@ function describeEffects(reaction, colourNameOf = () => null) {
     observations.push(`The mixture turned ${colourName}.`);
   }
 
+  // A colour DISAPPEARING is an observation too, and for some tests it is the
+  // whole result: orange bromine water going colourless with an alkene, the
+  // blue fading as zinc takes the copper out of copper sulfate, the iodine
+  // vanishing at a titration's end point. "Colourless" is skipped above
+  // because it says nothing on its own, so without this the notebook wrote
+  // these up without their key observation.
+  //
+  // Curated, never inferred, for the same reason as `dissolves` below. The
+  // engine could notice a coloured reactant going in and a colourless result
+  // coming out, and it would be wrong: bleach with acid fits that pattern and
+  // its lesson is the chlorine, not a fading colour. Whether a colour going
+  // is worth writing down is a judgement about the chemistry, so it lives in
+  // reactions.json.
+  if (effects.colourFades) {
+    observations.push(`The colour faded: ${effects.colourFades}.`);
+  }
+
   // `precipitate` describes whatever solid (or, for a molten metal, liquid)
   // appears, and the UI draws every one of them the same way. But in the
   // notebook "precipitate" is a technical word with one meaning - a solid
