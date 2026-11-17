@@ -1210,6 +1210,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/feoh3.svg",
     "description": "Reddish-brown precipitate formed when an alkali is added to an iron(III) solution — the standard test for the iron(III) ion, and impossible to confuse with the dull green of iron(II). This is essentially the same substance as the rust that forms on iron left in damp air.",
+    "texture": "gelatinous",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); PubChem, National Library of Medicine — Iron(III) hydroxide",
     "category": "base"
   },
@@ -1231,7 +1232,14 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/mgoh2.svg",
     "description": "White precipitate formed when an alkali is added to a magnesium solution. Because it is a weak base that is almost insoluble, a suspension of it is mild enough to swallow — it is sold as milk of magnesia to neutralise excess stomach acid.",
+    "texture": "gelatinous",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Magnesium hydroxide",
+    "sources": [
+      { "ref": "LibreTexts — Characteristic Reactions of Magnesium Ions (white gelatinous Mg(OH)2)",
+        "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Supplemental_Modules_(Analytical_Chemistry)/Qualitative_Analysis/Characteristic_Reactions_of_Select_Metal_Ions/Characteristic_Reactions_of_Magnesium_Ions_(Mg)",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "base"
   },
   {
@@ -1252,6 +1260,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/pbcl2.svg",
     "description": "White solid that appears when a lead solution meets a chloride. It is the exception that makes the chloride solubility rule worth stating carefully: nearly all chlorides are soluble, but the lead, silver and mercury(I) ones are not. Unusually it dissolves in hot water and comes back out as glittering needles on cooling.",
+    "texture": "crystalline",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Lead(II) chloride",
     "category": "salt"
   },
@@ -1294,6 +1303,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/cl2.svg",
     "description": "Chlorine gas dissolved in water, used instead of the gas itself because it is far safer to handle. Very pale yellow-green, and acidic because some of the chlorine reacts with the water. Chlorine is the most reactive of the three common halogens, so it displaces both bromine and iodine from their salts.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Chlorine",
     "category": "element"
   },
@@ -1315,6 +1325,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/br2.svg",
     "description": "Bromine dissolved in water, a distinctive orange-brown that makes it easy to see when it is formed or used up. Bromine sits between chlorine and iodine in Group 7: it can displace iodine from an iodide, but chlorine displaces it in turn.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Bromine",
     "category": "reagent"
   },
@@ -1336,6 +1347,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/br2.svg",
     "description": "Pure bromine: a heavy, dark red-brown liquid that evaporates readily into a vapour of the same colour, with a choking smell. It is what benzene needs to be brominated — bromine WATER will not do, because the water ruins the iron catalyst. Toxic and volatile, so it is handled only in a fume cupboard; most of the time the much milder bromine water does the job instead.",
+    "clarity": "clear",
     "source": "Wikipedia — Bromine (volatile red-brown liquid at room temperature; density 3.10 g/cm³; toxicity and volatility), consulted 2026-11-03",
     "category": "element"
   },
@@ -1357,6 +1369,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/i2.svg",
     "description": "Iodine dissolved in water, brown in colour. Iodine barely dissolves in water on its own, so laboratory iodine solution is normally made up in potassium iodide, which dissolves it readily. It is the least reactive of the three common halogens, so it cannot displace either chlorine or bromine.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Iodine",
     "category": "reagent"
   },
@@ -1378,6 +1391,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/kcl.svg",
     "description": "Colourless neutral solution left behind when chlorine displaces bromine or iodine from their potassium salts. The salt of a strong acid and a strong base, so its solution is neutral.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Potassium chloride",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -1400,6 +1414,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/kbr.svg",
     "description": "Colourless neutral solution formed when bromine displaces iodine from a potassium iodide solution. Chemically the same substance as the bottled potassium bromide on the shelf; this entry is the form that appears as a reaction product.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Potassium bromide",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -1422,7 +1437,14 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/rust.svg",
     "description": "The flaky reddish-brown solid formed when iron is attacked by oxygen and water together. Unlike most compounds it has no fixed formula: the amount of water locked into it varies, which is why it is written Fe2O3·xH2O and why the molar mass given here is that of the Fe2O3 unit alone. Rust flakes away instead of forming a sealed layer, so the iron underneath keeps corroding — which is exactly why iron must be painted, greased or galvanised.",
+    "texture": "flaky",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass and density of Fe2O3); Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, corrosion and its prevention",
+    "sources": [
+      { "ref": "Wikipedia — Rust (surface rust is commonly flaky and friable)",
+        "url": "https://en.wikipedia.org/wiki/Rust",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "oxide"
   },
   {
@@ -1443,8 +1465,15 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/nacl.svg",
     "description": "Ordinary salt as the dry solid. It does NOT conduct electricity like this, because although it is made of ions those ions are locked in place in the crystal and cannot move. Melt it at about 801 °C, or dissolve it, and the ions become free to move and it conducts well. That contrast is the whole reason solids, melts and solutions behave so differently in electrolysis.",
+    "form": "crystals",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, melting point, solubility); PubChem, National Library of Medicine — Sodium chloride",
     "flameElements": ["sodium"],
+    "sources": [
+      { "ref": "Wikipedia — Sodium chloride (appearance: colorless cubic crystals)",
+        "url": "https://en.wikipedia.org/wiki/Sodium_chloride",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -1465,8 +1494,16 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/na.svg",
     "description": "Soft silvery metal, so reactive that it is stored under oil and never handled with bare hands. It cannot be obtained by displacement from a solution — anything reactive enough to push sodium out of its salt would itself react with the water first — so the only way to get it is electrolysis of the molten salt. It is less dense than water, which is why it floats and skates across the surface when it reacts.",
+    "form": "lump",
+    "texture": "metallic",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, extraction of sodium by the Down's cell",
     "flameElements": ["sodium"],
+    "sources": [
+      { "ref": "Wikipedia — Sodium (appearance: silvery white metallic)",
+        "url": "https://en.wikipedia.org/wiki/Sodium",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "element"
   },
   {
@@ -1508,6 +1545,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/naoh.svg",
     "description": "Strongly alkaline solution left behind in the cell when brine is electrolysed. Chemically the same substance as the bottled sodium hydroxide on the shelf; this entry is the form that appears as a reaction product. Producing it this way, alongside chlorine and hydrogen, is one of the largest chemical industries in the world.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, the electrolysis of brine",
     "flameElements": ["sodium"],
     "category": "base"
@@ -1530,7 +1568,14 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/s.svg",
     "description": "Bright yellow non-metal powder. It burns in air with a distinctive blue flame to give sulfur dioxide. Sulfur present as an impurity in coal and oil is the main source of the sulfur dioxide that causes acid rain, which is why fuels are treated to remove it. Written here as S for simplicity; the element is really made of S8 rings.",
+    "form": "powder",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, air pollutants",
+    "sources": [
+      { "ref": "Wikipedia — Sulfur (a powdery yellow crystalline material)",
+        "url": "https://en.wikipedia.org/wiki/Sulfur",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "element"
   },
   {
@@ -1551,7 +1596,15 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/c.svg",
     "description": "Black solid non-metal, the main element in coal, charcoal and wood. Burning it in plenty of air gives carbon dioxide; burning it where air is short gives carbon monoxide instead, which is the poisonous gas responsible for deaths from badly ventilated heaters.",
+    "form": "powder",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, combustion and air pollutants",
+    "sources": [
+      { "ref": "Wikipedia — Soot (a powder-like form of amorphous carbon)",
+        "url": "https://en.wikipedia.org/wiki/Soot",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "element"
   },
   {
@@ -1614,6 +1667,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/h2so3.svg",
     "description": "The acid formed when sulfur dioxide dissolves in water, and one of the two acids in acid rain. It is a weak acid and cannot be isolated as a pure liquid — it exists only while it is dissolved. In the air it is slowly oxidised further to sulfuric acid, which is stronger still and does the greater damage.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, acid rain",
     "category": "acid"
   },
@@ -1635,6 +1689,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/h2co3.svg",
     "description": "The very weak acid formed when carbon dioxide dissolves in water. It is why ordinary clean rain is already slightly acidic at about pH 5.6, before any pollution is involved — so acid rain means rain more acidic than that, not simply rain that is acidic. It is also what makes fizzy drinks taste sharp.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, natural acidity of rain",
     "category": "acid"
   },
@@ -1698,6 +1753,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/hno3.svg",
     "description": "Nitric acid as it forms in the atmosphere when nitrogen dioxide dissolves in rain. Chemically the same substance as the bottled nitric acid on the shelf; this entry is the form that appears as a reaction product, and in real rain it is far more dilute than anything kept in a bottle.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, acid rain",
     "category": "acid"
   },
@@ -1719,6 +1775,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/cahco3.svg",
     "description": "What makes water TEMPORARILY hard. It forms when rainwater carrying dissolved carbon dioxide trickles through limestone and slowly dissolves it. The word temporary is the important part: simply boiling the water breaks this compound down again and the hardness disappears — leaving the limescale behind in the kettle.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry 10 — Water, hardness of water",
     "flameElements": ["calcium"],
     "category": "salt"

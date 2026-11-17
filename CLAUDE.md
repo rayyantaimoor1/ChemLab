@@ -177,7 +177,7 @@ can draw it:
 - `form` goes on solids on the shelf: ribbon, granules, powder, chips,
   crystals, pellets, lump, wire, filings, turnings or foil.
 - `texture` goes on solids a reaction makes: fine, crystalline,
-  gelatinous, curdy or metallic.
+  gelatinous, curdy, metallic or flaky.
 
 Like `category` they are **curated, never deduced**. A formula says
 nothing about whether a precipitate is gelatinous. A chemical may carry a

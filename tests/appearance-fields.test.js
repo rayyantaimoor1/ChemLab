@@ -26,7 +26,7 @@ const RULES = {
     appliesTo: (c) => c.state === 'solid' && c.onShelf === true,
   },
   texture: {
-    words: ['fine', 'crystalline', 'gelatinous', 'curdy', 'metallic'],
+    words: ['fine', 'crystalline', 'gelatinous', 'curdy', 'metallic', 'flaky'],
     appliesTo: (c) => c.state === 'solid' && madeByAReaction.has(c.id),
   },
 };

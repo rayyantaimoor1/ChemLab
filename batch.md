@@ -772,7 +772,7 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–2 of 16 done (2026-11-17).** The owner
+**Status: in progress — batches 1–3 of 16 done (2026-11-17).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -780,10 +780,12 @@ draw what a substance looks like, not just its colour:
 |---|---|---|
 | `clarity` | every solution and liquid | clear, cloudy, milky, opaque |
 | `form` | every solid on the shelf | ribbon, granules, powder, chips, crystals, pellets, lump, wire, filings, turnings, foil |
-| `texture` | every solid a reaction makes | fine, crystalline, gelatinous, curdy, metallic |
+| `texture` | every solid a reaction makes | fine, crystalline, gelatinous, curdy, metallic, flaky |
 
 `filings`, `turnings` and `foil` were added to the BUILD_UI.md list
 because the shelf already stocks iron filings and copper turnings.
+`flaky` was added to the textures in batch 3, for rust (owner approved
+2026-11-17). Calling rust "fine" would have drawn it as a powdery cloud.
 
 The validator and `tests/appearance-fields.test.js` reject any other word,
 and any field on the wrong kind of substance. A missing field is only a
@@ -896,3 +898,40 @@ the teacher review.
 **For later batches:** the LibreTexts index of qualitative-analysis pages,
 "Characteristic Reactions of Select Metal Ions", loads reliably and
 describes precipitates.
+
+### Batch 3 — chemicals 51–75
+
+All approved by the owner on 2026-11-17, including the new texture word
+`flaky`.
+
+**Clear (11):**
+- chlorine water and bromine water
+- liquid bromine: a true liquid, so not cloudy, though it is so dark it
+  looks nearly opaque from its colour alone
+- iodine solution
+- potassium chloride and potassium bromide
+- sodium hydroxide
+- sulfurous and carbonic acids
+- nitric acid
+- calcium hydrogencarbonate (temporary hard water)
+
+**Confirmed by an opened page:**
+- sodium chloride: crystals. Wikipedia: "Colorless cubic crystals".
+- sulfur: powder. Wikipedia: "A powdery yellow crystalline material".
+- magnesium hydroxide: gelatinous. LibreTexts, Characteristic Reactions
+  of Magnesium Ions: "white gelatinous Mg(OH)₂".
+- sodium: metallic. Wikipedia: "silvery white metallic".
+- carbon from heating polythene: fine. Wikipedia, Soot: "a powder-like
+  form of amorphous carbon".
+- rust: flaky. Wikipedia: "Surface rust is commonly flaky and friable".
+
+**Not confirmed by an opened page:**
+- **sodium: lump.** Storage under oil and cutting with a knife appeared
+  only in a summary of the Wikipedia page, not in text that was read.
+- **charcoal: powder.** The text read confirms "lump charcoal".
+  "Powdered charcoal" appeared only in a summary. Powder was chosen
+  because the app's reactions use charcoal to reduce metal oxides.
+- **iron(III) hydroxide: gelatinous.** This is the usual textbook word,
+  but the pages that loaded give only its colour.
+- **lead(II) chloride: crystalline.** LibreTexts gives "white lead
+  chloride" with no texture word.
