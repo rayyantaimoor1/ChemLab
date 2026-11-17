@@ -757,6 +757,15 @@ select:focus-visible,
  * design here.
  * ------------------------------------------------------------------ */
 
+/* "hidden" always means hidden. The scripts switch many elements off with
+   the hidden attribute, but any class that sets display (flex, block...)
+   silently beats it - which left the developer trace strip and an empty
+   reading box on every vessel label permanently visible (found in the
+   2026-11-16 review). This one rule makes the attribute win everywhere. */
+[hidden] {
+  display: none !important;
+}
+
 .bench-canvas {
   position: relative;
   flex: 1;
@@ -811,6 +820,37 @@ select:focus-visible,
   border-radius: 5px;
   pointer-events: none;
   z-index: 2;
+}
+
+/* Labels that never overlap (BUILD_UI.md UI.1.4) - bench.js's
+   resolveLabelOverlaps picks one of these per card after every render.
+   The selected object's card is always full and always on top. */
+.bench-object.is-selected {
+  z-index: 5;
+}
+
+/* A compact card wraps instead of stretching: a long solid's name ("bright
+   yellow precipitate: Lead(II) iodide") would otherwise make the "small"
+   card wider than the full one. */
+.object-chip.is-compact {
+  max-width: 132px;
+  white-space: normal;
+}
+
+.object-chip.is-compact .object-chip__id,
+.object-chip.is-compact .object-chip__readout,
+.object-chip.is-compact .object-chip__capacity,
+.object-chip.is-compact .object-chip__stand,
+.object-chip.is-compact .object-chip__reading,
+.object-chip.is-compact .object-chip__power,
+.object-chip.is-compact .object-chip__status {
+  display: none;
+}
+
+.bench-object.label-left > .object-chip {
+  position: absolute;
+  right: calc(100% + 9px);
+  bottom: 0;
 }
 
 /* The floating label beside each object - name, live readout and whatever
@@ -948,10 +988,17 @@ select:focus-visible,
   border-top: 1px solid rgba(201, 214, 218, 0.18);
 }
 
+/* The strip must stay ONE row. It lies over the bottom of the bench, and
+   app.js stands every vessel just above a one-row strip (benchFloorY), so
+   a strip that wrapped to two rows covered the bottom of every vessel -
+   exactly where the liquid and any precipitate are (found at 1366×768 in
+   BUILD_UI.md UI.1). So the description is narrower, the buttons a little
+   tighter, and if an object ever has more buttons than fit, they scroll
+   sideways instead of wrapping. */
 .bench-controls__text {
   flex: none;
-  min-width: 150px;
-  max-width: 210px;
+  min-width: 130px;
+  max-width: 160px;
 }
 
 .bench-controls__title {
@@ -971,14 +1018,16 @@ select:focus-visible,
 
 .bench-controls__buttons {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 5px;
   min-width: 0;
+  overflow-x: auto;
 }
 
 .bench-control {
+  flex: none;
   height: 34px;
-  padding: 0 12px;
+  padding: 0 10px;
   font-size: 13.5px;
   font-weight: 600;
   background: rgba(237, 234, 227, 0.07);
@@ -1552,6 +1601,49 @@ html.reduce-motion .vessel__dip {
 
 .vessel__liquid--incoming {
   opacity: 0;
+}
+
+/* Small volumes you can see (BUILD_UI.md UI.1.5). 20 mL in a 250 mL beaker
+   is a true 9 px - accurate, and easy to mistake for an empty beaker. A few
+   pixels' floor keeps any liquid visible; the label still gives the real
+   volume. An empty vessel's liquid is transparent, so the floor never
+   shows liquid that is not there. */
+.vessel__liquid {
+  min-height: 6px;
+}
+
+/* The solid a reaction left (BUILD_UI.md UI.1.3): a settled layer in its
+   own colour, drawn from the vessel's real contents. It fades in once the
+   falling grains have landed, and goes at once when the solid does.
+   Smoke hangs at the top of the vessel instead. */
+.vessel__sediment {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 0;
+  height: clamp(5px, 9%, 14px);
+  border-radius: 45% 45% 3px 3px / 6px 6px 3px 3px;
+  opacity: 0;
+  transition: opacity 400ms ease-out;
+  pointer-events: none;
+}
+
+.vessel__sediment.is-visible {
+  opacity: 0.94;
+  transition-delay: 900ms;
+}
+
+.vessel__sediment--smoke {
+  top: 0;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  height: 32%;
+  border-radius: 0;
+}
+
+.vessel__sediment--smoke.is-visible {
+  opacity: 0.4;
 }
 
 .vessel__layer {

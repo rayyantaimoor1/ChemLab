@@ -268,10 +268,12 @@ export function playGasEvolution(layerEl, { count = 4, duration = 1500 } = {}) {
 
 /* ------------------------------------------------------------------ *
  * Precipitate forming and settling — UI.md section 6: "1200ms. Particles
- * appear, settle, accumulate." Unlike bubbles and gas, these particles are
- * NOT removed when the animation ends: they stay in place (courtesy of
- * fill: 'forwards') as the solid that has now settled at the bottom,
- * genuinely accumulating if the vessel reacts again later.
+ * appear, settle, accumulate." The grains fall all the way to the floor of
+ * the vessel and fade into the settled layer bench.js draws there (the
+ * `.vessel__sediment`, BUILD_UI.md UI.1.3), then are removed. The settled
+ * layer is drawn from the vessel's real contents, so the solid stays for as
+ * long as it is really there and goes when it is dissolved or poured away —
+ * which loose grains left in the DOM could never do.
  * ------------------------------------------------------------------ */
 
 export function playPrecipitate(layerEl, colorHex, { count = 10, duration = 1200 } = {}) {
@@ -282,28 +284,28 @@ export function playPrecipitate(layerEl, colorHex, { count = 10, duration = 1200
   for (let i = 0; i < count; i += 1) {
     const grain = document.createElement('span');
     grain.className = 'fx-precipitate';
+    const startFraction = 0.05 + Math.random() * 0.15;
     grain.style.left = `${10 + Math.random() * 80}%`;
-    grain.style.top = `${5 + Math.random() * 15}%`;
+    grain.style.top = `${startFraction * 100}%`;
     grain.style.background = colorHex;
     layerEl.appendChild(grain);
 
-    const fallPx = layerHeight * (0.65 + Math.random() * 0.25);
+    // To the floor, give or take a grain's width, whatever the liquid level.
+    const fallPx = layerHeight * (0.93 - startFraction + Math.random() * 0.03);
     const delay = Math.random() * duration * 0.25;
 
-    animate(
+    const animation = animate(
       grain,
       [
         { transform: 'translateY(0) scale(0.4)', opacity: 0 },
         { transform: 'translateY(0) scale(1)', opacity: 1, offset: 0.15 },
-        { transform: `translateY(${fallPx}px) scale(1)`, opacity: 1, offset: 0.85 },
-        // A tiny overshoot-and-settle on landing, transform only.
-        { transform: `translateY(${fallPx * 0.96}px) scale(1)`, opacity: 1 },
+        { transform: `translateY(${fallPx}px) scale(1)`, opacity: 1, offset: 0.8 },
+        // Lands, and merges into the settled layer beneath it.
+        { transform: `translateY(${fallPx}px) scale(0.9)`, opacity: 0 },
       ],
       { duration: duration - delay, delay }
     );
-    // Particles are deliberately left in the DOM (fill: forwards keeps them
-    // visible at their settled position) - see bench.js for when a vessel
-    // being emptied clears this layer back out.
+    whenDone(animation, () => grain.remove());
   }
 }
 

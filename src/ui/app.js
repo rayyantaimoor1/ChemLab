@@ -38,16 +38,16 @@ import {
 } from './notebook-storage.js';
 import { formatNotebookForExport } from './notebook-export.js';
 import { buildReportContext, withNote } from './problem-report.js';
+import { appearanceFor, rememberReaction } from './appearance.js';
 import { mountMolecularView } from './molecular.js';
 import { mountMolecular3DView } from './molecular3d.js';
 import { mountGuidedBar, mountGuidedStepCard, mountGuidedSummary } from './guided.js';
 import { setReduceAnimation } from './effects.js';
 
 /* ------------------------------------------------------------------ *
- * The bench. Free Lab mode has no experiment telling it what apparatus
- * to lay out (experiments.js is still an empty placeholder - guided mode
- * is Phase 7), so this is just a reasonable fixed starting bench: one
- * beaker, one test tube.
+ * The bench. It starts empty in both modes: in Free Lab the student takes
+ * apparatus from the tray, and a guided experiment lays out its own
+ * curated apparatus list when it starts (see startExperiment below).
  * ------------------------------------------------------------------ */
 
 /**
@@ -210,11 +210,43 @@ function benchFloorY(h) {
   return Math.max(8, benchSize.height - 62 - 14 - h);
 }
 
-/** A free-ish spot along the bench for the nth object, wrapping when it
- *  runs out of width rather than marching off the edge. */
+/** The old fixed spacing: the nth object every 134 px, wrapping when it runs
+ *  out of width rather than marching off the edge. Now only the fallback. */
 function freeX(w, index) {
   const width = benchSize.width - 116;
   return Math.max(8, Math.min(width - w, 16 + ((index * 134) % Math.max(140, width - w - 16))));
+}
+
+// Room left to the right of a new object for its compact label card
+// (BUILD_UI.md UI.1.4). bench.js still resolves any overlap that remains.
+const LABEL_ROOM = 130;
+
+/**
+ * Where a new object of width w goes: the first gap along the bench wide
+ * enough for it and its label, then the first gap for it alone, then the
+ * old fixed spacing. Measured against everything already on the bench.
+ */
+function placeNewObject(w, index) {
+  // Each object already on the bench, as [left edge, right edge of its body].
+  const bodies = [
+    ...containers.map((c) => {
+      const at = positionByContainer.get(c.id);
+      return at ? [at.x, at.x + (VESSEL_TYPES[c.type]?.w ?? 110)] : null;
+    }),
+    ...equipment.map((item) => [item.x, item.x + EQUIPMENT_TYPES[item.kind].w]),
+  ].filter(Boolean);
+  const limit = benchSize.width - 8;
+  // First try: the new object and its label clear of every object AND of
+  // every object's own label, which sits to its right. Then: bodies clear
+  // of bodies only. Then the old fixed spacing.
+  const fits = (x, room) => x + w + room <= limit
+    && bodies.every(([a, b]) => x + w + room + 12 <= a || x >= b + room + 12);
+  for (const room of [LABEL_ROOM, 0]) {
+    for (let x = 16; x + w <= limit; x += 8) {
+      if (fits(x, room)) return x;
+    }
+  }
+  return freeX(w, index);
 }
 
 function addVessel(type) {
@@ -226,7 +258,7 @@ function addVessel(type) {
   containers.push(container);
   containersById.set(id, container);
   positionByContainer.set(id, {
-    x: freeX(def.w, containers.length + equipment.length - 1),
+    x: placeNewObject(def.w, containers.length + equipment.length - 1),
     y: benchFloorY(def.h),
   });
   selectedVesselId = id;
@@ -249,7 +281,7 @@ function addEquipment(kind) {
     id,
     kind,
     level: 0,
-    x: freeX(def.w, containers.length + equipment.length),
+    x: placeNewObject(def.w, containers.length + equipment.length),
     y: benchFloorY(def.h),
   });
   selectedEquipmentId = id;
@@ -849,7 +881,9 @@ function wrap(fn, actionName = null, traceName = actionName) {
     if (result && result.engineResult) {
       trackHazard(result.engineResult);
       trackAnimatedReaction(result);
+      rememberVesselLook(result);
     }
+    forgetEmptiedVessels();
     if (result && result.notebookEntry) {
       // actions.js's emitNotebookEntry returns the plain object it built
       // for onNotebookEntry, not notebook.logAction's own public entry - it
@@ -894,31 +928,32 @@ function wrap(fn, actionName = null, traceName = actionName) {
 }
 
 /* ------------------------------------------------------------------ *
- * appearance is required by UI.md section 1's contract on every container,
- * but this turn's placeholder only renders contents/volume/temperature/pH
- * as plain text - nothing reads appearance yet. It is still built correctly
- * here rather than left out, because the state shape should be right even
- * before there is a UI that uses all of it.
+ * What each vessel looks like - its liquid's colour and name, and the
+ * solid a reaction left in it - is worked out in appearance.js
+ * (BUILD_UI.md UI.1) from what the last reaction in that vessel did.
+ * This is that memory, one entry per vessel, kept the same way as
+ * lastAnimatedReactionByContainer above.
  * ------------------------------------------------------------------ */
+const vesselLookByContainer = new Map();
 
-function appearanceFor(snapshot) {
-  const empty = { colorHex: '#EEF3F5', colorName: 'colourless', precipitate: null, bubbling: false, smoking: false, glowing: false };
-  if (snapshot.speciesIds.length === 0) return empty;
+function rememberVesselLook(result) {
+  const engineResult = result?.engineResult;
+  if (!engineResult?.steps?.length) return;
+  const containerId = result.containerId ?? result.toId;
+  const container = containersById.get(containerId);
+  if (!container) return;
+  vesselLookByContainer.set(
+    containerId,
+    rememberReaction(vesselLookByContainer.get(containerId), engineResult, container.getSpeciesIds(), engine)
+  );
+}
 
-  if (snapshot.speciesIds.length === 1) {
-    const chemical = engine.getChemical(snapshot.speciesIds[0]);
-    if (chemical) {
-      return { ...empty, colorHex: chemical.colorHex, colorName: chemical.colorName };
-    }
+/** A vessel that has been emptied starts its memory afresh. */
+function forgetEmptiedVessels() {
+  for (const [id] of vesselLookByContainer) {
+    const container = containersById.get(id);
+    if (!container || container.getSpeciesIds().length === 0) vesselLookByContainer.delete(id);
   }
-
-  // A mixture, or a reaction product with no chemicals.json entry (the known
-  // reagent/species id gap flagged in earlier reviews). reactions.json's
-  // effects only carry colorToHex, never a paired colorName, so section 5's
-  // "every colour is always paired with its name" rule cannot be fully
-  // honoured here yet. colorName is left null rather than invented; nothing
-  // renders this yet, so nothing shows a name-less colour to a student today.
-  return { ...empty, colorHex: '#C9D6DA', colorName: null };
 }
 
 /**
@@ -1012,7 +1047,7 @@ function getState() {
         heatLevel: snapshot.heatLevel,
         electrified: snapshot.electrified,
         pH: snapshot.pH,
-        appearance: appearanceFor(snapshot),
+        appearance: appearanceFor(snapshot, vesselLookByContainer.get(snapshot.id), engine),
         // Which ions are drifting to which electrode, for bench.js to draw.
         // Read straight out of the reaction's curated `electrodes` block -
         // app.js does not decide any of this, it only looks it up.
@@ -1155,6 +1190,7 @@ function resetBenchState() {
   // offering to replay one from the last session.
   lastAnimatedReactionByContainer.clear();
   lastElectrolysisByContainer.clear();
+  vesselLookByContainer.clear();
 }
 
 /* ------------------------------------------------------------------ *
@@ -1485,7 +1521,7 @@ mountMolecular3DView({
  * roaring flame takes it several hundred degrees higher.
  *
  * That is also why an 801 °C melt and a 1500 °C lightning strike stay out
- * of reach, and should: those are a Down's cell and a thunderstorm, not a
+ * of reach, and should: those are a Downs cell and a thunderstorm, not a
  * Bunsen burner. The app already explains what is missing in those cases
  * rather than pretending.
  * ------------------------------------------------------------------ */

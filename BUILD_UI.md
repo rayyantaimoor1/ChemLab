@@ -115,6 +115,24 @@ was opened at 1366×768 with three vessels, and four problems showed up:
 ✅ **Check:** the agreement test passes for every reaction; the blood-red, brick-red, deep-blue and
 blue-black results all show on the bench in their colours with their names.
 
+> **Done (2026-11-16).** What was built, and two more problems the stage turned up:
+>
+> - `src/ui/appearance.js` decides each vessel's colour and solid (the four rules in its header);
+>   `tests/appearance.test.js` is the bench–notebook agreement test, and passes for every reaction.
+>   It found five reactions whose notebook names a solid that no product records as one (calcium
+>   hydroxide "that does not all dissolve", soot, condensing mercury); the bench draws those from
+>   the reaction's own curated colour and description.
+> - The settled layer replaces the floating dots; its label uses the curated `solidKind` word
+>   ("bright yellow precipitate: Lead(II) iodide", "silvery liquid: Mercury").
+> - New apparatus lands in the first free stretch of bench with room for its label; every card is
+>   placed after each render so none covers another (the selected one stays full size).
+> - **Found at true 1366×768 scale:** the bench's control strip wrapped to two rows and lay over
+>   the bottom of every vessel — exactly where the liquid and precipitate are. It is now always one
+>   row.
+> - **`scripts/capture-ui.mjs`** saves the reference set-ups at 1366×768 into `docs/ui-progress/`
+>   (`npx electron scripts/capture-ui.mjs UI.1`). The browser pane renders too small to judge, and
+>   an ordinary hidden window hands back stale frames, so it renders offscreen.
+
 ---
 
 ## Stage UI.2 — Glassware that looks like glass

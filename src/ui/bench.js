@@ -45,6 +45,7 @@ import {
   tickNumber,
   setFlameLevel,
 } from './effects.js';
+import { solidLabel } from './appearance.js';
 
 // Which vessel types have a pouring lip - the mockup's VESSEL_TYPES table
 // (spout:true), matching real glassware: the two beakers and the measuring
@@ -225,6 +226,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       }
     }
 
+    resolveLabelOverlaps();
+
     renderControlStrip(state);
     renderReadings(state);
     traceStrip.hidden = !state.traceEnabled;
@@ -232,6 +235,102 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     toolTrayHost.innerHTML = '';
     toolTrayHost.appendChild(renderToolTray(state));
+  }
+
+  /* ------------------------------------------------------------------ *
+   * Labels that never overlap (BUILD_UI.md UI.1.4)
+   *
+   * Every object carries its label card beside it, and on a bench 680 px
+   * wide with up to eleven objects the cards inevitably meet. The selected
+   * object always keeps its full card, on top. Every other card tries, in
+   * order: full; compact (name and colour only - the colour name always
+   * stays, UI.md section 5); compact on the other side of its object;
+   * compact lifted above it. It takes the first that covers no other card
+   * and no other object's glass. Measured from the real layout, so it
+   * works for any vessel size and any label length.
+   * ------------------------------------------------------------------ */
+
+  const LABEL_TRIES = [
+    { compact: false, side: 'right', lift: 0 },
+    { compact: true, side: 'right', lift: 0 },
+    { compact: true, side: 'left', lift: 0 },
+    { compact: true, side: 'right', lift: 1 },
+    { compact: true, side: 'left', lift: 1 },
+  ];
+
+  const FULL_TRIES = [
+    { compact: false, side: 'right', lift: 0 },
+    { compact: false, side: 'left', lift: 0 },
+    { compact: false, side: 'right', lift: 1 },
+    { compact: false, side: 'left', lift: 1 },
+  ];
+
+  function resolveLabelOverlaps() {
+    const objects = [
+      ...[...vesselEls.entries()].map(([id, refs]) => ({ id, el: refs.el, body: refs.vessel })),
+      ...[...equipmentEls.entries()].map(([id, refs]) => ({ id, el: refs.el, body: refs.el.firstElementChild })),
+    ].filter((o) => o.el.querySelector(':scope > .object-chip'));
+    if (objects.length === 0) return;
+
+    for (const o of objects) {
+      o.chip = o.el.querySelector(':scope > .object-chip');
+      applyLabelTry(o, LABEL_TRIES[0]);
+    }
+
+    const bounds = canvas.getBoundingClientRect();
+    const bodies = objects.map((o) => ({ id: o.id, rect: o.body.getBoundingClientRect() }));
+    const placed = [];
+    const isFixed = (o) => o.el.classList.contains('is-selected') || (drag && drag.id === o.id);
+
+    // The selected (or dragged) object first, then left to right.
+    const ordered = [...objects].sort((a, b) => (isFixed(b) - isFixed(a))
+      || (a.el.getBoundingClientRect().left - b.el.getBoundingClientRect().left));
+
+    for (const o of ordered) {
+      // The first try that is clear wins. If none is, the one that covers
+      // least: another card counts most, then another object's glass, then
+      // running off the bench. The selected (or dragged) object only tries
+      // its FULL card - on either side, or lifted - so picking a vessel
+      // never shrinks what it says, but it does stop it hiding a neighbour.
+      let best = null;
+      for (const attempt of isFixed(o) ? FULL_TRIES : LABEL_TRIES) {
+        applyLabelTry(o, attempt);
+        const rect = o.chip.getBoundingClientRect();
+        const cost = 4 * placed.reduce((sum, p) => sum + overlapArea(rect, p), 0)
+          + bodies.reduce((sum, b) => sum + (b.id === o.id ? 0 : overlapArea(rect, b.rect)), 0)
+          + outsideArea(rect, bounds);
+        if (!best || cost < best.cost) best = { attempt, cost };
+        if (cost === 0) break;
+      }
+      applyLabelTry(o, best.attempt);
+      placed.push(o.chip.getBoundingClientRect());
+    }
+  }
+
+  function overlapArea(a, b) {
+    const w = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+    const h = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+    return w > 1 && h > 1 ? w * h : 0;
+  }
+
+  function outsideArea(rect, bounds) {
+    const w = rect.right - rect.left;
+    const h = rect.bottom - rect.top;
+    const offX = Math.max(0, bounds.left - rect.left) + Math.max(0, rect.right - bounds.right);
+    const offY = Math.max(0, bounds.top - rect.top);
+    return offX * h + offY * w;
+  }
+
+  function applyLabelTry(o, attempt) {
+    o.chip.classList.toggle('is-compact', attempt.compact);
+    o.el.classList.toggle('label-left', attempt.side === 'left');
+    o.chip.style.transform = attempt.lift
+      ? `translateY(-${Math.round(o.body.getBoundingClientRect().height + 6)}px)`
+      : '';
+  }
+
+  function overlaps(a, b) {
+    return a.left < b.right - 1 && b.left < a.right - 1 && a.top < b.bottom - 1 && b.top < a.bottom - 1;
   }
 
   /* ------------------------------------------------------------------ *
@@ -532,6 +631,11 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     liquidIncoming.className = 'vessel__liquid vessel__liquid--incoming';
     const precipitateLayer = document.createElement('div');
     precipitateLayer.className = 'vessel__layer vessel__precipitate';
+    // The solid that stays once the grains have fallen (BUILD_UI.md UI.1.3).
+    // Drawn from appearance.precipitate on every render, so it is always
+    // what is really in the vessel - not left over from an animation.
+    const sediment = document.createElement('div');
+    sediment.className = 'vessel__sediment';
     const bubbleLayer = document.createElement('div');
     bubbleLayer.className = 'vessel__layer vessel__bubbles';
     const gasLayer = document.createElement('div');
@@ -557,7 +661,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     const glass = document.createElement('div');
     glass.className = 'vessel__glass';
-    glass.append(liquidBase, liquidIncoming, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
+    glass.append(liquidBase, liquidIncoming, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
     vessel.appendChild(glass);
     el.appendChild(vessel);
 
@@ -633,7 +737,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     wireReagentDrop(el, container.id);
 
     const refs = {
-      el, vessel, glass, liquidBase, liquidIncoming, precipitateLayer, bubbleLayer, gasLayer, pourMouth,
+      el, vessel, glass, liquidBase, liquidIncoming, sediment, precipitateLayer, bubbleLayer, gasLayer, pourMouth,
       volumeEl, tempEl, phEl, colorSwatch, colorText, colourRow, precipitateLabel, capacityChip,
       standNote, vesselShadow, flame, electrodeLayer, ionLayer,
       readingRow, readingSwatch, readingText, powerNote,
@@ -727,6 +831,16 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       ? 'empty'
       : container.appearance.colorName || 'colour not known for this mixture';
     refs.colourRow.classList.toggle('is-empty', isEmpty);
+
+    // The solid a reaction left, with its name (UI.md section 5). Its kind
+    // decides where it sits: smoke hangs at the mouth, everything else at
+    // the bottom for now (BUILD_UI.md UI.3 puts deposits on the metal).
+    const solid = container.appearance.precipitate;
+    refs.precipitateLabel.hidden = !solid;
+    if (solid) refs.precipitateLabel.textContent = solidLabel(solid);
+    refs.sediment.classList.toggle('is-visible', !!solid);
+    refs.sediment.classList.toggle('vessel__sediment--smoke', solid?.kind === 'smoke');
+    if (solid) refs.sediment.style.background = solid.colorHex;
 
     const fraction = container.capacityMl > 0 ? container.volumeMl / container.capacityMl : 0;
     if (fraction >= 1) {
@@ -1073,10 +1187,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       if (effects.bubbles) playBubbles(refs.bubbleLayer);
       if (effects.gas) playGasEvolution(refs.gasLayer);
       if (effects.precipitate) {
-        const info = precipitateInfoFor(step.reaction);
-        playPrecipitate(refs.precipitateLayer, info.colorHex);
-        refs.precipitateLabel.hidden = !info.colorName;
-        if (info.colorName) refs.precipitateLabel.textContent = `${info.colorName} solid — ${info.name}`;
+        const solid = after.appearance.precipitate;
+        playPrecipitate(refs.precipitateLayer, solid ? solid.colorHex : precipitateInfoFor(step.reaction).colorHex);
       }
     }
   }
