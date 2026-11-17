@@ -772,7 +772,7 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–6 of 16 done (2026-11-17).** The owner
+**Status: in progress — batches 1–7 of 16 done (2026-11-17).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -1058,3 +1058,52 @@ is UI.3.6; this field only says the liquid itself is clear.
 - **potassium manganate: fine.** It is the residue of heating
   permanganate. Wikipedia's "green crystals" describes the salt
   crystallised from solution, not the residue the app makes.
+
+### Batch 7 — chemicals 151–175
+
+All approved by the owner on 2026-11-17.
+
+**Clear (18).**
+
+Organic liquids:
+- cyclohexane
+- bromoethane
+- ethanal
+- propanone
+- ethyl ethanoate
+- phosphoryl chloride
+- ethanoyl chloride
+- ethanoic anhydride
+- glycerol
+
+Solutions:
+- sodium hydroxide in ethanol
+- sodium bromide
+- ethylamine
+- sodium ethoxide
+- sodium phenoxide
+- ethanoic acid
+- sodium ethanoate
+- Tollens' reagent
+- Fehling's solution
+
+**Cloudy (1): soap solution.** This is the first liquid that is not clear.
+Its curated colour name was already "cloudy pale cream". Wikipedia (Soap)
+describes micelles, "tiny spheres formed from soap molecules", and the
+LibreTexts colloids page says particles of that size scatter light. No
+single page says a soap solution is cloudy, so this rests on that
+reasoning.
+
+**Confirmed by an opened Wikipedia page:**
+- phenol: crystals, crystalline ("a white crystalline solid")
+- phosphorus pentachloride: crystals ("yellowish white crystals")
+- glyceryl tristearate: powder ("an odourless, white powder"). The app's
+  own description calls it a waxy solid.
+
+**Not confirmed by an opened page:**
+- **ethanamide: crystals, crystalline.** Wikipedia says only "colorless,
+  hygroscopic solid".
+- **copper(I) oxide: fine.** Wikipedia (Copper(I) oxide, Fehling's
+  solution) says the red oxide "precipitates out" and settles in the
+  bottom, and that its colour depends on particle size, but it gives no
+  texture word.

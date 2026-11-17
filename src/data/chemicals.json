@@ -3612,6 +3612,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/c6h12.svg",
     "description": "The fully saturated six-carbon ring, and what benzene becomes once it has been forced to take on hydrogen. It is NOT flat: with every carbon tetrahedral the ring puckers into a chair shape, which is the clearest possible contrast with benzene's rigidly planar ring.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, hydrogenation of benzene",
     "category": "organic"
   },
@@ -3633,6 +3634,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/c2h5br.svg",
     "description": "A halogenoalkane, and one of the most useful starting materials in organic chemistry. The carbon–bromine bond is polar, leaving that carbon slightly positive and open to attack by anything with a lone pair — so bromoethane can be turned into an alcohol, an amine, a nitrile or an alkene depending only on what is attacked with and under what conditions.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides",
     "category": "organic"
   },
@@ -3654,6 +3656,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/naoh.svg",
     "description": "The same sodium hydroxide, dissolved in ethanol instead of water — and that single change of solvent sends bromoethane down a completely different path. In water the hydroxide attacks the carbon and gives an alcohol; in ethanol it pulls a hydrogen off instead and gives an alkene. Same reagents, same flask, different solvent, different product: one of the clearest demonstrations in the whole syllabus that conditions decide the outcome.",
+    "clarity": "clear",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides, substitution versus elimination",
     "flameElements": ["sodium"],
     "category": "base"
@@ -3676,6 +3679,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/nabr.svg",
     "description": "Colourless neutral solution left behind when a bromide ion is displaced from a halogenoalkane. It is the leaving group's final resting place, and testing for it with silver nitrate is how you confirm the substitution actually happened.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Sodium bromide",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -3698,6 +3702,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/c2h5nh2.svg",
     "description": "Ammonia with one hydrogen replaced by an ethyl group, and it behaves much like ammonia: a weak base with a strong fishy smell. The lone pair on its nitrogen is what makes it basic, and it is also what makes it a nucleophile in its own right — which is exactly the problem with making it this way, since the product attacks more bromoethane and the reaction does not stop cleanly.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides, reaction with ammonia",
     "category": "organic"
   },
@@ -3740,7 +3745,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/phenol.svg",
     "description": "An OH group attached straight to a benzene ring, and that changes everything about how the OH behaves. In ethanol the OH is barely acidic at all; here the ring pulls electron density away from the oxygen and spreads the resulting negative charge round itself, so phenol is acidic enough to react with sodium hydroxide. It causes severe burns that are numbing rather than painful at first, which makes them easy to underestimate.",
+    "form": "crystals",
+    "texture": "crystalline",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility, pKa 9.99); Punjab Curriculum and Textbook Board, Chemistry XII — Alcohols and Phenols",
+    "sources": [
+      { "ref": "Wikipedia — Phenol (a white crystalline solid)",
+        "url": "https://en.wikipedia.org/wiki/Phenol",
+        "checked": "2026-11-17",
+        "covers": ["form","texture"] }
+    ],
     "category": "organic"
   },
   {
@@ -3761,6 +3774,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/c2h5ona.svg",
     "description": "The salt formed when sodium takes the hydrogen from an alcohol's OH group. It is strongly basic — far more so than sodium hydroxide — which is itself the proof that ethanol is a very weak acid: the weaker the acid, the stronger the base it leaves behind.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Alcohols, reaction with sodium",
     "flameElements": ["sodium"],
     "category": "organic"
@@ -3783,6 +3797,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/c6h5ona.svg",
     "description": "What phenol becomes once sodium hydroxide has taken its hydrogen. The negative charge left on the oxygen is spread out over the whole benzene ring rather than sitting on one atom, and that sharing is precisely why phenol can lose its hydrogen when ethanol cannot.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Phenols, acidity",
     "flameElements": ["sodium"],
     "category": "organic"
@@ -3805,6 +3820,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/ch3cho.svg",
     "description": "An ALDEHYDE: the carbonyl carbon still carries a hydrogen, and that hydrogen is what makes it easy to oxidise further. It boils at only 21 °C, which is why the practical instruction is to distil it off as it forms — leave it in the flask and the oxidising agent will take it straight on to the acid. It is also the compound the body makes from alcohol, and the one responsible for a hangover.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, boiling point); Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones",
     "category": "organic"
   },
@@ -3826,6 +3842,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/ch3coch3.svg",
     "description": "A KETONE: the carbonyl carbon sits between two carbon groups and has no hydrogen of its own. That single structural difference is why it resists oxidation — there is nothing on that carbon to take off without breaking the chain — and it is what every test distinguishing aldehydes from ketones actually detects. Familiar as nail varnish remover.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones",
     "category": "organic"
   },
@@ -3847,6 +3864,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/ch3cooh.svg",
     "description": "The acid in vinegar, and a genuinely WEAK one — a 1 M solution sits at about pH 2.4 where 1 M hydrochloric acid is near 0, because only a small fraction of its molecules give up their hydrogen at any moment. Weak is not the same as dilute: this is a concentrated solution of a weak acid. It is still acidic enough to fizz with a carbonate, which phenol is not, and that difference places it firmly above phenol in acidity.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, pKa 4.76); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids",
     "category": "acid"
   },
@@ -3868,6 +3886,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/ch3coona.svg",
     "description": "The salt of a weak acid and a strong base, so its solution is ALKALINE rather than neutral — the ethanoate ion takes hydrogen ions back from the water. Mixed with ethanoic acid it makes the standard buffer solution, which resists a change in pH when acid or alkali is added.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids, salts and buffers",
     "flameElements": ["sodium"],
     "category": "organic"
@@ -3890,6 +3909,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/ester.svg",
     "description": "An ESTER, and the reason this reaction is memorable: it smells sweet and fruity, like pear drops, where both the acid and the alcohol it came from smell of nothing pleasant at all. Esters are what give fruit and flowers much of their scent, and they are used as flavourings and as solvents — including in nail varnish and glue.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids, esterification",
     "category": "organic"
   },
@@ -3911,6 +3931,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/tollens.svg",
     "description": "Ammoniacal silver nitrate — a colourless solution holding silver as the diammine complex, ready to be reduced back to the metal. It is made fresh immediately before use and never stored, because on standing it forms silver nitride, which is dangerously explosive when dry. Any leftover must be acidified and washed away at once.",
+    "clarity": "clear",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones, Tollens' test; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass of the complex)",
     "category": "reagent"
   },
@@ -3932,6 +3953,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/fehlings.svg",
     "description": "A deep blue solution of copper(II) held in alkali by tartrate ions, which stop it precipitating as the hydroxide. It is a MIXTURE, not a single compound, so it has no molar mass of its own — the figure given is that of the copper(II) sulfate it is built from, and no more than that should be read into it. Like Tollens' it is mixed from its two stock bottles immediately before use.",
+    "clarity": "clear",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones, Fehling's test; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass of copper(II) sulfate)",
     "flameElements": ["copper"],
     "category": "reagent"
@@ -3954,6 +3976,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/cu2o.svg",
     "description": "Brick-red precipitate, and copper in the unusual +1 state rather than its familiar +2. Watching a deep blue solution throw down a red solid is what makes Fehling's test easy to read even for a student who has never seen it before. The same reaction was once used to test urine for sugar, because glucose has an aldehyde group and reduces the copper in exactly this way.",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones, Fehling's test",
     "flameElements": ["copper"],
     "category": "oxide"
@@ -3976,7 +3999,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/pcl5.svg",
     "description": "The standard laboratory test for an —OH group: add it to the substance and steamy, choking fumes of hydrogen chloride come off at once. Alcohols, phenols and carboxylic acids all give the fumes; an ester, an aldehyde or a ketone gives none. It must be kept absolutely dry, because it attacks water just as readily as it attacks an —OH group and the reaction with water is violent.",
+    "form": "crystals",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids, reaction with PCl5",
+    "sources": [
+      { "ref": "Wikipedia — Phosphorus pentachloride (commercial samples yellowish white crystals)",
+        "url": "https://en.wikipedia.org/wiki/Phosphorus_pentachloride",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -3997,6 +4027,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/pocl3.svg",
     "description": "The by-product left behind when phosphorus pentachloride is used to make an acid chloride. It is not the point of the reaction, but it has to go somewhere, and a student who writes the equation without it has not balanced anything. Also called phosphorus oxychloride.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids",
     "category": "salt"
   },
@@ -4018,6 +4049,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/ch3cocl.svg",
     "description": "An ACID CHLORIDE, and the most reactive of the carboxylic acid derivatives. The chlorine pulls electrons hard away from the carbonyl carbon and leaves it wide open to attack, which is why this fumes in moist air, hisses with water, and turns an alcohol into an ester in seconds without heat or catalyst. It is the reagent you reach for when the direct route from the acid is too slow. Also called acetyl chloride.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, boiling point 52 °C); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids and their derivatives",
     "category": "organic"
   },
@@ -4039,6 +4071,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/anhydride.svg",
     "description": "Two ethanoic acid units joined through a shared oxygen, and the second rung down the reactivity ladder. It does everything the acid chloride does — water, alcohols, ammonia — but more slowly and more manageably, and it gives no corrosive hydrogen chloride. That gentleness is why industry prefers it: it is the reagent used to make aspirin.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives",
     "category": "organic"
   },
@@ -4060,6 +4093,8 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/ch3conh2.svg",
     "description": "An AMIDE, and the bottom rung of the reactivity ladder — so unreactive that it takes prolonged boiling with acid or alkali to break it apart. It contains nitrogen and looks as though it ought to be a base like ammonia, and it is NOT: the carbonyl group beside the nitrogen holds that lone pair away, so ethanamide is neutral. The same C—N link, repeated thousands of times, is the peptide bond that holds a protein together, and its stubbornness is why proteins survive at all. Also called acetamide.",
+    "form": "crystals",
+    "texture": "crystalline",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, amides",
     "category": "organic"
   },
@@ -4081,7 +4116,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/fat.svg",
     "description": "An ordinary fat — a white, waxy solid that melts at about 54–72 °C — and structurally nothing more exotic than an ESTER: three long, saturated fatty-acid chains joined to one molecule of glycerol. Every fat and oil in food is built this way; the only real difference between a solid fat and a liquid oil is how straight those chains are. Because it is an ester, it can be hydrolysed by alkali, and that single fact is the whole of soap making.",
+    "form": "powder",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, lipids and saponification; Wikipedia — Stearin (white solid, melting at 54–72.5 °C), consulted 2026-11-04",
+    "sources": [
+      { "ref": "Wikipedia — Stearin (an odourless, white powder)",
+        "url": "https://en.wikipedia.org/wiki/Stearin",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "organic"
   },
   {
@@ -4102,6 +4144,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/soap.svg",
     "description": "The sodium salt of a long-chain acid, and the reason it works is that its two ends want opposite things: the charged —COO⁻ head dissolves happily in water while the long hydrocarbon tail refuses to and buries itself in grease instead. Its solution is alkaline, because it is the salt of a weak acid and a strong base — which is why soap feels slippery and why it is harsh on wool and silk.",
+    "clarity": "cloudy",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, soaps and detergents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "material"
@@ -4124,6 +4167,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/glycerol.svg",
     "description": "A thick, sweet, harmless liquid with three —OH groups, recovered as the valuable by-product of soap making. It holds on to water, which is why it turns up in hand creams, toothpaste and cough syrup, and it is also the starting material for nitroglycerine — the same molecule, put to very different use.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, lipids",
     "category": "organic"
   },
