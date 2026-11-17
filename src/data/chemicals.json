@@ -3038,6 +3038,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/na2cro4.svg",
     "description": "Yellow solution containing the chromate ion. It holds chromium in exactly the same +6 state as the orange dichromate — nothing has been oxidised or reduced in going from one to the other, only rearranged. Add acid and the orange comes straight back, which makes the pair a clean demonstration that colour depends on the whole ion rather than on oxidation state alone.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, the chromate–dichromate equilibrium",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -3060,6 +3061,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/cr2so43.svg",
     "description": "Green solution holding chromium in the +3 state, which is what orange dichromate becomes once it has been reduced. Watching orange turn green is the standard way of seeing dichromate act as an oxidising agent — and it is the same colour change used in the old breathalyser, where alcohol reduced the dichromate on the tube.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, variable oxidation states",
     "category": "salt"
   },
@@ -3081,7 +3083,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/croh3.svg",
     "description": "Grey-green gelatinous precipitate formed when alkali is added to a chromium(III) solution — the test for that ion. It is amphoteric: it dissolves in excess alkali as well as in acid, which is behaviour a simple metal hydroxide like magnesium's does not show.",
+    "texture": "gelatinous",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, chromium chemistry",
+    "sources": [
+      { "ref": "Wikipedia — Chromium(III) hydroxide (green, gelatinous precipitate)",
+        "url": "https://en.wikipedia.org/wiki/Chromium(III)_hydroxide",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "base"
   },
   {
@@ -3102,6 +3111,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/kmno4.svg",
     "description": "Intensely purple solution, so strongly coloured that a very dilute one still looks deep. Manganese here is in its highest oxidation state, +7, which makes it a powerful oxidising agent. Its colour is its own indicator: in an acidic titration the purple is destroyed as it reacts, so the first faint pink that persists marks the end point and no separate indicator is needed.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, oxidation states of manganese",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -3124,8 +3134,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/kmno4.svg",
     "description": "Dark, glinting purplish-black crystals — the solid that the purple solution on the shelf is made from. Heated dry, the crystals decompose at about 240 °C into green potassium manganate, black manganese(IV) oxide and oxygen, which is one of the laboratory ways of making oxygen. A powerful oxidiser: kept well away from anything that burns.",
+    "form": "crystals",
     "source": "Wikipedia — Potassium permanganate (purplish-black crystals; molar mass 158.03 g/mol; density 2.7 g/cm³; solid decomposes on heating at about 240 °C to K₂MnO₄, MnO₂ and O₂), consulted 2026-11-03",
     "flameElements": ["potassium"],
+    "sources": [
+      { "ref": "Wikipedia — Potassium permanganate (a purplish-black crystalline salt)",
+        "url": "https://en.wikipedia.org/wiki/Potassium_permanganate",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -3146,6 +3163,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/mnso4.svg",
     "description": "So faintly pink that in a titration it reads as colourless — which is exactly what makes potassium permanganate self-indicating. The manganese has fallen from +7 all the way to +2, a change of five oxidation states in one step, and taken its intense purple with it.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Manganese(II) sulfate",
     "category": "salt"
   },
@@ -3167,6 +3185,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/fe2so43.svg",
     "description": "Yellow-brown solution holding iron in the +3 state, formed when pale green iron(II) is oxidised. Distinctly acidic, because the small highly charged Fe³⁺ ion pulls hard on surrounding water molecules and releases hydrogen ions.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Iron(III) sulfate",
     "category": "salt"
   },
@@ -3188,6 +3207,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/k2mno4.svg",
     "description": "Dark green solid holding manganese in the +6 state — one step down from the +7 of permanganate. Manganese is the clearest example of a transition metal's variable oxidation states: purple at +7, green at +6, black as the +4 oxide, and very pale pink at +2, each with its own colour.",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, oxidation states of manganese",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -3294,8 +3314,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/cac2.svg",
     "description": "Grey solid that reacts with water to give ethyne, which is how the gas is made in a laboratory and how miners' carbide lamps once worked. It must be kept absolutely dry — moisture in the air is enough to start it slowly. It is still sold in some countries to ripen fruit artificially, a use that is banned in many places because of the arsenic and phosphorus impurities it usually carries.",
+    "form": "lump",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, preparation of ethyne",
     "flameElements": ["calcium"],
+    "sources": [
+      { "ref": "Wikipedia — Calcium carbide (crushed to produce small lumps)",
+        "url": "https://en.wikipedia.org/wiki/Calcium_carbide",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -3337,6 +3364,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/c2h4br2.svg",
     "description": "The colourless product of adding bromine across the double bond of ethene. One bromine atom goes to each carbon — hence 1,2 — and the double bond becomes a single bond. Because the product is colourless, the orange of the bromine water simply disappears, which is what makes the test so easy to read.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, addition reactions of alkenes",
     "category": "organic"
   },
@@ -3358,6 +3386,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/c2h2br4.svg",
     "description": "What ethyne gives with bromine: FOUR bromine atoms, not two, because a triple bond can add twice over. Measuring how much bromine a sample takes up therefore tells you not just that it is unsaturated but how unsaturated — the principle behind the iodine number used to grade fats and oils.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, addition reactions of alkynes",
     "category": "organic"
   },
@@ -3379,6 +3408,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/c2h5oh.svg",
     "description": "The alcohol in drinks, and industrially made by adding water across the double bond of ethene. Its OH group lets it hydrogen bond, which is why a two-carbon molecule that ought to be a gas is a liquid, and why it mixes with water in any proportion while ethane does not dissolve at all. It does not conduct: the OH hydrogen is held far too tightly to come off as an ion, so ethanol is not an acid.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Alcohols; Aliphatic Hydrocarbons, hydration of alkenes",
     "category": "organic"
   },
@@ -3400,6 +3430,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/glycol.svg",
     "description": "A diol — two OH groups, one on each carbon — formed when cold dilute potassium permanganate attacks a double bond. With two chances to hydrogen bond it is thick, high boiling and completely mixable with water, which is what makes it the antifreeze in car radiators. It tastes sweet and is seriously poisonous, a combination that makes it dangerous to animals and children.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, oxidation of alkenes",
     "category": "organic"
   },
@@ -3421,7 +3452,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/ni.svg",
     "description": "Finely divided silvery metal, the catalyst used to add hydrogen across carbon–carbon multiple bonds. It is chosen over platinum for industry simply because it is far cheaper while doing the same job. This is the catalyst that hardens liquid vegetable oils into margarine, by hydrogenating the double bonds in their chains.",
+    "form": "powder",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, catalytic hydrogenation",
+    "sources": [
+      { "ref": "Wikipedia — Raney nickel (a finely divided, grey powder)",
+        "url": "https://en.wikipedia.org/wiki/Raney_nickel",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "element"
   },
   {
@@ -3442,6 +3480,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/h3po4.svg",
     "description": "A tribasic acid — three hydrogens it can give away — but a WEAK one, which is why its solution is nowhere near as acidic as hydrochloric acid of the same concentration. It is the catalyst for hydrating ethene to ethanol industrially, and, more familiarly, it is what gives cola drinks their sharp taste.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, industrial hydration of ethene",
     "category": "acid"
   },
@@ -3463,6 +3502,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/c6h6.svg",
     "description": "A flat ring of six carbons whose six spare electrons are spread evenly right round it rather than sitting in three separate double bonds. That delocalisation is why the ring is unusually stable, why every carbon–carbon bond in it is exactly the same length, and why benzene refuses to behave like an alkene. It is also a proven carcinogen, which is why it has been replaced by methylbenzene in most school laboratories.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, structure of benzene",
     "category": "organic"
   },
@@ -3484,6 +3524,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/febr3.svg",
     "description": "Dark solid used as the halogen carrier that lets bromine attack a benzene ring. Its job is to polarise the bromine molecule enough to make one end strongly positive, because plain bromine is nowhere near reactive enough to touch a ring as stable as benzene. Without it, benzene and bromine water simply sit together doing nothing.",
+    "form": "powder",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, halogenation of benzene",
     "category": "salt"
   },
@@ -3505,6 +3546,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/c6h5br.svg",
     "description": "Benzene with one hydrogen swapped for a bromine — and the ring is still intact. That is the point: the bromine SUBSTITUTED rather than adding across a bond, because breaking the delocalised ring would cost more energy than the reaction gains.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, electrophilic substitution",
     "category": "organic"
   },
@@ -3526,6 +3568,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/c6h5no2.svg",
     "description": "Pale yellow oily liquid smelling of almonds — a smell that is a genuinely dangerous invitation, because it is absorbed straight through the skin and poisons the blood's ability to carry oxygen. It is the starting point for aniline and from there for a great many dyes, which is how the synthetic dye industry began.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, nitration of benzene",
     "category": "organic"
   },
@@ -3547,6 +3590,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/c6h5so3h.svg",
     "description": "A strong acid built onto a benzene ring, and unlike benzene itself it dissolves freely in water. That combination — a water-loving acidic head on a water-hating hydrocarbon tail — is exactly the structure of a detergent, which is what sulfonation is done for industrially.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, sulfonation of benzene",
     "category": "acid"
   },

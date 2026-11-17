@@ -772,7 +772,7 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–5 of 16 done (2026-11-17).** The owner
+**Status: in progress — batches 1–6 of 16 done (2026-11-17).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -1018,3 +1018,43 @@ All approved by the owner on 2026-11-17.
 - magnesium carbonate made as a precipitate: fine.
 - lithium oxide and sodium peroxide: fine. Both are "white solid" only,
   the powdery products of burning the metals.
+
+### Batch 6 — chemicals 126–150
+
+All approved by the owner on 2026-11-17.
+
+**Clear (14).**
+- Solutions:
+  - sodium chromate
+  - chromium(III) sulfate
+  - potassium permanganate
+  - manganese(II) sulfate
+  - iron(III) sulfate
+  - phosphoric acid
+  - benzenesulfonic acid
+- Pure organic liquids:
+  - 1,2-dibromoethane
+  - 1,1,2,2-tetrabromoethane
+  - ethanol
+  - glycol
+  - benzene
+  - bromobenzene
+  - nitrobenzene
+
+Benzene and nitrobenzene do not mix with water. Drawing them as two layers
+is UI.3.6; this field only says the liquid itself is clear.
+
+**Confirmed by an opened page:**
+- potassium permanganate: crystals. Wikipedia: "a purplish-black
+  crystalline salt".
+- calcium carbide: lump. Wikipedia: "crushed to produce small lumps".
+- nickel catalyst: powder. Wikipedia, Raney nickel: "a finely divided,
+  grey powder".
+- chromium(III) hydroxide: gelatinous. Wikipedia: "green, gelatinous
+  precipitate". The LibreTexts chromium page gives only "gray-green".
+
+**Not confirmed by an opened page:**
+- **iron(III) bromide: powder.** Wikipedia says only "brown solid".
+- **potassium manganate: fine.** It is the residue of heating
+  permanganate. Wikipedia's "green crystals" describes the salt
+  crystallised from solution, not the residue the app makes.
