@@ -369,8 +369,10 @@ export function createContainer({
         api.remove(speciesId, share);
       }
 
-      // The receiving vessel ends up at whichever temperature it was already at
-      // unless it was empty, in which case the poured liquid brings its heat.
+      // Temperature is NOT carried across: the receiving vessel keeps its own,
+      // even when it was empty, so hot liquid poured into a cold empty beaker
+      // reads room temperature. Known gap (2026-11-17 review) - mixing
+      // temperatures needs amounts, which arrive in BUILD_PHASE_2.md stage 2.2.
       recalculatePH();
       return { poured: Math.round(requested * 1000) / 1000, spilled };
     },

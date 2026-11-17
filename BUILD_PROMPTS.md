@@ -369,6 +369,10 @@ work if you try to batch commits together.
 
 ## Phase 9 — Real UI
 
+> **Superseded (2026-11-10).** The owner chose to have Claude Code build the real UI stage by
+> stage instead of designing it in Claude Design. Follow `BUILD_UI.md`; the steps below are kept
+> only as the original plan.
+
 **9.1** — Take screenshots of the working placeholder UI.
 
 **9.2** — In **Claude Design**, provide `UI.md`, the screenshots, and the state shape from UI.md

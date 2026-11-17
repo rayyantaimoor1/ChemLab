@@ -340,7 +340,8 @@ export function createNotebook({ save = null, load = null } = {}) {
     return entries.length === 0;
   }
 
-  /** Wipes the notebook, for resetBench(). Does not touch anything on disk. */
+  /** Wipes the notebook, for New session (Reset deliberately keeps it).
+   *  Does not touch anything on disk itself; the next save does. */
   function clear() {
     entries = [];
     nextId = 1;

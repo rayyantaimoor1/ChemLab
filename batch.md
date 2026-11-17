@@ -7,8 +7,9 @@
 > to do. Update it at the end of every batch — do not let it drift out of
 > date the way a comment would.
 >
-> Snapshot as of the last entry below: **379 chemicals, 394 reactions
-> (73 of them `noReaction`), 18 guided experiments, 311 tests passing.**
+> Snapshot as of 2026-11-17: **379 chemicals, 394 reactions
+> (73 of them `noReaction`, 84 with an opened `sources` entry), 18 guided
+> experiments, 745 tests passing.**
 
 ---
 

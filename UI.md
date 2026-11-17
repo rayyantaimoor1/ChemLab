@@ -1,8 +1,10 @@
 # Virtual Chemistry Lab — UI Specification
 
-> The interface is built **last** (Phase 9), in Claude Design. Phases 3–8 use a deliberately
-> plain placeholder UI. This file exists so that the placeholder is built against the same
-> contract the real UI will use, and so the redesign is a swap, not a rewrite.
+> The real interface is Phase 9. The owner decided on 2026-11-10 to have Claude Code build it
+> stage by stage as the UI realism track in `BUILD_UI.md`, instead of designing it in Claude
+> Design. This file is still the design contract every stage is built against: the state shape,
+> the room the app is used in, the visual direction, and the rules on colour, motion and
+> accessibility.
 
 ---
 
@@ -19,7 +21,12 @@ The UI may **read** engine state and **dispatch** actions. It may not contain ch
     volumeMl, temperatureC, pH,
     appearance: {
       colorHex, colorName,          // ALWAYS both — see §5
-      precipitate: { colorHex, colorName, density } | null,
+      // colorName is null for a mixture nothing in the data describes:
+      // shown as "colour not known", never guessed (src/ui/appearance.js).
+      precipitate: { colorHex, colorName, name, kind, density } | null,
+      // kind is the reaction's curated solidKind: precipitate, deposit,
+      // coating, liquid, smoke or solid. solids lists every one present.
+      solids: [ ...same shape... ],
       bubbling: bool, smoking: bool, glowing: bool
     }
   }],
@@ -241,8 +248,14 @@ as an honest gap in the app, never as a chemistry result), reset confirmation.
 
 ---
 
-## 9. Handing this to Claude Design
+## 9. How the UI is being built
 
-When the time comes, give Claude Design: this file, screenshots of the working placeholder UI,
-and the state shape from §1. Ask for the **Free Lab bench screen first** — it is the hardest and
-sets the language for everything else. Get that right before the other screens.
+Stage by stage, in the order `BUILD_UI.md` sets out: what is drawn matching the notebook first
+(UI.1), then glassware, liquids and solids, heat, gases, apparatus, the close look and the room.
+Each stage is checked with `scripts/capture-ui.mjs`, which saves the reference benches at
+1366×768 into `docs/ui-progress/`, so every change can be seen against the one before. The Free
+Lab bench is the screen that sets the language for everything else, so it is checked first and
+most often.
+
+*(Superseded plan, kept for the record: this section used to say how to hand the design to
+Claude Design. The owner replaced that with the `BUILD_UI.md` track on 2026-11-10.)*

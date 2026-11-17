@@ -63,8 +63,9 @@ The single most important architectural rule:
 
 > **The engine knows nothing about the UI. The UI is a thin render layer over engine state.**
 
-The UI will be redesigned later using Claude Design. If UI work requires touching engine files,
-the boundary has been violated — stop and fix the boundary instead.
+The UI is being rebuilt stage by stage in the UI realism track (`BUILD_UI.md`, Phase 9). If UI
+work requires touching engine files, the boundary has been violated — stop and fix the boundary
+instead.
 
 ```
 chemlab/
@@ -95,18 +96,28 @@ chemlab/
 │   │   ├── ghs-hazards.json  ← GHS pictogram(s) for every hazard word; read by the validator
 │   │   └── molecules/        ← .mol files + 2D structure PNGs
 │   ├── ui/                   ← DOM, rendering, effects. Replaceable.
-│   │   ├── bench.js
-│   │   ├── shelf.js
-│   │   ├── effects.js
-│   │   └── panels.js
+│   │   ├── app.js            ← wires core to the zones; holds interface state; the burner clock
+│   │   ├── bench.js          ← the bench canvas: vessels, apparatus, dragging, the control strip
+│   │   ├── shelf.js          ← reagent shelf and apparatus tray
+│   │   ├── panels.js         ← notebook, hazard alert, properties card
+│   │   ├── guided.js         ← guided-mode bar, step card and summary
+│   │   ├── effects.js        ← animations (transform and opacity only)
+│   │   ├── appearance.js     ← what a vessel looks like; never disagrees with the notebook
+│   │   ├── molecular.js      ← 2D reaction animations
+│   │   ├── molecular3d.js    ← 3D ball-and-stick viewer
+│   │   ├── notebook-storage.js ← the page's side of the save/load/report bridge
+│   │   ├── notebook-export.js  ← the notebook as plain text for Export
+│   │   └── problem-report.js   ← builds a "This looks wrong" report
 │   ├── styles/
 │   └── assets/               ← bundled fonts, icons, sounds
 ├── scripts/
 │   ├── validate-content.mjs  ← `npm run validate`: schema, equation balance, colour names, GHS, pH, levels
 │   ├── update-golden.mjs     ← `npm run golden:update`: re-approves the golden notebook sentences
+│   ├── capture-ui.mjs        ← screenshots of the reference benches at 1366×768 (BUILD_UI.md)
 │   └── lib/                  ← the checkers these use, and the golden-sentence builder
 ├── tests/
 │   └── golden/               ← notebook-sentences.json: the approved sentence for every reaction
+├── docs/ui-progress/         ← before-and-after screenshots for each UI stage
 └── build/                    ← electron-builder output (gitignored)
 ```
 

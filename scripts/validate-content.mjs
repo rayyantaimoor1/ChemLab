@@ -445,6 +445,19 @@ for (const chemical of chemicals) {
 }
 
 /* ------------------------------------------------------------------ *
+ * equipment.json — empty until BUILD_PHASE_2.md stage 2.5.2 curates each
+ * instrument's precision, but it must still be valid JSON: for a while it
+ * was a zero-byte file, which nothing noticed because nothing read it.
+ * ------------------------------------------------------------------ */
+
+{
+  const equipmentData = readJson('equipment.json');
+  if (equipmentData !== null && !Array.isArray(equipmentData)) {
+    problems.push('equipment.json: must be a list (an empty one until stage 2.5.2)');
+  }
+}
+
+/* ------------------------------------------------------------------ *
  * Equations balance (stage 2.1.2)
  *
  * An equation the checker cannot read — one written partly in words, such

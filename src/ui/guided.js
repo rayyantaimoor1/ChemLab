@@ -446,7 +446,7 @@ export function mountGuidedSummary({ root, getState, dispatch, subscribe }) {
         ['Volume', `${described.volumeMl} mL`],
         ['Temperature', `${described.temperatureC} °C`],
         ['pH', described.pH === null ? 'not known for this mixture' : described.pH],
-        ['Colour', described.colorName || 'not recorded'],
+        ['Colour', described.colorName || 'not known for this mixture'],
       ];
       for (const [label, value] of rows) {
         const dt = document.createElement('dt');
