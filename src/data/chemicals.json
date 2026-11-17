@@ -1798,6 +1798,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/caso4.svg",
     "description": "What makes water PERMANENTLY hard. Unlike calcium hydrogencarbonate it is not broken down by boiling, so this hardness stays however long the water is heated. Removing it needs a chemical instead — washing soda, which precipitates the calcium out as insoluble calcium carbonate.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry 10 — Water, hardness of water",
     "flameElements": ["calcium"],
     "category": "salt"
@@ -1820,6 +1821,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/h2o2.svg",
     "description": "Colourless liquid that looks exactly like water but slowly falls apart into water and oxygen on its own. Adding a catalyst makes that happen fast enough to watch, which is why it is the standard way of preparing oxygen in a laboratory and the standard demonstration of what a catalyst does.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); PubChem, National Library of Medicine — Hydrogen peroxide",
     "category": "oxide"
   },
@@ -1841,6 +1843,8 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/mno2.svg",
     "description": "Black powder used as a catalyst. It speeds up the decomposition of hydrogen peroxide and of potassium chlorate without being used up itself — weigh it before and after and the mass is unchanged, which is the defining test of a catalyst. It can be filtered out at the end and used again.",
+    "form": "powder",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XI — Reaction Kinetics, catalysis",
     "category": "oxide"
   },
@@ -1862,7 +1866,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/v2o5.svg",
     "description": "Orange-yellow solid, the catalyst used in the Contact process for making sulfuric acid. It works by being reduced and then re-oxidised over and over, so it takes a real chemical part in the reaction and yet ends up exactly as it began — which is what a catalyst does.",
+    "form": "powder",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry, the Contact process",
+    "sources": [
+      { "ref": "Wikipedia — Vanadium(V) oxide (technical grade produced as a powder)",
+        "url": "https://en.wikipedia.org/wiki/Vanadium(V)_oxide",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "oxide"
   },
   {
@@ -1883,6 +1894,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/pt.svg",
     "description": "Very unreactive silvery metal, used as a catalyst in the form of a fine gauze so that as much surface as possible is exposed. Its job in the Ostwald process is to let ammonia and oxygen meet on its surface; it is expensive, but because a catalyst is not used up the same gauze serves for a very long time.",
+    "form": "wire",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry, the Ostwald process",
     "category": "element"
   },
@@ -1925,6 +1937,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/h2so4.svg",
     "description": "Sulfuric acid as it comes out of the Contact process. Chemically the same substance as the bottled sulfuric acid on the shelf; this entry is the form that appears as a reaction product. More of it is made than of any other chemical in the world.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solution density); Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry",
     "category": "acid"
   },
@@ -1946,8 +1959,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/kclo3.svg",
     "description": "White solid rich in oxygen, which it gives up when heated. Heated on its own it needs a fierce flame; with a little manganese(IV) oxide mixed in it releases oxygen at a much lower temperature, which is one of the clearest demonstrations of what a catalyst is for.",
+    "form": "crystals",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Potassium chlorate",
     "flameElements": ["potassium"],
+    "sources": [
+      { "ref": "Wikipedia — Potassium chlorate (appearance: white crystals or powder)",
+        "url": "https://en.wikipedia.org/wiki/Potassium_chlorate",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -1968,6 +1988,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/kcl.svg",
     "description": "White solid left in the tube after potassium chlorate has given up its oxygen. Like any ionic solid it does not conduct while its ions are locked in the crystal, though it does once dissolved or melted.",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Potassium chloride",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -1990,7 +2011,14 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/nh4cl.svg",
     "description": "Fine white solid that appears as a dense smoke when ammonia gas meets hydrogen chloride gas. The smoke is simply a cloud of tiny solid particles hanging in the air — two invisible gases meeting and producing something you can see is what makes the demonstration memorable.",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Ammonium chloride",
+    "sources": [
+      { "ref": "Wikipedia — Ammonium chloride (ammonium-chloride smoke)",
+        "url": "https://en.wikipedia.org/wiki/Ammonium_chloride",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "salt"
   },
   {
@@ -2011,6 +2039,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/nh4oh.svg",
     "description": "Ammonia dissolved in water, with the sharp smell of the gas still on it. It is a WEAK base: only a small fraction of it takes a hydrogen ion from the water at any moment, so it is alkaline but nowhere near as strongly as sodium hydroxide of the same concentration. That difference between weak and strong, rather than dilute and concentrated, is one of the ideas this bottle is here to teach.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XI — Acids and bases, strong and weak",
     "category": "base"
   },
@@ -2032,6 +2061,8 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/na2co3.svg",
     "description": "White solid left behind when sodium hydrogencarbonate is heated — washing soda from baking soda. This is the step that turns the cheaper hydrogencarbonate into the carbonate the Solvay process is built to supply, and the same change that makes a cake rise, since the carbon dioxide driven off is what does the lifting.",
+    "form": "powder",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry, the Solvay process",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -2054,7 +2085,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/nh4no3.svg",
     "description": "White solid used as a nitrogen fertiliser. Dissolving it takes in so much heat from its surroundings that the beaker turns genuinely cold to hold — which is what an instant cold pack for a sports injury contains.",
+    "form": "crystals",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility, enthalpy of solution +25.7 kJ/mol); PubChem, National Library of Medicine — Ammonium nitrate",
+    "sources": [
+      { "ref": "Wikipedia — Ammonium nitrate (a white crystalline salt)",
+        "url": "https://en.wikipedia.org/wiki/Ammonium_nitrate",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -2075,6 +2113,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/nh4no3.svg",
     "description": "Colourless solution left after ammonium nitrate dissolves. Slightly acidic, because it is the salt of a strong acid and a weak base.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Ammonium nitrate",
     "category": "salt"
   },
@@ -2096,6 +2135,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/kno3.svg",
     "description": "White solid, once called saltpetre. Dissolving it cools the water — mole for mole even more than ammonium nitrate does, though ammonium nitrate gets colder in practice because far more of it can dissolve. Its solubility rises steeply with temperature, which makes it the standard salt for showing how a hot saturated solution crystallises as it cools.",
+    "form": "crystals",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility, enthalpy of solution +34.9 kJ/mol); PubChem, National Library of Medicine — Potassium nitrate",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -2118,8 +2158,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/cacl2.svg",
     "description": "White solid with a strong appetite for water — which is why it is used as a drying agent in desiccators. Dissolving it gives out a lot of heat, enough to make the beaker uncomfortably warm, and that is the chemistry inside a reusable hand warmer.",
+    "form": "powder",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility, enthalpy of solution −81.3 kJ/mol); PubChem, National Library of Medicine — Calcium chloride",
     "flameElements": ["calcium"],
+    "sources": [
+      { "ref": "Wikipedia — Calcium chloride (appearance: white hygroscopic powder)",
+        "url": "https://en.wikipedia.org/wiki/Calcium_chloride",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -2140,8 +2187,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/naoh.svg",
     "description": "White pellets that attack skin badly and also pull water straight out of the air, so they are weighed quickly and never handled with bare hands. Dissolving them releases a great deal of heat — enough that dissolving a large amount in a small volume can make the solution boil.",
+    "form": "pellets",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility, enthalpy of solution −44.5 kJ/mol); PubChem, National Library of Medicine — Sodium hydroxide",
     "flameElements": ["sodium"],
+    "sources": [
+      { "ref": "Wikipedia — Sodium hydroxide (sodium hydroxide as pellets in a watchglass)",
+        "url": "https://en.wikipedia.org/wiki/Sodium_hydroxide",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "base"
   },
   {
@@ -2162,8 +2216,16 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/cao.svg",
     "description": "White solid made industrially by roasting limestone in a kiln at about 900 °C. Adding water to it — slaking — is one of the most violently exothermic reactions a school ever demonstrates: the lump cracks apart, steam rises off it, and the water can reach boiling point on its own.",
+    "form": "lump",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XI — Thermochemistry, exothermic reactions",
     "flameElements": ["calcium"],
+    "sources": [
+      { "ref": "Wikipedia — Calcium oxide (appearance: white to pale yellow/brown powder)",
+        "url": "https://en.wikipedia.org/wiki/Calcium_oxide",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "base"
   },
   {
@@ -2184,6 +2246,8 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/cuso4.svg",
     "description": "The white powder left when blue copper(II) sulfate crystals are heated and lose their water. It is the standard chemical test for water: add even a trace of water and the white turns blue at once. The test says water is present, but not that it is pure — distilled water and tap water both turn it blue.",
+    "form": "powder",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry 10 — Water, test for water",
     "flameElements": ["copper"],
     "category": "salt"
@@ -2206,8 +2270,16 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/cuso4_5h2o.svg",
     "description": "The familiar blue crystals. The blue comes entirely from water built into the crystal itself — five molecules of it for every copper sulfate — which is called water of crystallisation. Drive that water off with heat and the blue goes with it, leaving a white powder.",
+    "form": "crystals",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XI — water of crystallisation",
     "flameElements": ["copper"],
+    "sources": [
+      { "ref": "Wikipedia — Copper(II) sulfate (crystals of the pentahydrate)",
+        "url": "https://en.wikipedia.org/wiki/Copper(II)_sulfate",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -2228,7 +2300,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/cocl2.svg",
     "description": "Blue solid, and the other standard test for water: paper soaked in it and dried turns from blue to pink the moment water touches it. Because the change reverses on drying, the same paper can be used again, and the colour is also used in novelty humidity indicators.",
+    "form": "crystals",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry 10 — Water, test for water",
+    "sources": [
+      { "ref": "Wikipedia — Cobalt(II) chloride (blue crystals, anhydrous)",
+        "url": "https://en.wikipedia.org/wiki/Cobalt(II)_chloride",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -2249,7 +2329,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/cocl2_6h2o.svg",
     "description": "The pink hydrated form of cobalt(II) chloride, holding six water molecules in its crystal. Warming it drives the water off and it returns to blue — the pink and blue pair is the clearest demonstration there is that water of crystallisation is what a hydrate's colour depends on.",
+    "form": "crystals",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XI — water of crystallisation",
+    "sources": [
+      { "ref": "Wikipedia — Cobalt(II) chloride (rose red crystals, hexahydrate)",
+        "url": "https://en.wikipedia.org/wiki/Cobalt(II)_chloride",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -2270,6 +2358,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/nh4cl.svg",
     "description": "Colourless solution left after ammonium chloride dissolves, which it does while taking heat in from its surroundings. Acidic rather than neutral, being the salt of a strong acid and a weak base.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility, enthalpy of solution +14.8 kJ/mol); PubChem, National Library of Medicine — Ammonium chloride",
     "category": "salt"
   },
@@ -2291,7 +2380,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/ag.svg",
     "description": "Bright unreactive metal, the best conductor of electricity of any element. It sits at the bottom of the electrochemical series with a standard electrode potential of +0.80 V, which is why nothing common displaces it from solution and why it does not tarnish in air or dissolve in dilute acids. That unreactivity is exactly why it has been used for coins and jewellery for thousands of years.",
+    "form": "wire",
+    "texture": "crystalline",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, standard electrode potential +0.7996 V); Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry",
+    "sources": [
+      { "ref": "Wikipedia — Silver (silver crystals forming on a copper surface in a silver nitrate solution)",
+        "url": "https://en.wikipedia.org/wiki/Silver",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "element"
   },
   {
@@ -2312,7 +2409,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/pb.svg",
     "description": "Soft, heavy, dull grey metal. Its standard electrode potential is −0.13 V, placing it just above hydrogen and below copper — so it displaces copper and silver from their solutions but cannot displace zinc or iron. Lead is a cumulative poison, which is why lead water pipes and leaded petrol were both phased out.",
+    "form": "foil",
+    "texture": "metallic",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, standard electrode potential −0.1262 V); Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry",
+    "sources": [
+      { "ref": "Wikipedia — Lead (appearance: metallic gray)",
+        "url": "https://en.wikipedia.org/wiki/Lead",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "element"
   },
   {

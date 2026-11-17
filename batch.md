@@ -772,7 +772,7 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–3 of 16 done (2026-11-17).** The owner
+**Status: in progress — batches 1–4 of 16 done (2026-11-17).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -935,3 +935,52 @@ All approved by the owner on 2026-11-17, including the new texture word
   but the pages that loaded give only its colour.
 - **lead(II) chloride: crystalline.** LibreTexts gives "white lead
   chloride" with no texture word.
+
+### Batch 4 — chemicals 76–100
+
+All approved by the owner on 2026-11-17.
+
+**Clear (6):**
+- calcium sulfate (permanent hard water)
+- hydrogen peroxide
+- sulfuric acid (from the Contact process)
+- ammonia solution
+- ammonium nitrate solution
+- ammonium chloride solution
+
+**Confirmed by an opened Wikipedia page:**
+- Forms:
+  - sodium hydroxide: pellets
+  - potassium chlorate: crystals
+  - ammonium nitrate: crystals
+  - copper(II) sulfate pentahydrate: crystals
+  - both cobalt(II) chlorides: crystals ("blue crystals" anhydrous,
+    "rose red crystals" hexahydrate)
+  - calcium chloride: powder
+  - vanadium(V) oxide: powder
+- Textures:
+  - silver: crystalline ("silver crystals forming on a copper surface in
+    a silver nitrate solution": the silver tree, not a shiny coating)
+  - lead: metallic
+  - ammonium chloride: fine (the white smoke)
+  - quicklime: fine (powder)
+
+**Not confirmed by an opened page:**
+- Forms:
+  - manganese(IV) oxide: powder. Wikipedia only says "solid"; the app's
+    own description says black powder.
+  - sodium carbonate: powder.
+  - potassium nitrate: crystals.
+  - anhydrous copper(II) sulfate: powder.
+  - quicklime: lump. Wikipedia says powder, but the app's slaking
+    description and the classic demonstration both use lumps.
+  - platinum: wire. The shelf has a gauze, which is woven wire, and
+    "gauze" is not one of the words.
+  - silver: wire.
+  - lead: foil.
+- Textures, all fine:
+  - manganese(IV) oxide, sodium carbonate, anhydrous copper(II) sulfate
+    and potassium chloride, each a powdery residue or precipitate;
+  - the two cobalt(II) chlorides and blue copper(II) sulfate. When one is
+    made by adding water to the dry powder, the powder changes colour but
+    does not grow crystals.
