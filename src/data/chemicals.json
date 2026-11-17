@@ -17,6 +17,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/hcl.svg",
     "description": "Strong monoprotic acid. It dissociates completely in water, so a 1 M solution has a pH close to 0. Reacts with reactive metals to release hydrogen gas, and with carbonates to release carbon dioxide.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solution density); PubChem, National Library of Medicine — Hydrochloric acid",
     "category": "acid"
   },
@@ -38,6 +39,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/hcl.svg",
     "description": "Hydrogen chloride dissolved in water to about twelve times the strength of the dilute acid on the bench. It fumes in air, giving off choking hydrogen chloride, so it is opened only in a fume cupboard. Some reactions need it rather than the dilute acid — preparing chlorine from manganese(IV) oxide is the classic example, because only at this strength is there enough acid and chloride to make the reaction go.",
+    "clarity": "clear",
     "source": "Wikipedia — Hydrochloric acid (density 1.18 g/mL and about 11.6–12.4 M at 36–38% w/w; fumes in air when concentrated), consulted 2026-11-03",
     "category": "acid"
   },
@@ -59,6 +61,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/naoh.svg",
     "description": "Strong base, also called caustic soda. It dissociates completely in water, so a 1 M solution has a pH close to 14. Feels soapy on skin because it attacks skin tissue — it is not safe to touch.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility, solution density); PubChem, National Library of Medicine — Sodium hydroxide",
     "flameElements": ["sodium"],
     "category": "base"
@@ -81,6 +84,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/nacl.svg",
     "description": "Common table salt dissolved in water. The salt of a strong acid and a strong base, so its solution is neutral. Present as separate Na plus and Cl minus ions in solution.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility, solution density); PubChem, National Library of Medicine — Sodium chloride",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -103,6 +107,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/cuso4.svg",
     "description": "Bright blue solution. The colour comes from the hydrated copper(II) ion. Slightly acidic because the copper ion reacts weakly with water. Used to demonstrate displacement by more reactive metals such as zinc and iron.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Copper(II) sulfate",
     "flameElements": ["copper"],
     "category": "salt"
@@ -125,6 +130,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/pbno3.svg",
     "description": "Colourless solution of a soluble lead salt. Lead compounds are cumulative poisons and must never be tasted, touched, or poured down a drain. Used with potassium iodide to show the formation of a bright yellow precipitate.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Lead(II) nitrate",
     "category": "salt"
   },
@@ -146,6 +152,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/ki.svg",
     "description": "Colourless solution of a very soluble iodide salt. The salt of a strong acid and a strong base, so its solution is neutral. Supplies iodide ions for precipitation reactions.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Potassium iodide",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -168,6 +175,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/agno3.svg",
     "description": "Colourless solution used as the standard test for halide ions. Leaves dark brown or black stains on skin and clothing that take days to wear off. Kept in a dark bottle because light slowly decomposes it.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Silver nitrate",
     "category": "salt"
   },
@@ -189,6 +197,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/phenolphthalein.svg",
     "description": "Acid-base indicator supplied as a solution in ethanol. Colourless in acidic and neutral solution, turning pink above about pH 8.3. Used to find the end point of a titration. The solution itself has no meaningful pH of its own, so pH is left empty.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, indicator transition range); PubChem, National Library of Medicine — Phenolphthalein",
     "category": "reagent"
   },
@@ -210,6 +219,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/water.svg",
     "description": "Water with dissolved salts and minerals removed by distillation. Used to make up solutions and to rinse apparatus. Freshly distilled water is neutral at pH 7, though it slowly turns slightly acidic as it absorbs carbon dioxide from the air.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density at 4 °C); PubChem, National Library of Medicine — Water",
     "category": "other"
   },
@@ -231,6 +241,8 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/zn.svg",
     "description": "Bluish-grey metal, supplied as granules or strips. More reactive than copper, so it displaces copper from copper(II) sulfate solution. Reacts with dilute hydrochloric acid to give hydrogen gas. Being a solid metal it has no pH, so pH is left empty.",
+    "form": "granules",
+    "texture": "metallic",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); PubChem, National Library of Medicine — Zinc",
     "category": "element"
   },
@@ -252,6 +264,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/nacl.svg",
     "description": "Ordinary salt dissolved in water, formed when an acid and an alkali neutralise each other. Neutral, colourless, and a good conductor because it is fully split into ions.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Sodium chloride",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -274,6 +287,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/water.svg",
     "description": "Water formed as a product of a reaction, most often when an acid neutralises an alkali. Neutral, and a very poor conductor on its own because it has almost no free ions.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); PubChem, National Library of Medicine — Water",
     "category": "other"
   },
@@ -295,7 +309,14 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/pbi2.svg",
     "description": "Bright yellow solid that appears when a soluble lead salt meets a soluble iodide. It is almost insoluble in cold water, so it drops out of the solution as a precipitate. Being a solid it has no pH of its own, and it does not conduct because its ions are locked in place rather than free to move.",
+    "texture": "crystalline",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Lead(II) iodide",
+    "sources": [
+      { "ref": "Wikipedia — Lead(II) iodide (crystallization: small hexagonal platelets from cold solutions)",
+        "url": "https://en.wikipedia.org/wiki/Lead(II)_iodide",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "salt"
   },
   {
@@ -316,6 +337,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/kno3.svg",
     "description": "Colourless solution left behind when lead nitrate reacts with potassium iodide. The salt of a strong acid and a strong base, so it is neutral, and it conducts well.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Potassium nitrate",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -338,6 +360,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/agcl.svg",
     "description": "White curdy solid formed in the standard test for chloride ions. Almost completely insoluble, so it appears as a precipitate. Left in sunlight it slowly darkens to grey as light breaks it down into silver metal.",
+    "texture": "curdy",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Silver chloride",
     "category": "salt"
   },
@@ -359,6 +382,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/nano3.svg",
     "description": "Colourless solution left in the tube after silver nitrate reacts with sodium chloride. Neutral, fully dissolved, and a good conductor.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Sodium nitrate",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -381,6 +405,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/zncl2.svg",
     "description": "Colourless solution formed when zinc dissolves in hydrochloric acid. Mildly acidic rather than neutral, because the zinc ion reacts weakly with water.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Zinc chloride",
     "category": "salt"
   },
@@ -423,7 +448,14 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/mg.svg",
     "description": "Light silvery metal supplied as a thin ribbon, usually with a dull oxide coating that is cleaned off with sandpaper before use. High in the reactivity series: it fizzes vigorously in dilute acid and displaces less reactive metals such as zinc, iron and copper from their salt solutions. It barely reacts with cold water but reacts readily with steam.",
+    "form": "ribbon",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Reactions of the Group 2 elements with water",
+        "url": "https://www.chemguide.co.uk/inorganic/group2/reacth2o.html",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "element"
   },
   {
@@ -444,7 +476,15 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/fe.svg",
     "description": "Grey magnetic metal supplied as filings so it has plenty of surface area to react. It sits above copper but below zinc in the reactivity series, so it displaces copper from copper(II) sulfate but cannot displace zinc. Its solutions in this lab are iron(II), which are pale green.",
+    "form": "filings",
+    "texture": "metallic",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity",
+    "sources": [
+      { "ref": "Wikipedia — Iron filings",
+        "url": "https://en.wikipedia.org/wiki/Iron_filings",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "element"
   },
   {
@@ -465,6 +505,8 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/cu.svg",
     "description": "Reddish-brown metal. It sits BELOW hydrogen in the reactivity series, which is why it does not react with dilute hydrochloric acid at all and gives off no hydrogen. It is also the metal that appears as a red-brown coating when a more reactive metal is put into copper(II) sulfate solution.",
+    "form": "turnings",
+    "texture": "metallic",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity",
     "flameElements": ["copper"],
     "category": "element"
@@ -487,6 +529,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/ca.svg",
     "description": "Soft silvery-white metal of Group 2. Unlike magnesium it reacts steadily with cold water, giving off hydrogen and leaving a cloudy white suspension of calcium hydroxide. It is stored away from moisture because it reacts with water vapour in the air.",
+    "form": "granules",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity",
     "flameElements": ["calcium"],
     "category": "element"
@@ -509,6 +552,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/znso4.svg",
     "description": "Colourless solution left behind when zinc displaces copper from copper(II) sulfate, or when zinc dissolves in dilute sulfuric acid. The loss of the blue colour is the clearest sign that the copper has left the solution. Mildly acidic because the zinc ion reacts weakly with water.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Zinc sulfate",
     "category": "salt"
   },
@@ -530,6 +574,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/feso4.svg",
     "description": "Pale green solution formed when iron displaces copper from copper(II) sulfate solution. Watching blue turn to pale green is how this displacement is recognised. It is distinctly acidic because the iron(II) ion reacts with water, and it slowly turns yellow-brown in air as iron(II) is oxidised to iron(III).",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Iron(II) sulfate",
     "category": "salt"
   },

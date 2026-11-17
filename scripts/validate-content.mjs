@@ -94,6 +94,10 @@ const SOURCE_COVERS = new Set([
   'temperature', 'pH', 'hazard', 'explanation', 'noReaction',
 ]);
 
+// What a `sources` entry on a CHEMICAL may say it confirms: so far, the
+// three appearance fields of BUILD_UI.md stage UI.3.
+const CHEMICAL_SOURCE_COVERS = new Set(['clarity', 'form', 'texture']);
+
 function nonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
 }
@@ -283,7 +287,7 @@ const reactions = readJson('reactions.json') ?? [];
  * is not evidence of anything, so `covers` is required and must use the
  * fixed words (SOURCE_COVERS, near the top of this file).
  * ------------------------------------------------------------------ */
-function checkSources(id, sources) {
+function checkSources(id, sources, allowed = SOURCE_COVERS) {
   if (!Array.isArray(sources) || sources.length === 0) {
     problems.push(`${id}: sources must be a non-empty array when present`);
     return;
@@ -307,7 +311,7 @@ function checkSources(id, sources) {
       problems.push(`${where}: covers must list what this reference confirms`);
     } else {
       for (const word of entry.covers) {
-        if (!SOURCE_COVERS.has(word)) problems.push(`${where}: "${word}" is not one of ${[...SOURCE_COVERS].join(', ')}`);
+        if (!allowed.has(word)) problems.push(`${where}: "${word}" is not one of ${[...allowed].join(', ')}`);
       }
     }
   });
@@ -404,6 +408,57 @@ for (const chemical of chemicals) {
       `${chemical.id}: category ${JSON.stringify(chemical.category)} is not one the shelf filter offers`
     );
   }
+}
+
+/* ------------------------------------------------------------------ *
+ * clarity, form, texture — what a substance LOOKS like (BUILD_UI.md UI.3)
+ *
+ * The bench draws a milky liquid, a ribbon or a gelatinous floc from
+ * these words, so they are curated like everything else: fixed words
+ * only, and only on the kind of substance they describe. A missing one
+ * is a warning while the UI.3 batches are being worked through.
+ * ------------------------------------------------------------------ */
+
+const APPEARANCE = {
+  // Solutions and liquids: can you see through it?
+  clarity: {
+    words: new Set(['clear', 'cloudy', 'milky', 'opaque']),
+    appliesTo: (c) => c.state === 'aqueous' || c.state === 'liquid',
+    who: 'solutions and liquids',
+  },
+  // Solids on the shelf: how the solid is supplied.
+  form: {
+    words: new Set(['ribbon', 'granules', 'powder', 'chips', 'crystals', 'pellets', 'lump', 'wire', 'filings', 'turnings', 'foil']),
+    appliesTo: (c) => c.state === 'solid' && c.onShelf === true,
+    who: 'solids on the shelf',
+  },
+  // Solids a reaction makes: what the new solid looks like.
+  texture: {
+    words: new Set(['fine', 'crystalline', 'gelatinous', 'curdy', 'metallic']),
+    appliesTo: (c) => c.state === 'solid' && madeByAReaction.has(c.id),
+    who: 'solids a reaction makes',
+  },
+};
+const madeByAReaction = new Set(reactions.flatMap((r) => r.products || []));
+
+for (const [field, rule] of Object.entries(APPEARANCE)) {
+  let missing = 0;
+  for (const chemical of chemicals) {
+    const applies = rule.appliesTo(chemical);
+    if (field in chemical) {
+      if (!applies) problems.push(`${chemical.id}: ${field} is only for ${rule.who}`);
+      else if (!rule.words.has(chemical[field])) {
+        problems.push(`${chemical.id}: ${field} ${JSON.stringify(chemical[field])} is not one of ${[...rule.words].join(', ')}`);
+      }
+    } else if (applies) {
+      missing += 1;
+    }
+  }
+  if (missing > 0) warnings.push(`${missing} ${rule.who} have no ${field} yet (BUILD_UI.md UI.3 batches)`);
+}
+
+for (const chemical of chemicals) {
+  if ('sources' in chemical) checkSources(chemical.id, chemical.sources, CHEMICAL_SOURCE_COVERS);
 }
 
 /* ------------------------------------------------------------------ *

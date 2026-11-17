@@ -769,3 +769,78 @@ simply used up without that being the lesson (bleach with acid or
 ammonia, the cloudy Grignard and hydride reagents) were left alone. The
 golden test failed on exactly those 13 sentences; they were read and
 re-approved, and the review pack's M5, M15 and F5 entries were updated.
+
+## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
+
+**Status: in progress — batch 1 of 16 done (2026-11-17).** The owner
+approved adding three curated fields to `chemicals.json`, so the bench can
+draw what a substance looks like, not just its colour:
+
+| Field | On | Words |
+|---|---|---|
+| `clarity` | every solution and liquid | clear, cloudy, milky, opaque |
+| `form` | every solid on the shelf | ribbon, granules, powder, chips, crystals, pellets, lump, wire, filings, turnings, foil |
+| `texture` | every solid a reaction makes | fine, crystalline, gelatinous, curdy, metallic |
+
+`filings`, `turnings` and `foil` were added to the BUILD_UI.md list
+because the shelf already stocks iron filings and copper turnings.
+
+The validator and `tests/appearance-fields.test.js` reject any other word,
+and any field on the wrong kind of substance. A missing field is only a
+warning until every batch is done. Chemicals may now carry a `sources`
+list like the reactions do, with `covers` set to `clarity`, `form` or
+`texture`.
+
+**How the batches are sourced (approved with batch 1).** Many reference
+and supplier sites refuse automated reading: RSC Education, Fisher,
+Sigma-Aldrich and school suppliers all did. So:
+
+- A **clear** true solution or pure liquid is covered by one general
+  reference rather than a page per chemical. [LibreTexts, Colloids and
+  Suspensions](https://chem.libretexts.org/Bookshelves/Introductory_Chemistry/Chemistry_for_Allied_Health_(Soult)/07%3A_Solids_Liquids_and_Gases/7.06%3A_Colloids_and_Suspensions)
+  (opened 2026-11-17) says the particles of a solution do not scatter
+  light and do not separate on standing.
+- Anything **not clear**, and every **form** and **texture**, needs its
+  own page that actually loaded. That page goes in the chemical's
+  `sources`. Where none loaded, the value is listed below as unconfirmed,
+  for the teacher review.
+
+### Batch 1 — chemicals 1–25
+
+All approved by the owner on 2026-11-17.
+
+- **Clear (17):**
+  - dilute and concentrated hydrochloric acid
+  - sodium hydroxide
+  - both sodium chloride solutions
+  - copper(II) sulfate
+  - lead(II) nitrate
+  - potassium iodide
+  - silver nitrate
+  - phenolphthalein (a solution in ethanol)
+  - distilled water, and water formed by reactions
+  - potassium, sodium and zinc nitrate/chloride/sulfate solutions
+  - iron(II) sulfate
+- **Form, confirmed by an opened page:**
+  - magnesium: ribbon (chemguide, Group 2 with water)
+  - iron: filings (Wikipedia, Iron filings)
+- **Texture, confirmed by an opened page:**
+  - lead(II) iodide: crystalline. Wikipedia says that from cold solutions
+    it forms "many small hexagonal platelets", giving a silky precipitate.
+    The larger "golden rain" flakes come only on recrystallising from hot
+    water.
+
+**Not confirmed by an opened page (for the teacher review):**
+- **Zinc granules and calcium granules.** Supplier listings (Flinn, Frey,
+  Fisher) showed these forms in search results, but the pages refused to
+  load.
+- **Copper turnings.** Only the app's own name and description say so.
+- **Silver chloride: curdy.** This is the usual textbook word, but no page
+  that loaded uses it. chemguide says "white precipitate", and Wikipedia
+  says an "opaque white precipitate" that forms at once.
+- **Zinc, iron and copper: metallic.** Each is made as a metal (reduction,
+  displacement, the blast furnace). Copper displaced from copper sulfate
+  is really a dull pinkish-brown powdery coating. Texture is one word per
+  chemical, so where it is drawn is left to each reaction's curated
+  `solidKind` (deposit).
+- Hydrogen is a gas and takes none of the fields.

@@ -170,6 +170,21 @@ The shelf offers only the drawers it actually stocks, so a category with no
 reagent in it never appears as an empty option. Most complexes, for example,
 are things a student **makes** rather than takes off a shelf.
 
+**Appearance: `clarity`, `form`, `texture`** (BUILD_UI.md stage UI.3, owner
+approved 2026-11-17). These say what a substance looks like, so the bench
+can draw it:
+- `clarity` goes on solutions and liquids: clear, cloudy, milky or opaque.
+- `form` goes on solids on the shelf: ribbon, granules, powder, chips,
+  crystals, pellets, lump, wire, filings, turnings or foil.
+- `texture` goes on solids a reaction makes: fine, crystalline,
+  gelatinous, curdy or metallic.
+
+Like `category` they are **curated, never deduced**. A formula says
+nothing about whether a precipitate is gelatinous. A chemical may carry a
+`sources` list in the same shape as a reaction's, with `covers` set to
+the field it confirms. Progress and the sourcing rule are in `batch.md`
+§15.
+
 ### `reactions.json`
 
 ```json
