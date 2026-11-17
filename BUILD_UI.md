@@ -162,6 +162,44 @@ curved base, and white graduations — and those details are part of what a stud
 ✅ **Check:** each vessel set side by side with a photograph of the real one (an open-licensed
 image, linked in `docs/ui-progress/UI.2/`) is recognisable at a glance; 30 fps with seven vessels.
 
+> **Done (2026-11-17).** What was built:
+>
+> - **`src/ui/glassware.js`** holds every vessel's real shape. The catalogue pages are listed in its
+>   header: DURAN/ISO 3819 beakers, ISO 1773 flasks, 16 × 150 and 25 × 150 mm tubes, the ISO 4788
+>   cylinder, the ISO 385 burette and the DIN 12903 dish.
+>   - Everything is drawn at 1.1 px/mm. The burette and cylinder are shortened, and that is said
+>     in the file.
+>   - It also works out how high a volume of liquid comes in each shape. The printed scale is
+>     placed with that same calculation, so liquid always sits on its own mark.
+>   - A burette reads from the top down.
+>   - The flask's marks spread out up the cone.
+>   - Round-bottom flask and watch glass are drawn ready for later stages. They are not on the tray.
+> - **Two static SVGs per vessel:** the back of the glass, then the liquid, then the walls, rim,
+>   spout, highlight, foot or tap and the printed scale. Nothing is blurred or animated.
+> - **The inside of the glass clips the liquid,** so it fills the round end of a tube and the
+>   cone of a flask. Its surface is an ellipse as wide as the glass at that height, brightest
+>   where it meets the walls.
+> - **App layout takes its sizes from `glassware.js`,** so the layout and the drawing cannot
+>   disagree. A clamped burette's tip now sits inside the flask's neck.
+> - **`tests/glassware.test.js`** checks:
+>   - the liquid sits on every printed mark;
+>   - levels only rise as liquid is added;
+>   - a burette reads 0 when full;
+>   - a flask fills faster up its cone;
+>   - lines are at least 3 px apart;
+>   - the SVG is self-contained.
+> - Fixed in passing: "A evaporating dish" now reads "An evaporating dish" in the notebook and on
+>   the tray.
+>
+> **Decided (2026-11-17): real tube sizes.** The test tube now holds 20 mL and the boiling tube
+> 55 mL, as real 16 × 150 and 25 × 150 mm tubes do. Fourteen guided experiments asked for
+> 10–25 mL in a test tube, which would have overflowed or brimmed a real one. Their test-tube
+> steps now ask for the 1–8 mL a real practical uses, and say so in their instructions. A
+> heated tube stays no more than a third full. A test in `tests/experiments.test.js` keeps it
+> that way. The shelf's auto-pour amount now steps 1 mL at a time up to 5 mL, then 5 mL at a
+> time, so a few mL can be added without opening the amount panel. No reaction, colour or
+> product changed.
+
 ---
 
 ## Stage UI.3 — Liquids and solids
@@ -375,6 +413,7 @@ finds nothing that would teach a student something wrong.
 | Stage | Decision | Answer | Date |
 |---|---|---|---|
 | — | Build the UI realism track with Claude Code instead of Claude Design (Phase 9) | Yes (owner) | 2026-11-10 |
+| UI.2 | Real tube capacities (test tube 20 mL, boiling tube 55 mL) and guided test-tube amounts scaled to 1–8 mL | Yes (owner) | 2026-11-17 |
 | UI.3 | Curated `clarity`, `form` and `texture` in chemicals.json | | |
 | UI.4 | Curated `boilingPointC` / `meltingPointC` | | |
 | UI.5 | Curated `effects.gasRate` | | |

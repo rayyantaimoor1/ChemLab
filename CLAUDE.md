@@ -103,6 +103,7 @@ chemlab/
 │   │   ├── guided.js         ← guided-mode bar, step card and summary
 │   │   ├── effects.js        ← animations (transform and opacity only)
 │   │   ├── appearance.js     ← what a vessel looks like; never disagrees with the notebook
+│   │   ├── glassware.js      ← each vessel's real shape, printed scale, and liquid height
 │   │   ├── molecular.js      ← 2D reaction animations
 │   │   ├── molecular3d.js    ← 3D ball-and-stick viewer
 │   │   ├── notebook-storage.js ← the page's side of the save/load/report bridge

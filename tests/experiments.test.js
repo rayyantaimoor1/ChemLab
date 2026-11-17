@@ -69,7 +69,7 @@ const FAKE = [
 function bench() {
   const containers = new Map([
     ['beaker_1', createContainer({ id: 'beaker_1', name: 'Beaker', type: 'beaker', capacityMl: 250, getChemical: engine.getChemical })],
-    ['tube_1', createContainer({ id: 'tube_1', name: 'Test tube', type: 'test_tube', capacityMl: 50, getChemical: engine.getChemical })],
+    ['tube_1', createContainer({ id: 'tube_1', name: 'Test tube', type: 'test_tube', capacityMl: 20, getChemical: engine.getChemical })],
   ]);
   return { containers, getContainer: (id) => containers.get(id) };
 }
@@ -597,7 +597,31 @@ test('the real experiments never leave a step unreachable because of a wrong rea
   const runner = createExperimentRunner({ experiments: experimentData, getContainer });
   runner.start('exp_precipitation_lead_iodide');
 
-  const result = runner.recordAction({ action: 'addChemical', containerId: 'tube_1', chemicalId: 'ki_0_1m', amountMl: 10 });
+  const result = runner.recordAction({ action: 'addChemical', containerId: 'tube_1', chemicalId: 'ki_0_1m', amountMl: 3 });
   assert.equal(result.judgement, JUDGEMENT.AHEAD, 'adding the iodide first is step 3, not step 1');
   assert.match(result.message, /lead\(II\) nitrate/i);
+});
+
+test('no guided experiment overfills a real-size test tube', () => {
+  // A 16 x 150 mm test tube holds about 20 mL to the brim (src/ui/app.js,
+  // src/ui/glassware.js). Real practicals use a few mL, and a tube that is
+  // heated should be no more than a third full so it cannot boil over.
+  // Only liquids count: the engine lets solids and gases sit in a vessel
+  // without taking up its volume.
+  const TUBE_ML = 20;
+  for (const experiment of experimentData) {
+    let liquid = 0;
+    let heated = false;
+    for (const step of experiment.steps) {
+      const action = step.requiredAction || {};
+      if (action.containerType !== 'test_tube') continue;
+      if (action.type === 'setHeat' && action.level > 0) heated = true;
+      if (action.type !== 'addChemical') continue;
+      const state = engine.getChemical(action.chemicalId)?.state;
+      if (state === 'solid' || state === 'gas') continue;
+      liquid += action.maxAmountMl ?? action.minAmountMl ?? 0;
+    }
+    assert.ok(liquid <= TUBE_ML, `${experiment.id}: up to ${liquid} mL of liquid in a ${TUBE_ML} mL test tube`);
+    if (heated) assert.ok(liquid <= TUBE_ML / 3, `${experiment.id}: a heated tube holds up to ${liquid} mL, over a third full`);
+  }
 });

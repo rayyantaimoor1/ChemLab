@@ -204,8 +204,15 @@ export function mountShelf({ root, getState, dispatch, subscribe }) {
   quickPlus.type = 'button';
   quickPlus.textContent = '+';
   quickPlus.setAttribute('aria-label', 'Increase the auto-pour amount');
-  quickMinus.addEventListener('click', () => dispatch.setQuickAmount(getState().quickAmount - 5));
-  quickPlus.addEventListener('click', () => dispatch.setQuickAmount(getState().quickAmount + 5));
+  // 1 mL at a time up to 5 (a test tube takes 2-5 mL), then 5 mL at a time.
+  quickMinus.addEventListener('click', () => {
+    const now = getState().quickAmount;
+    dispatch.setQuickAmount(now <= 5 ? now - 1 : now - 5);
+  });
+  quickPlus.addEventListener('click', () => {
+    const now = getState().quickAmount;
+    dispatch.setQuickAmount(now < 5 ? now + 1 : now + 5);
+  });
   quickStepper.append(quickMinus, quickValue, quickPlus);
   dispenseRow.appendChild(quickStepper);
 
@@ -405,7 +412,7 @@ export function mountShelf({ root, getState, dispatch, subscribe }) {
       button.disabled = state.vesselLimitReached;
       button.title = state.vesselLimitReached
         ? 'The bench already holds as much glassware as it can.'
-        : `Take a ${label.toLowerCase()} from the tray`;
+        : `Take ${/^[aeiou]/i.test(label) ? 'an' : 'a'} ${label.toLowerCase()} from the tray`;
       button.addEventListener('click', () => dispatch.addVessel(type));
       apparatusGrid.appendChild(button);
     }

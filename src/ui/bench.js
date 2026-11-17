@@ -46,15 +46,9 @@ import {
   setFlameLevel,
 } from './effects.js';
 import { solidLabel } from './appearance.js';
-
-// Which vessel types have a pouring lip - the mockup's VESSEL_TYPES table
-// (spout:true), matching real glassware: the two beakers and the measuring
-// cylinder have one, nothing else does.
-const SPOUTED_VESSEL_TYPES = new Set(['beaker', 'beaker_small', 'cylinder']);
-
-// Which types carry graduation marks, and how tall that type's glass is.
-const GRADUATED_VESSEL_HEIGHT = { cylinder: 152, burette: 200 };
-const GRADUATION_COUNT = 8;
+// The shape of each vessel, its printed scale, and how high a volume of
+// liquid comes inside it (BUILD_UI.md UI.2) - all in glassware.js.
+import { glassGeometry, frontSvg, backSvg, liquidFraction } from './glassware.js';
 
 // A vessel reads "nearly full" at this fraction of its capacity.
 const NEARLY_FULL_FRACTION = 0.9;
@@ -391,7 +385,9 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       kind,
       id,
       el: element,
-      glass: kind === 'vessel' ? vesselEls.get(id)?.glass : null,
+      // What tips while it is held over another vessel: the whole drawing,
+      // so the walls, rim and spout tip with the liquid inside them.
+      glass: kind === 'vessel' ? vesselEls.get(id)?.vessel : null,
       offsetX: point.x - object.position.x,
       offsetY: point.y - object.position.y,
       x: object.position.x,
@@ -601,29 +597,27 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const vessel = document.createElement('div');
     vessel.className = `vessel vessel--${container.type}`;
 
+    // The glass itself, drawn once in SVG to the vessel's real proportions:
+    // the back of the glass behind the liquid, then the liquid, then the
+    // walls, rim, highlight and printed scale in front of it.
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    if (geometry) {
+      vessel.style.width = `${geometry.w}px`;
+      vessel.style.height = `${geometry.h}px`;
+      // How far the inside floor sits above the bottom of the drawing, for
+      // the settled solid and the bubbles that start from it.
+      vessel.style.setProperty('--vessel-base', `${geometry.h - geometry.floorY}px`);
+    }
+
     const vesselShadow = document.createElement('div');
     vesselShadow.className = 'vessel__shadow';
+    if (geometry) {
+      const shadowW = Math.round(geometry.w * 1.25);
+      vesselShadow.style.width = `${shadowW}px`;
+      vesselShadow.style.marginLeft = `${-shadowW / 2}px`;
+    }
     vessel.appendChild(vesselShadow);
-
-    const vesselRim = document.createElement('div');
-    vesselRim.className = 'vessel__rim';
-    vessel.appendChild(vesselRim);
-    if (SPOUTED_VESSEL_TYPES.has(container.type)) {
-      const spout = document.createElement('div');
-      spout.className = 'vessel__spout';
-      vessel.appendChild(spout);
-    }
-
-    const graduatedHeight = GRADUATED_VESSEL_HEIGHT[container.type];
-    if (graduatedHeight) {
-      for (let k = 0; k < GRADUATION_COUNT; k += 1) {
-        const tick = document.createElement('span');
-        tick.className = 'vessel__tick';
-        tick.style.top = `${8 + k * ((graduatedHeight - 20) / (GRADUATION_COUNT - 1))}px`;
-        tick.style.width = k % 2 === 0 ? '12px' : '7px';
-        vessel.appendChild(tick);
-      }
-    }
+    vessel.insertAdjacentHTML('beforeend', backSvg(container.type, container.capacityMl));
 
     const liquidBase = document.createElement('div');
     liquidBase.className = 'vessel__liquid vessel__liquid--base';
@@ -661,8 +655,12 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     const glass = document.createElement('div');
     glass.className = 'vessel__glass';
+    // Everything inside is cut to the INSIDE of the glass, so liquid runs up
+    // the curve of a test tube and into the cone of a flask (UI.2.4).
+    if (geometry) glass.style.clipPath = `path('${geometry.innerPath}')`;
     glass.append(liquidBase, liquidIncoming, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
     vessel.appendChild(glass);
+    vessel.insertAdjacentHTML('beforeend', frontSvg(container.type, container.capacityMl));
     el.appendChild(vessel);
 
     // The floating label beside the glass: name, live readout, colour, and
@@ -813,6 +811,20 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     }
   }
 
+  /**
+   * The liquid's surface is drawn as an ellipse exactly as wide as the
+   * inside of the glass at that height, so its ends meet the walls the way
+   * a real meniscus does - wide across a beaker, narrow in a flask's neck.
+   */
+  function setSurfaceWidth(refs, container) {
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    const y = geometry && geometry.surfaceY(container.volumeMl);
+    if (y === null || y === undefined) return;
+    const width = `${(2 * geometry.innerHalfAt(y)).toFixed(1)}px`;
+    refs.liquidBase.style.setProperty('--surface-w', width);
+    refs.liquidIncoming.style.setProperty('--surface-w', width);
+  }
+
   function updateVessel(refs, container, state) {
     // Never fight a drag in progress - the pointer owns the transform then.
     if (!drag || drag.id !== container.id) {
@@ -884,7 +896,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // glass forever. So whenever nothing is animating, the drawn state is
     // reconciled against the real state here.
     const targetFill = liquidFillFor(container.appearance.colorHex);
-    const targetHeight = `${Math.max(0, Math.min(1, fraction)) * 100}%`;
+    const targetHeight = `${liquidFraction(container.type, container.capacityMl, container.volumeMl) * 100}%`;
+    setSurfaceWidth(refs, container);
     const settling = refs.liquidBase.getAnimations().length > 0
       || refs.liquidIncoming.getAnimations().length > 0;
 
@@ -1165,8 +1178,11 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       crossfadeColor(refs.liquidBase, refs.liquidIncoming, liquidFillFor(after.appearance.colorHex));
     }
 
-    const beforeFraction = before.capacityMl > 0 ? before.volumeMl / before.capacityMl : 0;
-    const afterFraction = after.capacityMl > 0 ? after.volumeMl / after.capacityMl : 0;
+    // Heights, not volumes: in a flask the same 10 mL raises the level far
+    // more near the neck than across the wide base (glassware.js).
+    const beforeFraction = liquidFraction(before.type, before.capacityMl, before.volumeMl);
+    const afterFraction = liquidFraction(after.type, after.capacityMl, after.volumeMl);
+    setSurfaceWidth(refs, after);
     if (beforeFraction !== afterFraction) {
       riseLiquidLevel(refs.liquidBase, beforeFraction, afterFraction);
       refs.liquidIncoming.style.height = refs.liquidBase.style.height;

@@ -39,6 +39,7 @@ import {
 import { formatNotebookForExport } from './notebook-export.js';
 import { buildReportContext, withNote } from './problem-report.js';
 import { appearanceFor, rememberReaction } from './appearance.js';
+import { GLASSWARE } from './glassware.js';
 import { mountMolecularView } from './molecular.js';
 import { mountMolecular3DView } from './molecular3d.js';
 import { mountGuidedBar, mountGuidedStepCard, mountGuidedSummary } from './guided.js';
@@ -66,16 +67,27 @@ import { setReduceAnimation } from './effects.js';
  * rack does not heat at all (0) - it exists only as a tidy resting place for
  * test tubes, the way it would on a real bench.
  */
+// A vessel's drawn size (w, h) comes from its real proportions in
+// glassware.js (BUILD_UI.md UI.2), so the layout and the drawing can never
+// disagree about how big a beaker is.
+const vesselType = (type, label, name, capacityMl) => ({
+  label, name, capacityMl, w: GLASSWARE[type].w, h: GLASSWARE[type].h,
+});
+
 const VESSEL_TYPES = {
-  beaker: { label: 'Beaker 250 mL', name: 'Beaker', capacityMl: 250, w: 110, h: 118 },
-  beaker_small: { label: 'Beaker 100 mL', name: 'Small beaker', capacityMl: 100, w: 82, h: 92 },
-  test_tube: { label: 'Test tube', name: 'Test tube', capacityMl: 50, w: 42, h: 150 },
-  boiling_tube: { label: 'Boiling tube', name: 'Boiling tube', capacityMl: 120, w: 56, h: 166 },
-  flask: { label: 'Conical flask', name: 'Conical flask', capacityMl: 250, w: 116, h: 130 },
-  flask_small: { label: 'Small conical flask', name: 'Small flask', capacityMl: 100, w: 88, h: 104 },
-  cylinder: { label: 'Measuring cylinder', name: 'Measuring cylinder', capacityMl: 100, w: 50, h: 152 },
-  burette: { label: 'Burette 50 mL', name: 'Burette', capacityMl: 50, w: 30, h: 200 },
-  dish: { label: 'Evaporating dish', name: 'Evaporating dish', capacityMl: 60, w: 96, h: 44 },
+  beaker: vesselType('beaker', 'Beaker 250 mL', 'Beaker', 250),
+  beaker_small: vesselType('beaker_small', 'Beaker 100 mL', 'Small beaker', 100),
+  // A 16 × 150 mm test tube holds about 20 mL to the brim and a 25 × 150 mm
+  // boiling tube about 55 mL (catalogue figures in glassware.js), so that
+  // is what they hold here. Guided steps use 1–8 mL in a test tube, the
+  // amounts real practicals use (owner's decision, 2026-11-17).
+  test_tube: vesselType('test_tube', 'Test tube', 'Test tube', 20),
+  boiling_tube: vesselType('boiling_tube', 'Boiling tube', 'Boiling tube', 55),
+  flask: vesselType('flask', 'Conical flask', 'Conical flask', 250),
+  flask_small: vesselType('flask_small', 'Small conical flask', 'Small flask', 100),
+  cylinder: vesselType('cylinder', 'Measuring cylinder', 'Measuring cylinder', 100),
+  burette: vesselType('burette', 'Burette 50 mL', 'Burette', 50),
+  dish: vesselType('dish', 'Evaporating dish', 'Evaporating dish', 60),
 };
 
 // topY is how far below the furniture's own top edge a vessel's BASE sits
@@ -98,6 +110,12 @@ const MAX_EQUIPMENT = 4;
    experiment, is laid out automatically from that experiment's own
    curated apparatus list - see startExperiment's dispatch entry. */
 const BASE_CONTAINER_DEFS = [];
+
+/** "a beaker", "an evaporating dish", "an ice bath" - capitalised to start a sentence. */
+function withArticle(noun, capital = false) {
+  const article = /^[aeiou]/i.test(noun) ? 'an' : 'a';
+  return `${capital ? article[0].toUpperCase() + article.slice(1) : article} ${noun}`;
+}
 
 function buildContainer(def) {
   return createContainer({ ...def, getChemical: engine.getChemical });
@@ -264,7 +282,7 @@ function addVessel(type) {
   selectedVesselId = id;
   selectedEquipmentId = null;
   notebook.logAction({
-    text: `A ${def.name.toLowerCase()} was taken from the apparatus tray and put on the bench.`,
+    text: `${withArticle(def.name.toLowerCase(), true)} was taken from the apparatus tray and put on the bench.`,
     containerId: id,
     action: 'addVessel',
   });
@@ -287,7 +305,7 @@ function addEquipment(kind) {
   selectedEquipmentId = id;
   selectedVesselId = null;
   notebook.logAction({
-    text: `A ${def.name.toLowerCase()} was set up on the bench.`,
+    text: `${withArticle(def.name.toLowerCase(), true)} was set up on the bench.`,
     containerId: null,
     action: 'addEquipment',
   });
@@ -386,7 +404,9 @@ function clampOver(buretteId, targetId) {
 
   positionByContainer.set(buretteId, {
     x: Math.round(targetAt.x + (targetDef.w - buretteDef.w) / 2),
-    y: Math.max(4, Math.round(targetAt.y - buretteDef.h - 26)),
+    // The tip goes just inside the mouth, as in a real titration, so no
+    // drop can miss the flask.
+    y: Math.max(4, Math.round(targetAt.y - buretteDef.h + 8)),
   });
   clampedOverByContainer.set(buretteId, targetId);
   standOnByContainer.delete(buretteId);
