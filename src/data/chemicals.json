@@ -2438,6 +2438,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/cuno3.svg",
     "description": "Blue solution formed when copper displaces silver from silver nitrate. Watching a colourless solution turn blue while silver crystals grow on the copper is the clearest sign that the copper is dissolving as it pushes the silver out.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Copper(II) nitrate",
     "flameElements": ["copper"],
     "category": "salt"
@@ -2460,6 +2461,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/znno3.svg",
     "description": "Colourless solution left when zinc displaces a less reactive metal from its nitrate. Mildly acidic, because the zinc ion reacts weakly with water.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Zinc nitrate",
     "category": "salt"
   },
@@ -2481,7 +2483,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/al2o3.svg",
     "description": "White solid, the ore aluminium is extracted from. It melts at over 2000 °C, which made aluminium a precious metal until it was discovered that dissolving the oxide in molten cryolite brings the working temperature down to about 950 °C. Aluminium is far too reactive to be extracted by heating with carbon the way iron is, so electrolysis is the only route.",
+    "form": "powder",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, melting point); Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, extraction of aluminium",
+    "sources": [
+      { "ref": "Wikipedia — Aluminium oxide (aluminium oxide in its powdered form)",
+        "url": "https://en.wikipedia.org/wiki/Aluminium_oxide",
+        "checked": "2026-11-17",
+        "covers": ["form","texture"] }
+    ],
     "category": "oxide"
   },
   {
@@ -2502,7 +2512,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/al.svg",
     "description": "Light silvery metal produced by electrolysing molten aluminium oxide. Its electrode potential of −1.66 V says it should be violently reactive, and yet aluminium windows and pans last for years — because it grows an unbroken skin of oxide the instant it meets air, and that layer seals the metal underneath. Rust, by contrast, flakes off and leaves the iron exposed.",
+    "texture": "metallic",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, standard electrode potential −1.662 V); Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry",
+    "sources": [
+      { "ref": "Wikipedia — Aluminium (appearance: silvery gray metallic)",
+        "url": "https://en.wikipedia.org/wiki/Aluminium",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "element"
   },
   {
@@ -2523,8 +2540,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/li.svg",
     "description": "The first alkali metal, and the least dense solid element there is — at 0.53 g/mL it floats high on water. It is the least reactive of the alkali metals, which is why it fizzes gently in water where sodium melts and potassium catches fire. It is also the only one of the three that burns in air to the simple oxide.",
+    "form": "lump",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements",
     "flameElements": ["lithium"],
+    "sources": [
+      { "ref": "Wikipedia — Lithium (chunks of pure lithium metal)",
+        "url": "https://en.wikipedia.org/wiki/Lithium",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "element"
   },
   {
@@ -2545,6 +2569,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/k.svg",
     "description": "Soft silvery metal, stored under oil like sodium and even more reactive. Its outer electron is further from the nucleus than sodium's and more easily lost, which is why reactivity increases down Group I rather than decreasing. In water it reacts so fast that the hydrogen produced catches fire, burning with the lilac flame that identifies potassium.",
+    "form": "lump",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements",
     "flameElements": ["potassium"],
     "category": "element"
@@ -2567,6 +2592,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/lioh.svg",
     "description": "Strongly alkaline solution left after lithium reacts with water. It is the least soluble of the Group I hydroxides — the odd one out in a group whose hydroxides otherwise dissolve freely.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Lithium hydroxide",
     "flameElements": ["lithium"],
     "category": "base"
@@ -2589,6 +2615,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/koh.svg",
     "description": "Strongly alkaline solution left after potassium reacts with water, also called caustic potash. Chemically it behaves almost exactly like sodium hydroxide, which is what you would expect from the element directly below sodium in the same group.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Potassium hydroxide",
     "flameElements": ["potassium"],
     "category": "base"
@@ -2611,6 +2638,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/li2o.svg",
     "description": "White solid, and the point of interest is that it exists at all: lithium is the ONLY alkali metal that burns in air to the plain oxide. Sodium gives the peroxide and potassium the superoxide instead, so a group whose members are supposed to behave alike parts company the moment they meet oxygen.",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Group IA, reactions with oxygen",
     "flameElements": ["lithium"],
     "category": "oxide"
@@ -2633,6 +2661,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/na2o2.svg",
     "description": "Pale yellow solid containing the peroxide ion, with its oxygen–oxygen bond intact. Burning sodium in plenty of air gives this rather than the simple oxide, which is the first sign that the alkali metals stop behaving identically as you go down the group. It is used in submarines and breathing apparatus because it reacts with exhaled carbon dioxide and gives back oxygen.",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Group IA, reactions with oxygen",
     "flameElements": ["sodium"],
     "category": "oxide"
@@ -2655,7 +2684,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/mgco3.svg",
     "description": "White insoluble solid. It decomposes on heating at about 350 °C — low enough to do in a school test tube, unlike calcium carbonate which needs a kiln. That difference is the Group II trend in one experiment: thermal stability of the carbonates increases going down the group.",
+    "form": "powder",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility, decomposition temperature); Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA, thermal stability of carbonates",
+    "sources": [
+      { "ref": "Wikipedia — Magnesium carbonate (powdered magnesium carbonate)",
+        "url": "https://en.wikipedia.org/wiki/Magnesium_carbonate",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -2676,8 +2713,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/baco3.svg",
     "description": "White insoluble solid, the least soluble and the most thermally stable of the Group II carbonates — it needs above 1300 °C to decompose, against magnesium carbonate's 350 °C. Both trends run the same way down the group, which is the pattern this part of the syllabus exists to establish.",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility, decomposition temperature); Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA",
     "flameElements": ["barium"],
+    "sources": [
+      { "ref": "Wikipedia — Barium carbonate (powder of barium carbonate)",
+        "url": "https://en.wikipedia.org/wiki/Barium_carbonate",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "salt"
   },
   {
@@ -2698,8 +2742,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/nabr.svg",
     "description": "White solid, indistinguishable by eye from sodium chloride. What separates them is how they behave with concentrated sulfuric acid: the chloride simply gives off hydrogen chloride, while the bromide is oxidised and orange bromine appears. That difference is the reducing power of the halide ion showing itself.",
+    "form": "powder",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reactions of halides",
     "flameElements": ["sodium"],
+    "sources": [
+      { "ref": "Wikipedia — Sodium bromide (appearance: white powder)",
+        "url": "https://en.wikipedia.org/wiki/Sodium_bromide",
+        "checked": "2026-11-17",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -2720,6 +2771,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/nai.svg",
     "description": "White solid, and the strongest reducing agent of the three common halides. With concentrated sulfuric acid it does not stop at giving off hydrogen iodide — it drives the sulfur all the way down to hydrogen sulfide, with its unmistakable rotten-egg smell, and leaves purple iodine behind.",
+    "form": "powder",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reactions of halides",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -2742,6 +2794,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/naclo.svg",
     "description": "The active ingredient of household bleach, made by passing chlorine into cold sodium hydroxide. It is alkaline, not acidic, which surprises people. It is also the reason two warnings are printed on every bottle: mixed with an acid it releases chlorine, and mixed with an ammonia-based cleaner it releases chloramine. Both are genuinely dangerous and both happen in ordinary kitchens.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reactions of chlorine with alkalis",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -2764,6 +2817,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/mncl2.svg",
     "description": "Very pale pink solution left in the flask after manganese(IV) oxide has been used to make chlorine. The manganese has been reduced from the +4 state to +2, which is the other half of the redox: the oxide oxidises the chloride to chlorine and is itself reduced.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Manganese(II) chloride",
     "category": "salt"
   },
@@ -2785,6 +2839,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/nahso4.svg",
     "description": "The salt left when sulfuric acid gives away only one of its two hydrogens. It is an ACID salt: the hydrogen it still holds makes its solution genuinely acidic at about pH 1, which is a useful reminder that being a salt does not mean being neutral.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Sodium bisulfate",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -2849,6 +2904,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/agnh3.svg",
     "description": "The colourless solution formed when silver chloride dissolves in ammonia. Two ammonia molecules attach themselves to the silver ion, holding it in solution as a complex ion — which is how a precipitate that would not dissolve in water can be made to disappear. Silver bromide needs concentrated ammonia to do the same, and silver iodide will not dissolve at all.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, distinguishing the silver halides",
     "category": "complex"
   },
@@ -2891,6 +2947,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/kscn.svg",
     "description": "Colourless solution kept for one job: it is the most sensitive test there is for the iron(III) ion. Even a trace turns it blood red, which makes it useful for detecting rust in water. It is also the standard demonstration of an equilibrium shifting, because adding more of either reactant deepens the colour visibly.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, complex formation",
     "flameElements": ["potassium"],
     "category": "reagent"
@@ -2913,6 +2970,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/fescn.svg",
     "description": "The intense blood-red complex formed when a thiocyanate ion attaches to an iron(III) ion. The colour is far stronger than either starting solution, which is what makes the test so sensitive. Colour this deep from a complex ion is characteristic of the transition metals and is the reason they are the coloured part of the periodic table.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, complex ions and colour",
     "category": "complex"
   },
@@ -2934,6 +2992,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/cunh3.svg",
     "description": "The deep royal blue formed when four ammonia molecules replace the water around a copper(II) ion. Set it against ordinary copper(II) sulfate's pale blue and the difference is startling — same metal, same oxidation state, different ligands, completely different colour. That is the clearest evidence there is that in a transition metal complex the colour belongs to the whole ion, not to the metal alone.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, complex formation and ligand exchange",
     "flameElements": ["copper"],
     "category": "complex"
@@ -2956,6 +3015,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/k2cr2o7.svg",
     "description": "Bright orange solution and a powerful oxidising agent in acid, where the chromium is in its +6 state. Add alkali and it turns yellow as it converts to the chromate — the same chromium, a different ion, a different colour. Chromium(VI) compounds are toxic and cause cancer, so they are handled with care and are being phased out of industry.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, oxidation states of chromium",
     "flameElements": ["potassium"],
     "category": "salt"

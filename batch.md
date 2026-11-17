@@ -772,7 +772,7 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–4 of 16 done (2026-11-17).** The owner
+**Status: in progress — batches 1–5 of 16 done (2026-11-17).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -984,3 +984,37 @@ All approved by the owner on 2026-11-17.
   - the two cobalt(II) chlorides and blue copper(II) sulfate. When one is
     made by adding water to the dry powder, the powder changes colour but
     does not grow crystals.
+
+### Batch 5 — chemicals 101–125
+
+All approved by the owner on 2026-11-17.
+
+**Clear (12):**
+- copper(II) nitrate and zinc nitrate
+- lithium hydroxide and potassium hydroxide
+- bleach (sodium hypochlorite)
+- manganese(II) chloride
+- sodium hydrogensulfate
+- diamminesilver(I)
+- potassium thiocyanate
+- thiocyanatoiron(III): intensely coloured, but a true solution
+- tetraamminecopper(II)
+- potassium dichromate
+
+**Confirmed by an opened Wikipedia page:**
+- aluminium oxide: powder, and fine when a reaction makes it ("in its
+  powdered form")
+- lithium: lump ("chunks of pure lithium metal")
+- magnesium carbonate: powder
+- sodium bromide: powder
+- aluminium made by electrolysis: metallic
+- barium carbonate: fine ("powder of barium carbonate")
+
+**Not confirmed by an opened page:**
+- potassium: lump. The page shows potassium "pearls" in oil; "pieces"
+  appeared only in a summary.
+- sodium iodide: powder. Wikipedia says only "white solid"; this matches
+  sodium bromide.
+- magnesium carbonate made as a precipitate: fine.
+- lithium oxide and sodium peroxide: fine. Both are "white solid" only,
+  the powdery products of burning the metals.
