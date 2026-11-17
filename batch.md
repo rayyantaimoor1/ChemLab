@@ -772,7 +772,7 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batch 1 of 16 done (2026-11-17).** The owner
+**Status: in progress — batches 1–2 of 16 done (2026-11-17).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -844,3 +844,55 @@ All approved by the owner on 2026-11-17.
   chemical, so where it is drawn is left to each reaction's curated
   `solidKind` (deposit).
 - Hydrogen is a gas and takes none of the fields.
+
+### Batch 2 — chemicals 26–50
+
+All approved by the owner on 2026-11-17.
+
+**Clear (14):**
+- magnesium sulfate and magnesium chloride
+- iron(II) chloride
+- limewater. It is clear until carbon dioxide turns it milky, and that
+  milkiness is the calcium carbonate it precipitates.
+- sulfuric and nitric acids
+- sodium carbonate
+- ammonium chloride
+- calcium chloride
+- sodium sulfate
+- copper(II) chloride
+- barium chloride
+- potassium bromide
+- iron(III) chloride
+
+**Confirmed by an opened page:**
+
+Forms:
+- magnesium oxide, sodium hydrogencarbonate and copper(II) oxide: powder
+
+Textures:
+- copper(II) hydroxide: gelatinous. Curriculum Visions: "gelatinous
+  light blue copper hydroxide".
+- iron(II) hydroxide: gelatinous. LibreTexts, Characteristic Reactions of
+  Iron: "white gelatinous Fe(OH)₂".
+- barium sulfate: fine. Wikipedia: "fine barium sulfate powder".
+- calcium carbonate: fine. Wikipedia: "fine white powder". The limewater
+  test's milkiness is this precipitate.
+- magnesium oxide: fine. chemguide calls it the "white ash" of burning
+  magnesium.
+- copper(II) oxide and sodium hydrogencarbonate: fine (powder).
+
+**Not confirmed by an opened page:**
+- calcium carbonate: chips. The shelf sells it as marble chips, but no
+  page that loaded mentions lab marble chips.
+- silver bromide and silver iodide: curdy. No page that loaded gives a
+  texture word for either, so they were kept consistent with silver
+  chloride.
+
+**Noted, not changed:** chemguide says the white ash from burning
+magnesium in **air** is magnesium oxide with some magnesium nitride. The
+app's rule gives oxide only, which is a common simplification. Left for
+the teacher review.
+
+**For later batches:** the LibreTexts index of qualitative-analysis pages,
+"Characteristic Reactions of Select Metal Ions", loads reliably and
+describes precipitates.

@@ -596,6 +596,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/mgso4.svg",
     "description": "Colourless solution formed when magnesium displaces copper from copper(II) sulfate. Known outside the laboratory as Epsom salt. Very close to neutral, just slightly on the acidic side, because magnesium hydroxide is only a weak base.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Magnesium sulfate",
     "category": "salt"
   },
@@ -617,6 +618,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/mgcl2.svg",
     "description": "Colourless solution left when magnesium dissolves in dilute hydrochloric acid. Slightly acidic rather than neutral, because magnesium hydroxide is a weak base while hydrochloric acid is strong.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Magnesium chloride",
     "category": "salt"
   },
@@ -638,6 +640,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/fecl2.svg",
     "description": "Pale green solution formed when iron dissolves slowly in dilute hydrochloric acid. Acidic because the iron(II) ion reacts with water. Like iron(II) sulfate it is slowly oxidised in air towards yellow-brown iron(III).",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Iron(II) chloride",
     "category": "salt"
   },
@@ -659,6 +662,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/caoh2.svg",
     "description": "The saturated solution of calcium hydroxide, known as limewater. Strongly alkaline even though very little of it dissolves. Because so little dissolves, any excess stays as a white cloudiness rather than going into solution. Limewater turning milky is the standard test for carbon dioxide.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Calcium hydroxide",
     "flameElements": ["calcium"],
     "category": "reagent"
@@ -681,7 +685,19 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/mgo.svg",
     "description": "White powdery solid formed when magnesium burns in air or reacts with steam. It is a basic oxide: the little that dissolves makes the water alkaline, and it neutralises acids to give a salt and water. Being an insoluble solid with its ions locked in place, it does not conduct electricity.",
+    "form": "powder",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Magnesium oxide",
+    "sources": [
+      { "ref": "Wikipedia — Magnesium oxide (appearance: white powder)",
+        "url": "https://en.wikipedia.org/wiki/Magnesium_oxide",
+        "checked": "2026-11-17",
+        "covers": ["form","texture"] },
+      { "ref": "Jim Clark, chemguide — Reactions of the Group 2 elements with oxygen (the white ash of burning magnesium)",
+        "url": "https://www.chemguide.co.uk/inorganic/group2/reacto2.html",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "oxide"
   },
   {
@@ -702,6 +718,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/h2so4.svg",
     "description": "Strong dibasic acid — each molecule can give away two hydrogen ions, so it neutralises twice as much alkali as the same amount of hydrochloric acid. Its salts are the sulfates. Concentrated sulfuric acid also removes water from other substances, which is why it chars paper and sugar, but the dilute acid used here behaves as an ordinary strong acid.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solution density); PubChem, National Library of Medicine — Sulfuric acid",
     "category": "acid"
   },
@@ -723,6 +740,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/hno3.svg",
     "description": "Strong monobasic acid whose salts are the nitrates, all of which are soluble in water. It is also an oxidising agent, which is why its reaction with metals usually gives oxides of nitrogen rather than hydrogen. It stains skin and fingernails yellow.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solution density); PubChem, National Library of Medicine — Nitric acid",
     "category": "acid"
   },
@@ -744,6 +762,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/na2co3.svg",
     "description": "Also called washing soda. The salt of a strong base and a weak acid, so its solution is distinctly alkaline even though it contains no hydroxide in the bottle. Fizzes with any acid, giving off carbon dioxide.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Sodium carbonate",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -766,8 +785,20 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/caco3.svg",
     "description": "White insoluble solid found in nature as marble, limestone and chalk, and used in the laboratory as chips because they react at a steady, watchable rate. Fizzes with acids to give carbon dioxide. It is also the white solid that makes limewater turn milky in the test for carbon dioxide.",
+    "form": "chips",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Calcium carbonate",
     "flameElements": ["calcium"],
+    "sources": [
+      { "ref": "Wikipedia — Calcium carbonate (appearance: fine white powder)",
+        "url": "https://en.wikipedia.org/wiki/Calcium_carbonate",
+        "checked": "2026-11-17",
+        "covers": ["texture"] },
+      { "ref": "Wikipedia — Calcium hydroxide (limewater takes on a milky appearance with carbon dioxide)",
+        "url": "https://en.wikipedia.org/wiki/Calcium_hydroxide",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "salt"
   },
   {
@@ -788,8 +819,16 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/nahco3.svg",
     "description": "White powder known outside the laboratory as baking soda. It is an acid salt: the carbonic acid it came from gave away only one of its two hydrogens. Fizzes with acids to give carbon dioxide, and unlike most acid–base reactions that combination takes heat IN rather than giving it out.",
+    "form": "powder",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Sodium bicarbonate",
     "flameElements": ["sodium"],
+    "sources": [
+      { "ref": "Wikipedia — Sodium bicarbonate (crystalline but often appears as a fine powder)",
+        "url": "https://en.wikipedia.org/wiki/Sodium_bicarbonate",
+        "checked": "2026-11-17",
+        "covers": ["form","texture"] }
+    ],
     "category": "salt"
   },
   {
@@ -810,8 +849,16 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/cuo.svg",
     "description": "Black insoluble powder and a typical basic oxide: it will not dissolve in water, but it dissolves readily in an acid to give a salt and water. Watching black powder disappear into a blue-green solution is one of the clearest demonstrations that a metal oxide neutralises an acid.",
+    "form": "powder",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); PubChem, National Library of Medicine — Copper(II) oxide",
     "flameElements": ["copper"],
+    "sources": [
+      { "ref": "Wikipedia — Copper(II) oxide (black to brown powder)",
+        "url": "https://en.wikipedia.org/wiki/Copper(II)_oxide",
+        "checked": "2026-11-17",
+        "covers": ["form","texture"] }
+    ],
     "category": "oxide"
   },
   {
@@ -832,6 +879,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/nh4cl.svg",
     "description": "The salt of a strong acid and a weak base, so its solution is acidic rather than neutral. Warming it with any alkali releases ammonia gas, which is the standard laboratory test for an ammonium salt.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Ammonium chloride",
     "category": "salt"
   },
@@ -895,6 +943,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/cacl2.svg",
     "description": "Colourless solution left when marble chips or any other calcium carbonate dissolve in hydrochloric acid. Essentially neutral, being the salt of a strong acid and a strong base. It absorbs water strongly, which is why the dry solid is used to keep other chemicals dry.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Calcium chloride",
     "flameElements": ["calcium"],
     "category": "salt"
@@ -917,6 +966,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/na2so4.svg",
     "description": "Colourless neutral solution formed when sodium hydroxide is neutralised by sulfuric acid. Being the salt of a strong acid and a strong base it is neutral, which is why the end point of that titration sits at pH 7.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Sodium sulfate",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -939,6 +989,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/cucl2.svg",
     "description": "Blue-green solution formed when black copper(II) oxide dissolves in hydrochloric acid. The colour comes from the copper(II) ion, and it is closer to green than copper(II) sulfate's pure blue because the chloride ions also attach to the copper. Acidic, because the copper(II) ion reacts with water.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Copper(II) chloride",
     "flameElements": ["copper"],
     "category": "salt"
@@ -961,6 +1012,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/bacl2.svg",
     "description": "Colourless neutral solution kept for one job above all others: it is the reagent used to test for the sulfate ion, because barium sulfate is one of the most insoluble salts there is. Soluble barium salts are poisonous and must never be tasted or left where they can be mistaken for something harmless.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Barium chloride",
     "flameElements": ["barium"],
     "category": "salt"
@@ -983,6 +1035,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/kbr.svg",
     "description": "Colourless neutral solution of a soluble bromide, the salt of a strong acid and a strong base. Used alongside a chloride and an iodide to show that silver nitrate tells the three halides apart by the colour of the precipitate each one gives.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Potassium bromide",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -1005,6 +1058,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/fecl3.svg",
     "description": "Yellow-brown solution containing iron in its higher oxidation state, iron(III). Distinctly acidic even though it is a salt, because the small, highly charged Fe³⁺ ion pulls hard on water molecules and releases hydrogen ions. Its colour alone helps tell it from the pale green iron(II) solutions.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Iron(III) chloride",
     "category": "salt"
   },
@@ -1026,8 +1080,15 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/baso4.svg",
     "description": "Dense white solid, and one of the most insoluble salts known — which is exactly why the white precipitate it forms is a reliable test for the sulfate ion. Its insolubility is also why it is safe to swallow as a barium meal for X-rays even though soluble barium salts are poisonous: it passes straight through without dissolving.",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Barium sulfate",
     "flameElements": ["barium"],
+    "sources": [
+      { "ref": "Wikipedia — Barium sulfate (fine barium sulfate powder)",
+        "url": "https://en.wikipedia.org/wiki/Barium_sulfate",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "salt"
   },
   {
@@ -1048,6 +1109,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/agi.svg",
     "description": "Yellow solid that drops out when silver nitrate meets any soluble iodide. It is the most strongly coloured of the three silver halides, and the least soluble, so the yellow appears immediately and thickly. Like the other silver halides it darkens in light as silver metal forms.",
+    "texture": "curdy",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Silver iodide",
     "category": "salt"
   },
@@ -1069,6 +1131,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/agbr.svg",
     "description": "Cream-coloured solid formed when silver nitrate meets a soluble bromide. Its colour sits deliberately between the white of silver chloride and the yellow of silver iodide, which is what makes the three halide tests distinguishable. It is very sensitive to light, and was the light-sensitive material in photographic film.",
+    "texture": "curdy",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Silver bromide",
     "category": "salt"
   },
@@ -1090,8 +1153,15 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/cuoh2.svg",
     "description": "Pale blue jelly-like precipitate formed when an alkali is added to any copper(II) solution. Its distinctive blue is the standard way of identifying the copper(II) ion. On warming it breaks down to black copper(II) oxide, losing water.",
+    "texture": "gelatinous",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); PubChem, National Library of Medicine — Copper(II) hydroxide",
     "flameElements": ["copper"],
+    "sources": [
+      { "ref": "Curriculum Visions — Copper: gelatinous light blue copper hydroxide",
+        "url": "https://curriculumvisions.com/academy/elements/topicElements05Cu/files/basic-html/page27.html",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "base"
   },
   {
@@ -1112,7 +1182,14 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/feoh2.svg",
     "description": "Dull green precipitate formed when an alkali is added to an iron(II) solution — the standard test for the iron(II) ion. Left standing in air it slowly turns brown at the surface as oxygen converts iron(II) to iron(III), which is a good demonstration of how easily iron changes between its two oxidation states.",
+    "texture": "gelatinous",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); PubChem, National Library of Medicine — Iron(II) hydroxide",
+    "sources": [
+      { "ref": "LibreTexts — Characteristic Reactions of Iron (white gelatinous Fe(OH)2)",
+        "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Supplemental_Modules_(Analytical_Chemistry)/Qualitative_Analysis/Characteristic_Reactions_of_Select_Metal_Ions/Characteristic_Reactions_of_Iron__(Fe)",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "base"
   },
   {
