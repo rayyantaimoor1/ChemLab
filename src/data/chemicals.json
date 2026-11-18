@@ -7769,8 +7769,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/baso3.svg",
     "description": "A white precipitate that is, to the eye, indistinguishable from barium sulfate — same colour, same texture, same refusal to dissolve in water. Everything hangs on what happens next: this one dissolves in dilute acid and gives off sulfur dioxide, and barium sulfate does neither. Two identical-looking solids telling you two different things is the reason qualitative analysis has confirmatory steps at all.",
+    "texture": "fine",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — sulfite; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "flameElements": ["barium"],
+    "sources": [
+      { "ref": "Wikipedia — Barium sulfite (a white powder)",
+        "url": "https://en.wikipedia.org/wiki/Barium_sulfite",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "salt"
   },
   {
@@ -7791,6 +7798,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/h2so4_conc.svg",
     "description": "An oily, dense liquid that behaves quite differently from the dilute acid on the bench: it is a dehydrating agent and an oxidiser as much as it is an acid. In the brown ring test its job is not to donate protons but to release nitric acid from the nitrate and provide a dense layer for the ring to form on. Mixing it with water releases a great deal of heat, which is why it is added to water and never the reverse.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — reagents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "acid"
   },
@@ -7812,6 +7820,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/brown_ring.svg",
     "description": "The brown ring itself. Nitrogen monoxide, made from the nitrate by the concentrated acid, replaces one water molecule on an iron(II) complex and the result is intensely brown. It forms only at the boundary between the two liquid layers — where the nitrogen monoxide is being produced and the iron(II) is still unoxidised — which is why the test gives a ring rather than a uniformly coloured tube.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the brown ring test for nitrate",
     "category": "complex"
   },
@@ -7833,6 +7842,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/na3po4.svg",
     "description": "A soluble phosphate, and strongly alkaline for a salt of a moderate acid because the phosphate ion pulls protons off water readily. Phosphate is the anion behind fertiliser, bone and the backbone of DNA, so identifying it matters well beyond the analysis bench.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the phosphate ion; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -7855,6 +7865,7 @@
     "levels": ["bs"],
     "structure": "molecules/nh4_molybdate.svg",
     "description": "The reagent for phosphate, made up in nitric acid because the test only works in strongly acidic conditions. Molybdenum is an unusual element to meet at this level, and it earns its place here by forming an enormous cage-like ion around a single phosphate — twelve molybdenum atoms to one phosphorus — which is intensely yellow and barely soluble.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — ammonium molybdate reagent",
     "category": "reagent"
   },
@@ -7876,7 +7887,14 @@
     "levels": ["bs"],
     "structure": "molecules/phosphomolybdate.svg",
     "description": "A startling canary yellow precipitate, and one of the largest ions a student is likely to meet: twelve molybdenum atoms and forty oxygens wrapped around a single phosphate at the centre. The colour is so distinctive and the solubility so low that this remains the standard confirmation for phosphate more than a century after it was first used.",
+    "texture": "crystalline",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — confirmation of phosphate",
+    "sources": [
+      { "ref": "Wikipedia — Ammonium phosphomolybdate (a dark yellow fine crystal)",
+        "url": "https://en.wikipedia.org/wiki/Ammonium_phosphomolybdate",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "complex"
   },
   {
@@ -7897,7 +7915,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/nioh2.svg",
     "description": "A pale green precipitate, and in a qualitative analysis it is usually an unwelcome one — nickel belongs in Group IV and has no business appearing when Group III is being separated. Seeing it means the ammonium chloride was left out. It is worth precipitating deliberately once, though, precisely so the mistake is recognisable when it happens by accident.",
+    "texture": "gelatinous",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — nickel; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "LibreTexts — Characteristic Reactions of Nickel Ions (green gelatinous Ni(OH)2)",
+        "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Supplemental_Modules_(Analytical_Chemistry)/Qualitative_Analysis/Characteristic_Reactions_of_Select_Metal_Ions/Characteristic_Reactions_of_Nickel_Ions_(Ni)",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "base"
   },
   {
@@ -7918,7 +7943,14 @@
     "levels": ["bs"],
     "structure": "molecules/mns.svg",
     "description": "The odd one out among the sulfides of the analysis scheme, because almost all of them are black and this one is a soft pinkish buff. That makes manganese one of the easiest cations in the whole table to spot — the colour alone is close to a confirmation, where the black sulfides all have to be told apart by further tests.",
+    "texture": "fine",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — manganese; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Manganese(II) sulfide (red, green or brown powder)",
+        "url": "https://en.wikipedia.org/wiki/Manganese(II)_sulfide",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "salt"
   },
   {
@@ -7939,6 +7971,7 @@
     "levels": ["bs"],
     "structure": "molecules/nis.svg",
     "description": "A black precipitate, and black is the least helpful colour in qualitative analysis because cobalt and nickel sulfides look identical. This is where the dimethylglyoxime test earns its keep: it gives nickel a rose-red colour that nothing else in the scheme produces. A black sulfide narrows the field to two, and a separate test decides between them.",
+    "texture": "fine",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — nickel; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "salt"
   },
@@ -7960,6 +7993,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/na2hpo4.svg",
     "description": "The reagent for magnesium, the last cation in the scheme. It is used with ammonia rather than alone, because the precipitate that confirms magnesium contains ammonium as well as magnesium and phosphate — three ions in one crystal, which is unusual enough to make the test specific.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — reagents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -7982,7 +8016,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/mgnh4po4.svg",
     "description": "Three different ions built into one crystal — magnesium, ammonium and phosphate — which is what makes it a specific test rather than just another white precipitate. It forms slowly and crystalline rather than as a curd, so scratching the inside of the tube with a glass rod helps it start. The same compound is called struvite when it forms in kidney stones and in blocked sewage pipes.",
+    "texture": "crystalline",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — confirmation of magnesium; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "LibreTexts — Characteristic Reactions of Magnesium Ions (a characteristic crystalline precipitate)",
+        "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Supplemental_Modules_(Analytical_Chemistry)/Qualitative_Analysis/Characteristic_Reactions_of_Select_Metal_Ions/Characteristic_Reactions_of_Magnesium_Ions_(Mg)",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "salt"
   },
   {
@@ -8003,6 +8044,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/srcl2.svg",
     "description": "The third member of Group V, sitting between calcium and barium and behaving almost exactly like both. Its solutions are colourless and its carbonate is white, so nothing in the wet chemistry distinguishes it — which is precisely why the flame test exists. Strontium is what makes a distress flare and a red firework red.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group V; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["strontium"],
     "category": "salt"
@@ -8025,6 +8067,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/srco3.svg",
     "description": "White, and so are the barium and calcium carbonates that come down beside it. Three white precipitates from one reagent is what a group means, and it is also the limit of what wet chemistry can do here — telling them apart needs the flame.",
+    "texture": "fine",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group V; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "flameElements": ["strontium"],
     "category": "salt"
@@ -8047,6 +8090,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/sudan3.svg",
     "description": "A red azo dye that dissolves in fats and refuses to dissolve in water. That single property is the entire test: it is not reacting with anything, it is simply choosing where to sit. Put it in a mixture and it collects in the fat, staining it red and leaving the water layer alone. A test that works by solubility rather than by reaction is worth meeting once, because it is a different idea from everything else in this app.",
+    "clarity": "clear",
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — lipid identification; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "reagent"
   },
@@ -8068,6 +8112,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/stained_lipid.svg",
     "description": "The fat layer after the dye has moved into it, sitting bright red above a colourless water layer. Nothing has reacted — the dye has simply gone where it is soluble, and the sharp boundary between the two layers is what makes the result so easy to read.",
+    "clarity": "clear",
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — lipid identification",
     "category": "material"
   },
@@ -8089,7 +8134,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/emulsion.svg",
     "description": "Not a solution but a suspension of fat droplets fine enough to stay put and numerous enough to scatter light, which is why it looks white. Milk is exactly this. The cloudiness appears only when the ethanol solution of the fat meets water, because the fat comes out of solution the instant its solvent is diluted.",
+    "clarity": "milky",
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the emulsion test for lipids",
+    "sources": [
+      { "ref": "Wikipedia — Emulsion (a cloudy appearance because the many phase interfaces scatter light; opaque and milky white)",
+        "url": "https://en.wikipedia.org/wiki/Emulsion",
+        "checked": "2026-11-18",
+        "covers": ["clarity"] }
+    ],
     "category": "material"
   },
   {
@@ -8110,6 +8162,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/oil_unsat.svg",
     "description": "A fat whose chains carry carbon–carbon double bonds. Those double bonds put a permanent kink in each chain, so the molecules cannot pack together neatly and the fat stays liquid at room temperature — which is the whole difference between an oil and a solid fat, and it is a matter of shape rather than of chemistry.",
+    "clarity": "clear",
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — saturated and unsaturated lipids; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -8131,6 +8184,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/oil_brominated.svg",
     "description": "The oil after bromine has added across every double bond. The chains are now saturated and the orange colour of the bromine has gone. Counting how much bromine an oil absorbs is a real measurement — the iodine number — and it is how the degree of unsaturation of a cooking oil is quoted.",
+    "clarity": "clear",
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the iodine number",
     "category": "organic"
   },
@@ -8152,6 +8206,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/stearic_acid.svg",
     "description": "A long-chain fatty acid, and what a fat actually breaks down into. Note that it is the ACID here, not its sodium salt — acid hydrolysis and saponification split the same fat in the same place, and differ only in what happens to the fragment afterwards. The salt is soap; the acid is a hard white wax that will not lather at all.",
+    "texture": "lumpy",
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — lipid hydrolysis; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "acid"
   },
@@ -8173,6 +8228,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/catalase.svg",
     "description": "An enzyme found in nearly every living cell, whose job is to destroy the hydrogen peroxide that respiration keeps producing. It is among the fastest catalysts known — a single molecule deals with millions of peroxide molecules a second. Like all enzymes it is a protein, which is the source of both its power and its fragility.",
+    "clarity": "cloudy",
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — enzyme catalysis",
     "category": "organic"
   },
@@ -8194,6 +8250,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/hno3_conc.svg",
     "description": "Nitric acid strong enough to act as an oxidising agent and to nitrate aromatic rings, not merely to donate protons. The faint yellow is dissolved nitrogen dioxide from slow decomposition. It stains skin and fingernails yellow on contact, for exactly the reason the protein test below works.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Practical Organic Chemistry, 5th ed. — reagents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "acid"
   },
@@ -8215,6 +8272,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/xanthoprotein.svg",
     "description": "A protein whose aromatic rings have been nitrated. This is the same nitration that turns benzene into nitrobenzene, happening on the tyrosine and tryptophan side chains inside the protein — so a yellow result means those particular amino acids are present, not simply that protein is. It is also why nitric acid stains skin yellow: the acid is nitrating you.",
+    "clarity": "clear",
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the xanthoproteic test",
     "category": "organic"
   },
@@ -8236,6 +8294,7 @@
     "levels": ["bs"],
     "structure": "molecules/ninhydrin.svg",
     "description": "The reagent for a free amino group, sensitive enough to develop the amino acids in a fingerprint — which is exactly what it is used for in forensic work. Unlike the biuret test, which needs peptide bonds and so detects whole proteins, ninhydrin responds to individual amino acids.",
+    "clarity": "clear",
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — amino acid detection; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "reagent"
   },
@@ -8257,6 +8316,7 @@
     "levels": ["bs"],
     "structure": "molecules/ruhemann_purple.svg",
     "description": "The intense purple that ninhydrin produces with almost any amino acid. Note what it contains: the nitrogen in this dye came from the amino acid, which is why the colour appears at all — the reagent has taken the amino group and built it into a coloured molecule. Proline is the well-known exception and gives yellow instead.",
+    "clarity": "clear",
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the ninhydrin reaction; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "organic"
   },
@@ -8278,6 +8338,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/dna.svg",
     "description": "Two strands wound round each other, each a backbone of alternating sugar and phosphate with a base hanging off every sugar. The two strands are held together only by hydrogen bonds between the bases — individually weak, and there are millions of them, which is why the helix is stable at body temperature and comes apart neatly when heated. No molar mass, because a DNA molecule is as long as the organism needs it to be.",
+    "clarity": "clear",
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — nucleic acid structure",
     "category": "organic"
   },
@@ -8299,6 +8360,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/rna.svg",
     "description": "Single-stranded, and built on ribose rather than deoxyribose — one extra oxygen per sugar, which is the entire chemical difference between the two nucleic acids. That one oxygen is also why RNA is far less stable: it sits next to the backbone and helps break it, so RNA is a short-lived working copy while DNA is the archive.",
+    "clarity": "clear",
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — nucleic acid structure",
     "category": "organic"
   },

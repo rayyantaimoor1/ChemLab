@@ -772,7 +772,7 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–13 of 16 done (2026-11-18).** The owner
+**Status: in progress — batches 1–14 of 16 done (2026-11-18).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -1358,3 +1358,42 @@ adding a word such as "strip".
 - chromium(III) oxide layer: metallic. The film is too thin to show its
   green, so the object still looks like bright metal.
 - calcium phosphate slag: lumpy.
+
+### Batch 14 — chemicals 326–350 (analysis and biochemistry)
+
+All approved by the owner on 2026-11-18.
+
+**Clear (16):**
+- concentrated sulfuric and nitric acids
+- the brown-ring complex
+- the three phosphate and molybdate reagents
+- strontium chloride
+- Sudan III stain and the stained fat
+- olive oil and brominated oil
+- the xanthoproteic product. Wikipedia gives only its colour.
+- ninhydrin and Ruhemann's purple
+- DNA and RNA solutions
+
+**Milky (1):** the fat emulsion. Wikipedia (Emulsion): "a cloudy
+appearance because the many phase interfaces scatter light", and "opaque
+and milky white".
+
+**Cloudy (1):** catalase (liver extract). Not confirmed.
+
+**Textures confirmed by an opened page:**
+- nickel(II) hydroxide: gelatinous. LibreTexts, Nickel Ions: "green
+  gelatinous Ni(OH)₂".
+- magnesium ammonium phosphate: crystalline. LibreTexts, Magnesium Ions:
+  "a characteristic crystalline precipitate".
+- ammonium phosphomolybdate: crystalline. Wikipedia: "a dark yellow fine
+  crystal".
+- barium sulfite: fine ("a white powder").
+- manganese(II) sulfide: fine ("Red, green or brown powder").
+
+**Not confirmed by an opened page:**
+- **nickel(II) sulfide: fine.** Its Wikipedia page redirects to the
+  mineral millerite, whose needle crystals are not the black precipitate.
+- **strontium carbonate: fine.** The page failed twice; the value is
+  matched to barium carbonate.
+- **stearic acid: lumpy.** The page failed twice. It is the waxy white
+  solid that separates from hydrolysed fat.
