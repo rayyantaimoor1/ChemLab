@@ -234,6 +234,29 @@ fixed words, as it does for `category`. No engine change.
 > A clear solution shows the bench through it; a milky one does not. A colour looks deeper through
 > a wide beaker than a narrow tube — the same solution, drawn honestly. Purely visual.
 
+> **Done (2026-11-18).**
+> - **Clarity.** `appearance.js` gives each vessel a `clarity`: that of the least clear liquid in
+>   it, from the curated words. Solids and gases are left out; how a precipitate clouds the liquid
+>   is its `texture`, in UI.3.4.
+> - **The paint.** The new `src/ui/liquid-colour.js` turns colour, clarity and path into what is
+>   drawn:
+>   - A clear coloured solution is see-through in proportion to how pale it is.
+>   - Cloudy is paler and translucent. Milky hides the bench. Opaque (starch–iodine, mercury) is
+>     drawn solid.
+> - **Depth.** Depth follows the Beer–Lambert law. The light's path is the inside width at the
+>   middle of the liquid, from `glassware.js`. The curated colour is what you see through about
+>   27 mm; a wider vessel deepens it and a narrower one pales it, within limits.
+>   - The **hue is always kept**, so a deep yellow never drifts to orange and the drawing never
+>     seems to contradict its label. The label always shows the curated colour.
+> - **Tests.** `tests/liquid-colour.test.js` checks:
+>   - clear < cloudy < milky < opaque for how much of the bench is hidden;
+>   - water looks the same in any glass;
+>   - beaker deeper than tube;
+>   - hue unchanged at any depth.
+>
+>   `tests/appearance.test.js` checks the clarity rule. Screenshot:
+>   `docs/ui-progress/UI.3/clarity-depth.png`.
+
 **UI.3.3 — Sonnet — Solids that look like what they are**
 > Magnesium ribbon as a curled strip, zinc granules as grey lumps, marble chips as white stones,
 > crystals as facets, powder as a heap. A reacting solid shrinks over the reaction's animation.

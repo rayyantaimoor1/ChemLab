@@ -113,3 +113,26 @@ test('adding something new after a reaction drops the remembered colour', () => 
   const look = appearanceFor({ speciesIds: [...result.species, 'phenolphthalein_1pct'], temperatureC: 25, heatLevel: 0, electrified: false }, memory, engine);
   assert.equal(look.colorName, null);
 });
+
+// ---- Clarity (BUILD_UI.md UI.3.2) ----
+
+const look = (speciesIds) => appearanceFor({ speciesIds, temperatureC: 25, heatLevel: 0, electrified: false }, undefined, engine);
+
+test('a vessel is as clear as the least clear liquid in it', () => {
+  assert.equal(look(['hcl_1m']).clarity, 'clear');
+  assert.equal(look(['starch_aq']).clarity, 'cloudy');
+  assert.equal(look(['latex_aq']).clarity, 'milky');
+  assert.equal(look(['hcl_1m', 'latex_aq']).clarity, 'milky', 'one milky liquid makes the mixture milky');
+  assert.equal(look([]).clarity, null, 'an empty vessel has no liquid to be clear or not');
+});
+
+test('solids and gases do not decide clarity - only liquids do', () => {
+  assert.equal(look(['zn_metal']).clarity, null, 'a dry solid has no liquid');
+  assert.equal(look(['zn_metal', 'hcl_1m']).clarity, 'clear');
+});
+
+test('the starch–iodine result is opaque, as its curated clarity says', () => {
+  const rule = engine.getAllReactions().find((r) => (r.products || []).includes('starch_iodine_aq'));
+  assert.ok(rule, 'a rule makes the starch–iodine complex');
+  assert.equal(runRule(rule).look.clarity, 'opaque');
+});

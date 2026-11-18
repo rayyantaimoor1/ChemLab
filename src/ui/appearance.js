@@ -34,6 +34,14 @@
  * is not drawn as a settled layer; how shelf solids look is BUILD_UI.md
  * stage UI.3.
  *
+ * HOW CLEAR THE LIQUID IS (BUILD_UI.md UI.3.2)
+ * Every solution and liquid carries a curated `clarity` (clear, cloudy,
+ * milky or opaque). The vessel's liquid is as clear as the LEAST clear
+ * liquid in it now: one drop of milky latex makes water milky, and a
+ * reaction that leaves only clear products leaves a clear liquid. Solids
+ * and gases are not part of it - how a precipitate clouds the liquid is
+ * its own curated `texture` (UI.3.4), not this.
+ *
  * No DOM here, so tests/appearance.test.js can check every reaction.
  */
 
@@ -42,6 +50,7 @@ import { OUTCOME } from '../core/engine.js';
 const EMPTY = Object.freeze({
   colorHex: '#EEF3F5',
   colorName: 'colourless',
+  clarity: null,
   precipitate: null,
   solids: [],
   bubbling: false,
@@ -189,9 +198,29 @@ export function appearanceFor(snapshot, memory, engine) {
     ...EMPTY,
     colorHex: colour.colorHex,
     colorName: colour.colorName,
+    clarity: clarityFor(species, engine),
     precipitate: solids.length ? solids[solids.length - 1] : null,
     solids,
   };
+}
+
+/** From most to least see-through. */
+export const CLARITY_ORDER = ['clear', 'cloudy', 'milky', 'opaque'];
+
+/**
+ * The clarity of the liquid in a vessel: that of the least clear solution
+ * or liquid in it, or null when it holds no liquid at all (a dry solid, a
+ * gas). Always a curated word - a liquid without one counts as clear,
+ * which the validator now makes impossible anyway.
+ */
+export function clarityFor(species, engine) {
+  let worst = -1;
+  for (const id of species) {
+    const chemical = engine.getChemical(id);
+    if (!chemical || (chemical.state !== 'aqueous' && chemical.state !== 'liquid')) continue;
+    worst = Math.max(worst, Math.max(0, CLARITY_ORDER.indexOf(chemical.clarity)));
+  }
+  return worst < 0 ? null : CLARITY_ORDER[worst];
 }
 
 function colourFor(species, memory, engine, snapshot) {

@@ -23,6 +23,9 @@ The UI may **read** engine state and **dispatch** actions. It may not contain ch
       colorHex, colorName,          // ALWAYS both — see §5
       // colorName is null for a mixture nothing in the data describes:
       // shown as "colour not known", never guessed (src/ui/appearance.js).
+      clarity: 'clear' | 'cloudy' | 'milky' | 'opaque' | null,
+      // the least clear liquid in the vessel (curated per chemical);
+      // null when it holds no liquid. Drawn by src/ui/liquid-colour.js.
       precipitate: { colorHex, colorName, name, kind, density } | null,
       // kind is the reaction's curated solidKind: precipitate, deposit,
       // coating, liquid, smoke or solid. solids lists every one present.

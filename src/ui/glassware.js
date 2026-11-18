@@ -387,6 +387,20 @@ export function liquidFraction(type, capacityMl, volumeMl) {
   return y === null ? 0 : (geometry.h - y) / geometry.h;
 }
 
+/**
+ * How much liquid light crosses on its way through the vessel, in px: the
+ * inside width at the middle of the liquid. A wide beaker is a long path,
+ * a narrow tube a short one, and the conical flask's depends on how full it
+ * is. liquid-colour.js uses it to deepen or pale the colour (UI.3.2).
+ */
+export function liquidPathPx(type, capacityMl, volumeMl) {
+  const geometry = glassGeometry(type, capacityMl);
+  if (!geometry) return null;
+  const surface = geometry.surfaceY(volumeMl);
+  if (surface === null) return null;
+  return 2 * geometry.innerHalfAt((surface + geometry.floorY) / 2);
+}
+
 /* ------------------------------------------------------------------ *
  * Graduations
  * ------------------------------------------------------------------ */

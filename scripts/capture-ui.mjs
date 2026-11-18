@@ -144,6 +144,22 @@ const SETUPS = {
     await __cap.fill('dish_1', 'cuso4_0_5m', 3);
     await __cap.setQuick(5);
     await __cap.fill('tube_1', 'cuso4_0_5m', 1);`,
+  // Stage UI.3.2: clarity and depth of colour. The same copper sulfate in a
+  // narrow tube, a wide beaker and a flask; then milky latex, cloudy starch,
+  // and starch with iodine, which is opaque.
+  'clarity-depth': `
+    __cap.press('auto-pour'); await __cap.wait(100);
+    for (const label of ['take a test tube', 'take a beaker 250', 'take a small conical flask', 'take a beaker 100', 'take a boiling tube', 'take a test tube']) {
+      __cap.press(label); await __cap.wait(300);
+    }
+    await __cap.fill('beaker_1', 'cuso4_0_5m', 10);
+    await __cap.fill('flask_small_1', 'cuso4_0_5m', 4);
+    await __cap.fill('beaker_small_1', 'latex_aq', 4);
+    await __cap.fill('boiling_tube_1', 'starch_aq', 2);
+    await __cap.setQuick(5);
+    await __cap.fill('tube_1', 'cuso4_0_5m', 2);
+    await __cap.fill('tube_2', 'starch_aq', 1);
+    await __cap.fill('tube_2', 'i2_aq', 1);`,
   'titration': `
     __cap.press('auto-pour'); await __cap.wait(100);
     __cap.press('take a conical flask'); await __cap.wait(300);

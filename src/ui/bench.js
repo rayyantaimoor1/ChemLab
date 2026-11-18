@@ -48,56 +48,16 @@ import {
 import { solidLabel } from './appearance.js';
 // The shape of each vessel, its printed scale, and how high a volume of
 // liquid comes inside it (BUILD_UI.md UI.2) - all in glassware.js.
-import { glassGeometry, frontSvg, backSvg, liquidFraction } from './glassware.js';
+import { glassGeometry, frontSvg, backSvg, liquidFraction, liquidPathPx } from './glassware.js';
+import { liquidFill } from './liquid-colour.js';
 
 // A vessel reads "nearly full" at this fraction of its capacity.
 const NEARLY_FULL_FRACTION = 0.9;
 
-/* ------------------------------------------------------------------ *
- * How opaque a liquid is drawn.
- *
- * Curated colours are the colour of the SUBSTANCE, not of a block of
- * paint. 156 of the reagents are "colourless" at #EEF3F5, and filling a
- * beaker with that flat gives a slab of white emulsion - the one thing
- * water in glass never looks like. So a colour is drawn with an alpha
- * taken from how pale and how washed-out it is: a colourless liquid is
- * mostly transparent and reads as liquid through its meniscus and edges,
- * while copper sulfate stays a solid blue.
- *
- * This changes nothing about WHICH colour is used - that is still the
- * curated hex, and the colour's NAME still comes from the data beside it
- * (UI.md section 5). It only decides how see-through to paint it.
- * ------------------------------------------------------------------ */
-
-function parseHex(hex) {
-  const match = /^#?([0-9a-f]{6})$/i.exec(String(hex || '').trim());
-  if (!match) return null;
-  const n = parseInt(match[1], 16);
-  return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
-}
-
-function liquidFillFor(colorHex) {
-  const rgb = parseHex(colorHex);
-  if (!rgb) return colorHex;
-
-  const max = Math.max(rgb.r, rgb.g, rgb.b);
-  const min = Math.min(rgb.r, rgb.g, rgb.b);
-  const lightness = (max + min) / 2 / 255;
-  const chroma = (max - min) / 255;
-
-  let alpha = 1;
-  if (lightness > 0.88 && chroma < 0.09) {
-    // Colourless: water, dilute acids, most solutions.
-    alpha = 0.26;
-  } else if (lightness > 0.80 && chroma < 0.16) {
-    // Very faintly tinted - a hint of colour, still mostly clear.
-    alpha = 0.48;
-  } else if (lightness > 0.72 && chroma < 0.24) {
-    alpha = 0.72;
-  }
-
-  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
-}
+/* How a liquid is painted - its clarity, and how deep its colour looks
+   through this particular glass - is decided in liquid-colour.js
+   (BUILD_UI.md UI.3.2). It never changes WHICH colour: that is the curated
+   one, named in the label beside the glass (UI.md section 5). */
 
 // How far outside a piece of furniture a dragged vessel still counts as
 // being dropped onto it. Generous above (a tall vessel is grabbed near its
@@ -825,6 +785,15 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.liquidIncoming.style.setProperty('--surface-w', width);
   }
 
+  /** The paint for a vessel's liquid: its curated colour and clarity, seen
+   *  through as much liquid as this glass holds across (liquid-colour.js). */
+  function paintFor(container) {
+    return liquidFill(container.appearance.colorHex, {
+      clarity: container.appearance.clarity,
+      pathPx: liquidPathPx(container.type, container.capacityMl, container.volumeMl),
+    });
+  }
+
   function updateVessel(refs, container, state) {
     // Never fight a drag in progress - the pointer owns the transform then.
     if (!drag || drag.id !== container.id) {
@@ -895,7 +864,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // vessel, say - would otherwise leave the old liquid painted in the
     // glass forever. So whenever nothing is animating, the drawn state is
     // reconciled against the real state here.
-    const targetFill = liquidFillFor(container.appearance.colorHex);
+    const targetFill = paintFor(container);
     const targetHeight = `${liquidFraction(container.type, container.capacityMl, container.volumeMl) * 100}%`;
     setSurfaceWidth(refs, container);
     const settling = refs.liquidBase.getAnimations().length > 0
@@ -1174,8 +1143,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const refs = vesselEls.get(containerId);
     if (!refs || !before || !after) return;
 
-    if (before.appearance.colorHex !== after.appearance.colorHex) {
-      crossfadeColor(refs.liquidBase, refs.liquidIncoming, liquidFillFor(after.appearance.colorHex));
+    if (before.appearance.colorHex !== after.appearance.colorHex || before.appearance.clarity !== after.appearance.clarity) {
+      crossfadeColor(refs.liquidBase, refs.liquidIncoming, paintFor(after));
     }
 
     // Heights, not volumes: in a flask the same 10 mL raises the level far
