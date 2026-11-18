@@ -772,7 +772,7 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–12 of 16 done (2026-11-18).** The owner
+**Status: in progress — batches 1–13 of 16 done (2026-11-18).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -1321,3 +1321,40 @@ draw it glinting.
 - gypsum on the shelf: powder. Wikipedia describes the mined mineral as
   crystals and masses; powder is how a school heats it to make plaster.
 - brominated rubber, perished rubber and silicone resin: lumpy.
+
+### Batch 13 — chemicals 301–325 (metals and plating)
+
+All approved by the owner on 2026-11-18.
+
+**Clarity:**
+- Clear (3): the chromium plating bath, concentrated ammonia and sodium
+  sulfite.
+- Opaque (1): mercury, a mirror-like liquid metal. Not confirmed: both
+  Wikipedia mercury pages timed out twice.
+
+**Forms.** "Lump" is used for every bulk piece of metal rather than
+adding a word such as "strip".
+- Confirmed by an opened page:
+  - pig iron: Wikipedia, Pig iron: cast "into pigs", which break into
+    "piglets".
+  - nickel: Wikipedia, Electroplating: the anode "is usually either a
+    block of that metal".
+- Not confirmed:
+  - steel, stainless steel, chromium and blister copper: lump.
+  - gold: foil (gold leaf).
+  - mercury(II) oxide: powder.
+
+**Textures confirmed by an opened Wikipedia page:**
+- cementite: crystalline ("dark gray or black crystals").
+- anode mud: fine. Electrowinning: "insoluble solid impurities
+  sedimenting below the anode".
+- the five electroplated steels and the copper-coated plastic: metallic.
+  Electroplating: "tiny crystals of the elemental metals being plated".
+- anodised aluminium: metallic. Anodizing: "harder than aluminium".
+
+**Not confirmed by an opened page:**
+- steel, aluminium under its oxide layer and electropolished steel:
+  metallic.
+- chromium(III) oxide layer: metallic. The film is too thin to show its
+  green, so the object still looks like bright metal.
+- calcium phosphate slag: lumpy.

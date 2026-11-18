@@ -7150,6 +7150,7 @@
     "levels": ["bs"],
     "structure": "molecules/hgo.svg",
     "description": "An oxide so reluctant to exist that gentle heating alone tears it apart — no carbon, no reducing agent, nothing but a flame. That is what sitting at the very bottom of the reactivity series means in practice. It matters historically twice over: this is the compound Priestley heated in 1774 to discover oxygen, and Lavoisier's work on the same reaction is what overturned phlogiston. Mercury and its compounds are cumulative poisons that damage the nervous system permanently.",
+    "form": "powder",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — thermal stability of metal oxides; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "oxide"
   },
@@ -7171,6 +7172,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/hg.svg",
     "description": "The only metal that is liquid at room temperature, and dense enough that lead floats on it. It is also seriously poisonous in a way that is easy to underestimate: it evaporates slowly at room temperature, the vapour has no smell, and what it does to the nervous system builds up and does not reverse. A spilt thermometer is a genuine clean-up problem, not a curiosity to push around with a finger.",
+    "clarity": "opaque",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); PubChem, National Library of Medicine — Mercury",
     "category": "element"
   },
@@ -7192,6 +7194,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/au.svg",
     "description": "The bottom of the reactivity series, and the practical meaning of that is simply this: gold is found as gold. It does not corrode, it does not tarnish, and no single acid will touch it — which is why a gold coin comes out of a shipwreck looking new while an iron nail beside it has gone entirely. It also needed no extraction chemistry at all to be used, which is why gold and copper were worked thousands of years before iron.",
+    "form": "foil",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the coinage metals",
     "category": "element"
   },
@@ -7213,7 +7216,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/pig_iron.svg",
     "description": "What actually runs out of a blast furnace, and it is nearly useless. About four per cent carbon has dissolved into it from the coke, along with phosphorus, sulfur and silicon from the ore, and the result is hard but brittle — it snaps rather than bends, so it cannot be rolled, drawn or hammered. No molar mass, because it is a mixture and its composition varies from one tapping to the next. Everything called steelmaking is the business of taking those impurities back out.",
+    "form": "lump",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — iron and steel; Punjab Curriculum and Textbook Board, Chemistry XII",
+    "sources": [
+      { "ref": "Wikipedia — Pig iron (cast into pigs; stick pigs break into 4–10 kg piglets)",
+        "url": "https://en.wikipedia.org/wiki/Pig_iron",
+        "checked": "2026-11-18",
+        "covers": ["form"] }
+    ],
     "category": "material"
   },
   {
@@ -7234,6 +7244,8 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/steel.svg",
     "description": "Pig iron with most of the carbon burnt out — and the remarkable thing is how little needs removing. Going from about four per cent carbon to under one turns something that shatters into something that can be rolled into sheet, drawn into wire and welded. How much of that last one per cent is left is then chosen deliberately: more carbon gives a harder, more brittle steel for tools, less gives a softer, tougher one for car bodies.",
+    "form": "lump",
+    "texture": "metallic",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — steelmaking",
     "category": "material"
   },
@@ -7255,7 +7267,14 @@
     "levels": ["bs"],
     "structure": "molecules/cementite.svg",
     "description": "An iron carbide, and the reason carbon content matters so much in steel. Hard brittle particles of it form throughout the metal and get in the way of the iron layers sliding over one another — which is what makes steel hard, because sliding layers is exactly how a soft metal bends. More carbon means more cementite, means harder and more brittle. That is one compound doing all the work behind the difference between a car body and a chisel.",
+    "texture": "crystalline",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — iron-carbon system; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Cementite (dark gray or black crystals)",
+        "url": "https://en.wikipedia.org/wiki/Cementite",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -7276,6 +7295,7 @@
     "levels": ["bs"],
     "structure": "molecules/ca3po42.svg",
     "description": "The phosphorus taken out of the iron, locked into a slag that floats off and is skimmed away — and then sold as fertiliser rather than dumped, which is a rare case of a waste stream being genuinely useful. It is also the main mineral in bone, which is why bone meal was a fertiliser long before anyone understood why it worked.",
+    "texture": "lumpy",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — dephosphorisation in steelmaking; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "flameElements": ["calcium"],
     "category": "salt"
@@ -7298,6 +7318,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/al_oxide_layer.svg",
     "description": "Aluminium as it actually exists in the world — never bare metal, always under a film of its own oxide a few atoms thick, formed within seconds of any fresh surface meeting air. The film is what makes aluminium behave as though it were unreactive when the reactivity series says it is anything but. It matters that the film is COHERENT: the oxide crystals are close enough in size to the metal's own that the layer forms an unbroken skin rather than flaking, which is precisely where rust fails.",
+    "texture": "metallic",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — passivation of aluminium",
     "category": "material"
   },
@@ -7319,7 +7340,14 @@
     "levels": ["bs"],
     "structure": "molecules/anodised_al.svg",
     "description": "The natural oxide film deliberately grown thicker by electrolysis — from a few atoms to a few thousand. Two things follow. It is far more scratch resistant, which is why window frames, saucepans and phone cases are anodised. And the thickened layer is slightly porous as it grows, so dye can be soaked into it and then sealed in, which is where every coloured aluminium object you have seen gets its colour.",
+    "texture": "metallic",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — anodising",
+    "sources": [
+      { "ref": "Wikipedia — Anodizing (anodized aluminium surfaces are harder than aluminium)",
+        "url": "https://en.wikipedia.org/wiki/Anodizing",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -7340,6 +7368,7 @@
     "levels": ["bs"],
     "structure": "molecules/cr_metal.svg",
     "description": "A hard, bright metal that takes a mirror polish and holds it — the chrome on a bumper. Like aluminium it is reasonably reactive and behaves as though it is not, because it grows its own tight oxide film the moment it meets air. Alloyed into steel at around eleven per cent or more, that film becomes the steel's film, and the result is stainless.",
+    "form": "lump",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Housecroft & Sharpe, Inorganic Chemistry 4th ed. — chromium",
     "category": "element"
   },
@@ -7361,6 +7390,7 @@
     "levels": ["bs"],
     "structure": "molecules/cr2o3.svg",
     "description": "The film that makes stainless steel stainless. On a real surface it is far too thin to show its green colour, which is why chrome looks like bright metal rather than paint. Its great virtue is that it repairs itself: scratch through it and the exposed chromium oxidises again within seconds, so the protection comes back without anyone doing anything. That is the whole difference from a coat of paint.",
+    "texture": "metallic",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — passivation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "oxide"
   },
@@ -7382,6 +7412,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/stainless.svg",
     "description": "Steel with enough chromium in it that the chromium's oxide film covers the whole surface, iron included. The iron underneath is exactly as eager to rust as it ever was — nothing about it has been changed — it simply never gets the chance, because oxygen and water meet chromium oxide instead. Protection here is a surface arrangement, not a change of heart in the metal beneath.",
+    "form": "lump",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — stainless steels",
     "category": "material"
   },
@@ -7403,7 +7434,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/cu_plated.svg",
     "description": "Steel wearing an even, tightly bonded coat of copper laid on by electrolysis. Compare it with the loose brown powder you get by simply dropping iron into copper sulfate: same metal, same reaction at the atomic level, completely different coat. Displacement dumps copper wherever it happens to form, while a current lets you control how fast the atoms arrive — and slow, even arrival is what makes a deposit stick.",
+    "texture": "metallic",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — electrodeposition",
+    "sources": [
+      { "ref": "Wikipedia — Electroplating (tiny crystals of the elemental metals being plated)",
+        "url": "https://en.wikipedia.org/wiki/Electroplating",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -7424,6 +7462,7 @@
     "levels": ["bs"],
     "structure": "molecules/cu_impure.svg",
     "description": "Copper straight from the smelter, about 98 per cent pure and named for the gas blisters left in its surface. Two per cent sounds like nothing, but it is ruinous here: those impurities scatter the electrons moving through the metal, and copper is only worth using because electrons move through it so freely. Wire made from this would waste a noticeable fraction of everything sent down it.",
+    "form": "lump",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — copper refining",
     "category": "material"
   },
@@ -7445,7 +7484,14 @@
     "levels": ["bs"],
     "structure": "molecules/anode_mud.svg",
     "description": "The sludge that collects under the anode during copper refining, and the reason the refining is close to free. Silver, gold and platinum are harder to oxidise than copper, so the current simply will not lift them into solution — they drop off the dissolving anode and lie on the floor of the tank. Recovering them often pays the whole electricity bill. An unglamorous heap of mud is where a large share of the world's silver comes from.",
+    "texture": "fine",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — anode slimes in electrorefining",
+    "sources": [
+      { "ref": "Wikipedia — Electrowinning (insoluble solid impurities sedimenting below the anode)",
+        "url": "https://en.wikipedia.org/wiki/Electrowinning",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -7466,7 +7512,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/ag_plated.svg",
     "description": "Cutlery, trophies and old teapots: a few microns of silver over a base metal that provides all the strength and none of the appearance. The economics are the point — the coat may be a thousandth of the object's thickness, so you buy the look and the tarnish resistance of silver for a fraction of a per cent of the silver.",
+    "texture": "metallic",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — decorative electroplating",
+    "sources": [
+      { "ref": "Wikipedia — Electroplating (tiny crystals of the elemental metals being plated)",
+        "url": "https://en.wikipedia.org/wiki/Electroplating",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -7487,7 +7540,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/ni_metal.svg",
     "description": "A solid bar of nickel, used here as a plating anode rather than as the finely divided powder that serves as a hydrogenation catalyst — same element, and the physical form is the whole difference. As an anode it is meant to dissolve steadily and replace what leaves the bath; as a catalyst it is meant to offer as much surface as possible and not be consumed at all.",
+    "form": "lump",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Housecroft & Sharpe, Inorganic Chemistry 4th ed. — nickel",
+    "sources": [
+      { "ref": "Wikipedia — Electroplating (the anode is usually a block of the plating metal)",
+        "url": "https://en.wikipedia.org/wiki/Electroplating",
+        "checked": "2026-11-18",
+        "covers": ["form"] }
+    ],
     "category": "element"
   },
   {
@@ -7508,7 +7568,14 @@
     "levels": ["bs"],
     "structure": "molecules/ni_plated.svg",
     "description": "Steel under a nickel coat, and almost always an intermediate rather than a finished article. Nickel deposits thick, level and pore-free, which is what actually keeps the water out; the chromium that goes on top of it is thin and mostly there to look right and resist scratching. Nearly every chrome-plated object is really nickel-plated with a flash of chromium over it.",
+    "texture": "metallic",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — nickel–chromium plating systems",
+    "sources": [
+      { "ref": "Wikipedia — Electroplating (tiny crystals of the elemental metals being plated)",
+        "url": "https://en.wikipedia.org/wiki/Electroplating",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -7529,6 +7596,7 @@
     "levels": ["bs"],
     "structure": "molecules/chromic_acid.svg",
     "description": "Chromium(VI) oxide dissolved in sulfuric acid — strongly acidic, strongly oxidising, and the reason chromium plating is an industrial process rather than a school one. It is the odd one out among plating baths: the anodes used with it are insoluble, so nothing replaces the chromium that plates out and the bath genuinely runs down as it is used.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hard and decorative chromium plating",
     "category": "acid"
   },
@@ -7550,7 +7618,14 @@
     "levels": ["bs"],
     "structure": "molecules/cr_plated.svg",
     "description": "The finished article: steel, then nickel, then a chromium layer often well under a micron thick. That last layer does almost nothing to keep the water out — the nickel underneath does that — but it does not tarnish and it does not scratch easily, so it holds the brightness that nickel alone would slowly lose.",
+    "texture": "metallic",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — decorative chromium plating",
+    "sources": [
+      { "ref": "Wikipedia — Electroplating (tiny crystals of the elemental metals being plated)",
+        "url": "https://en.wikipedia.org/wiki/Electroplating",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -7571,7 +7646,14 @@
     "levels": ["bs"],
     "structure": "molecules/plastic_seeded.svg",
     "description": "A plastic that now conducts, because a very thin film of copper has been grown onto it chemically rather than electrically. This is how a plastic car badge or bathroom fitting gets chrome-plated: nothing can be electroplated until it conducts, so the first coat has to be put on without a current, and every later coat can then be laid on normally.",
+    "texture": "metallic",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — electroless deposition",
+    "sources": [
+      { "ref": "Wikipedia — Electroplating (tiny crystals of the elemental metals being plated)",
+        "url": "https://en.wikipedia.org/wiki/Electroplating",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -7592,7 +7674,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/zn_plated.svg",
     "description": "Steel galvanised with a current instead of by dipping it in molten zinc. The protection is identical, because it is the zinc that does the work either way; what differs is control. Electroplating lays down a thin, even, smooth coat suitable for a car body panel that will be painted, while hot dipping gives a thicker, rougher, longer-lasting one suitable for a roof.",
+    "texture": "metallic",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — zinc coatings",
+    "sources": [
+      { "ref": "Wikipedia — Electroplating (tiny crystals of the elemental metals being plated)",
+        "url": "https://en.wikipedia.org/wiki/Electroplating",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -7613,6 +7702,7 @@
     "levels": ["bs"],
     "structure": "molecules/steel_polished.svg",
     "description": "Steel that has had metal electrically taken off rather than put on, leaving a surface smoother than any abrasive could manage. It works because the high points of a rough surface stick further into the solution and so dissolve fastest — the process attacks exactly what needs removing and slows down as the surface flattens. Used on surgical instruments and dairy pipework, where a scratch is somewhere for bacteria to live.",
+    "texture": "metallic",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — anodic dissolution and electropolishing",
     "category": "material"
   },
@@ -7634,6 +7724,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/nh3_conc.svg",
     "description": "The same ammonia as the dilute bench bottle, roughly fifteen times stronger — and in qualitative analysis that difference is not a detail but the whole test. Silver bromide will not dissolve in dilute ammonia and does dissolve in this, so the strength of the reagent is what separates a bromide from a chloride. Sharp, choking fumes come off the bottle; in a real laboratory it is opened in a fume cupboard.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — reagents",
     "category": "base"
   },
@@ -7655,6 +7746,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/na2so3.svg",
     "description": "A sulfite, not a sulfate — one oxygen fewer, and a solution that looks exactly like sodium sulfate does. That resemblance is the point of the test that follows: both give an identical white precipitate with barium chloride, and only dilute acid can tell you which one you had. Sulfites are also used as food preservatives, which is why dried apricots smell faintly of sulfur dioxide.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the sulfite ion; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
