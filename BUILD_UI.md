@@ -215,6 +215,21 @@ fixed words, as it does for `category`. No engine change.
 > batches of 25 the way the audit ran. Limewater is clear and turns milky; starch–iodine is opaque;
 > aluminium hydroxide is a gelatinous floc; silver chloride is curdy; lead iodide is crystalline.
 
+> **Done (2026-11-18), in 15 batches.** Every chemical carries the fields that apply to it, and a
+> missing one now fails the build. Four words were added along the way, each approved by the
+> owner:
+> - forms: `filings`, `turnings`, `foil` (all from batch 1) and `cloth`;
+> - textures: `flaky` (rust), `lumpy` (clinker, plastics, ceramics, slags) and `fibrous` (nylon,
+>   DNA, cloth).
+>
+> Of the 383 values:
+> - 191 are clear solutions covered by one general reference;
+> - 97 are confirmed by a page that was actually opened;
+> - 95 are unconfirmed, and are listed in `batch.md` §15 for the teacher review.
+>
+> Many reference sites refuse automated reading: RSC Education and the suppliers always did, and
+> Wikipedia often timed out. That is the main reason for the unconfirmed values.
+
 **UI.3.2 — Sonnet — Clarity and depth of colour**
 > A clear solution shows the bench through it; a milky one does not. A colour looks deeper through
 > a wide beaker than a narrow tube — the same solution, drawn honestly. Purely visual.

@@ -772,7 +772,10 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–14 of 16 done (2026-11-18).** The owner
+**Status: complete (2026-11-18), in 15 batches rather than the 16 planned.**
+Every chemical now carries the fields that apply to it, and a missing one
+now fails the build (validator and `tests/appearance-fields.test.js`).
+The totals are under "UI.3.1 totals" at the end of this section. The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -792,8 +795,8 @@ cloth) and the texture `fibrous` (nylon pulled out as a rope, and dyed
 cloth) were added in batch 11 (owner approved 2026-11-18).
 
 The validator and `tests/appearance-fields.test.js` reject any other word,
-and any field on the wrong kind of substance. A missing field is only a
-warning until every batch is done. Chemicals may now carry a `sources`
+any field on the wrong kind of substance, and (since the last batch) any
+chemical of the right kind without one. Chemicals may now carry a `sources`
 list like the reactions do, with `covers` set to `clarity`, `form` or
 `texture`.
 
@@ -1397,3 +1400,54 @@ and milky white".
   matched to barium carbonate.
 - **stearic acid: lumpy.** The page failed twice. It is the waxy white
   solid that separates from hydrolysed fat.
+
+### Batch 15 — chemicals 351–379 (the last 26 values)
+
+All approved by the owner on 2026-11-18. Wikipedia timed out on most pages
+in this batch, even on a third try.
+
+**Clear (20):**
+- single-stranded DNA, deoxyribose and the nucleobases
+- the Dische, Bial's and Molisch reagents and their coloured results
+- EDTA and its calcium, copper and iron complexes
+- the two nickel complexes and ethane-1,2-diamine
+- tetrachloroplatinate
+- sodium persulfate
+- tetrachloromethane
+- tin(II) chloride solution. Wikipedia says dilute solutions go cloudy by
+  hydrolysis, but "Hydrolysis is prevented in the presence of
+  hydrochloric acid", which a lab solution is made up in.
+
+**Not confirmed by an opened page:**
+- **DNA fibres: fibrous.** This partly goes against the source: Wikipedia
+  (DNA extraction) mentions only a pellet after centrifuging. The app
+  describes the school practical, where the DNA comes out as "white,
+  stringy threads" lifted on a glass rod.
+- **the platinum–DNA adduct: fibrous.** It is DNA with platinum bound
+  to it.
+- **cisplatin: fine.** The page failed.
+- **strontium oxide: fine.** Wikipedia says "colorless cubic crystals"
+  for the pure substance, not the powdery residue left by heating the
+  carbonate.
+- **barium oxide: fine.** The page failed.
+- **lead(IV) oxide: powder.** The page failed.
+
+### UI.3.1 totals
+
+383 values were curated across the 379 chemicals:
+
+- **191 clear** solutions and liquids, covered by the one general
+  reference (LibreTexts, Colloids and Suspensions).
+- **97 confirmed** by a page that was actually opened, recorded in
+  the chemical's `sources`.
+- **95 not confirmed** by an opened page. These are values chosen from
+  the app's own description, a matching chemical, or reasoning, and
+  values whose page failed to load. Each batch above says why. They are
+  the appearance list for the teacher review. The full list is generated
+  by: any value with no `sources` entry covering it, other than "clear".
+
+Clarity (7): Soap (sodium stearate solution) (cloudy); Starch solution (cloudy); Egg albumin solution (cloudy); Lithium aluminium hydride in dry ether (cloudy); Rubber solution (cloudy); Mercury (opaque); Catalase (liver extract) (cloudy).
+
+Form (34): Zinc metal (granules); Copper turnings (turnings); Calcium granules (granules); Calcium carbonate (marble chips) (chips); Sodium metal (lump); Carbon (charcoal) (powder); Manganese(IV) oxide (powder); Platinum gauze (wire); Sodium carbonate (solid) (powder); Potassium nitrate (crystals); Calcium oxide (quicklime) (lump); Anhydrous copper(II) sulfate (powder); Silver metal (wire); Lead metal (foil); Potassium metal (lump); Sodium iodide (powder); Iron(III) bromide (powder); Ethanamide (crystals); Urea (crystals); Zinc hydroxide (powder); Tin granules (granules); Sodium oxide (powder); Cotton cloth (cloth); Benzene-1,4-dicarboxylic acid (powder); Ziegler–Natta catalyst (powder); Gypsum (powder); Copper(I) sulfide (chalcocite) (powder); Mercury(II) oxide (powder); Gold (foil); Steel (lump); Chromium (lump); Stainless steel (lump); Blister copper (impure) (lump); Lead(IV) oxide (powder).
+
+Texture (54): Zinc metal (metallic); Silver chloride (curdy); Iron filings (metallic); Copper turnings (metallic); Silver iodide (curdy); Silver bromide (curdy); Iron(III) hydroxide (gelatinous); Lead(II) chloride (crystalline); Manganese(IV) oxide (fine); Potassium chloride (solid) (fine); Sodium carbonate (solid) (fine); Anhydrous copper(II) sulfate (fine); Copper(II) sulfate crystals (fine); Anhydrous cobalt(II) chloride (fine); Cobalt(II) chloride hexahydrate (fine); Lithium oxide (fine); Sodium peroxide (fine); Magnesium carbonate (fine); Potassium manganate (fine); Copper(I) oxide (fine); Ethanamide (crystalline); Soap scum (calcium stearate) (curdy); Urea (crystalline); Set cement (crystalline); Nickel dimethylglyoximate (fine); 1,3-dinitrobenzene (crystalline); 2,4,6-trinitrophenol (picric acid) (crystalline); 2,4,6-tribromoaniline (crystalline); 4-(phenyldiazenyl)phenol (an azo dye) (fine); 4-(phenyldiazenyl)aniline (Aniline Yellow, an azo dye) (fine); Dyed cotton cloth (fibrous); Poly(ethene) (lumpy); Poly(tetrafluoroethene), PTFE (fine); Natural rubber (polyisoprene) (lumpy); Vulcanised rubber (lumpy); Brominated rubber (lumpy); Perished rubber (lumpy); Silicone resin (lumpy); Mullite (fired ceramic) (lumpy); Calcium silicate slag (lumpy); Magnesium silicate (forsterite) (lumpy); Steel (metallic); Calcium phosphate slag (lumpy); Aluminium with its oxide layer (metallic); Chromium(III) oxide layer (metallic); Electropolished steel (metallic); Nickel(II) sulfide (fine); Strontium carbonate (fine); Stearic acid (lumpy); Precipitated DNA fibres (fibrous); Cisplatin (fine); Platinum–DNA adduct (fibrous); Strontium oxide (fine); Barium oxide (fine).

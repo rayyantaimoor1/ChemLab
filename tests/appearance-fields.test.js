@@ -41,6 +41,16 @@ for (const [field, rule] of Object.entries(RULES)) {
   });
 }
 
+test('every substance of the right kind has its appearance words', () => {
+  // The UI.3 batches filled every one (batch.md section 15). A chemical
+  // added later must come with them, or the bench has nothing to draw from.
+  for (const [field, rule] of Object.entries(RULES)) {
+    for (const chemical of chemicals) {
+      if (rule.appliesTo(chemical)) assert.ok(field in chemical, `${chemical.id} has no ${field}`);
+    }
+  }
+});
+
 test('a chemical source names what it confirms, with a link and a date', () => {
   for (const chemical of chemicals) {
     for (const entry of chemical.sources || []) {

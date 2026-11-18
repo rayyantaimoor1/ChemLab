@@ -415,8 +415,10 @@ for (const chemical of chemicals) {
  *
  * The bench draws a milky liquid, a ribbon or a gelatinous floc from
  * these words, so they are curated like everything else: fixed words
- * only, and only on the kind of substance they describe. A missing one
- * is a warning while the UI.3 batches are being worked through.
+ * only, and only on the kind of substance they describe. Every chemical
+ * of the right kind must carry one: the UI.3 batches filled them all
+ * (batch.md section 15), so a chemical added later must come with its
+ * appearance words too.
  * ------------------------------------------------------------------ */
 
 const APPEARANCE = {
@@ -442,7 +444,6 @@ const APPEARANCE = {
 const madeByAReaction = new Set(reactions.flatMap((r) => r.products || []));
 
 for (const [field, rule] of Object.entries(APPEARANCE)) {
-  let missing = 0;
   for (const chemical of chemicals) {
     const applies = rule.appliesTo(chemical);
     if (field in chemical) {
@@ -451,10 +452,9 @@ for (const [field, rule] of Object.entries(APPEARANCE)) {
         problems.push(`${chemical.id}: ${field} ${JSON.stringify(chemical[field])} is not one of ${[...rule.words].join(', ')}`);
       }
     } else if (applies) {
-      missing += 1;
+      problems.push(`${chemical.id}: ${rule.who} must have a ${field} (one of ${[...rule.words].join(', ')})`);
     }
   }
-  if (missing > 0) warnings.push(`${missing} ${rule.who} have no ${field} yet (BUILD_UI.md UI.3 batches)`);
 }
 
 for (const chemical of chemicals) {
