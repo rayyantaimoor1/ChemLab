@@ -261,6 +261,30 @@ fixed words, as it does for `category`. No engine change.
 > Magnesium ribbon as a curled strip, zinc granules as grey lumps, marble chips as white stones,
 > crystals as facets, powder as a heap. A reacting solid shrinks over the reaction's animation.
 
+> **Done (2026-11-18).**
+> - **What is in a vessel.** `appearance.js` lists the vessel's **shelf solids**: each solid the
+>   student put in, with its curated `form`, colour and amount. A solid a reaction made is not
+>   listed twice.
+> - **The drawings.** The new `src/ui/solid-shapes.js` draws all twelve forms as small static SVGs
+>   in the solid's own colour, scattered the same way every time:
+>   - ribbon leaning up the glass;
+>   - granules, chips, crystals and pellets;
+>   - a single lump;
+>   - a powder heap and a heap of filings;
+>   - coiled wire, curly turnings, crumpled foil and folded cloth.
+> - **On the bench.**
+>   - A solid sits on the vessel floor behind the liquid, so clear liquid shows it and milky
+>     liquid hides it.
+>   - More solid makes a bigger heap.
+>   - The vessel's label names it with its colour ("bluish-grey granules: Zinc metal").
+> - **When a reaction uses it up**, it shrinks and fades away (`shrinkAway` in `effects.js`;
+>   transform and opacity only). Emptying the vessel removes it at once.
+> - **Tests.** `tests/solid-shapes.test.js` and two new cases in `tests/appearance.test.js`.
+>   Screenshot: `docs/ui-progress/UI.3/shelf-solids.png`.
+> - **Screenshot script.** `scripts/capture-ui.mjs` now uses its own data folder and draws in
+>   software. On this PC another running Electron program, and a struggling graphics driver,
+>   were making it die silently partway through.
+
 **UI.3.4 — Sonnet — Precipitates by texture, and solids by kind**
 > Fine ones cloud the whole liquid and settle slowly; crystalline ones glint and settle fast;
 > gelatinous flocs hang in the liquid; curdy ones clump. `solidKind` (already curated) decides

@@ -16,3 +16,20 @@ Compare with `../UI.2/` for the before.
 Every label still shows the curated colour and its name. Only the drawing
 changes with the glass. The other shots are the earlier set-ups, now with
 this paint.
+
+## UI.3.3 — Solids that look like what they are
+
+`shelf-solids.png` has seven solids straight off the shelf, each drawn by its
+curated form:
+
+- marble chips in the beaker
+- blue copper(II) sulfate crystals in the small beaker
+- a magnesium ribbon leaning up the boiling tube
+- a heap of sulfur powder in the evaporating dish
+- zinc granules in a test tube
+- iron filings in the small flask
+- sodium hydroxide pellets in the second test tube
+
+Each vessel's label names the solid with its colour and form. On a bench
+this crowded, some labels still overlap the glass; that is the UI.1
+label-placement limit, not new here.

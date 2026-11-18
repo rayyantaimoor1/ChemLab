@@ -451,6 +451,27 @@ export function shakeElement(el, { duration = 200, amplitude = 6 } = {}) {
  * for now.
  * ------------------------------------------------------------------ */
 
+/* ------------------------------------------------------------------ *
+ * A solid used up by a reaction (BUILD_UI.md UI.3.3): the zinc or the
+ * marble chips shrink and fade over the reaction instead of blinking out,
+ * the way a real granule dissolves away. Transform and opacity only.
+ * ------------------------------------------------------------------ */
+
+export function shrinkAway(el, { duration = 1400 } = {}) {
+  if (!el) return;
+  el.style.transformOrigin = '50% 100%';
+  const animation = animate(
+    el,
+    [
+      { transform: 'scale(1, 1)', opacity: 1 },
+      { transform: 'scale(0.75, 0.6)', opacity: 0.85, offset: 0.5 },
+      { transform: 'scale(0.2, 0.15)', opacity: 0 },
+    ],
+    { duration, easing: 'ease-in' }
+  );
+  whenDone(animation, () => el.remove());
+}
+
 export function playPourStream(mouthLayerEl, { duration = 850 } = {}) {
   if (!mouthLayerEl) return;
 

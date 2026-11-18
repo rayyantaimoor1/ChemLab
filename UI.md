@@ -26,6 +26,9 @@ The UI may **read** engine state and **dispatch** actions. It may not contain ch
       clarity: 'clear' | 'cloudy' | 'milky' | 'opaque' | null,
       // the least clear liquid in the vessel (curated per chemical);
       // null when it holds no liquid. Drawn by src/ui/liquid-colour.js.
+      shelfSolids: [{ id, name, form, colorHex, colorName, amount }],
+      // solids the student put in, drawn by their curated form
+      // (src/ui/solid-shapes.js); a solid a reaction made is not listed here
       precipitate: { colorHex, colorName, name, kind, density } | null,
       // kind is the reaction's curated solidKind: precipitate, deposit,
       // coating, liquid, smoke or solid. solids lists every one present.

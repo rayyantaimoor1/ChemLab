@@ -31,8 +31,13 @@
  * that "does not all dissolve" is recorded as dissolved; soot is no
  * product at all). Its kind — precipitate, deposit, liquid, smoke — is the
  * reaction's curated `solidKind`. A solid the student added from the shelf
- * is not drawn as a settled layer; how shelf solids look is BUILD_UI.md
- * stage UI.3.
+ * is not drawn as a settled layer: it is a SHELF SOLID, below.
+ *
+ * SHELF SOLIDS (BUILD_UI.md UI.3.3)
+ * A solid the student put in - zinc granules, marble chips, a magnesium
+ * ribbon - is listed with its curated `form`, colour and the amount added,
+ * so the bench can draw it as what it is. A solid a reaction made is not
+ * listed again here; it is already one of the solids above.
  *
  * HOW CLEAR THE LIQUID IS (BUILD_UI.md UI.3.2)
  * Every solution and liquid carries a curated `clarity` (clear, cloudy,
@@ -51,6 +56,7 @@ const EMPTY = Object.freeze({
   colorHex: '#EEF3F5',
   colorName: 'colourless',
   clarity: null,
+  shelfSolids: [],
   precipitate: null,
   solids: [],
   bubbling: false,
@@ -194,11 +200,22 @@ export function appearanceFor(snapshot, memory, engine) {
     ? species.includes(s.id)
     : s.whileAllPresent.every((id) => species.includes(id))));
 
+  const made = new Set(solids.map((s) => s.id).filter(Boolean));
+  const amounts = new Map((snapshot.contents || []).map((item) => [item.id ?? item.chemicalId, item.amount]));
+  const shelfSolids = species
+    .map((id) => engine.getChemical(id))
+    .filter((c) => c && c.state === 'solid' && c.form && !made.has(c.id))
+    .map((c) => ({
+      id: c.id, name: c.name, form: c.form, colorHex: c.colorHex, colorName: c.colorName,
+      amount: amounts.get(c.id) ?? null,
+    }));
+
   return {
     ...EMPTY,
     colorHex: colour.colorHex,
     colorName: colour.colorName,
     clarity: clarityFor(species, engine),
+    shelfSolids,
     precipitate: solids.length ? solids[solids.length - 1] : null,
     solids,
   };

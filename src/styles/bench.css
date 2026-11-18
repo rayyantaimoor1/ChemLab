@@ -1548,6 +1548,20 @@ html.reduce-motion .vessel__dip {
   opacity: 0.4;
 }
 
+/* A shelf solid on the vessel floor (BUILD_UI.md UI.3.3), drawn by
+   solid-shapes.js. Positioned by bench.js; static except when shrinking
+   away as a reaction uses it up. */
+.shelf-solid {
+  position: absolute;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.shelf-solid svg {
+  display: block;
+  overflow: visible;
+}
+
 .vessel__layer {
   position: absolute;
   inset: 0;

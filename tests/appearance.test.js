@@ -136,3 +136,25 @@ test('the starch–iodine result is opaque, as its curated clarity says', () => 
   assert.ok(rule, 'a rule makes the starch–iodine complex');
   assert.equal(runRule(rule).look.clarity, 'opaque');
 });
+
+// ---- Shelf solids (BUILD_UI.md UI.3.3) ----
+
+test('a solid put in from the shelf is listed with its curated form and amount', () => {
+  const zinc = appearanceFor({
+    speciesIds: ['zn_metal', 'water_distilled'],
+    contents: [{ id: 'zn_metal', amount: 5, unit: 'g' }, { id: 'water_distilled', amount: 10, unit: 'mL' }],
+    temperatureC: 25, heatLevel: 0, electrified: false,
+  }, undefined, engine);
+  assert.equal(zinc.shelfSolids.length, 1);
+  assert.equal(zinc.shelfSolids[0].form, 'granules');
+  assert.equal(zinc.shelfSolids[0].amount, 5);
+});
+
+test('a solid a reaction made is not drawn a second time as a shelf solid', () => {
+  // Zinc in copper sulfate deposits copper - copper is also a shelf solid
+  // (turnings), but here it is the reaction's deposit, already drawn.
+  const rule = engine.getReaction('rxn_displacement_zn_cuso4');
+  const { look: after } = runRule(rule);
+  assert.ok(after.solids.some((s) => s.id === 'cu_metal'), 'the copper deposit is shown');
+  assert.ok(!after.shelfSolids.some((s) => s.id === 'cu_metal'), 'and not again as turnings');
+});

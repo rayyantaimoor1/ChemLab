@@ -18,11 +18,22 @@
 import { app, BrowserWindow } from 'electron';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const stage = process.argv.find((arg) => /^UI\.\d+$/.test(arg)) || 'current';
 const OUT = path.join(ROOT, 'docs', 'ui-progress', stage);
+
+// Its own data folder. Without one, Electron uses the shared default, and
+// any other Electron program running on the same PC can hold that folder
+// and stop this script from opening a window at all.
+app.setPath('userData', path.join(os.tmpdir(), 'chemlab-capture-ui'));
+
+// Draw in software. These are still pictures of an offscreen window, so the
+// graphics card adds nothing here - and on a PC whose graphics driver is
+// struggling it can take the whole script down mid-run without a word.
+app.disableHardwareAcceleration();
 
 // Helpers injected into the page before each set-up. They do what a
 // student's mouse does: press tray buttons and drop reagents on vessels.
@@ -160,6 +171,18 @@ const SETUPS = {
     await __cap.fill('tube_1', 'cuso4_0_5m', 2);
     await __cap.fill('tube_2', 'starch_aq', 1);
     await __cap.fill('tube_2', 'i2_aq', 1);`,
+  // Stage UI.3.3: shelf solids drawn as what they are.
+  'shelf-solids': `
+    for (const label of ['take a beaker 250', 'take a boiling tube', 'take a test tube', 'take a beaker 100', 'take an evaporating dish', 'take a small conical flask', 'take a test tube']) {
+      __cap.press(label); await __cap.wait(300);
+    }
+    await __cap.dispense('beaker_1', 'caco3_s'); await __cap.wait(300);
+    await __cap.dispense('boiling_tube_1', 'mg_metal'); await __cap.wait(300);
+    await __cap.dispense('tube_1', 'zn_metal'); await __cap.wait(300);
+    await __cap.dispense('beaker_small_1', 'cuso4_5h2o_s'); await __cap.wait(300);
+    await __cap.dispense('dish_1', 's_powder'); await __cap.wait(300);
+    await __cap.dispense('flask_small_1', 'fe_metal'); await __cap.wait(300);
+    await __cap.dispense('tube_2', 'naoh_s'); await __cap.wait(300);`,
   'titration': `
     __cap.press('auto-pour'); await __cap.wait(100);
     __cap.press('take a conical flask'); await __cap.wait(300);

@@ -44,7 +44,11 @@ import {
   playPourStream,
   tickNumber,
   setFlameLevel,
+  shrinkAway,
 } from './effects.js';
+// A solid from the shelf drawn as what it is - ribbon, granules, chips -
+// from its curated form (BUILD_UI.md UI.3.3).
+import { solidSvg, solidBox, shelfSolidLabel } from './solid-shapes.js';
 import { solidLabel } from './appearance.js';
 // The shape of each vessel, its printed scale, and how high a volume of
 // liquid comes inside it (BUILD_UI.md UI.2) - all in glassware.js.
@@ -618,7 +622,12 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // Everything inside is cut to the INSIDE of the glass, so liquid runs up
     // the curve of a test tube and into the cone of a flask (UI.2.4).
     if (geometry) glass.style.clipPath = `path('${geometry.innerPath}')`;
-    glass.append(liquidBase, liquidIncoming, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
+    // Shelf solids sit on the floor BEHIND the liquid, so a clear solution
+    // shows them, a coloured one tints them and a milky one hides them -
+    // as it would in real glass.
+    const solidLayer = document.createElement('div');
+    solidLayer.className = 'vessel__layer vessel__shelf-solids';
+    glass.append(solidLayer, liquidBase, liquidIncoming, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
     vessel.appendChild(glass);
     vessel.insertAdjacentHTML('beforeend', frontSvg(container.type, container.capacityMl));
     el.appendChild(vessel);
@@ -655,6 +664,11 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     precipitateLabel.className = 'object-chip__precipitate';
     precipitateLabel.hidden = true;
 
+    // The shelf solids in the vessel, named with their colour (UI.md §5).
+    const shelfSolidNote = document.createElement('span');
+    shelfSolidNote.className = 'object-chip__precipitate object-chip__shelf-solid';
+    shelfSolidNote.hidden = true;
+
     const capacityChip = document.createElement('span');
     capacityChip.className = 'object-chip__capacity';
     capacityChip.hidden = true;
@@ -681,7 +695,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     powerNote.className = 'object-chip__power';
     powerNote.hidden = true;
 
-    chip.append(nameRow, readout, colourRow, precipitateLabel, capacityChip, standNote, readingRow, powerNote);
+    chip.append(nameRow, readout, colourRow, shelfSolidNote, precipitateLabel, capacityChip, standNote, readingRow, powerNote);
     el.appendChild(chip);
 
     // The flame indicator lives with the burner now, so a vessel only
@@ -699,6 +713,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       volumeEl, tempEl, phEl, colorSwatch, colorText, colourRow, precipitateLabel, capacityChip,
       standNote, vesselShadow, flame, electrodeLayer, ionLayer,
       readingRow, readingSwatch, readingText, powerNote,
+      solidLayer, shelfSolidNote, solidEls: new Map(),
       dipEl: null, dipTool: null,
     };
     vesselEls.set(container.id, refs);
@@ -792,6 +807,51 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       clarity: container.appearance.clarity,
       pathPx: liquidPathPx(container.type, container.capacityMl, container.volumeMl),
     });
+  }
+
+  /**
+   * Draws each shelf solid on the vessel floor, side by side, each as wide as
+   * its share of the floor. A solid that has gone while the vessel still has
+   * something in it was used up by a reaction, so it shrinks away; one that
+   * went because the vessel was emptied just goes.
+   */
+  function updateShelfSolids(refs, container) {
+    const solids = container.appearance.shelfSolids || [];
+    refs.shelfSolidNote.hidden = solids.length === 0;
+    refs.shelfSolidNote.textContent = solids.map(shelfSolidLabel).join('; ');
+
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    if (!geometry) return;
+    const floor = Math.max(10, 2 * geometry.innerHalfAt(geometry.floorY - 5) - 4);
+    const share = floor / Math.max(1, solids.length);
+    const keep = new Set();
+
+    solids.forEach((solid, index) => {
+      keep.add(solid.id);
+      const box = solidBox(share, solid.amount, solid.form);
+      const left = geometry.cx - floor / 2 + index * share + (share - box.w) / 2;
+      const signature = `${solid.form}:${box.w}x${box.h}:${solid.colorHex}`;
+      let el = refs.solidEls.get(solid.id);
+      if (!el) {
+        el = document.createElement('div');
+        el.className = 'shelf-solid';
+        refs.solidLayer.appendChild(el);
+        refs.solidEls.set(solid.id, el);
+      }
+      if (el.dataset.signature !== signature) {
+        el.innerHTML = solidSvg(solid, box);
+        el.dataset.signature = signature;
+      }
+      el.style.left = `${Math.round(left)}px`;
+      el.style.bottom = `${Math.round(geometry.h - geometry.floorY)}px`;
+    });
+
+    for (const [id, el] of refs.solidEls) {
+      if (keep.has(id)) continue;
+      refs.solidEls.delete(id);
+      if (container.contents.length > 0) shrinkAway(el);
+      else el.remove();
+    }
   }
 
   function updateVessel(refs, container, state) {
@@ -927,6 +987,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       refs.powerNote.hidden = true;
     }
 
+    updateShelfSolids(refs, container);
     updateDip(refs, container);
     setFlameLevel(refs.flame, container.heatLevel);
     updateElectrolysis(refs, container);
