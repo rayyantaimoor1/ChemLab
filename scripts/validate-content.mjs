@@ -428,13 +428,13 @@ const APPEARANCE = {
   },
   // Solids on the shelf: how the solid is supplied.
   form: {
-    words: new Set(['ribbon', 'granules', 'powder', 'chips', 'crystals', 'pellets', 'lump', 'wire', 'filings', 'turnings', 'foil']),
+    words: new Set(['ribbon', 'granules', 'powder', 'chips', 'crystals', 'pellets', 'lump', 'wire', 'filings', 'turnings', 'foil', 'cloth']),
     appliesTo: (c) => c.state === 'solid' && c.onShelf === true,
     who: 'solids on the shelf',
   },
   // Solids a reaction makes: what the new solid looks like.
   texture: {
-    words: new Set(['fine', 'crystalline', 'gelatinous', 'curdy', 'metallic', 'flaky', 'lumpy']),
+    words: new Set(['fine', 'crystalline', 'gelatinous', 'curdy', 'metallic', 'flaky', 'lumpy', 'fibrous']),
     appliesTo: (c) => c.state === 'solid' && madeByAReaction.has(c.id),
     who: 'solids a reaction makes',
   },

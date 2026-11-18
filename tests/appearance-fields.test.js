@@ -22,11 +22,11 @@ const RULES = {
     appliesTo: (c) => c.state === 'aqueous' || c.state === 'liquid',
   },
   form: {
-    words: ['ribbon', 'granules', 'powder', 'chips', 'crystals', 'pellets', 'lump', 'wire', 'filings', 'turnings', 'foil'],
+    words: ['ribbon', 'granules', 'powder', 'chips', 'crystals', 'pellets', 'lump', 'wire', 'filings', 'turnings', 'foil', 'cloth'],
     appliesTo: (c) => c.state === 'solid' && c.onShelf === true,
   },
   texture: {
-    words: ['fine', 'crystalline', 'gelatinous', 'curdy', 'metallic', 'flaky', 'lumpy'],
+    words: ['fine', 'crystalline', 'gelatinous', 'curdy', 'metallic', 'flaky', 'lumpy', 'fibrous'],
     appliesTo: (c) => c.state === 'solid' && madeByAReaction.has(c.id),
   },
 };

@@ -175,9 +175,9 @@ approved 2026-11-17). These say what a substance looks like, so the bench
 can draw it:
 - `clarity` goes on solutions and liquids: clear, cloudy, milky or opaque.
 - `form` goes on solids on the shelf: ribbon, granules, powder, chips,
-  crystals, pellets, lump, wire, filings, turnings or foil.
+  crystals, pellets, lump, wire, filings, turnings, foil or cloth.
 - `texture` goes on solids a reaction makes: fine, crystalline,
-  gelatinous, curdy, metallic, flaky or lumpy.
+  gelatinous, curdy, metallic, flaky, lumpy or fibrous.
 
 Like `category` they are **curated, never deduced**. A formula says
 nothing about whether a precipitate is gelatinous. A chemical may carry a

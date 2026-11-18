@@ -772,22 +772,24 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–10 of 16 done (2026-11-18).** The owner
+**Status: in progress — batches 1–11 of 16 done (2026-11-18).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
 | Field | On | Words |
 |---|---|---|
 | `clarity` | every solution and liquid | clear, cloudy, milky, opaque |
-| `form` | every solid on the shelf | ribbon, granules, powder, chips, crystals, pellets, lump, wire, filings, turnings, foil |
-| `texture` | every solid a reaction makes | fine, crystalline, gelatinous, curdy, metallic, flaky, lumpy |
+| `form` | every solid on the shelf | ribbon, granules, powder, chips, crystals, pellets, lump, wire, filings, turnings, foil, cloth |
+| `texture` | every solid a reaction makes | fine, crystalline, gelatinous, curdy, metallic, flaky, lumpy, fibrous |
 
 `filings`, `turnings` and `foil` were added to the BUILD_UI.md list
 because the shelf already stocks iron filings and copper turnings.
 `flaky` was added to the textures in batch 3, for rust (owner approved
 2026-11-17). Calling rust "fine" would have drawn it as a powdery cloud.
 `lumpy` was added in batch 8, for cement clinker, which forms as "lumps or
-nodules" 3–25 mm across (owner approved 2026-11-18).
+nodules" 3–25 mm across (owner approved 2026-11-18). The form `cloth` (cotton
+cloth) and the texture `fibrous` (nylon pulled out as a rope, and dyed
+cloth) were added in batch 11 (owner approved 2026-11-18).
 
 The validator and `tests/appearance-fields.test.js` reject any other word,
 and any field on the wrong kind of substance. A missing field is only a
@@ -1236,3 +1238,47 @@ during this batch, so more values than usual are unconfirmed.
   precipitate immediately forms"; matched to tribromophenol.
 - the azo dye from phenol: fine. chemguide (Reactions of diazonium salts)
   says "a yellow-orange solution or precipitate is formed".
+
+### Batch 11 — chemicals 251–275 (the polymers)
+
+All approved by the owner on 2026-11-18, including the form `cloth` and
+the texture `fibrous`. The Wikipedia pages for polythene, PTFE,
+terephthalic acid and the Ziegler–Natta catalyst timed out twice each.
+
+**Clear (8):**
+- iodobenzene
+- styrene
+- 1,6-diaminohexane
+- hexanedioyl dichloride
+- glycine
+- the polypeptide
+- sodium terephthalate
+- isoprene
+
+**Milky (1):** rubber latex. Wikipedia: "latex is found as a milky
+fluid".
+
+**Cloudy (1):** rubber dissolved in benzene. Not confirmed; the curated
+colour name already said "cloudy pale amber".
+
+**Confirmed by an opened page:**
+- nylon: fibrous. Wikipedia (Nylon rope trick): it forms "a flexible
+  film at the interface", drawn out as "a filament or rope". chemguide
+  (Polyamides): "an amazingly long tube of nylon".
+- PVC: fine. Wikipedia: "Pure PVC powder", and the first sample "appeared
+  as a white solid inside a flask".
+- polystyrene: lumpy. Wikipedia: "solid (glassy)", made "in pellet form".
+- PET: lumpy. Wikipedia: "a colorless, semi-crystalline resin".
+
+**Not confirmed by an opened page:**
+- polythene: lumpy. It is a waxy solid mass, by its description.
+- PTFE: fine. The white waxy powder of its discovery is from memory, not
+  a page.
+- natural and vulcanised rubber: lumpy. Wikipedia describes vulcanised
+  rubber only as "firm"; "lumps and strips" for raw rubber appeared only
+  in a summary.
+- terephthalic acid and the Ziegler–Natta catalyst: powder (shelf forms).
+- the dyed cloth: fibrous, because it is cloth.
+- cotton cloth: cloth.
+- Aniline Yellow: fine. chemguide (Reactions of diazonium salts): "A
+  yellow solid is produced".

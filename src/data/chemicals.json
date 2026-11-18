@@ -5952,6 +5952,7 @@
     "levels": ["bs"],
     "structure": "molecules/azo_dye_red.svg",
     "description": "Aniline Yellow — the first azo dye ever made, in 1861. The same azo backbone as the orange dye with an —NH₂ on the far ring instead of an —OH, and the shade has moved from orange to yellow. Nothing else about the molecule has changed. That is the whole principle of dye design in one comparison: the coupled system decides that there IS a colour, and the groups hanging off the ends decide which one, so a chemist adjusts a shade by changing a substituent rather than by starting again.",
+    "texture": "fine",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — azo dyes and colour; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Wikipedia — Aniline Yellow (a yellow azo dye, an orange powder; the first azo dye, 1861), consulted 2026-11-05",
     "category": "organic"
   },
@@ -5973,6 +5974,7 @@
     "levels": ["bs"],
     "structure": "molecules/c6h5i.svg",
     "description": "Iodine on a benzene ring — a compound that cannot be made by the direct route at all. Chlorine and bromine can be put onto a ring with a halogen carrier; iodine is too unreactive for that to work. Going the long way round through a diazonium salt is how it is actually done, which is a good illustration of why chemists build multi-step routes rather than always looking for the shortest one.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — aryl halides from diazonium salts; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -5994,6 +5996,7 @@
     "levels": ["bs"],
     "structure": "molecules/cotton.svg",
     "description": "Cellulose, which is the same glucose units the starch batch met, joined a different way round — and that one difference in the link is why cotton is a fibre you can weave and starch is food you can digest. Its molar mass is null for the honest reason: different cellulose chains are different lengths. What matters for dyeing is that the chains lie alongside each other in a tangle with gaps a flat dye molecule can lodge in.",
+    "form": "cloth",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — cellulose and fibres",
     "category": "material"
   },
@@ -6015,6 +6018,7 @@
     "levels": ["bs"],
     "structure": "molecules/dyed_cloth.svg",
     "description": "Cloth with dye lodged in it, and the wording matters: the dye is HELD, not bonded. Nothing has reacted. Flat dye molecules have slipped between the cellulose chains and are kept there by the same weak attractions that hold any two surfaces together, which is exactly why a direct dye like this fades with washing. Reactive dyes, invented much later, form a real covalent bond to the fibre and do not.",
+    "texture": "fibrous",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — direct and reactive dyes",
     "category": "material"
   },
@@ -6036,6 +6040,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/polythene.svg",
     "description": "The most-made plastic on earth: carrier bags, bottles, buckets. It has no single molar mass — different chains stop at different lengths, so the question has no one answer, which is true of every polymer here. Chemically it is nothing but a very long alkane, and that is exactly the problem: alkanes are famously unreactive, so nothing in the environment has an easy way to attack it. The property that makes it useful and the property that makes it persist are the same property.",
+    "texture": "lumpy",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — addition polymerisation; CRC Handbook of Chemistry and Physics, 97th ed. (density)",
     "category": "material"
   },
@@ -6078,7 +6083,14 @@
     "levels": ["bs"],
     "structure": "molecules/pvc.svg",
     "description": "Drainpipes, window frames, floor tiles and electrical insulation. On its own it is rigid and brittle; adding a plasticiser — small molecules that sit between the chains and let them slide past each other — turns the same polymer into something as floppy as a shower curtain. That is worth noticing: the properties of a plastic are not fixed by its formula alone. Burning it is the real hazard, because the chlorine leaves as hydrogen chloride.",
+    "texture": "fine",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — addition polymers; CRC Handbook of Chemistry and Physics, 97th ed. (density)",
+    "sources": [
+      { "ref": "Wikipedia — Polyvinyl chloride (pure PVC powder; a white solid inside a flask)",
+        "url": "https://en.wikipedia.org/wiki/Polyvinyl_chloride",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -6099,6 +6111,7 @@
     "levels": ["bs"],
     "structure": "molecules/styrene.svg",
     "description": "Ethene with a benzene ring on it, and both halves matter. The C=C is what polymerises; the ring is what ends up sticking out along the finished chain, getting in the way of the chains packing neatly together. That awkwardness is exactly why polystyrene is rigid and glassy rather than waxy like poly(ethene) — a bulky side group is a real, physical obstruction.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — addition polymers; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -6120,7 +6133,14 @@
     "levels": ["bs"],
     "structure": "molecules/polystyrene.svg",
     "description": "Rigid and glassy where poly(ethene) is waxy, because the benzene rings hanging off every other carbon stop the chains packing closely together. Blown full of gas it becomes the expanded foam used for cups and packaging, which is more than 95 % air — the same molecule, in a different physical form, doing a completely different job.",
+    "texture": "lumpy",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — addition polymers; CRC Handbook of Chemistry and Physics, 97th ed. (density)",
+    "sources": [
+      { "ref": "Wikipedia — Polystyrene (in a solid (glassy) state; pellet form)",
+        "url": "https://en.wikipedia.org/wiki/Polystyrene",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -6162,6 +6182,7 @@
     "levels": ["bs"],
     "structure": "molecules/ptfe.svg",
     "description": "The non-stick coating on a frying pan, and the most chemically inert plastic there is — acids, alkalis and solvents all leave it alone. The reason is the carbon–fluorine bond: it is the strongest single bond carbon forms, and the fluorines form a tight sheath along the outside of the chain that shields the carbon backbone from anything trying to reach it. Non-stick is that inertness made useful, and it was found by accident, when a cylinder of the gas polymerised itself in storage.",
+    "texture": "fine",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — fluoropolymers; CRC Handbook of Chemistry and Physics, 97th ed. (density)",
     "category": "material"
   },
@@ -6183,6 +6204,7 @@
     "levels": ["bs"],
     "structure": "molecules/terephthalic.svg",
     "description": "A benzene ring with a COOH group at each end — and having TWO of them is the whole point. A molecule with one reactive group can only ever join to one partner and stop; a molecule with two can join at both ends and keep going, which is what turns a reaction into a polymerisation. Chemists call that being bifunctional, and it is the requirement every condensation polymer is built on.",
+    "form": "powder",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — condensation polymers; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "acid"
   },
@@ -6204,7 +6226,14 @@
     "levels": ["bs"],
     "structure": "molecules/polyester.svg",
     "description": "Drinks bottles and polyester fabric, and the links holding it together are ordinary ester groups — the same C(=O)O link met when ethanol and ethanoic acid were warmed together, just repeated thousands of times. Because they are ester links, hot alkali can hydrolyse them apart again, which is why PET can genuinely be broken back down to its monomers and rebuilt. That is a chemical difference from poly(ethene), not a difference in how hard anyone is trying.",
+    "texture": "lumpy",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — polyesters; CRC Handbook of Chemistry and Physics, 97th ed. (density)",
+    "sources": [
+      { "ref": "Wikipedia — Polyethylene terephthalate (a colorless, semi-crystalline resin)",
+        "url": "https://en.wikipedia.org/wiki/Polyethylene_terephthalate",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -6225,6 +6254,7 @@
     "levels": ["bs"],
     "structure": "molecules/diaminohexane.svg",
     "description": "A six-carbon chain with an —NH₂ group at each end: bifunctional, like the dicarboxylic acid, and for the same reason. Its solution is alkaline because an amine is a base. The six carbons are not arbitrary — the exact chain length decides how neatly the finished nylon chains pack against each other, and that packing is what gives the fibre its strength.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — polyamides; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -6246,6 +6276,7 @@
     "levels": ["bs"],
     "structure": "molecules/adipoyl_cl.svg",
     "description": "An acid chloride at BOTH ends of a six-carbon chain. The dicarboxylic acid would eventually make nylon too, but only on prolonged heating; using the acid chloride instead makes the reaction fast enough to happen at room temperature the moment the two solutions touch. Trading a harsher reagent for gentler conditions is a routine piece of synthetic thinking, and here it is what makes the classroom demonstration possible.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — interfacial polymerisation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -6267,7 +6298,18 @@
     "levels": ["bs"],
     "structure": "molecules/nylon.svg",
     "description": "A POLYAMIDE: the links along its chain are amide links, the same C(=O)N bond that joins amino acids into a protein. Nylon is, structurally, a synthetic protein with a very boring repeating unit — and it is strong for the same reason silk is, because the N—H on one chain hydrogen bonds to the C=O on the next and pulls the chains tightly together. The name 6,6 counts the carbons in each monomer: six in the amine, six in the acid.",
+    "texture": "fibrous",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — polyamides; CRC Handbook of Chemistry and Physics, 97th ed. (density)",
+    "sources": [
+      { "ref": "Wikipedia — Nylon rope trick (a flexible film at the interface, withdrawn as a filament or rope)",
+        "url": "https://en.wikipedia.org/wiki/Nylon_rope_trick",
+        "checked": "2026-11-18",
+        "covers": ["texture"] },
+      { "ref": "Jim Clark, chemguide — Polyamides (pull out an amazingly long tube of nylon)",
+        "url": "https://www.chemguide.co.uk/organicprops/amides/polyamides.html",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -6288,6 +6330,7 @@
     "levels": ["bs"],
     "structure": "molecules/glycine.svg",
     "description": "The simplest amino acid, and bifunctional in an unusual way: it carries an acid group AND a base group on the same small molecule, so it can join to another copy of itself at either end. That is why one compound alone can polymerise where a polyester needs two different monomers. In solution most of it exists as a zwitterion, with the hydrogen already moved from the acid end to the amine end — an ion that is positive and negative at once and neutral overall.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — amino acids and peptides; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility)",
     "category": "acid"
   },
@@ -6309,6 +6352,7 @@
     "levels": ["bs"],
     "structure": "molecules/polypeptide.svg",
     "description": "Amino acids joined into a chain by amide links — which is to say, a protein, or at least the backbone of one. Put this beside the nylon made two entries earlier and the links are the same kind of bond, formed the same way, losing a molecule of water each time. The difference is that nylon repeats one dull unit forever while a real protein draws on twenty different amino acids in a specific order, and that order is what makes one protein an enzyme and another a hair.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — peptide bond formation",
     "category": "organic"
   },
@@ -6330,6 +6374,7 @@
     "levels": ["bs"],
     "structure": "molecules/na_terephthalate.svg",
     "description": "What the acid half of a polyester becomes once hot alkali has hydrolysed the chain apart — the salt rather than the free acid, because the alkali immediately takes the hydrogen. Acidify it and the dicarboxylic acid comes back out, ready to be polymerised again. That round trip is what chemical recycling of PET actually is, as opposed to melting bottles down and hoping.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — hydrolysis of polyesters; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "organic"
@@ -6352,6 +6397,7 @@
     "levels": ["bs"],
     "structure": "molecules/ziegler_natta.svg",
     "description": "A MIXTURE — a titanium halide together with an aluminium alkyl — so it has no molar mass of its own, like Fehling's and biuret reagent. It is what makes addition polymerisation practical: without it poly(ethene) needs something like two thousand atmospheres, and with it the same polymer forms at ordinary pressure. It does more than speed things up, too. It holds each monomer in a fixed orientation as it joins, so the side groups end up arranged regularly along the chain rather than at random, and a regular chain packs tightly and gives a stronger, denser plastic. Ziegler and Natta shared the 1963 Nobel Prize for it.",
+    "form": "powder",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Ziegler–Natta polymerisation; Housecroft & Sharpe, Inorganic Chemistry 4th ed. — organometallic catalysis",
     "category": "material"
   },
@@ -6373,6 +6419,7 @@
     "levels": ["bs"],
     "structure": "molecules/isoprene.svg",
     "description": "A DIENE — it carries TWO carbon-to-carbon double bonds, not one, and that is the whole reason rubber can be what it is. Polymerising uses up only one of them; the other survives into the finished chain. Everything rubber can do that poly(ethene) cannot, and everything that goes wrong with it, traces back to that leftover double bond. It is also the unit nature builds rubber from, and the same five-carbon block it uses for terpenes and steroids.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — diene polymerisation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -6394,7 +6441,14 @@
     "levels": ["bs"],
     "structure": "molecules/latex.svg",
     "description": "The milky sap that runs from a cut in a rubber tree. The rubber is already fully polymerised inside it — the tree does that, not the factory — and what arrives at the plantation shed is tiny particles of rubber held apart in water by a coat of protein. It has no molar mass because it is a dispersion of a polymer, not a compound. Left alone it stays milky for days; the whole of harvesting is persuading those particles to stop repelling each other and clump.",
+    "clarity": "milky",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — natural rubber; Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules",
+    "sources": [
+      { "ref": "Wikipedia — Latex (found in nature as a milky fluid)",
+        "url": "https://en.wikipedia.org/wiki/Latex",
+        "checked": "2026-11-18",
+        "covers": ["clarity"] }
+    ],
     "category": "material"
   },
   {
@@ -6415,6 +6469,7 @@
     "levels": ["bs"],
     "structure": "molecules/rubber.svg",
     "description": "Raw rubber, and on its own a disappointing material: sticky when warm, brittle when cold, and it dissolves in petrol. Its long chains are coiled and can slide past one another, which is what lets it stretch — and also what lets it flow and stay stretched instead of springing back. Every one of those faults is fixed by tying the chains to each other, which is what the sulfur is for. Note it still carries a double bond in every repeat unit; that is where the sulfur will attach.",
+    "texture": "lumpy",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — natural rubber and vulcanisation; CRC Handbook of Chemistry and Physics, 97th ed. (density)",
     "category": "material"
   },
@@ -6436,6 +6491,7 @@
     "levels": ["bs"],
     "structure": "molecules/vulcanised_rubber.svg",
     "description": "Rubber with short sulfur bridges tying its chains to one another, and the change in the material is out of all proportion to how few of them there are — roughly one cross-link per few hundred units is enough. The chains can still uncoil when pulled, so it stretches; they can no longer slide past each other and stay put, so it springs back. It is a THERMOSET: with every chain tied into one giant network, there is nothing left that can dissolve or melt, so it swells and then chars rather than flowing.",
+    "texture": "lumpy",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — vulcanisation and cross-linking",
     "category": "material"
   },
@@ -6457,6 +6513,7 @@
     "levels": ["bs"],
     "structure": "molecules/rubber_solution.svg",
     "description": "Raw rubber dissolved, which it can be because its chains are separate objects — solvent gets between them and carries them off one at a time. This is what rubber cement and bicycle puncture glue are, and it is also exactly what vulcanised rubber can no longer do. A polymer that dissolves is telling you its chains are not tied to each other.",
+    "clarity": "cloudy",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — thermoplastic versus thermoset behaviour",
     "category": "material"
   },
