@@ -4189,6 +4189,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/scum.svg",
     "description": "The grey curdy solid that appears instead of a lather when soap meets hard water. Calcium has two positive charges where sodium had one, so it grips two soap molecules at once and the result will not dissolve. Every scrap of soap that ends up as scum is soap that did no washing — which is what hard water actually costs you, and it is the ring left round the bath.",
+    "texture": "curdy",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, action of hard water on soap",
     "flameElements": ["calcium"],
     "category": "material"
@@ -4211,6 +4212,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/detergent.svg",
     "description": "Built to the same two-ended plan as soap — water-loving head, grease-loving tail — but with a sulfonate head in place of the —COO⁻. That swap is the entire point: the calcium salt of a sulfonate stays dissolved, so a detergent lathers in hard water where soap only makes scum. It is also close to neutral rather than alkaline, so it is safe on wool and silk. The cost is environmental: the branched-chain versions resisted breakdown and foamed up rivers, which is why straight-chain detergents replaced them.",
+    "clarity": "clear",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, soaps and detergents",
     "flameElements": ["sodium"],
     "category": "material"
@@ -4233,6 +4235,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/glucose.svg",
     "description": "The sugar your body actually runs on, and a REDUCING SUGAR — it carries an aldehyde group, so it does everything ethanal did with Tollens' and Fehling's. Two other things worth knowing about it. It dissolves freely yet does not conduct at all, which makes it the standard example of a non-electrolyte: it dissolves as whole molecules, not as ions. And in solution almost all of it curls into the six-membered ring drawn here, with only a trace open-chain form at any moment — yet that trace is enough for the whole sample to react, because as fast as it is used up more ring opens to replace it.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, carbohydrates",
     "category": "organic"
   },
@@ -4254,6 +4257,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/sucrose.svg",
     "description": "Ordinary table sugar: one glucose joined to one fructose. It is a NON-reducing sugar, and the reason is worth seeing rather than memorising — the link between the two halves is made through exactly the carbon that would otherwise open into an aldehyde. With that carbon tied up, there is nothing left to reduce Fehling's, and the test comes out blank. Break the link and both tests turn positive at once.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, disaccharides",
     "category": "organic"
   },
@@ -4275,6 +4279,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/invert_sugar.svg",
     "description": "What sucrose becomes when it is hydrolysed: an equal mixture of glucose and fructose, and the real name the food industry uses for it. It is a MIXTURE of two sugars rather than one compound — the molar mass given is honest only because glucose and fructose happen to be isomers with the same formula. Both halves are now free to open into their reducing forms, so this reduces Fehling's where the sucrose it came from did not. Honey is largely invert sugar, which is why it is sweeter than table sugar.",
+    "clarity": "clear",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, hydrolysis of sucrose; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass of the hexoses)",
     "category": "organic"
   },
@@ -4296,6 +4301,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/gluconate.svg",
     "description": "What is left of the glucose once Fehling's or Tollens' has oxidised it: the aldehyde group has become a —COO⁻ group, and everything else about the molecule is unchanged. It is a salt rather than a sugar, so unlike the glucose it came from it conducts electricity — dipping the conductivity tester before and after the test shows the change directly.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, oxidation of glucose",
     "flameElements": ["sodium"],
     "category": "organic"
@@ -4318,6 +4324,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/starch.svg",
     "description": "Hundreds of glucose units joined into long chains — how a plant stores the sugar it makes. It has no single molar mass, and that is not a gap in this app's data: different starch molecules genuinely have different lengths, so the question has no one answer. Nor does it truly dissolve; it forms a milky colloid, which is why it looks cloudy where a sugar solution is clear. Because every reducing group is locked into the chain, starch fails Fehling's test completely.",
+    "clarity": "cloudy",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, polysaccharides",
     "category": "reagent"
   },
@@ -4339,7 +4346,14 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/starch_iodine.svg",
     "description": "The intense blue-black that appears the instant iodine meets starch. Strictly it is not a compound at all: the starch chain coils into a helix and iodine molecules thread into the tube down its middle, and it is that trapping — not any bond — that produces the colour. Two things follow that a student can check. Warm it and the colour vanishes as the helix unwinds; cool it and the colour comes back. And no colour ever appears if the starch has already been broken into glucose, which is exactly how you tell that a hydrolysis has finished.",
+    "clarity": "opaque",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, iodine test for starch",
+    "sources": [
+      { "ref": "Wikipedia — Iodine–starch test (a very dark blue-black complex; the colour is so deep)",
+        "url": "https://en.wikipedia.org/wiki/Iodine%E2%80%93starch_test",
+        "checked": "2026-11-17",
+        "covers": ["clarity"] }
+    ],
     "category": "organic"
   },
   {
@@ -4360,6 +4374,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/albumin.svg",
     "description": "Egg white in water, and a straightforward protein to work with. A protein is a chain of amino acids joined by exactly the amide link met in the last batch — which is why the test for a protein is really a test for that link. It has no single molar mass because different protein molecules are different lengths. Its shape matters as much as its formula: the chain is folded into a particular arrangement held by weak forces, and everything a protein does depends on keeping that fold.",
+    "clarity": "cloudy",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, proteins",
     "category": "organic"
   },
@@ -4381,6 +4396,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/biuret.svg",
     "description": "A little copper(II) sulfate in plenty of sodium hydroxide — a MIXTURE, like Fehling's, and with no molar mass of its own. It is pale blue on its own and turns violet with anything containing peptide links. It is named after biuret, a small molecule that gives the same colour for the same reason, and not after any part of a protein.",
+    "clarity": "clear",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, biuret test for proteins",
     "flameElements": ["sodium", "copper"],
     "category": "reagent"
@@ -4403,7 +4419,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/protein_cu.svg",
     "description": "The violet colour of a positive biuret test. Copper(II) is being gripped by the nitrogen atoms of several peptide links at once, and it is that grip which shifts the colour from pale blue to violet. The test detects the LINK rather than any particular amino acid, so a single amino acid on its own gives nothing — you need at least two links, which means at least three amino acids joined together. The deeper the violet, the more protein is present, and that is how protein is measured quantitatively.",
+    "clarity": "clear",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, biuret test for proteins",
+    "sources": [
+      { "ref": "Wikipedia — Biuret test (image of a clear mauve solution)",
+        "url": "https://en.wikipedia.org/wiki/Biuret_test",
+        "checked": "2026-11-17",
+        "covers": ["clarity"] }
+    ],
     "category": "organic"
   },
   {
@@ -4424,7 +4447,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/albumin_coag.svg",
     "description": "A cooked egg white. The chain of amino acids is entirely intact — not one peptide link has been broken — but the folding that held it in shape has been shaken apart, and the unfolded chains have tangled into each other and come out of solution. That is DENATURATION, and the reason it cannot be undone by cooling is simply that the tangle will not sort itself out again. Because the links survive, a biuret test on a boiled egg white is still positive.",
+    "texture": "curdy",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, denaturation of proteins",
+    "sources": [
+      { "ref": "Wikipedia — Denaturation (heat turns egg whites opaque, forming an interconnected solid mass)",
+        "url": "https://en.wikipedia.org/wiki/Denaturation_(biochemistry)",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "organic"
   },
   {
@@ -4445,6 +4475,8 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/urea.svg",
     "description": "The most used fertiliser on earth and the backbone of Pakistan's chemical industry, at 46 % nitrogen — more than any other solid fertiliser. Chemically it is a double amide: one carbonyl carbon carrying two —NH₂ groups, so everything learnt about ethanamide applies to it. It matters historically too. Making it from ammonia and carbon dioxide, both lifeless minerals, was the first time anyone built a compound previously known only from living things, and it ended the idea that organic chemistry needed a special vital force.",
+    "form": "crystals",
+    "texture": "crystalline",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, fertilisers",
     "category": "organic"
   },
@@ -4466,6 +4498,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/nh42so4.svg",
     "description": "A nitrogen fertiliser, and one with a catch worth knowing. It is the salt of a WEAK base and a STRONG acid, so its solution is acidic rather than neutral — the opposite way round from sodium ethanoate. Used year after year it steadily sours the soil, which is why fields treated with it eventually need liming. It also supplies sulfur, which crops need too, so it is not simply a worse choice than urea.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, fertilisers",
     "category": "salt"
   },
@@ -4487,7 +4520,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/sio2.svg",
     "description": "Sand, quartz and most of ordinary clay. Its formula looks like carbon dioxide's and the two could hardly behave less alike: CO₂ is a gas of separate small molecules, while SiO₂ is one endless network in which every silicon is bonded to four oxygens and every oxygen bridges two silicons. That difference is why sand melts near 1700 °C and carbon dioxide does not melt at all. Breathing the fine dust over years causes silicosis, which is why it is wetted down on building sites.",
+    "form": "powder",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, melting point); Punjab Curriculum and Textbook Board, Chemistry XII — Group IVA elements and the cement industry",
+    "sources": [
+      { "ref": "Wikipedia — Silicon dioxide (colorless crystals or white crystalline powder)",
+        "url": "https://en.wikipedia.org/wiki/Silicon_dioxide",
+        "checked": "2026-11-17",
+        "covers": ["form","texture"] }
+    ],
     "category": "oxide"
   },
   {
@@ -4508,8 +4549,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/clinker.svg",
     "description": "The dark grey nodules that come out of a cement kiln, ground to powder to make the cement sold in bags. Its most important property is one people underestimate: mixed with water it is strongly ALKALINE, about pH 12.5, which is why wet cement causes serious burns that are often not felt until hours later. Bricklayers lose skin to it every year.",
+    "texture": "lumpy",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, cement; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density of tricalcium silicate)",
     "flameElements": ["calcium"],
+    "sources": [
+      { "ref": "Wikipedia — Cement clinker (occurs as lumps or nodules, 3–25 mm)",
+        "url": "https://en.wikipedia.org/wiki/Cement_clinker",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -4530,6 +4578,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/cement_set.svg",
     "description": "Hardened cement: a mat of interlocking crystals grown through the water that was mixed in. It has no single formula and no single molar mass, because the amount of water taken up varies — which is honest data, not missing data. The everyday belief that cement hardens by DRYING is simply wrong: it hardens by reacting with water, it sets perfectly well underwater, and concrete left to dry too fast ends up weaker rather than stronger.",
+    "texture": "crystalline",
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, setting of cement",
     "category": "material"
   },
@@ -4551,6 +4600,7 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/alum.svg",
     "description": "What is added at the first stage of nearly every waterworks in the world, and what a village household uses when it rubs a lump of phitkari round a pot of muddy water. Its solution is distinctly ACIDIC even though neither aluminium nor sulfate looks like an acid, because the small, highly charged Al³⁺ ion pulls hard enough on the water around it to force hydrogen ions off. That same pull is what makes it useful: it is halfway to becoming aluminium hydroxide already.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Environmental chemistry, water treatment",
     "category": "salt"
   },
@@ -4572,7 +4622,19 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/aloh3.svg",
     "description": "A soft, open, jelly-like solid — a FLOC rather than an ordinary precipitate, and the difference is the whole point. A dense precipitate would drop straight to the bottom and leave the water as dirty as before; this one forms slowly as a loose sticky mesh through the whole depth of the water, gathering clay particles, bacteria and colour into itself as it sinks. What is filtered off afterwards is far more than the aluminium hydroxide alone.",
+    "form": "powder",
+    "texture": "gelatinous",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Environmental chemistry, coagulation in water treatment",
+    "sources": [
+      { "ref": "Wikipedia — Aluminium hydroxide (appearance: white amorphous powder)",
+        "url": "https://en.wikipedia.org/wiki/Aluminium_hydroxide",
+        "checked": "2026-11-17",
+        "covers": ["form"] },
+      { "ref": "LibreTexts — Characteristic Reactions of Aluminum Ions (a white gelatinous precipitate of Al(OH)3)",
+        "url": "https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Supplemental_Modules_(Analytical_Chemistry)/Qualitative_Analysis/Characteristic_Reactions_of_Select_Metal_Ions/Characteristic_Reactions_of_Aluminum_Ions_(Al)",
+        "checked": "2026-11-17",
+        "covers": ["texture"] }
+    ],
     "category": "base"
   },
   {
@@ -4593,6 +4655,7 @@
     "levels": ["bs"],
     "structure": "molecules/cucl4.svg",
     "description": "The same copper ion as in blue copper sulfate, wearing different ligands. Four chlorides have pushed the six water molecules off, and with them go both the colour and the SHAPE — the aqua ion is octahedral with six ligands, this is tetrahedral with four. Chloride is a bigger ligand and only four will fit. Both facts matter: the colour of a transition metal ion is a property of the whole complex, not of the metal alone, which is why the same copper can look blue, green or deep violet depending only on what is bonded to it.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — tetrahalometallates; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["copper"],
     "category": "complex"
@@ -4615,6 +4678,7 @@
     "levels": ["bs"],
     "structure": "molecules/co_h2o.svg",
     "description": "Cobalt(II) with six water molecules around it, octahedral, and pale pink. This is what cobalt chloride looks like in ordinary dilute solution, and it is one half of the most quoted equilibrium in inorganic chemistry. Add concentrated chloride and it turns blue; dilute it again and the pink returns. Nothing is created or destroyed in either direction — the same cobalt simply swaps one set of ligands for another.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — aqua ions and ligand substitution; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -4636,6 +4700,7 @@
     "levels": ["bs"],
     "structure": "molecules/cocl4.svg",
     "description": "The other half of the cobalt equilibrium: tetrahedral, four chlorides, and an intense blue. The colour change from pink is so complete and so easily reversed that this is the standard demonstration of Le Chatelier's principle. It is also, incidentally, why cobalt chloride paper tests for water — the blue dry paper turns pink the moment water displaces the chloride.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — tetrahalometallates and the cobalt(II) equilibrium; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -4657,6 +4722,7 @@
     "levels": ["bs"],
     "structure": "molecules/nicl2.svg",
     "description": "Nickel(II) in water, green from the hexaaqua ion. Nickel is the most common cause of metal allergy in the world — it is why cheap earrings make some ears sore — and the sensitisation happens through skin contact with nickel salts exactly like this one. Handle with gloves, which is good practice with any transition metal salt but genuinely important here.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Housecroft & Sharpe, Inorganic Chemistry 4th ed. — nickel(II) chemistry",
     "category": "salt"
   },
@@ -4678,6 +4744,7 @@
     "levels": ["bs"],
     "structure": "molecules/dmg.svg",
     "description": "A CHELATING ligand — one molecule with two nitrogen atoms placed exactly right to grip a single metal ion at two points at once, like a crab's claw. That two-point grip is far harder to break than two separate ligands would be, and it is the reason chelates are so stable. Dimethylglyoxime happens to fit nickel almost perfectly and very few other ions, which makes it one of the most selective reagents in analytical chemistry.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Quantitative Chemical Analysis 6th ed. — gravimetric determination of nickel; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "reagent"
   },
@@ -4699,6 +4766,7 @@
     "levels": ["bs"],
     "structure": "molecules/ni_dmg.svg",
     "description": "A striking rose-red solid, and one of the few precipitates clean enough to be weighed directly. Two dimethylglyoxime molecules grip one nickel between them, the whole thing is flat and square, and because it is uncharged it will not dissolve in water at all. Its composition is exact and reproducible, which is what makes gravimetric analysis possible: filter it, dry it, weigh it, and you know how much nickel was in the sample to four figures.",
+    "texture": "fine",
     "source": "Vogel's Textbook of Quantitative Chemical Analysis 6th ed. — gravimetric determination of nickel; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },

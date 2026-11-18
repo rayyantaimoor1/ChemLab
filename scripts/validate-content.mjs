@@ -434,7 +434,7 @@ const APPEARANCE = {
   },
   // Solids a reaction makes: what the new solid looks like.
   texture: {
-    words: new Set(['fine', 'crystalline', 'gelatinous', 'curdy', 'metallic', 'flaky']),
+    words: new Set(['fine', 'crystalline', 'gelatinous', 'curdy', 'metallic', 'flaky', 'lumpy']),
     appliesTo: (c) => c.state === 'solid' && madeByAReaction.has(c.id),
     who: 'solids a reaction makes',
   },

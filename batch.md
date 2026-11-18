@@ -772,7 +772,7 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–7 of 16 done (2026-11-17).** The owner
+**Status: in progress — batches 1–8 of 16 done (2026-11-18).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -780,12 +780,14 @@ draw what a substance looks like, not just its colour:
 |---|---|---|
 | `clarity` | every solution and liquid | clear, cloudy, milky, opaque |
 | `form` | every solid on the shelf | ribbon, granules, powder, chips, crystals, pellets, lump, wire, filings, turnings, foil |
-| `texture` | every solid a reaction makes | fine, crystalline, gelatinous, curdy, metallic, flaky |
+| `texture` | every solid a reaction makes | fine, crystalline, gelatinous, curdy, metallic, flaky, lumpy |
 
 `filings`, `turnings` and `foil` were added to the BUILD_UI.md list
 because the shelf already stocks iron filings and copper turnings.
 `flaky` was added to the textures in batch 3, for rust (owner approved
 2026-11-17). Calling rust "fine" would have drawn it as a powdery cloud.
+`lumpy` was added in batch 8, for cement clinker, which forms as "lumps or
+nodules" 3–25 mm across (owner approved 2026-11-18).
 
 The validator and `tests/appearance-fields.test.js` reject any other word,
 and any field on the wrong kind of substance. A missing field is only a
@@ -1107,3 +1109,53 @@ reasoning.
   solution) says the red oxide "precipitates out" and settles in the
   bottom, and that its colour depends on particle size, but it gives no
   texture word.
+
+### Batch 8 — chemicals 176–200
+
+All approved by the owner on 2026-11-18, including the new texture word
+`lumpy`. The pages were read on 2026-11-17.
+
+**Clear (14):**
+- detergent solution
+- glucose, sucrose, invert sugar and sodium gluconate
+- biuret reagent
+- ammonium sulfate
+- alum
+- tetrachlorocuprate(II)
+- the two cobalt complexes
+- nickel(II) chloride
+- dimethylglyoxime solution
+- the violet biuret result. A Wikipedia image description calls it "clear
+  mauve", though that is not body text.
+
+**Not clear:**
+- starch–iodine complex: **opaque**. Wikipedia (Iodine–starch test): "a
+  very dark blue-black complex", "the colour of the starch complex is so
+  deep".
+- starch solution: **cloudy**, not confirmed. Wikipedia says only that
+  starch and warm water make "a paste". The curated colour name "milky
+  white" probably overstates a dilute school starch solution.
+- egg albumin solution: **cloudy**, not confirmed, and against the source
+  as written. Wikipedia calls neat egg white "the clear liquid". The
+  curated colour name says "slightly cloudy", which a diluted school
+  solution usually is, so that was kept.
+
+**Confirmed by an opened page:**
+- aluminium hydroxide: powder (Wikipedia: "white amorphous powder") and
+  gelatinous (LibreTexts, Aluminum Ions: "a white gelatinous precipitate
+  of Al(OH)₃").
+- silica: powder, fine. Wikipedia: "white crystalline powder".
+- coagulated protein: curdy. Wikipedia (Denaturation): heat "turns them
+  opaque, forming an interconnected solid mass". The word "curds" there
+  is used for milk, so this is partly by analogy.
+- cement clinker: lumpy. Wikipedia: "lumps or nodules", 3–25 mm.
+
+**Not confirmed by an opened page:**
+- **soap scum: curdy.** Wikipedia says only "white solid"; the app's own
+  description says "grey curdy solid".
+- **urea: crystals, crystalline.** "Crystals" appeared only in a summary
+  of the page.
+- **set cement: crystalline.** The interlocking hydrates appeared only in a
+  summary.
+- **nickel dimethylglyoximate: fine.** LibreTexts says only "rose-red
+  precipitate".
