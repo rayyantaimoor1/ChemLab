@@ -772,7 +772,7 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–11 of 16 done (2026-11-18).** The owner
+**Status: in progress — batches 1–12 of 16 done (2026-11-18).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -1282,3 +1282,42 @@ colour name already said "cloudy pale amber".
 - cotton cloth: cloth.
 - Aniline Yellow: fine. chemguide (Reactions of diazonium salts): "A
   yellow solid is produced".
+
+### Batch 12 — chemicals 276–300 (materials)
+
+All approved by the owner on 2026-11-18.
+
+**Clear (6):** the three chlorosilanes and the three silanols they
+hydrolyse to.
+
+**Confirmed by an opened Wikipedia page:**
+- Forms:
+  - dry clay: powder. Kaolinite: kaolin is "supplied ... as powder,
+    lumps, semi-dried noodle, or slurry".
+  - plaster of Paris: powder, and fine when made by heating gypsum.
+    Plaster: "a white powder".
+  - iron(III) oxide: powder. "Rouge is sold as a powder".
+- Textures:
+  - zinc oxide: fine ("a white powder").
+  - metakaolin: fine ("a finely-divided material").
+  - gypsum formed as plaster sets: crystalline. Plaster: "an interlocking
+    mass of monoclinic crystal needles".
+  - plastic clay: lumpy. Kaolinite: "compact, claylike masses".
+  - Bakelite: lumpy ("a hard, dense material").
+  - silicone: lumpy. Polydimethylsiloxane: "resembles rubber in a
+    solidified form".
+  - soda-lime glass: lumpy ("reasonably hard": a solid piece, not a
+    powder).
+
+**Judgement: fired ceramic (mullite) is lumpy.** Wikipedia says mullite
+is "present in the form of needles in porcelain", but those needles are
+microscopic. A student holds a hard cream piece, and "crystalline" would
+draw it glinting.
+
+**Not confirmed by an opened page:**
+- calcium silicate slag and forsterite: lumpy. The Slag page failed
+  twice.
+- copper(I) sulfide: powder. The page failed twice.
+- gypsum on the shelf: powder. Wikipedia describes the mined mineral as
+  crystals and masses; powder is how a school heats it to make plaster.
+- brominated rubber, perished rubber and silicone resin: lumpy.

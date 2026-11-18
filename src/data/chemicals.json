@@ -6535,6 +6535,7 @@
     "levels": ["bs"],
     "structure": "molecules/dibromo_rubber.svg",
     "description": "What rubber becomes when bromine adds across the double bonds left along its chain. The product itself is of no use to anybody — the point is that it forms at all, because it proves those double bonds are really still there after polymerisation. A material can be tested for unsaturation exactly like a small alkene can.",
+    "texture": "lumpy",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — unsaturation in polydienes",
     "category": "material"
   },
@@ -6577,6 +6578,7 @@
     "levels": ["bs"],
     "structure": "molecules/perished_rubber.svg",
     "description": "A rubber band left in a drawer for a year: grey, hard, and it snaps instead of stretching. Ozone in ordinary air has attacked the double bonds along the chains and cut them, and a shorter chain cannot coil and uncoil the way a long one could. The same double bond that made vulcanisation possible is the weak point that lets this happen — a structural feature is rarely only an advantage, and here the strength and the flaw are the same bond.",
+    "texture": "lumpy",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — ozonolysis and rubber degradation",
     "category": "material"
   },
@@ -6598,7 +6600,14 @@
     "levels": ["bs"],
     "structure": "molecules/bakelite.svg",
     "description": "The first fully synthetic plastic, from 1907, and still used for saucepan handles and electrical fittings because it does not soften when hot. Its chemistry has nothing in common with rubber's — it is a condensation polymer of phenol and methanal, and the phenol rings are joined in three directions rather than two, so the whole solid is one continuous network with no separate chains in it at all. Reaching the same thermoset behaviour by a completely different route is the point of meeting it here.",
+    "texture": "lumpy",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — phenolic resins and thermosets",
+    "sources": [
+      { "ref": "Wikipedia — Bakelite (a hard, dense material)",
+        "url": "https://en.wikipedia.org/wiki/Bakelite",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -6619,6 +6628,7 @@
     "levels": ["bs"],
     "structure": "molecules/me2sicl2.svg",
     "description": "Silicon carrying two methyl groups and TWO chlorines, and the count of those chlorines is the only thing that matters about it. Each one becomes an —OH when water reaches it, so two chlorines means two —OH groups, which means a molecule that can join at both ends and build a chain. It is the same bifunctional requirement the polyester and the nylon needed, arriving here on a silicon atom instead of a carbon one.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silicones; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -6640,6 +6650,7 @@
     "levels": ["bs"],
     "structure": "molecules/me2sioh2.svg",
     "description": "TWO —OH groups on one silicon, which is exactly what a monomer needs to build a chain: one end joins forward, the other joins back. It will not sit still for long — silanols condense with each other readily, which is why this is made and used rather than stored.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silanols; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "organic"
   },
@@ -6661,7 +6672,14 @@
     "levels": ["bs"],
     "structure": "molecules/silicone.svg",
     "description": "Bathroom sealant, oven-glove lining, medical tubing. Its backbone is not carbon at all — it alternates silicon and oxygen, and that single substitution is why it does things an organic polymer cannot. The Si—O bond is considerably stronger than C—C, so it survives temperatures that char polythene; and the methyl groups point outward all along the chain, presenting a greasy surface to the world, which is why water beads off it.",
+    "texture": "lumpy",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — polysiloxanes; CRC Handbook of Chemistry and Physics, 97th ed. (density)",
+    "sources": [
+      { "ref": "Wikipedia — Polydimethylsiloxane (the cured version resembles rubber in a solidified form)",
+        "url": "https://en.wikipedia.org/wiki/Polydimethylsiloxane",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -6682,6 +6700,7 @@
     "levels": ["bs"],
     "structure": "molecules/me3sicl.svg",
     "description": "Three methyl groups and only ONE chlorine — so hydrolysis leaves it with a single —OH, and a molecule with one reactive end can join to one partner and then it is finished. It cannot build a chain. That makes it useless as a monomer and genuinely useful as a chain STOPPER: added to a silicone mixture it caps a growing chain and halts it, which is how the chain length, and therefore the thickness of a silicone oil, is controlled.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — chain termination in silicones; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -6703,6 +6722,7 @@
     "levels": ["bs"],
     "structure": "molecules/me3sioh.svg",
     "description": "ONE —OH group, and that is the whole story. Put it beside dimethylsilanediol with its two and the difference in what they can build is total: two —OH groups make a chain, one makes a dead end. It is the clearest demonstration in the app that the number of reactive groups, not their nature, decides whether polymerisation is even possible.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silanols; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -6724,6 +6744,7 @@
     "levels": ["bs"],
     "structure": "molecules/mesicl3.svg",
     "description": "One methyl group and THREE chlorines, so hydrolysis gives three —OH groups on one silicon. Three reactive ends cannot make a chain — a chain needs exactly two — so what it builds instead branches in three directions and closes into a network. The parallel with Bakelite is exact, and reached from an entirely different starting point: three reactive positions rather than two is what turns a polymer into a thermoset.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silicone resins; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -6745,6 +6766,7 @@
     "levels": ["bs"],
     "structure": "molecules/mesioh3.svg",
     "description": "THREE —OH groups on one silicon. Count them against the diol's two and the mono-ol's one, because those three numbers are the whole of this batch's first half: one gives a dead end, two give a chain, three give a network. Nothing about the chemistry of the —OH group changes between them.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silanols and network formation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "organic"
   },
@@ -6766,6 +6788,7 @@
     "levels": ["bs"],
     "structure": "molecules/silicone_resin.svg",
     "description": "A silicone that has branched in three directions instead of running in a line, so the whole solid is one connected network — a thermoset, like Bakelite and like vulcanised rubber, and insoluble and unmeltable for the same reason all three are. It is used where heat resistance and hardness are both wanted at once: electrical insulation, and the paint on things that get hot.",
+    "texture": "lumpy",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silicone resins",
     "category": "material"
   },
@@ -6787,8 +6810,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/glass.svg",
     "description": "Windows and bottles, and an inorganic polymer in the strict sense: a silica network with its bonds broken up here and there by sodium and calcium ions, which is what lets it soften gradually instead of melting at one sharp temperature. Its formula is written approximately on purpose, because glass is not a compound with a fixed composition. It is also not a solid in the usual sense — its atoms never settled into a regular lattice as it cooled, so structurally it is closer to a liquid that stopped moving.",
+    "texture": "lumpy",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silicate glasses; Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, glass",
     "flameElements": ["sodium", "calcium"],
+    "sources": [
+      { "ref": "Wikipedia — Soda–lime glass (reasonably hard; the transparent glass of windowpanes)",
+        "url": "https://en.wikipedia.org/wiki/Soda%E2%80%93lime_glass",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -6809,7 +6839,14 @@
     "levels": ["bs"],
     "structure": "molecules/clay_dry.svg",
     "description": "Kaolinite, the clay mineral pottery is made from, and structurally it is sheets — layers of aluminium and silicon oxide stacked like paper, held to each other only weakly. Water slides between those sheets and lets them slip past one another, which is exactly why wet clay can be shaped and why dry clay is powder rather than rock. Note the OH groups in the formula: those are chemically bonded water, and driving them out is what firing does.",
+    "form": "powder",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — layer silicates; Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, ceramics",
+    "sources": [
+      { "ref": "Wikipedia — Kaolinite (supplied as powder, lumps, semi-dried noodle, or slurry)",
+        "url": "https://en.wikipedia.org/wiki/Kaolinite",
+        "checked": "2026-11-18",
+        "covers": ["form"] }
+    ],
     "category": "material"
   },
   {
@@ -6830,7 +6867,14 @@
     "levels": ["bs"],
     "structure": "molecules/clay_plastic.svg",
     "description": "Clay you can throw on a wheel. Nothing has reacted — water has simply worked its way between the mineral sheets and is acting as a lubricant, letting them slide over each other and stay wherever they are pushed. That is why the change is completely reversible: let it dry and the water leaves, and it is dry clay again. Firing is what makes the change permanent, and firing is chemistry rather than drying.",
+    "texture": "lumpy",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — clay plasticity",
+    "sources": [
+      { "ref": "Wikipedia — Kaolinite (compact, claylike masses)",
+        "url": "https://en.wikipedia.org/wiki/Kaolinite",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -6851,7 +6895,14 @@
     "levels": ["bs"],
     "structure": "molecules/metakaolin.svg",
     "description": "What clay becomes once the chemically bonded OH groups have been driven off as steam — the first firing stage, and the point of no return. The neat layered structure has collapsed into a disordered one, and because the OH groups are gone there is nothing left for water to reattach to. This is already irreversible; the second firing stage that follows only makes it hard as well.",
+    "texture": "fine",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — dehydroxylation of clay minerals",
+    "sources": [
+      { "ref": "Wikipedia — Metakaolin (a finely-divided material)",
+        "url": "https://en.wikipedia.org/wiki/Metakaolin",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -6872,6 +6923,7 @@
     "levels": ["bs"],
     "structure": "molecules/mullite.svg",
     "description": "The mineral that makes fired pottery hard, and it does not exist in the clay you started with — high temperature builds it. Needle-shaped mullite crystals grow through the fired body and interlock, in much the same way the crystals in setting cement do, and glassy silica fills the gaps between them. That interlocking is the strength of a fired pot, and it is why the pot is a different material from the clay rather than a dried version of it.",
+    "texture": "lumpy",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — mullite formation in ceramics",
     "category": "material"
   },
@@ -6893,6 +6945,7 @@
     "levels": ["bs"],
     "structure": "molecules/ca_silicate_slag.svg",
     "description": "What forms when a basic oxide meets an acidic one at furnace temperature — and in a blast furnace that is deliberate, because slag floats on the molten iron and carries the impurities off. The same reaction is a disaster when the acidic oxide is the furnace LINING rather than the charge, because then it is the wall being eaten. Whether this reaction is useful or ruinous depends entirely on which silica it consumed.",
+    "texture": "lumpy",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — acid-base behaviour of oxides in slags",
     "flameElements": ["calcium"],
     "category": "material"
@@ -6915,6 +6968,7 @@
     "levels": ["bs"],
     "structure": "molecules/mg_silicate.svg",
     "description": "A basic oxide and an acidic one reacting again, with the roles the other way round: here it is the magnesia lining being eaten by silica in the charge. The lesson is that neither kind of lining is simply better. A refractory is only refractory relative to what you put next to it, and choosing one is a question about the process rather than about the material on its own.",
+    "texture": "lumpy",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — refractory attack by slags",
     "category": "oxide"
   },
@@ -6936,8 +6990,16 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/gypsum.svg",
     "description": "Calcium sulfate with two water molecules built into its crystal, mined as rock and used for plasterboard. The water is not damp — it sits at fixed positions in the lattice, which is what makes this a hydrate rather than a wet solid, and why removing it takes a furnace rather than a towel.",
+    "form": "powder",
+    "texture": "crystalline",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries",
     "flameElements": ["calcium"],
+    "sources": [
+      { "ref": "Wikipedia — Plaster (setting gives an interlocking mass of monoclinic crystal needles)",
+        "url": "https://en.wikipedia.org/wiki/Plaster",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "material"
   },
   {
@@ -6958,8 +7020,16 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/plaster.svg",
     "description": "Gypsum with three quarters of its water driven off — a HALF molecule per formula unit, which is unusual enough to be worth noticing and is not a rounding. Add water back and it sets hard in minutes, which is why it is used for casts and mouldings. The half-water state is what makes it work: enough structure is left to rebuild the crystal quickly, and enough is missing that it is desperate to.",
+    "form": "powder",
+    "texture": "fine",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries",
     "flameElements": ["calcium"],
+    "sources": [
+      { "ref": "Wikipedia — Plaster (plaster of Paris is a white powder of calcium sulfate hemihydrate)",
+        "url": "https://en.wikipedia.org/wiki/Plaster",
+        "checked": "2026-11-18",
+        "covers": ["form","texture"] }
+    ],
     "category": "material"
   },
   {
@@ -6980,7 +7050,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/zno.svg",
     "description": "What roasting turns zinc blende into, and the form the metal is actually won from — carbon can pull oxygen off a metal, so an oxide is the useful intermediate whatever the ore started as. It has a memorable trick of its own: white when cold and yellow when hot, reversibly, because heating knocks a few oxide ions out of the lattice and the gaps left behind absorb light. It is also the white in calamine lotion and in sunscreen.",
+    "texture": "fine",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — zinc extraction; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Zinc oxide (a white powder which is insoluble in water)",
+        "url": "https://en.wikipedia.org/wiki/Zinc_oxide",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "oxide"
   },
   {
@@ -7001,7 +7078,14 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/fe2o3.svg",
     "description": "Haematite, the main ore of iron, and the same compound as the rust on a gate — which is a fair summary of why steel needs painting. Extracting iron is the business of putting back the electrons that rusting took away, and the whole blast furnace exists to do that on a scale of thousands of tonnes a day.",
+    "form": "powder",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — iron extraction; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Iron(III) oxide (rouge is sold as a powder)",
+        "url": "https://en.wikipedia.org/wiki/Iron(III)_oxide",
+        "checked": "2026-11-18",
+        "covers": ["form"] }
+    ],
     "category": "oxide"
   },
   {
@@ -7043,6 +7127,7 @@
     "levels": ["bs"],
     "structure": "molecules/cu2s.svg",
     "description": "A copper ore, and the one that does something no other ore in this batch manages: blown with air it reduces ITSELF to the metal, with no carbon and no separate reducing step. The sulfide in it is oxidised to sulfur dioxide and, in the same breath, hands over the electrons that turn the copper ions into copper. It is part of why copper was among the first metals people ever smelted.",
+    "form": "powder",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — copper extraction; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "flameElements": ["copper"],
     "category": "salt"
