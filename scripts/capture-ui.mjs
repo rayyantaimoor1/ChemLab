@@ -183,6 +183,34 @@ const SETUPS = {
     await __cap.dispense('dish_1', 's_powder'); await __cap.wait(300);
     await __cap.dispense('flask_small_1', 'fe_metal'); await __cap.wait(300);
     await __cap.dispense('tube_2', 'naoh_s'); await __cap.wait(300);`,
+  // Stage UI.3.4: precipitates by texture, solids by kind. Fine barium
+  // sulfate, crystalline lead iodide, curdy silver chloride, gelatinous
+  // copper and iron hydroxides, copper deposited by zinc, and copper
+  // collecting on the cathode while the current is on.
+  'textures': `
+    __cap.press('auto-pour'); await __cap.wait(100);
+    for (const label of ['take a test tube', 'take a test tube', 'take a test tube', 'take a boiling tube', 'take a test tube', 'take a beaker 100', 'take a beaker 250']) {
+      __cap.press(label); await __cap.wait(300);
+    }
+    await __cap.setQuick(4);
+    __cap.drop('tube_1', 'bacl2_0_1m'); await __cap.wait(300);
+    __cap.drop('tube_1', 'na2so4_aq'); await __cap.wait(500);
+    __cap.drop('tube_2', 'pbno3_0_1m'); await __cap.wait(300);
+    __cap.drop('tube_2', 'ki_0_1m'); await __cap.wait(500); __cap.dismissHazard();
+    __cap.drop('tube_3', 'agno3_0_1m'); await __cap.wait(300);
+    __cap.drop('tube_3', 'nacl_1m'); await __cap.wait(500);
+    __cap.drop('tube_4', 'fecl3_0_1m'); await __cap.wait(300);
+    __cap.drop('tube_4', 'naoh_1m'); await __cap.wait(500); __cap.dismissHazard();
+    await __cap.setQuick(10);
+    __cap.drop('boiling_tube_1', 'cuso4_0_5m'); await __cap.wait(300);
+    __cap.drop('boiling_tube_1', 'naoh_1m'); await __cap.wait(500); __cap.dismissHazard();
+    await __cap.fill('beaker_small_1', 'cuso4_0_5m', 3);
+    await __cap.dispense('beaker_small_1', 'zn_metal'); await __cap.wait(600);
+    await __cap.fill('beaker_1', 'cuso4_0_5m', 8);
+    document.querySelector('.vessel-object[data-container-id="beaker_1"]').dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+    window.dispatchEvent(new PointerEvent('pointerup', { bubbles: true }));
+    await __cap.wait(300);
+    __cap.press('current off'); await __cap.wait(900); __cap.dismissHazard();`,
   'titration': `
     __cap.press('auto-pour'); await __cap.wait(100);
     __cap.press('take a conical flask'); await __cap.wait(300);

@@ -159,6 +159,8 @@ function solidEntry(chemical, kind) {
     name: chemical.name,
     description: null,
     density: chemical.density,
+    // How it looks - fine, gelatinous, curdy... - curated (UI.3.4).
+    texture: chemical.texture || null,
   };
 }
 

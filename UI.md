@@ -32,6 +32,8 @@ The UI may **read** engine state and **dispatch** actions. It may not contain ch
       precipitate: { colorHex, colorName, name, kind, density } | null,
       // kind is the reaction's curated solidKind: precipitate, deposit,
       // coating, liquid, smoke or solid. solids lists every one present.
+      // Each also carries its curated texture (fine, crystalline,
+      // gelatinous...), which decides how it is drawn (precipitate-shapes.js).
       solids: [ ...same shape... ],
       bubbling: bool, smoking: bool, glowing: bool
     }

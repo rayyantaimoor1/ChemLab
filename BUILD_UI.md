@@ -291,6 +291,34 @@ fixed words, as it does for `category`. No engine change.
 > where the solid goes: a **deposit** coats the metal or the cathode, a **coating** grows on the
 > surface, a **liquid** pools, **smoke** hangs in the air above the vessel.
 
+> **Done (2026-11-18).** The new `src/ui/precipitate-shapes.js` draws a reaction's solid by its
+> curated `texture` and places it by the reaction's curated `solidKind`:
+> - **fine**: a smooth layer, plus a faint haze of the solid's colour over the whole liquid,
+>   because fine particles settle slowly.
+> - **crystalline**: a layer of glinting rhombs.
+> - **gelatinous**: loose, see-through flocs hanging in the lower liquid, each with a faint light
+>   edge so it shows even when the reaction tints the liquid the same colour.
+> - **curdy**: clumps, a few still suspended.
+> - **metallic, flaky, lumpy, fibrous**: a deposit with a sheen, a crust of flakes, a few lumps,
+>   tangled strands.
+> - A solid the data gives no texture is drawn plainly, as fine.
+>
+> Placement by kind:
+> - A **deposit** coats the cathode while the current is on; otherwise it lies on the floor as
+>   metal.
+> - A **liquid** (molten sodium, mercury) is a shining pool.
+> - **Smoke** hangs above the mouth, outside the glass.
+>
+> The forming animation follows the texture: crystals fall fast, fine grains slowly, and a floc
+> forms where it is without falling. A deposit, a molten metal and smoke do not rain down at all.
+> `appearance.js` carries each solid's texture; `effects.js`'s `playPrecipitate` takes the
+> style.
+>
+> - **Tests.** `tests/precipitate-shapes.test.js`.
+> - **Screenshot.** `docs/ui-progress/UI.3/textures.png`.
+> - **Not seen in the app yet:** the smoke and the pool. No shelf reagents make them without gases
+>   or a furnace. Both are covered by the tests only.
+
 **UI.3.5 — Sonnet — Colour that spreads and fades**
 > A reagent poured in colours the liquid from where it enters and spreads; stirring finishes it
 > (2.7.1). A curated `colourFades` drains the colour over the reaction rather than snapping.

@@ -49,6 +49,9 @@ import {
 // A solid from the shelf drawn as what it is - ribbon, granules, chips -
 // from its curated form (BUILD_UI.md UI.3.3).
 import { solidSvg, solidBox, shelfSolidLabel } from './solid-shapes.js';
+// A reaction's solid drawn by its curated texture, where its kind puts it
+// (BUILD_UI.md UI.3.4).
+import { settledSvg, settledBox, smokeSvg, hazeOpacity, formingStyle, textureOf } from './precipitate-shapes.js';
 import { solidLabel } from './appearance.js';
 // The shape of each vessel, its printed scale, and how high a volume of
 // liquid comes inside it (BUILD_UI.md UI.2) - all in glassware.js.
@@ -594,6 +597,12 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // what is really in the vessel - not left over from an animation.
     const sediment = document.createElement('div');
     sediment.className = 'vessel__sediment';
+    // A fine precipitate still hanging in the liquid it formed in.
+    const haze = document.createElement('div');
+    haze.className = 'vessel__haze';
+    // Smoke hangs in the air above the mouth, outside the glass.
+    const smoke = document.createElement('div');
+    smoke.className = 'vessel__smoke';
     const bubbleLayer = document.createElement('div');
     bubbleLayer.className = 'vessel__layer vessel__bubbles';
     const gasLayer = document.createElement('div');
@@ -627,9 +636,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // as it would in real glass.
     const solidLayer = document.createElement('div');
     solidLayer.className = 'vessel__layer vessel__shelf-solids';
-    glass.append(solidLayer, liquidBase, liquidIncoming, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
+    glass.append(solidLayer, liquidBase, liquidIncoming, haze, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
     vessel.appendChild(glass);
     vessel.insertAdjacentHTML('beforeend', frontSvg(container.type, container.capacityMl));
+    vessel.appendChild(smoke);
     el.appendChild(vessel);
 
     // The floating label beside the glass: name, live readout, colour, and
@@ -713,7 +723,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       volumeEl, tempEl, phEl, colorSwatch, colorText, colourRow, precipitateLabel, capacityChip,
       standNote, vesselShadow, flame, electrodeLayer, ionLayer,
       readingRow, readingSwatch, readingText, powerNote,
-      solidLayer, shelfSolidNote, solidEls: new Map(),
+      solidLayer, shelfSolidNote, solidEls: new Map(), haze, smoke, cathodeRod,
       dipEl: null, dipTool: null,
     };
     vesselEls.set(container.id, refs);
@@ -854,6 +864,57 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     }
   }
 
+  /**
+   * Places a reaction's solid. Smoke hangs above the mouth; a metal deposit
+   * coats the cathode while the current is on; anything else rests on the
+   * floor, except a gelatinous floc, which hangs in the lower liquid. A fine
+   * precipitate also leaves the liquid hazy, because fine particles take
+   * a long time to settle.
+   */
+  function updatePrecipitate(refs, container, solid) {
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    const onCathode = !!solid && solid.kind === 'deposit' && container.electrified === true;
+    const isSmoke = !!solid && solid.kind === 'smoke';
+    const onFloor = !!solid && !onCathode && !isSmoke;
+
+    // The cathode wears the metal it is collecting.
+    refs.cathodeRod.style.background = onCathode
+      ? `linear-gradient(90deg, ${solid.colorHex}, ${solid.colorHex} 60%, rgba(255, 255, 255, 0.35))`
+      : '';
+
+    // Smoke above the mouth.
+    const smokeKey = isSmoke ? `${solid.id || solid.description}:${solid.colorHex}` : '';
+    if (refs.smoke.dataset.key !== smokeKey) {
+      refs.smoke.innerHTML = isSmoke && geometry ? smokeSvg(solid, geometry.bodyW * 1.3) : '';
+      refs.smoke.dataset.key = smokeKey;
+    }
+    refs.smoke.classList.toggle('is-visible', isSmoke);
+
+    // The settled solid, or the hanging floc.
+    refs.sediment.classList.toggle('is-visible', onFloor);
+    if (onFloor && geometry) {
+      const surface = geometry.surfaceY(container.volumeMl);
+      const liquidHeight = surface === null ? 0 : geometry.floorY - surface;
+      const floorWidth = 2 * geometry.innerHalfAt(geometry.floorY - 4) - 2;
+      const box = settledBox(solid, floorWidth, liquidHeight);
+      const key = `${solid.id || solid.description}:${solid.kind}:${textureOf(solid)}:${box.w}x${box.h}:${solid.colorHex}`;
+      if (refs.sediment.dataset.key !== key) {
+        refs.sediment.innerHTML = settledSvg(solid, box);
+        refs.sediment.dataset.key = key;
+      }
+      refs.sediment.style.left = `${Math.round(geometry.cx - box.w / 2)}px`;
+      // A little below the floor line, so a round-bottomed tube is filled
+      // into its curve; the glass's clip-path trims the rest.
+      refs.sediment.style.bottom = `${Math.round(geometry.h - geometry.floorY - 2)}px`;
+    }
+
+    // The haze of a fine precipitate, over the whole liquid.
+    const haze = onFloor ? hazeOpacity(solid) : 0;
+    refs.haze.style.background = haze > 0 ? solid.colorHex : 'transparent';
+    refs.haze.style.height = `${liquidFraction(container.type, container.capacityMl, container.volumeMl) * 100}%`;
+    refs.haze.style.opacity = String(haze);
+  }
+
   function updateVessel(refs, container, state) {
     // Never fight a drag in progress - the pointer owns the transform then.
     if (!drag || drag.id !== container.id) {
@@ -873,15 +934,12 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       : container.appearance.colorName || 'colour not known for this mixture';
     refs.colourRow.classList.toggle('is-empty', isEmpty);
 
-    // The solid a reaction left, with its name (UI.md section 5). Its kind
-    // decides where it sits: smoke hangs at the mouth, everything else at
-    // the bottom for now (BUILD_UI.md UI.3 puts deposits on the metal).
+    // The solid a reaction left, with its name (UI.md section 5), drawn by
+    // its texture where its kind puts it (precipitate-shapes.js).
     const solid = container.appearance.precipitate;
     refs.precipitateLabel.hidden = !solid;
     if (solid) refs.precipitateLabel.textContent = solidLabel(solid);
-    refs.sediment.classList.toggle('is-visible', !!solid);
-    refs.sediment.classList.toggle('vessel__sediment--smoke', solid?.kind === 'smoke');
-    if (solid) refs.sediment.style.background = solid.colorHex;
+    updatePrecipitate(refs, container, solid);
 
     const fraction = container.capacityMl > 0 ? container.volumeMl / container.capacityMl : 0;
     if (fraction >= 1) {
@@ -1234,7 +1292,18 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       if (effects.gas) playGasEvolution(refs.gasLayer);
       if (effects.precipitate) {
         const solid = after.appearance.precipitate;
-        playPrecipitate(refs.precipitateLayer, solid ? solid.colorHex : precipitateInfoFor(step.reaction).colorHex);
+        // Grains form and fall only for a solid coming out of the liquid.
+        // A deposit grows on the metal, smoke rises, a molten metal pools:
+        // none of those rain down through the liquid.
+        const kind = effects.solidKind || 'precipitate';
+        if (kind === 'precipitate' || kind === 'solid' || kind === 'coating') {
+          const style = formingStyle(solid || {});
+          playPrecipitate(
+            refs.precipitateLayer,
+            solid ? solid.colorHex : precipitateInfoFor(step.reaction).colorHex,
+            { count: style.count, duration: style.duration, fall: style.fall }
+          );
+        }
       }
     }
   }

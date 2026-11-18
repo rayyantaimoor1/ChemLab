@@ -1511,41 +1511,55 @@ html.reduce-motion .vessel__dip {
   opacity: 0;
 }
 
-/* The solid a reaction left (BUILD_UI.md UI.1.3): a settled layer in its
-   own colour, drawn from the vessel's real contents. It fades in once the
-   falling grains have landed, and goes at once when the solid does.
-   Smoke hangs at the top of the vessel instead. */
+/* The solid a reaction left (BUILD_UI.md UI.1.3, drawn by texture since
+   UI.3.4 - see precipitate-shapes.js). bench.js places it and sizes it to
+   its texture; it fades in once the falling grains have landed and goes
+   at once when the solid does. */
 .vessel__sediment {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* From the bottom of the drawing up past the inside floor; the glass's
-     clip-path trims it to the floor's real shape - a heap in the round end
-     of a test tube, a flat layer across a beaker. */
-  height: calc(var(--vessel-base, 0px) + clamp(5px, 8%, 13px));
-  border-radius: 45% 45% 3px 3px / 6px 6px 3px 3px;
+  line-height: 0;
   opacity: 0;
   transition: opacity 400ms ease-out;
   pointer-events: none;
 }
 
 .vessel__sediment.is-visible {
-  opacity: 0.94;
+  opacity: 1;
   transition-delay: 900ms;
 }
 
-.vessel__sediment--smoke {
-  top: 0;
-  bottom: auto;
-  left: 0;
-  right: 0;
-  height: 32%;
-  border-radius: 0;
+.vessel__sediment svg,
+.vessel__smoke svg {
+  display: block;
+  overflow: visible;
 }
 
-.vessel__sediment--smoke.is-visible {
-  opacity: 0.4;
+/* A fine precipitate still hanging in the liquid: the solid's colour, faint,
+   over the whole liquid. Opacity set by bench.js from the texture. */
+.vessel__haze {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 1600ms ease-out;
+  pointer-events: none;
+}
+
+/* Smoke hangs in the air above the vessel's mouth, outside the glass. */
+.vessel__smoke {
+  position: absolute;
+  left: 50%;
+  top: -32px;
+  transform: translateX(-50%);
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 600ms ease-out;
+  pointer-events: none;
+}
+
+.vessel__smoke.is-visible {
+  opacity: 1;
 }
 
 /* A shelf solid on the vessel floor (BUILD_UI.md UI.3.3), drawn by

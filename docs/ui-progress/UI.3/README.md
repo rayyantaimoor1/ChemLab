@@ -30,6 +30,22 @@ curated form:
 - iron filings in the small flask
 - sodium hydroxide pellets in the second test tube
 
-Each vessel's label names the solid with its colour and form. On a bench
+Each vessel's label names the solid with its colour and form.
+
+## UI.3.4 — Precipitates by texture, solids by kind
+
+`textures.png` shows a reaction's solid drawn by its curated texture:
+
+- fine barium sulfate: a white layer, with the liquid still hazy
+- crystalline lead(II) iodide on the bottom
+- curdy silver chloride
+- gelatinous iron(III) and copper(II) hydroxides hanging in the lower liquid
+- copper deposited by zinc in the small beaker
+- in the 250 mL beaker, copper sulfate with the current on: the cathode is
+  coated in copper-coloured metal
+
+In a crowded set-up like this one, a colour or texture that matches the
+liquid it is in is hard to see at bench size. The close look (UI.7) will show
+it large. On a bench
 this crowded, some labels still overlap the glass; that is the UI.1
 label-placement limit, not new here.

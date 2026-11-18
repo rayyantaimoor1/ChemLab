@@ -253,6 +253,9 @@ export function solidSvg(solid, box) {
   return `<svg class="shelf-solid__shape" width="${box.w}" height="${box.h}" viewBox="0 0 ${box.w} ${box.h}" aria-hidden="true">${parts.join('')}</svg>`;
 }
 
+/* Shared with precipitate-shapes.js, which draws a reaction's solids. */
+export const shapeHelpers = { seeded, shade, blob, fmt };
+
 /** One line for the vessel's label: "bluish-grey granules: Zinc metal". */
 export function shelfSolidLabel(solid) {
   const what = solid.colorName ? `${solid.colorName} ${solid.form}` : solid.form;

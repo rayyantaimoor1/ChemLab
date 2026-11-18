@@ -276,7 +276,7 @@ export function playGasEvolution(layerEl, { count = 4, duration = 1500 } = {}) {
  * which loose grains left in the DOM could never do.
  * ------------------------------------------------------------------ */
 
-export function playPrecipitate(layerEl, colorHex, { count = 10, duration = 1200 } = {}) {
+export function playPrecipitate(layerEl, colorHex, { count = 10, duration = 1200, fall = true } = {}) {
   if (!layerEl || !colorHex) return;
 
   const layerHeight = layerEl.getBoundingClientRect().height || 120;
@@ -291,7 +291,10 @@ export function playPrecipitate(layerEl, colorHex, { count = 10, duration = 1200
     layerEl.appendChild(grain);
 
     // To the floor, give or take a grain's width, whatever the liquid level.
-    const fallPx = layerHeight * (0.93 - startFraction + Math.random() * 0.03);
+    // A gelatinous floc does not fall: it forms where it is and hangs there
+    // (BUILD_UI.md UI.3.4), so its grains swell in place in the lower liquid.
+    const fallPx = fall ? layerHeight * (0.93 - startFraction + Math.random() * 0.03) : 0;
+    if (!fall) grain.style.top = `${55 + Math.random() * 35}%`;
     const delay = Math.random() * duration * 0.25;
 
     const animation = animate(
