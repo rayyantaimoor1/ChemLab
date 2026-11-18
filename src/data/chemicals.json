@@ -4788,6 +4788,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/aloh4.svg",
     "description": "What aluminium hydroxide becomes in excess alkali: a soluble complex ion, and the proof that aluminium hydroxide is AMPHOTERIC. It dissolves in acid, as any base does, and it dissolves in alkali too, which no ordinary base does. This is also the basis of the Bayer process for purifying bauxite: the aluminium oxide dissolves in hot alkali and the iron oxide impurity does not, so the two separate cleanly on that single difference.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — amphoteric hydroxides and the Bayer process; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -4809,6 +4810,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/znoh2.svg",
     "description": "A white gelatinous solid that looks almost exactly like aluminium hydroxide, and telling the two apart is a standard problem in qualitative analysis. Both are amphoteric, so both dissolve in excess sodium hydroxide and neither result distinguishes them. The test that does work is ammonia: zinc dissolves in it and aluminium does not, because zinc forms an ammine complex and aluminium has no such chemistry.",
+    "form": "powder",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — separation of the aluminium and zinc groups; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "base"
   },
@@ -4830,6 +4832,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/znoh4.svg",
     "description": "Zinc hydroxide dissolved in excess alkali, and proof that zinc hydroxide is amphoteric just as aluminium's is. On its own this result cannot tell zinc from aluminium, because both give a colourless solution that looks identical. Chemistry is often like this: a test that gives the same answer for two things has told you something, but not what you wanted to know.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — zincate chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -4851,6 +4854,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/zn_nh3.svg",
     "description": "Zinc held by four ammonia molecules, and the answer to the aluminium problem. Zinc forms this readily; aluminium forms nothing of the kind, so its hydroxide simply sits there in ammonia unchanged. Note that this complex is COLOURLESS where the copper equivalent is deep blue — zinc has a full d shell with no room for the electron jumps that give transition metal complexes their colour, which is the standard argument for not counting zinc as a true transition metal.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — zinc ammine complexes and the d10 configuration; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -4872,6 +4876,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/na2cr2o7.svg",
     "description": "Orange, and the acid form of the chromate–dichromate pair. Two chromate units have joined through a shared oxygen, exactly the way two ethanoic acid units join in an anhydride. The chromium stays at +6 throughout, so this is NOT a redox change however dramatic the colour looks — a point worth being firm about, because the orange-to-yellow shift is easily mistaken for one. Chromium(VI) in any form is carcinogenic.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — chromate–dichromate equilibrium; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -4894,6 +4899,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/na2s2o3.svg",
     "description": "Known in every darkroom as hypo. Its structure is a sulfate ion with one oxygen replaced by sulfur, and that swapped sulfur is what does the work: it is a soft donor atom, and soft donors bind soft metal ions like silver far more strongly than hard ones like calcium. That single principle explains why hypo dissolves silver bromide and why it is used to mop up spilt iodine, and it is also the reagent titrated against iodine in every iodometric determination.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hard and soft acids and bases; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -4916,6 +4922,7 @@
     "levels": ["bs"],
     "structure": "molecules/ag_s2o3.svg",
     "description": "Silver, which is famously insoluble as the halide, held in solution by two thiosulfate ions. This complex is what carried photography for a century and a half: the unexposed silver bromide on a film has to be washed away or the picture goes black in daylight, and nothing else removes it so cleanly. It is also why photographic waste is worth collecting — the silver is recovered from exactly this solution.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silver thiosulfate complexes; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -4937,6 +4944,7 @@
     "levels": ["bs"],
     "structure": "molecules/pbcl2_aq.svg",
     "description": "Lead(II) chloride that has gone into solution in hot water — and the fact that it does is what separates lead from silver. Solubility is not a fixed property of a substance; it is a property of a substance AT A TEMPERATURE, and lead chloride's rises steeply with heat where silver chloride's barely moves. Let this cool and needle-shaped crystals of the chloride come back out, which is a second confirmation in itself.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group I separation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility against temperature)",
     "category": "salt"
   },
@@ -4958,8 +4966,15 @@
     "levels": ["bs"],
     "structure": "molecules/cus.svg",
     "description": "A dense black solid, and so spectacularly insoluble that even dilute acid cannot pull it apart. That single fact is what makes the whole cation scheme work: copper's sulfide will precipitate from acid solution while zinc's will not, so passing hydrogen sulfide through an acidified solution separates one set of metals from another cleanly. It is also why copper is mined as a sulfide ore rather than found dissolved anywhere.",
+    "texture": "fine",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group II; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility product)",
     "flameElements": ["copper"],
+    "sources": [
+      { "ref": "Wikipedia — Copper monosulfide (a black colloidal precipitate)",
+        "url": "https://en.wikipedia.org/wiki/Copper_monosulfide",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "salt"
   },
   {
@@ -4980,7 +4995,14 @@
     "levels": ["bs"],
     "structure": "molecules/zns.svg",
     "description": "A white sulfide, which is unusual — most metal sulfides are black or brown, and that alone half identifies it. The property that matters analytically is the opposite of copper sulfide's: dilute acid dissolves it easily, so it can only be precipitated once the solution has been made alkaline. Zinc sulfide also glows after being exposed to light, which is why it was the phosphor in glow-in-the-dark paint and in the screens of old televisions.",
+    "texture": "fine",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group IV; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility product)",
+    "sources": [
+      { "ref": "Wikipedia — Zinc sulfide (white zinc sulfide powder)",
+        "url": "https://en.wikipedia.org/wiki/Zinc_sulfide",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "salt"
   },
   {
@@ -5001,6 +5023,7 @@
     "levels": ["bs"],
     "structure": "molecules/nh42co3.svg",
     "description": "The group reagent for the calcium, strontium and barium group, and it is chosen over sodium carbonate for a reason worth understanding. Sodium carbonate would precipitate magnesium as well and ruin the separation; ammonium carbonate used alongside ammonium chloride keeps the carbonate concentration low enough that only the least soluble carbonates come down, and magnesium stays in solution. The reagent is deliberately WEAKER than the obvious choice, and that is the whole point of it.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group V group reagent; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5022,7 +5045,14 @@
     "levels": ["bs"],
     "structure": "molecules/etmgbr.svg",
     "description": "A GRIGNARD REAGENT, and the thing that makes it useful is a reversal. In bromoethane the carbon attached to the bromine is slightly POSITIVE, because bromine pulls electrons away; put magnesium between them and that same carbon becomes slightly NEGATIVE. A carbon that was open to attack is now the attacker. That inversion is why Grignards build carbon–carbon bonds, and it is also why they destroy themselves on contact with water — a carbon carrying negative charge will grab a hydrogen ion from anything.",
+    "clarity": "cloudy",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — organometallic chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
+    "sources": [
+      { "ref": "Wikipedia — Grignard reagent (the solution becomes cloudy)",
+        "url": "https://en.wikipedia.org/wiki/Grignard_reagent",
+        "checked": "2026-11-18",
+        "covers": ["clarity"] }
+    ],
     "category": "organic"
   },
   {
@@ -5043,6 +5073,7 @@
     "levels": ["bs"],
     "structure": "molecules/mgohbr.svg",
     "description": "The magnesium residue left after a Grignard reaction has been worked up with water or dilute acid. It is of no interest in itself — nobody makes a Grignard for this — but it has to appear in the equation, because the magnesium that did the work has to end up somewhere. Equations that stop at the organic product are telling you only half of what left the flask.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Grignard work-up; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5064,6 +5095,7 @@
     "levels": ["bs"],
     "structure": "molecules/hcho.svg",
     "description": "The simplest aldehyde, and the only one whose carbonyl carbon carries TWO hydrogens rather than one. That makes it the odd member of the family in a way that matters: a Grignard added to it can only ever give a PRIMARY alcohol, where every other aldehyde gives a secondary one. Familiar as the preservative in biological specimens, and a carcinogen, which is why that use is now heavily restricted.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — carbonyl chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -5085,6 +5117,7 @@
     "levels": ["bs"],
     "structure": "molecules/propan1ol.svg",
     "description": "A PRIMARY alcohol — its carbon–OH group still carries two hydrogens. Count the carbons and compare with the bromoethane the Grignard was made from: two went in, three came out. A carbon–carbon bond has been built, which no reaction earlier in this app has managed. Being primary, it can still be oxidised twice over, to an aldehyde and then to an acid.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Clayden, Greeves & Warren, Organic Chemistry 2nd ed.",
     "category": "organic"
   },
@@ -5106,6 +5139,7 @@
     "levels": ["bs"],
     "structure": "molecules/butan2ol.svg",
     "description": "A SECONDARY alcohol — the carbon holding the OH has two other carbons on it and only one hydrogen left. That single hydrogen is the difference between this and the tertiary alcohol next door: it can be oxidised once, to a ketone, and then it stops. Made here from an ordinary aldehyde, and that is the general rule — aldehyde plus Grignard gives secondary, every time except with methanal.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Clayden, Greeves & Warren, Organic Chemistry 2nd ed.",
     "category": "organic"
   },
@@ -5127,6 +5161,7 @@
     "levels": ["bs"],
     "structure": "molecules/mb2ol.svg",
     "description": "A TERTIARY alcohol: three carbons on the carbon holding the OH, and NO hydrogen left there at all. That absence is the whole of its character — with nothing to remove, ordinary oxidising agents cannot touch it, exactly as they could not touch a ketone for the same reason. Made from a ketone plus a Grignard, which completes the pattern: methanal gives primary, any other aldehyde gives secondary, a ketone gives tertiary.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Clayden, Greeves & Warren, Organic Chemistry 2nd ed.",
     "category": "organic"
   },
@@ -5148,6 +5183,7 @@
     "levels": ["bs"],
     "structure": "molecules/propanoic.svg",
     "description": "A carboxylic acid one carbon longer than the bromoethane it was built from, and that extra carbon came out of the air as carbon dioxide. Lengthening a carbon chain by exactly one is a genuinely useful thing to be able to do, and this is the standard way of doing it. Its salts are used to stop bread going mouldy.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, pKa 4.87); Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — carboxylation of Grignard reagents",
     "category": "acid"
   },
@@ -5169,6 +5205,7 @@
     "levels": ["bs"],
     "structure": "molecules/nabh4.svg",
     "description": "A MILD reducing agent, and mildness is the point of it. It delivers hydrogen to an aldehyde or a ketone and does not reduce amides or carboxylic acids at all, and esters only slowly — so in a molecule containing several of those groups it will reduce exactly one of them. (An acid does destroy some of it, giving off hydrogen, but the acid itself is not reduced.) Being usable in water, unlike its aggressive cousin lithium aluminium hydride, makes it far easier to handle. Choosing a reagent for what it will NOT touch is one of the central skills of synthesis.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — chemoselectivity of hydride reducing agents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -5191,6 +5228,7 @@
     "levels": ["bs"],
     "structure": "molecules/h3bo3.svg",
     "description": "A very weak acid — so weak that it does not give up a hydrogen ion of its own in the usual way, but takes a hydroxide ion from water instead. Left behind when sodium borohydride is destroyed by an acid, and familiar in dilute form as a mild antiseptic eyewash and in swimming-pool buffers.",
+    "clarity": "clear",
     "source": "Wikipedia — Boric acid (weak acid, pKa 9.24; solubility 4.72 g/100 mL at 20 °C; acts as a Lewis acid towards hydroxide; molar mass from the formula), consulted 2026-11-05",
     "category": "acid"
   },
@@ -5212,6 +5250,7 @@
     "levels": ["bs"],
     "structure": "molecules/lialh4.svg",
     "description": "The aggressive one. It reduces essentially every carbonyl group there is — aldehydes, ketones, esters, amides, and carboxylic acids that sodium borohydride cannot touch — which makes it powerful and unselective in the same breath. It cannot be used in water at all: it reacts violently, giving off hydrogen, so it is handled in dry ether and quenched with great care. Power and selectivity pull against each other, and this is the clearest illustration of it in organic chemistry.",
+    "clarity": "cloudy",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — hydride reducing agents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5233,7 +5272,14 @@
     "levels": ["bs"],
     "structure": "molecules/chi3.svg",
     "description": "Pale yellow crystals with a sharp antiseptic smell that anyone who has been in a hospital will half recognise — it was used as a wound dressing for decades before better antiseptics arrived. As a test result it is unusually informative: it appears only from a molecule carrying a CH₃CO— group directly on a carbon, or an alcohol that oxidises to one, so a positive result identifies a specific fragment rather than merely a family.",
+    "texture": "crystalline",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — the haloform reaction; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Iodoform (a pale yellow, crystalline, volatile substance)",
+        "url": "https://en.wikipedia.org/wiki/Iodoform",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "organic"
   },
   {
@@ -5254,6 +5300,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/nai.svg",
     "description": "Sodium iodide in water, here as the by-product of the iodoform reaction. Only one of the four iodine atoms used ends up in the yellow precipitate; the rest leave as iodide, which is worth noticing when the equation is balanced. Sodium iodide is also what is added to table salt to prevent goitre.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -5276,7 +5323,14 @@
     "levels": ["bs"],
     "structure": "molecules/alcl3.svg",
     "description": "The catalyst for both Friedel–Crafts reactions, and it works by being greedy for electrons. Aluminium here has only six electrons around it where it would prefer eight, so it grabs a chloride off whatever it meets and leaves behind a positively charged fragment hungry enough to attack a benzene ring. It must be bone dry: water destroys it instantly and violently, and damp aluminium chloride simply will not work.",
+    "form": "crystals",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Lewis acids and Friedel–Crafts catalysis; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Aluminium chloride (colourless crystals)",
+        "url": "https://en.wikipedia.org/wiki/Aluminium_chloride",
+        "checked": "2026-11-18",
+        "covers": ["form"] }
+    ],
     "category": "salt"
   },
   {
@@ -5297,6 +5351,7 @@
     "levels": ["bs"],
     "structure": "molecules/toluene.svg",
     "description": "Benzene with a methyl group on it, and that small addition changes the ring's behaviour in two ways worth separating. The methyl group pushes electrons INTO the ring, so the ring becomes more reactive than benzene and any new group arriving is steered to the positions next to and opposite the methyl. Separately, the methyl group itself is now attackable in a way a lone benzene never is. It replaced benzene as a solvent because it is far less carcinogenic, though its vapour is still not something to breathe.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — substituent effects; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },

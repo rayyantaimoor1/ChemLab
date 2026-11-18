@@ -772,7 +772,7 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–8 of 16 done (2026-11-18).** The owner
+**Status: in progress — batches 1–9 of 16 done (2026-11-18).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -1159,3 +1159,42 @@ All approved by the owner on 2026-11-18, including the new texture word
   summary.
 - **nickel dimethylglyoximate: fine.** LibreTexts says only "rose-red
   precipitate".
+
+### Batch 9 — chemicals 201–225
+
+All approved by the owner on 2026-11-18.
+
+**Clear (18):**
+- Inorganic solutions:
+  - the aluminate, zincate and tetraamminezinc complexes
+  - sodium dichromate
+  - sodium thiosulfate and the silver–thiosulfate complex
+  - lead(II) chloride in hot water
+  - ammonium carbonate
+  - the magnesium hydroxybromide residue left after a Grignard reaction
+  - boric acid
+  - sodium iodide
+- Organic liquids and solutions:
+  - formalin
+  - propan-1-ol, butan-2-ol and 2-methylbutan-2-ol
+  - propanoic acid
+  - sodium borohydride
+  - methylbenzene
+
+**Cloudy (2).** Both curated colour names already said cloudy.
+- **Grignard reagent:** confirmed. Wikipedia: "The solution becomes cloudy".
+- **Lithium aluminium hydride in ether:** not confirmed. Wikipedia describes
+  commercial samples as a "grey powder" but says nothing about the ether
+  mixture.
+
+**Confirmed by an opened Wikipedia page:**
+- **Aluminium chloride:** crystals. Wikipedia: "colourless crystals".
+- **Copper(II) sulfide:** fine. Wikipedia: "a black colloidal precipitate".
+- **Zinc sulfide:** fine. Wikipedia: "white zinc sulfide powder".
+- **Iodoform:** crystalline. Wikipedia: "a pale yellow, crystalline,
+  volatile substance".
+
+**Not confirmed by an opened page:**
+- **Zinc hydroxide on the shelf:** powder. The Wikipedia page timed out
+  twice. LibreTexts (Zinc Ions) describes only the freshly made "white
+  gelatinous Zn(OH)₂".
