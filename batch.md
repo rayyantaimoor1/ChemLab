@@ -772,7 +772,7 @@ re-approved, and the review pack's M5, M15 and F5 entries were updated.
 
 ## 15. Appearance fields (BUILD_UI.md stage UI.3.1)
 
-**Status: in progress — batches 1–9 of 16 done (2026-11-18).** The owner
+**Status: in progress — batches 1–10 of 16 done (2026-11-18).** The owner
 approved adding three curated fields to `chemicals.json`, so the bench can
 draw what a substance looks like, not just its colour:
 
@@ -1198,3 +1198,41 @@ All approved by the owner on 2026-11-18.
 - **Zinc hydroxide on the shelf:** powder. The Wikipedia page timed out
   twice. LibreTexts (Zinc Ions) describes only the freshly made "white
   gelatinous Zn(OH)₂".
+
+### Batch 10 — chemicals 226–250
+
+All approved by the owner on 2026-11-18. Wikipedia timed out repeatedly
+during this batch, so more values than usual are unconfirmed.
+
+**Clear (16):**
+- phenylethanone and the nitrotoluenes
+- aniline
+- tin(IV) chloride
+- the four vanadium solutions
+- chromium(II)
+- sodium tetrathionate
+- silicon tetrachloride
+- sodium silicate
+- aluminium chloride solution
+- sodium nitrite and nitrous acid
+- benzenediazonium chloride
+
+**Confirmed by an opened page:**
+- phosphorus(V) oxide: powder. Wikipedia: "White powder".
+- 2,4,6-tribromophenol: crystalline. Wikipedia: "White needles or
+  prisms". chemguide (phenol ring reactions) calls it "a white
+  precipitate".
+- benzoic acid: crystalline. Wikipedia: "Colorless crystalline solid".
+- tin: metallic. Wikipedia: "silvery-white".
+
+**Not confirmed by an opened page:**
+- tin: granules. This is the shelf's own name; Wikipedia mentions only
+  "small balls" and ingots.
+- sodium oxide: powder. Wikipedia says only "white solid".
+- 1,3-dinitrobenzene: crystalline. Wikipedia says only "yellow solid".
+- picric acid: crystalline. The page would not load; the app's own
+  description says "bright yellow crystals".
+- 2,4,6-tribromoaniline: crystalline. Wikipedia says only "a white
+  precipitate immediately forms"; matched to tribromophenol.
+- the azo dye from phenol: fine. chemguide (Reactions of diazonium salts)
+  says "a yellow-orange solution or precipitate is formed".

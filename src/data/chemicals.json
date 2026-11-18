@@ -5373,6 +5373,7 @@
     "levels": ["bs"],
     "structure": "molecules/acetophenone.svg",
     "description": "A ketone with a benzene ring on one side, made by Friedel–Crafts acylation. It is the reason acylation is preferred to alkylation in practice: the carbonyl group it installs pulls electrons OUT of the ring, deactivating it, so the product is less reactive than the starting material and the reaction stops cleanly after one substitution. Alkylation has the opposite problem. It smells strongly of sweet almonds and is used in perfumery.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Friedel–Crafts acylation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -5394,6 +5395,7 @@
     "levels": ["bs"],
     "structure": "molecules/nitrotoluene.svg",
     "description": "A MIXTURE of two products, not one compound, and the mixture is the result. The nitro group has gone to the position next to the methyl or the position opposite it, and essentially none has gone to the position in between. That pattern is what ortho–para directing means, and it happens because the methyl group pushes electrons into the ring and those electrons pile up at exactly those two kinds of position. Nitrating this further and once more gives TNT.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — directing effects in electrophilic aromatic substitution; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density of the 2-isomer)",
     "category": "organic"
   },
@@ -5415,6 +5417,7 @@
     "levels": ["bs"],
     "structure": "molecules/dinitrobenzene.svg",
     "description": "Note where the second nitro group landed: the 3 position, in between — not next to and not opposite. That is META, and it is the exact opposite of what the methyl group produced. The nitro group already on the ring pulls electrons OUT, and it drains the next-to and opposite positions hardest, so the only place left with enough electron density to be attacked is the one in between. Directing effects are not arbitrary rules to memorise; they follow from where the electrons went.",
+    "texture": "crystalline",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — meta-directing deactivators; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -5436,7 +5439,14 @@
     "levels": ["bs"],
     "structure": "molecules/tribromophenol.svg",
     "description": "A white precipitate that appears the instant bromine water touches phenol — no catalyst, no heating, and THREE bromines at once rather than one. Benzene under the same conditions does nothing at all without a halogen carrier. That gap in reactivity is the measure of how strongly the OH group activates the ring, and the positions taken, 2, 4 and 6, are the ortho and para ones the OH steers everything to.",
+    "texture": "crystalline",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — activation by hydroxyl; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — 2,4,6-Tribromophenol (appearance: white needles or prisms)",
+        "url": "https://en.wikipedia.org/wiki/2,4,6-Tribromophenol",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "organic"
   },
   {
@@ -5457,6 +5467,7 @@
     "levels": ["bs"],
     "structure": "molecules/picric.svg",
     "description": "Bright yellow crystals, and two remarkable properties. It is a genuinely STRONG acid despite being a phenol, because three nitro groups pull so hard on the ring that the hydrogen comes off far more readily than an ordinary phenol's would — a substituent effect large enough to change what class of compound something behaves as. It is also a powerful explosive when dry, which is why laboratory stocks are kept deliberately wet and why a bottle found dried out is a job for the bomb squad rather than for a technician.",
+    "texture": "crystalline",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — substituent effects on acidity; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, pKa 0.38)",
     "category": "acid"
   },
@@ -5478,7 +5489,14 @@
     "levels": ["bs"],
     "structure": "molecules/benzoic.svg",
     "description": "What is left when the methyl group of toluene is oxidised and the ring is not. However long the side chain was, oxidation cuts it back to a single COOH attached to the ring — so propylbenzene and methylbenzene both end up here. Its solubility rises steeply with temperature, which makes it the standard compound for teaching recrystallisation, and its sodium salt is a common food preservative.",
+    "texture": "crystalline",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — side-chain oxidation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility)",
+    "sources": [
+      { "ref": "Wikipedia — Benzoic acid (appearance: colorless crystalline solid)",
+        "url": "https://en.wikipedia.org/wiki/Benzoic_acid",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "acid"
   },
   {
@@ -5499,6 +5517,7 @@
     "levels": ["bs"],
     "structure": "molecules/aniline.svg",
     "description": "An amine attached to a benzene ring, and the compound that started the synthetic dye industry — every bright colour in Victorian clothing traces back to it. Its base strength is worth comparing with ammonia's: aniline is a much WEAKER base, because the nitrogen's lone pair is drawn into the ring and is no longer freely available to accept a hydrogen ion. The same donation into the ring is what makes the ring itself extremely reactive. It is absorbed straight through skin and is toxic, so gloves are not optional.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — aromatic amines; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, pKb)",
     "category": "organic"
   },
@@ -5520,6 +5539,7 @@
     "levels": ["bs"],
     "structure": "molecules/tribromoaniline.svg",
     "description": "A white precipitate, formed as instantly and as completely as phenol's did. Three bromines go on at once with no catalyst, because the nitrogen's lone pair floods the ring with electron density in the same way the oxygen's did. The positions are again 2, 4 and 6. Getting only ONE bromine onto aniline is genuinely difficult and needs the amine to be temporarily tamed first — being too reactive is a real problem in synthesis, not an advantage.",
+    "texture": "crystalline",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — activation by amino groups; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -5541,7 +5561,15 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/sn.svg",
     "description": "A soft, low-melting metal, used here with hydrochloric acid as the classic reducing mixture for turning a nitro group into an amine. The tin goes from 0 to +4 and the four electrons it gives up are what do the reduction. Historically it is the metal that made bronze possible, and the metal that coats a tin can — where its job is simply to be less reactive than the steel underneath.",
+    "form": "granules",
+    "texture": "metallic",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — reduction of nitroarenes",
+    "sources": [
+      { "ref": "Wikipedia — Tin (white tin: silvery-white)",
+        "url": "https://en.wikipedia.org/wiki/Tin",
+        "checked": "2026-11-18",
+        "covers": ["texture"] }
+    ],
     "category": "element"
   },
   {
@@ -5562,6 +5590,7 @@
     "levels": ["bs"],
     "structure": "molecules/sncl4.svg",
     "description": "What the tin becomes after it has done its job reducing a nitro group. It went from 0 to +4, and those four electrons are exactly what turned the nitro group into an amine — the reducing agent is oxidised, always, and following where its electrons went is how a redox equation is balanced. Its solution is acidic, because the small highly charged tin(IV) ion pulls hydrogen ions off the water around it, the same way aluminium does in alum.",
+    "clarity": "clear",
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Sn/HCl reductions",
     "category": "salt"
   },
@@ -5583,6 +5612,7 @@
     "levels": ["bs"],
     "structure": "molecules/vo2.svg",
     "description": "Vanadium in its highest oxidation state, +5, and the starting point of the most famous colour sequence in inorganic chemistry. Vanadium is unusual in having four oxidation states that are all stable enough to sit in a beaker and all a different colour, so a single tube of it can be walked down the whole series by adding zinc and watching. The +5 state is the one vanadium(V) oxide uses to catalyse the Contact process.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — vanadium redox chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5604,6 +5634,7 @@
     "levels": ["bs"],
     "structure": "molecules/vo.svg",
     "description": "Vanadium at +4, and the most stable of its four states — which is why this blue is the colour a vanadium solution drifts back to if it is left standing in air. Note that both this and the +5 state keep an oxygen firmly attached to the metal. The vanadium ion is small and highly charged enough that it holds on to an oxide ion rather than existing as a bare cation, and only at the lower oxidation states does that grip finally let go.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — vanadyl chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5625,6 +5656,7 @@
     "levels": ["bs"],
     "structure": "molecules/v3.svg",
     "description": "Vanadium at +3, and the first of its states to exist as a plain hydrated ion with no oxygen attached — the charge has dropped far enough that the metal no longer needs to hold an oxide. The green is easy to confuse with chromium(III)'s green, which is a useful reminder that colour narrows a possibility down rather than proving it.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — vanadium(III); CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5646,6 +5678,7 @@
     "levels": ["bs"],
     "structure": "molecules/v2.svg",
     "description": "Vanadium at +2, the end of the line and a powerful reducing agent in its own right — so powerful that it will pull oxygen straight out of the air and climb back up the series if the tube is left open. That instability is the point rather than a flaw: an ion is easy to make and hard to keep exactly when it wants its electrons somewhere else.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — vanadium(II) as a reducing agent; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5667,6 +5700,7 @@
     "levels": ["bs"],
     "structure": "molecules/cr2.svg",
     "description": "A bright blue that most students never see, because it does not last: chromium(II) is such a strong reducing agent that oxygen from the air oxidises it back to green chromium(III) within minutes of the tube being opened. Keeping it means keeping air out entirely. It is worth meeting once for what it demonstrates — that the oxidation states listed in a textbook are not all equally easy to hold on to.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — chromium(II) chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5688,6 +5722,7 @@
     "levels": ["bs"],
     "structure": "molecules/na2s4o6.svg",
     "description": "What two thiosulfate ions become when iodine takes an electron from each and joins them together through their sulfur atoms — four sulfurs in a chain where there were two separate pairs. It is the product that makes iodometric titration work, because it is colourless, stable, and forms in an exact two-to-one ratio with the iodine consumed.",
+    "clarity": "clear",
     "source": "Vogel's Textbook of Quantitative Chemical Analysis 6th ed. — iodometry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -5710,6 +5745,7 @@
     "levels": ["bs"],
     "structure": "molecules/na2o.svg",
     "description": "The first oxide of Period 3, and the most IONIC of them. Sodium hands its electrons over completely, so what is here is a lattice of separate sodium and oxide ions — and an oxide ion, once water reaches it, is a ferociously strong base. That is the whole reason this end of the period gives an alkaline solution: the bonding is ionic, and free oxide ions are what dissolve.",
+    "form": "powder",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — Period 3 oxides; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "flameElements": ["sodium"],
     "category": "oxide"
@@ -5732,7 +5768,14 @@
     "levels": ["bs"],
     "structure": "molecules/p4o10.svg",
     "description": "The far end of Period 3, and the opposite of sodium oxide in every way that matters. Phosphorus and oxygen have similar enough pulls on electrons that they SHARE them, so this is not a lattice of ions but separate covalent molecules — which is why it melts low and dissolves rather than merely reacting at a surface. Its appetite for water is so extreme that it is used as a drying agent, and it will strip water out of compounds that were not offering any.",
+    "form": "powder",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — Period 3 oxides; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Phosphorus pentoxide (appearance: white powder)",
+        "url": "https://en.wikipedia.org/wiki/Phosphorus_pentoxide",
+        "checked": "2026-11-18",
+        "covers": ["form"] }
+    ],
     "category": "oxide"
   },
   {
@@ -5753,6 +5796,7 @@
     "levels": ["bs"],
     "structure": "molecules/sicl4.svg",
     "description": "A colourless liquid that fumes the moment the stopper comes off, because the water vapour in the room is enough to start it hydrolysing. The reason silicon does this and carbon does not is worth knowing: silicon is a bigger atom with empty d orbitals available, so a water molecule can attach itself before any bond has to break. Tetrachloromethane, its carbon equivalent, has nowhere for the water to get a hold and is famously unreactive with it.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — Period 3 chlorides; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "salt"
   },
@@ -5774,6 +5818,7 @@
     "levels": ["bs"],
     "structure": "molecules/na2sio3.svg",
     "description": "What silica becomes when hot concentrated alkali finally breaks its network apart. That it takes such harsh conditions is the point: silica is an acidic oxide, but a very weak one, and the giant covalent structure has to be dismantled bond by bond before anything can dissolve. Known as water glass, and used to preserve eggs, to fireproof timber and to make silica gel.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silicates; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "flameElements": ["sodium"],
     "category": "oxide"
@@ -5796,6 +5841,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/alcl3_aq.svg",
     "description": "A solution of a salt that has no business being acidic, and is. Neither aluminium nor chloride looks like an acid, but the Al³⁺ ion is small and carries three charges, so it pulls hard enough on the water molecules around it to force hydrogen ions off them. That is the same effect that makes alum work as a coagulant, and the same reason magnesium chloride is faintly acidic while sodium chloride is not: it tracks the charge and size of the metal ion, straight across the period.",
+    "clarity": "clear",
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hydrolysis of metal aqua ions; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5817,6 +5863,7 @@
     "levels": ["bs"],
     "structure": "molecules/nano2.svg",
     "description": "Never used as it comes. Mixed with cold acid it makes nitrous acid, which is too unstable to keep in a bottle and is therefore generated in the flask at the moment it is needed — a common arrangement for a reagent that will not survive being stored. Sodium nitrite is also the curing salt that keeps ham pink and stops botulism, which is why a compound this toxic is nonetheless in the food supply.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — diazotisation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -5839,6 +5886,7 @@
     "levels": ["bs"],
     "structure": "molecules/hno2.svg",
     "description": "A weak acid that cannot be bottled: left to itself it falls apart into nitrogen oxides and water, and it does so faster the warmer it gets. That is why it is always made in the flask from sodium nitrite and acid, in the cold, immediately before use. A reagent generated where it is needed rather than poured from a bottle is a normal answer to instability, not a special case.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — nitrous acid; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, pKa 3.4)",
     "category": "acid"
   },
@@ -5860,6 +5908,7 @@
     "levels": ["bs"],
     "structure": "molecules/diazonium.svg",
     "description": "Two nitrogen atoms held on a benzene ring by a bond that barely wants to be there. The whole of its usefulness comes from that reluctance: nitrogen gas is such a stable thing to become that this group will leave in favour of almost anything, so it is the doorway from an amine to a very large number of other compounds. The same reluctance is why it cannot be kept — above about 5 °C it falls apart on its own, and the dry solid is explosive. It is made cold, in solution, and used within minutes.",
+    "clarity": "clear",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — diazonium salts; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "organic"
   },
@@ -5881,6 +5930,7 @@
     "levels": ["bs"],
     "structure": "molecules/azo_dye.svg",
     "description": "An AZO DYE, and the reason its colour is so intense is structural. Two benzene rings joined through a nitrogen–nitrogen double bond make one continuous system of shared electrons running the whole length of the molecule, and a long system like that absorbs visible light rather than ultraviolet. Make the system longer or hang different groups off the ends and the colour shifts — which is why azo compounds account for most synthetic dyes in use, and why the first of them turned an industry from boiling plants into building molecules.",
+    "texture": "fine",
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — azo coupling and dyes; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "organic"
   },
