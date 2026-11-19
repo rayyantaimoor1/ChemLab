@@ -198,7 +198,11 @@ and not a guessed one.
   `meltingPoint`.
 - Dilute water-based solutions are covered by one general reference: a
   dissolved substance raises the boiling point by about 0.5 °C per mole
-  per kg. Progress is in `batch.md` §16.
+  per kg.
+- `boilingPointC: null` means no boiling point at normal pressure is on
+  record. Hexanedioyl dichloride is known only under vacuum, and the bench
+  never draws it boiling.
+- A missing boiling point fails the build. Progress is in `batch.md` §16.
 
 ### `reactions.json`
 

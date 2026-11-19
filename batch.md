@@ -1454,7 +1454,10 @@ Texture (54): Zinc metal (metallic); Silver chloride (curdy); Iron filings (meta
 
 ## 16. Boiling and melting points (BUILD_UI.md stage UI.4)
 
-**Status: in progress, batches 1–3 done (2026-11-19).**
+**Status: boiling points complete (2026-11-19), in 4 batches.** Every
+liquid and solution now has a `boilingPointC`, and a missing one fails the
+build. Melting points, for the few solids the app melts, are still to come
+with UI.4.2.
 
 **What the owner approved:**
 - **`boilingPointC`** goes on every liquid and solution: whole °C at normal
@@ -1572,3 +1575,42 @@ from a loaded Wikipedia infobox, and is rounded to whole °C:
 temperature of 25 °C. In reality it evaporates fast at room temperature,
 so the value is right. The bench must show that sensibly, not as a
 rolling boil with no flame under it.
+
+### Batch 4 — the last 22 liquids
+
+Approved by the owner on 2026-11-19.
+
+**Confirmed from a loaded Wikipedia infobox (17):**
+- toluene 111
+- phenylethanone 202
+- aniline 184
+- silicon tetrachloride 58
+- iodobenzene 188
+- styrene 145
+- isoprene 34
+- the four methylchlorosilanes and trimethylsilanol: 70, 57, 99, 66
+- mercury 357
+- concentrated sulfuric acid 337 (at about 98.3%)
+- concentrated nitric acid 121 ("68% solution boils at 121 °C")
+- tetrachloromethane 77
+- olive oil 299. It smokes from about 190–215 °C, long before it boils.
+- lithium aluminium hydride in dry ether 35 (diethyl ether 34.6 °C)
+
+**By reasoning, not confirmed (4):**
+- the nitrotoluene mixture: 222 °C. It starts to boil at 2-nitrotoluene's
+  222 °C; 4-nitrotoluene boils at 238 °C.
+- rubber solution: 80 °C. It is rubber dissolved in benzene.
+- brominated oil and the Sudan-stained fat: 299 °C, as olive oil.
+
+**None on record (1): hexanedioyl dichloride.** Wikipedia gives its boiling
+point only under vacuum ("105 to 107 °C … at 2 mmHg"). By the owner's
+decision it carries `boilingPointC: null`, which the validator accepts, and
+the bench never draws it boiling. It is used cold, in the nylon rope trick.
+
+### Boiling point totals
+
+204 liquids and solutions:
+- **146** at 100 °C under the general reference;
+- **47** confirmed by a page that was opened, and cited in the
+  chemical's `sources`;
+- **11** not confirmed: Phosphoric acid (158 °C); Methanal solution (formalin) (98 °C); Hexanedioyl dichloride (none on record); Rubber solution (80 °C); Chromium plating bath (100 °C); Concentrated ammonia solution (32 °C); Sudan-stained fat (299 °C); Brominated oil (299 °C); Ninhydrin solution (78 °C); Diphenylamine reagent (118 °C); Molisch purple ring (100 °C).

@@ -496,20 +496,21 @@ for (const chemical of chemicals) {
  * boilingPointC, meltingPointC — when a liquid boils and a solid melts
  * (BUILD_UI.md UI.4). Curated in batches with sources (batch.md §16).
  * A boiling point belongs to every liquid and solution; a melting point
- * only to the solids the app actually melts. A missing boiling point is a
- * warning while the batches are being worked through.
+ * only to the solids the app actually melts. Every liquid must carry one;
+ * null means no boiling point at normal pressure is on record (it is only
+ * known under vacuum), and the bench then never draws it boiling.
  * ------------------------------------------------------------------ */
 {
-  let missingBoil = 0;
   for (const chemical of chemicals) {
     const isLiquid = chemical.state === 'aqueous' || chemical.state === 'liquid';
     if ('boilingPointC' in chemical) {
+      const value = chemical.boilingPointC;
       if (!isLiquid) problems.push(`${chemical.id}: boilingPointC is only for liquids and solutions`);
-      else if (typeof chemical.boilingPointC !== 'number' || chemical.boilingPointC < -60 || chemical.boilingPointC > 400) {
-        problems.push(`${chemical.id}: boilingPointC must be a number of °C between -60 and 400`);
+      else if (value !== null && (typeof value !== 'number' || value < -60 || value > 400)) {
+        problems.push(`${chemical.id}: boilingPointC must be a number of °C between -60 and 400, or null`);
       }
     } else if (isLiquid) {
-      missingBoil += 1;
+      problems.push(`${chemical.id}: solutions and liquids must have a boilingPointC (null if none is on record)`);
     }
     if ('meltingPointC' in chemical) {
       if (chemical.state !== 'solid') problems.push(`${chemical.id}: meltingPointC is only for solids`);
@@ -518,7 +519,6 @@ for (const chemical of chemicals) {
       }
     }
   }
-  if (missingBoil > 0) warnings.push(`${missingBoil} solutions and liquids have no boilingPointC yet (BUILD_UI.md UI.4 batches)`);
 }
 
 /* ------------------------------------------------------------------ *

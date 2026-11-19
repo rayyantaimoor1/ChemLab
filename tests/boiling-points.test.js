@@ -16,9 +16,15 @@ const isLiquid = (c) => c.state === 'aqueous' || c.state === 'liquid';
 test('a boiling point is a sensible number of °C, and only on a liquid or solution', () => {
   for (const c of chemicals.filter((x) => 'boilingPointC' in x)) {
     assert.ok(isLiquid(c), `${c.id} is a ${c.state}, not a liquid`);
+    // null: no boiling point at normal pressure is on record (batch.md §16).
+    if (c.boilingPointC === null) continue;
     assert.equal(typeof c.boilingPointC, 'number', c.id);
     assert.ok(c.boilingPointC > -60 && c.boilingPointC < 400, `${c.id}: ${c.boilingPointC} °C`);
   }
+});
+
+test('every liquid and solution has a boiling point, or says none is on record', () => {
+  for (const c of chemicals.filter(isLiquid)) assert.ok('boilingPointC' in c, `${c.id} has no boilingPointC`);
 });
 
 test('a melting point is only ever on a solid', () => {

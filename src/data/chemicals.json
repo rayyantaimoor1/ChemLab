@@ -5532,7 +5532,14 @@
     "structure": "molecules/lialh4.svg",
     "description": "The aggressive one. It reduces essentially every carbonyl group there is — aldehydes, ketones, esters, amides, and carboxylic acids that sodium borohydride cannot touch — which makes it powerful and unselective in the same breath. It cannot be used in water at all: it reacts violently, giving off hydrogen, so it is handled in dry ether and quenched with great care. Power and selectivity pull against each other, and this is the clearest illustration of it in organic chemistry.",
     "clarity": "cloudy",
+    "boilingPointC": 35,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — hydride reducing agents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
+    "sources": [
+      { "ref": "Wikipedia — Diethyl ether (boiling point 34.6 °C; the reagent is in dry ether)",
+        "url": "https://en.wikipedia.org/wiki/Diethyl_ether",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "salt"
   },
   {
@@ -5634,7 +5641,14 @@
     "structure": "molecules/toluene.svg",
     "description": "Benzene with a methyl group on it, and that small addition changes the ring's behaviour in two ways worth separating. The methyl group pushes electrons INTO the ring, so the ring becomes more reactive than benzene and any new group arriving is steered to the positions next to and opposite the methyl. Separately, the methyl group itself is now attackable in a way a lone benzene never is. It replaced benzene as a solvent because it is far less carcinogenic, though its vapour is still not something to breathe.",
     "clarity": "clear",
+    "boilingPointC": 111,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — substituent effects; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Toluene (boiling point 110.60 °C)",
+        "url": "https://en.wikipedia.org/wiki/Toluene",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -5656,7 +5670,14 @@
     "structure": "molecules/acetophenone.svg",
     "description": "A ketone with a benzene ring on one side, made by Friedel–Crafts acylation. It is the reason acylation is preferred to alkylation in practice: the carbonyl group it installs pulls electrons OUT of the ring, deactivating it, so the product is less reactive than the starting material and the reaction stops cleanly after one substitution. Alkylation has the opposite problem. It smells strongly of sweet almonds and is used in perfumery.",
     "clarity": "clear",
+    "boilingPointC": 202,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Friedel–Crafts acylation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Acetophenone (boiling point 202 °C)",
+        "url": "https://en.wikipedia.org/wiki/Acetophenone",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -5678,7 +5699,14 @@
     "structure": "molecules/nitrotoluene.svg",
     "description": "A MIXTURE of two products, not one compound, and the mixture is the result. The nitro group has gone to the position next to the methyl or the position opposite it, and essentially none has gone to the position in between. That pattern is what ortho–para directing means, and it happens because the methyl group pushes electrons into the ring and those electrons pile up at exactly those two kinds of position. Nitrating this further and once more gives TNT.",
     "clarity": "clear",
+    "boilingPointC": 222,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — directing effects in electrophilic aromatic substitution; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density of the 2-isomer)",
+    "sources": [
+      { "ref": "Wikipedia — 2-Nitrotoluene (boiling point 222 °C)",
+        "url": "https://en.wikipedia.org/wiki/2-Nitrotoluene",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -5800,7 +5828,14 @@
     "structure": "molecules/aniline.svg",
     "description": "An amine attached to a benzene ring, and the compound that started the synthetic dye industry — every bright colour in Victorian clothing traces back to it. Its base strength is worth comparing with ammonia's: aniline is a much WEAKER base, because the nitrogen's lone pair is drawn into the ring and is no longer freely available to accept a hydrogen ion. The same donation into the ring is what makes the ring itself extremely reactive. It is absorbed straight through skin and is toxic, so gloves are not optional.",
     "clarity": "clear",
+    "boilingPointC": 184,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — aromatic amines; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, pKb)",
+    "sources": [
+      { "ref": "Wikipedia — Aniline (boiling point 184.13 °C)",
+        "url": "https://en.wikipedia.org/wiki/Aniline",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -6086,7 +6121,14 @@
     "structure": "molecules/sicl4.svg",
     "description": "A colourless liquid that fumes the moment the stopper comes off, because the water vapour in the room is enough to start it hydrolysing. The reason silicon does this and carbon does not is worth knowing: silicon is a bigger atom with empty d orbitals available, so a water molecule can attach itself before any bond has to break. Tetrachloromethane, its carbon equivalent, has nowhere for the water to get a hold and is famously unreactive with it.",
     "clarity": "clear",
+    "boilingPointC": 58,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — Period 3 chlorides; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Silicon tetrachloride (boiling point 57.65 °C)",
+        "url": "https://en.wikipedia.org/wiki/Silicon_tetrachloride",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "salt"
   },
   {
@@ -6269,7 +6311,14 @@
     "structure": "molecules/c6h5i.svg",
     "description": "Iodine on a benzene ring — a compound that cannot be made by the direct route at all. Chlorine and bromine can be put onto a ring with a halogen carrier; iodine is too unreactive for that to work. Going the long way round through a diazonium salt is how it is actually done, which is a good illustration of why chemists build multi-step routes rather than always looking for the shortest one.",
     "clarity": "clear",
+    "boilingPointC": 188,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — aryl halides from diazonium salts; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Iodobenzene (boiling point 188 °C)",
+        "url": "https://en.wikipedia.org/wiki/Iodobenzene",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -6406,7 +6455,14 @@
     "structure": "molecules/styrene.svg",
     "description": "Ethene with a benzene ring on it, and both halves matter. The C=C is what polymerises; the ring is what ends up sticking out along the finished chain, getting in the way of the chains packing neatly together. That awkwardness is exactly why polystyrene is rigid and glassy rather than waxy like poly(ethene) — a bulky side group is a real, physical obstruction.",
     "clarity": "clear",
+    "boilingPointC": 145,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — addition polymers; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Styrene (boiling point 145 °C)",
+        "url": "https://en.wikipedia.org/wiki/Styrene",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -6572,6 +6628,7 @@
     "structure": "molecules/adipoyl_cl.svg",
     "description": "An acid chloride at BOTH ends of a six-carbon chain. The dicarboxylic acid would eventually make nylon too, but only on prolonged heating; using the acid chloride instead makes the reaction fast enough to happen at room temperature the moment the two solutions touch. Trading a harsher reagent for gentler conditions is a routine piece of synthetic thinking, and here it is what makes the classroom demonstration possible.",
     "clarity": "clear",
+    "boilingPointC": null,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — interfacial polymerisation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -6718,7 +6775,14 @@
     "structure": "molecules/isoprene.svg",
     "description": "A DIENE — it carries TWO carbon-to-carbon double bonds, not one, and that is the whole reason rubber can be what it is. Polymerising uses up only one of them; the other survives into the finished chain. Everything rubber can do that poly(ethene) cannot, and everything that goes wrong with it, traces back to that leftover double bond. It is also the unit nature builds rubber from, and the same five-carbon block it uses for terpenes and steroids.",
     "clarity": "clear",
+    "boilingPointC": 34,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — diene polymerisation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Isoprene (boiling point 34.067 °C)",
+        "url": "https://en.wikipedia.org/wiki/Isoprene",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -6813,6 +6877,7 @@
     "structure": "molecules/rubber_solution.svg",
     "description": "Raw rubber dissolved, which it can be because its chains are separate objects — solvent gets between them and carries them off one at a time. This is what rubber cement and bicycle puncture glue are, and it is also exactly what vulcanised rubber can no longer do. A polymer that dissolves is telling you its chains are not tied to each other.",
     "clarity": "cloudy",
+    "boilingPointC": 80,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — thermoplastic versus thermoset behaviour",
     "category": "material"
   },
@@ -6928,7 +6993,14 @@
     "structure": "molecules/me2sicl2.svg",
     "description": "Silicon carrying two methyl groups and TWO chlorines, and the count of those chlorines is the only thing that matters about it. Each one becomes an —OH when water reaches it, so two chlorines means two —OH groups, which means a molecule that can join at both ends and build a chain. It is the same bifunctional requirement the polyester and the nylon needed, arriving here on a silicon atom instead of a carbon one.",
     "clarity": "clear",
+    "boilingPointC": 70,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silicones; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Dimethyldichlorosilane (boiling point 70 °C)",
+        "url": "https://en.wikipedia.org/wiki/Dimethyldichlorosilane",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -7001,7 +7073,14 @@
     "structure": "molecules/me3sicl.svg",
     "description": "Three methyl groups and only ONE chlorine — so hydrolysis leaves it with a single —OH, and a molecule with one reactive end can join to one partner and then it is finished. It cannot build a chain. That makes it useless as a monomer and genuinely useful as a chain STOPPER: added to a silicone mixture it caps a growing chain and halts it, which is how the chain length, and therefore the thickness of a silicone oil, is controlled.",
     "clarity": "clear",
+    "boilingPointC": 57,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — chain termination in silicones; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Trimethylsilyl chloride (boiling point 57 °C)",
+        "url": "https://en.wikipedia.org/wiki/Trimethylsilyl_chloride",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -7023,7 +7102,14 @@
     "structure": "molecules/me3sioh.svg",
     "description": "ONE —OH group, and that is the whole story. Put it beside dimethylsilanediol with its two and the difference in what they can build is total: two —OH groups make a chain, one makes a dead end. It is the clearest demonstration in the app that the number of reactive groups, not their nature, decides whether polymerisation is even possible.",
     "clarity": "clear",
+    "boilingPointC": 99,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silanols; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Trimethylsilanol (boiling point 99 °C)",
+        "url": "https://en.wikipedia.org/wiki/Trimethylsilanol",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -7045,7 +7131,14 @@
     "structure": "molecules/mesicl3.svg",
     "description": "One methyl group and THREE chlorines, so hydrolysis gives three —OH groups on one silicon. Three reactive ends cannot make a chain — a chain needs exactly two — so what it builds instead branches in three directions and closes into a network. The parallel with Bakelite is exact, and reached from an entirely different starting point: three reactive positions rather than two is what turns a polymer into a thermoset.",
     "clarity": "clear",
+    "boilingPointC": 66,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silicone resins; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Methyltrichlorosilane (boiling point 66 °C)",
+        "url": "https://en.wikipedia.org/wiki/Methyltrichlorosilane",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -7474,7 +7567,14 @@
     "structure": "molecules/hg.svg",
     "description": "The only metal that is liquid at room temperature, and dense enough that lead floats on it. It is also seriously poisonous in a way that is easy to underestimate: it evaporates slowly at room temperature, the vapour has no smell, and what it does to the nervous system builds up and does not reverse. A spilt thermometer is a genuine clean-up problem, not a curiosity to push around with a finger.",
     "clarity": "opaque",
+    "boilingPointC": 357,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); PubChem, National Library of Medicine — Mercury",
+    "sources": [
+      { "ref": "Wikipedia — Mercury (element) (boiling point 356.73 °C)",
+        "url": "https://en.wikipedia.org/wiki/Mercury_(element)",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "element"
   },
   {
@@ -8103,7 +8203,14 @@
     "structure": "molecules/h2so4_conc.svg",
     "description": "An oily, dense liquid that behaves quite differently from the dilute acid on the bench: it is a dehydrating agent and an oxidiser as much as it is an acid. In the brown ring test its job is not to donate protons but to release nitric acid from the nitrate and provide a dense layer for the ring to form on. Mixing it with water releases a great deal of heat, which is why it is added to water and never the reverse.",
     "clarity": "clear",
+    "boilingPointC": 337,
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — reagents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Sulfuric acid (boiling point 337 °C, at about 98.3 %)",
+        "url": "https://en.wikipedia.org/wiki/Sulfuric_acid",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "acid"
   },
   {
@@ -8429,6 +8536,7 @@
     "structure": "molecules/stained_lipid.svg",
     "description": "The fat layer after the dye has moved into it, sitting bright red above a colourless water layer. Nothing has reacted — the dye has simply gone where it is soluble, and the sharp boundary between the two layers is what makes the result so easy to read.",
     "clarity": "clear",
+    "boilingPointC": 299,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — lipid identification",
     "category": "material"
   },
@@ -8480,7 +8588,14 @@
     "structure": "molecules/oil_unsat.svg",
     "description": "A fat whose chains carry carbon–carbon double bonds. Those double bonds put a permanent kink in each chain, so the molecules cannot pack together neatly and the fat stays liquid at room temperature — which is the whole difference between an oil and a solid fat, and it is a matter of shape rather than of chemistry.",
     "clarity": "clear",
+    "boilingPointC": 299,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — saturated and unsaturated lipids; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Olive oil (boiling point 299 °C; smoke point 190–215 °C)",
+        "url": "https://en.wikipedia.org/wiki/Olive_oil",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -8502,6 +8617,7 @@
     "structure": "molecules/oil_brominated.svg",
     "description": "The oil after bromine has added across every double bond. The chains are now saturated and the orange colour of the bromine has gone. Counting how much bromine an oil absorbs is a real measurement — the iodine number — and it is how the degree of unsaturation of a cooking oil is quoted.",
     "clarity": "clear",
+    "boilingPointC": 299,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the iodine number",
     "category": "organic"
   },
@@ -8569,7 +8685,14 @@
     "structure": "molecules/hno3_conc.svg",
     "description": "Nitric acid strong enough to act as an oxidising agent and to nitrate aromatic rings, not merely to donate protons. The faint yellow is dissolved nitrogen dioxide from slow decomposition. It stains skin and fingernails yellow on contact, for exactly the reason the protein test below works.",
     "clarity": "clear",
+    "boilingPointC": 121,
     "source": "Vogel's Textbook of Practical Organic Chemistry, 5th ed. — reagents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Nitric acid (boiling point 68% solution boils at 121 °C)",
+        "url": "https://en.wikipedia.org/wiki/Nitric_acid",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "acid"
   },
   {
@@ -9198,7 +9321,14 @@
     "structure": "molecules/ccl4.svg",
     "description": "Carbon with four chlorines, and the point of it here is what it refuses to do. Silicon tetrachloride is torn apart by water within seconds; this sits under water indefinitely without changing. The bonds are of a similar strength — the difference is that the carbon has no room and no spare orbitals for a water molecule to attach to before the reaction can start.",
     "clarity": "clear",
+    "boilingPointC": 77,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — Group 14 tetrahalides; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
+    "sources": [
+      { "ref": "Wikipedia — Carbon tetrachloride (boiling point 76.72 °C)",
+        "url": "https://en.wikipedia.org/wiki/Carbon_tetrachloride",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
