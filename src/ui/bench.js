@@ -482,7 +482,11 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       part('burner-leg', {}).classList.add('equipment__part--burner-leg-right');
       part('burner-foot');
       part('burner-barrel');
+      // The air hole in the barrel, which the collar is turned to cover or
+      // uncover (BUILD_UI.md UI.4.1).
+      part('burner-airhole');
       part('burner-collar');
+      part('burner-hose');
       // Deliberately NOT given the .fx-flame class: that one is the tiny
       // inline heat indicator, drawn as a teardrop tilted 45° to sit in a
       // line of text. On a burner it has to stand upright over the barrel.
@@ -509,7 +513,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
   }
 
   function equipmentLevelText(item) {
-    if (item.kind === 'burner') return item.level === 0 ? 'gas off' : `level ${item.level}`;
+    if (item.kind === 'burner') {
+      const air = item.airHole === 'closed' ? 'air hole closed' : 'air hole open';
+      return item.level === 0 ? `gas off · ${air}` : `level ${item.level} · ${air}`;
+    }
     if (item.kind === 'ice_bath') return 'melting ice, about 2 °C';
     return 'holds tubes upright';
   }
@@ -548,7 +555,13 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.el.classList.toggle('is-selected', state.selectedEquipmentId === item.id);
     refs.status.textContent = equipmentLevelText(item);
     refs.art.classList.toggle('equipment__art--lit', item.kind === 'burner' && item.level > 0);
-    if (item.kind === 'burner') refs.art.style.setProperty('--burner-level', String(item.level));
+    if (item.kind === 'burner') {
+      refs.art.style.setProperty('--burner-level', String(item.level));
+      refs.art.classList.toggle('equipment__art--luminous', item.airHole === 'closed');
+      // A vessel on the tripod stops the flame: it spreads under the base
+      // rather than reaching up through the glass.
+      refs.el.classList.toggle('has-vessel', !!item.standingVesselId);
+    }
   }
 
   /* ------------------------------------------------------------------ *
@@ -651,6 +664,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     vessel.appendChild(glass);
     vessel.insertAdjacentHTML('beforeend', frontSvg(container.type, container.capacityMl));
     vessel.appendChild(smoke);
+    // Soot from a luminous flame, on the outside of the glass (UI.4.1).
+    const soot = document.createElement('div');
+    soot.className = 'vessel__soot';
+    vessel.appendChild(soot);
     el.appendChild(vessel);
 
     // The floating label beside the glass: name, live readout, colour, and
@@ -735,7 +752,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       standNote, vesselShadow, flame, electrodeLayer, ionLayer,
       readingRow, readingSwatch, readingText, powerNote,
       solidLayer, shelfSolidNote, solidEls: new Map(), haze, smoke, cathodeRod,
-      plume, mixing: null, layerBox, emulsion, shaking: false,
+      plume, mixing: null, layerBox, emulsion, shaking: false, soot,
       dipEl: null, dipTool: null,
     };
     vesselEls.set(container.id, refs);
@@ -1125,6 +1142,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     updateShelfSolids(refs, container);
     updateLayers(refs, container);
+    refs.soot.classList.toggle('is-visible', container.sooty === true);
     updateDip(refs, container);
     setFlameLevel(refs.flame, container.heatLevel);
     updateElectrolysis(refs, container);
@@ -1145,6 +1163,25 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     button.addEventListener('click', onClick);
     controlButtons.appendChild(button);
     return button;
+  }
+
+  /** The burner's collar: one button that opens or closes the air hole. */
+  function airHoleButton(burner) {
+    const open = burner.airHole !== 'closed';
+    controlButton(open ? 'Air hole open' : 'Air hole closed', () => dispatch.setAirHole(burner.id, !open), {
+      active: !open,
+      title: open
+        ? 'Close the air hole: a cooler, luminous yellow flame'
+        : 'Open the air hole: the hot blue flame for heating',
+    });
+  }
+
+  /** Which flame to use, and why - the teaching note (BUILD_UI.md UI.4.1). */
+  function airHoleNote(burner) {
+    if (burner.level === 0) return 'Gas off. Light it with the air hole closed, then open it to heat.';
+    return burner.airHole === 'closed'
+      ? 'Yellow, luminous flame: easy to see, so it is the safety flame - but it is cooler and leaves soot. Open the air hole to heat.'
+      : 'Blue, roaring flame: hot and clean, with no soot - the one to heat with.';
   }
 
   function renderControlStrip(state) {
@@ -1184,6 +1221,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
             dispatch.setEquipmentLevel(standing.id, level);
           }, { active: standing.level === level, className: 'bench-control--heat' });
         }
+        airHoleButton(standing);
       }
 
       if (vessel.type === 'burette') {
@@ -1251,6 +1289,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
           dispatch.setEquipmentLevel(equip.id, level);
         }, { active: equip.level === level, className: 'bench-control--heat' });
       }
+      airHoleButton(equip);
+      controlSub.textContent = airHoleNote(equip);
     }
     controlButton('Put away', () => dispatch.removeEquipment(equip.id));
   }

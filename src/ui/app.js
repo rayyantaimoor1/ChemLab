@@ -111,6 +111,9 @@ const MAX_EQUIPMENT = 4;
    curated apparatus list - see startExperiment's dispatch entry. */
 const BASE_CONTAINER_DEFS = [];
 
+/** Vessels blackened by a luminous flame, until they are put away (UI.4.1). */
+const sootyContainers = new Set();
+
 /** "a beaker", "an evaporating dish", "an ice bath" - capitalised to start a sentence. */
 function withArticle(noun, capital = false) {
   const article = /^[aeiou]/i.test(noun) ? 'an' : 'a';
@@ -299,6 +302,9 @@ function addEquipment(kind) {
     id,
     kind,
     level: 0,
+    // A Bunsen burner's air hole (BUILD_UI.md UI.4.1). Open is the hot blue
+    // heating flame; closed is the cooler, sooty, luminous yellow one.
+    airHole: kind === 'burner' ? 'open' : null,
     x: placeNewObject(def.w, containers.length + equipment.length),
     y: benchFloorY(def.h),
   });
@@ -452,6 +458,28 @@ function setEquipmentLevel(equipmentId, level) {
   notify();
 }
 
+/**
+ * Opens or closes a burner's air hole. Closing it starves the gas of air,
+ * so it burns with a cooler, luminous yellow flame that heats more slowly
+ * and leaves soot on the glass; opening it gives the hot blue flame used
+ * for heating. Interface state only - the burner clock reads it.
+ */
+function setAirHole(equipmentId, open) {
+  const item = equipment.find((eq) => eq.id === equipmentId);
+  if (!item || item.kind !== 'burner') return;
+  const next = open ? 'open' : 'closed';
+  if (item.airHole === next) return;
+  item.airHole = next;
+  notebook.logAction({
+    text: open
+      ? "The burner's air hole was opened: a hot, roaring blue flame - the one to heat with."
+      : "The burner's air hole was closed: a cooler, luminous yellow flame that blackens glass with soot.",
+    containerId: null,
+    action: 'setAirHole',
+  });
+  notify();
+}
+
 function removeEquipment(equipmentId) {
   const index = equipment.findIndex((eq) => eq.id === equipmentId);
   if (index === -1) return;
@@ -467,6 +495,7 @@ function removeEquipment(equipmentId) {
 
 /** Puts a vessel back in the tray, with whatever was in it. */
 function removeVessel(containerId) {
+  sootyContainers.delete(containerId);
   const index = containers.findIndex((c) => c.id === containerId);
   if (index === -1) return;
   const name = containers[index].name;
@@ -1080,6 +1109,9 @@ function getState() {
         // on - null means it is free-standing on the bench, with nothing
         // under it to heat it and so no heat control at all.
         standOn: standOnByContainer.get(snapshot.id) || null,
+        // Soot left on the outside of the glass by a luminous flame. It stays
+        // until the vessel is put away - soot does not wipe itself off.
+        sooty: sootyContainers.has(snapshot.id),
         // Which vessel a burette is clamped above, if it is.
         clampedOver: clampedOverByContainer.get(snapshot.id) || null,
         // Which tool is in the liquid right now, mid-gesture, and the last
@@ -1098,6 +1130,7 @@ function getState() {
       kind: item.kind,
       label: EQUIPMENT_TYPES[item.kind].name,
       level: item.level,
+      airHole: item.airHole,
       canSetLevel: EQUIPMENT_TYPES[item.kind].heats === 1,
       position: { x: item.x, y: item.y },
       width: EQUIPMENT_TYPES[item.kind].w,
@@ -1173,6 +1206,7 @@ function currentReadingFor(containerId, toolId) {
  * for a single student action).
  */
 function resetBenchState() {
+  sootyContainers.clear();
   // Rebuilt from scratch rather than emptied in place: a freshly created
   // container is already empty, at room temperature, unheated and
   // unelectrified, so this is simpler than resetting each field by hand AND
@@ -1451,6 +1485,7 @@ const dispatch = {
   addEquipment,
   standOn,
   setEquipmentLevel,
+  setAirHole,
   removeEquipment,
 
   // The bench canvas: moving things about, picking one to work with, and
@@ -1569,6 +1604,12 @@ const BURNER_TICK_MS = 400;
 const ICE_BATH_C = 2;
 const ICE_RATE_C = 2.5;
 
+// A luminous flame - air hole closed - is cooler and spends much of its
+// heat as light and soot, so it warms a vessel more slowly (BUILD_UI.md
+// UI.4.1). Half the rate, the same eventual temperature.
+const LUMINOUS_RATE_FACTOR = 0.5;
+
+
 let burnerTimer = null;
 
 function burnerTick() {
@@ -1587,7 +1628,14 @@ function burnerTick() {
     else if (level === 0) target = ROOM_TEMPERATURE_C;
     else target = holdsLiquid ? Math.min(BURNER_TARGET_C[level], BOILING_POINT_C) : BURNER_TARGET_C[level];
 
-    const rate = level < 0 ? ICE_RATE_C : level === 0 ? COOLING_RATE_C : BURNER_RATE_C[level];
+    const under = equipment.find((eq) => eq.id === standOnByContainer.get(container.id));
+    const luminous = level > 0 && under?.kind === 'burner' && under.airHole === 'closed';
+    if (luminous && !sootyContainers.has(container.id)) {
+      sootyContainers.add(container.id);
+      stillBusy = true;
+    }
+    let rate = level < 0 ? ICE_RATE_C : level === 0 ? COOLING_RATE_C : BURNER_RATE_C[level];
+    if (luminous) rate *= LUMINOUS_RATE_FACTOR;
     if (Math.abs(target - now) < 0.5) continue;
 
     const next = target > now ? Math.min(target, now + rate) : Math.max(target, now - rate);

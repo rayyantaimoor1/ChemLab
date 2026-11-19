@@ -401,6 +401,30 @@ a guessed one. No engine change.
 > soot on the glass. Open: a roaring blue flame with a pale inner cone. The teaching note says
 > which to use for heating and why. Flicker by transform only.
 
+> **Done (2026-11-19).**
+> - **The burner.** It now has an air hole in the barrel, a collar that covers it, and a gas
+>   hose. A burner starts with its air hole open.
+> - **Air hole open:** a roaring, translucent blue-violet flame with a bright pale inner cone.
+> - **Air hole closed:** a tall, wavering, luminous yellow flame with no inner cone.
+>   - It heats at half the rate. This is the burner clock in `app.js`, interface state, and
+>     the eventual temperature is the same.
+>   - It leaves soot on the outside of any vessel standing on it, which stays until the vessel is
+>     put away.
+>   - The flicker is transform only.
+> - **Controls.** An "Air hole open / closed" button sits in the control strip, both for the
+>   burner and for a vessel standing on it. Each change writes a notebook line.
+> - **The teaching note.** The burner's strip explains which flame to use: yellow is the visible
+>   safety flame but cooler and sooty; blue is hot and clean, the one to heat with; light it with
+>   the air hole closed.
+> - **A flame under a vessel** is capped so it spreads under the base instead of being drawn
+>   through the glass.
+> - **Checked in the running app:**
+>   - Closing the air hole switches flame and status, and blackens the beaker.
+>   - It writes the notebook line and shows the note.
+>   - At heat 3, a beaker over the closed hole had reached 69 °C when the open one reached 100 °C.
+>
+>   Screenshot: `docs/ui-progress/UI.4/burner.png`.
+
 **UI.4.2 — Sonnet — Heat you can see**
 > Convection lines in a warming liquid; small bubbles forming on the glass before the boil; a
 > rolling boil at the curated boiling point; steam at the mouth; condensation droplets on the cool

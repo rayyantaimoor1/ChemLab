@@ -90,6 +90,22 @@ const HELPERS = `
         await this.wait(60);
       }
     },
+    // Drags a vessel onto the nth piece of bench furniture of a kind.
+    async standOn(vesselId, kind, index = 0) {
+      const from = document.querySelector('.vessel-object[data-container-id="' + vesselId + '"]');
+      const target = document.querySelectorAll('.equipment--' + kind + ' .equipment__art')[index].getBoundingClientRect();
+      const a = from.querySelector('.vessel').getBoundingClientRect();
+      const at = (x, y) => ({ clientX: x, clientY: y, bubbles: true, pointerId: 1, isPrimary: true, button: 0 });
+      const x0 = a.left + a.width / 2; const y0 = a.top + 20;
+      const x1 = target.left + target.width / 2; const y1 = target.top + 10;
+      from.dispatchEvent(new PointerEvent('pointerdown', at(x0, y0)));
+      for (let k = 1; k <= 6; k += 1) {
+        window.dispatchEvent(new PointerEvent('pointermove', at(x0 + (x1 - x0) * k / 6, y0 + (y1 - y0) * k / 6)));
+        await this.wait(30);
+      }
+      window.dispatchEvent(new PointerEvent('pointerup', at(x1, y1)));
+      await this.wait(300);
+    },
     dismissHazard() {
       [...document.querySelectorAll('button')].find((b) => b.textContent.trim() === 'I understand')?.click();
     },
@@ -234,6 +250,22 @@ const SETUPS = {
     await __cap.fill('beaker_small_1', 'water_distilled', 3);
     await __cap.fill('beaker_small_1', 'ccl4_l', 2); __cap.dismissHazard();
     await __cap.wait(7000);`,
+  // Stage UI.4.1: the Bunsen burner. Two beakers of water at full heat:
+  // left, air hole open (roaring blue flame); right, air hole closed
+  // (tall luminous yellow flame, soot on the glass).
+  'burner': `
+    __cap.press('auto-pour'); await __cap.wait(100);
+    __cap.press('take a beaker 100'); await __cap.wait(300);
+    __cap.press('bunsen burner'); await __cap.wait(300);
+    __cap.press('take a beaker 100'); await __cap.wait(300);
+    __cap.press('bunsen burner'); await __cap.wait(300);
+    await __cap.fill('beaker_small_1', 'water_distilled', 4);
+    await __cap.fill('beaker_small_2', 'water_distilled', 4);
+    await __cap.standOn('beaker_small_1', 'burner', 0);
+    __cap.press('heat 3'); await __cap.wait(300);
+    await __cap.standOn('beaker_small_2', 'burner', 1);
+    __cap.press('heat 3'); await __cap.wait(300);
+    __cap.press('close the air hole'); await __cap.wait(3500);`,
   'titration': `
     __cap.press('auto-pour'); await __cap.wait(100);
     __cap.press('take a conical flask'); await __cap.wait(300);

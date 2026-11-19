@@ -1147,6 +1147,32 @@ select:focus-visible,
   border-radius: 2px 2px 0 0;
 }
 
+/* The air hole near the foot of the barrel, and the gas hose. Turning the
+   collar covers the hole: closed, it is hidden (BUILD_UI.md UI.4.1). */
+.equipment__part--burner-airhole {
+  left: 50%;
+  bottom: 14px;
+  width: 6px;
+  height: 5px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: #0B0D0C;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.equipment__art--luminous .equipment__part--burner-airhole {
+  opacity: 0;
+}
+.equipment__part--burner-hose {
+  left: 50%;
+  bottom: 9px;
+  width: 26px;
+  height: 4px;
+  margin-left: 6px;
+  border-radius: 2px;
+  background: #8C4A2F;
+  border: 1px solid #3A1E12;
+}
+
 /* The flame: an upright teardrop standing on the barrel, with the pale
    blue inner cone inside it. It grows with the knob - the mockup's own
    sizing, 20+6·level wide and 26+13·level tall, so "Heat 3" is visibly a
@@ -1163,9 +1189,41 @@ select:focus-visible,
   height: calc(26px + var(--burner-level, 0) * 13px);
   margin-left: calc((20px + var(--burner-level, 0) * 6px) / -2);
   border-radius: 50% 50% 42% 42%;
-  background: radial-gradient(60% 74% at 50% 82%, #F6E3A8, #E8952B 46%, rgba(232, 149, 43, 0) 78%);
+  /* Air hole open: the roaring non-luminous flame, a translucent blue-violet
+     outer cone around a bright pale inner cone (BUILD_UI.md UI.4.1). */
+  background: radial-gradient(60% 74% at 50% 82%, rgba(176, 196, 255, 0.55), rgba(92, 112, 235, 0.5) 46%, rgba(92, 112, 235, 0) 80%);
   transform-origin: 50% 100%;
   opacity: 0;
+}
+
+/* Air hole closed: a tall, wavering, luminous yellow flame - glowing soot
+   particles, which is also why it blackens the glass. No inner cone. */
+.equipment__art--luminous .equipment__part--flame-cone {
+  height: calc(40px + var(--burner-level, 0) * 20px);
+  background: radial-gradient(55% 70% at 50% 85%, #FFF3C4, #FFC93C 40%, #F08A1C 64%, rgba(240, 138, 28, 0) 82%);
+  border-radius: 50% 50% 38% 38% / 70% 70% 30% 30%;
+}
+.equipment__art--luminous .equipment__part--flame-inner {
+  opacity: 0;
+}
+.equipment__art--lit.equipment__art--luminous .equipment__part--flame-cone {
+  animation: fx-burner-luminous 900ms ease-in-out infinite;
+}
+
+/* With a vessel standing on the tripod the flame meets its base and spreads
+   out under it, so it is never drawn up through the glass. */
+.equipment--burner.has-vessel .equipment__part--flame-cone {
+  max-height: 52px;
+}
+.equipment--burner.has-vessel .equipment__part--flame-inner {
+  max-height: 30px;
+}
+
+/* A luminous flame wavers and sways a little; transform only. */
+@keyframes fx-burner-luminous {
+  0%, 100% { transform: scaleY(1) scaleX(1) translateX(0); }
+  30% { transform: scaleY(1.18) scaleX(0.88) translateX(-1px); }
+  65% { transform: scaleY(0.94) scaleX(1.06) translateX(1.5px); }
 }
 
 .equipment__part--flame-inner {
@@ -1176,7 +1234,7 @@ select:focus-visible,
   height: calc(13px + var(--burner-level, 0) * 6px);
   margin-left: calc((10px + var(--burner-level, 0) * 3px) / -2);
   border-radius: 50% 50% 40% 40%;
-  background: radial-gradient(60% 80% at 50% 84%, #BFE8F5, #5AA6D6 58%, rgba(90, 166, 214, 0) 82%);
+  background: radial-gradient(60% 80% at 50% 84%, #E6F6FF, #8FD0F5 50%, rgba(143, 208, 245, 0) 82%);
   transform-origin: 50% 100%;
 }
 
@@ -1206,6 +1264,25 @@ select:focus-visible,
 html.reduce-motion .equipment__art--lit .equipment__part--flame-cone,
 html.reduce-motion .equipment__art--lit .equipment__part--flame-inner {
   animation: none;
+}
+
+/* Soot a luminous flame leaves on the outside of the glass: a dark smudge
+   across the base, drawn once, static (BUILD_UI.md UI.4.1). */
+.vessel__soot {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: -2px;
+  height: 30%;
+  border-radius: 0 0 40% 40% / 0 0 60% 60%;
+  background: radial-gradient(70% 90% at 50% 100%, rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.35) 55%, rgba(18, 18, 18, 0) 100%);
+  opacity: 0;
+  transition: opacity 2500ms ease-in;
+  pointer-events: none;
+  z-index: 2;
+}
+.vessel__soot.is-visible {
+  opacity: 1;
 }
 
 /* Ice bath: a blue-tinted basin and three tumbled ice cubes. */
