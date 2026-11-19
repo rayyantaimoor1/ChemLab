@@ -212,7 +212,14 @@
     "structure": "molecules/phenolphthalein.svg",
     "description": "Acid-base indicator supplied as a solution in ethanol. Colourless in acidic and neutral solution, turning pink above about pH 8.3. Used to find the end point of a titration. The solution itself has no meaningful pH of its own, so pH is left empty.",
     "clarity": "clear",
+    "boilingPointC": 78,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, indicator transition range); PubChem, National Library of Medicine — Phenolphthalein",
+    "sources": [
+      { "ref": "Wikipedia — Ethanol (boiling point 78.23 °C; the indicator is 1 % in ethanol)",
+        "url": "https://en.wikipedia.org/wiki/Ethanol",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "reagent"
   },
   {
@@ -1386,7 +1393,14 @@
     "structure": "molecules/br2.svg",
     "description": "Pure bromine: a heavy, dark red-brown liquid that evaporates readily into a vapour of the same colour, with a choking smell. It is what benzene needs to be brominated — bromine WATER will not do, because the water ruins the iron catalyst. Toxic and volatile, so it is handled only in a fume cupboard; most of the time the much milder bromine water does the job instead.",
     "clarity": "clear",
+    "boilingPointC": 59,
     "source": "Wikipedia — Bromine (volatile red-brown liquid at room temperature; density 3.10 g/cm³; toxicity and volatility), consulted 2026-11-03",
+    "sources": [
+      { "ref": "Wikipedia — Bromine (boiling point 58.8 °C)",
+        "url": "https://en.wikipedia.org/wiki/Bromine",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "element"
   },
   {
@@ -3434,7 +3448,14 @@
     "structure": "molecules/c2h4br2.svg",
     "description": "The colourless product of adding bromine across the double bond of ethene. One bromine atom goes to each carbon — hence 1,2 — and the double bond becomes a single bond. Because the product is colourless, the orange of the bromine water simply disappears, which is what makes the test so easy to read.",
     "clarity": "clear",
+    "boilingPointC": 131,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, addition reactions of alkenes",
+    "sources": [
+      { "ref": "Wikipedia — 1,2-Dibromoethane (boiling point 129 to 133 °C)",
+        "url": "https://en.wikipedia.org/wiki/1,2-Dibromoethane",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -3456,7 +3477,14 @@
     "structure": "molecules/c2h2br4.svg",
     "description": "What ethyne gives with bromine: FOUR bromine atoms, not two, because a triple bond can add twice over. Measuring how much bromine a sample takes up therefore tells you not just that it is unsaturated but how unsaturated — the principle behind the iodine number used to grade fats and oils.",
     "clarity": "clear",
+    "boilingPointC": 244,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, addition reactions of alkynes",
+    "sources": [
+      { "ref": "Wikipedia — 1,1,2,2-Tetrabromoethane (boiling point 243.6 °C)",
+        "url": "https://en.wikipedia.org/wiki/1,1,2,2-Tetrabromoethane",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -3478,7 +3506,14 @@
     "structure": "molecules/c2h5oh.svg",
     "description": "The alcohol in drinks, and industrially made by adding water across the double bond of ethene. Its OH group lets it hydrogen bond, which is why a two-carbon molecule that ought to be a gas is a liquid, and why it mixes with water in any proportion while ethane does not dissolve at all. It does not conduct: the OH hydrogen is held far too tightly to come off as an ion, so ethanol is not an acid.",
     "clarity": "clear",
+    "boilingPointC": 78,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Alcohols; Aliphatic Hydrocarbons, hydration of alkenes",
+    "sources": [
+      { "ref": "Wikipedia — Ethanol (boiling point 78.23 °C)",
+        "url": "https://en.wikipedia.org/wiki/Ethanol",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -3500,7 +3535,14 @@
     "structure": "molecules/glycol.svg",
     "description": "A diol — two OH groups, one on each carbon — formed when cold dilute potassium permanganate attacks a double bond. With two chances to hydrogen bond it is thick, high boiling and completely mixable with water, which is what makes it the antifreeze in car radiators. It tastes sweet and is seriously poisonous, a combination that makes it dangerous to animals and children.",
     "clarity": "clear",
+    "boilingPointC": 197,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, oxidation of alkenes",
+    "sources": [
+      { "ref": "Wikipedia — Ethylene glycol (boiling point 197.3 °C)",
+        "url": "https://en.wikipedia.org/wiki/Ethylene_glycol",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -3573,7 +3615,14 @@
     "structure": "molecules/c6h6.svg",
     "description": "A flat ring of six carbons whose six spare electrons are spread evenly right round it rather than sitting in three separate double bonds. That delocalisation is why the ring is unusually stable, why every carbon–carbon bond in it is exactly the same length, and why benzene refuses to behave like an alkene. It is also a proven carcinogen, which is why it has been replaced by methylbenzene in most school laboratories.",
     "clarity": "clear",
+    "boilingPointC": 80,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, structure of benzene",
+    "sources": [
+      { "ref": "Wikipedia — Benzene (boiling point 80.1 °C)",
+        "url": "https://en.wikipedia.org/wiki/Benzene",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -3617,7 +3666,14 @@
     "structure": "molecules/c6h5br.svg",
     "description": "Benzene with one hydrogen swapped for a bromine — and the ring is still intact. That is the point: the bromine SUBSTITUTED rather than adding across a bond, because breaking the delocalised ring would cost more energy than the reaction gains.",
     "clarity": "clear",
+    "boilingPointC": 156,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, electrophilic substitution",
+    "sources": [
+      { "ref": "Wikipedia — Bromobenzene (boiling point 156 °C)",
+        "url": "https://en.wikipedia.org/wiki/Bromobenzene",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -3639,7 +3695,14 @@
     "structure": "molecules/c6h5no2.svg",
     "description": "Pale yellow oily liquid smelling of almonds — a smell that is a genuinely dangerous invitation, because it is absorbed straight through the skin and poisons the blood's ability to carry oxygen. It is the starting point for aniline and from there for a great many dyes, which is how the synthetic dye industry began.",
     "clarity": "clear",
+    "boilingPointC": 211,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, nitration of benzene",
+    "sources": [
+      { "ref": "Wikipedia — Nitrobenzene (boiling point 210.9 °C)",
+        "url": "https://en.wikipedia.org/wiki/Nitrobenzene",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -3684,7 +3747,14 @@
     "structure": "molecules/c6h12.svg",
     "description": "The fully saturated six-carbon ring, and what benzene becomes once it has been forced to take on hydrogen. It is NOT flat: with every carbon tetrahedral the ring puckers into a chair shape, which is the clearest possible contrast with benzene's rigidly planar ring.",
     "clarity": "clear",
+    "boilingPointC": 81,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, hydrogenation of benzene",
+    "sources": [
+      { "ref": "Wikipedia — Cyclohexane (boiling point 80.74 °C)",
+        "url": "https://en.wikipedia.org/wiki/Cyclohexane",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -3706,7 +3776,14 @@
     "structure": "molecules/c2h5br.svg",
     "description": "A halogenoalkane, and one of the most useful starting materials in organic chemistry. The carbon–bromine bond is polar, leaving that carbon slightly positive and open to attack by anything with a lone pair — so bromoethane can be turned into an alcohol, an amine, a nitrile or an alkene depending only on what is attacked with and under what conditions.",
     "clarity": "clear",
+    "boilingPointC": 38,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides",
+    "sources": [
+      { "ref": "Wikipedia — Bromoethane (boiling point 38.0 to 38.8 °C)",
+        "url": "https://en.wikipedia.org/wiki/Bromoethane",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -3728,8 +3805,15 @@
     "structure": "molecules/naoh.svg",
     "description": "The same sodium hydroxide, dissolved in ethanol instead of water — and that single change of solvent sends bromoethane down a completely different path. In water the hydroxide attacks the carbon and gives an alcohol; in ethanol it pulls a hydrogen off instead and gives an alkene. Same reagents, same flask, different solvent, different product: one of the clearest demonstrations in the whole syllabus that conditions decide the outcome.",
     "clarity": "clear",
+    "boilingPointC": 78,
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides, substitution versus elimination",
     "flameElements": ["sodium"],
+    "sources": [
+      { "ref": "Wikipedia — Ethanol (boiling point 78.23 °C; the solvent is ethanol)",
+        "url": "https://en.wikipedia.org/wiki/Ethanol",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "base"
   },
   {
@@ -3902,7 +3986,14 @@
     "structure": "molecules/ch3cho.svg",
     "description": "An ALDEHYDE: the carbonyl carbon still carries a hydrogen, and that hydrogen is what makes it easy to oxidise further. It boils at only 21 °C, which is why the practical instruction is to distil it off as it forms — leave it in the flask and the oxidising agent will take it straight on to the acid. It is also the compound the body makes from alcohol, and the one responsible for a hangover.",
     "clarity": "clear",
+    "boilingPointC": 20,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, boiling point); Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones",
+    "sources": [
+      { "ref": "Wikipedia — Acetaldehyde (boiling point 20.2 °C)",
+        "url": "https://en.wikipedia.org/wiki/Acetaldehyde",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -3924,7 +4015,14 @@
     "structure": "molecules/ch3coch3.svg",
     "description": "A KETONE: the carbonyl carbon sits between two carbon groups and has no hydrogen of its own. That single structural difference is why it resists oxidation — there is nothing on that carbon to take off without breaking the chain — and it is what every test distinguishing aldehydes from ketones actually detects. Familiar as nail varnish remover.",
     "clarity": "clear",
+    "boilingPointC": 56,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones",
+    "sources": [
+      { "ref": "Wikipedia — Acetone (boiling point 56.08 °C)",
+        "url": "https://en.wikipedia.org/wiki/Acetone",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -3993,7 +4091,14 @@
     "structure": "molecules/ester.svg",
     "description": "An ESTER, and the reason this reaction is memorable: it smells sweet and fruity, like pear drops, where both the acid and the alcohol it came from smell of nothing pleasant at all. Esters are what give fruit and flowers much of their scent, and they are used as flavourings and as solvents — including in nail varnish and glue.",
     "clarity": "clear",
+    "boilingPointC": 77,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids, esterification",
+    "sources": [
+      { "ref": "Wikipedia — Ethyl acetate (boiling point 77.1 °C)",
+        "url": "https://en.wikipedia.org/wiki/Ethyl_acetate",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -4113,7 +4218,14 @@
     "structure": "molecules/pocl3.svg",
     "description": "The by-product left behind when phosphorus pentachloride is used to make an acid chloride. It is not the point of the reaction, but it has to go somewhere, and a student who writes the equation without it has not balanced anything. Also called phosphorus oxychloride.",
     "clarity": "clear",
+    "boilingPointC": 106,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids",
+    "sources": [
+      { "ref": "Wikipedia — Phosphoryl chloride (boiling point 105.8 °C)",
+        "url": "https://en.wikipedia.org/wiki/Phosphoryl_chloride",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "salt"
   },
   {
@@ -4135,7 +4247,14 @@
     "structure": "molecules/ch3cocl.svg",
     "description": "An ACID CHLORIDE, and the most reactive of the carboxylic acid derivatives. The chlorine pulls electrons hard away from the carbonyl carbon and leaves it wide open to attack, which is why this fumes in moist air, hisses with water, and turns an alcohol into an ester in seconds without heat or catalyst. It is the reagent you reach for when the direct route from the acid is too slow. Also called acetyl chloride.",
     "clarity": "clear",
+    "boilingPointC": 52,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, boiling point 52 °C); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids and their derivatives",
+    "sources": [
+      { "ref": "Wikipedia — Acetyl chloride (boiling point 52 °C)",
+        "url": "https://en.wikipedia.org/wiki/Acetyl_chloride",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -4157,7 +4276,14 @@
     "structure": "molecules/anhydride.svg",
     "description": "Two ethanoic acid units joined through a shared oxygen, and the second rung down the reactivity ladder. It does everything the acid chloride does — water, alcohols, ammonia — but more slowly and more manageably, and it gives no corrosive hydrogen chloride. That gentleness is why industry prefers it: it is the reagent used to make aspirin.",
     "clarity": "clear",
+    "boilingPointC": 140,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives",
+    "sources": [
+      { "ref": "Wikipedia — Acetic anhydride (boiling point 139.8 °C)",
+        "url": "https://en.wikipedia.org/wiki/Acetic_anhydride",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -4254,7 +4380,14 @@
     "structure": "molecules/glycerol.svg",
     "description": "A thick, sweet, harmless liquid with three —OH groups, recovered as the valuable by-product of soap making. It holds on to water, which is why it turns up in hand creams, toothpaste and cough syrup, and it is also the starting material for nitroglycerine — the same molecule, put to very different use.",
     "clarity": "clear",
+    "boilingPointC": 290,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, lipids",
+    "sources": [
+      { "ref": "Wikipedia — Glycerol (boiling point 290 °C)",
+        "url": "https://en.wikipedia.org/wiki/Glycerol",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -5163,8 +5296,13 @@
     "structure": "molecules/etmgbr.svg",
     "description": "A GRIGNARD REAGENT, and the thing that makes it useful is a reversal. In bromoethane the carbon attached to the bromine is slightly POSITIVE, because bromine pulls electrons away; put magnesium between them and that same carbon becomes slightly NEGATIVE. A carbon that was open to attack is now the attacker. That inversion is why Grignards build carbon–carbon bonds, and it is also why they destroy themselves on contact with water — a carbon carrying negative charge will grab a hydrogen ion from anything.",
     "clarity": "cloudy",
+    "boilingPointC": 35,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — organometallic chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "sources": [
+      { "ref": "Wikipedia — Diethyl ether (boiling point 34.6 °C; the reagent is in dry ether)",
+        "url": "https://en.wikipedia.org/wiki/Diethyl_ether",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] },
       { "ref": "Wikipedia — Grignard reagent (the solution becomes cloudy)",
         "url": "https://en.wikipedia.org/wiki/Grignard_reagent",
         "checked": "2026-11-18",
@@ -5237,7 +5375,14 @@
     "structure": "molecules/propan1ol.svg",
     "description": "A PRIMARY alcohol — its carbon–OH group still carries two hydrogens. Count the carbons and compare with the bromoethane the Grignard was made from: two went in, three came out. A carbon–carbon bond has been built, which no reaction earlier in this app has managed. Being primary, it can still be oxidised twice over, to an aldehyde and then to an acid.",
     "clarity": "clear",
+    "boilingPointC": 97,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Clayden, Greeves & Warren, Organic Chemistry 2nd ed.",
+    "sources": [
+      { "ref": "Wikipedia — 1-Propanol (boiling point 97 to 98 °C)",
+        "url": "https://en.wikipedia.org/wiki/1-Propanol",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -5259,7 +5404,14 @@
     "structure": "molecules/butan2ol.svg",
     "description": "A SECONDARY alcohol — the carbon holding the OH has two other carbons on it and only one hydrogen left. That single hydrogen is the difference between this and the tertiary alcohol next door: it can be oxidised once, to a ketone, and then it stops. Made here from an ordinary aldehyde, and that is the general rule — aldehyde plus Grignard gives secondary, every time except with methanal.",
     "clarity": "clear",
+    "boilingPointC": 99,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Clayden, Greeves & Warren, Organic Chemistry 2nd ed.",
+    "sources": [
+      { "ref": "Wikipedia — 2-Butanol (boiling point 98 to 100 °C)",
+        "url": "https://en.wikipedia.org/wiki/2-Butanol",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -5281,7 +5433,14 @@
     "structure": "molecules/mb2ol.svg",
     "description": "A TERTIARY alcohol: three carbons on the carbon holding the OH, and NO hydrogen left there at all. That absence is the whole of its character — with nothing to remove, ordinary oxidising agents cannot touch it, exactly as they could not touch a ketone for the same reason. Made from a ketone plus a Grignard, which completes the pattern: methanal gives primary, any other aldehyde gives secondary, a ketone gives tertiary.",
     "clarity": "clear",
+    "boilingPointC": 102,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Clayden, Greeves & Warren, Organic Chemistry 2nd ed.",
+    "sources": [
+      { "ref": "Wikipedia — 2-Methyl-2-butanol (boiling point 101 to 103 °C)",
+        "url": "https://en.wikipedia.org/wiki/2-Methyl-2-butanol",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {

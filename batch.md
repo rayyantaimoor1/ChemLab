@@ -1454,7 +1454,7 @@ Texture (54): Zinc metal (metallic); Silver chloride (curdy); Iron filings (meta
 
 ## 16. Boiling and melting points (BUILD_UI.md stage UI.4)
 
-**Status: in progress, batches 1–2 done (2026-11-19).**
+**Status: in progress, batches 1–3 done (2026-11-19).**
 
 **What the owner approved:**
 - **`boilingPointC`** goes on every liquid and solution: whole °C at normal
@@ -1544,3 +1544,31 @@ not confirmed):
 - **The chromium plating bath: 100 °C.** It is mostly water.
 - **The Molisch purple ring: 100 °C.** The liquid is the water-based sugar
   solution above the acid layer.
+
+### Batch 3 — 23 pure liquids
+
+Approved by the owner on 2026-11-19. Every value was read word for word
+from a loaded Wikipedia infobox, and is rounded to whole °C:
+
+| Liquid | °C | Liquid | °C |
+|---|---|---|---|
+| bromine | 59 | 1,2-dibromoethane | 131 |
+| 1,1,2,2-tetrabromoethane | 244 | glycol | 197 |
+| benzene | 80 | bromobenzene | 156 |
+| nitrobenzene | 211 | cyclohexane | 81 |
+| bromoethane | 38 | ethanal | 20 |
+| propanone | 56 | ethyl ethanoate | 77 |
+| phosphoryl chloride | 106 | ethanoyl chloride | 52 |
+| ethanoic anhydride | 140 | glycerol | 290 |
+| propan-1-ol | 97 | butan-2-ol | 99 |
+| 2-methylbutan-2-ol | 102 | ethanol | 78 |
+
+- **Ethanol solutions: 78 °C.** The phenolphthalein indicator and
+  sodium hydroxide in ethanol.
+- **The Grignard reagent, in dry ether: 35 °C.** Diethyl ether boils at
+  34.6 °C.
+
+**Noted for UI.4.2:** ethanal boils at 20 °C, below the app's room
+temperature of 25 °C. In reality it evaporates fast at room temperature,
+so the value is right. The bench must show that sensibly, not as a
+rolling boil with no flame under it.
