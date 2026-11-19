@@ -1454,7 +1454,7 @@ Texture (54): Zinc metal (metallic); Silver chloride (curdy); Iron filings (meta
 
 ## 16. Boiling and melting points (BUILD_UI.md stage UI.4)
 
-**Status: in progress, batch 1 done (2026-11-19).**
+**Status: in progress, batches 1–2 done (2026-11-19).**
 
 **What the owner approved:**
 - **`boilingPointC`** goes on every liquid and solution: whole °C at normal
@@ -1508,3 +1508,39 @@ Approved by the owner on 2026-11-19.
 - the Molisch purple ring, on its layer of concentrated sulfuric acid.
 
 **Then (batches 3–4):** the 45 other pure liquids.
+
+### Batch 2 — the 13 solutions the general rule left out
+
+Approved by the owner on 2026-11-19.
+
+**Solutions in ethanol: 78 °C.** Wikipedia (Ethanol) gives "78.23 ± 0.09"
+°C. The solvent is confirmed:
+- **Molisch reagent:** Wikipedia: "α-naphthol dissolved in ethanol".
+- **Sodium ethoxide:** Wikipedia: available "as a solution in ethanol".
+- **Dimethylglyoxime and Sudan III stain:** the app's own concentrations
+  say "in ethanol".
+- **Ninhydrin:** partly. Wikipedia gives "0.2% solution in either
+  n-butanol or in ethanol".
+
+**Acid-based reagents:**
+- **Concentrated hydrochloric acid (36%): 61 °C.** From Wikipedia's
+  concentration table; that row came through a summary of the table, not
+  word for word.
+- **Bial's orcinol reagent: 61 °C.** Wikipedia (Bial's test): the reagent
+  is mostly "200 ml of concentrated hydrochloric acid".
+- **Dische diphenylamine reagent: 118 °C.** Partly confirmed. Wikipedia
+  (Dische test) lists "glacial acetic acid, sulfuric acid, and ethanol",
+  and acetic acid boils at "118 to 119 °C".
+
+**From safety data sheets seen in search results only** (not opened, so
+not confirmed):
+- **Concentrated ammonia solution, about 28–30%: 32 °C.** Merck and
+  Honeywell. Wikipedia gives 37.7 °C only for 25%.
+- **85% phosphoric acid: 158 °C.** Several sheets; one gives a range of
+  135–158 °C and one an outlier of 213 °C.
+- **40% formalin: 98 °C.** Sheets range from 96 to 101 °C.
+
+**No source:**
+- **The chromium plating bath: 100 °C.** It is mostly water.
+- **The Molisch purple ring: 100 °C.** The liquid is the water-based sugar
+  solution above the acid layer.

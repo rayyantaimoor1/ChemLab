@@ -57,8 +57,14 @@ test('a chemical source names what it confirms, with a link and a date', () => {
       assert.match(entry.url ?? '', /^https:\/\//, chemical.id);
       assert.match(entry.checked ?? '', /^\d{4}-\d{2}-\d{2}$/, chemical.id);
       for (const word of entry.covers) {
-        assert.ok(['clarity', 'form', 'texture'].includes(word), `${chemical.id}: covers "${word}"`);
-        assert.ok(word in chemical, `${chemical.id}: a source confirms ${word}, but there is no ${word}`);
+        // What each word a chemical's source can confirm is stored as:
+        // the appearance words (UI.3) and the boiling and melting points (UI.4).
+        const field = {
+          clarity: 'clarity', form: 'form', texture: 'texture',
+          boilingPoint: 'boilingPointC', meltingPoint: 'meltingPointC',
+        }[word];
+        assert.ok(field, `${chemical.id}: covers "${word}"`);
+        assert.ok(field in chemical, `${chemical.id}: a source confirms ${word}, but there is no ${field}`);
       }
     }
   }

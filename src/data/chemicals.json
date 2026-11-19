@@ -41,7 +41,14 @@
     "structure": "molecules/hcl.svg",
     "description": "Hydrogen chloride dissolved in water to about twelve times the strength of the dilute acid on the bench. It fumes in air, giving off choking hydrogen chloride, so it is opened only in a fume cupboard. Some reactions need it rather than the dilute acid — preparing chlorine from manganese(IV) oxide is the classic example, because only at this strength is there enough acid and chloride to make the reaction go.",
     "clarity": "clear",
+    "boilingPointC": 61,
     "source": "Wikipedia — Hydrochloric acid (density 1.18 g/mL and about 11.6–12.4 M at 36–38% w/w; fumes in air when concentrated), consulted 2026-11-03",
+    "sources": [
+      { "ref": "Wikipedia — Hydrochloric acid (physical properties by concentration: 61 °C at 36 %)",
+        "url": "https://en.wikipedia.org/wiki/Hydrochloric_acid",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "acid"
   },
   {
@@ -3543,6 +3550,7 @@
     "structure": "molecules/h3po4.svg",
     "description": "A tribasic acid — three hydrogens it can give away — but a WEAK one, which is why its solution is nowhere near as acidic as hydrochloric acid of the same concentration. It is the catalyst for hydrating ethene to ethanol industrially, and, more familiarly, it is what gives cola drinks their sharp taste.",
     "clarity": "clear",
+    "boilingPointC": 158,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aliphatic Hydrocarbons, industrial hydration of ethene",
     "category": "acid"
   },
@@ -3840,8 +3848,15 @@
     "structure": "molecules/c2h5ona.svg",
     "description": "The salt formed when sodium takes the hydrogen from an alcohol's OH group. It is strongly basic — far more so than sodium hydroxide — which is itself the proof that ethanol is a very weak acid: the weaker the acid, the stronger the base it leaves behind.",
     "clarity": "clear",
+    "boilingPointC": 78,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Alcohols, reaction with sodium",
     "flameElements": ["sodium"],
+    "sources": [
+      { "ref": "Wikipedia — Sodium ethoxide (available as a solution in ethanol); Wikipedia — Ethanol (boiling point 78.23 °C)",
+        "url": "https://en.wikipedia.org/wiki/Sodium_ethoxide",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "organic"
   },
   {
@@ -4832,7 +4847,14 @@
     "structure": "molecules/dmg.svg",
     "description": "A CHELATING ligand — one molecule with two nitrogen atoms placed exactly right to grip a single metal ion at two points at once, like a crab's claw. That two-point grip is far harder to break than two separate ligands would be, and it is the reason chelates are so stable. Dimethylglyoxime happens to fit nickel almost perfectly and very few other ions, which makes it one of the most selective reagents in analytical chemistry.",
     "clarity": "clear",
+    "boilingPointC": 78,
     "source": "Vogel's Textbook of Quantitative Chemical Analysis 6th ed. — gravimetric determination of nickel; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
+    "sources": [
+      { "ref": "Wikipedia — Ethanol (boiling point 78.23 °C); the reagent is 1 % in ethanol",
+        "url": "https://en.wikipedia.org/wiki/Ethanol",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "reagent"
   },
   {
@@ -5192,6 +5214,7 @@
     "structure": "molecules/hcho.svg",
     "description": "The simplest aldehyde, and the only one whose carbonyl carbon carries TWO hydrogens rather than one. That makes it the odd member of the family in a way that matters: a Grignard added to it can only ever give a PRIMARY alcohol, where every other aldehyde gives a secondary one. Familiar as the preservative in biological specimens, and a carcinogen, which is why that use is now heavily restricted.",
     "clarity": "clear",
+    "boilingPointC": 98,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — carbonyl chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -7716,6 +7739,7 @@
     "structure": "molecules/chromic_acid.svg",
     "description": "Chromium(VI) oxide dissolved in sulfuric acid — strongly acidic, strongly oxidising, and the reason chromium plating is an industrial process rather than a school one. It is the odd one out among plating baths: the anodes used with it are insoluble, so nothing replaces the chromium that plates out and the bath genuinely runs down as it is used.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hard and decorative chromium plating",
     "category": "acid"
   },
@@ -7844,6 +7868,7 @@
     "structure": "molecules/nh3_conc.svg",
     "description": "The same ammonia as the dilute bench bottle, roughly fifteen times stronger — and in qualitative analysis that difference is not a detail but the whole test. Silver bromide will not dissolve in dilute ammonia and does dissolve in this, so the strength of the reagent is what separates a bromide from a chloride. Sharp, choking fumes come off the bottle; in a real laboratory it is opened in a fume cupboard.",
     "clarity": "clear",
+    "boilingPointC": 32,
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — reagents",
     "category": "base"
   },
@@ -8216,7 +8241,14 @@
     "structure": "molecules/sudan3.svg",
     "description": "A red azo dye that dissolves in fats and refuses to dissolve in water. That single property is the entire test: it is not reacting with anything, it is simply choosing where to sit. Put it in a mixture and it collects in the fat, staining it red and leaving the water layer alone. A test that works by solubility rather than by reaction is worth meeting once, because it is a different idea from everything else in this app.",
     "clarity": "clear",
+    "boilingPointC": 78,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — lipid identification; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
+    "sources": [
+      { "ref": "Wikipedia — Ethanol (boiling point 78.23 °C); the stain is saturated in ethanol",
+        "url": "https://en.wikipedia.org/wiki/Ethanol",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "reagent"
   },
   {
@@ -8423,6 +8455,7 @@
     "structure": "molecules/ninhydrin.svg",
     "description": "The reagent for a free amino group, sensitive enough to develop the amino acids in a fingerprint — which is exactly what it is used for in forensic work. Unlike the biuret test, which needs peptide bonds and so detects whole proteins, ninhydrin responds to individual amino acids.",
     "clarity": "clear",
+    "boilingPointC": 78,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — amino acid detection; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "reagent"
   },
@@ -8559,6 +8592,7 @@
     "structure": "molecules/diphenylamine.svg",
     "description": "The reagent of the Dische test, and it is specific to DEOXYribose rather than to DNA as such. Warmed in acid, deoxyribose breaks down to a fragment that condenses with two diphenylamine molecules to give an intense blue. Ribose cannot produce that fragment, which is what makes the test tell the two nucleic acids apart.",
     "clarity": "clear",
+    "boilingPointC": 118,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the Dische diphenylamine test; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "reagent"
   },
@@ -8604,7 +8638,14 @@
     "structure": "molecules/orcinol.svg",
     "description": "The reagent of Bial's test, and the mirror image of the Dische test: this one answers to RIBOSE and so identifies RNA. The iron(III) chloride in it is essential — the colour does not develop without it, because the iron is what oxidises the intermediate into the coloured form.",
     "clarity": "clear",
+    "boilingPointC": 61,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — Bial's orcinol test; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
+    "sources": [
+      { "ref": "Wikipedia — Bial's test (the reagent is mostly concentrated hydrochloric acid)",
+        "url": "https://en.wikipedia.org/wiki/Bial%27s_test",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "reagent"
   },
   {
@@ -8695,7 +8736,14 @@
     "structure": "molecules/molisch.svg",
     "description": "1-naphthol, used with concentrated sulfuric acid as the general test for ANY carbohydrate. The acid dehydrates the sugar to a furfural, which then condenses with the naphthol to a purple compound. Because every carbohydrate can be dehydrated this way, the test is completely unselective — which is precisely its use: a negative result rules carbohydrate out altogether.",
     "clarity": "clear",
+    "boilingPointC": 78,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — Molisch's test; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
+    "sources": [
+      { "ref": "Wikipedia — Molisch's test (α-naphthol dissolved in ethanol); Wikipedia — Ethanol (boiling point 78.23 °C)",
+        "url": "https://en.wikipedia.org/wiki/Molisch%27s_test",
+        "checked": "2026-11-19",
+        "covers": ["boilingPoint"] }
+    ],
     "category": "reagent"
   },
   {
@@ -8717,6 +8765,7 @@
     "structure": "molecules/molisch_purple.svg",
     "description": "A purple ring that forms at the boundary between the dense acid layer and the sugar solution above it — the same trick as the brown ring test for nitrate, and for the same reason: the reaction can only happen where the two layers meet. Shake the tube and the ring is lost.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — Molisch's test",
     "category": "organic"
   },
