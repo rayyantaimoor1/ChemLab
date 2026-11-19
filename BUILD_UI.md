@@ -586,6 +586,7 @@ finds nothing that would teach a student something wrong.
 | — | Build the UI realism track with Claude Code instead of Claude Design (Phase 9) | Yes (owner) | 2026-11-10 |
 | UI.2 | Real tube capacities (test tube 20 mL, boiling tube 55 mL) and guided test-tube amounts scaled to 1–8 mL | Yes (owner) | 2026-11-17 |
 | UI.3.6 | A curated `layers` field on rules for liquids that do not mix | Yes (owner) | 2026-11-19 |
+| UI.4 | Curated `boilingPointC` (all liquids and solutions) and `meltingPointC` (solids the app melts); one general reference for dilute aqueous solutions | Yes (owner) | 2026-11-19 |
 | UI.3 | Curated `clarity`, `form` and `texture` in chemicals.json (plus `filings`, `turnings`, `foil` as forms; one general reference for clear solutions) | Yes (owner) | 2026-11-17 |
 | UI.4 | Curated `boilingPointC` / `meltingPointC` | | |
 | UI.5 | Curated `effects.gasRate` | | |

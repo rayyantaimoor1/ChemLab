@@ -188,6 +188,18 @@ nothing about whether a precipitate is gelatinous. A chemical may carry a
 the field it confirms. Progress and the sourcing rule are in `batch.md`
 §15.
 
+**`boilingPointC` and `meltingPointC`** (BUILD_UI.md stage UI.4, owner
+approved 2026-11-19): when a liquid boils and a solid melts, in whole °C at
+normal air pressure, so the bench boils a liquid at the right temperature
+and not a guessed one.
+- Every liquid and solution has a `boilingPointC`.
+- Only the solids the app actually melts have a `meltingPointC`.
+- Both are curated with sources, with `covers` set to `boilingPoint` or
+  `meltingPoint`.
+- Dilute water-based solutions are covered by one general reference: a
+  dissolved substance raises the boiling point by about 0.5 °C per mole
+  per kg. Progress is in `batch.md` §16.
+
 ### `reactions.json`
 
 ```json

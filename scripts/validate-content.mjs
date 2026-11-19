@@ -96,7 +96,7 @@ const SOURCE_COVERS = new Set([
 
 // What a `sources` entry on a CHEMICAL may say it confirms: so far, the
 // three appearance fields of BUILD_UI.md stage UI.3.
-const CHEMICAL_SOURCE_COVERS = new Set(['clarity', 'form', 'texture']);
+const CHEMICAL_SOURCE_COVERS = new Set(['clarity', 'form', 'texture', 'boilingPoint', 'meltingPoint']);
 
 function nonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
@@ -490,6 +490,35 @@ for (const [field, rule] of Object.entries(APPEARANCE)) {
 
 for (const chemical of chemicals) {
   if ('sources' in chemical) checkSources(chemical.id, chemical.sources, CHEMICAL_SOURCE_COVERS);
+}
+
+/* ------------------------------------------------------------------ *
+ * boilingPointC, meltingPointC — when a liquid boils and a solid melts
+ * (BUILD_UI.md UI.4). Curated in batches with sources (batch.md §16).
+ * A boiling point belongs to every liquid and solution; a melting point
+ * only to the solids the app actually melts. A missing boiling point is a
+ * warning while the batches are being worked through.
+ * ------------------------------------------------------------------ */
+{
+  let missingBoil = 0;
+  for (const chemical of chemicals) {
+    const isLiquid = chemical.state === 'aqueous' || chemical.state === 'liquid';
+    if ('boilingPointC' in chemical) {
+      if (!isLiquid) problems.push(`${chemical.id}: boilingPointC is only for liquids and solutions`);
+      else if (typeof chemical.boilingPointC !== 'number' || chemical.boilingPointC < -60 || chemical.boilingPointC > 400) {
+        problems.push(`${chemical.id}: boilingPointC must be a number of °C between -60 and 400`);
+      }
+    } else if (isLiquid) {
+      missingBoil += 1;
+    }
+    if ('meltingPointC' in chemical) {
+      if (chemical.state !== 'solid') problems.push(`${chemical.id}: meltingPointC is only for solids`);
+      else if (typeof chemical.meltingPointC !== 'number' || chemical.meltingPointC < -50 || chemical.meltingPointC > 3500) {
+        problems.push(`${chemical.id}: meltingPointC must be a number of °C between -50 and 3500`);
+      }
+    }
+  }
+  if (missingBoil > 0) warnings.push(`${missingBoil} solutions and liquids have no boilingPointC yet (BUILD_UI.md UI.4 batches)`);
 }
 
 /* ------------------------------------------------------------------ *

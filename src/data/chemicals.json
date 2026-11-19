@@ -18,6 +18,7 @@
     "structure": "molecules/hcl.svg",
     "description": "Strong monoprotic acid. It dissociates completely in water, so a 1 M solution has a pH close to 0. Reacts with reactive metals to release hydrogen gas, and with carbonates to release carbon dioxide.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solution density); PubChem, National Library of Medicine — Hydrochloric acid",
     "category": "acid"
   },
@@ -62,6 +63,7 @@
     "structure": "molecules/naoh.svg",
     "description": "Strong base, also called caustic soda. It dissociates completely in water, so a 1 M solution has a pH close to 14. Feels soapy on skin because it attacks skin tissue — it is not safe to touch.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility, solution density); PubChem, National Library of Medicine — Sodium hydroxide",
     "flameElements": ["sodium"],
     "category": "base"
@@ -85,6 +87,7 @@
     "structure": "molecules/nacl.svg",
     "description": "Common table salt dissolved in water. The salt of a strong acid and a strong base, so its solution is neutral. Present as separate Na plus and Cl minus ions in solution.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility, solution density); PubChem, National Library of Medicine — Sodium chloride",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -108,6 +111,7 @@
     "structure": "molecules/cuso4.svg",
     "description": "Bright blue solution. The colour comes from the hydrated copper(II) ion. Slightly acidic because the copper ion reacts weakly with water. Used to demonstrate displacement by more reactive metals such as zinc and iron.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Copper(II) sulfate",
     "flameElements": ["copper"],
     "category": "salt"
@@ -131,6 +135,7 @@
     "structure": "molecules/pbno3.svg",
     "description": "Colourless solution of a soluble lead salt. Lead compounds are cumulative poisons and must never be tasted, touched, or poured down a drain. Used with potassium iodide to show the formation of a bright yellow precipitate.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Lead(II) nitrate",
     "category": "salt"
   },
@@ -153,6 +158,7 @@
     "structure": "molecules/ki.svg",
     "description": "Colourless solution of a very soluble iodide salt. The salt of a strong acid and a strong base, so its solution is neutral. Supplies iodide ions for precipitation reactions.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Potassium iodide",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -176,6 +182,7 @@
     "structure": "molecules/agno3.svg",
     "description": "Colourless solution used as the standard test for halide ions. Leaves dark brown or black stains on skin and clothing that take days to wear off. Kept in a dark bottle because light slowly decomposes it.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Silver nitrate",
     "category": "salt"
   },
@@ -220,6 +227,7 @@
     "structure": "molecules/water.svg",
     "description": "Water with dissolved salts and minerals removed by distillation. Used to make up solutions and to rinse apparatus. Freshly distilled water is neutral at pH 7, though it slowly turns slightly acidic as it absorbs carbon dioxide from the air.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density at 4 °C); PubChem, National Library of Medicine — Water",
     "category": "other"
   },
@@ -265,6 +273,7 @@
     "structure": "molecules/nacl.svg",
     "description": "Ordinary salt dissolved in water, formed when an acid and an alkali neutralise each other. Neutral, colourless, and a good conductor because it is fully split into ions.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Sodium chloride",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -288,6 +297,7 @@
     "structure": "molecules/water.svg",
     "description": "Water formed as a product of a reaction, most often when an acid neutralises an alkali. Neutral, and a very poor conductor on its own because it has almost no free ions.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); PubChem, National Library of Medicine — Water",
     "category": "other"
   },
@@ -338,6 +348,7 @@
     "structure": "molecules/kno3.svg",
     "description": "Colourless solution left behind when lead nitrate reacts with potassium iodide. The salt of a strong acid and a strong base, so it is neutral, and it conducts well.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Potassium nitrate",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -383,6 +394,7 @@
     "structure": "molecules/nano3.svg",
     "description": "Colourless solution left in the tube after silver nitrate reacts with sodium chloride. Neutral, fully dissolved, and a good conductor.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Sodium nitrate",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -406,6 +418,7 @@
     "structure": "molecules/zncl2.svg",
     "description": "Colourless solution formed when zinc dissolves in hydrochloric acid. Mildly acidic rather than neutral, because the zinc ion reacts weakly with water.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Zinc chloride",
     "category": "salt"
   },
@@ -553,6 +566,7 @@
     "structure": "molecules/znso4.svg",
     "description": "Colourless solution left behind when zinc displaces copper from copper(II) sulfate, or when zinc dissolves in dilute sulfuric acid. The loss of the blue colour is the clearest sign that the copper has left the solution. Mildly acidic because the zinc ion reacts weakly with water.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Zinc sulfate",
     "category": "salt"
   },
@@ -575,6 +589,7 @@
     "structure": "molecules/feso4.svg",
     "description": "Pale green solution formed when iron displaces copper from copper(II) sulfate solution. Watching blue turn to pale green is how this displacement is recognised. It is distinctly acidic because the iron(II) ion reacts with water, and it slowly turns yellow-brown in air as iron(II) is oxidised to iron(III).",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Iron(II) sulfate",
     "category": "salt"
   },
@@ -597,6 +612,7 @@
     "structure": "molecules/mgso4.svg",
     "description": "Colourless solution formed when magnesium displaces copper from copper(II) sulfate. Known outside the laboratory as Epsom salt. Very close to neutral, just slightly on the acidic side, because magnesium hydroxide is only a weak base.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Magnesium sulfate",
     "category": "salt"
   },
@@ -619,6 +635,7 @@
     "structure": "molecules/mgcl2.svg",
     "description": "Colourless solution left when magnesium dissolves in dilute hydrochloric acid. Slightly acidic rather than neutral, because magnesium hydroxide is a weak base while hydrochloric acid is strong.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Magnesium chloride",
     "category": "salt"
   },
@@ -641,6 +658,7 @@
     "structure": "molecules/fecl2.svg",
     "description": "Pale green solution formed when iron dissolves slowly in dilute hydrochloric acid. Acidic because the iron(II) ion reacts with water. Like iron(II) sulfate it is slowly oxidised in air towards yellow-brown iron(III).",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Iron(II) chloride",
     "category": "salt"
   },
@@ -663,6 +681,7 @@
     "structure": "molecules/caoh2.svg",
     "description": "The saturated solution of calcium hydroxide, known as limewater. Strongly alkaline even though very little of it dissolves. Because so little dissolves, any excess stays as a white cloudiness rather than going into solution. Limewater turning milky is the standard test for carbon dioxide.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Calcium hydroxide",
     "flameElements": ["calcium"],
     "category": "reagent"
@@ -719,6 +738,7 @@
     "structure": "molecules/h2so4.svg",
     "description": "Strong dibasic acid — each molecule can give away two hydrogen ions, so it neutralises twice as much alkali as the same amount of hydrochloric acid. Its salts are the sulfates. Concentrated sulfuric acid also removes water from other substances, which is why it chars paper and sugar, but the dilute acid used here behaves as an ordinary strong acid.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solution density); PubChem, National Library of Medicine — Sulfuric acid",
     "category": "acid"
   },
@@ -741,6 +761,7 @@
     "structure": "molecules/hno3.svg",
     "description": "Strong monobasic acid whose salts are the nitrates, all of which are soluble in water. It is also an oxidising agent, which is why its reaction with metals usually gives oxides of nitrogen rather than hydrogen. It stains skin and fingernails yellow.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solution density); PubChem, National Library of Medicine — Nitric acid",
     "category": "acid"
   },
@@ -763,6 +784,7 @@
     "structure": "molecules/na2co3.svg",
     "description": "Also called washing soda. The salt of a strong base and a weak acid, so its solution is distinctly alkaline even though it contains no hydroxide in the bottle. Fizzes with any acid, giving off carbon dioxide.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Sodium carbonate",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -880,6 +902,7 @@
     "structure": "molecules/nh4cl.svg",
     "description": "The salt of a strong acid and a weak base, so its solution is acidic rather than neutral. Warming it with any alkali releases ammonia gas, which is the standard laboratory test for an ammonium salt.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Ammonium chloride",
     "category": "salt"
   },
@@ -944,6 +967,7 @@
     "structure": "molecules/cacl2.svg",
     "description": "Colourless solution left when marble chips or any other calcium carbonate dissolve in hydrochloric acid. Essentially neutral, being the salt of a strong acid and a strong base. It absorbs water strongly, which is why the dry solid is used to keep other chemicals dry.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Calcium chloride",
     "flameElements": ["calcium"],
     "category": "salt"
@@ -967,6 +991,7 @@
     "structure": "molecules/na2so4.svg",
     "description": "Colourless neutral solution formed when sodium hydroxide is neutralised by sulfuric acid. Being the salt of a strong acid and a strong base it is neutral, which is why the end point of that titration sits at pH 7.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Sodium sulfate",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -990,6 +1015,7 @@
     "structure": "molecules/cucl2.svg",
     "description": "Blue-green solution formed when black copper(II) oxide dissolves in hydrochloric acid. The colour comes from the copper(II) ion, and it is closer to green than copper(II) sulfate's pure blue because the chloride ions also attach to the copper. Acidic, because the copper(II) ion reacts with water.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Copper(II) chloride",
     "flameElements": ["copper"],
     "category": "salt"
@@ -1013,6 +1039,7 @@
     "structure": "molecules/bacl2.svg",
     "description": "Colourless neutral solution kept for one job above all others: it is the reagent used to test for the sulfate ion, because barium sulfate is one of the most insoluble salts there is. Soluble barium salts are poisonous and must never be tasted or left where they can be mistaken for something harmless.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Barium chloride",
     "flameElements": ["barium"],
     "category": "salt"
@@ -1036,6 +1063,7 @@
     "structure": "molecules/kbr.svg",
     "description": "Colourless neutral solution of a soluble bromide, the salt of a strong acid and a strong base. Used alongside a chloride and an iodide to show that silver nitrate tells the three halides apart by the colour of the precipitate each one gives.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Potassium bromide",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -1059,6 +1087,7 @@
     "structure": "molecules/fecl3.svg",
     "description": "Yellow-brown solution containing iron in its higher oxidation state, iron(III). Distinctly acidic even though it is a salt, because the small, highly charged Fe³⁺ ion pulls hard on water molecules and releases hydrogen ions. Its colour alone helps tell it from the pale green iron(II) solutions.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Iron(III) chloride",
     "category": "salt"
   },
@@ -1304,6 +1333,7 @@
     "structure": "molecules/cl2.svg",
     "description": "Chlorine gas dissolved in water, used instead of the gas itself because it is far safer to handle. Very pale yellow-green, and acidic because some of the chlorine reacts with the water. Chlorine is the most reactive of the three common halogens, so it displaces both bromine and iodine from their salts.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Chlorine",
     "category": "element"
   },
@@ -1326,6 +1356,7 @@
     "structure": "molecules/br2.svg",
     "description": "Bromine dissolved in water, a distinctive orange-brown that makes it easy to see when it is formed or used up. Bromine sits between chlorine and iodine in Group 7: it can displace iodine from an iodide, but chlorine displaces it in turn.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Bromine",
     "category": "reagent"
   },
@@ -1370,6 +1401,7 @@
     "structure": "molecules/i2.svg",
     "description": "Iodine dissolved in water, brown in colour. Iodine barely dissolves in water on its own, so laboratory iodine solution is normally made up in potassium iodide, which dissolves it readily. It is the least reactive of the three common halogens, so it cannot displace either chlorine or bromine.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Iodine",
     "category": "reagent"
   },
@@ -1392,6 +1424,7 @@
     "structure": "molecules/kcl.svg",
     "description": "Colourless neutral solution left behind when chlorine displaces bromine or iodine from their potassium salts. The salt of a strong acid and a strong base, so its solution is neutral.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Potassium chloride",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -1415,6 +1448,7 @@
     "structure": "molecules/kbr.svg",
     "description": "Colourless neutral solution formed when bromine displaces iodine from a potassium iodide solution. Chemically the same substance as the bottled potassium bromide on the shelf; this entry is the form that appears as a reaction product.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Potassium bromide",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -1546,6 +1580,7 @@
     "structure": "molecules/naoh.svg",
     "description": "Strongly alkaline solution left behind in the cell when brine is electrolysed. Chemically the same substance as the bottled sodium hydroxide on the shelf; this entry is the form that appears as a reaction product. Producing it this way, alongside chlorine and hydrogen, is one of the largest chemical industries in the world.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, the electrolysis of brine",
     "flameElements": ["sodium"],
     "category": "base"
@@ -1668,6 +1703,7 @@
     "structure": "molecules/h2so3.svg",
     "description": "The acid formed when sulfur dioxide dissolves in water, and one of the two acids in acid rain. It is a weak acid and cannot be isolated as a pure liquid — it exists only while it is dissolved. In the air it is slowly oxidised further to sulfuric acid, which is stronger still and does the greater damage.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, acid rain",
     "category": "acid"
   },
@@ -1690,6 +1726,7 @@
     "structure": "molecules/h2co3.svg",
     "description": "The very weak acid formed when carbon dioxide dissolves in water. It is why ordinary clean rain is already slightly acidic at about pH 5.6, before any pollution is involved — so acid rain means rain more acidic than that, not simply rain that is acidic. It is also what makes fizzy drinks taste sharp.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, natural acidity of rain",
     "category": "acid"
   },
@@ -1754,6 +1791,7 @@
     "structure": "molecules/hno3.svg",
     "description": "Nitric acid as it forms in the atmosphere when nitrogen dioxide dissolves in rain. Chemically the same substance as the bottled nitric acid on the shelf; this entry is the form that appears as a reaction product, and in real rain it is far more dilute than anything kept in a bottle.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry 10 — The Atmosphere, acid rain",
     "category": "acid"
   },
@@ -1776,6 +1814,7 @@
     "structure": "molecules/cahco3.svg",
     "description": "What makes water TEMPORARILY hard. It forms when rainwater carrying dissolved carbon dioxide trickles through limestone and slowly dissolves it. The word temporary is the important part: simply boiling the water breaks this compound down again and the hardness disappears — leaving the limescale behind in the kettle.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry 10 — Water, hardness of water",
     "flameElements": ["calcium"],
     "category": "salt"
@@ -1799,6 +1838,7 @@
     "structure": "molecules/caso4.svg",
     "description": "What makes water PERMANENTLY hard. Unlike calcium hydrogencarbonate it is not broken down by boiling, so this hardness stays however long the water is heated. Removing it needs a chemical instead — washing soda, which precipitates the calcium out as insoluble calcium carbonate.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry 10 — Water, hardness of water",
     "flameElements": ["calcium"],
     "category": "salt"
@@ -1822,6 +1862,7 @@
     "structure": "molecules/h2o2.svg",
     "description": "Colourless liquid that looks exactly like water but slowly falls apart into water and oxygen on its own. Adding a catalyst makes that happen fast enough to watch, which is why it is the standard way of preparing oxygen in a laboratory and the standard demonstration of what a catalyst does.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); PubChem, National Library of Medicine — Hydrogen peroxide",
     "category": "oxide"
   },
@@ -1938,6 +1979,7 @@
     "structure": "molecules/h2so4.svg",
     "description": "Sulfuric acid as it comes out of the Contact process. Chemically the same substance as the bottled sulfuric acid on the shelf; this entry is the form that appears as a reaction product. More of it is made than of any other chemical in the world.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solution density); Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry",
     "category": "acid"
   },
@@ -2040,6 +2082,7 @@
     "structure": "molecules/nh4oh.svg",
     "description": "Ammonia dissolved in water, with the sharp smell of the gas still on it. It is a WEAK base: only a small fraction of it takes a hydrogen ion from the water at any moment, so it is alkaline but nowhere near as strongly as sodium hydroxide of the same concentration. That difference between weak and strong, rather than dilute and concentrated, is one of the ideas this bottle is here to teach.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XI — Acids and bases, strong and weak",
     "category": "base"
   },
@@ -2114,6 +2157,7 @@
     "structure": "molecules/nh4no3.svg",
     "description": "Colourless solution left after ammonium nitrate dissolves. Slightly acidic, because it is the salt of a strong acid and a weak base.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Ammonium nitrate",
     "category": "salt"
   },
@@ -2359,6 +2403,7 @@
     "structure": "molecules/nh4cl.svg",
     "description": "Colourless solution left after ammonium chloride dissolves, which it does while taking heat in from its surroundings. Acidic rather than neutral, being the salt of a strong acid and a weak base.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility, enthalpy of solution +14.8 kJ/mol); PubChem, National Library of Medicine — Ammonium chloride",
     "category": "salt"
   },
@@ -2439,6 +2484,7 @@
     "structure": "molecules/cuno3.svg",
     "description": "Blue solution formed when copper displaces silver from silver nitrate. Watching a colourless solution turn blue while silver crystals grow on the copper is the clearest sign that the copper is dissolving as it pushes the silver out.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Copper(II) nitrate",
     "flameElements": ["copper"],
     "category": "salt"
@@ -2462,6 +2508,7 @@
     "structure": "molecules/znno3.svg",
     "description": "Colourless solution left when zinc displaces a less reactive metal from its nitrate. Mildly acidic, because the zinc ion reacts weakly with water.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Zinc nitrate",
     "category": "salt"
   },
@@ -2593,6 +2640,7 @@
     "structure": "molecules/lioh.svg",
     "description": "Strongly alkaline solution left after lithium reacts with water. It is the least soluble of the Group I hydroxides — the odd one out in a group whose hydroxides otherwise dissolve freely.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Lithium hydroxide",
     "flameElements": ["lithium"],
     "category": "base"
@@ -2616,6 +2664,7 @@
     "structure": "molecules/koh.svg",
     "description": "Strongly alkaline solution left after potassium reacts with water, also called caustic potash. Chemically it behaves almost exactly like sodium hydroxide, which is what you would expect from the element directly below sodium in the same group.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Potassium hydroxide",
     "flameElements": ["potassium"],
     "category": "base"
@@ -2795,6 +2844,7 @@
     "structure": "molecules/naclo.svg",
     "description": "The active ingredient of household bleach, made by passing chlorine into cold sodium hydroxide. It is alkaline, not acidic, which surprises people. It is also the reason two warnings are printed on every bottle: mixed with an acid it releases chlorine, and mixed with an ammonia-based cleaner it releases chloramine. Both are genuinely dangerous and both happen in ordinary kitchens.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reactions of chlorine with alkalis",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -2818,6 +2868,7 @@
     "structure": "molecules/mncl2.svg",
     "description": "Very pale pink solution left in the flask after manganese(IV) oxide has been used to make chlorine. The manganese has been reduced from the +4 state to +2, which is the other half of the redox: the oxide oxidises the chloride to chlorine and is itself reduced.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Manganese(II) chloride",
     "category": "salt"
   },
@@ -2840,6 +2891,7 @@
     "structure": "molecules/nahso4.svg",
     "description": "The salt left when sulfuric acid gives away only one of its two hydrogens. It is an ACID salt: the hydrogen it still holds makes its solution genuinely acidic at about pH 1, which is a useful reminder that being a salt does not mean being neutral.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Sodium bisulfate",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -2905,6 +2957,7 @@
     "structure": "molecules/agnh3.svg",
     "description": "The colourless solution formed when silver chloride dissolves in ammonia. Two ammonia molecules attach themselves to the silver ion, holding it in solution as a complex ion — which is how a precipitate that would not dissolve in water can be made to disappear. Silver bromide needs concentrated ammonia to do the same, and silver iodide will not dissolve at all.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, distinguishing the silver halides",
     "category": "complex"
   },
@@ -2948,6 +3001,7 @@
     "structure": "molecules/kscn.svg",
     "description": "Colourless solution kept for one job: it is the most sensitive test there is for the iron(III) ion. Even a trace turns it blood red, which makes it useful for detecting rust in water. It is also the standard demonstration of an equilibrium shifting, because adding more of either reactant deepens the colour visibly.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, complex formation",
     "flameElements": ["potassium"],
     "category": "reagent"
@@ -2971,6 +3025,7 @@
     "structure": "molecules/fescn.svg",
     "description": "The intense blood-red complex formed when a thiocyanate ion attaches to an iron(III) ion. The colour is far stronger than either starting solution, which is what makes the test so sensitive. Colour this deep from a complex ion is characteristic of the transition metals and is the reason they are the coloured part of the periodic table.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, complex ions and colour",
     "category": "complex"
   },
@@ -2993,6 +3048,7 @@
     "structure": "molecules/cunh3.svg",
     "description": "The deep royal blue formed when four ammonia molecules replace the water around a copper(II) ion. Set it against ordinary copper(II) sulfate's pale blue and the difference is startling — same metal, same oxidation state, different ligands, completely different colour. That is the clearest evidence there is that in a transition metal complex the colour belongs to the whole ion, not to the metal alone.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, complex formation and ligand exchange",
     "flameElements": ["copper"],
     "category": "complex"
@@ -3016,6 +3072,7 @@
     "structure": "molecules/k2cr2o7.svg",
     "description": "Bright orange solution and a powerful oxidising agent in acid, where the chromium is in its +6 state. Add alkali and it turns yellow as it converts to the chromate — the same chromium, a different ion, a different colour. Chromium(VI) compounds are toxic and cause cancer, so they are handled with care and are being phased out of industry.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, oxidation states of chromium",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -3039,6 +3096,7 @@
     "structure": "molecules/na2cro4.svg",
     "description": "Yellow solution containing the chromate ion. It holds chromium in exactly the same +6 state as the orange dichromate — nothing has been oxidised or reduced in going from one to the other, only rearranged. Add acid and the orange comes straight back, which makes the pair a clean demonstration that colour depends on the whole ion rather than on oxidation state alone.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, the chromate–dichromate equilibrium",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -3062,6 +3120,7 @@
     "structure": "molecules/cr2so43.svg",
     "description": "Green solution holding chromium in the +3 state, which is what orange dichromate becomes once it has been reduced. Watching orange turn green is the standard way of seeing dichromate act as an oxidising agent — and it is the same colour change used in the old breathalyser, where alcohol reduced the dichromate on the tube.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, variable oxidation states",
     "category": "salt"
   },
@@ -3112,6 +3171,7 @@
     "structure": "molecules/kmno4.svg",
     "description": "Intensely purple solution, so strongly coloured that a very dilute one still looks deep. Manganese here is in its highest oxidation state, +7, which makes it a powerful oxidising agent. Its colour is its own indicator: in an acidic titration the purple is destroyed as it reacts, so the first faint pink that persists marks the end point and no separate indicator is needed.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, oxidation states of manganese",
     "flameElements": ["potassium"],
     "category": "salt"
@@ -3164,6 +3224,7 @@
     "structure": "molecules/mnso4.svg",
     "description": "So faintly pink that in a titration it reads as colourless — which is exactly what makes potassium permanganate self-indicating. The manganese has fallen from +7 all the way to +2, a change of five oxidation states in one step, and taken its intense purple with it.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Manganese(II) sulfate",
     "category": "salt"
   },
@@ -3186,6 +3247,7 @@
     "structure": "molecules/fe2so43.svg",
     "description": "Yellow-brown solution holding iron in the +3 state, formed when pale green iron(II) is oxidised. Distinctly acidic, because the small highly charged Fe³⁺ ion pulls hard on surrounding water molecules and releases hydrogen ions.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Iron(III) sulfate",
     "category": "salt"
   },
@@ -3591,6 +3653,7 @@
     "structure": "molecules/c6h5so3h.svg",
     "description": "A strong acid built onto a benzene ring, and unlike benzene itself it dissolves freely in water. That combination — a water-loving acidic head on a water-hating hydrocarbon tail — is exactly the structure of a detergent, which is what sulfonation is done for industrially.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Aromatic Hydrocarbons, sulfonation of benzene",
     "category": "acid"
   },
@@ -3680,6 +3743,7 @@
     "structure": "molecules/nabr.svg",
     "description": "Colourless neutral solution left behind when a bromide ion is displaced from a halogenoalkane. It is the leaving group's final resting place, and testing for it with silver nitrate is how you confirm the substitution actually happened.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Sodium bromide",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -3703,6 +3767,7 @@
     "structure": "molecules/c2h5nh2.svg",
     "description": "Ammonia with one hydrogen replaced by an ethyl group, and it behaves much like ammonia: a weak base with a strong fishy smell. The lone pair on its nitrogen is what makes it basic, and it is also what makes it a nucleophile in its own right — which is exactly the problem with making it this way, since the product attacks more bromoethane and the reaction does not stop cleanly.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Alkyl Halides, reaction with ammonia",
     "category": "organic"
   },
@@ -3798,6 +3863,7 @@
     "structure": "molecules/c6h5ona.svg",
     "description": "What phenol becomes once sodium hydroxide has taken its hydrogen. The negative charge left on the oxygen is spread out over the whole benzene ring rather than sitting on one atom, and that sharing is precisely why phenol can lose its hydrogen when ethanol cannot.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Phenols, acidity",
     "flameElements": ["sodium"],
     "category": "organic"
@@ -3865,6 +3931,7 @@
     "structure": "molecules/ch3cooh.svg",
     "description": "The acid in vinegar, and a genuinely WEAK one — a 1 M solution sits at about pH 2.4 where 1 M hydrochloric acid is near 0, because only a small fraction of its molecules give up their hydrogen at any moment. Weak is not the same as dilute: this is a concentrated solution of a weak acid. It is still acidic enough to fizz with a carbonate, which phenol is not, and that difference places it firmly above phenol in acidity.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, pKa 4.76); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids",
     "category": "acid"
   },
@@ -3887,6 +3954,7 @@
     "structure": "molecules/ch3coona.svg",
     "description": "The salt of a weak acid and a strong base, so its solution is ALKALINE rather than neutral — the ethanoate ion takes hydrogen ions back from the water. Mixed with ethanoic acid it makes the standard buffer solution, which resists a change in pH when acid or alkali is added.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids, salts and buffers",
     "flameElements": ["sodium"],
     "category": "organic"
@@ -3932,6 +4000,7 @@
     "structure": "molecules/tollens.svg",
     "description": "Ammoniacal silver nitrate — a colourless solution holding silver as the diammine complex, ready to be reduced back to the metal. It is made fresh immediately before use and never stored, because on standing it forms silver nitride, which is dangerously explosive when dry. Any leftover must be acidified and washed away at once.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones, Tollens' test; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass of the complex)",
     "category": "reagent"
   },
@@ -3954,6 +4023,7 @@
     "structure": "molecules/fehlings.svg",
     "description": "A deep blue solution of copper(II) held in alkali by tartrate ions, which stop it precipitating as the hydroxide. It is a MIXTURE, not a single compound, so it has no molar mass of its own — the figure given is that of the copper(II) sulfate it is built from, and no more than that should be read into it. Like Tollens' it is mixed from its two stock bottles immediately before use.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Aldehydes and Ketones, Fehling's test; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass of copper(II) sulfate)",
     "flameElements": ["copper"],
     "category": "reagent"
@@ -4145,6 +4215,7 @@
     "structure": "molecules/soap.svg",
     "description": "The sodium salt of a long-chain acid, and the reason it works is that its two ends want opposite things: the charged —COO⁻ head dissolves happily in water while the long hydrocarbon tail refuses to and buries itself in grease instead. Its solution is alkaline, because it is the salt of a weak acid and a strong base — which is why soap feels slippery and why it is harsh on wool and silk.",
     "clarity": "cloudy",
+    "boilingPointC": 100,
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, soaps and detergents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "material"
@@ -4213,6 +4284,7 @@
     "structure": "molecules/detergent.svg",
     "description": "Built to the same two-ended plan as soap — water-loving head, grease-loving tail — but with a sulfonate head in place of the —COO⁻. That swap is the entire point: the calcium salt of a sulfonate stays dissolved, so a detergent lathers in hard water where soap only makes scum. It is also close to neutral rather than alkaline, so it is safe on wool and silk. The cost is environmental: the branched-chain versions resisted breakdown and foamed up rivers, which is why straight-chain detergents replaced them.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, soaps and detergents",
     "flameElements": ["sodium"],
     "category": "material"
@@ -4236,6 +4308,7 @@
     "structure": "molecules/glucose.svg",
     "description": "The sugar your body actually runs on, and a REDUCING SUGAR — it carries an aldehyde group, so it does everything ethanal did with Tollens' and Fehling's. Two other things worth knowing about it. It dissolves freely yet does not conduct at all, which makes it the standard example of a non-electrolyte: it dissolves as whole molecules, not as ions. And in solution almost all of it curls into the six-membered ring drawn here, with only a trace open-chain form at any moment — yet that trace is enough for the whole sample to react, because as fast as it is used up more ring opens to replace it.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, carbohydrates",
     "category": "organic"
   },
@@ -4258,6 +4331,7 @@
     "structure": "molecules/sucrose.svg",
     "description": "Ordinary table sugar: one glucose joined to one fructose. It is a NON-reducing sugar, and the reason is worth seeing rather than memorising — the link between the two halves is made through exactly the carbon that would otherwise open into an aldehyde. With that carbon tied up, there is nothing left to reduce Fehling's, and the test comes out blank. Break the link and both tests turn positive at once.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, disaccharides",
     "category": "organic"
   },
@@ -4280,6 +4354,7 @@
     "structure": "molecules/invert_sugar.svg",
     "description": "What sucrose becomes when it is hydrolysed: an equal mixture of glucose and fructose, and the real name the food industry uses for it. It is a MIXTURE of two sugars rather than one compound — the molar mass given is honest only because glucose and fructose happen to be isomers with the same formula. Both halves are now free to open into their reducing forms, so this reduces Fehling's where the sucrose it came from did not. Honey is largely invert sugar, which is why it is sweeter than table sugar.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, hydrolysis of sucrose; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass of the hexoses)",
     "category": "organic"
   },
@@ -4302,6 +4377,7 @@
     "structure": "molecules/gluconate.svg",
     "description": "What is left of the glucose once Fehling's or Tollens' has oxidised it: the aldehyde group has become a —COO⁻ group, and everything else about the molecule is unchanged. It is a salt rather than a sugar, so unlike the glucose it came from it conducts electricity — dipping the conductivity tester before and after the test shows the change directly.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, oxidation of glucose",
     "flameElements": ["sodium"],
     "category": "organic"
@@ -4325,6 +4401,7 @@
     "structure": "molecules/starch.svg",
     "description": "Hundreds of glucose units joined into long chains — how a plant stores the sugar it makes. It has no single molar mass, and that is not a gap in this app's data: different starch molecules genuinely have different lengths, so the question has no one answer. Nor does it truly dissolve; it forms a milky colloid, which is why it looks cloudy where a sugar solution is clear. Because every reducing group is locked into the chain, starch fails Fehling's test completely.",
     "clarity": "cloudy",
+    "boilingPointC": 100,
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, polysaccharides",
     "category": "reagent"
   },
@@ -4347,6 +4424,7 @@
     "structure": "molecules/starch_iodine.svg",
     "description": "The intense blue-black that appears the instant iodine meets starch. Strictly it is not a compound at all: the starch chain coils into a helix and iodine molecules thread into the tube down its middle, and it is that trapping — not any bond — that produces the colour. Two things follow that a student can check. Warm it and the colour vanishes as the helix unwinds; cool it and the colour comes back. And no colour ever appears if the starch has already been broken into glucose, which is exactly how you tell that a hydrolysis has finished.",
     "clarity": "opaque",
+    "boilingPointC": 100,
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, iodine test for starch",
     "sources": [
       { "ref": "Wikipedia — Iodine–starch test (a very dark blue-black complex; the colour is so deep)",
@@ -4375,6 +4453,7 @@
     "structure": "molecules/albumin.svg",
     "description": "Egg white in water, and a straightforward protein to work with. A protein is a chain of amino acids joined by exactly the amide link met in the last batch — which is why the test for a protein is really a test for that link. It has no single molar mass because different protein molecules are different lengths. Its shape matters as much as its formula: the chain is folded into a particular arrangement held by weak forces, and everything a protein does depends on keeping that fold.",
     "clarity": "cloudy",
+    "boilingPointC": 100,
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, proteins",
     "category": "organic"
   },
@@ -4397,6 +4476,7 @@
     "structure": "molecules/biuret.svg",
     "description": "A little copper(II) sulfate in plenty of sodium hydroxide — a MIXTURE, like Fehling's, and with no molar mass of its own. It is pale blue on its own and turns violet with anything containing peptide links. It is named after biuret, a small molecule that gives the same colour for the same reason, and not after any part of a protein.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, biuret test for proteins",
     "flameElements": ["sodium", "copper"],
     "category": "reagent"
@@ -4420,6 +4500,7 @@
     "structure": "molecules/protein_cu.svg",
     "description": "The violet colour of a positive biuret test. Copper(II) is being gripped by the nitrogen atoms of several peptide links at once, and it is that grip which shifts the colour from pale blue to violet. The test detects the LINK rather than any particular amino acid, so a single amino acid on its own gives nothing — you need at least two links, which means at least three amino acids joined together. The deeper the violet, the more protein is present, and that is how protein is measured quantitatively.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules, biuret test for proteins",
     "sources": [
       { "ref": "Wikipedia — Biuret test (image of a clear mauve solution)",
@@ -4499,6 +4580,7 @@
     "structure": "molecules/nh42so4.svg",
     "description": "A nitrogen fertiliser, and one with a catch worth knowing. It is the salt of a WEAK base and a STRONG acid, so its solution is acidic rather than neutral — the opposite way round from sodium ethanoate. Used year after year it steadily sours the soil, which is why fields treated with it eventually need liming. It also supplies sulfur, which crops need too, so it is not simply a worse choice than urea.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Common chemical industries, fertilisers",
     "category": "salt"
   },
@@ -4601,6 +4683,7 @@
     "structure": "molecules/alum.svg",
     "description": "What is added at the first stage of nearly every waterworks in the world, and what a village household uses when it rubs a lump of phitkari round a pot of muddy water. Its solution is distinctly ACIDIC even though neither aluminium nor sulfate looks like an acid, because the small, highly charged Al³⁺ ion pulls hard enough on the water around it to force hydrogen ions off. That same pull is what makes it useful: it is halfway to becoming aluminium hydroxide already.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Environmental chemistry, water treatment",
     "category": "salt"
   },
@@ -4656,6 +4739,7 @@
     "structure": "molecules/cucl4.svg",
     "description": "The same copper ion as in blue copper sulfate, wearing different ligands. Four chlorides have pushed the six water molecules off, and with them go both the colour and the SHAPE — the aqua ion is octahedral with six ligands, this is tetrahedral with four. Chloride is a bigger ligand and only four will fit. Both facts matter: the colour of a transition metal ion is a property of the whole complex, not of the metal alone, which is why the same copper can look blue, green or deep violet depending only on what is bonded to it.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — tetrahalometallates; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["copper"],
     "category": "complex"
@@ -4679,6 +4763,7 @@
     "structure": "molecules/co_h2o.svg",
     "description": "Cobalt(II) with six water molecules around it, octahedral, and pale pink. This is what cobalt chloride looks like in ordinary dilute solution, and it is one half of the most quoted equilibrium in inorganic chemistry. Add concentrated chloride and it turns blue; dilute it again and the pink returns. Nothing is created or destroyed in either direction — the same cobalt simply swaps one set of ligands for another.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — aqua ions and ligand substitution; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -4701,6 +4786,7 @@
     "structure": "molecules/cocl4.svg",
     "description": "The other half of the cobalt equilibrium: tetrahedral, four chlorides, and an intense blue. The colour change from pink is so complete and so easily reversed that this is the standard demonstration of Le Chatelier's principle. It is also, incidentally, why cobalt chloride paper tests for water — the blue dry paper turns pink the moment water displaces the chloride.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — tetrahalometallates and the cobalt(II) equilibrium; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -4723,6 +4809,7 @@
     "structure": "molecules/nicl2.svg",
     "description": "Nickel(II) in water, green from the hexaaqua ion. Nickel is the most common cause of metal allergy in the world — it is why cheap earrings make some ears sore — and the sensitisation happens through skin contact with nickel salts exactly like this one. Handle with gloves, which is good practice with any transition metal salt but genuinely important here.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Housecroft & Sharpe, Inorganic Chemistry 4th ed. — nickel(II) chemistry",
     "category": "salt"
   },
@@ -4789,6 +4876,7 @@
     "structure": "molecules/aloh4.svg",
     "description": "What aluminium hydroxide becomes in excess alkali: a soluble complex ion, and the proof that aluminium hydroxide is AMPHOTERIC. It dissolves in acid, as any base does, and it dissolves in alkali too, which no ordinary base does. This is also the basis of the Bayer process for purifying bauxite: the aluminium oxide dissolves in hot alkali and the iron oxide impurity does not, so the two separate cleanly on that single difference.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — amphoteric hydroxides and the Bayer process; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -4833,6 +4921,7 @@
     "structure": "molecules/znoh4.svg",
     "description": "Zinc hydroxide dissolved in excess alkali, and proof that zinc hydroxide is amphoteric just as aluminium's is. On its own this result cannot tell zinc from aluminium, because both give a colourless solution that looks identical. Chemistry is often like this: a test that gives the same answer for two things has told you something, but not what you wanted to know.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — zincate chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -4855,6 +4944,7 @@
     "structure": "molecules/zn_nh3.svg",
     "description": "Zinc held by four ammonia molecules, and the answer to the aluminium problem. Zinc forms this readily; aluminium forms nothing of the kind, so its hydroxide simply sits there in ammonia unchanged. Note that this complex is COLOURLESS where the copper equivalent is deep blue — zinc has a full d shell with no room for the electron jumps that give transition metal complexes their colour, which is the standard argument for not counting zinc as a true transition metal.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — zinc ammine complexes and the d10 configuration; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -4877,6 +4967,7 @@
     "structure": "molecules/na2cr2o7.svg",
     "description": "Orange, and the acid form of the chromate–dichromate pair. Two chromate units have joined through a shared oxygen, exactly the way two ethanoic acid units join in an anhydride. The chromium stays at +6 throughout, so this is NOT a redox change however dramatic the colour looks — a point worth being firm about, because the orange-to-yellow shift is easily mistaken for one. Chromium(VI) in any form is carcinogenic.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — chromate–dichromate equilibrium; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -4900,6 +4991,7 @@
     "structure": "molecules/na2s2o3.svg",
     "description": "Known in every darkroom as hypo. Its structure is a sulfate ion with one oxygen replaced by sulfur, and that swapped sulfur is what does the work: it is a soft donor atom, and soft donors bind soft metal ions like silver far more strongly than hard ones like calcium. That single principle explains why hypo dissolves silver bromide and why it is used to mop up spilt iodine, and it is also the reagent titrated against iodine in every iodometric determination.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hard and soft acids and bases; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -4923,6 +5015,7 @@
     "structure": "molecules/ag_s2o3.svg",
     "description": "Silver, which is famously insoluble as the halide, held in solution by two thiosulfate ions. This complex is what carried photography for a century and a half: the unexposed silver bromide on a film has to be washed away or the picture goes black in daylight, and nothing else removes it so cleanly. It is also why photographic waste is worth collecting — the silver is recovered from exactly this solution.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silver thiosulfate complexes; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -4945,6 +5038,7 @@
     "structure": "molecules/pbcl2_aq.svg",
     "description": "Lead(II) chloride that has gone into solution in hot water — and the fact that it does is what separates lead from silver. Solubility is not a fixed property of a substance; it is a property of a substance AT A TEMPERATURE, and lead chloride's rises steeply with heat where silver chloride's barely moves. Let this cool and needle-shaped crystals of the chloride come back out, which is a second confirmation in itself.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group I separation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility against temperature)",
     "category": "salt"
   },
@@ -5024,6 +5118,7 @@
     "structure": "molecules/nh42co3.svg",
     "description": "The group reagent for the calcium, strontium and barium group, and it is chosen over sodium carbonate for a reason worth understanding. Sodium carbonate would precipitate magnesium as well and ruin the separation; ammonium carbonate used alongside ammonium chloride keeps the carbonate concentration low enough that only the least soluble carbonates come down, and magnesium stays in solution. The reagent is deliberately WEAKER than the obvious choice, and that is the whole point of it.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis 5th ed. — Group V group reagent; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5074,6 +5169,7 @@
     "structure": "molecules/mgohbr.svg",
     "description": "The magnesium residue left after a Grignard reaction has been worked up with water or dilute acid. It is of no interest in itself — nobody makes a Grignard for this — but it has to appear in the equation, because the magnesium that did the work has to end up somewhere. Equations that stop at the organic product are telling you only half of what left the flask.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Grignard work-up; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5184,6 +5280,7 @@
     "structure": "molecules/propanoic.svg",
     "description": "A carboxylic acid one carbon longer than the bromoethane it was built from, and that extra carbon came out of the air as carbon dioxide. Lengthening a carbon chain by exactly one is a genuinely useful thing to be able to do, and this is the standard way of doing it. Its salts are used to stop bread going mouldy.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, pKa 4.87); Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — carboxylation of Grignard reagents",
     "category": "acid"
   },
@@ -5206,6 +5303,7 @@
     "structure": "molecules/nabh4.svg",
     "description": "A MILD reducing agent, and mildness is the point of it. It delivers hydrogen to an aldehyde or a ketone and does not reduce amides or carboxylic acids at all, and esters only slowly — so in a molecule containing several of those groups it will reduce exactly one of them. (An acid does destroy some of it, giving off hydrogen, but the acid itself is not reduced.) Being usable in water, unlike its aggressive cousin lithium aluminium hydride, makes it far easier to handle. Choosing a reagent for what it will NOT touch is one of the central skills of synthesis.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — chemoselectivity of hydride reducing agents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -5229,6 +5327,7 @@
     "structure": "molecules/h3bo3.svg",
     "description": "A very weak acid — so weak that it does not give up a hydrogen ion of its own in the usual way, but takes a hydroxide ion from water instead. Left behind when sodium borohydride is destroyed by an acid, and familiar in dilute form as a mild antiseptic eyewash and in swimming-pool buffers.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Wikipedia — Boric acid (weak acid, pKa 9.24; solubility 4.72 g/100 mL at 20 °C; acts as a Lewis acid towards hydroxide; molar mass from the formula), consulted 2026-11-05",
     "category": "acid"
   },
@@ -5301,6 +5400,7 @@
     "structure": "molecules/nai.svg",
     "description": "Sodium iodide in water, here as the by-product of the iodoform reaction. Only one of the four iodine atoms used ends up in the yellow precipitate; the rest leave as iodide, which is worth noticing when the equation is balanced. Sodium iodide is also what is added to table salt to prevent goitre.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -5591,6 +5691,7 @@
     "structure": "molecules/sncl4.svg",
     "description": "What the tin becomes after it has done its job reducing a nitro group. It went from 0 to +4, and those four electrons are exactly what turned the nitro group into an amine — the reducing agent is oxidised, always, and following where its electrons went is how a redox equation is balanced. Its solution is acidic, because the small highly charged tin(IV) ion pulls hydrogen ions off the water around it, the same way aluminium does in alum.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — Sn/HCl reductions",
     "category": "salt"
   },
@@ -5613,6 +5714,7 @@
     "structure": "molecules/vo2.svg",
     "description": "Vanadium in its highest oxidation state, +5, and the starting point of the most famous colour sequence in inorganic chemistry. Vanadium is unusual in having four oxidation states that are all stable enough to sit in a beaker and all a different colour, so a single tube of it can be walked down the whole series by adding zinc and watching. The +5 state is the one vanadium(V) oxide uses to catalyse the Contact process.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — vanadium redox chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5635,6 +5737,7 @@
     "structure": "molecules/vo.svg",
     "description": "Vanadium at +4, and the most stable of its four states — which is why this blue is the colour a vanadium solution drifts back to if it is left standing in air. Note that both this and the +5 state keep an oxygen firmly attached to the metal. The vanadium ion is small and highly charged enough that it holds on to an oxide ion rather than existing as a bare cation, and only at the lower oxidation states does that grip finally let go.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — vanadyl chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5657,6 +5760,7 @@
     "structure": "molecules/v3.svg",
     "description": "Vanadium at +3, and the first of its states to exist as a plain hydrated ion with no oxygen attached — the charge has dropped far enough that the metal no longer needs to hold an oxide. The green is easy to confuse with chromium(III)'s green, which is a useful reminder that colour narrows a possibility down rather than proving it.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — vanadium(III); CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5679,6 +5783,7 @@
     "structure": "molecules/v2.svg",
     "description": "Vanadium at +2, the end of the line and a powerful reducing agent in its own right — so powerful that it will pull oxygen straight out of the air and climb back up the series if the tube is left open. That instability is the point rather than a flaw: an ion is easy to make and hard to keep exactly when it wants its electrons somewhere else.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — vanadium(II) as a reducing agent; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5701,6 +5806,7 @@
     "structure": "molecules/cr2.svg",
     "description": "A bright blue that most students never see, because it does not last: chromium(II) is such a strong reducing agent that oxygen from the air oxidises it back to green chromium(III) within minutes of the tube being opened. Keeping it means keeping air out entirely. It is worth meeting once for what it demonstrates — that the oxidation states listed in a textbook are not all equally easy to hold on to.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — chromium(II) chemistry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5723,6 +5829,7 @@
     "structure": "molecules/na2s4o6.svg",
     "description": "What two thiosulfate ions become when iodine takes an electron from each and joins them together through their sulfur atoms — four sulfurs in a chain where there were two separate pairs. It is the product that makes iodometric titration work, because it is colourless, stable, and forms in an exact two-to-one ratio with the iodine consumed.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Vogel's Textbook of Quantitative Chemical Analysis 6th ed. — iodometry; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -5819,6 +5926,7 @@
     "structure": "molecules/na2sio3.svg",
     "description": "What silica becomes when hot concentrated alkali finally breaks its network apart. That it takes such harsh conditions is the point: silica is an acidic oxide, but a very weak one, and the giant covalent structure has to be dismantled bond by bond before anything can dissolve. Known as water glass, and used to preserve eggs, to fireproof timber and to make silica gel.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silicates; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "flameElements": ["sodium"],
     "category": "oxide"
@@ -5842,6 +5950,7 @@
     "structure": "molecules/alcl3_aq.svg",
     "description": "A solution of a salt that has no business being acidic, and is. Neither aluminium nor chloride looks like an acid, but the Al³⁺ ion is small and carries three charges, so it pulls hard enough on the water molecules around it to force hydrogen ions off them. That is the same effect that makes alum work as a coagulant, and the same reason magnesium chloride is faintly acidic while sodium chloride is not: it tracks the charge and size of the metal ion, straight across the period.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hydrolysis of metal aqua ions; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "salt"
   },
@@ -5864,6 +5973,7 @@
     "structure": "molecules/nano2.svg",
     "description": "Never used as it comes. Mixed with cold acid it makes nitrous acid, which is too unstable to keep in a bottle and is therefore generated in the flask at the moment it is needed — a common arrangement for a reagent that will not survive being stored. Sodium nitrite is also the curing salt that keeps ham pink and stops botulism, which is why a compound this toxic is nonetheless in the food supply.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — diazotisation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -5887,6 +5997,7 @@
     "structure": "molecules/hno2.svg",
     "description": "A weak acid that cannot be bottled: left to itself it falls apart into nitrogen oxides and water, and it does so faster the warmer it gets. That is why it is always made in the flask from sodium nitrite and acid, in the cold, immediately before use. A reagent generated where it is needed rather than poured from a bottle is a normal answer to instability, not a special case.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — nitrous acid; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, pKa 3.4)",
     "category": "acid"
   },
@@ -5909,6 +6020,7 @@
     "structure": "molecules/diazonium.svg",
     "description": "Two nitrogen atoms held on a benzene ring by a bond that barely wants to be there. The whole of its usefulness comes from that reluctance: nitrogen gas is such a stable thing to become that this group will leave in favour of almost anything, so it is the doorway from an amine to a very large number of other compounds. The same reluctance is why it cannot be kept — above about 5 °C it falls apart on its own, and the dry solid is explosive. It is made cold, in solution, and used within minutes.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — diazonium salts; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "organic"
   },
@@ -6255,6 +6367,7 @@
     "structure": "molecules/diaminohexane.svg",
     "description": "A six-carbon chain with an —NH₂ group at each end: bifunctional, like the dicarboxylic acid, and for the same reason. Its solution is alkaline because an amine is a base. The six carbons are not arbitrary — the exact chain length decides how neatly the finished nylon chains pack against each other, and that packing is what gives the fibre its strength.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — polyamides; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
     "category": "organic"
   },
@@ -6331,6 +6444,7 @@
     "structure": "molecules/glycine.svg",
     "description": "The simplest amino acid, and bifunctional in an unusual way: it carries an acid group AND a base group on the same small molecule, so it can join to another copy of itself at either end. That is why one compound alone can polymerise where a polyester needs two different monomers. In solution most of it exists as a zwitterion, with the hydrogen already moved from the acid end to the amine end — an ion that is positive and negative at once and neutral overall.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — amino acids and peptides; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility)",
     "category": "acid"
   },
@@ -6353,6 +6467,7 @@
     "structure": "molecules/polypeptide.svg",
     "description": "Amino acids joined into a chain by amide links — which is to say, a protein, or at least the backbone of one. Put this beside the nylon made two entries earlier and the links are the same kind of bond, formed the same way, losing a molecule of water each time. The difference is that nylon repeats one dull unit forever while a real protein draws on twenty different amino acids in a specific order, and that order is what makes one protein an enzyme and another a hair.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — peptide bond formation",
     "category": "organic"
   },
@@ -6375,6 +6490,7 @@
     "structure": "molecules/na_terephthalate.svg",
     "description": "What the acid half of a polyester becomes once hot alkali has hydrolysed the chain apart — the salt rather than the free acid, because the alkali immediately takes the hydrogen. Acidify it and the dicarboxylic acid comes back out, ready to be polymerised again. That round trip is what chemical recycling of PET actually is, as opposed to melting bottles down and hoping.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — hydrolysis of polyesters; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "organic"
@@ -6442,6 +6558,7 @@
     "structure": "molecules/latex.svg",
     "description": "The milky sap that runs from a cut in a rubber tree. The rubber is already fully polymerised inside it — the tree does that, not the factory — and what arrives at the plantation shed is tiny particles of rubber held apart in water by a coat of protein. It has no molar mass because it is a dispersion of a polymer, not a compound. Left alone it stays milky for days; the whole of harvesting is persuading those particles to stop repelling each other and clump.",
     "clarity": "milky",
+    "boilingPointC": 100,
     "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — natural rubber; Punjab Curriculum and Textbook Board, Chemistry XII — Macromolecules",
     "sources": [
       { "ref": "Wikipedia — Latex (found in nature as a milky fluid)",
@@ -6651,6 +6768,7 @@
     "structure": "molecules/me2sioh2.svg",
     "description": "TWO —OH groups on one silicon, which is exactly what a monomer needs to build a chain: one end joins forward, the other joins back. It will not sit still for long — silanols condense with each other readily, which is why this is made and used rather than stored.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silanols; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "organic"
   },
@@ -6767,6 +6885,7 @@
     "structure": "molecules/mesioh3.svg",
     "description": "THREE —OH groups on one silicon. Count them against the diol's two and the mono-ol's one, because those three numbers are the whole of this batch's first half: one gives a dead end, two give a chain, three give a network. Nothing about the chemistry of the —OH group changes between them.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — silanols and network formation; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "organic"
   },
@@ -7747,6 +7866,7 @@
     "structure": "molecules/na2so3.svg",
     "description": "A sulfite, not a sulfate — one oxygen fewer, and a solution that looks exactly like sodium sulfate does. That resemblance is the point of the test that follows: both give an identical white precipitate with barium chloride, and only dilute acid can tell you which one you had. Sulfites are also used as food preservatives, which is why dried apricots smell faintly of sulfur dioxide.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the sulfite ion; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -7821,6 +7941,7 @@
     "structure": "molecules/brown_ring.svg",
     "description": "The brown ring itself. Nitrogen monoxide, made from the nitrate by the concentrated acid, replaces one water molecule on an iron(II) complex and the result is intensely brown. It forms only at the boundary between the two liquid layers — where the nitrogen monoxide is being produced and the iron(II) is still unoxidised — which is why the test gives a ring rather than a uniformly coloured tube.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the brown ring test for nitrate",
     "category": "complex"
   },
@@ -7843,6 +7964,7 @@
     "structure": "molecules/na3po4.svg",
     "description": "A soluble phosphate, and strongly alkaline for a salt of a moderate acid because the phosphate ion pulls protons off water readily. Phosphate is the anion behind fertiliser, bone and the backbone of DNA, so identifying it matters well beyond the analysis bench.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the phosphate ion; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -7866,6 +7988,7 @@
     "structure": "molecules/nh4_molybdate.svg",
     "description": "The reagent for phosphate, made up in nitric acid because the test only works in strongly acidic conditions. Molybdenum is an unusual element to meet at this level, and it earns its place here by forming an enormous cage-like ion around a single phosphate — twelve molybdenum atoms to one phosphorus — which is intensely yellow and barely soluble.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — ammonium molybdate reagent",
     "category": "reagent"
   },
@@ -7994,6 +8117,7 @@
     "structure": "molecules/na2hpo4.svg",
     "description": "The reagent for magnesium, the last cation in the scheme. It is used with ammonia rather than alone, because the precipitate that confirms magnesium contains ammonium as well as magnesium and phosphate — three ions in one crystal, which is unusual enough to make the test specific.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — reagents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["sodium"],
     "category": "salt"
@@ -8045,6 +8169,7 @@
     "structure": "molecules/srcl2.svg",
     "description": "The third member of Group V, sitting between calcium and barium and behaving almost exactly like both. Its solutions are colourless and its carbonate is white, so nothing in the wet chemistry distinguishes it — which is precisely why the flame test exists. Strontium is what makes a distress flare and a red firework red.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — Group V; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "flameElements": ["strontium"],
     "category": "salt"
@@ -8135,6 +8260,7 @@
     "structure": "molecules/emulsion.svg",
     "description": "Not a solution but a suspension of fat droplets fine enough to stay put and numerous enough to scatter light, which is why it looks white. Milk is exactly this. The cloudiness appears only when the ethanol solution of the fat meets water, because the fat comes out of solution the instant its solvent is diluted.",
     "clarity": "milky",
+    "boilingPointC": 100,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the emulsion test for lipids",
     "sources": [
       { "ref": "Wikipedia — Emulsion (a cloudy appearance because the many phase interfaces scatter light; opaque and milky white)",
@@ -8229,6 +8355,7 @@
     "structure": "molecules/catalase.svg",
     "description": "An enzyme found in nearly every living cell, whose job is to destroy the hydrogen peroxide that respiration keeps producing. It is among the fastest catalysts known — a single molecule deals with millions of peroxide molecules a second. Like all enzymes it is a protein, which is the source of both its power and its fragility.",
     "clarity": "cloudy",
+    "boilingPointC": 100,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — enzyme catalysis",
     "category": "organic"
   },
@@ -8273,6 +8400,7 @@
     "structure": "molecules/xanthoprotein.svg",
     "description": "A protein whose aromatic rings have been nitrated. This is the same nitration that turns benzene into nitrobenzene, happening on the tyrosine and tryptophan side chains inside the protein — so a yellow result means those particular amino acids are present, not simply that protein is. It is also why nitric acid stains skin yellow: the acid is nitrating you.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the xanthoproteic test",
     "category": "organic"
   },
@@ -8317,6 +8445,7 @@
     "structure": "molecules/ruhemann_purple.svg",
     "description": "The intense purple that ninhydrin produces with almost any amino acid. Note what it contains: the nitrogen in this dye came from the amino acid, which is why the colour appears at all — the reagent has taken the amino group and built it into a coloured molecule. Proline is the well-known exception and gives yellow instead.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the ninhydrin reaction; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "organic"
   },
@@ -8339,6 +8468,7 @@
     "structure": "molecules/dna.svg",
     "description": "Two strands wound round each other, each a backbone of alternating sugar and phosphate with a base hanging off every sugar. The two strands are held together only by hydrogen bonds between the bases — individually weak, and there are millions of them, which is why the helix is stable at body temperature and comes apart neatly when heated. No molar mass, because a DNA molecule is as long as the organism needs it to be.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — nucleic acid structure",
     "category": "organic"
   },
@@ -8361,6 +8491,7 @@
     "structure": "molecules/rna.svg",
     "description": "Single-stranded, and built on ribose rather than deoxyribose — one extra oxygen per sugar, which is the entire chemical difference between the two nucleic acids. That one oxygen is also why RNA is far less stable: it sits next to the backbone and helps break it, so RNA is a short-lived working copy while DNA is the archive.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — nucleic acid structure",
     "category": "organic"
   },
@@ -8383,6 +8514,7 @@
     "structure": "molecules/dna_single.svg",
     "description": "The two strands after heat has pulled them apart. Nothing has been broken except hydrogen bonds — every covalent bond in each backbone is intact, which is exactly why this change reverses on cooling and protein denaturation does not. The strands find each other again because each one carries the instructions for finding its partner.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — DNA melting and reannealing",
     "category": "organic"
   },
@@ -8449,6 +8581,7 @@
     "structure": "molecules/dische_blue.svg",
     "description": "A deep blue that means deoxyribose, and therefore DNA. The colour depends on how much DNA is present, so this test was used to measure DNA long before anyone could sequence it — and it was measurements like these that showed a cell's DNA content doubles exactly once before it divides.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the Dische diphenylamine test",
     "category": "organic"
   },
@@ -8493,6 +8626,7 @@
     "structure": "molecules/bial_green.svg",
     "description": "A bluish green that means ribose, and therefore RNA. Run it beside a Dische test on the same unknown and the pair of results settles which nucleic acid you have: blue for one, green for the other, and each reagent silent about the other's sugar.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — Bial's orcinol test",
     "category": "organic"
   },
@@ -8515,6 +8649,7 @@
     "structure": "molecules/deoxyribose.svg",
     "description": "A five-carbon sugar missing one oxygen that ribose has — which is all the word deoxy means. That single absent oxygen makes the backbone built from it far more stable, and is the reason the cell keeps its permanent records in DNA and its working copies in RNA.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — the pentoses; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "organic"
   },
@@ -8537,6 +8672,7 @@
     "structure": "molecules/nucleobase.svg",
     "description": "The four flat nitrogen-containing rings released when a nucleic acid is broken up. Only four of them, and the order they come in along the backbone is the whole of the genetic information — the sugar and phosphate are identical all the way down and carry none of it.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Boyer, Concepts in Biochemistry 3rd ed. — nucleic acid structure",
     "category": "organic"
   },
@@ -8603,6 +8739,7 @@
     "structure": "molecules/edta.svg",
     "description": "One molecule with six places that can grab a metal ion — four oxygens and two nitrogens — so a single EDTA wraps a metal up completely, like a hand closing round it. Ligands that bind at several points at once are called chelating, from the Greek for a crab's claw, and they hold on far harder than the same number of separate molecules would. That difference is the chelate effect, and it is why EDTA turns up in shampoo, tinned food and the antidote to lead poisoning.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — chelating ligands; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "reagent"
   },
@@ -8625,6 +8762,7 @@
     "structure": "molecules/ca_edta.svg",
     "description": "Calcium locked inside an EDTA molecule and no longer able to do anything — it cannot form scum with soap, cannot deposit as scale in a kettle, cannot precipitate with carbonate. Nothing has been removed from the water; the ion is simply wrapped up. This is what water softening by sequestration means, and it is how a titration can measure hardness exactly.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — EDTA complexes",
     "category": "complex"
   },
@@ -8647,6 +8785,7 @@
     "structure": "molecules/cu_edta.svg",
     "description": "Copper held by one EDTA molecule at six points at once. Compare it with the tetraamminecopper complex, where four separate ammonia molecules do a similar job through nitrogen: the colours are close, and yet EDTA displaces the ammonia and ammonia cannot displace EDTA. Same kind of bond, same donor atoms, completely different strength of grip — that asymmetry is the chelate effect and nothing else.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the chelate effect",
     "category": "complex"
   },
@@ -8669,6 +8808,7 @@
     "structure": "molecules/fe_edta.svg",
     "description": "Iron(III) wrapped in EDTA, and pale yellow rather than the blood red it makes with thiocyanate. Chemists call this masking: the iron is still in the solution and still iron(III), but it can no longer react with anything else, so a test that would have found it now finds nothing. Masking an interfering ion is routine in analysis, and it depends entirely on one ligand gripping harder than another.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — masking agents in analysis",
     "category": "complex"
   },
@@ -8691,6 +8831,7 @@
     "structure": "molecules/ni_nh3.svg",
     "description": "Six ammonia molecules arranged around a nickel ion at the corners of an octahedron. Note the colour against the green of nickel in plain water: exactly the same nickel ion, six ligands either way, and a different colour — because the colour of a complex is set by which ligands surround the metal, not by the metal alone.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — ammine complexes",
     "category": "complex"
   },
@@ -8713,6 +8854,7 @@
     "structure": "molecules/en.svg",
     "description": "Two ammonia-like nitrogens joined by a short carbon bridge, so one molecule can bind a metal twice. It is the simplest chelating ligand there is and the cleanest way to see the chelate effect: it donates through nitrogen exactly as ammonia does, so anything it does better than ammonia must come from being joined together rather than from the bond itself.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — bidentate ligands; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "organic"
   },
@@ -8735,6 +8877,7 @@
     "structure": "molecules/ni_en.svg",
     "description": "Three chelating molecules round one nickel, still six nitrogens and still an octahedron — and yet violet where the ammonia complex was blue. The nitrogens are held slightly closer, and that small change in how hard the ligands press on the metal changes the colour. Colour is a remarkably sensitive report of the environment a metal ion is sitting in.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the spectrochemical series",
     "category": "complex"
   },
@@ -8757,6 +8900,7 @@
     "structure": "molecules/ptcl4.svg",
     "description": "Platinum(II) with four chlorides arranged in a FLAT SQUARE, not a tetrahedron — which is unusual and worth noticing, because most four-coordinate complexes are tetrahedral. Being flat is what makes two different arrangements of a mixed complex possible, and that difference turned out to matter enormously.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — square planar platinum(II); CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "category": "complex"
   },
@@ -8823,6 +8967,7 @@
     "structure": "molecules/na2s2o8.svg",
     "description": "A strong oxidising agent built round an oxygen–oxygen single bond. It will oxidise iodide to iodine easily on paper — and barely does so in practice, because both ions carry a negative charge and repel each other so strongly that they can hardly meet. It is the standard demonstration that being favourable and being fast are different questions. Warmed, that weak oxygen–oxygen bond splits into radicals, which is why industry uses a trace of persulfate to START free-radical polymerisations such as PVC, polystyrene and PTFE.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — peroxodisulfate; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass); Wikipedia — Sodium persulfate (mainly used as a radical initiator for emulsion polymerisation), consulted 2026-11-07",
     "category": "salt"
   },
@@ -8867,6 +9012,7 @@
     "structure": "molecules/sncl2.svg",
     "description": "Tin in its +2 state, near the top of Group 14 where +4 is the comfortable one. Being stuck two below its preferred state makes this a ready reducing agent — it gives two electrons away and becomes tin(IV) at the first opportunity. Compare with lead, one row further down, where +2 is the settled state and nothing of the sort happens.",
     "clarity": "clear",
+    "boilingPointC": 100,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — the inert pair effect; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass)",
     "sources": [
       { "ref": "Wikipedia — Tin(II) chloride (hydrolysis is prevented in the presence of hydrochloric acid)",

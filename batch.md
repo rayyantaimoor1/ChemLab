@@ -1451,3 +1451,60 @@ Clarity (7): Soap (sodium stearate solution) (cloudy); Starch solution (cloudy);
 Form (34): Zinc metal (granules); Copper turnings (turnings); Calcium granules (granules); Calcium carbonate (marble chips) (chips); Sodium metal (lump); Carbon (charcoal) (powder); Manganese(IV) oxide (powder); Platinum gauze (wire); Sodium carbonate (solid) (powder); Potassium nitrate (crystals); Calcium oxide (quicklime) (lump); Anhydrous copper(II) sulfate (powder); Silver metal (wire); Lead metal (foil); Potassium metal (lump); Sodium iodide (powder); Iron(III) bromide (powder); Ethanamide (crystals); Urea (crystals); Zinc hydroxide (powder); Tin granules (granules); Sodium oxide (powder); Cotton cloth (cloth); Benzene-1,4-dicarboxylic acid (powder); Ziegler–Natta catalyst (powder); Gypsum (powder); Copper(I) sulfide (chalcocite) (powder); Mercury(II) oxide (powder); Gold (foil); Steel (lump); Chromium (lump); Stainless steel (lump); Blister copper (impure) (lump); Lead(IV) oxide (powder).
 
 Texture (54): Zinc metal (metallic); Silver chloride (curdy); Iron filings (metallic); Copper turnings (metallic); Silver iodide (curdy); Silver bromide (curdy); Iron(III) hydroxide (gelatinous); Lead(II) chloride (crystalline); Manganese(IV) oxide (fine); Potassium chloride (solid) (fine); Sodium carbonate (solid) (fine); Anhydrous copper(II) sulfate (fine); Copper(II) sulfate crystals (fine); Anhydrous cobalt(II) chloride (fine); Cobalt(II) chloride hexahydrate (fine); Lithium oxide (fine); Sodium peroxide (fine); Magnesium carbonate (fine); Potassium manganate (fine); Copper(I) oxide (fine); Ethanamide (crystalline); Soap scum (calcium stearate) (curdy); Urea (crystalline); Set cement (crystalline); Nickel dimethylglyoximate (fine); 1,3-dinitrobenzene (crystalline); 2,4,6-trinitrophenol (picric acid) (crystalline); 2,4,6-tribromoaniline (crystalline); 4-(phenyldiazenyl)phenol (an azo dye) (fine); 4-(phenyldiazenyl)aniline (Aniline Yellow, an azo dye) (fine); Dyed cotton cloth (fibrous); Poly(ethene) (lumpy); Poly(tetrafluoroethene), PTFE (fine); Natural rubber (polyisoprene) (lumpy); Vulcanised rubber (lumpy); Brominated rubber (lumpy); Perished rubber (lumpy); Silicone resin (lumpy); Mullite (fired ceramic) (lumpy); Calcium silicate slag (lumpy); Magnesium silicate (forsterite) (lumpy); Steel (metallic); Calcium phosphate slag (lumpy); Aluminium with its oxide layer (metallic); Chromium(III) oxide layer (metallic); Electropolished steel (metallic); Nickel(II) sulfide (fine); Strontium carbonate (fine); Stearic acid (lumpy); Precipitated DNA fibres (fibrous); Cisplatin (fine); Platinum–DNA adduct (fibrous); Strontium oxide (fine); Barium oxide (fine).
+
+## 16. Boiling and melting points (BUILD_UI.md stage UI.4)
+
+**Status: in progress, batch 1 done (2026-11-19).**
+
+**What the owner approved:**
+- **`boilingPointC`** goes on every liquid and solution: whole °C at normal
+  air pressure.
+- **`meltingPointC`** is optional, only on the solids the app actually
+  melts.
+- **Checks.** The validator and `tests/boiling-points.test.js` check each
+  value is a sensible number on the right kind of substance. A missing
+  boiling point is a warning until the batches are done.
+- **Sources.** Each value is sourced, with `covers` set to
+  `boilingPoint` or `meltingPoint`.
+
+**The bench is not yet changed by any of this.** The burner clock in
+`app.js` still stops every liquid at 100 °C. Making it stop at each
+liquid's own boiling point is a behaviour change that can alter which
+heat-needing reactions a liquid reaches, so it needs the owner's yes when
+UI.4.2 is built.
+
+### Batch 1 — 146 values at 100 °C, under one general rule
+
+Approved by the owner on 2026-11-19.
+
+**The general reference.** LibreTexts, Colligative Properties (opened
+2026-11-19):
+- A dissolved substance raises a solution's boiling point by its molality
+  times Kb, which is 0.51 °C per mol/kg for water.
+- So even a 1 M salt solution, whose ions double the effect, boils only
+  about 1 °C above 100 °C.
+- The formula and the 0.51 value came from a summary of the part of the
+  page past what was read word for word. They are the standard textbook
+  figures, but they are logged as such.
+
+**What batch 1 covers:**
+- pure water: distilled water, and water made by reactions;
+- 144 of the 157 water-based solutions:
+  - every 0.01–1 M shelf reagent;
+  - every dilute product of a reaction;
+  - starch, egg albumin, latex, the emulsion, household bleach, hard water
+    and limewater.
+
+**Left for individual sourced values (batch 2):**
+- concentrated hydrochloric acid and concentrated ammonia solution;
+- phosphoric acid;
+- the chromium plating bath;
+- 40 % formalin;
+- solutions in ethanol: dimethylglyoxime, Sudan III stain, the Molisch
+  reagent and sodium ethoxide;
+- ninhydrin, whose solvent the app does not state;
+- diphenylamine (in acetic and sulfuric acid) and orcinol (in concentrated
+  hydrochloric acid);
+- the Molisch purple ring, on its layer of concentrated sulfuric acid.
+
+**Then (batches 3–4):** the 45 other pure liquids.
