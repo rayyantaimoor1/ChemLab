@@ -14,3 +14,17 @@ Compare with `../UI.3/` for the before.
   the same time, because a luminous flame is cooler.
 
 The burner's control strip carries the note on which flame to heat with.
+
+## UI.4.2 — Heat you can see
+
+`heat.png` shows three vessels on three burners:
+
+- **Small beaker, full flame:** water at a rolling boil with steam at the
+  mouth and droplets on the glass above it.
+- **Boiling tube, full flame:** blue copper sulfate crystals heated dry,
+  now the white anhydrous solid. The water driven off has condensed as
+  droplets on the cool upper glass.
+- **Small beaker, low flame:** water at 50 °C, with faint convection
+  currents.
+
+Each label says what heat is doing in words as well.

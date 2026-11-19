@@ -1608,6 +1608,160 @@ html.reduce-motion .vessel__dip {
   border-bottom: 1px solid rgba(255, 255, 255, 0.6);
 }
 
+/* ------------------------------------------------------------------ *
+ * Heat you can see (BUILD_UI.md UI.4.2), driven by heat-look.js through
+ * classes bench.js toggles. Transform and opacity only; with animation
+ * reduced, each state still shows, standing still.
+ * ------------------------------------------------------------------ */
+
+/* Convection: faint shimmering currents rising through warming liquid. */
+.vessel__convection {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 800ms ease-out;
+  pointer-events: none;
+  overflow: hidden;
+}
+.vessel__convection.is-on { opacity: 1; }
+.vessel__convection span {
+  position: absolute;
+  bottom: 0;
+  width: 18%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0));
+  opacity: 0;
+}
+.vessel__convection span:nth-child(1) { left: 14%; }
+.vessel__convection span:nth-child(2) { left: 44%; }
+.vessel__convection span:nth-child(3) { left: 70%; }
+.vessel__convection.is-on span { animation: fx-convection 2600ms ease-in-out infinite; }
+.vessel__convection.is-on span:nth-child(2) { animation-delay: 900ms; }
+.vessel__convection.is-on span:nth-child(3) { animation-delay: 1700ms; }
+@keyframes fx-convection {
+  0% { transform: translateY(40%) scaleX(0.8); opacity: 0; }
+  40% { opacity: 1; }
+  100% { transform: translateY(-30%) scaleX(1.2); opacity: 0; }
+}
+
+/* Bubbles: a few small ones on the glass before the boil, then a rolling boil. */
+.vessel__boil {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.vessel__boil span {
+  position: absolute;
+  bottom: calc(var(--vessel-base, 0px) + 2px);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.25);
+  opacity: 0;
+}
+/* Nucleation: a handful of tiny bubbles growing on the bottom and sides,
+   rising a little way and collapsing before they reach the top. */
+.vessel__boil.is-nucleating span:nth-child(3n) {
+  animation: fx-nucleate 1800ms ease-in infinite;
+}
+@keyframes fx-nucleate {
+  0% { transform: translateY(0) scale(0.4); opacity: 0; }
+  30% { opacity: 0.9; }
+  70% { transform: translateY(-14px) scale(1); opacity: 0.7; }
+  100% { transform: translateY(-22px) scale(0.3); opacity: 0; }
+}
+/* A rolling boil: big bubbles from the bottom all the way up, fast. */
+.vessel__boil.is-boiling span {
+  width: 6px;
+  height: 6px;
+  animation: fx-boil 900ms ease-in infinite;
+}
+.vessel__boil.is-boiling span:nth-child(2n) { width: 9px; height: 8px; animation-duration: 1100ms; }
+@keyframes fx-boil {
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  15% { opacity: 0.95; }
+  85% { opacity: 0.85; }
+  100% { transform: translateY(calc(-1 * var(--boil-rise, 90px))) scale(1.2); opacity: 0; }
+}
+/* The surface of a boiling liquid heaves. */
+.vessel__liquid--base.is-boiling::before {
+  animation: fx-surface-heave 420ms ease-in-out infinite;
+}
+@keyframes fx-surface-heave {
+  0%, 100% { transform: translateX(-50%) translateY(0) scaleX(1); }
+  50% { transform: translateX(-50%) translateY(-1.5px) scaleX(0.97); }
+}
+
+/* Droplets condensing on the cool glass above the liquid. */
+.vessel__condensation {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6px;
+  height: 0;
+  line-height: 0;
+  opacity: 0;
+  transition: opacity 3000ms ease-in;
+  pointer-events: none;
+}
+.vessel__condensation.is-visible { opacity: 1; }
+.vessel__condensation svg { display: block; }
+
+/* Steam or vapour leaving the mouth, outside the glass. */
+.vessel__steam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -34px;
+  height: 34px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 600ms ease-out;
+}
+.vessel__steam.is-on { opacity: 1; }
+.vessel__steam.is-faint { opacity: 0.45; }
+.vessel__steam span {
+  position: absolute;
+  bottom: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(240, 244, 246, 0.55), rgba(240, 244, 246, 0));
+  opacity: 0;
+}
+.vessel__steam.is-on span { animation: fx-steam 2200ms ease-out infinite; }
+@keyframes fx-steam {
+  0% { transform: translateY(6px) scale(0.6); opacity: 0; }
+  25% { opacity: 0.9; }
+  100% { transform: translateY(-26px) translateX(4px) scale(1.8); opacity: 0; }
+}
+
+/* Reduced animation: every state still shows, standing still. */
+html.reduce-motion .vessel__convection span,
+html.reduce-motion .vessel__boil span,
+html.reduce-motion .vessel__steam span,
+html.reduce-motion .vessel__liquid--base.is-boiling::before {
+  animation: none !important;
+}
+html.reduce-motion .vessel__convection.is-on span,
+html.reduce-motion .vessel__boil.is-nucleating span:nth-child(3n),
+html.reduce-motion .vessel__boil.is-boiling span,
+html.reduce-motion .vessel__steam.is-on span {
+  opacity: 0.7;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vessel__convection span, .vessel__boil span, .vessel__steam span,
+  .vessel__liquid--base.is-boiling::before { animation: none !important; }
+  .vessel__convection.is-on span, .vessel__boil.is-nucleating span:nth-child(3n),
+  .vessel__boil.is-boiling span, .vessel__steam.is-on span { opacity: 0.7; }
+}
+
 /* The cloudy emulsion a shake makes, over the whole liquid. */
 .vessel__emulsion {
   position: absolute;

@@ -430,6 +430,44 @@ a guessed one. No engine change.
 > rolling boil at the curated boiling point; steam at the mouth; condensation droplets on the cool
 > glass above — the water from heating blue copper sulfate, the mercury from mercury(II) oxide.
 
+> **Done (2026-11-19).** The new `src/ui/heat-look.js` reads a vessel's temperature, its heat and
+> the curated boiling points (`batch.md` §16). It gives a stage:
+> - **warming:** convection shimmer, from 35 °C on a flame;
+> - **nucleating:** small bubbles forming on the glass and collapsing, in the last 15 °C;
+> - **boiling:** a rolling boil with a heaving surface and steam at the mouth, at the liquid's own
+>   boiling point. A mixture's liquid starts to boil at its lowest.
+> - **evaporating:** no flame, and at or above its boiling point, or still hot just off the
+>   flame. It gives off vapour with no bubbles, which is how ethanal (bp 20 °C) looks on a 25 °C
+>   bench.
+>
+> Separately, **condensation:** anything in the vessel at or above its own boiling point, with
+> heat going in, settles as droplets on the cool glass above the liquid, in that liquid's
+> colour. The water from dehydrating blue copper sulfate and the silvery mercury from mercury(II)
+> oxide are made by weight, not as a liquid body, so they appear only as these droplets. A
+> boiling point "none on record" never boils.
+>
+> - **Drawing.** `appearance.js` carries the stage as `heat`; `bench.js` draws it with CSS
+>   animations of transform and opacity only. With animation reduced, every state still shows,
+>   standing still.
+> - **Words.** The vessel's label says it: "small bubbles forming on the glass", "boiling
+>   (100 °C)", "giving off vapour", "droplets of water on the cool glass above".
+> - **Checked in the running app:** water heated at full flame showed nothing to 81 °C, bubbles
+>   forming at 89 °C, then boiling at 100 °C with droplets on the glass. Blue copper sulfate heated
+>   dry showed the droplets.
+> - **Tests** in `tests/heat-look.test.js`. Screenshot: `docs/ui-progress/UI.4/heat.png`.
+> - **Melting points** are not needed for any of this and are left for UI.4.4 (very hot solids),
+>   where a solid melting can be shown.
+> - **The burner now stops each liquid at its own boiling point** (owner approved 2026-11-19),
+>   where it used to stop every liquid at 100 °C. Ethanol on a flame now sits at 78 °C while it
+>   boils, and glycerol can pass 100 °C. A liquid with no boiling point on record still stops at
+>   100 °C. This is the burner clock in `app.js`, interface state.
+>   - Every heat-needing reaction was checked first: none becomes reachable or unreachable by
+>     the change.
+>   - Checked in the running app: ethanol boils and holds at 78 °C.
+> - **Already out of reach, before and after:** dehydrating ethanol with concentrated sulfuric acid
+>   needs 170 °C, but the mixture is treated as boiling at ethanol's 78 °C. Hydrogenating benzene
+>   needs 180 °C. A content question for later, not changed here.
+
 **UI.4.3 — Sonnet — A thermometer that reads**
 > A thermometer stood in the liquid, its column rising with the vessel's temperature and readable
 > against its scale, beside the existing number.
@@ -586,6 +624,7 @@ finds nothing that would teach a student something wrong.
 | — | Build the UI realism track with Claude Code instead of Claude Design (Phase 9) | Yes (owner) | 2026-11-10 |
 | UI.2 | Real tube capacities (test tube 20 mL, boiling tube 55 mL) and guided test-tube amounts scaled to 1–8 mL | Yes (owner) | 2026-11-17 |
 | UI.3.6 | A curated `layers` field on rules for liquids that do not mix | Yes (owner) | 2026-11-19 |
+| UI.4.2 | The burner stops each liquid at its own curated boiling point instead of always at 100 °C | Yes (owner) | 2026-11-19 |
 | UI.4 | Curated `boilingPointC` (all liquids and solutions) and `meltingPointC` (solids the app melts); one general reference for dilute aqueous solutions | Yes (owner) | 2026-11-19 |
 | UI.3 | Curated `clarity`, `form` and `texture` in chemicals.json (plus `filings`, `turnings`, `foil` as forms; one general reference for clear solutions) | Yes (owner) | 2026-11-17 |
 | UI.4 | Curated `boilingPointC` / `meltingPointC` | | |

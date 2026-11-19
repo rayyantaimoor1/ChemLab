@@ -58,12 +58,14 @@
  */
 
 import { OUTCOME } from '../core/engine.js';
+import { heatLookFor } from './heat-look.js';
 
 const EMPTY = Object.freeze({
   colorHex: '#EEF3F5',
   colorName: 'colourless',
   clarity: null,
   layers: null,
+  heat: null,
   shelfSolids: [],
   precipitate: null,
   solids: [],
@@ -226,6 +228,9 @@ export function appearanceFor(snapshot, memory, engine) {
     colorName: colour.colorName,
     clarity: clarityFor(species, engine),
     layers: layersFor(species, snapshot, engine),
+    // What heat is visibly doing: convection, bubbles, a boil, steam,
+    // droplets on the glass (BUILD_UI.md UI.4.2, heat-look.js).
+    heat: heatLookFor(snapshot, engine),
     shelfSolids,
     precipitate: solids.length ? solids[solids.length - 1] : null,
     solids,

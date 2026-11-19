@@ -40,6 +40,7 @@ import { formatNotebookForExport } from './notebook-export.js';
 import { buildReportContext, withNote } from './problem-report.js';
 import { appearanceFor, rememberReaction } from './appearance.js';
 import { GLASSWARE } from './glassware.js';
+import { heatLookFor } from './heat-look.js';
 import { mountMolecularView } from './molecular.js';
 import { mountMolecular3DView } from './molecular3d.js';
 import { mountGuidedBar, mountGuidedStepCard, mountGuidedSummary } from './guided.js';
@@ -1571,9 +1572,14 @@ mountMolecular3DView({
  * WHY THE NUMBERS ARE WHAT THEY ARE
  * A liquid on a burner climbs to its boiling point and then stays there,
  * however hard you heat it - the extra energy boils it away instead of
- * making it hotter. So anything holding liquid stops at 100 °C no matter
- * which position the knob is at. A dry tube has no such limit and a
- * roaring flame takes it several hundred degrees higher.
+ * making it hotter. So anything holding liquid stops at that liquid's own
+ * curated boiling point (chemicals.json boilingPointC; a mixture at its
+ * lowest, as heat-look.js reads it) - water at 100 °C, ethanol at 78 °C,
+ * glycerol at 290 °C - whichever position the knob is at. A liquid whose
+ * boiling point is not on record stops at 100 °C, as every liquid did
+ * before the curated values existed (owner's decision, 2026-11-19). A dry
+ * tube has no such limit and a roaring flame takes it several hundred
+ * degrees higher.
  *
  * That is also why an 801 °C melt and a 1500 °C lightning strike stay out
  * of reach, and should: those are a Downs cell and a thunderstorm, not a
@@ -1589,7 +1595,8 @@ mountMolecular3DView({
 const BURNER_TARGET_C = [ROOM_TEMPERATURE_C, 50, 80, 500];
 const BURNER_RATE_C = [0, 2, 4, 8];
 const COOLING_RATE_C = 3;
-const BOILING_POINT_C = 100;
+// Used only for a liquid with no boiling point on record.
+const FALLBACK_BOILING_POINT_C = 100;
 const BURNER_TICK_MS = 400;
 
 // An ice bath. Not 0 °C: a beaker of melting ice and water sitting in a warm
@@ -1626,7 +1633,10 @@ function burnerTick() {
     let target;
     if (level < 0) target = ICE_BATH_C;
     else if (level === 0) target = ROOM_TEMPERATURE_C;
-    else target = holdsLiquid ? Math.min(BURNER_TARGET_C[level], BOILING_POINT_C) : BURNER_TARGET_C[level];
+    else if (holdsLiquid) {
+      const boilingPoint = heatLookFor(container.snapshot(), engine).boilingPointC ?? FALLBACK_BOILING_POINT_C;
+      target = Math.min(BURNER_TARGET_C[level], boilingPoint);
+    } else target = BURNER_TARGET_C[level];
 
     const under = equipment.find((eq) => eq.id === standOnByContainer.get(container.id));
     const luminous = level > 0 && under?.kind === 'burner' && under.airHole === 'closed';

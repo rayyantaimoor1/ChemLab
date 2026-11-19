@@ -29,6 +29,10 @@ The UI may **read** engine state and **dispatch** actions. It may not contain ch
       layers: [{ liquid, name, density, volumeMl, colorHex, colorName, clarity }] | null,
       // liquids that do not mix, lightest first, only from a rule's curated
       // layers (CLAUDE.md §5); null for an ordinary single liquid
+      heat: { stage, boilingPointC, steam, condensation } | null,
+      // stage: still | warming | nucleating | boiling | evaporating, from
+      // the curated boiling points (src/ui/heat-look.js); condensation is the
+      // liquid settling as droplets on the cool glass above, or null
       shelfSolids: [{ id, name, form, colorHex, colorName, amount }],
       // solids the student put in, drawn by their curated form
       // (src/ui/solid-shapes.js); a solid a reaction made is not listed here

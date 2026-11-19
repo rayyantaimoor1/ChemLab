@@ -266,6 +266,27 @@ const SETUPS = {
     await __cap.standOn('beaker_small_2', 'burner', 1);
     __cap.press('heat 3'); await __cap.wait(300);
     __cap.press('close the air hole'); await __cap.wait(3500);`,
+  // Stage UI.4.2: heat you can see. Water at full heat - a rolling boil with
+  // steam; water on a low flame - convection; blue copper sulfate crystals
+  // heated dry - the water driven off condensing on the cool glass above.
+  'heat': `
+    __cap.press('auto-pour'); await __cap.wait(100);
+    __cap.press('take a beaker 100'); await __cap.wait(300);
+    __cap.press('bunsen burner'); await __cap.wait(300);
+    __cap.press('take a boiling tube'); await __cap.wait(300);
+    __cap.press('bunsen burner'); await __cap.wait(300);
+    __cap.press('take a beaker 100'); await __cap.wait(300);
+    __cap.press('bunsen burner'); await __cap.wait(300);
+    await __cap.fill('beaker_small_1', 'water_distilled', 4);
+    await __cap.fill('beaker_small_2', 'water_distilled', 4);
+    await __cap.dispense('boiling_tube_1', 'cuso4_5h2o_s'); await __cap.wait(300);
+    await __cap.standOn('beaker_small_1', 'burner', 0);
+    __cap.press('heat 3'); await __cap.wait(200);
+    await __cap.standOn('boiling_tube_1', 'burner', 1);
+    __cap.press('heat 3'); await __cap.wait(200);
+    await __cap.standOn('beaker_small_2', 'burner', 2);
+    __cap.press('heat 1'); await __cap.wait(200);
+    await __cap.wait(16000);`,
   'titration': `
     __cap.press('auto-pour'); await __cap.wait(100);
     __cap.press('take a conical flask'); await __cap.wait(300);

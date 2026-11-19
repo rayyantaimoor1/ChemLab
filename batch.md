@@ -1470,11 +1470,12 @@ with UI.4.2.
 - **Sources.** Each value is sourced, with `covers` set to
   `boilingPoint` or `meltingPoint`.
 
-**The bench is not yet changed by any of this.** The burner clock in
-`app.js` still stops every liquid at 100 °C. Making it stop at each
-liquid's own boiling point is a behaviour change that can alter which
-heat-needing reactions a liquid reaches, so it needs the owner's yes when
-UI.4.2 is built.
+**How the bench uses them.**
+- **UI.4.2** draws boiling, bubbles, steam and condensation at these
+  temperatures.
+- **The burner** stops each liquid at its own boiling point (owner approved
+  2026-11-19). No heat-needing reaction became reachable or unreachable by
+  that change.
 
 ### Batch 1 — 146 values at 100 °C, under one general rule
 

@@ -612,6 +612,30 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // (the base liquid), and the emulsion a shake turns them into (UI.3.6).
     const layerBox = document.createElement('div');
     layerBox.className = 'vessel__layer vessel__layers';
+    // What heat does that you can see (BUILD_UI.md UI.4.2): convection
+    // currents, bubbles forming then a rolling boil, droplets condensing on
+    // the cool glass above, and steam at the mouth.
+    const convection = document.createElement('div');
+    convection.className = 'vessel__convection';
+    for (let k = 0; k < 3; k += 1) convection.appendChild(document.createElement('span'));
+    const boil = document.createElement('div');
+    boil.className = 'vessel__boil';
+    for (let k = 0; k < 12; k += 1) {
+      const bubble = document.createElement('span');
+      bubble.style.left = `${8 + ((k * 37) % 84)}%`;
+      bubble.style.animationDelay = `${(k * 173) % 1100}ms`;
+      boil.appendChild(bubble);
+    }
+    const condensation = document.createElement('div');
+    condensation.className = 'vessel__condensation';
+    const steam = document.createElement('div');
+    steam.className = 'vessel__steam';
+    for (let k = 0; k < 4; k += 1) {
+      const puff = document.createElement('span');
+      puff.style.left = `${20 + k * 18}%`;
+      puff.style.animationDelay = `${k * 450}ms`;
+      steam.appendChild(puff);
+    }
     const emulsion = document.createElement('div');
     emulsion.className = 'vessel__emulsion';
     const precipitateLayer = document.createElement('div');
@@ -660,10 +684,11 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // as it would in real glass.
     const solidLayer = document.createElement('div');
     solidLayer.className = 'vessel__layer vessel__shelf-solids';
-    glass.append(solidLayer, liquidBase, liquidIncoming, plume, layerBox, emulsion, haze, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
+    glass.append(solidLayer, liquidBase, liquidIncoming, plume, layerBox, emulsion, convection, boil, condensation, haze, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
     vessel.appendChild(glass);
     vessel.insertAdjacentHTML('beforeend', frontSvg(container.type, container.capacityMl));
     vessel.appendChild(smoke);
+    vessel.appendChild(steam);
     // Soot from a luminous flame, on the outside of the glass (UI.4.1).
     const soot = document.createElement('div');
     soot.className = 'vessel__soot';
@@ -733,7 +758,13 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     powerNote.className = 'object-chip__power';
     powerNote.hidden = true;
 
-    chip.append(nameRow, readout, colourRow, shelfSolidNote, precipitateLabel, capacityChip, standNote, readingRow, powerNote);
+    // What heat is visibly doing, in words too (UI.md section 8: nothing is
+    // shown by animation alone).
+    const heatNote = document.createElement('span');
+    heatNote.className = 'object-chip__power object-chip__heat';
+    heatNote.hidden = true;
+
+    chip.append(nameRow, readout, colourRow, shelfSolidNote, precipitateLabel, heatNote, capacityChip, standNote, readingRow, powerNote);
     el.appendChild(chip);
 
     // The flame indicator lives with the burner now, so a vessel only
@@ -753,6 +784,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       readingRow, readingSwatch, readingText, powerNote,
       solidLayer, shelfSolidNote, solidEls: new Map(), haze, smoke, cathodeRod,
       plume, mixing: null, layerBox, emulsion, shaking: false, soot,
+      convection, boil, condensation, steam, heatNote,
       dipEl: null, dipTool: null,
     };
     vesselEls.set(container.id, refs);
@@ -1003,6 +1035,89 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.plume.style.height = `${Math.round(geometry.floorY - surface)}px`;
   }
 
+  /** The words for what heat is doing, beside the glass. */
+  function heatNoteText(heat) {
+    const lines = [];
+    if (heat.stage === 'nucleating') lines.push('small bubbles forming on the glass');
+    if (heat.stage === 'boiling') lines.push(`boiling (${heat.boilingPointC} °C)`);
+    if (heat.stage === 'evaporating') lines.push('giving off vapour');
+    if (heat.condensation) {
+      const colour = heat.condensation.colorName && heat.condensation.colorName !== 'colourless'
+        ? `${heat.condensation.colorName.split(',')[0]} ` : '';
+      lines.push(`${colour}droplets of ${heat.condensation.name.toLowerCase()} on the cool glass above`);
+    }
+    return lines.join('; ');
+  }
+
+  /**
+   * Convection, bubbles, a rolling boil, steam and condensation, from
+   * heat-look.js. All drawn with transform and opacity only; static when
+   * animation is reduced, so the state still shows.
+   */
+  function updateHeat(refs, container) {
+    const heat = container.appearance.heat || { stage: 'still', steam: false, condensation: null };
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    const height = `${liquidFraction(container.type, container.capacityMl, container.volumeMl) * 100}%`;
+    const moving = heat.stage === 'warming' || heat.stage === 'nucleating' || heat.stage === 'boiling';
+
+    refs.convection.style.height = height;
+    refs.convection.classList.toggle('is-on', moving && heat.stage !== 'boiling');
+    refs.boil.style.height = height;
+    // A boiling bubble rises the whole depth of the liquid and bursts at the top.
+    const surfaceY = geometry ? geometry.surfaceY(container.volumeMl) : null;
+    if (geometry && surfaceY !== null) {
+      refs.boil.style.setProperty('--boil-rise', `${Math.max(8, Math.round(geometry.floorY - surfaceY - 4))}px`);
+    }
+    refs.boil.classList.toggle('is-nucleating', heat.stage === 'nucleating');
+    refs.boil.classList.toggle('is-boiling', heat.stage === 'boiling');
+    refs.liquidBase.classList.toggle('is-boiling', heat.stage === 'boiling');
+    refs.steam.classList.toggle('is-on', !!heat.steam);
+    refs.steam.classList.toggle('is-faint', heat.stage === 'evaporating');
+
+    // Droplets on the glass above the liquid - only where there is glass
+    // above it to settle on.
+    const c = heat.condensation;
+    let showDroplets = false;
+    if (c && geometry) {
+      const surface = geometry.surfaceY(container.volumeMl) ?? geometry.floorY;
+      const room = surface - 8;
+      if (room > 16) {
+        showDroplets = true;
+        const key = `${c.id}:${Math.round(room)}`;
+        if (refs.condensation.dataset.key !== key) {
+          refs.condensation.dataset.key = key;
+          refs.condensation.style.top = '6px';
+          refs.condensation.style.height = `${Math.round(Math.min(room, geometry.h * 0.5))}px`;
+          refs.condensation.innerHTML = dropletsSvg(c, geometry.w, Math.min(room, geometry.h * 0.5));
+        }
+      }
+    }
+    refs.condensation.classList.toggle('is-visible', showDroplets);
+
+    const note = heatNoteText(heat);
+    refs.heatNote.hidden = !note;
+    refs.heatNote.textContent = note;
+  }
+
+  /** Small droplets on the inside of the glass, in the condensing liquid's colour. */
+  function dropletsSvg(liquid, w, h) {
+    const fill = liquid.colorHex || '#EEF3F5';
+    let seed = 0;
+    for (const ch of liquid.id) seed = (seed * 31 + ch.charCodeAt(0)) % 9973;
+    const rand = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+    const parts = [];
+    const n = Math.max(6, Math.round((w * h) / 140));
+    for (let i = 0; i < n; i += 1) {
+      // Mostly near the walls, where the glass is coolest and drops gather.
+      const side = rand() < 0.5 ? rand() * 0.22 : 0.78 + rand() * 0.22;
+      const x = (rand() < 0.75 ? side : rand()) * w;
+      const y = rand() * h;
+      const r = 0.8 + rand() * 1.6;
+      parts.push(`<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${r.toFixed(1)}" ry="${(r * 1.25).toFixed(1)}" fill="${fill}" fill-opacity="0.75" stroke="rgba(255,255,255,0.7)" stroke-width="0.4"/>`);
+    }
+    return `<svg width="${w}" height="${Math.round(h)}" viewBox="0 0 ${w} ${Math.round(h)}" aria-hidden="true">${parts.join('')}</svg>`;
+  }
+
   function updateVessel(refs, container, state) {
     // Never fight a drag in progress - the pointer owns the transform then.
     if (!drag || drag.id !== container.id) {
@@ -1142,6 +1257,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     updateShelfSolids(refs, container);
     updateLayers(refs, container);
+    updateHeat(refs, container);
     refs.soot.classList.toggle('is-visible', container.sooty === true);
     updateDip(refs, container);
     setFlameLevel(refs.flame, container.heatLevel);
