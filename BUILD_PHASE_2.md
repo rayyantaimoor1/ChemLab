@@ -342,6 +342,8 @@ still applies.
 > and spreading; stirring finishes the mix. Purely visual — the engine's resolved state is the
 > final one either way.
 
+> **Done (2026-11-18)** as BUILD_UI.md stage UI.3.5.
+
 **2.7.2 — Sonnet — Heat you can see**
 > Gentle convection shimmer when warm, small bubbles forming on the glass before boiling, a
 > rolling boil at the curated boiling point, steam at the mouth, and condensation droplets on a

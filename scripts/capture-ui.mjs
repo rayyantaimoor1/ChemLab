@@ -211,6 +211,15 @@ const SETUPS = {
     window.dispatchEvent(new PointerEvent('pointerup', { bubbles: true }));
     await __cap.wait(300);
     __cap.press('current off'); await __cap.wait(900); __cap.dismissHazard();`,
+  // Stage UI.3.5: a colour spreading before it is stirred. Thiocyanate
+  // poured into iron(III) chloride in a beaker: the blood red comes down as
+  // a plume and the rest of the liquid is only part-way there. (Captured
+  // before the mix finishes on its own, and nobody has pressed Stir.)
+  'mixing': `
+    __cap.press('auto-pour'); await __cap.wait(100);
+    __cap.press('take a beaker 250'); await __cap.wait(300);
+    await __cap.fill('beaker_1', 'fecl3_0_1m', 6);
+    __cap.drop('beaker_1', 'kscn_aq'); await __cap.wait(1500);`,
   'titration': `
     __cap.press('auto-pour'); await __cap.wait(100);
     __cap.press('take a conical flask'); await __cap.wait(300);

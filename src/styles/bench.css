@@ -1507,6 +1507,20 @@ html.reduce-motion .vessel__dip {
   pointer-events: none;
 }
 
+/* A newly added colour coming down from the surface before it has mixed
+   (BUILD_UI.md UI.3.5). Its colour and size are set by bench.js and
+   effects.js; only its transform and opacity are ever animated. */
+.vessel__plume {
+  position: absolute;
+  left: 32%;
+  width: 36%;
+  top: 0;
+  height: 0;
+  opacity: 0;
+  border-radius: 40% 40% 50% 50% / 10% 10% 60% 60%;
+  pointer-events: none;
+}
+
 .vessel__liquid--incoming {
   opacity: 0;
 }

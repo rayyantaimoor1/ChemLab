@@ -323,6 +323,31 @@ fixed words, as it does for `category`. No engine change.
 > A reagent poured in colours the liquid from where it enters and spreads; stirring finishes it
 > (2.7.1). A curated `colourFades` drains the colour over the reaction rather than snapping.
 
+> **Done (2026-11-18).** When a reagent goes into liquid already in the vessel, the new colour
+> does not cover the liquid at once:
+> - It comes down from the surface as a plume (a third as wide as the glass), and the rest of the
+>   liquid goes part-way to the new colour.
+> - **Stir** finishes the mix in about half a second. Left alone, it finishes over a few seconds,
+>   as diffusion would.
+> - Anything else done to the vessel mid-mix completes it at once, so two colour changes never
+>   fight over the same layer.
+>
+> A reaction with a curated `colourFades` drains its colour over 2.8 s instead of 0.7 s.
+>
+> This is purely visual. The engine's state and the label are the final ones from the start
+> (BUILD_PHASE_2.md 2.7.1).
+>
+> `spreadColour` is in `effects.js`, and `withEffects` now says whether a reagent entered or the
+> vessel was stirred. Transform and opacity only.
+>
+> Checked in the running app: the plume appears and the liquid is half-mixed; Stir finishes it;
+> left alone it finishes; zinc in copper sulfate drains its blue over 2.8 s. Screenshot:
+> `docs/ui-progress/UI.3/mixing.png`.
+>
+> **Found in passing:** diluting a coloured solution with water (copper sulfate plus distilled
+> water) has no rule. It shows "colour not known" and is logged as an unavailable combination,
+> which is the honest result, but a common thing for a student to try.
+
 **UI.3.6 — Opus — Two layers**
 > Where the data already says two liquids do not mix (the `noReaction` rules for tetrachloromethane
 > and water, oil and water), draw them as two layers, the denser below, by the curated `density`.

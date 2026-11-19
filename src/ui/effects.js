@@ -149,6 +149,68 @@ function clamp01(value) {
  * next colour on top of that - a crossfade using opacity alone.
  * ------------------------------------------------------------------ */
 
+/* ------------------------------------------------------------------ *
+ * Mixing - BUILD_UI.md UI.3.5 (BUILD_PHASE_2.md 2.7.1). A reagent poured
+ * in without stirring does not colour the whole liquid at once: a plume of
+ * the new colour comes down from where it entered, the rest of the liquid
+ * takes on part of it, and the mix finishes when the student stirs - or,
+ * more slowly, on its own, as diffusion would.
+ *
+ * Purely visual. The engine's state is the final one from the start, and
+ * the label already shows the final colour and its name; this only shows
+ * how the liquid gets there. Opacity and transform only.
+ *
+ * Returns a handle: finish() for the stir button, now() to complete the
+ * mix at once when something else happens to the vessel.
+ * ------------------------------------------------------------------ */
+
+const DIFFUSE_ON_ITS_OWN_MS = 6000;
+
+export function spreadColour(baseEl, incomingEl, plumeEl, fill, { onSettled } = {}) {
+  const settle = () => {
+    for (const el of [incomingEl, plumeEl]) el.getAnimations().forEach((a) => a.cancel());
+    baseEl.style.background = fill;
+    incomingEl.style.background = fill;
+    incomingEl.style.opacity = '0';
+    plumeEl.style.opacity = '0';
+    if (onSettled) onSettled();
+  };
+
+  if (reducedMotionPreferred()) {
+    settle();
+    return { finish() {} };
+  }
+
+  incomingEl.style.background = fill;
+  incomingEl.style.opacity = '0';
+  plumeEl.style.background = `linear-gradient(180deg, ${fill}, ${fill} 35%, rgba(0, 0, 0, 0))`;
+  plumeEl.style.transformOrigin = '50% 0';
+  animate(plumeEl, [{ transform: 'scaleY(0.05)', opacity: 0 }, { transform: 'scaleY(1)', opacity: 0.9 }], { duration: 900 });
+  animate(incomingEl, [{ opacity: 0 }, { opacity: 0.5 }], { duration: 1300 });
+
+  let done = false;
+  const finish = (duration) => {
+    if (done) return;
+    done = true;
+    clearTimeout(timer);
+    animate(plumeEl, [{ opacity: 0.9 }, { opacity: 0 }], { duration });
+    whenDone(animate(incomingEl, [{ opacity: 0.5 }, { opacity: 1 }], { duration }), settle);
+  };
+  const timer = setTimeout(() => finish(2600), DIFFUSE_ON_ITS_OWN_MS);
+  return {
+    // The stir button: a quick, visible finish to the mix.
+    finish: () => finish(600),
+    // Something else happening to the vessel: mix at once, so two colour
+    // changes never animate the same layer together.
+    now: () => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      settle();
+    },
+  };
+}
+
 export function crossfadeColor(baseEl, incomingEl, colorHex, { duration = 700 } = {}) {
   if (!baseEl || !incomingEl || !colorHex) return;
   if (baseEl.style.background === colorHex && incomingEl.style.opacity === '0') return; // already there

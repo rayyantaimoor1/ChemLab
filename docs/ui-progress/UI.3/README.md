@@ -44,6 +44,17 @@ Each vessel's label names the solid with its colour and form.
 - in the 250 mL beaker, copper sulfate with the current on: the cathode is
   coated in copper-coloured metal
 
+## UI.3.5 — Colour that spreads and fades
+
+`mixing.png` shows potassium thiocyanate just poured into iron(III) chloride in
+a beaker, before anyone has stirred. The blood red comes down from the
+surface as a plume, and the rest of the yellow-brown liquid is only part-way
+there. The label already gives the final colour, "blood red", because the
+reaction has happened; the drawing shows the liquid still mixing. Stir
+finishes it, and left alone it finishes in a few seconds.
+
+## Note on UI.3.4
+
 In a crowded set-up like this one, a colour or texture that matches the
 liquid it is in is hard to see at bench size. The close look (UI.7) will show
 it large. On a bench

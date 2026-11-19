@@ -45,6 +45,7 @@ import {
   tickNumber,
   setFlameLevel,
   shrinkAway,
+  spreadColour,
 } from './effects.js';
 // A solid from the shelf drawn as what it is - ribbon, granules, chips -
 // from its curated form (BUILD_UI.md UI.3.3).
@@ -590,6 +591,9 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     liquidBase.className = 'vessel__liquid vessel__liquid--base';
     const liquidIncoming = document.createElement('div');
     liquidIncoming.className = 'vessel__liquid vessel__liquid--incoming';
+    // The plume of a newly added colour, before it has mixed (UI.3.5).
+    const plume = document.createElement('div');
+    plume.className = 'vessel__plume';
     const precipitateLayer = document.createElement('div');
     precipitateLayer.className = 'vessel__layer vessel__precipitate';
     // The solid that stays once the grains have fallen (BUILD_UI.md UI.1.3).
@@ -636,7 +640,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // as it would in real glass.
     const solidLayer = document.createElement('div');
     solidLayer.className = 'vessel__layer vessel__shelf-solids';
-    glass.append(solidLayer, liquidBase, liquidIncoming, haze, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
+    glass.append(solidLayer, liquidBase, liquidIncoming, plume, haze, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
     vessel.appendChild(glass);
     vessel.insertAdjacentHTML('beforeend', frontSvg(container.type, container.capacityMl));
     vessel.appendChild(smoke);
@@ -724,6 +728,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       standNote, vesselShadow, flame, electrodeLayer, ionLayer,
       readingRow, readingSwatch, readingText, powerNote,
       solidLayer, shelfSolidNote, solidEls: new Map(), haze, smoke, cathodeRod,
+      plume, mixing: null,
       dipEl: null, dipTool: null,
     };
     vesselEls.set(container.id, refs);
@@ -915,6 +920,16 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.haze.style.opacity = String(haze);
   }
 
+  /** The plume runs from the liquid's surface down through it, a third as
+   *  wide as the glass, under where a reagent is poured in. */
+  function placePlume(refs, container) {
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    const surface = geometry && geometry.surfaceY(container.volumeMl);
+    if (surface === null || surface === undefined) return;
+    refs.plume.style.top = `${Math.round(surface)}px`;
+    refs.plume.style.height = `${Math.round(geometry.floorY - surface)}px`;
+  }
+
   function updateVessel(refs, container, state) {
     // Never fight a drag in progress - the pointer owns the transform then.
     if (!drag || drag.id !== container.id) {
@@ -985,7 +1000,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const targetFill = paintFor(container);
     const targetHeight = `${liquidFraction(container.type, container.capacityMl, container.volumeMl) * 100}%`;
     setSurfaceWidth(refs, container);
-    const settling = refs.liquidBase.getAnimations().length > 0
+    // While a new colour is still spreading (UI.3.5) the drawing is between
+    // states on purpose, so it is left alone until the mix is finished.
+    const settling = !!refs.mixing
+      || refs.liquidBase.getAnimations().length > 0
       || refs.liquidIncoming.getAnimations().length > 0;
 
     if (!settling) {
@@ -1124,7 +1142,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
         }
       }
 
-      controlButton('Stir', () => withEffects(vessel.id, () => dispatch.stir(vessel.id)));
+      controlButton('Stir', () => withEffects(vessel.id, () => dispatch.stir(vessel.id), { stirring: true }));
 
       const heldTool = state.selectedToolId
         ? state.tools.find((t) => t.id === state.selectedToolId)
@@ -1234,11 +1252,17 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
    * Effects
    * ------------------------------------------------------------------ */
 
-  function withEffects(containerId, runAction) {
+  /**
+   * Runs an action and plays what it changed. `how` says what kind of
+   * action it was: { entering: true } when a reagent went in (so a new
+   * colour spreads from where it entered), { stirring: true } for the stir
+   * button (which finishes any mixing still going on).
+   */
+  function withEffects(containerId, runAction, how = {}) {
     const before = getState().containers.find((c) => c.id === containerId);
     const result = runAction();
     const after = getState().containers.find((c) => c.id === containerId);
-    playContainerEffects(containerId, before, after, result && result.engineResult);
+    playContainerEffects(containerId, before, after, result && result.engineResult, how);
     return result;
   }
 
@@ -1255,14 +1279,35 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     const stateAfter = getState();
     playContainerEffects(fromId, sourceBefore, stateAfter.containers.find((c) => c.id === fromId), null);
-    playContainerEffects(toId, targetBefore, stateAfter.containers.find((c) => c.id === toId), result && result.engineResult);
+    playContainerEffects(toId, targetBefore, stateAfter.containers.find((c) => c.id === toId), result && result.engineResult, { entering: true });
   }
 
-  function playContainerEffects(containerId, before, after, engineResult) {
+  function playContainerEffects(containerId, before, after, engineResult, how = {}) {
     const refs = vesselEls.get(containerId);
     if (!refs || !before || !after) return;
 
-    if (before.appearance.colorHex !== after.appearance.colorHex || before.appearance.clarity !== after.appearance.clarity) {
+    // Stirring finishes a mix still spreading, visibly; anything else new
+    // happening to the vessel completes it at once and starts from there.
+    if (refs.mixing) {
+      if (how.stirring) refs.mixing.finish();
+      else refs.mixing.now();
+    }
+
+    const colourChanged = before.appearance.colorHex !== after.appearance.colorHex
+      || before.appearance.clarity !== after.appearance.clarity;
+    const fades = ((engineResult && engineResult.steps) || []).some((step) => step.reaction?.effects?.colourFades);
+    if (colourChanged && fades) {
+      // A curated colour fade - bromine water losing its orange, the blue
+      // leaving copper sulfate - drains slowly instead of snapping.
+      crossfadeColor(refs.liquidBase, refs.liquidIncoming, paintFor(after), { duration: 2800 });
+    } else if (colourChanged && how.entering && before.volumeMl > 0 && after.volumeMl > 0) {
+      // A reagent poured into liquid already there spreads from where it
+      // entered. (Into an empty vessel there is nothing to mix with.)
+      placePlume(refs, after);
+      refs.mixing = spreadColour(refs.liquidBase, refs.liquidIncoming, refs.plume, paintFor(after), {
+        onSettled: () => { refs.mixing = null; },
+      });
+    } else if (colourChanged) {
       crossfadeColor(refs.liquidBase, refs.liquidIncoming, paintFor(after));
     }
 
@@ -1350,7 +1395,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       const chemical = engine.getChemical(chemicalId);
       const isSolid = chemical && chemical.state === 'solid';
       if (getState().dispenseMode === 'quick' && !isSolid) {
-        withEffects(containerId, () => dispatch.addChemical(containerId, chemicalId, getState().quickAmount));
+        withEffects(containerId, () => dispatch.addChemical(containerId, chemicalId, getState().quickAmount), { entering: true });
       } else {
         openAmountPanel(containerId, chemicalId);
       }
@@ -1507,7 +1552,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       withPresets: true,
       confirmLabel: 'Dispense',
       onConfirm: (amount) => {
-        withEffects(containerId, () => dispatch.addChemical(containerId, chemicalId, amount));
+        withEffects(containerId, () => dispatch.addChemical(containerId, chemicalId, amount), { entering: true });
       },
     });
     panel.appendChild(form);
