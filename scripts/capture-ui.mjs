@@ -220,6 +220,20 @@ const SETUPS = {
     __cap.press('take a beaker 250'); await __cap.wait(300);
     await __cap.fill('beaker_1', 'fecl3_0_1m', 6);
     __cap.drop('beaker_1', 'kscn_aq'); await __cap.wait(1500);`,
+  // Stage UI.3.6: liquids that do not mix. Water above tetrachloromethane,
+  // and benzene floating on bromine water, having taken its orange.
+  'layers': `
+    __cap.press('auto-pour'); await __cap.wait(100);
+    __cap.press('take a boiling tube'); await __cap.wait(300);
+    __cap.press('take a boiling tube'); await __cap.wait(300);
+    __cap.press('take a beaker 100'); await __cap.wait(300);
+    __cap.drop('boiling_tube_1', 'water_distilled'); await __cap.wait(300);
+    __cap.drop('boiling_tube_1', 'ccl4_l'); await __cap.wait(600); __cap.dismissHazard();
+    __cap.drop('boiling_tube_2', 'br2_aq'); await __cap.wait(300); __cap.dismissHazard();
+    __cap.drop('boiling_tube_2', 'c6h6_l'); await __cap.wait(600); __cap.dismissHazard();
+    await __cap.fill('beaker_small_1', 'water_distilled', 3);
+    await __cap.fill('beaker_small_1', 'ccl4_l', 2); __cap.dismissHazard();
+    await __cap.wait(7000);`,
   'titration': `
     __cap.press('auto-pour'); await __cap.wait(100);
     __cap.press('take a conical flask'); await __cap.wait(300);

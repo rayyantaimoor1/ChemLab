@@ -211,6 +211,31 @@ export function spreadColour(baseEl, incomingEl, plumeEl, fill, { onSettled } = 
   };
 }
 
+/* ------------------------------------------------------------------ *
+ * Shaking two liquids that do not mix (BUILD_UI.md UI.3.6). The layers
+ * break up into a cloudy emulsion of droplets, which then separates back
+ * into the same layers over a few seconds, the way tetrachloromethane and
+ * water do in a shaken tube. Purely visual; nothing in the vessel changes.
+ * ------------------------------------------------------------------ */
+
+export function shakeLayers(layersEl, emulsionEl, { onDone } = {}) {
+  const settle = () => {
+    for (const el of [layersEl, emulsionEl]) el.getAnimations().forEach((a) => a.cancel());
+    emulsionEl.style.opacity = '0';
+    if (onDone) onDone();
+  };
+  if (reducedMotionPreferred()) {
+    settle();
+    return;
+  }
+  animate(layersEl, [
+    { opacity: 1 }, { opacity: 0, offset: 0.08 }, { opacity: 0, offset: 0.3 }, { opacity: 1 },
+  ], { duration: 3800 });
+  whenDone(animate(emulsionEl, [
+    { opacity: 0 }, { opacity: 1, offset: 0.08 }, { opacity: 1, offset: 0.3 }, { opacity: 0 },
+  ], { duration: 3800 }), settle);
+}
+
 export function crossfadeColor(baseEl, incomingEl, colorHex, { duration = 700 } = {}) {
   if (!baseEl || !incomingEl || !colorHex) return;
   if (baseEl.style.background === colorHex && incomingEl.style.opacity === '0') return; // already there

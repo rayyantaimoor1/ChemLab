@@ -53,6 +53,20 @@ there. The label already gives the final colour, "blood red", because the
 reaction has happened; the drawing shows the liquid still mixing. Stir
 finishes it, and left alone it finishes in a few seconds.
 
+## UI.3.6 — Two layers
+
+`layers.png` shows:
+
+- water above tetrachloromethane in a boiling tube and a small beaker, with
+  the bright boundary line between them;
+- benzene floating on bromine water, having taken its orange, with the water
+  underneath now colourless.
+
+Each label names the layers in order. Pressing Stir shakes them into a cloudy
+emulsion that separates again; that is checked in the running app, not shown
+here. The selected beaker's large label covers part of the tubes in this shot,
+the same UI.1 label-placement limit as before.
+
 ## Note on UI.3.4
 
 In a crowded set-up like this one, a colour or texture that matches the

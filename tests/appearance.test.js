@@ -158,3 +158,36 @@ test('a solid a reaction made is not drawn a second time as a shelf solid', () =
   assert.ok(after.solids.some((s) => s.id === 'cu_metal'), 'the copper deposit is shown');
   assert.ok(!after.shelfSolids.some((s) => s.id === 'cu_metal'), 'and not again as turnings');
 });
+
+// ---- Liquids that do not mix (BUILD_UI.md UI.3.6) ----
+
+const layered = (contents) => appearanceFor({
+  speciesIds: contents.map((c) => c.id), contents, temperatureC: 25, heatLevel: 0, electrified: false,
+}, undefined, engine).layers;
+
+test('tetrachloromethane sinks below water, by the curated densities', () => {
+  const layers = layered([{ id: 'ccl4_l', amount: 5 }, { id: 'water_distilled', amount: 10 }]);
+  assert.deepEqual(layers.map((l) => l.liquid), ['water_distilled', 'ccl4_l']);
+  assert.equal(layers[0].volumeMl, 10);
+});
+
+test('benzene floats on bromine water and takes its orange, as the rule says', () => {
+  const layers = layered([{ id: 'br2_aq', amount: 10 }, { id: 'c6h6_l', amount: 5 }]);
+  assert.equal(layers[0].liquid, 'c6h6_l');
+  assert.equal(layers[0].colorName, engine.getChemical('br2_aq').colorName);
+  assert.equal(layers[1].colorName, 'colourless');
+});
+
+test('liquids form layers only where a rule says so - never from solubility alone', () => {
+  // Benzene and tetrachloromethane are each insoluble in water, but there is
+  // no layers rule for them together, so nothing is drawn as layers.
+  assert.equal(layered([{ id: 'c6h6_l', amount: 5 }, { id: 'ccl4_l', amount: 5 }]), null);
+  assert.equal(layered([{ id: 'hcl_1m', amount: 10 }]), null);
+  for (const rule of engine.getAllReactions().filter((r) => r.layers)) {
+    const involved = new Set([...(rule.reactants || []), ...(rule.products || [])]);
+    for (const layer of rule.layers) {
+      assert.ok(involved.has(layer.liquid), `${rule.id}: ${layer.liquid} is not in the rule`);
+      assert.equal(typeof engine.getChemical(layer.liquid).density, 'number', `${rule.id}: ${layer.liquid} has no density`);
+    }
+  }
+});

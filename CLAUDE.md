@@ -393,6 +393,33 @@ correct response — never quantities, procedures, or anything that would help s
 }
 ```
 
+### Liquids that do not mix — `layers` on a rule
+
+Some liquids sit one on top of the other instead of mixing. The optional
+`layers` list on a rule says which liquids form separate layers, and the
+bench draws them that way (BUILD_UI.md UI.3.6, owner approved 2026-11-19):
+
+```json
+"layers": [
+  { "liquid": "c6h6_l", "looksLike": "br2_aq" },
+  { "liquid": "br2_aq", "looksLike": "water_distilled" }
+]
+```
+
+- **`liquid`** is the substance forming the layer. It must be one of the
+  rule's reactants or products.
+- **`looksLike`** names the chemical whose curated colour, colour name and
+  clarity the layer shows, when a solute has moved between layers.
+  Bromine leaves the water for the benzene, so the benzene layer is orange
+  and the water layer colourless. Without `looksLike`, a layer looks like
+  its own liquid.
+
+Which layer is on top comes from the curated `density` of each liquid,
+not from the order of the list. It is **curated, never inferred**:
+"insoluble in water" in a `solubility` field is not enough, because two
+liquids that are each insoluble in water can mix perfectly well with each
+other. The validator checks every name and density.
+
 ### Flame tests — `flame-tests.json`, and `flameElements` on a chemical
 
 A flame test is **a tool, not a reaction.** It reads what is in a vessel and

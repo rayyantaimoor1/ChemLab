@@ -46,6 +46,7 @@ import {
   setFlameLevel,
   shrinkAway,
   spreadColour,
+  shakeLayers,
 } from './effects.js';
 // A solid from the shelf drawn as what it is - ribbon, granules, chips -
 // from its curated form (BUILD_UI.md UI.3.3).
@@ -594,6 +595,12 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // The plume of a newly added colour, before it has mixed (UI.3.5).
     const plume = document.createElement('div');
     plume.className = 'vessel__plume';
+    // Liquids that do not mix: the upper layers, drawn over the bottom one
+    // (the base liquid), and the emulsion a shake turns them into (UI.3.6).
+    const layerBox = document.createElement('div');
+    layerBox.className = 'vessel__layer vessel__layers';
+    const emulsion = document.createElement('div');
+    emulsion.className = 'vessel__emulsion';
     const precipitateLayer = document.createElement('div');
     precipitateLayer.className = 'vessel__layer vessel__precipitate';
     // The solid that stays once the grains have fallen (BUILD_UI.md UI.1.3).
@@ -640,7 +647,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // as it would in real glass.
     const solidLayer = document.createElement('div');
     solidLayer.className = 'vessel__layer vessel__shelf-solids';
-    glass.append(solidLayer, liquidBase, liquidIncoming, plume, haze, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
+    glass.append(solidLayer, liquidBase, liquidIncoming, plume, layerBox, emulsion, haze, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
     vessel.appendChild(glass);
     vessel.insertAdjacentHTML('beforeend', frontSvg(container.type, container.capacityMl));
     vessel.appendChild(smoke);
@@ -728,7 +735,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       standNote, vesselShadow, flame, electrodeLayer, ionLayer,
       readingRow, readingSwatch, readingText, powerNote,
       solidLayer, shelfSolidNote, solidEls: new Map(), haze, smoke, cathodeRod,
-      plume, mixing: null,
+      plume, mixing: null, layerBox, emulsion, shaking: false,
       dipEl: null, dipTool: null,
     };
     vesselEls.set(container.id, refs);
@@ -818,10 +825,59 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
   /** The paint for a vessel's liquid: its curated colour and clarity, seen
    *  through as much liquid as this glass holds across (liquid-colour.js). */
   function paintFor(container) {
-    return liquidFill(container.appearance.colorHex, {
-      clarity: container.appearance.clarity,
+    // Two liquids that do not mix: the base liquid is the bottom layer, and
+    // updateLayers draws the ones above it.
+    const layers = container.appearance.layers;
+    const look = layers ? layers[layers.length - 1] : container.appearance;
+    return liquidFill(look.colorHex, {
+      clarity: look.clarity,
       pathPx: liquidPathPx(container.type, container.capacityMl, container.volumeMl),
     });
+  }
+
+  /**
+   * Draws the upper layers of liquids that do not mix, each as deep as its
+   * own volume in this glass's real shape (glassware.js), lightest on top.
+   * A missing amount counts as an equal share.
+   */
+  function updateLayers(refs, container) {
+    const layers = container.appearance.layers;
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    if (!layers || !geometry || !(container.volumeMl > 0)) {
+      refs.layerBox.hidden = true;
+      refs.layerBox.innerHTML = '';
+      return;
+    }
+    refs.layerBox.hidden = false;
+    const total = container.volumeMl;
+    const given = layers.map((layer) => layer.volumeMl);
+    const known = given.filter((v) => v > 0).reduce((sum, v) => sum + v, 0);
+    const volumes = given.map((v) => (v > 0 && known > 0 ? (v / known) * total : total / layers.length));
+
+    // The top of each layer, from the bottom up.
+    const tops = new Array(layers.length);
+    let below = 0;
+    for (let i = layers.length - 1; i >= 0; i -= 1) {
+      below += volumes[i];
+      tops[i] = geometry.surfaceY(below);
+    }
+    const signature = layers.map((l, i) => `${l.liquid}:${l.colorHex}:${Math.round(tops[i])}`).join('|');
+    if (refs.layerBox.dataset.signature === signature) return;
+    refs.layerBox.dataset.signature = signature;
+    refs.layerBox.innerHTML = '';
+    const path = liquidPathPx(container.type, container.capacityMl, container.volumeMl);
+    for (let i = 0; i < layers.length - 1; i += 1) {
+      const el = document.createElement('div');
+      el.className = 'liquid-layer';
+      el.style.top = `${Math.round(tops[i])}px`;
+      el.style.height = `${Math.max(2, Math.round(tops[i + 1] - tops[i]))}px`;
+      el.style.background = liquidFill(layers[i].colorHex, { clarity: layers[i].clarity, pathPx: path });
+      refs.layerBox.appendChild(el);
+    }
+    // A shake turns the whole liquid into a cloudy emulsion of droplets.
+    refs.emulsion.style.top = `${Math.round(tops[0])}px`;
+    refs.emulsion.style.height = `${Math.round(geometry.floorY - tops[0])}px`;
+    refs.emulsion.style.background = liquidFill(layers[0].colorHex, { clarity: 'cloudy', pathPx: path });
   }
 
   /**
@@ -944,9 +1000,13 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const isEmpty = container.contents.length === 0;
     refs.colorSwatch.style.background = container.appearance.colorHex;
     refs.colorSwatch.hidden = isEmpty;
+    const layers = container.appearance.layers;
+    if (layers && !isEmpty) refs.colorSwatch.style.background = layers[0].colorHex;
     refs.colorText.textContent = isEmpty
       ? 'empty'
-      : container.appearance.colorName || 'colour not known for this mixture';
+      : layers
+        ? `two layers: ${layers.map((l) => `${l.name} (${l.colorName})`).join(' above ')}`
+        : container.appearance.colorName || 'colour not known for this mixture';
     refs.colourRow.classList.toggle('is-empty', isEmpty);
 
     // The solid a reaction left, with its name (UI.md section 5), drawn by
@@ -1064,6 +1124,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     }
 
     updateShelfSolids(refs, container);
+    updateLayers(refs, container);
     updateDip(refs, container);
     setFlameLevel(refs.flame, container.heatLevel);
     updateElectrolysis(refs, container);
@@ -1291,6 +1352,12 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     if (refs.mixing) {
       if (how.stirring) refs.mixing.finish();
       else refs.mixing.now();
+    }
+
+    // Shaking liquids that do not mix: an emulsion that separates again.
+    if (how.stirring && after.appearance.layers && !refs.shaking) {
+      refs.shaking = true;
+      shakeLayers(refs.layerBox, refs.emulsion, { onDone: () => { refs.shaking = false; } });
     }
 
     const colourChanged = before.appearance.colorHex !== after.appearance.colorHex

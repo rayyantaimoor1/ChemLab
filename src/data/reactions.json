@@ -3309,6 +3309,10 @@
     "id": "rxn_none_benzene_bromine_water",
     "reactants": ["br2_aq", "c6h6_l"],
     "noReaction": true,
+    "layers": [
+      { "liquid": "c6h6_l", "looksLike": "br2_aq" },
+      { "liquid": "br2_aq", "looksLike": "water_distilled" }
+    ],
     "explanation": "No reaction — and this is the famous negative result. Ethene decolourises bromine water on the spot; benzene does not. What you do see is the orange colour moving out of the water and into the benzene, which floats on top as an orange layer: bromine simply dissolves better in benzene than in water. That is a change of solvent, not a reaction, and no hydrogen bromide comes off. Adding iron(III) bromide does not help either, because the water in bromine water destroys the catalyst — brominating benzene needs pure bromine.",
     "levels": ["fsc", "bs"],
     "source": "Jim Clark, chemguide — Halogenation of benzene and methylbenzene (bromine with an iron catalyst). The water-destroys-the-catalyst point rests on search results, not an opened source — to be confirmed by a teacher in stage 2.1.5"
@@ -8887,6 +8891,10 @@
     "id": "rxn_none_ccl4_water",
     "reactants": ["ccl4_l", "water_distilled"],
     "noReaction": true,
+    "layers": [
+      { "liquid": "ccl4_l" },
+      { "liquid": "water_distilled" }
+    ],
     "explanation": "Two layers, and nothing more — put this beside the silicon tetrachloride tube, which fumes violently with the same water. Both compounds are a Group 14 element with four chlorines, and both would release a great deal of energy by hydrolysing. The carbon one simply has no route in: a water molecule has to attach to the central atom before anything can happen, and carbon is small, crowded by its four chlorines, and has no spare orbitals to accept the water. Silicon is bigger and has them. This is the difference between a reaction being favourable and being possible.",
     "levels": ["bs"],
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hydrolysis of Group 14 tetrahalides"

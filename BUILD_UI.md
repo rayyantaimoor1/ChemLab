@@ -353,6 +353,38 @@ fixed words, as it does for `category`. No engine change.
 > and water, oil and water), draw them as two layers, the denser below, by the curated `density`.
 > Shaking makes an emulsion that separates again.
 
+> **Done (2026-11-19).**
+> - **The data.** The explanations described layers in words but nothing the bench could read, so
+>   the owner approved a curated `layers` field on a rule (CLAUDE.md §5). Each entry names the
+>   liquid forming the layer, and optionally the chemical whose colour it shows. Two rules carry
+>   it:
+>   - **tetrachloromethane and water**: water floats on the denser tetrachloromethane;
+>   - **benzene and bromine water**: benzene floats on top and takes the orange, and the water
+>     below goes colourless.
+>
+>   The validator checks every name and density.
+> - **Never inferred.** "Insoluble in water" in a `solubility` field is not enough: benzene and
+>   tetrachloromethane are each insoluble in water, yet they mix with each other.
+> - **On the bench.**
+>   - `appearance.js` lists the layers lightest-first by the curated densities.
+>   - Each layer is as deep as its own volume in the glass's real shape, with a bright line at the
+>     boundary.
+>   - The label reads "two layers: Benzene (orange-brown) above Bromine water (colourless)".
+>   - **Stir** shakes them into a cloudy emulsion that separates back into the same layers over
+>     about four seconds (`shakeLayers` in `effects.js`).
+> - **Checked in the running app:** the layers, the label, the emulsion on Stir, and separation
+>   afterwards.
+> - **Tests** in `tests/appearance.test.js`. Screenshot: `docs/ui-progress/UI.3/layers.png`.
+> - **Not done:** oil and water has no rule at all, so it still says the combination is not
+>   available. It needs a no-reaction rule with an opened source, in a later content batch.
+
+> **Stage UI.3 check, as far as it can be done here.** Every step is built and seen in the
+> running app, and the screenshots for each are in `docs/ui-progress/UI.3/`.
+> - The 383 appearance values are curated: 95 still need a teacher's confirmation (`batch.md`
+>   §15).
+> - The second half of the check, a chemistry teacher naming each reaction from the screenshots
+>   alone, needs a teacher and has not been done.
+
 ✅ **Check:** the 30 review-pack reactions each show the right clarity, solid form and precipitate
 behaviour; a chemistry teacher shown the screenshots names the reaction without being told.
 
@@ -529,6 +561,7 @@ finds nothing that would teach a student something wrong.
 |---|---|---|---|
 | — | Build the UI realism track with Claude Code instead of Claude Design (Phase 9) | Yes (owner) | 2026-11-10 |
 | UI.2 | Real tube capacities (test tube 20 mL, boiling tube 55 mL) and guided test-tube amounts scaled to 1–8 mL | Yes (owner) | 2026-11-17 |
+| UI.3.6 | A curated `layers` field on rules for liquids that do not mix | Yes (owner) | 2026-11-19 |
 | UI.3 | Curated `clarity`, `form` and `texture` in chemicals.json (plus `filings`, `turnings`, `foil` as forms; one general reference for clear solutions) | Yes (owner) | 2026-11-17 |
 | UI.4 | Curated `boilingPointC` / `meltingPointC` | | |
 | UI.5 | Curated `effects.gasRate` | | |

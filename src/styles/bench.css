@@ -1521,6 +1521,27 @@ html.reduce-motion .vessel__dip {
   pointer-events: none;
 }
 
+/* Liquids that do not mix (BUILD_UI.md UI.3.6): each upper layer over the
+   bottom one, with the boundary between them showing as a bright line -
+   the interface a student reads off when separating two liquids. */
+.liquid-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* The cloudy emulsion a shake makes, over the whole liquid. */
+.vessel__emulsion {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .vessel__liquid--incoming {
   opacity: 0;
 }

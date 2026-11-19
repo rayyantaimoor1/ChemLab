@@ -273,6 +273,7 @@ const reactions = readJson('reactions.json') ?? [];
     }
 
     if ('sources' in reaction) checkSources(id, reaction.sources);
+    if ('layers' in reaction) checkLayers(id, reaction);
   }
 }
 
@@ -315,6 +316,36 @@ function checkSources(id, sources, allowed = SOURCE_COVERS) {
       }
     }
   });
+}
+
+/**
+ * `layers` - liquids that do not mix, drawn as separate layers
+ * (BUILD_UI.md UI.3.6, CLAUDE.md section 5). Each layer names a liquid
+ * the rule involves, and optionally the chemical whose curated colour it
+ * shows. Which layer is on top is worked out from the curated densities,
+ * so every liquid must have one.
+ */
+function checkLayers(id, reaction) {
+  const layers = reaction.layers;
+  if (!Array.isArray(layers) || layers.length < 2) {
+    problems.push(`${id}: layers must list at least two liquids`);
+    return;
+  }
+  const involved = new Set([...(reaction.reactants || []), ...(reaction.products || [])]);
+  const seen = new Set();
+  for (const [index, layer] of layers.entries()) {
+    const where = `${id}: layers[${index}]`;
+    const liquid = chemicalsById.get(layer?.liquid);
+    if (!liquid) { problems.push(`${where}: liquid "${layer?.liquid}" is not a chemical`); continue; }
+    if (!involved.has(liquid.id)) problems.push(`${where}: ${liquid.id} is not one of the rule's reactants or products`);
+    if (liquid.state !== 'liquid' && liquid.state !== 'aqueous') problems.push(`${where}: ${liquid.id} is not a liquid`);
+    if (typeof liquid.density !== 'number') problems.push(`${where}: ${liquid.id} has no density to put it above or below`);
+    if (seen.has(liquid.id)) problems.push(`${where}: ${liquid.id} is listed twice`);
+    seen.add(liquid.id);
+    if ('looksLike' in layer && !chemicalsById.get(layer.looksLike)) {
+      problems.push(`${where}: looksLike "${layer.looksLike}" is not a chemical`);
+    }
+  }
 }
 
 /* ------------------------------------------------------------------ *

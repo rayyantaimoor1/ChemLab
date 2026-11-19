@@ -47,6 +47,13 @@
  * and gases are not part of it - how a precipitate clouds the liquid is
  * its own curated `texture` (UI.3.4), not this.
  *
+ * LIQUIDS THAT DO NOT MIX (BUILD_UI.md UI.3.6)
+ * When the rule for what is in the vessel carries a curated `layers` list
+ * (CLAUDE.md §5) - tetrachloromethane and water, benzene and bromine water -
+ * the vessel's liquid is a stack of layers, lightest on top by the curated
+ * densities, each as deep as the volume of its liquid and coloured like the
+ * chemical the data says it looks like. Never inferred from solubility.
+ *
  * No DOM here, so tests/appearance.test.js can check every reaction.
  */
 
@@ -56,6 +63,7 @@ const EMPTY = Object.freeze({
   colorHex: '#EEF3F5',
   colorName: 'colourless',
   clarity: null,
+  layers: null,
   shelfSolids: [],
   precipitate: null,
   solids: [],
@@ -217,10 +225,44 @@ export function appearanceFor(snapshot, memory, engine) {
     colorHex: colour.colorHex,
     colorName: colour.colorName,
     clarity: clarityFor(species, engine),
+    layers: layersFor(species, snapshot, engine),
     shelfSolids,
     precipitate: solids.length ? solids[solids.length - 1] : null,
     solids,
   };
+}
+
+/**
+ * The layers the liquid separates into, top first, or null when it is one
+ * liquid. Only ever from a rule's curated `layers`.
+ */
+export function layersFor(species, snapshot, engine) {
+  if (species.length < 2) return null;
+  const answer = engine.resolve(species, {
+    log: false,
+    tempC: snapshot.temperatureC,
+    heating: snapshot.heatLevel > 0,
+    electrified: snapshot.electrified,
+  });
+  const rule = answer.outcome === OUTCOME.NO_REACTION ? answer.reaction : null;
+  if (!rule || !Array.isArray(rule.layers)) return null;
+
+  const amounts = new Map((snapshot.contents || []).map((item) => [item.id ?? item.chemicalId, item.amount]));
+  const layers = rule.layers.map((layer) => {
+    const liquid = engine.getChemical(layer.liquid);
+    const look = engine.getChemical(layer.looksLike || layer.liquid) || liquid;
+    return {
+      liquid: liquid.id,
+      name: liquid.name,
+      density: liquid.density,
+      volumeMl: amounts.get(liquid.id) ?? null,
+      colorHex: look.colorHex,
+      colorName: look.colorName,
+      clarity: look.clarity || 'clear',
+    };
+  });
+  // Lightest on top. A missing amount counts as an equal share.
+  return layers.sort((a, b) => a.density - b.density);
 }
 
 /** From most to least see-through. */
