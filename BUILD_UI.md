@@ -832,8 +832,40 @@ less than making every vessel on the bench that detailed.
 > In the close look, the meniscus can be read against the graduations; viewed from above or below
 > eye level the reading shifts (parallax), and the label explains why you read at eye level.
 
+> **Done (2026-11-21).** The reading and parallax are in `src/ui/meniscus.js`, with no DOM, and
+> are tested in `tests/meniscus.test.js`.
+> - **A reading lens** in the close look: a magnified strip of the scale around the meniscus, with
+>   the instrument's finest divisions and the liquid under its curved surface. A red pointer marks
+>   the bottom of the meniscus.
+>   - A burette shows 0.1 mL marks and is read to ±0.05 mL.
+>   - A 100 mL measuring cylinder shows 1 mL marks and is read to ±0.5 mL.
+>   - Beakers and conical flasks are read roughly and marked "approximate: not for measuring".
+>   - A tube with no scale shows no lens.
+> - **Where the eye is:** "Eye above", "Eye level" and "Eye below".
+>   - Above or below eye level, the scale in the lens shifts against the meniscus.
+>   - The reading changes the way parallax really works. From above, a burette, numbered
+>     downwards, reads too low, and a measuring cylinder reads too high. From below, the reverse.
+>   - Beneath the lens a sentence explains why, and says to read with your eye level with the
+>     bottom of the meniscus.
+> - **How big the shift is.** It comes from the drawing's own glass: its radius at the surface,
+>   seen from 6° above or below, on its own scale. So the lens and the number always agree.
+> - **A burette is read by what has run out:** 10 mL left in a 50 mL burette reads 40.00 mL.
+> - **Checked in the running app,** with 10 mL in a 50 mL burette:
+>   - at eye level it read 40.00 mL, to ±0.05 mL;
+>   - from above, 39.70 (too low); from below, 40.30;
+>   - back at eye level, 40.00.
+>   - Screenshot: `docs/ui-progress/UI.7/reading-above.png`.
+> - **The close look now scrolls** on a short bench, below its tile, to fit the reading and the
+>   details.
+
 ✅ **Check:** the close look holds 30 fps with bubbling and settling running; a burette reading
 taken in it matches the volume within the instrument's precision.
+
+> **Checked (2026-11-21).**
+> - **The burette reading:** at eye level it matches the volume run out to within ±0.05 mL, for
+>   every level tested (`tests/meniscus.test.js`).
+> - **The frame rate:** the close look ran at 61 frames a second with magnesium fizzing in acid.
+>   That was on the development PC; the i5 lab PC is Phase 10.
 
 ---
 

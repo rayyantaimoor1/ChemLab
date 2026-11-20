@@ -2292,6 +2292,8 @@ html.reduce-motion .vessel__fuming > span {
   z-index: 25;
   display: flex;
   flex-direction: column;
+  /* On a short bench the reading and the details scroll under the tile. */
+  overflow-y: auto;
   background: #1F2523;
   border: 1px solid rgba(237, 234, 227, 0.35);
   border-radius: 4px;
@@ -2320,8 +2322,8 @@ html.reduce-motion .vessel__fuming > span {
 }
 .close-look__tile {
   position: relative;
-  flex: 1;
-  min-height: 160px;
+  flex: 0 0 auto;
+  height: 190px;
   margin: 0 10px;
   overflow: hidden;
   background: #F4F4F0;
@@ -2364,6 +2366,64 @@ html.reduce-motion .vessel__fuming > span {
 }
 .close-look__vessel .glassware--back > path {
   fill: rgba(120, 140, 148, 0.12);
+}
+
+/* Reading at eye level (UI.7.2): eye buttons, the lens, the reading. */
+.close-look__reading {
+  margin: 8px 10px 0;
+}
+.close-look__eyes {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.close-look__eyes button {
+  flex: 1;
+  padding: 3px 0;
+  font-size: 11px;
+  color: #D8D5CC;
+  background: transparent;
+  border: 1px solid rgba(237, 234, 227, 0.3);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.close-look__eyes button.is-active {
+  background: rgba(232, 149, 43, 0.25);
+  border-color: rgba(232, 149, 43, 0.8);
+  color: #F6E7CF;
+}
+.close-look__lens {
+  line-height: 0;
+  border: 1px solid rgba(237, 234, 227, 0.25);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.reading-lens line {
+  stroke: #2E3A3E;
+  stroke-width: 1.2;
+}
+.reading-lens text {
+  fill: #2E3A3E;
+  font-size: 11px;
+  font-family: var(--font-mono, monospace);
+}
+.reading-lens .reading-lens__wall {
+  stroke: rgba(84, 104, 112, 0.7);
+  stroke-width: 2;
+}
+.reading-lens .reading-lens__pointer {
+  fill: #C2483A;
+}
+.close-look__value {
+  margin: 5px 0 2px;
+  font-size: 12px;
+  color: #F6E7CF;
+}
+.close-look__note {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.35;
+  color: #B9BBB4;
 }
 
 .close-look__details {

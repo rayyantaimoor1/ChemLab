@@ -54,6 +54,8 @@ import {
 import { pourPath, POUR } from './pour-path.js';
 // One drop, and swirl or stir (BUILD_UI.md UI.6.3).
 import { DROP_ML, mixVerbFor } from './dropwise.js';
+// Reading the meniscus at eye level, and parallax (BUILD_UI.md UI.7.2).
+import { readingFor, readingNote, lensSvg } from './meniscus.js';
 // A solid from the shelf drawn as what it is - ribbon, granules, chips -
 // from its curated form (BUILD_UI.md UI.3.3).
 import { solidSvg, solidBox, shelfSolidLabel } from './solid-shapes.js';
@@ -1902,7 +1904,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
    * bench and the notebook say - only bigger.
    * ------------------------------------------------------------------ */
 
-  const closeLook = { id: null, refs: null, panel: null, tile: null, details: null, title: null };
+  const closeLook = { id: null, refs: null, panel: null, tile: null, details: null, title: null, reading: null, eye: 'level' };
 
   function openCloseLook(containerId) {
     if (closeLook.id === containerId) return;
@@ -1926,9 +1928,33 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     head.append(title, shut);
     const tile = document.createElement('div');
     tile.className = 'close-look__tile';
+    // Reading the scale at eye level (UI.7.2): where your eye is, a
+    // magnified strip of the scale around the meniscus, and what you read.
+    const reading = document.createElement('div');
+    reading.className = 'close-look__reading';
+    const eyes = document.createElement('div');
+    eyes.className = 'close-look__eyes';
+    for (const [eye, label] of [['above', 'Eye above'], ['level', 'Eye level'], ['below', 'Eye below']]) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.eye = eye;
+      button.textContent = label;
+      button.addEventListener('click', () => {
+        closeLook.eye = eye;
+        render();
+      });
+      eyes.appendChild(button);
+    }
+    const lens = document.createElement('div');
+    lens.className = 'close-look__lens';
+    const value = document.createElement('p');
+    value.className = 'close-look__value';
+    const note = document.createElement('p');
+    note.className = 'close-look__note';
+    reading.append(eyes, lens, value, note);
     const details = document.createElement('dl');
     details.className = 'close-look__details';
-    panel.append(head, tile, details);
+    panel.append(head, tile, reading, details);
     canvas.appendChild(panel);
 
     const refs = buildVesselRefs(container, { interactive: false });
@@ -1936,7 +1962,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.el.classList.add('close-look__vessel');
     tile.appendChild(refs.el);
 
-    Object.assign(closeLook, { id: containerId, refs, panel, tile, details, title });
+    Object.assign(closeLook, { id: containerId, refs, panel, tile, details, title, reading, eye: 'level' });
     document.addEventListener('keydown', onCloseLookKey);
     render();
   }
@@ -1944,7 +1970,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
   function closeCloseLook() {
     if (!closeLook.panel) return;
     closeLook.panel.remove();
-    Object.assign(closeLook, { id: null, refs: null, panel: null, tile: null, details: null, title: null });
+    Object.assign(closeLook, { id: null, refs: null, panel: null, tile: null, details: null, title: null, reading: null });
     document.removeEventListener('keydown', onCloseLookKey);
   }
 
@@ -1980,7 +2006,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     if (gasLine) rows.push(['Above it', gasLine]);
     const heatLine = closeLook.refs.heatNote.hidden ? '' : closeLook.refs.heatNote.textContent;
     if (heatLine) rows.push(['Heat', heatLine]);
-    rows.push(['Reading', `${container.volumeMl} mL · ${container.temperatureC.toFixed(1)} °C · pH ${container.pH === null ? '—' : container.pH}`]);
+    rows.push(['Contents', `${container.volumeMl} mL · ${container.temperatureC.toFixed(1)} °C · pH ${container.pH === null ? '—' : container.pH}`]);
+    renderReadingLens(container);
     const html = rows.map(([k, v]) => `<dt>${k}</dt><dd>${escapeText(v)}</dd>`).join('');
     if (closeLook.details.dataset.html !== html) {
       closeLook.details.innerHTML = html;
@@ -1997,6 +2024,32 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       closeLook.refs.el.style.transform = `translate(${left}px, ${top}px) scale(${k.toFixed(3)})`;
     }
 
+  }
+
+  /** The meniscus read against the scale, from where the eye is (UI.7.2). */
+  function renderReadingLens(container) {
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    const eye = closeLook.eye;
+    const reading = geometry ? readingFor(container.type, geometry, container.capacityMl, container.volumeMl, eye) : null;
+    closeLook.reading.hidden = !reading;
+    if (!reading) return;
+    for (const button of closeLook.reading.querySelectorAll('.close-look__eyes button')) {
+      button.classList.toggle('is-active', button.dataset.eye === eye);
+    }
+    const lens = closeLook.reading.querySelector('.close-look__lens');
+    const key = `${container.type}:${container.volumeMl}:${eye}:${container.appearance.colorHex}`;
+    if (lens.dataset.key !== key) {
+      lens.innerHTML = lensSvg({
+        type: container.type, geometry, capacityMl: container.capacityMl, volumeMl: container.volumeMl,
+        eye, colorHex: container.appearance.colorHex, width: 256, height: 96,
+      });
+      lens.dataset.key = key;
+    }
+    const what = reading.runOut ? 'run out' : 'in it';
+    closeLook.reading.querySelector('.close-look__value').textContent = eye === 'level'
+      ? `You read ${reading.text} ${what} (to ±${reading.readTo} mL)${reading.approximate ? ' - approximate: not for measuring' : ''}`
+      : `You read ${reading.text} ${what} - at eye level it is ${reading.trueText}`;
+    closeLook.reading.querySelector('.close-look__note').textContent = readingNote(container.type, eye);
   }
 
   function escapeText(text) {
