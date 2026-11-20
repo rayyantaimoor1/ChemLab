@@ -305,6 +305,7 @@
       "solidKind": "solid",
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": 10
@@ -597,6 +598,7 @@
       "precipitate": null,
       "gas": "ammonia",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": 8
@@ -1419,6 +1421,7 @@
       "precipitate": "white limescale",
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": 7
@@ -1513,6 +1516,7 @@
       "solidKind": "solid",
       "gas": "oxygen",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": null
@@ -1528,7 +1532,10 @@
     "molecularAnimation": null,
     "explanation": "The other standard laboratory preparation of oxygen, and a second look at catalysis from a different angle. Potassium chlorate heated on its own needs a fierce flame before it gives up its oxygen; mixed with a little manganese(IV) oxide it does the same job at a much lower temperature. The catalyst has not changed WHAT happens or how much oxygen you get — only how easily it happens. Test the gas with a glowing splint: it should burst back into flame.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Reaction Kinetics, effect of a catalyst; preparation of oxygen"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Reaction Kinetics, effect of a catalyst; preparation of oxygen",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Thermal decomposition of the Group 2 carbonates and nitrates (the decompositions are endothermic and have to be heated constantly)", "url": "https://www.chemguide.co.uk/inorganic/group2/thermstab.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_haber_process",
@@ -1737,6 +1744,7 @@
       "solidKind": "solid",
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": null
@@ -1745,7 +1753,10 @@
     "molecularAnimation": null,
     "explanation": "Heating baking soda turns it into sodium carbonate, driving off water and carbon dioxide. (Washing soda is the same compound with water of crystallisation, Na₂CO₃·10H₂O; heating leaves the anhydrous form, also called soda ash.) This is the reaction that makes a cake rise: the carbon dioxide released inside the batter is what lifts it, and the residue left behind is harmless. Industrially it is the last step of the Solvay process, which manufactures sodium carbonate from salt and limestone. Test the gas with limewater — turning milky confirms carbon dioxide.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry, the Solvay process; thermal decomposition of hydrogencarbonates"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Industrial Chemistry, the Solvay process; thermal decomposition of hydrogencarbonates",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Thermal decomposition of the Group 2 carbonates and nitrates (the decompositions are endothermic and have to be heated constantly)", "url": "https://www.chemguide.co.uk/inorganic/group2/thermstab.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_dissolution_nh4no3",
@@ -2481,6 +2492,7 @@
       "solidKind": "solid",
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": null
@@ -2489,7 +2501,10 @@
     "molecularAnimation": null,
     "explanation": "Magnesium carbonate breaks down at about 350 °C — hot, but well within a strongly heated test tube, so this is an experiment a class can actually do. Collect the gas and turn limewater milky to prove it is carbon dioxide. Now compare it with calcium carbonate, which needs a kiln at 900 °C, and barium carbonate, which needs over 1300 °C: thermal stability of the carbonates INCREASES down Group II, because the larger cations distort the carbonate ion less and so pull it apart less easily.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA, thermal stability of carbonates"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA, thermal stability of carbonates",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Thermal decomposition of the Group 2 carbonates and nitrates (the decompositions are endothermic and have to be heated constantly)", "url": "https://www.chemguide.co.uk/inorganic/group2/thermstab.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_group2_caco3_decomposition",
@@ -2504,6 +2519,7 @@
       "solidKind": "solid",
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": null
@@ -2512,7 +2528,10 @@
     "molecularAnimation": null,
     "explanation": "Limestone into quicklime — one of the oldest industrial processes there is, and still one of the largest. It needs about 900 °C, which is why industry does it in a kiln. In a school laboratory a glass test tube cannot be heated that hot, so the vessels here will keep telling you the temperature is not high enough — but a marble chip held directly in the hottest part of a roaring Bunsen flame for several minutes does turn to quicklime at its surface, which is a standard class practical. Set against magnesium carbonate at 350 °C, the pair make the Group II trend concrete. The quicklime produced can then be slaked with water, which is where the lime cycle continues.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA, thermal stability of carbonates; Chemistry XI — Industrial Chemistry, lime"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IIA, thermal stability of carbonates; Chemistry XI — Industrial Chemistry, lime",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Thermal decomposition of the Group 2 carbonates and nitrates (the decompositions are endothermic and have to be heated constantly)", "url": "https://www.chemguide.co.uk/inorganic/group2/thermstab.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_group2_mgoh2_decomposition",
@@ -2600,6 +2619,7 @@
       "precipitate": null,
       "gas": "chlorine",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 6,
       "resultPH": 5
@@ -2659,6 +2679,7 @@
       "precipitate": null,
       "gas": "hydrogen chloride",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": true,
       "tempDeltaC": 4,
       "resultPH": 1
@@ -2674,7 +2695,10 @@
     "molecularAnimation": null,
     "explanation": "The first of three, and the control. Concentrated sulfuric acid simply displaces the more volatile hydrogen chloride from its salt — an acid–base swap, with NO redox at all. Nothing is oxidised, nothing is reduced, and the only product besides the salt is steamy hydrogen chloride. Chloride ions are too weakly reducing to attack the sulfuric acid. Keep that in mind for the bromide and iodide, which do exactly that.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reactions of halides with concentrated sulfuric acid"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reactions of halides with concentrated sulfuric acid",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Redox reactions involving halide ions and sulphuric acid (the hydrogen halide immediately escapes as steamy fumes; the reaction is exothermic)", "url": "https://www.chemguide.co.uk/inorganic/group7/halideions.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_halide_nabr_h2so4",
@@ -2688,6 +2712,7 @@
       "precipitate": null,
       "gas": "sulfur dioxide",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": true,
       "tempDeltaC": 6,
       "resultPH": 1
@@ -2703,7 +2728,10 @@
     "molecularAnimation": null,
     "explanation": "The second of three, and now something new happens. The bromide starts as the chloride did, but it does not stop there: bromide ions are strong enough reducing agents to attack the sulfuric acid itself, pulling the sulfur from +6 down to +4 as sulfur dioxide, while the bromide is oxidised to orange-brown bromine. Set the three tubes side by side and the trend is unmistakable: reducing power of the halide ions INCREASES down Group VII, because a larger ion holds its outer electrons more loosely and gives them up more readily.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reducing power of the halide ions"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reducing power of the halide ions",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Redox reactions involving halide ions and sulphuric acid (the hydrogen halide immediately escapes as steamy fumes; the reaction is exothermic)", "url": "https://www.chemguide.co.uk/inorganic/group7/halideions.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_halide_nai_h2so4",
@@ -2717,6 +2745,7 @@
       "precipitate": null,
       "gas": "hydrogen sulfide",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": true,
       "tempDeltaC": 8,
       "resultPH": 1
@@ -2732,7 +2761,10 @@
     "molecularAnimation": null,
     "explanation": "The third of three, and the trend reaches its conclusion. Iodide ions are the strongest reducing agents of the three, and they do not stop at sulfur dioxide — they drag the sulfur all the way from +6 down to −2, giving hydrogen sulfide, while dark purple iodine appears. Read the set together: chloride does no redox at all, bromide takes the sulfur to +4, iodide takes it to −2. One column of the periodic table, one property, changing steadily as the ion gets larger.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reducing power of the halide ions"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group VIIA, reducing power of the halide ions",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Redox reactions involving halide ions and sulphuric acid (the hydrogen halide immediately escapes as steamy fumes; the reaction is exothermic)", "url": "https://www.chemguide.co.uk/inorganic/group7/halideions.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_agcl_dissolves_ammonia",
@@ -2807,6 +2839,7 @@
       "precipitate": null,
       "gas": "chlorine",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 5,
       "resultPH": 3
@@ -2836,6 +2869,7 @@
       "precipitate": null,
       "gas": "chloramine vapour",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 3,
       "resultPH": 13
@@ -3079,6 +3113,7 @@
       "solidKind": "solid",
       "gas": "oxygen",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": null
@@ -3096,7 +3131,8 @@
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, oxidation states of manganese; preparation of oxygen",
     "sources": [
-      { "ref": "Wikipedia — Potassium permanganate (the solid decomposes on heating, about 240 °C, to K₂MnO₄, MnO₂ and O₂)", "url": "https://en.wikipedia.org/wiki/Potassium_permanganate", "checked": "2026-11-03", "covers": ["conditions", "products"] }
+      { "ref": "Wikipedia — Potassium permanganate (the solid decomposes on heating, about 240 °C, to K₂MnO₄, MnO₂ and O₂)", "url": "https://en.wikipedia.org/wiki/Potassium_permanganate", "checked": "2026-11-03", "covers": ["conditions", "products"] },
+      { "ref": "Jim Clark, chemguide — Thermal decomposition of the Group 2 carbonates and nitrates (the decompositions are endothermic and have to be heated constantly)", "url": "https://www.chemguide.co.uk/inorganic/group2/thermstab.html", "checked": "2026-11-20", "covers": ["gasRate"] }
     ]
   },
   {
@@ -4485,6 +4521,7 @@
       "precipitate": null,
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": "slow",
       "smoke": false,
       "tempDeltaC": 4,
       "resultPH": 2
@@ -4495,7 +4532,7 @@
     "levels": ["matric", "fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Environmental chemistry, effects of acid rain",
     "sources": [
-      { "ref": "Jim Clark, chemguide (Core Chemistry 14–16) — Acids and carbonates (marble in dilute sulfuric acid starts, then almost immediately stops as calcium sulfate coats the chips)", "url": "https://chemguide.co.uk/14to16/acids/carbonates.html", "checked": "2026-11-05", "covers": ["explanation"] },
+      { "ref": "Jim Clark, chemguide (Core Chemistry 14–16) — Acids and carbonates (marble in dilute sulfuric acid starts, then almost immediately stops as calcium sulfate coats the chips)", "url": "https://chemguide.co.uk/14to16/acids/carbonates.html", "checked": "2026-11-05", "covers": ["explanation", "gasRate"] },
       { "ref": "Wikipedia — Calcium sulfate (all forms are sparingly soluble in water; about 2.6 g/L)", "url": "https://en.wikipedia.org/wiki/Calcium_sulfate", "checked": "2026-11-05", "covers": ["explanation"] }
     ]
   },
@@ -4533,6 +4570,7 @@
       "precipitate": "a soft white jelly-like floc that settles slowly",
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": 6.5
@@ -7989,6 +8027,7 @@
       "dissolves": "the white solid fizzed away completely",
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": false,
       "tempDeltaC": 3,
       "resultPH": 6.5
@@ -7996,7 +8035,10 @@
     "hazard": null,
     "explanation": "Brisk effervescence the moment the acid touches it, and the anion test that costs nothing to run — which is why carbonate is looked for first in any salt analysis. But fizzing alone only tells you a gas came off. Bubble it through limewater and the milkiness confirms it is carbon dioxide, and only then is carbonate established. Sulfites fizz too, and their gas turns limewater milky as well, so the smell has to be checked: carbon dioxide has none and sulfur dioxide is unmistakable.",
     "levels": ["matric", "fsc", "bs"],
-    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the carbonate ion"
+    "source": "Vogel's Textbook of Qualitative Inorganic Analysis, 5th ed. — the carbonate ion",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Carboxylic acids as acids (immediate fizzing with solid sodium carbonate, with no obvious difference in vigour from dilute hydrochloric acid)", "url": "https://www.chemguide.co.uk/organicprops/acids/acidity.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_none_baso4_acid",
@@ -8041,6 +8083,7 @@
       "dissolves": "the white solid dissolved away, with a choking smell of burnt matches",
       "gas": "sulfur dioxide",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 2,
       "resultPH": 2.0
@@ -8088,6 +8131,7 @@
       "dissolves": null,
       "gas": "nitrogen dioxide",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 2,
       "resultPH": 2.5
@@ -9029,6 +9073,7 @@
       "dissolves": null,
       "gas": "chlorine",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 8,
       "resultPH": 1.0

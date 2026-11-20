@@ -215,6 +215,13 @@ and not a guessed one.
   as the rule requires.
 - Curated with sources, `covers` set to `gasRate`. Never inferred: a
   formula says nothing about how hard something fizzes.
+- `gasRate: null` means no rate is on record: no page that could be
+  opened gives one (owner approved 2026-11-20). The bench draws it at the
+  middle pace, and the validator lists every null so a source can upgrade
+  it later.
+- Two general rules stand in for per-rule pages, both owner approved: in
+  electrolysis the rate is set by the current, so steady (pure water slow);
+  a solid broken down by heat gives gas only while heated, so steady.
 - Progress is in `batch.md` §17. A missing one is a warning until the
   batches are done, then it fails the build.
 

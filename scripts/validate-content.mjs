@@ -102,6 +102,9 @@ const GAS_RATES = new Set(['slow', 'steady', 'vigorous']);
 // is counted into one warning until the batches are done; then a missing
 // one becomes an error, as boilingPointC did.
 const missingGasRate = [];
+// Rules whose gasRate is null: no rate on record. Listed so they stay in
+// sight until a source can be found (batch.md §17).
+const nullGasRate = [];
 
 // What a `sources` entry on a CHEMICAL may say it confirms: so far, the
 // three appearance fields of BUILD_UI.md stage UI.3.
@@ -262,8 +265,13 @@ const reactions = readJson('reactions.json') ?? [];
     const gasRate = reaction.effects?.gasRate;
     const bubblesOfGas = reaction.effects?.bubbles === true && nonEmptyString(reaction.effects?.gas);
     if (gasRate !== undefined) {
-      if (!GAS_RATES.has(gasRate)) {
-        problems.push(`${id}: effects.gasRate "${gasRate}" is not one of ${[...GAS_RATES].join(', ')}`);
+      // null means no rate is on record - no page that could be opened gives
+      // one (owner approved 2026-11-20). The bench draws it at the middle pace.
+      if (gasRate === null) {
+        if (bubblesOfGas) nullGasRate.push(id);
+        else problems.push(`${id}: effects.gasRate is only for rules with bubbles of a gas (effects.bubbles and effects.gas)`);
+      } else if (!GAS_RATES.has(gasRate)) {
+        problems.push(`${id}: effects.gasRate "${gasRate}" is not one of ${[...GAS_RATES].join(', ')}, or null`);
       } else if (!bubblesOfGas) {
         problems.push(`${id}: effects.gasRate is only for rules with bubbles of a gas (effects.bubbles and effects.gas)`);
       }
@@ -753,6 +761,9 @@ console.log('\n' + '#'.repeat(60));
 console.log('ERRORS — these fail the build');
 console.log('#'.repeat(60));
 
+if (nullGasRate.length) {
+  warnings.push(`${nullGasRate.length} rule(s) have no gas rate on record (gasRate: null) - a source would let them be rated: ${nullGasRate.join(', ')}`);
+}
 if (missingGasRate.length) {
   warnings.push(`${missingGasRate.length} rule(s) with bubbles of a gas have no effects.gasRate yet (BUILD_UI.md UI.5.1, batch.md §17)`);
 }

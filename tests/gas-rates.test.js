@@ -15,9 +15,9 @@ const reactions = Array.isArray(data) ? data : data.reactions;
 const byId = new Map(reactions.map((r) => [r.id, r]));
 const rated = reactions.filter((r) => r.effects && 'gasRate' in r.effects);
 
-test('every gasRate is slow, steady or vigorous', () => {
+test('every gasRate is slow, steady or vigorous - or null, no rate on record', () => {
   for (const r of rated) {
-    assert.ok(['slow', 'steady', 'vigorous'].includes(r.effects.gasRate), `${r.id}: "${r.effects.gasRate}"`);
+    assert.ok([null, 'slow', 'steady', 'vigorous'].includes(r.effects.gasRate), `${r.id}: "${r.effects.gasRate}"`);
   }
 });
 
@@ -29,7 +29,7 @@ test('a gasRate goes only where bubbles of a gas are drawn', () => {
 });
 
 test('every gasRate is backed by a reference that covers it', () => {
-  for (const r of rated) {
+  for (const r of rated.filter((x) => x.effects.gasRate !== null)) {
     const covering = (r.sources || []).filter((s) => s.covers.includes('gasRate'));
     assert.ok(covering.length > 0, `${r.id}: no source covers gasRate`);
     for (const s of covering) assert.ok(s.url, `${r.id}: a gasRate source must be a page that was opened`);

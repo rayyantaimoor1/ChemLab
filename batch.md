@@ -1618,8 +1618,8 @@ the bench never draws it boiling. It is used cold, in the nylon rope trick.
 
 ## 17. Gas rates (BUILD_UI.md stage UI.5.1)
 
-**Status: batch 2 of 4 done (2026-11-20).** 60 rules have bubbles of a gas;
-24 are rated and 36 are still to do.
+**Status: batch 3 of 4 done (2026-11-20).** 60 rules have bubbles of a gas;
+34 are rated, 10 have no rate on record (`null`), and 16 are still to do.
 
 **What the owner approved (2026-11-20):**
 - **`effects.gasRate`**: `slow`, `steady` or `vigorous`, on every rule with
@@ -1689,3 +1689,36 @@ from each rule's `electrodes` block.
 **Looked for and not found:** evidence that a chromium plating bath gasses vigorously. Wikipedia
 mentions only its low cathode efficiency, and the plating-industry page would not open. It
 stays steady under the general rule.
+
+### Batch 3 — 20 inorganic rules, and `null` for no rate on record
+
+Approved by the owner on 2026-11-20.
+
+**A second general rule: solids broken down by heat are steady.** chemguide, *Thermal
+decomposition of the Group 2 carbonates and nitrates* (opened 2026-11-20): the decompositions are
+endothermic and "have to be heated constantly". Gas comes off only while the burner supplies
+heat, so the rate is set by the burner, as the current sets it in electrolysis:
+- potassium chlorate (with manganese(IV) oxide) and potassium permanganate;
+- sodium hydrogencarbonate;
+- magnesium carbonate and calcium carbonate.
+
+**Rated from a page:**
+
+| Rule | Rate | What the page says |
+|---|---|---|
+| Sodium chloride + concentrated H₂SO₄ | vigorous | chemguide, halide ions and sulphuric acid: the hydrogen halide immediately escapes, in an exothermic reaction |
+| Sodium bromide + concentrated H₂SO₄ | vigorous | the same page |
+| Sodium iodide + concentrated H₂SO₄ | vigorous | the same page |
+| Marble + dilute sulfuric acid (acid rain) | slow | chemguide 14–16, acids and carbonates: starts, then almost immediately stops |
+| Solid sodium carbonate + HCl (anion test) | vigorous | chemguide, carboxylic acids as acids: immediate fizzing |
+
+**No rate on record (`gasRate: null`).** No page that could be opened gives a rate for these.
+The bench draws them at the middle pace and the validator lists them, so a source can upgrade
+any of them later:
+- magnesium in boiling water (the pages found describe cold water and steam only);
+- the ammonium test with sodium hydroxide (chemguide says only "warming gently");
+- boiling temporarily hard water;
+- chlorine from manganese(IV) oxide with concentrated HCl, and from lead(IV) oxide with HCl;
+- bleach with acid, and bleach with ammonia;
+- sulfite with dilute acid, and nitrite with dilute acid;
+- alum in hard water (water treatment).
