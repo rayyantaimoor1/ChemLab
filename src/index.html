@@ -42,6 +42,19 @@
       Sound
     </label>
     <!--
+      Effects (BUILD_UI.md UI.10.1): Auto drops to fewer effects on a machine
+      that cannot keep up; a teacher can force Full or Low. The chemistry
+      shown is the same in every setting. Ctrl+Shift+F shows the frame rate.
+    -->
+    <label class="topbar__reduce-motion" title="Effects: Auto lightens them on a slow machine. The chemistry shown never changes. Ctrl+Shift+F shows the frame rate.">
+      Effects
+      <select id="effects-mode">
+        <option value="auto">Auto</option>
+        <option value="full">Full</option>
+        <option value="low">Low</option>
+      </select>
+    </label>
+    <!--
       "Contract trace" - a developer-facing strip (see .trace-strip in
       bench.js) showing which dispatch call last ran. Not a chemistry
       feature; off by default, the same way it is in the mockup.

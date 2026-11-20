@@ -117,6 +117,7 @@ chemlab/
 │   │   ├── meniscus.js       ← reading a scale at eye level, parallax, and the reading lens
 │   │   ├── bottles.js        ← reagents as bottles, jars and cylinders with printed labels and GHS pictograms
 │   │   ├── sound.js          ← the lab's sounds, synthesised in the app, off until switched on
+│   │   ├── perf.js           ← frame-rate meter, and when to drop to the low effects tier
 │   │   ├── molecular.js      ← 2D reaction animations
 │   │   ├── molecular3d.js    ← 3D ball-and-stick viewer
 │   │   ├── notebook-storage.js ← the page's side of the save/load/report bridge

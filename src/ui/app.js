@@ -46,7 +46,9 @@ import { STAND, CLAMPED_TYPES, basePosition, clampPosition } from './stand.js';
 import { mountMolecularView } from './molecular.js';
 import { mountMolecular3DView } from './molecular3d.js';
 import { mountGuidedBar, mountGuidedStepCard, mountGuidedSummary } from './guided.js';
-import { setReduceAnimation } from './effects.js';
+import { setReduceAnimation, setEffectsTier } from './effects.js';
+// Frame rate, and when to lighten the effects (BUILD_UI.md UI.10.1).
+import { createFrameMeter, createTierGovernor } from './perf.js';
 // The lab's sounds, off by default (BUILD_UI.md UI.9).
 import { setSoundEnabled } from './sound.js';
 
@@ -849,6 +851,13 @@ let reduceAnimationEnabled = false;
 // Sound (BUILD_UI.md UI.9): off until the student or teacher switches it on.
 let soundOn = false;
 
+// The effects tier (BUILD_UI.md UI.10.1): the teacher's setting (auto,
+// full or low) and the tier in use now. Interface only - the chemistry
+// shown is the same in every tier.
+const frameMeter = createFrameMeter(1000);
+const tierGovernor = createTierGovernor();
+let effectsTier = 'full';
+
 // The shelf's DISPENSE strip: 'ask' opens the amount panel every time (the
 // long-standing default, and the only way to add a solid's exact grams);
 // 'quick' skips straight to adding quickAmount mL of whatever was dropped,
@@ -1432,6 +1441,8 @@ function getState() {
     selectedToolId,
     reduceAnimationEnabled,
     soundOn,
+    effectsMode: tierGovernor.mode(),
+    effectsTier,
     viewingChemicalId,
     viewingReactionId,
     viewing3DChemicalId,
@@ -1548,6 +1559,12 @@ const dispatch = {
     reduceAnimationEnabled = Boolean(enabled);
     setReduceAnimation(reduceAnimationEnabled);
   }, null, 'setReduceAnimation'),
+
+  // The top bar's Effects setting (UI.10.1): auto, full or low.
+  setEffectsMode: wrap((mode) => {
+    tierGovernor.setMode(mode);
+    useEffectsTier(tierGovernor.update(performance.now(), frameMeter.fps()));
+  }, null, 'setEffectsMode'),
 
   // The top bar's Sound switch (UI.9) - interface only, like the one above.
   setSound: wrap((on) => {
@@ -1976,6 +1993,66 @@ subscribe(() => {
   if (!notebookChanged) return;
   notebookChanged = false;
   notebookSaver.save();
+});
+
+/* ------------------------------------------------------------------ *
+ * Measuring the frame rate (BUILD_UI.md UI.10.1).
+ *
+ * Every visible frame is timed. In Auto, two seconds below 30 fps drops
+ * the effects to the low tier (perf.js). The first three seconds after
+ * launch are not counted - loading is slow on every machine - and neither
+ * is a hidden window, which the system slows on purpose.
+ * ------------------------------------------------------------------ */
+
+function useEffectsTier(tier) {
+  if (tier === effectsTier) return;
+  effectsTier = tier;
+  setEffectsTier(tier);
+  notify();
+}
+
+const measureFrom = performance.now() + 3000;
+const perfOverlay = document.createElement('div');
+perfOverlay.className = 'perf-overlay';
+perfOverlay.hidden = true;
+perfOverlay.setAttribute('aria-hidden', 'true');
+document.body.appendChild(perfOverlay);
+let overlayUpdatedAt = 0;
+
+function onFrame(now) {
+  if (document.visibilityState === 'visible' && now >= measureFrom) {
+    frameMeter.tick(now);
+    useEffectsTier(tierGovernor.update(now, frameMeter.fps()));
+  }
+  if (!perfOverlay.hidden && now - overlayUpdatedAt > 250) {
+    overlayUpdatedAt = now;
+    const fps = frameMeter.fps();
+    const ms = frameMeter.frameMs();
+    perfOverlay.textContent = `${fps === null ? '--' : Math.round(fps)} fps · ${ms === null ? '--' : ms.toFixed(1)} ms · effects ${effectsTier}${tierGovernor.mode() === 'auto' ? ' (auto)' : ''}`;
+  }
+  requestAnimationFrame(onFrame);
+}
+requestAnimationFrame(onFrame);
+
+document.addEventListener('visibilitychange', () => {
+  frameMeter.reset();
+  tierGovernor.pause();
+});
+
+// Ctrl+Shift+F: the frame-rate overlay, for a teacher checking a machine.
+document.addEventListener('keydown', (event) => {
+  if (event.ctrlKey && event.shiftKey && (event.key === 'F' || event.key === 'f')) {
+    event.preventDefault();
+    perfOverlay.hidden = !perfOverlay.hidden;
+  }
+});
+
+const effectsSelect = document.getElementById('effects-mode');
+effectsSelect.addEventListener('change', (event) => {
+  dispatch.setEffectsMode(event.target.value);
+});
+subscribe(() => {
+  effectsSelect.value = getState().effectsMode;
 });
 
 const soundCheckbox = document.getElementById('sound-on');

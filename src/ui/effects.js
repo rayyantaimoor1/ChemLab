@@ -61,6 +61,30 @@ export function setReduceAnimation(enabled) {
   }
 }
 
+/**
+ * The effects tier (BUILD_UI.md UI.10.1): 'full', or 'low' on a machine
+ * that cannot keep up - half the particles, no convection shimmer, no
+ * slosh. What the chemistry shows is the same in both; set from app.js,
+ * which measures the frame rate (perf.js).
+ */
+let effectsTier = 'full';
+
+export function setEffectsTier(tier) {
+  effectsTier = tier === 'low' ? 'low' : 'full';
+  if (typeof document !== 'undefined' && document.documentElement) {
+    document.documentElement.classList.toggle('effects-low', effectsTier === 'low');
+  }
+}
+
+export function getEffectsTier() {
+  return effectsTier;
+}
+
+/** How many of the count particles this tier draws - never fewer than one. */
+export function particlesFor(count) {
+  return effectsTier === 'low' ? Math.max(1, Math.round(count * 0.5)) : count;
+}
+
 export function isReduceAnimationEnabled() {
   return appReduceMotionEnabled;
 }
@@ -305,7 +329,7 @@ export function playBubbles(layerEl, {
   if (!layerEl) return;
   const between = ([low, high]) => low + Math.random() * (high - low);
 
-  for (let i = 0; i < count; i += 1) {
+  for (let i = 0, n = particlesFor(count); i < n; i += 1) {
     const bubble = document.createElement('span');
     bubble.className = 'fx-bubble';
     if (xPx) bubble.style.left = `${Math.round(between(xPx))}px`;
@@ -344,7 +368,7 @@ export function playBubbles(layerEl, {
 export function playGasEvolution(layerEl, { count = 4, duration = 1500 } = {}) {
   if (!layerEl) return;
 
-  for (let i = 0; i < count; i += 1) {
+  for (let i = 0, n = particlesFor(count); i < n; i += 1) {
     const wisp = document.createElement('span');
     wisp.className = 'fx-gas';
     wisp.style.left = `${20 + Math.random() * 60}%`;
@@ -377,7 +401,7 @@ export function playGasEvolution(layerEl, { count = 4, duration = 1500 } = {}) {
 export function playFumes(layerEl, { count = 6, duration = 2600 } = {}) {
   if (!layerEl) return;
 
-  for (let i = 0; i < count; i += 1) {
+  for (let i = 0, n = particlesFor(count); i < n; i += 1) {
     const puff = document.createElement('span');
     puff.className = 'fx-fume';
     puff.style.left = `${20 + Math.random() * 50}%`;
@@ -413,7 +437,7 @@ export function playPrecipitate(layerEl, colorHex, { count = 10, duration = 1200
 
   const layerHeight = layerEl.getBoundingClientRect().height || 120;
 
-  for (let i = 0; i < count; i += 1) {
+  for (let i = 0, n = particlesFor(count); i < n; i += 1) {
     const grain = document.createElement('span');
     grain.className = 'fx-precipitate';
     const startFraction = 0.05 + Math.random() * 0.15;

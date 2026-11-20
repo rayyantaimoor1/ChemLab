@@ -49,6 +49,8 @@ import {
   spreadColour,
   shakeLayers,
   prefersReducedMotion,
+  particlesFor,
+  getEffectsTier,
 } from './effects.js';
 // How a pour looks: lip, tilt, stream, splash (BUILD_UI.md UI.6.2).
 import { pourPath, POUR } from './pour-path.js';
@@ -1882,7 +1884,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const rodFoot = geometry ? geometry.h - footFromBottom : 0;
     const rise = surface === null ? 0 : Math.max(6, Math.round(rodFoot - surface - 4));
     const signature = bubbles && geometry
-      ? `${bubbles.gasRate}:${rise}:${bubbles.streams.map((s) => s.side + s.share).join('|')}`
+      ? `${bubbles.gasRate}:${rise}:${getEffectsTier()}:${bubbles.streams.map((s) => s.side + s.share).join('|')}`
       : '';
     if (refs.lastStreamSignature === signature) return;
     refs.lastStreamSignature = signature;
@@ -1892,7 +1894,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     const pace = paceFor(bubbles.gasRate);
     for (const stream of bubbles.streams) {
-      const n = Math.max(1, Math.round(pace.stream * stream.share));
+      const n = particlesFor(Math.max(1, Math.round(pace.stream * stream.share)));
       for (let k = 0; k < n; k += 1) {
         const span = document.createElement('span');
         span.className = `electrode-bubble electrode-bubble--${stream.side}`;
@@ -2350,7 +2352,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
   /** Swirling a conical flask: it rocks on its base, and the liquid goes round with it. */
   function playSwirl(refs) {
-    if (prefersReducedMotion()) return;
+    // The low tier mixes the flask without the rocking (UI.10.1).
+    if (prefersReducedMotion() || getEffectsTier() === 'low') return;
     const vessel = refs.vessel;
     vessel.style.transition = 'none';
     vessel.style.transformOrigin = '50% 100%';

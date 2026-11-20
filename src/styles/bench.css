@@ -4510,3 +4510,36 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 .amount-panel__buttons .amount-panel__dispense:hover {
   background: var(--bench-deep);
 }
+
+/* ------------------------------------------------------------------ *
+ * The low effects tier (BUILD_UI.md UI.10.1): on a machine that cannot
+ * hold 30 fps, less decoration in motion - never different chemistry.
+ * Bubbles, colours, precipitates and words are all still there.
+ * ------------------------------------------------------------------ */
+html.effects-low .vessel__convection,
+html.effects-low .equipment__part--hood-air {
+  display: none;
+}
+html.effects-low .vessel__boil > span:nth-child(even),
+html.effects-low .vessel__steam > span:nth-child(even),
+html.effects-low .equipment-front__bubbles > span:nth-child(even),
+html.effects-low .equipment-front__extract > span:nth-child(n+4),
+html.effects-low .equipment-front__steam > span:nth-child(even),
+html.effects-low .vessel__fuming > span:nth-child(2) {
+  display: none;
+}
+
+/* The frame-rate overlay (UI.10.1), behind Ctrl+Shift+F. */
+.perf-overlay {
+  position: fixed;
+  right: 8px;
+  bottom: 8px;
+  z-index: 2000;
+  padding: 4px 8px;
+  font: 12px var(--font-mono, monospace);
+  color: #DDEFD9;
+  background: rgba(10, 14, 13, 0.85);
+  border: 1px solid rgba(221, 239, 217, 0.35);
+  border-radius: 3px;
+  pointer-events: none;
+}

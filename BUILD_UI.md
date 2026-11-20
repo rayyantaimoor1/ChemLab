@@ -1047,6 +1047,29 @@ someone seeing it for the first time.
 > convection lines, no slosh) switched on automatically below 30 fps for two seconds, and forced
 > by a teacher in settings. The chemistry shown is identical in every tier.
 
+> **Done (2026-11-21).** The meter and the rules are in `src/ui/perf.js`, tested in
+> `tests/perf.test.js`.
+> - **The overlay.** Ctrl+Shift+F shows the frames a second, the time per frame and the tier in
+>   use, for example "60 fps · 16.7 ms · effects full (auto)". Pressed again, it hides.
+> - **The low tier:**
+>   - half the particles: bubbles, fumes, settling grains, gas puffs and electrode streams, with
+>     their rates kept in proportion;
+>   - no convection shimmer;
+>   - every other boil, steam and bath bubble left out;
+>   - no rocking when a flask is swirled. It still mixes.
+>
+>   The colours, precipitates, bubbles at their relative rates, labels and notebook are identical.
+> - **Auto.** Two seconds below 30 fps drops to the low tier, and it stays low until the setting
+>   is changed, so the bench does not flicker between tiers. The first three seconds after launch
+>   and any time the window is hidden are not counted.
+> - **The teacher's setting.** "Effects" in the top bar: Auto (the default), Full or Low. Low is
+>   for a machine known to be slow; Full keeps every effect whatever the frame rate.
+> - **Checked in the running app:**
+>   - the overlay read 60 fps on this PC;
+>   - forcing Low cut magnesium-in-acid's bubbles from 18 to 9 and hid the convection shimmer;
+>   - in Auto, with every frame slowed on purpose to about 45 ms of work, the tier dropped to low
+>     after two seconds ("effects low (auto)").
+
 **UI.10.2 — Sonnet — Performance test**
 > A scripted busy bench — four vessels boiling, bubbling and precipitating at once — that fails if
 > average frame time is more than 20% worse than the number recorded in `PERFORMANCE.md`.
