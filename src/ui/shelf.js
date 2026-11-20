@@ -45,6 +45,8 @@
  */
 
 import { engine } from '../core/engine.js';
+// Each reagent drawn as the bottle, jar or cylinder it comes in (UI.8.2).
+import { bottleSvg } from './bottles.js';
 
 /** The levels a chemical can be tagged with, coarsest first. */
 const LEVELS = [
@@ -251,6 +253,14 @@ export function mountShelf({ root, getState, dispatch, subscribe }) {
     // signal (UI.md section 5) - the formula and concentration are always
     // there in words underneath.
     item.style.setProperty('--spine', chemical.colorHex || '#C9D6DA');
+
+    // The bottle itself, small: its kind, its glass, its contents' colour
+    // (UI.8.2). The full printed label is on the properties card.
+    const thumb = document.createElement('span');
+    thumb.className = 'reagent-bottle__thumb';
+    thumb.setAttribute('aria-hidden', 'true');
+    thumb.innerHTML = bottleSvg(chemical, { width: 22, height: 34, label: false });
+    item.appendChild(thumb);
 
     const name = document.createElement('span');
     name.className = 'reagent-bottle__name';

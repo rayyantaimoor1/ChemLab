@@ -1781,3 +1781,29 @@ Each page was already cited for the chemical's boiling point; that entry now cov
 - concentrated nitric acid: Wikipedia calls nitric acid fuming only above 86%, and the
   ordinary concentrated acid is 68%;
 - concentrated ammonia solution: it gives off a strong gas, but no visible mist of its own.
+
+## 19. Amber bottles (BUILD_UI.md stage UI.8.2)
+
+**Status: first batch done (2026-11-21).** Five reagents carry `storage: "amber"`.
+
+**What the owner approved (2026-11-21):**
+- **`storage: "amber"`** on a reagent that light breaks down, kept in amber glass. No field means
+  clear glass.
+- **Sources:** a page that was opened, with `covers: ["storage"]`.
+- **Checks:** the validator rejects any other value, amber on a gas, and a value with no
+  source behind it.
+
+### Batch 1 — five reagents, every page opened 2026-11-21
+
+| Reagent | Page | What it says |
+|---|---|---|
+| Silver nitrate solution | British Pharmacopoeia 2010, Silver Nitrate Solution R2 | store protected from light |
+| Iodine solution | US FDA Bacteriological Analytical Manual R40, Lugol's iodine | store in an amber glass-stoppered bottle in the dark |
+| Potassium permanganate solution | Sciencing, How to reduce potassium permanganate | not stable in light; kept in a dark container |
+| Hydrogen peroxide solution | Wikipedia, Hydrogen peroxide | decomposes in light; stored in an opaque bottle |
+| Concentrated nitric acid | Wikipedia, Nitric acid | light decomposition; stored in brown glass bottles |
+
+**Left out:**
+- dilute nitric acid: the page is about the acid generally, and the concentrated acid is the
+  one kept in brown bottles;
+- bromine water: no storage page was found.

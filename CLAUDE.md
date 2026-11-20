@@ -115,6 +115,7 @@ chemlab/
 │   │   ├── pour-path.js      ← how a pour looks: lip, tilt, stream arc, splash
 │   │   ├── dropwise.js       ← one drop (0.05 mL), and which vessels are swirled rather than stirred
 │   │   ├── meniscus.js       ← reading a scale at eye level, parallax, and the reading lens
+│   │   ├── bottles.js        ← reagents as bottles, jars and cylinders with printed labels and GHS pictograms
 │   │   ├── molecular.js      ← 2D reaction animations
 │   │   ├── molecular3d.js    ← 3D ball-and-stick viewer
 │   │   ├── notebook-storage.js ← the page's side of the save/load/report bridge
@@ -222,6 +223,14 @@ and not a guessed one.
 - Curated with a source, `covers` set to `fumes`. Never read off a
   description: one that says "fumes in air" does nothing without the field.
 - No field means nothing is drawn at the mouth. Progress is in `batch.md` §18.
+
+**`storage: "amber"`** on a chemical (BUILD_UI.md stage UI.8.2, owner
+approved 2026-11-21): a reagent that light breaks down, kept in amber
+glass. The shelf and the properties card draw it in an amber bottle.
+Curated with a source, `covers` set to `storage`; no field means clear
+glass. Which container a reagent comes in - cylinder, jar, dropper bottle
+or reagent bottle - follows from its curated state and shelf drawer.
+Progress is in `batch.md` §19.
 
 **`effects.gasRate`** on a reaction (BUILD_UI.md stage UI.5, owner approved
 2026-11-20): how fast its gas comes off - `slow`, `steady` or

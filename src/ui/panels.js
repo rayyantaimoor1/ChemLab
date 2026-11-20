@@ -26,6 +26,8 @@ import { engine } from '../core/engine.js';
 // Only used to check whether a 3D model exists, so the "View in 3D" button
 // can be left out honestly rather than opening a viewer with nothing in it.
 import { getMolecule3D } from './molecular3d.js';
+// The reagent's bottle with its printed label and GHS pictograms (UI.8.2).
+import { bottleSvg } from './bottles.js';
 
 // The mockup's own seven-way accent, one colour per tag - never the
 // hazard red used decoratively (that stays reserved for the hazard
@@ -894,6 +896,13 @@ export function mountPropertiesCard({ root, getState, dispatch, subscribe }) {
     header.appendChild(closeButton);
 
     panel.appendChild(header);
+
+    // The bottle it comes in, with its printed label: name, formula,
+    // concentration and the GHS pictograms for its hazards (UI.8.2).
+    const bottle = document.createElement('figure');
+    bottle.className = 'properties-panel__bottle';
+    bottle.innerHTML = bottleSvg(chemical, { width: 150, height: 215 });
+    body.appendChild(bottle);
 
     if (chemical.structure) {
       const figure = document.createElement('figure');

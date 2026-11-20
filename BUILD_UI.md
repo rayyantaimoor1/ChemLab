@@ -902,6 +902,31 @@ stands, with the hazard text unchanged.
 > Amber and clear bottles, dropper bottles, solid jars and gas cylinders, each with a printed
 > label: name, formula, concentration and the GHS pictograms from `ghs-hazards.json`.
 
+> **Done (2026-11-21).** The drawings are in `src/ui/bottles.js`, with no DOM, and are tested in
+> `tests/bottles.test.js`.
+> - **Which container.** It follows from data already curated, never from a formula:
+>   - a gas comes in a gas cylinder;
+>   - a solid comes in a wide-mouthed jar with a screw cap;
+>   - an indicator or test reagent (the "reagent" drawer) comes in a dropper bottle;
+>   - any other liquid comes in a reagent bottle with a glass stopper.
+> - **Which glass.** Amber where the new curated `storage: "amber"` field says so (owner approved
+>   2026-11-21), clear otherwise. The first batch is five reagents, each from a page that was
+>   opened (`batch.md` §19): silver nitrate, iodine, potassium permanganate and hydrogen peroxide
+>   solutions, and concentrated nitric acid.
+> - **On the shelf:** each reagent row shows its container small, in its glass, holding its
+>   contents' colour.
+> - **On the properties card:** the full container with its printed label: name, formula and
+>   concentration (wrapped when long), and the GHS pictograms for its hazard words.
+>   - The pictograms come from `ghs-hazards.json`, each once, in GHS order, with each
+>     pictogram's meaning on hover.
+>   - All nine are drawn here, simplified, in the GHS form: a black symbol in a white diamond with
+>     a red border.
+> - **Checked in the running app:**
+>   - all 180 shelf reagents show a container, in all four kinds and both glasses;
+>   - concentrated HCl's label carries the corrosive and exclamation-mark pictograms;
+>   - silver nitrate's amber bottle carries oxidising, corrosive and environment.
+>   - Screenshot: `docs/ui-progress/UI.8/bottles.png`.
+
 **UI.8.3 — Sonnet — Fume cupboard**
 > If the decision above is yes: a fume cupboard area on the bench; a hazardous reaction done inside
 > it shows the fumes drawn away, and the hazard warning still appears in full.
@@ -967,5 +992,6 @@ finds nothing that would teach a student something wrong.
 | UI.4 | Curated `boilingPointC` / `meltingPointC` | | |
 | UI.5.3 | Curated `fumes` ("mist" or "vapour") on chemicals that fume in moist air, sourced | Yes (owner) | 2026-11-20 |
 | UI.5 | Curated `effects.gasRate` (slow / steady / vigorous) on every rule with bubbles of a gas, sourced, in batches; missing fails the build once done | Yes (owner) | 2026-11-20 |
+| UI.8.2 | Curated `storage: "amber"` on reagents kept from light, sourced | Yes (owner) | 2026-11-21 |
 | UI.8 | A fume cupboard on the bench: a vessel can stand inside it; fumes and toxic gas made there are drawn away; the hazard warning is unchanged | Yes (owner) | 2026-11-21 |
 | UI.9 | Sound in the app | | |

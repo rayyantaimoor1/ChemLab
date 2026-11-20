@@ -10,3 +10,16 @@
 
 The two textures are drawn by `scripts/make-room-images.mjs`:
 `wall-tiles.jpg` is 2,650 bytes and `bench-resin.jpg` 1,523 bytes.
+
+## UI.8.2 — Real reagent bottles
+
+`bottles.png` shows the shelf filtered to "nitr":
+
+- **On the shelf:**
+  - nitric acid and potassium nitrate in clear reagent bottles;
+  - nitrogen in a gas cylinder;
+  - ammonium nitrate in a screw-cap jar;
+  - silver nitrate in amber glass.
+- **Silver nitrate's properties card:** its amber bottle, with a label
+  printed with its name, AgNO3, 0.1 M, and the oxidising, corrosive and
+  environment pictograms.

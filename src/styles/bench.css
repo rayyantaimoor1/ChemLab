@@ -604,7 +604,7 @@ select:focus-visible,
 
 .reagent-bottle {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 40px;
+  grid-template-columns: 28px minmax(0, 1fr) 40px;
   align-items: stretch;
   margin-bottom: 6px;
   background: #FFFFFF;
@@ -623,8 +623,17 @@ select:focus-visible,
   cursor: grabbing;
 }
 
-.reagent-bottle__name {
+/* The bottle, jar or cylinder the reagent comes in (UI.8.2). */
+.reagent-bottle__thumb {
   grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: center;
+  justify-self: center;
+  line-height: 0;
+}
+
+.reagent-bottle__name {
+  grid-column: 2;
   padding: 6px 0 1px 9px;
   font-size: 14px;
   font-weight: 600;
@@ -635,7 +644,7 @@ select:focus-visible,
 }
 
 .reagent-bottle__meta {
-  grid-column: 1;
+  grid-column: 2;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -657,7 +666,7 @@ select:focus-visible,
 }
 
 .reagent-bottle__properties {
-  grid-column: 2;
+  grid-column: 3;
   grid-row: 1 / span 2;
   align-self: stretch;
   font-family: var(--font-mono);
@@ -3512,6 +3521,23 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 
 .properties-panel__body {
   padding: 16px 24px 24px;
+}
+
+/* The reagent's bottle with its printed label (UI.8.2). */
+.properties-panel__bottle {
+  margin: 4px 0 8px;
+  display: flex;
+  justify-content: center;
+}
+.bottle .bottle__name {
+  font: 600 8.5px var(--font-sans, sans-serif);
+  fill: #1E2321;
+  text-anchor: middle;
+}
+.bottle .bottle__sub {
+  font: 7.5px var(--font-mono, monospace);
+  fill: #3E4542;
+  text-anchor: middle;
 }
 
 .properties-panel__structure {

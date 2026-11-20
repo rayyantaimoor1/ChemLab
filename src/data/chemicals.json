@@ -189,9 +189,16 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/agno3.svg",
     "description": "Colourless solution used as the standard test for halide ions. Leaves dark brown or black stains on skin and clothing that take days to wear off. Kept in a dark bottle because light slowly decomposes it.",
+    "storage": "amber",
     "clarity": "clear",
     "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Silver nitrate",
+    "sources": [
+      { "ref": "British Pharmacopoeia 2010 — Silver Nitrate Solution R2 (a 1.7% w/v solution of silver nitrate: store protected from light)",
+        "url": "https://drugfuture.com/Pharmacopoeia/BP2010/data/1873.html",
+        "checked": "2026-11-20",
+        "covers": ["storage"] }
+    ],
     "category": "salt"
   },
   {
@@ -1423,9 +1430,16 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/i2.svg",
     "description": "Iodine dissolved in water, brown in colour. Iodine barely dissolves in water on its own, so laboratory iodine solution is normally made up in potassium iodide, which dissolves it readily. It is the least reactive of the three common halogens, so it cannot displace either chlorine or bromine.",
+    "storage": "amber",
     "clarity": "clear",
     "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); PubChem, National Library of Medicine — Iodine",
+    "sources": [
+      { "ref": "US FDA Bacteriological Analytical Manual, R40 — Lugol's iodine solution (iodine in potassium iodide: store in an amber glass-stoppered bottle in the dark)",
+        "url": "https://www.fda.gov/food/laboratory-methods/bam-r40-lugols-iodine-solution",
+        "checked": "2026-11-20",
+        "covers": ["storage"] }
+    ],
     "category": "reagent"
   },
   {
@@ -1884,9 +1898,16 @@
     "levels": ["matric", "fsc", "bs"],
     "structure": "molecules/h2o2.svg",
     "description": "Colourless liquid that looks exactly like water but slowly falls apart into water and oxygen on its own. Adding a catalyst makes that happen fast enough to watch, which is why it is the standard way of preparing oxygen in a laboratory and the standard demonstration of what a catalyst does.",
+    "storage": "amber",
     "clarity": "clear",
     "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); PubChem, National Library of Medicine — Hydrogen peroxide",
+    "sources": [
+      { "ref": "Wikipedia — Hydrogen peroxide (decomposes slowly when exposed to light; stored in an opaque bottle)",
+        "url": "https://en.wikipedia.org/wiki/Hydrogen_peroxide",
+        "checked": "2026-11-20",
+        "covers": ["storage"] }
+    ],
     "category": "oxide"
   },
   {
@@ -3193,10 +3214,17 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/kmno4.svg",
     "description": "Intensely purple solution, so strongly coloured that a very dilute one still looks deep. Manganese here is in its highest oxidation state, +7, which makes it a powerful oxidising agent. Its colour is its own indicator: in an acidic titration the purple is destroyed as it reacts, so the first faint pink that persists marks the end point and no separate indicator is needed.",
+    "storage": "amber",
     "clarity": "clear",
     "boilingPointC": 100,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, solubility); Punjab Curriculum and Textbook Board, Chemistry XII — Transition Elements, oxidation states of manganese",
     "flameElements": ["potassium"],
+    "sources": [
+      { "ref": "Sciencing — How to reduce potassium permanganate (the solution is not stable in the presence of light, so it is kept in a dark container)",
+        "url": "https://sciencing.com/reduce-potassium-permanganate-5243407.html",
+        "checked": "2026-11-20",
+        "covers": ["storage"] }
+    ],
     "category": "salt"
   },
   {
@@ -8690,6 +8718,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/hno3_conc.svg",
     "description": "Nitric acid strong enough to act as an oxidising agent and to nitrate aromatic rings, not merely to donate protons. The faint yellow is dissolved nitrogen dioxide from slow decomposition. It stains skin and fingernails yellow on contact, for exactly the reason the protein test below works.",
+    "storage": "amber",
     "clarity": "clear",
     "boilingPointC": 121,
     "source": "Vogel's Textbook of Practical Organic Chemistry, 5th ed. — reagents; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
@@ -8697,7 +8726,7 @@
       { "ref": "Wikipedia — Nitric acid (boiling point 68% solution boils at 121 °C)",
         "url": "https://en.wikipedia.org/wiki/Nitric_acid",
         "checked": "2026-11-19",
-        "covers": ["boilingPoint"] }
+        "covers": ["boilingPoint", "storage"] }
     ],
     "category": "acid"
   },

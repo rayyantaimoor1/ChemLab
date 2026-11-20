@@ -104,7 +104,7 @@ const nullGasRate = [];
 
 // What a `sources` entry on a CHEMICAL may say it confirms: so far, the
 // three appearance fields of BUILD_UI.md stage UI.3.
-const CHEMICAL_SOURCE_COVERS = new Set(['clarity', 'form', 'texture', 'boilingPoint', 'meltingPoint', 'fumes']);
+const CHEMICAL_SOURCE_COVERS = new Set(['clarity', 'form', 'texture', 'boilingPoint', 'meltingPoint', 'fumes', 'storage']);
 
 function nonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
@@ -571,6 +571,25 @@ for (const chemical of chemicals) {
     }
     if (!(chemical.sources || []).some((s) => (s.covers || []).includes('fumes'))) {
       problems.push(`${chemical.id}: fumes needs a source that covers it`);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * storage — "amber" for a reagent kept from light, which the shelf draws
+ * in an amber bottle (BUILD_UI.md UI.8.2, owner approved 2026-11-21).
+ * Curated with a source; no field means clear glass.
+ * ------------------------------------------------------------------ */
+{
+  for (const chemical of chemicals) {
+    if (!('storage' in chemical)) continue;
+    if (chemical.storage !== 'amber') {
+      problems.push(`${chemical.id}: storage "${chemical.storage}" must be "amber" (or left out for clear glass)`);
+    } else if (chemical.state === 'gas') {
+      problems.push(`${chemical.id}: a gas comes in a cylinder, not an amber bottle`);
+    }
+    if (!(chemical.sources || []).some((s) => (s.covers || []).includes('storage'))) {
+      problems.push(`${chemical.id}: storage needs a source that covers it`);
     }
   }
 }
