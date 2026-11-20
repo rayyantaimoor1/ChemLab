@@ -39,6 +39,7 @@ import {
   crossfadeColor,
   riseLiquidLevel,
   playBubbles,
+  playFumes,
   playGasEvolution,
   playPrecipitate,
   playPourStream,
@@ -59,6 +60,8 @@ import { thermometerSvg, thermometerGeometry, columnFraction, offScale, SCALE_MA
 import { solidLabel } from './appearance.js';
 // Where gas bubbles form, and how fast (BUILD_UI.md UI.5.2).
 import { paceFor, bubbleSourceFor } from './gas-bubbles.js';
+// Coloured gases above the liquid, and where smoke forms (BUILD_UI.md UI.5.3).
+import { gasNoteText, fumesNoteText, smokeFormsInside, GAS_TINT } from './gas-look.js';
 // The shape of each vessel, its printed scale, and how high a volume of
 // liquid comes inside it (BUILD_UI.md UI.2) - all in glassware.js.
 import { glassGeometry, frontSvg, backSvg, liquidFraction, liquidPathPx } from './glassware.js';
@@ -724,6 +727,22 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // Smoke hangs in the air above the mouth, outside the glass.
     const smoke = document.createElement('div');
     smoke.className = 'vessel__smoke';
+    // Coloured gas gathered in the space above the liquid (UI.5.3).
+    const headspace = document.createElement('div');
+    headspace.className = 'vessel__headspace';
+    // A cloud of smoke or vapour leaving the mouth (UI.5.3).
+    const fumes = document.createElement('div');
+    fumes.className = 'vessel__fumes';
+    // A fuming liquid's mist or vapour, rising from the mouth while it is
+    // in the vessel (UI.5.3).
+    const fuming = document.createElement('div');
+    fuming.className = 'vessel__fuming';
+    for (let k = 0; k < 3; k += 1) {
+      const wisp = document.createElement('span');
+      wisp.style.left = `${25 + k * 22}%`;
+      wisp.style.animationDelay = `${k * 900}ms`;
+      fuming.appendChild(wisp);
+    }
     const bubbleLayer = document.createElement('div');
     bubbleLayer.className = 'vessel__layer vessel__bubbles';
     const gasLayer = document.createElement('div');
@@ -760,10 +779,12 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // as it would in real glass.
     const solidLayer = document.createElement('div');
     solidLayer.className = 'vessel__layer vessel__shelf-solids';
-    glass.append(solidLayer, liquidBase, liquidIncoming, plume, layerBox, emulsion, convection, boil, condensation, glow, haze, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
+    glass.append(solidLayer, liquidBase, liquidIncoming, plume, layerBox, emulsion, convection, boil, condensation, glow, haze, headspace, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
     vessel.appendChild(glass);
     vessel.insertAdjacentHTML('beforeend', frontSvg(container.type, container.capacityMl));
     vessel.appendChild(smoke);
+    vessel.appendChild(fumes);
+    vessel.appendChild(fuming);
     vessel.appendChild(steam);
     // Soot from a luminous flame, on the outside of the glass (UI.4.1).
     const soot = document.createElement('div');
@@ -839,8 +860,12 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const heatNote = document.createElement('span');
     heatNote.className = 'object-chip__power object-chip__heat';
     heatNote.hidden = true;
+    // A coloured gas, always named (UI.5.3).
+    const gasNote = document.createElement('span');
+    gasNote.className = 'object-chip__power object-chip__gas';
+    gasNote.hidden = true;
 
-    chip.append(nameRow, readout, colourRow, shelfSolidNote, precipitateLabel, heatNote, capacityChip, standNote, readingRow, powerNote);
+    chip.append(nameRow, readout, colourRow, shelfSolidNote, precipitateLabel, heatNote, gasNote, capacityChip, standNote, readingRow, powerNote);
     el.appendChild(chip);
 
     // The flame indicator lives with the burner now, so a vessel only
@@ -858,7 +883,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       volumeEl, tempEl, phEl, colorSwatch, colorText, colourRow, precipitateLabel, capacityChip,
       standNote, vesselShadow, flame, electrodeLayer, ionLayer, streamLayer,
       readingRow, readingSwatch, readingText, powerNote,
-      solidLayer, shelfSolidNote, solidEls: new Map(), haze, smoke, cathodeRod,
+      solidLayer, shelfSolidNote, solidEls: new Map(), haze, smoke, headspace, fumes, fuming, gasNote, cathodeRod,
       plume, mixing: null, layerBox, emulsion, shaking: false, soot,
       convection, boil, condensation, steam, heatNote, glow,
       thermometer: null, thermometerColumn: null,
@@ -1063,6 +1088,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const onCathode = !!solid && solid.kind === 'deposit' && container.electrified === true;
     const isSmoke = !!solid && solid.kind === 'smoke';
     const onFloor = !!solid && !onCathode && !isSmoke;
+    // Smoke from two gases meeting fills the vessel instead (updateGases).
+    if (!isSmoke) refs.smokeInside = false;
 
     // The cathode wears the metal it is collecting.
     refs.cathodeRod.style.background = onCathode
@@ -1075,7 +1102,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       refs.smoke.innerHTML = isSmoke && geometry ? smokeSvg(solid, geometry.bodyW * 1.3) : '';
       refs.smoke.dataset.key = smokeKey;
     }
-    refs.smoke.classList.toggle('is-visible', isSmoke);
+    refs.smoke.classList.toggle('is-visible', isSmoke && !refs.smokeInside);
+    updateGases(refs, container, isSmoke && refs.smokeInside ? solid : null);
 
     // The settled solid, or the hanging floc.
     refs.sediment.classList.toggle('is-visible', onFloor);
@@ -1188,6 +1216,43 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
    * heat-look.js. All drawn with transform and opacity only; static when
    * animation is reduced, so the state still shows.
    */
+  /**
+   * Coloured gas gathered above the liquid - densest just over the surface,
+   * as these heavy gases are - in its curated colour, and named on the
+   * label (BUILD_UI.md UI.5.3). A smoke made by two gases meeting fills the
+   * same space as a white cloud.
+   */
+  function updateGases(refs, container, insideSmoke = null) {
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    const gases = container.appearance.gases || [];
+    const hasLiquid = container.volumeMl > 0;
+    const layers = gases.map((g) => g.colorHex);
+    if (insideSmoke) layers.push(insideSmoke.colorHex || '#F4F4F2');
+
+    if (geometry) {
+      const surface = hasLiquid ? geometry.surfaceY(container.volumeMl) : geometry.floorY;
+      refs.headspace.style.height = `${Math.max(0, Math.round(surface ?? geometry.floorY))}px`;
+    }
+    const alpha = Math.round(GAS_TINT * 255).toString(16).padStart(2, '0');
+    const key = layers.join('|');
+    if (refs.headspace.dataset.key !== key) {
+      refs.headspace.style.background = layers
+        .map((hex) => `linear-gradient(to top, ${hex}${insideSmoke && hex === layers[layers.length - 1] ? 'E0' : alpha}, ${hex}22 85%, rgba(0, 0, 0, 0))`)
+        .join(', ');
+      refs.headspace.dataset.key = key;
+    }
+    refs.headspace.classList.toggle('is-visible', layers.length > 0);
+
+    // What fumes at the mouth, in white or in its own colour.
+    const fuming = container.appearance.fumes || [];
+    if (fuming.length) refs.fuming.style.setProperty('--fume-colour', fuming[0].colorHex);
+    refs.fuming.classList.toggle('is-visible', fuming.length > 0);
+
+    const note = [gasNoteText(gases, hasLiquid), fumesNoteText(fuming)].filter(Boolean).join('; ');
+    refs.gasNote.hidden = !note;
+    refs.gasNote.textContent = note;
+  }
+
   function updateHeat(refs, container) {
     const heat = container.appearance.heat || { stage: 'still', steam: false, condensation: null };
     const geometry = glassGeometry(container.type, container.capacityMl);
@@ -1815,6 +1880,14 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       const effects = step.reaction && step.reaction.effects;
       if (!effects) continue;
       if (effects.bubbles) playReactionBubbles(refs, step.reaction, before, after);
+      // Smoke from gases meeting forms inside; any other cloud of smoke or
+      // vapour leaves by the mouth (UI.5.3).
+      if (effects.solidKind === 'smoke' && smokeFormsInside(step.reaction, engine)) {
+        refs.smokeInside = true;
+        updatePrecipitate(refs, after, after.appearance.precipitate);
+      } else if (effects.smoke) {
+        playFumes(refs.fumes);
+      }
       if (effects.gas) playGasEvolution(refs.gasLayer);
       if (effects.precipitate) {
         const solid = after.appearance.precipitate;

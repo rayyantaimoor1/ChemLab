@@ -368,6 +368,37 @@ export function playGasEvolution(layerEl, { count = 4, duration = 1500 } = {}) {
 }
 
 /* ------------------------------------------------------------------ *
+ * A cloud of smoke or vapour at the mouth (BUILD_UI.md UI.5.3) - what the
+ * notebook means by "A cloud of smoke or vapour appeared." Soft puffs
+ * swelling and drifting up out of the vessel, then gone. Transform and
+ * opacity only; the softness is a radial gradient, not a blur.
+ * ------------------------------------------------------------------ */
+
+export function playFumes(layerEl, { count = 6, duration = 2600 } = {}) {
+  if (!layerEl) return;
+
+  for (let i = 0; i < count; i += 1) {
+    const puff = document.createElement('span');
+    puff.className = 'fx-fume';
+    puff.style.left = `${20 + Math.random() * 50}%`;
+    layerEl.appendChild(puff);
+
+    const drift = (Math.random() - 0.5) * 16;
+    const animation = animate(
+      puff,
+      [
+        { transform: 'translate(0, 0) scale(0.5)', opacity: 0 },
+        { transform: `translate(${drift / 3}px, -8px) scale(1)`, opacity: 0.85, offset: 0.25 },
+        { transform: `translate(${drift}px, -30px) scale(1.8)`, opacity: 0 },
+      ],
+      { duration: duration * (0.8 + Math.random() * 0.4), delay: Math.random() * duration * 0.4 }
+    );
+
+    whenDone(animation, () => puff.remove());
+  }
+}
+
+/* ------------------------------------------------------------------ *
  * Precipitate forming and settling — UI.md section 6: "1200ms. Particles
  * appear, settle, accumulate." The grains fall all the way to the floor of
  * the vessel and fade into the settled layer bench.js draws there (the

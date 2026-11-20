@@ -110,6 +110,7 @@ chemlab/
 │   │   ├── heat-look.js      ← what heat visibly does: convection, bubbles, boil, steam, droplets
 │   │   ├── thermometer.js    ← a thermometer standing in a vessel, read against its scale
 │   │   ├── gas-bubbles.js    ← where a gas's bubbles start, and how fast, from curated data
+│   │   ├── gas-look.js       ← coloured gases above the liquid, and where smoke forms
 │   │   ├── molecular.js      ← 2D reaction animations
 │   │   ├── molecular3d.js    ← 3D ball-and-stick viewer
 │   │   ├── notebook-storage.js ← the page's side of the save/load/report bridge
@@ -206,6 +207,16 @@ and not a guessed one.
   record. Hexanedioyl dichloride is known only under vacuum, and the bench
   never draws it boiling.
 - A missing boiling point fails the build. Progress is in `batch.md` §16.
+
+**`fumes`** on a chemical (BUILD_UI.md stage UI.5.3, owner approved
+2026-11-20): a liquid or solid that fumes in moist air.
+- `"mist"` is the white fog where its vapour meets the water in the air,
+  as with concentrated hydrochloric acid or silicon tetrachloride.
+- `"vapour"` is its own coloured vapour, drawn in its own curated colour,
+  as with bromine.
+- Curated with a source, `covers` set to `fumes`. Never read off a
+  description: one that says "fumes in air" does nothing without the field.
+- No field means nothing is drawn at the mouth. Progress is in `batch.md` §18.
 
 **`effects.gasRate`** on a reaction (BUILD_UI.md stage UI.5, owner approved
 2026-11-20): how fast its gas comes off - `slow`, `steady` or

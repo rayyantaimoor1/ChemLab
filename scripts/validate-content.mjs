@@ -104,7 +104,7 @@ const nullGasRate = [];
 
 // What a `sources` entry on a CHEMICAL may say it confirms: so far, the
 // three appearance fields of BUILD_UI.md stage UI.3.
-const CHEMICAL_SOURCE_COVERS = new Set(['clarity', 'form', 'texture', 'boilingPoint', 'meltingPoint']);
+const CHEMICAL_SOURCE_COVERS = new Set(['clarity', 'form', 'texture', 'boilingPoint', 'meltingPoint', 'fumes']);
 
 function nonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
@@ -547,6 +547,30 @@ for (const chemical of chemicals) {
       else if (typeof chemical.meltingPointC !== 'number' || chemical.meltingPointC < -50 || chemical.meltingPointC > 3500) {
         problems.push(`${chemical.id}: meltingPointC must be a number of °C between -50 and 3500`);
       }
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * fumes — a liquid or solid that fumes in moist air (BUILD_UI.md UI.5.3,
+ * owner approved 2026-11-20). "mist" is the white fog where its vapour
+ * meets the water in the air; "vapour" is its own coloured vapour, drawn
+ * in its own curated colour. Curated with a source, never read off a
+ * description. No field means the bench draws nothing at the mouth.
+ * ------------------------------------------------------------------ */
+{
+  const FUMES = new Set(['mist', 'vapour']);
+  for (const chemical of chemicals) {
+    if (!('fumes' in chemical)) continue;
+    if (!FUMES.has(chemical.fumes)) {
+      problems.push(`${chemical.id}: fumes "${chemical.fumes}" is not one of ${[...FUMES].join(', ')}`);
+    } else if (chemical.state === 'gas') {
+      problems.push(`${chemical.id}: fumes is for liquids and solids, not gases`);
+    } else if (chemical.fumes === 'vapour' && (!chemical.colorName || chemical.colorName === 'colourless')) {
+      problems.push(`${chemical.id}: a fumes "vapour" is drawn in the chemical's own colour, so it cannot be colourless`);
+    }
+    if (!(chemical.sources || []).some((s) => (s.covers || []).includes('fumes'))) {
+      problems.push(`${chemical.id}: fumes needs a source that covers it`);
     }
   }
 }

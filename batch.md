@@ -1749,3 +1749,35 @@ Approved by the owner on 2026-11-20.
 - sodium borohydride with acid (Wikipedia gives a rate only for water and alcohols: fairly slow);
 - the diazonium salt warmed, and with potassium iodide (chemguide: nitrogen gas is evolved);
 - the basic oxygen converter; ninhydrin with glycine.
+
+## 18. Fuming liquids (BUILD_UI.md stage UI.5.3)
+
+**Status: first batch done (2026-11-20).** Six chemicals carry `fumes`.
+
+**What the owner approved (2026-11-20):**
+- **`fumes`** on a liquid or solid that fumes in moist air: `"mist"` (a white fog where its
+  vapour meets the water in the air) or `"vapour"` (its own coloured vapour).
+- **Sources:** a page that was opened, with `covers: ["fumes"]`. A description that mentions
+  fumes is not enough on its own.
+- **Checks:** the validator rejects any other word, `fumes` on a gas, a colourless "vapour",
+  and a value with no source behind it.
+
+### Batch 1 — six chemicals, all from Wikipedia pages opened 2026-11-20
+
+Each page was already cited for the chemical's boiling point; that entry now covers `fumes` too.
+
+| Chemical | fumes | What the page says |
+|---|---|---|
+| Concentrated hydrochloric acid | mist | fumes in air if concentrated |
+| Bromine | vapour | evaporates readily to form a similarly coloured (red-brown) vapour |
+| Ethanoyl chloride | mist | releases white "smoke" in open air, from hydrolysis by moisture |
+| Silicon tetrachloride | mist | a colourless volatile liquid that fumes in air |
+| Phosphoryl chloride | mist | colourless liquid, fumes in moist air |
+| Trimethylchlorosilane | mist | colourless liquid, fumes in moist air |
+
+**Left out, with the reason:**
+- phosphorus pentachloride, dimethyldichlorosilane and methyltrichlorosilane: their pages do not
+  say they fume;
+- concentrated nitric acid: Wikipedia calls nitric acid fuming only above 86%, and the
+  ordinary concentrated acid is 68%;
+- concentrated ammonia solution: it gives off a strong gas, but no visible mist of its own.

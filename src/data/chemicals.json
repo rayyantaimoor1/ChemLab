@@ -40,6 +40,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/hcl.svg",
     "description": "Hydrogen chloride dissolved in water to about twelve times the strength of the dilute acid on the bench. It fumes in air, giving off choking hydrogen chloride, so it is opened only in a fume cupboard. Some reactions need it rather than the dilute acid — preparing chlorine from manganese(IV) oxide is the classic example, because only at this strength is there enough acid and chloride to make the reaction go.",
+    "fumes": "mist",
     "clarity": "clear",
     "boilingPointC": 61,
     "source": "Wikipedia — Hydrochloric acid (density 1.18 g/mL and about 11.6–12.4 M at 36–38% w/w; fumes in air when concentrated), consulted 2026-11-03",
@@ -47,7 +48,7 @@
       { "ref": "Wikipedia — Hydrochloric acid (physical properties by concentration: 61 °C at 36 %)",
         "url": "https://en.wikipedia.org/wiki/Hydrochloric_acid",
         "checked": "2026-11-19",
-        "covers": ["boilingPoint"] }
+        "covers": ["boilingPoint", "fumes"] }
     ],
     "category": "acid"
   },
@@ -1392,6 +1393,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/br2.svg",
     "description": "Pure bromine: a heavy, dark red-brown liquid that evaporates readily into a vapour of the same colour, with a choking smell. It is what benzene needs to be brominated — bromine WATER will not do, because the water ruins the iron catalyst. Toxic and volatile, so it is handled only in a fume cupboard; most of the time the much milder bromine water does the job instead.",
+    "fumes": "vapour",
     "clarity": "clear",
     "boilingPointC": 59,
     "source": "Wikipedia — Bromine (volatile red-brown liquid at room temperature; density 3.10 g/cm³; toxicity and volatility), consulted 2026-11-03",
@@ -1399,7 +1401,7 @@
       { "ref": "Wikipedia — Bromine (boiling point 58.8 °C)",
         "url": "https://en.wikipedia.org/wiki/Bromine",
         "checked": "2026-11-19",
-        "covers": ["boilingPoint"] }
+        "covers": ["boilingPoint", "fumes"] }
     ],
     "category": "element"
   },
@@ -4217,6 +4219,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/pocl3.svg",
     "description": "The by-product left behind when phosphorus pentachloride is used to make an acid chloride. It is not the point of the reaction, but it has to go somewhere, and a student who writes the equation without it has not balanced anything. Also called phosphorus oxychloride.",
+    "fumes": "mist",
     "clarity": "clear",
     "boilingPointC": 106,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids",
@@ -4224,7 +4227,7 @@
       { "ref": "Wikipedia — Phosphoryl chloride (boiling point 105.8 °C)",
         "url": "https://en.wikipedia.org/wiki/Phosphoryl_chloride",
         "checked": "2026-11-19",
-        "covers": ["boilingPoint"] }
+        "covers": ["boilingPoint", "fumes"] }
     ],
     "category": "salt"
   },
@@ -4246,6 +4249,7 @@
     "levels": ["fsc", "bs"],
     "structure": "molecules/ch3cocl.svg",
     "description": "An ACID CHLORIDE, and the most reactive of the carboxylic acid derivatives. The chlorine pulls electrons hard away from the carbonyl carbon and leaves it wide open to attack, which is why this fumes in moist air, hisses with water, and turns an alcohol into an ester in seconds without heat or catalyst. It is the reagent you reach for when the direct route from the acid is too slow. Also called acetyl chloride.",
+    "fumes": "mist",
     "clarity": "clear",
     "boilingPointC": 52,
     "source": "CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density, boiling point 52 °C); Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids and their derivatives",
@@ -4253,7 +4257,7 @@
       { "ref": "Wikipedia — Acetyl chloride (boiling point 52 °C)",
         "url": "https://en.wikipedia.org/wiki/Acetyl_chloride",
         "checked": "2026-11-19",
-        "covers": ["boilingPoint"] }
+        "covers": ["boilingPoint", "fumes"] }
     ],
     "category": "organic"
   },
@@ -6120,6 +6124,7 @@
     "levels": ["bs"],
     "structure": "molecules/sicl4.svg",
     "description": "A colourless liquid that fumes the moment the stopper comes off, because the water vapour in the room is enough to start it hydrolysing. The reason silicon does this and carbon does not is worth knowing: silicon is a bigger atom with empty d orbitals available, so a water molecule can attach itself before any bond has to break. Tetrachloromethane, its carbon equivalent, has nowhere for the water to get a hold and is famously unreactive with it.",
+    "fumes": "mist",
     "clarity": "clear",
     "boilingPointC": 58,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — Period 3 chlorides; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
@@ -6127,7 +6132,7 @@
       { "ref": "Wikipedia — Silicon tetrachloride (boiling point 57.65 °C)",
         "url": "https://en.wikipedia.org/wiki/Silicon_tetrachloride",
         "checked": "2026-11-19",
-        "covers": ["boilingPoint"] }
+        "covers": ["boilingPoint", "fumes"] }
     ],
     "category": "salt"
   },
@@ -7072,6 +7077,7 @@
     "levels": ["bs"],
     "structure": "molecules/me3sicl.svg",
     "description": "Three methyl groups and only ONE chlorine — so hydrolysis leaves it with a single —OH, and a molecule with one reactive end can join to one partner and then it is finished. It cannot build a chain. That makes it useless as a monomer and genuinely useful as a chain STOPPER: added to a silicone mixture it caps a growing chain and halts it, which is how the chain length, and therefore the thickness of a silicone oil, is controlled.",
+    "fumes": "mist",
     "clarity": "clear",
     "boilingPointC": 57,
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — chain termination in silicones; CRC Handbook of Chemistry and Physics, 97th ed. (molar mass, density)",
@@ -7079,7 +7085,7 @@
       { "ref": "Wikipedia — Trimethylsilyl chloride (boiling point 57 °C)",
         "url": "https://en.wikipedia.org/wiki/Trimethylsilyl_chloride",
         "checked": "2026-11-19",
-        "covers": ["boilingPoint"] }
+        "covers": ["boilingPoint", "fumes"] }
     ],
     "category": "organic"
   },

@@ -638,6 +638,42 @@ does. No engine change. Gas collection and testing at the mouth are BUILD_PHASE_
 > violet iodine vapour, brown bromine vapour — always with their names. White ammonium chloride
 > smoke forms where ammonia meets hydrogen chloride; fuming liquids show their mist at the mouth.
 
+> **Done (2026-11-20).** The rules are in `src/ui/gas-look.js`, with no DOM, and are tested in
+> `tests/gas-look.test.js`.
+> - **Coloured gases gather above the liquid.**
+>   - A gas a reaction made stays in the vessel's contents. When its curated colour is not
+>     colourless, it fills the space above the liquid in that colour, densest just over the
+>     surface, and fades in as it gathers.
+>   - The label always names it, for example "reddish brown nitrogen dioxide above the liquid".
+>     With no liquid, it says "filling the vessel".
+>   - Today that is nitrogen dioxide (reddish brown), chlorine (pale yellow-green), iodine vapour
+>     (violet) and ozone (very pale blue).
+> - **Smoke where two gases meet.** When every reactant is a gas, as with ammonia and hydrogen
+>   chloride, the smoke forms inside the vessel and fills it white, instead of hanging above the
+>   mouth. Soot from burning benzene still rises from the mouth.
+> - **A cloud at the mouth.**
+>   - The notebook writes "A cloud of smoke or vapour appeared." for every rule with
+>     `effects.smoke`, but the bench drew nothing for most of them.
+>   - It now plays soft puffs leaving the mouth: the steamy hydrogen chloride from salt and
+>     sulfuric acid, an acyl chloride in water, silicon tetrachloride in water, and so on.
+> - **Checked in the running app:**
+>   - nitrite with acid gathered reddish brown nitrogen dioxide, named on the label;
+>   - brine with the current on gathered pale yellow-green chlorine;
+>   - ammonia with hydrogen chloride filled the beaker with white smoke;
+>   - salt with concentrated sulfuric acid sent 6 puffs out of the mouth.
+>   - Screenshot: `docs/ui-progress/UI.5/gases.png`.
+> - **Fuming liquids** (a curated `fumes` field, owner approved 2026-11-20).
+>   - While a fuming liquid or solid is in a vessel, soft wisps keep rising from the mouth: white
+>     for a "mist", or the substance's own colour for a "vapour".
+>   - The label names it, for example "white fumes from concentrated hydrochloric acid".
+>   - Six chemicals are curated, each from a page that was opened (`batch.md` §18):
+>     concentrated HCl, ethanoyl chloride, silicon tetrachloride, phosphoryl chloride and
+>     trimethylchlorosilane (mist), and bromine (red-brown vapour).
+>   - Checked in the running app. Screenshot: `docs/ui-progress/UI.5/fumes.png`.
+> - **Not drawn, because the data does not say so:** brown bromine vapour and violet iodine
+>   vapour from the halides with sulfuric acid. Those rules make `br2_aq` and `i2_aq`, which are in
+>   solution, not vapour. Changing that is a chemistry content change.
+
 ✅ **Check:** magnesium, zinc and iron in the same acid side by side are visibly fast, steady and
 slow; electrolysis of water shows twice as many bubbles at the cathode.
 
@@ -762,6 +798,7 @@ finds nothing that would teach a student something wrong.
 | UI.4 | Curated `boilingPointC` (all liquids and solutions) and `meltingPointC` (solids the app melts); one general reference for dilute aqueous solutions | Yes (owner) | 2026-11-19 |
 | UI.3 | Curated `clarity`, `form` and `texture` in chemicals.json (plus `filings`, `turnings`, `foil` as forms; one general reference for clear solutions) | Yes (owner) | 2026-11-17 |
 | UI.4 | Curated `boilingPointC` / `meltingPointC` | | |
+| UI.5.3 | Curated `fumes` ("mist" or "vapour") on chemicals that fume in moist air, sourced | Yes (owner) | 2026-11-20 |
 | UI.5 | Curated `effects.gasRate` (slow / steady / vigorous) on every rule with bubbles of a gas, sourced, in batches; missing fails the build once done | Yes (owner) | 2026-11-20 |
 | UI.8 | A fume cupboard on the bench | | |
 | UI.9 | Sound in the app | | |

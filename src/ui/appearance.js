@@ -59,6 +59,7 @@
 
 import { OUTCOME } from '../core/engine.js';
 import { heatLookFor } from './heat-look.js';
+import { colouredGasesFor, fumesFor } from './gas-look.js';
 
 const EMPTY = Object.freeze({
   colorHex: '#EEF3F5',
@@ -66,6 +67,8 @@ const EMPTY = Object.freeze({
   clarity: null,
   layers: null,
   heat: null,
+  gases: [],
+  fumes: [],
   shelfSolids: [],
   precipitate: null,
   solids: [],
@@ -231,6 +234,10 @@ export function appearanceFor(snapshot, memory, engine) {
     // What heat is visibly doing: convection, bubbles, a boil, steam,
     // droplets on the glass (BUILD_UI.md UI.4.2, heat-look.js).
     heat: heatLookFor(snapshot, engine),
+    // Coloured gases gathered above the liquid (BUILD_UI.md UI.5.3).
+    gases: colouredGasesFor(snapshot, engine),
+    // Liquids and solids fuming at the mouth (UI.5.3).
+    fumes: fumesFor(snapshot, engine),
     shelfSolids,
     precipitate: solids.length ? solids[solids.length - 1] : null,
     solids,

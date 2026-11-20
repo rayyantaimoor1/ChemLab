@@ -2033,6 +2033,87 @@ html.reduce-motion .thermometer__column { transition: none; }
   opacity: 1;
 }
 
+/* Coloured gas gathered above the liquid, in its curated colour, densest
+   just over the surface (UI.5.3). Height and colour set by bench.js; it
+   fades in as the gas gathers. */
+.vessel__headspace {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 1800ms ease-in;
+  pointer-events: none;
+}
+.vessel__headspace.is-visible {
+  opacity: 1;
+}
+
+/* A cloud of smoke or vapour leaving the mouth (UI.5.3, effects.js). */
+.vessel__fumes {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -26px;
+  height: 30px;
+  z-index: 3;
+  pointer-events: none;
+}
+/* A fuming liquid's mist or vapour rising from the mouth while it is in
+   the vessel (UI.5.3): three soft wisps on a slow loop, in white or in the
+   substance's own colour (--fume-colour, set by bench.js). */
+.vessel__fuming {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -24px;
+  height: 28px;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 900ms ease-in;
+  pointer-events: none;
+}
+.vessel__fuming.is-visible {
+  opacity: 1;
+}
+.vessel__fuming > span {
+  position: absolute;
+  bottom: 0;
+  width: 20px;
+  height: 12px;
+  margin-left: -10px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--fume-colour, #ECEFF0), rgba(236, 239, 240, 0));
+  opacity: 0;
+  animation: fuming-wisp 2700ms ease-out infinite;
+}
+@keyframes fuming-wisp {
+  0% { transform: translateY(4px) scale(0.5); opacity: 0; }
+  30% { opacity: 0.7; }
+  100% { transform: translateY(-20px) scale(1.6); opacity: 0; }
+}
+html.reduce-motion .vessel__fuming > span {
+  animation: none;
+  opacity: 0.45;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vessel__fuming > span {
+    animation: none;
+    opacity: 0.45;
+  }
+}
+
+.fx-fume {
+  position: absolute;
+  bottom: 0;
+  width: 24px;
+  height: 15px;
+  margin-left: -12px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(238, 241, 242, 0.75), rgba(238, 241, 242, 0));
+  opacity: 0;
+}
+
 /* A shelf solid on the vessel floor (BUILD_UI.md UI.3.3), drawn by
    solid-shapes.js. Positioned by bench.js; static except when shrinking
    away as a reaction uses it up. */

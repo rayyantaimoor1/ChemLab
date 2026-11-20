@@ -62,6 +62,7 @@ test('a chemical source names what it confirms, with a link and a date', () => {
         const field = {
           clarity: 'clarity', form: 'form', texture: 'texture',
           boilingPoint: 'boilingPointC', meltingPoint: 'meltingPointC',
+          fumes: 'fumes',
         }[word];
         assert.ok(field, `${chemical.id}: covers "${word}"`);
         assert.ok(field in chemical, `${chemical.id}: a source confirms ${word}, but there is no ${field}`);

@@ -34,6 +34,8 @@ The UI may **read** engine state and **dispatch** actions. It may not contain ch
       // there is liquid, from src/ui/gas-bubbles.js; UI.5.2)
       // (and on equipment: dial and bathC - a water bath's settings and its
       // temperature now; UI.4.5)
+      gases: [{ id, name, colorHex, colorName }],  // coloured gases above the liquid (UI.5.3)
+      fumes: [{ id, name, kind, colorHex, colorName }],  // mist or vapour at the mouth (UI.5.3)
       heat: { stage, boilingPointC, steam, condensation,
               glow,        // { name, colorHex, strength } | null - a dry solid above 525 °C (UI.4.4)
               hotGlass } | null,  // true from 60 °C: the label warns hot glass looks cold
