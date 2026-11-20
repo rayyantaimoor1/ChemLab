@@ -2281,6 +2281,106 @@ html.reduce-motion .vessel__fuming > span {
   border-radius: 50%;
 }
 
+/* The close look (UI.7.1): a vessel lifted up and looked at closely,
+   large, against a white tile, beside the bench. */
+.close-look {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  bottom: calc(62px + 10px);
+  width: 280px;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  background: #1F2523;
+  border: 1px solid rgba(237, 234, 227, 0.35);
+  border-radius: 4px;
+}
+.close-look__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px 6px 12px;
+}
+.close-look__title {
+  margin: 0;
+  font-size: 14px;
+  color: #EDEAE3;
+}
+.close-look__close {
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(237, 234, 227, 0.35);
+  border-radius: 3px;
+  background: transparent;
+  color: #EDEAE3;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+.close-look__tile {
+  position: relative;
+  flex: 1;
+  min-height: 160px;
+  margin: 0 10px;
+  overflow: hidden;
+  background: #F4F4F0;
+  border-radius: 2px;
+}
+.close-look__vessel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+  cursor: default;
+}
+/* On the white tile the label card, the selection outline and the
+   shadow on the bench have no place. */
+.close-look__vessel .object-chip,
+.close-look__vessel::after,
+.close-look__vessel .vessel__shadow {
+  display: none;
+}
+/* Glass against white: the bench draws glass pale, for the dark bench; on
+   the white tile its walls, outline and printed scale take the darker tone
+   glassware has against a white background. */
+.close-look__vessel .glassware--front > path[fill-rule] {
+  fill: rgba(120, 140, 148, 0.42);
+}
+.close-look__vessel .glassware--front > path[stroke] {
+  stroke: rgba(84, 104, 112, 0.85);
+}
+.close-look__vessel .glassware--front > rect {
+  fill: rgba(140, 160, 168, 0.75);
+}
+.close-look__vessel .glassware--front > path[stroke-width="0.9"],
+.close-look__vessel .glassware--front .glassware__figures {
+  stroke: #3F4A4E;
+  fill: none;
+}
+.close-look__vessel .glassware--front .glassware__figures {
+  stroke: none;
+  fill: #3F4A4E;
+}
+.close-look__vessel .glassware--back > path {
+  fill: rgba(120, 140, 148, 0.12);
+}
+
+.close-look__details {
+  margin: 8px 12px 10px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3px 10px;
+  font-size: 12px;
+  color: #D8D5CC;
+}
+.close-look__details dt {
+  color: #9FA49F;
+}
+.close-look__details dd {
+  margin: 0;
+}
+
 /* A pour (UI.6.2): the stream arcing from the lip onto the liquid below,
    the last drip, and the droplets of a pour from too high. */
 .fx-pour-arc {

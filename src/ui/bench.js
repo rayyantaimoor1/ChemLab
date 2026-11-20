@@ -207,6 +207,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     }
 
     resolveLabelOverlaps();
+    renderCloseLook(state);
 
     renderControlStrip(state);
     renderReadings(state);
@@ -704,7 +705,19 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
   function ensureVesselRefs(container) {
     const existing = vesselEls.get(container.id);
     if (existing) return existing;
+    const refs = buildVesselRefs(container, { interactive: true });
+    vesselEls.set(container.id, refs);
+    canvas.appendChild(refs.el);
+    return refs;
+  }
 
+  /**
+   * Builds one drawing of a vessel. The bench has one per vessel; the close
+   * look (UI.7.1) builds a second for the vessel it shows, painted by the
+   * very same updateVessel, so the two can never disagree. Only the bench's
+   * can be dragged.
+   */
+  function buildVesselRefs(container, { interactive }) {
     const el = document.createElement('div');
     el.className = 'bench-object vessel-object';
     el.dataset.containerId = container.id;
@@ -940,7 +953,11 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     flame.hidden = true;
     el.appendChild(flame);
 
-    el.addEventListener('pointerdown', (event) => beginDrag('vessel', container.id, event, el));
+    if (interactive) {
+      el.addEventListener('pointerdown', (event) => beginDrag('vessel', container.id, event, el));
+      // Lift it up and look closely (UI.7.1).
+      el.addEventListener('dblclick', () => openCloseLook(container.id));
+    }
     wireReagentDrop(el, container.id);
 
     const refs = {
@@ -954,8 +971,6 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       thermometer: null, thermometerColumn: null,
       dipEl: null, dipTool: null,
     };
-    vesselEls.set(container.id, refs);
-    canvas.appendChild(el);
     return refs;
   }
 
@@ -1398,7 +1413,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
   function updateVessel(refs, container, state) {
     // Never fight a drag in progress - the pointer owns the transform then.
-    if ((!drag || drag.id !== container.id) && !refs.pouring) {
+    if ((!drag || drag.id !== container.id) && !refs.pouring && !refs.closeLook) {
       refs.el.style.transform = `translate3d(${container.position.x}px, ${container.position.y}px, 0)`;
     }
     refs.el.classList.toggle('is-selected', state.selectedVesselId === container.id);
@@ -1704,6 +1719,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
         }, { className: 'bench-control--accent' });
       }
 
+      controlButton('Look closely', () => openCloseLook(vessel.id), {
+        title: 'Open it large beside the bench, against a white tile (or double-click it)',
+        active: closeLook.id === vessel.id,
+      });
       controlButton('Put away', () => dispatch.removeVessel(vessel.id));
       return;
     }
@@ -1869,6 +1888,119 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       count: pace.count, burstMs: pace.burstMs, riseMs: pace.riseMs, sizePx: pace.sizePx,
       xPx, bottomPx, risePx: liquidHeight - 2,
     });
+  }
+
+  /* ------------------------------------------------------------------ *
+   * The close look (BUILD_UI.md UI.7.1)
+   *
+   * At bench scale a precipitate's texture or a meniscus is a few pixels.
+   * In a real lab you lift the tube and look closely against a white
+   * background. Double-click a vessel (or "Look closely") and a second
+   * drawing of it opens large beside the bench, on a white tile, with every
+   * colour named beneath it. It is the bench's own drawing at a larger
+   * scale, painted by the same updateVessel, so it shows exactly what the
+   * bench and the notebook say - only bigger.
+   * ------------------------------------------------------------------ */
+
+  const closeLook = { id: null, refs: null, panel: null, tile: null, details: null, title: null };
+
+  function openCloseLook(containerId) {
+    if (closeLook.id === containerId) return;
+    closeCloseLook();
+    const container = getState().containers.find((c) => c.id === containerId);
+    if (!container) return;
+
+    const panel = document.createElement('section');
+    panel.className = 'close-look';
+    panel.setAttribute('aria-label', 'Close look');
+    const head = document.createElement('div');
+    head.className = 'close-look__head';
+    const title = document.createElement('h2');
+    title.className = 'close-look__title';
+    const shut = document.createElement('button');
+    shut.type = 'button';
+    shut.className = 'close-look__close';
+    shut.textContent = '×';
+    shut.title = 'Put it back down (Esc)';
+    shut.addEventListener('click', () => closeCloseLook());
+    head.append(title, shut);
+    const tile = document.createElement('div');
+    tile.className = 'close-look__tile';
+    const details = document.createElement('dl');
+    details.className = 'close-look__details';
+    panel.append(head, tile, details);
+    canvas.appendChild(panel);
+
+    const refs = buildVesselRefs(container, { interactive: false });
+    refs.closeLook = true;
+    refs.el.classList.add('close-look__vessel');
+    tile.appendChild(refs.el);
+
+    Object.assign(closeLook, { id: containerId, refs, panel, tile, details, title });
+    document.addEventListener('keydown', onCloseLookKey);
+    render();
+  }
+
+  function closeCloseLook() {
+    if (!closeLook.panel) return;
+    closeLook.panel.remove();
+    Object.assign(closeLook, { id: null, refs: null, panel: null, tile: null, details: null, title: null });
+    document.removeEventListener('keydown', onCloseLookKey);
+  }
+
+  function onCloseLookKey(event) {
+    if (event.key === 'Escape' && closeLook.panel && floatHost.hidden) {
+      closeCloseLook();
+      render();
+    }
+  }
+
+  function renderCloseLook(state) {
+    if (!closeLook.id) return;
+    const container = state.containers.find((c) => c.id === closeLook.id);
+    if (!container) {
+      closeCloseLook();
+      return;
+    }
+    updateVessel(closeLook.refs, container, state);
+    closeLook.title.textContent = container.name;
+
+    // Every colour named: what the bench draws, in words.
+    const a = container.appearance;
+    const rows = [];
+    if (container.contents.length === 0) rows.push(['Contents', 'empty']);
+    else if (a.layers && a.layers.length) {
+      rows.push(['Layers', a.layers.map((l) => `${l.colorName || 'colour not known'} ${l.name ? l.name.toLowerCase() : ''}`.trim()).join(' over ')]);
+    } else if (container.volumeMl > 0) {
+      rows.push(['Liquid', [a.colorName || 'colour not known', a.clarity && a.clarity !== 'clear' ? a.clarity : null].filter(Boolean).join(', ')]);
+    }
+    if (a.precipitate) rows.push(['Solid formed', solidLabel(a.precipitate)]);
+    for (const solid of a.shelfSolids || []) rows.push(['In the vessel', shelfSolidLabel(solid)]);
+    const gasLine = [gasNoteText(a.gases, container.volumeMl > 0), fumesNoteText(a.fumes)].filter(Boolean).join('; ');
+    if (gasLine) rows.push(['Above it', gasLine]);
+    const heatLine = closeLook.refs.heatNote.hidden ? '' : closeLook.refs.heatNote.textContent;
+    if (heatLine) rows.push(['Heat', heatLine]);
+    rows.push(['Reading', `${container.volumeMl} mL · ${container.temperatureC.toFixed(1)} °C · pH ${container.pH === null ? '—' : container.pH}`]);
+    const html = rows.map(([k, v]) => `<dt>${k}</dt><dd>${escapeText(v)}</dd>`).join('');
+    if (closeLook.details.dataset.html !== html) {
+      closeLook.details.innerHTML = html;
+      closeLook.details.dataset.html = html;
+    }
+
+    // As large as the tile allows, up to three times bench size, centred.
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    if (geometry) {
+      const room = { w: closeLook.tile.clientWidth - 40, h: closeLook.tile.clientHeight - 48 };
+      const k = Math.max(1, Math.min(3, room.w / geometry.w, room.h / geometry.h));
+      const left = Math.round((closeLook.tile.clientWidth - geometry.w * k) / 2);
+      const top = Math.round(closeLook.tile.clientHeight - 24 - geometry.h * k);
+      closeLook.refs.el.style.transform = `translate(${left}px, ${top}px) scale(${k.toFixed(3)})`;
+    }
+
+  }
+
+  function escapeText(text) {
+    return String(text).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
   }
 
   /* ------------------------------------------------------------------ *
@@ -2177,7 +2309,14 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
   }
 
   function playContainerEffects(containerId, before, after, engineResult, how = {}) {
-    const refs = vesselEls.get(containerId);
+    // The close look plays everything the bench does, at its own size.
+    if (closeLook.refs && closeLook.id === containerId) {
+      playEffectsOn(closeLook.refs, before, after, engineResult, how);
+    }
+    playEffectsOn(vesselEls.get(containerId), before, after, engineResult, how);
+  }
+
+  function playEffectsOn(refs, before, after, engineResult, how = {}) {
     if (!refs || !before || !after) return;
 
     // Stirring finishes a mix still spreading, visibly; anything else new

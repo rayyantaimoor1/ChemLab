@@ -801,6 +801,33 @@ less than making every vessel on the bench that detailed.
 > Double-click a vessel to open it large beside the bench: its liquid, clarity, precipitate
 > texture, bubbles and meniscus at full detail, against a white tile, with every colour named.
 
+> **Done (2026-11-20).**
+> - **Opening it.** Double-click a vessel, or choose "Look closely" in its controls. A panel opens
+>   beside the bench with the vessel up to three times its bench size, centred on a white tile.
+>   × or Esc puts it back down.
+> - **Never disagrees with the bench.** The close look is a second drawing of the same vessel,
+>   painted by the same `updateVessel` and playing the same effects, at its own size. It shows
+>   exactly what the bench and the notebook say: liquid, clarity, layers, precipitate texture,
+>   bubbles, meniscus, gases, heat and electrodes.
+> - **Glass against white.** On the dark bench glass is drawn pale. On the white tile its walls,
+>   outline and printed scale take the darker tone glassware has against white, so they read.
+> - **Every colour named.** Beneath the tile, in words:
+>   - the liquid's colour and clarity, or each layer;
+>   - the solid formed, by its colour and texture;
+>   - any solid in the vessel;
+>   - any gas or fumes above it;
+>   - what heat is doing;
+>   - the reading.
+> - **Reagents still go in.** A reagent can be dropped on the close look as on the bench. It is
+>   not dragged; the bench's drawing is.
+> - **Checked in the running app:**
+>   - copper sulfate with sodium hydroxide opened at 2.4×, its details reading "Liquid: pale
+>     blue" and "Solid formed: pale blue precipitate: Copper(II) hydroxide";
+>   - with magnesium fizzing in acid and the close look open, the page ran at 61 frames a second,
+>     with 12 bubbles rising in the close drawing. That is this development PC; the i5 lab PC is
+>     still to be measured (Phase 10).
+>   - Screenshot: `docs/ui-progress/UI.7/close-look.png`.
+
 **UI.7.2 — Sonnet — Reading at eye level**
 > In the close look, the meniscus can be read against the graduations; viewed from above or below
 > eye level the reading shifts (parallax), and the label explains why you read at eye level.
