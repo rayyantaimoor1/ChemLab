@@ -2312,6 +2312,52 @@ html.reduce-motion .vessel__fuming > span {
   border-radius: 50%;
 }
 
+/* A dropping pipette over a vessel's mouth (UI.6.3): a rubber bulb on a
+   narrow glass tube, holding a little of the liquid. */
+.fx-dropper {
+  position: absolute;
+  z-index: 7;
+  width: 12px;
+  height: 56px;
+  pointer-events: none;
+  opacity: 0;
+}
+.fx-dropper__bulb {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 18px;
+  border-radius: 6px 6px 4px 4px;
+  background: linear-gradient(90deg, #8E2A1F, #C2483A 45%, #7A2219);
+  border: 1px solid #3A120C;
+}
+.fx-dropper__tube {
+  position: absolute;
+  left: 4px;
+  top: 17px;
+  width: 4px;
+  height: 37px;
+  border-radius: 0 0 2px 2px;
+  border: 1px solid rgba(220, 230, 234, 0.75);
+  background: linear-gradient(180deg, rgba(220, 230, 234, 0.15) 55%, var(--drop-colour, #EEF3F5) 55%);
+}
+
+/* A glass rod stirring (UI.6.3): clear glass, leaning, its foot in the
+   liquid. Moved by effects in bench.js; transform and opacity only. */
+.fx-glass-rod {
+  position: absolute;
+  bottom: 4px;
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(235, 242, 245, 0.35), rgba(255, 255, 255, 0.85) 45%, rgba(200, 215, 220, 0.4));
+  border: 1px solid rgba(220, 230, 234, 0.6);
+  transform-origin: 50% 100%;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0;
+}
+
 .fx-pour-stream {
   position: absolute;
   top: 0;

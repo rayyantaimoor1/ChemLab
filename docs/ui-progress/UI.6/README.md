@@ -23,3 +23,11 @@ alone:
   floor of the empty beaker, which is filling from the bottom.
 - **`pour-high.png`:** the same pour, let go well above the beaker. A long
   stream falls into it and splashes where it lands. The same 10 mL was poured.
+
+## UI.6.3 — Dropwise, swirling and stirring
+
+- **`dropper.png`:** a dropping pipette over a small beaker of sodium
+  hydroxide in Dropper mode. Its red bulb has just been squeezed, and a single
+  drop is falling toward the liquid.
+- **`stir-swirl.png`:** the titration set-up after a single drop from the
+  burette, with a glass rod stirring the small beaker.

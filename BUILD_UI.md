@@ -762,6 +762,30 @@ addition and instrument precision are BUILD_PHASE_2.md Stage 2.5; this stage is 
 > A dropping pipette and a burette stopcock release single visible drops; a conical flask can be
 > swirled; a glass rod stirs. Each matches what the engine already does when it is used.
 
+> **Done (2026-11-20).** One drop and swirl-or-stir are in `src/ui/dropwise.js`, tested in
+> `tests/dropwise.test.js`. The engine is untouched: a drop is an ordinary add or pour of
+> 0.05 mL, and a swirl or a rod is the engine's stir.
+> - **A dropping pipette.** The shelf's DISPENSE strip has a third mode, "Dropper". A liquid
+>   dropped on a vessel then goes in one drop (0.05 mL) at a time.
+>   - A pipette comes over the mouth, its rubber bulb is squeezed, and a single drop falls into
+>     the liquid. As the drop lands, the engine gets its 0.05 mL.
+>   - A solid still opens the amount panel.
+> - **The burette's stopcock.** "1 drop" now releases one visible drop from the burette's tip into
+>   the flask, and an open tap a run of them. Before, it drew a short streak in the flask's mouth.
+>   The burette's drop is the dropper's drop: one constant, and a test holds them together.
+> - **Swirling.** A conical flask's mixing button is "Swirl", and the flask rocks on its base as it
+>   is swirled.
+> - **A glass rod.** "Stir" in a beaker or a tube shows a glass rod dipping in and working back and
+>   forth through the liquid.
+> - **Checked in the running app:**
+>   - the dropper added 10 mL to 10.05 mL with its pipette and falling drop;
+>   - "1 drop" from the clamped burette released a drop into the flask;
+>   - the flask's button read "Swirl" and it rocked;
+>   - the beaker's read "Stir" and the rod appeared.
+>   - Screenshots: `docs/ui-progress/UI.6/dropper.png`, `stir-swirl.png`.
+> - **The notebook still says "stirred" for a swirl.** That is the engine's own sentence for
+>   mixing, and changing it would be an engine change.
+
 ✅ **Check:** a titration set-up — burette clamped over a flask on a white tile — can be assembled
 from the tray by dragging alone, and looks like the textbook diagram.
 

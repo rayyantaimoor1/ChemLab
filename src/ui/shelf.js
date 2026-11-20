@@ -189,9 +189,17 @@ export function mountShelf({ root, getState, dispatch, subscribe }) {
   quickButton.type = 'button';
   quickButton.className = 'shelf-dispense__mode';
   quickButton.textContent = 'Auto-pour';
+  // One drop at a time from a dropping pipette - how an indicator goes in
+  // (BUILD_UI.md UI.6.3).
+  const dropButton = document.createElement('button');
+  dropButton.type = 'button';
+  dropButton.className = 'shelf-dispense__mode';
+  dropButton.textContent = 'Dropper';
+  dropButton.title = 'Add one drop (0.05 mL) of a liquid at a time, from a dropping pipette';
   askButton.addEventListener('click', () => dispatch.setDispenseMode('ask'));
   quickButton.addEventListener('click', () => dispatch.setDispenseMode('quick'));
-  dispenseRow.append(askButton, quickButton);
+  dropButton.addEventListener('click', () => dispatch.setDispenseMode('drop'));
+  dispenseRow.append(askButton, quickButton, dropButton);
 
   const quickStepper = document.createElement('div');
   quickStepper.className = 'shelf-dispense__stepper';
@@ -222,6 +230,7 @@ export function mountShelf({ root, getState, dispatch, subscribe }) {
     const state = getState();
     askButton.classList.toggle('shelf-dispense__mode--active', state.dispenseMode === 'ask');
     quickButton.classList.toggle('shelf-dispense__mode--active', state.dispenseMode === 'quick');
+    dropButton.classList.toggle('shelf-dispense__mode--active', state.dispenseMode === 'drop');
     quickStepper.hidden = state.dispenseMode !== 'quick';
     quickValue.textContent = `${state.quickAmount} mL`;
   }

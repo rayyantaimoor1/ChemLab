@@ -52,6 +52,8 @@ import {
 } from './effects.js';
 // How a pour looks: lip, tilt, stream, splash (BUILD_UI.md UI.6.2).
 import { pourPath, POUR } from './pour-path.js';
+// One drop, and swirl or stir (BUILD_UI.md UI.6.3).
+import { DROP_ML, mixVerbFor } from './dropwise.js';
 // A solid from the shelf drawn as what it is - ribbon, granules, chips -
 // from its curated form (BUILD_UI.md UI.3.3).
 import { solidSvg, solidBox, shelfSolidLabel } from './solid-shapes.js';
@@ -93,7 +95,7 @@ const CONTROL_STRIP_H = 62;
 
 // One drop from a burette really is about 0.05 mL, which is why a titration
 // can be taken right up to the drop that changes the colour.
-const BURETTE_DROP_ML = 0.05;
+const BURETTE_DROP_ML = DROP_ML;
 const BURETTE_TAP_ML = 0.25;
 const BURETTE_TAP_INTERVAL_MS = 260;
 
@@ -1664,7 +1666,12 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
         }
       }
 
-      controlButton('Stir', () => withEffects(vessel.id, () => dispatch.stir(vessel.id), { stirring: true }));
+      // A conical flask is swirled; anything else is stirred with a glass rod.
+      // Either way the engine mixes it the same (UI.6.3).
+      const mixVerb = mixVerbFor(vessel.type);
+      controlButton(mixVerb, () => withEffects(vessel.id, () => dispatch.stir(vessel.id), {
+        stirring: true, swirling: mixVerb === 'Swirl',
+      }), { title: mixVerb === 'Swirl' ? 'Swirl the flask to mix it' : 'Stir with a glass rod' });
       controlButton(vessel.thermometerIn ? 'Take thermometer out' : 'Stand a thermometer in', () => {
         dispatch.setThermometer(vessel.id, !vessel.thermometerIn);
       }, { active: !!vessel.thermometerIn });
@@ -1890,7 +1897,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     if (!sourceBefore || !targetBefore) return;
 
     const targetRefs = vesselEls.get(toId);
-    if (targetRefs) playPourStream(targetRefs.pourMouth);
+    // A burette releases drops from its tip (UI.6.3); anything else that
+    // gets here pours its old short stream.
+    if (sourceBefore.type === 'burette') playBuretteDrop(sourceBefore, targetBefore);
+    else if (targetRefs) playPourStream(targetRefs.pourMouth);
 
     const result = dispatch.pour(fromId, toId, amountMl);
 
@@ -2043,6 +2053,106 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     anim.onfinish = () => drip.remove();
   }
 
+  /**
+   * One drop from a dropping pipette (UI.6.3): the pipette comes over the
+   * mouth, its bulb is squeezed, a single drop falls into the liquid, and
+   * then - as the drop lands - the engine gets its 0.05 mL.
+   */
+  function addOneDrop(containerId, chemicalId) {
+    const refs = vesselEls.get(containerId);
+    const target = getState().containers.find((c) => c.id === containerId);
+    const chemical = engine.getChemical(chemicalId);
+    const geometry = target && glassGeometry(target.type, target.capacityMl);
+    const add = () => withEffects(containerId, () => dispatch.addChemical(containerId, chemicalId, DROP_ML), { entering: true });
+    if (!refs || !geometry || prefersReducedMotion()) {
+      add();
+      return;
+    }
+    const left = target.position.x + refs.vessel.offsetLeft + geometry.cx;
+    const top = target.position.y + refs.vessel.offsetTop;
+    const surface = target.volumeMl > 0 ? geometry.surfaceY(target.volumeMl) : geometry.floorY;
+
+    const dropper = document.createElement('div');
+    dropper.className = 'fx-dropper';
+    dropper.innerHTML = '<span class="fx-dropper__bulb"></span><span class="fx-dropper__tube"></span>';
+    dropper.style.left = `${Math.round(left - 6)}px`;
+    dropper.style.top = `${Math.round(top - 58)}px`;
+    dropper.style.setProperty('--drop-colour', chemical?.colorHex || '#EEF3F5');
+    canvas.appendChild(dropper);
+    dropper.animate([{ opacity: 0, transform: 'translateY(-10px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 180, fill: 'forwards' });
+    dropper.querySelector('.fx-dropper__bulb').animate(
+      [{ transform: 'scaleX(1)' }, { transform: 'scaleX(0.7)', offset: 0.5 }, { transform: 'scaleX(1)' }],
+      { duration: 360, delay: 200 }
+    );
+    const tip = { x: Math.round(left), y: Math.round(top - 4) };
+    setTimeout(() => playDrip({ lip: tip, landing: { x: tip.x, y: Math.round(top + (surface ?? geometry.floorY)) } }, chemical?.colorHex), 380);
+    setTimeout(add, 380 + POUR.dripMs * 0.9);
+    const out = dropper.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220, delay: 380 + POUR.dripMs, fill: 'forwards' });
+    out.onfinish = () => dropper.remove();
+  }
+
+  /** A single drop from a burette's tip into the vessel under it (UI.6.3). */
+  function playBuretteDrop(burette, target) {
+    const bRefs = vesselEls.get(burette.id);
+    const tRefs = vesselEls.get(target.id);
+    const bGeo = glassGeometry(burette.type, burette.capacityMl);
+    const tGeo = glassGeometry(target.type, target.capacityMl);
+    if (!bRefs || !tRefs || !bGeo || !tGeo) return;
+    const tip = {
+      x: Math.round(burette.position.x + bRefs.vessel.offsetLeft + bGeo.cx),
+      y: Math.round(burette.position.y + bRefs.vessel.offsetTop + bGeo.h),
+    };
+    const surface = target.volumeMl > 0 ? tGeo.surfaceY(target.volumeMl) : tGeo.floorY;
+    const landing = { x: tip.x, y: Math.round(target.position.y + tRefs.vessel.offsetTop + (surface ?? tGeo.floorY)) };
+    playDrip({ lip: tip, landing }, burette.appearance.colorHex);
+  }
+
+  /** Swirling a conical flask: it rocks on its base, and the liquid goes round with it. */
+  function playSwirl(refs) {
+    if (prefersReducedMotion()) return;
+    const vessel = refs.vessel;
+    vessel.style.transition = 'none';
+    vessel.style.transformOrigin = '50% 100%';
+    const swirl = vessel.animate(
+      [
+        { transform: 'rotate(0deg)' }, { transform: 'rotate(-5deg)' }, { transform: 'rotate(4deg)' },
+        { transform: 'rotate(-4deg)' }, { transform: 'rotate(3deg)' }, { transform: 'rotate(-1.5deg)' },
+        { transform: 'rotate(0deg)' },
+      ],
+      { duration: 1100, easing: 'ease-in-out' }
+    );
+    swirl.onfinish = () => {
+      vessel.style.transition = '';
+      vessel.style.transformOrigin = '';
+    };
+  }
+
+  /** Stirring with a glass rod: the rod dips in and works back and forth. */
+  function playGlassRod(refs, container) {
+    if (prefersReducedMotion() || container.volumeMl <= 0) return;
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    if (!geometry) return;
+    const rod = document.createElement('span');
+    rod.className = 'fx-glass-rod';
+    rod.style.height = `${Math.round(geometry.h * 0.95)}px`;
+    rod.style.left = `${Math.round(geometry.cx - 2)}px`;
+    refs.vessel.appendChild(rod);
+    const reach = Math.max(3, geometry.bodyW * 0.22);
+    const anim = rod.animate(
+      [
+        { transform: 'translateX(0) rotate(10deg)', opacity: 0 },
+        { transform: `translateX(${-reach}px) rotate(10deg)`, opacity: 1, offset: 0.15 },
+        { transform: `translateX(${reach}px) rotate(-6deg)`, offset: 0.35 },
+        { transform: `translateX(${-reach}px) rotate(10deg)`, offset: 0.55 },
+        { transform: `translateX(${reach}px) rotate(-6deg)`, offset: 0.75 },
+        { transform: 'translateX(0) rotate(4deg)', opacity: 1, offset: 0.9 },
+        { transform: 'translateX(0) translateY(-12px) rotate(4deg)', opacity: 0 },
+      ],
+      { duration: 1300, easing: 'ease-in-out', fill: 'forwards' }
+    );
+    anim.onfinish = () => rod.remove();
+  }
+
   /** From too high: droplets thrown up and out where the stream lands. */
   function playSplash(landing, colorHex) {
     for (let k = 0; k < 6; k += 1) {
@@ -2076,6 +2186,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       if (how.stirring) refs.mixing.finish();
       else refs.mixing.now();
     }
+
+    // What the student did to mix it, made visible (UI.6.3).
+    if (how.swirling) playSwirl(refs);
+    else if (how.stirring) playGlassRod(refs, after);
 
     // Shaking liquids that do not mix: an emulsion that separates again.
     if (how.stirring && after.appearance.layers && !refs.shaking) {
@@ -2194,6 +2308,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       const isSolid = chemical && chemical.state === 'solid';
       if (getState().dispenseMode === 'quick' && !isSolid) {
         withEffects(containerId, () => dispatch.addChemical(containerId, chemicalId, getState().quickAmount), { entering: true });
+      } else if (getState().dispenseMode === 'drop' && !isSolid) {
+        addOneDrop(containerId, chemicalId);
       } else {
         openAmountPanel(containerId, chemicalId);
       }

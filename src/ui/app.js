@@ -843,7 +843,8 @@ let reduceAnimationEnabled = false;
 // long-standing default, and the only way to add a solid's exact grams);
 // 'quick' skips straight to adding quickAmount mL of whatever was dropped,
 // for a student who is adding the same 10 mL of the same acid over and
-// over and does not want to confirm it each time. Purely an interface
+// over and does not want to confirm it each time; 'drop' adds one drop
+// from a dropping pipette (BUILD_UI.md UI.6.3), as indicators are added. Purely an interface
 // convenience - it never changes what gets added, only how many clicks
 // getting there takes - so it lives here rather than in src/core/.
 let dispenseMode = 'ask';
@@ -1541,7 +1542,7 @@ const dispatch = {
   // interface state, following the same pattern as setReduceAnimation
   // above: nothing here is a chemistry decision.
   setDispenseMode: wrap((mode) => {
-    dispenseMode = mode === 'quick' ? 'quick' : 'ask';
+    dispenseMode = mode === 'quick' || mode === 'drop' ? mode : 'ask';
   }, null, 'setDispenseMode'),
   setQuickAmount: wrap((amount) => {
     quickAmount = Math.max(1, Number(amount) || quickAmount);

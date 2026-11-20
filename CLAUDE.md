@@ -113,6 +113,7 @@ chemlab/
 │   │   ├── gas-look.js       ← coloured gases above the liquid, and where smoke forms
 │   │   ├── stand.js          ← the retort stand: where the clamped vessel and the one on its base go
 │   │   ├── pour-path.js      ← how a pour looks: lip, tilt, stream arc, splash
+│   │   ├── dropwise.js       ← one drop (0.05 mL), and which vessels are swirled rather than stirred
 │   │   ├── molecular.js      ← 2D reaction animations
 │   │   ├── molecular3d.js    ← 3D ball-and-stick viewer
 │   │   ├── notebook-storage.js ← the page's side of the save/load/report bridge
