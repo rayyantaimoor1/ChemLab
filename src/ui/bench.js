@@ -630,6 +630,9 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     }
     const condensation = document.createElement('div');
     condensation.className = 'vessel__condensation';
+    // A very hot dry solid glowing (UI.4.4): a static overlay, faded in.
+    const glow = document.createElement('div');
+    glow.className = 'vessel__glow';
     const steam = document.createElement('div');
     steam.className = 'vessel__steam';
     for (let k = 0; k < 4; k += 1) {
@@ -686,7 +689,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // as it would in real glass.
     const solidLayer = document.createElement('div');
     solidLayer.className = 'vessel__layer vessel__shelf-solids';
-    glass.append(solidLayer, liquidBase, liquidIncoming, plume, layerBox, emulsion, convection, boil, condensation, haze, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
+    glass.append(solidLayer, liquidBase, liquidIncoming, plume, layerBox, emulsion, convection, boil, condensation, glow, haze, sediment, precipitateLayer, bubbleLayer, gasLayer, electrodeLayer, pourMouth);
     vessel.appendChild(glass);
     vessel.insertAdjacentHTML('beforeend', frontSvg(container.type, container.capacityMl));
     vessel.appendChild(smoke);
@@ -786,7 +789,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       readingRow, readingSwatch, readingText, powerNote,
       solidLayer, shelfSolidNote, solidEls: new Map(), haze, smoke, cathodeRod,
       plume, mixing: null, layerBox, emulsion, shaking: false, soot,
-      convection, boil, condensation, steam, heatNote,
+      convection, boil, condensation, steam, heatNote, glow,
       thermometer: null, thermometerColumn: null,
       dipEl: null, dipTool: null,
     };
@@ -1097,11 +1100,15 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     if (heat.stage === 'nucleating') lines.push('small bubbles forming on the glass');
     if (heat.stage === 'boiling') lines.push(`boiling (${heat.boilingPointC} °C)`);
     if (heat.stage === 'evaporating') lines.push('giving off vapour');
+    if (heat.glow) lines.push(`the solid is ${heat.glow.name}`);
     if (heat.condensation) {
       const colour = heat.condensation.colorName && heat.condensation.colorName !== 'colourless'
         ? `${heat.condensation.colorName.split(',')[0]} ` : '';
       lines.push(`${colour}droplets of ${heat.condensation.name.toLowerCase()} on the cool glass above`);
     }
+    // Hot glass looks exactly like cold glass - said in words, because
+    // nothing on the glass would show it (UI.4.4).
+    if (heat.hotGlass) lines.push('hot - hot glass looks just like cold glass');
     return lines.join('; ');
   }
 
@@ -1149,6 +1156,14 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       }
     }
     refs.condensation.classList.toggle('is-visible', showDroplets);
+
+    // The glow of a very hot dry solid, over the floor where solids lie.
+    if (heat.glow) {
+      refs.glow.style.background = `radial-gradient(70% 90% at 50% 100%, ${heat.glow.colorHex}, rgba(0, 0, 0, 0) 75%)`;
+      refs.glow.style.opacity = String(heat.glow.strength);
+    } else {
+      refs.glow.style.opacity = '0';
+    }
 
     let note = heatNoteText(heat);
     if (container.thermometerIn && offScale(container.temperatureC)) {

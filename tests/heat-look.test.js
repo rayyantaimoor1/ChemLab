@@ -52,3 +52,28 @@ test('a liquid with no boiling point on record never boils', () => {
   assert.equal(adipoyl.stage, 'still');
   assert.equal(adipoyl.boilingPointC, null);
 });
+
+// ---- Very hot solids and hot glass (BUILD_UI.md UI.4.4) ----
+
+import { glowFor, HOT_GLASS_C } from '../src/ui/heat-look.js';
+
+test('a solid glows only above the Draper point, red first and white last', () => {
+  assert.equal(glowFor(500), null, 'nothing glows at the burner\'s 500 °C');
+  assert.match(glowFor(525).name, /just-visible red/);
+  assert.match(glowFor(750).name, /dull red/);
+  assert.match(glowFor(850).name, /cherry red/);
+  assert.match(glowFor(1150).name, /orange/);
+  assert.match(glowFor(1400).name, /white/);
+});
+
+test('only a dry solid glows - a solid under liquid cannot get that hot', () => {
+  const dry = look([{ id: 'cuso4_anhydrous_s', amount: 5, unit: 'g' }], 900, 3);
+  assert.match(dry.glow.name, /cherry red/);
+  const wet = look([{ id: 'cuso4_anhydrous_s', amount: 5, unit: 'g' }, ...water], 900, 3);
+  assert.equal(wet.glow, null);
+});
+
+test('hot glass is flagged from the temperature it becomes too hot to hold', () => {
+  assert.equal(look(water, HOT_GLASS_C - 1, 0).hotGlass, false);
+  assert.equal(look(water, HOT_GLASS_C, 0).hotGlass, true);
+});

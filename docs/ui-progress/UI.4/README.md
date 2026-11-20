@@ -38,3 +38,13 @@ Each label says what heat is doing in words as well.
 - **The boiling tube of copper sulfate, heated dry:** the tube is far above
   110 °C, so the column has run to the top of the scale. The label says the
   temperature is off the thermometer's scale.
+
+## UI.4.4 — Very hot solids, and hot glass
+
+`hot-glass.png` shows a beaker of water boiling on the burner. Its label ends
+"hot - hot glass looks just like cold glass". The line appears from 60 °C and
+stays while the vessel is that hot.
+
+There is no screenshot of the glow, because nothing in the app reaches it yet.
+The burner's dry maximum is 500 °C, and a solid only starts to glow at 525 °C.
+The rule is in `src/ui/heat-look.js` and is covered by the tests.

@@ -1713,6 +1713,19 @@ html.reduce-motion .vessel__dip {
 .vessel__condensation.is-visible { opacity: 1; }
 .vessel__condensation svg { display: block; }
 
+/* A very hot dry solid glowing (UI.4.4): a static overlay over the floor,
+   faded in; its colour and strength come from heat-look.js. */
+.vessel__glow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30%;
+  opacity: 0;
+  transition: opacity 2000ms ease-in;
+  pointer-events: none;
+}
+
 /* Steam or vapour leaving the mouth, outside the glass. */
 .vessel__steam {
   position: absolute;

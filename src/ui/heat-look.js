@@ -26,8 +26,41 @@
  * Nothing in this file decides chemistry; it only reads temperature, heat
  * and those curated numbers.
  *
+ * VERY HOT SOLIDS (BUILD_UI.md UI.4.4)
+ * A dry solid hot enough glows, in the colours a smith reads off hot steel:
+ * just visible red from 525 °C (the Draper point, above which almost every
+ * solid glows), dull red from 699 °C, cherry red from 800 °C, orange from
+ * 1100 °C, white from 1300 °C - the Stirling table on Wikipedia's "Red heat"
+ * page (GLOW below). Below 525 °C nothing glows, however hot.
+ *
+ * HOT GLASS
+ * Glass at 300 °C looks exactly like glass at 25 °C, which is how most
+ * burns in a school lab happen. From 60 °C - too hot to hold - the vessel's
+ * label says so; nothing is drawn, because nothing would be seen.
+ *
  * No DOM here, so tests/heat-look.test.js can check every stage.
  */
+
+/**
+ * The colour of a glowing solid by temperature, from the Stirling table
+ * on Wikipedia, "Red heat" (opened 2026-11-20). The opacity is how strongly
+ * the glow overlays the solid's own colour - faint at first, then it hides it.
+ */
+export const GLOW = [
+  { fromC: 1300, name: 'white hot', colorHex: '#FFF1D6', strength: 1 },
+  { fromC: 1100, name: 'glowing orange', colorHex: '#F0821E', strength: 0.95 },
+  { fromC: 800, name: 'glowing cherry red', colorHex: '#C8281A', strength: 0.85 },
+  { fromC: 699, name: 'glowing dull red', colorHex: '#9A1E12', strength: 0.7 },
+  { fromC: 525, name: 'glowing a just-visible red', colorHex: '#6E150C', strength: 0.4 },
+];
+
+/** Too hot to hold: from here the label warns that hot glass looks cold. */
+export const HOT_GLASS_C = 60;
+
+/** The glow of a dry solid at this temperature, or null below the Draper point. */
+export function glowFor(temperatureC) {
+  return GLOW.find((step) => temperatureC >= step.fromC) || null;
+}
 
 /** Degrees below the boiling point at which bubbles start forming on the glass. */
 export const NUCLEATION_BAND_C = 15;
@@ -43,7 +76,8 @@ const isLiquid = (c) => c && (c.state === 'aqueous' || c.state === 'liquid');
  *                           ({ id, amount, unit }), temperatureC, heatLevel
  * @param {object} engine
  * @returns {{ stage: string, boilingPointC: number|null, steam: boolean,
- *             condensation: { id, name, colorHex, colorName } | null }}
+ *             condensation: { id, name, colorHex, colorName } | null,
+ *             glow: { name, colorHex, strength } | null, hotGlass: boolean }}
  */
 export function heatLookFor(snapshot, engine) {
   const T = snapshot.temperatureC ?? 25;
@@ -85,9 +119,16 @@ export function heatLookFor(snapshot, engine) {
     .sort((a, b) => a.boilingPointC - b.boilingPointC);
   const condenses = vapourising.length && (heating || stage === 'evaporating') ? vapourising[0] : null;
 
+  // A solid in a dry vessel glows when hot enough; one under liquid cannot
+  // get that hot - the liquid boils first.
+  const hasSolid = (snapshot.speciesIds || []).some((id) => engine.getChemical(id)?.state === 'solid');
+  const glow = hasSolid && boilingPointC === null ? glowFor(T) : null;
+
   return {
     stage,
     boilingPointC,
+    glow,
+    hotGlass: T >= HOT_GLASS_C,
     steam: stage === 'boiling' || stage === 'evaporating',
     condensation: condenses
       ? { id: condenses.id, name: condenses.name, colorHex: condenses.colorHex, colorName: condenses.colorName }

@@ -494,6 +494,31 @@ a guessed one. No engine change.
 > A dry solid above about 500 °C glows dull red, then orange — a static overlay, faded in. Hot
 > glass looks exactly like cold glass, and the label says so.
 
+> **Done (2026-11-20).**
+> - **The glow.** A dry vessel with a solid in it glows from the floor up, as a static overlay
+>   that fades in over two seconds. The colours come from the Stirling table on Wikipedia's "Red
+>   heat" page (opened 2026-11-20):
+>   - just-visible red from 525 °C (the Draper point, above which almost every solid glows);
+>   - dull red from 699 °C;
+>   - cherry red from 800 °C;
+>   - orange from 1100 °C;
+>   - white from 1300 °C.
+>
+>   The label says it too, for example "the solid is glowing cherry red". A solid under liquid
+>   never glows, because the liquid boils first. The table is `GLOW` in `src/ui/heat-look.js`.
+> - **Not reachable in the app today.** The burner takes a dry vessel to 500 °C and no reaction
+>   adds 200 °C or more, so nothing yet passes 525 °C. The rule is in place and tested, and it
+>   waits for something hotter, such as a blowpipe or a furnace. The glow was not lowered to
+>   500 °C to make it show: below the Draper point a solid does not visibly glow.
+> - **Hot glass.** From 60 °C, too hot to hold, the vessel's label adds "hot - hot glass looks
+>   just like cold glass". Nothing is drawn on the glass, because nothing would be seen.
+> - **Checked in the running app:** water heated at full flame showed no warning at 49 °C, then
+>   the hot-glass line from 65 °C through to the boil.
+> - **Tests** in `tests/heat-look.test.js`.
+> - **Melting points** were left for this stage in UI.4.2. They are still not added: nothing
+>   here needs them, and a solid melting on the bench is its own piece of work, which needs a
+>   sourced batch and owner approval first.
+
 **UI.4.5 — Sonnet — Ice bath and water bath**
 > An ice bath with visible ice and water, and a water bath for gentle warming, each holding the
 > vessel at its temperature.
