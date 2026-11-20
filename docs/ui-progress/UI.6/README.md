@@ -14,3 +14,12 @@ alone:
 
 - a test tube over one, gripped by a wooden test-tube holder;
 - a small beaker over the other, standing on the gauze.
+
+## UI.6.2 — Pouring that looks like pouring
+
+- **`pour.png`:** a small beaker of blue copper sulfate solution, mid-pour into
+  an empty one. It is tipped 65° at its lip over the mouth of the other, and
+  its liquid surface stays level. The stream arcs from the lip down onto the
+  floor of the empty beaker, which is filling from the bottom.
+- **`pour-high.png`:** the same pour, let go well above the beaker. A long
+  stream falls into it and splashes where it lands. The same 10 mL was poured.

@@ -2281,6 +2281,37 @@ html.reduce-motion .vessel__fuming > span {
   border-radius: 50%;
 }
 
+/* A pour (UI.6.2): the stream arcing from the lip onto the liquid below,
+   the last drip, and the droplets of a pour from too high. */
+.fx-pour-arc {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 7;
+  pointer-events: none;
+  overflow: visible;
+}
+.fx-pour-arc path {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+.fx-drip,
+.fx-splash {
+  position: absolute;
+  z-index: 7;
+  width: 4px;
+  height: 5px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  pointer-events: none;
+}
+.fx-splash {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+}
+
 .fx-pour-stream {
   position: absolute;
   top: 0;

@@ -48,7 +48,10 @@ import {
   shrinkAway,
   spreadColour,
   shakeLayers,
+  prefersReducedMotion,
 } from './effects.js';
+// How a pour looks: lip, tilt, stream, splash (BUILD_UI.md UI.6.2).
+import { pourPath, POUR } from './pour-path.js';
 // A solid from the shelf drawn as what it is - ribbon, granules, chips -
 // from its curated form (BUILD_UI.md UI.3.3).
 import { solidSvg, solidBox, shelfSolidLabel } from './solid-shapes.js';
@@ -81,6 +84,8 @@ const NEARLY_FULL_FRACTION = 0.9;
 // being dropped onto it. Generous above (a tall vessel is grabbed near its
 // top, well above the tripod it is aimed at) and tight below.
 const EQUIPMENT_HIT_PAD = { x: 30, top: 90, bottom: 24 };
+// How far above a vessel's mouth a held glass still pours into it (UI.6.2).
+const POUR_REACH_PX = 160;
 
 // The control strip along the foot of the bench, and a little breathing
 // room under the lowest object.
@@ -318,18 +323,28 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
   }
 
   /** Which OTHER vessel the pointer is currently over, if any. */
-  function hitVessel(event, exceptId) {
+  function hitVessel(event, exceptId, { above = 0 } = {}) {
     for (const [id, refs] of vesselEls) {
       if (id === exceptId) continue;
       const rect = refs.glass.getBoundingClientRect();
       if (
         event.clientX >= rect.left && event.clientX <= rect.right &&
-        event.clientY >= rect.top && event.clientY <= rect.bottom
+        event.clientY >= rect.top - above && event.clientY <= rect.bottom
       ) {
         return id;
       }
     }
     return null;
+  }
+
+  /**
+   * Which vessel a held glass would pour into: one it is over, or - when it
+   * is over no furniture either - one whose mouth it is held above, so a
+   * pour can be made from a height (UI.6.2; too high and it splashes).
+   */
+  function pourTargetAt(event, exceptId) {
+    return hitVessel(event, exceptId)
+      || (hitEquipment(event) ? null : hitVessel(event, exceptId, { above: POUR_REACH_PX }));
   }
 
   /** Which piece of furniture the pointer is over, generously padded. */
@@ -352,6 +367,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
   function beginDrag(kind, id, event, element) {
     // A click that lands on a button is that button's, not a drag.
     if (event.target.closest && event.target.closest('button')) return;
+    // A glass that is being poured from is in the student's hand already.
+    if (kind === 'vessel' && vesselEls.get(id)?.pouring) return;
     event.preventDefault();
 
     const state = getState();
@@ -408,7 +425,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     // Tip the glass while it is over another vessel: the promise that
     // letting go will pour, made before anything is committed.
-    const over = hitVessel(event, drag.id);
+    const over = pourTargetAt(event, drag.id);
     if (drag.glass) drag.glass.style.transform = over ? 'rotate(-24deg)' : '';
 
     const overEquipment = over ? null : hitEquipment(event);
@@ -442,7 +459,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     if (finished.glass) finished.glass.style.transform = '';
 
-    const pourTarget = hitVessel(event, finished.id);
+    const pourTarget = pourTargetAt(event, finished.id);
     const standTarget = pourTarget ? null : hitEquipment(event);
 
     // A burette dropped over a vessel is clamped above it, not poured.
@@ -452,19 +469,23 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     }
 
     if (pourTarget) {
-      // Snap back to where it was picked up: you tip a beaker over another
-      // and then set it down again, you do not leave it hanging there.
-      finished.el.style.transform = `translate3d(${finished.startX}px, ${finished.startY}px, 0)`;
       const source = getState().containers.find((c) => c.id === finished.id);
+      // Where it was let go: a pour starts from there, and from that height
+      // (UI.6.2) - too high and it splashes.
+      const release = { x: finished.x, y: finished.y };
       if (!source || source.contents.length === 0) {
+        finished.el.style.transform = `translate3d(${finished.startX}px, ${finished.startY}px, 0)`;
         render();
         return;
       }
       const state = getState();
       if (state.dispenseMode === 'quick') {
-        executePour(finished.id, pourTarget, Math.min(state.quickAmount, source.volumeMl));
+        executePour(finished.id, pourTarget, Math.min(state.quickAmount, source.volumeMl), release);
       } else {
-        openPourPanel(finished.id, pourTarget);
+        // Set down again while the amount is chosen; the pour then starts
+        // from where it stands, at the height it was let go.
+        finished.el.style.transform = `translate3d(${finished.startX}px, ${finished.startY}px, 0)`;
+        openPourPanel(finished.id, pourTarget, { ...release, fromHome: true });
       }
       return;
     }
@@ -1375,7 +1396,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
   function updateVessel(refs, container, state) {
     // Never fight a drag in progress - the pointer owns the transform then.
-    if (!drag || drag.id !== container.id) {
+    if ((!drag || drag.id !== container.id) && !refs.pouring) {
       refs.el.style.transform = `translate3d(${container.position.x}px, ${container.position.y}px, 0)`;
     }
     refs.el.classList.toggle('is-selected', state.selectedVesselId === container.id);
@@ -1456,6 +1477,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // While a new colour is still spreading (UI.3.5) the drawing is between
     // states on purpose, so it is left alone until the mix is finished.
     const settling = !!refs.mixing
+      || !!refs.pouring
       || refs.liquidBase.getAnimations().length > 0
       || refs.liquidIncoming.getAnimations().length > 0;
 
@@ -1860,7 +1882,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     return result;
   }
 
-  function executePour(fromId, toId, amountMl) {
+  function executePour(fromId, toId, amountMl, release = null) {
+    if (pourWithHands(fromId, toId, amountMl, release)) return;
     const stateBefore = getState();
     const sourceBefore = stateBefore.containers.find((c) => c.id === fromId);
     const targetBefore = stateBefore.containers.find((c) => c.id === toId);
@@ -1874,6 +1897,173 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const stateAfter = getState();
     playContainerEffects(fromId, sourceBefore, stateAfter.containers.find((c) => c.id === fromId), null);
     playContainerEffects(toId, targetBefore, stateAfter.containers.find((c) => c.id === toId), result && result.engineResult, { entering: true });
+  }
+
+  /**
+   * A pour that looks like one (BUILD_UI.md UI.6.2). The glass travels from
+   * where it was let go to the other vessel, holds its lip just over the
+   * mouth and tips - further the emptier it is - while its liquid stays
+   * level. A stream arcs from the lip onto the liquid below; the level falls
+   * in one and rises in the other; from too high it splashes. Then a last
+   * drip, and the glass tips back and goes home. Where everything goes is
+   * pour-path.js. Only transform and opacity move, and the stream's dash.
+   *
+   * A burette delivers from its tap instead, and with reduced motion the
+   * plain pour is used. Returns false when it did not take the pour.
+   */
+  function pourWithHands(fromId, toId, amountMl, release) {
+    const sRefs = vesselEls.get(fromId);
+    const tRefs = vesselEls.get(toId);
+    const stateBefore = getState();
+    const source = stateBefore.containers.find((c) => c.id === fromId);
+    const target = stateBefore.containers.find((c) => c.id === toId);
+    if (!sRefs || !tRefs || !source || !target || sRefs.pouring) return false;
+    if (source.type === 'burette' || prefersReducedMotion()) return false;
+    const sGeo = glassGeometry(source.type, source.capacityMl);
+    const tGeo = glassGeometry(target.type, target.capacityMl);
+    if (!sGeo || !tGeo) return false;
+
+    const vOff = { x: sRefs.vessel.offsetLeft, y: sRefs.vessel.offsetTop };
+    const tOff = { x: tRefs.vessel.offsetLeft, y: tRefs.vessel.offsetTop };
+    const home = { x: source.position.x, y: source.position.y };
+    const from = release && !release.fromHome ? release : home;
+    const targetBox = { x: target.position.x + tOff.x, y: target.position.y + tOff.y, w: tGeo.w, h: tGeo.h };
+    const surface = target.volumeMl > 0 ? tGeo.surfaceY(target.volumeMl) : tGeo.floorY;
+    const fractionBefore = liquidFraction(source.type, source.capacityMl, source.volumeMl);
+    const p = pourPath({
+      source: { x: from.x + vOff.x, y: from.y + vOff.y, w: sGeo.w, h: sGeo.h },
+      target: targetBox,
+      targetSurfaceY: targetBox.y + (surface ?? tGeo.floorY),
+      mouthHalfW: tGeo.innerHalfAt(6),
+      releaseLipY: release ? release.y + vOff.y : null,
+      fraction: fractionBefore,
+    });
+    const at = { x: p.sourceAt.x - vOff.x, y: p.sourceAt.y - vOff.y };
+    const place = (pos) => ({ transform: `translate3d(${pos.x}px, ${pos.y}px, 0)` });
+
+    // Hand the glass over to the pour: no drag, no re-render moves it.
+    sRefs.pouring = true;
+    sRefs.el.style.zIndex = '6';
+    sRefs.vessel.style.transition = 'none';
+    sRefs.vessel.style.transformOrigin = p.origin;
+    for (const el of [sRefs.liquidIncoming, sRefs.layerBox, sRefs.plume]) if (el) el.style.opacity = '0';
+
+    // The liquid turns against the glass about the point where its surface
+    // meets the axis, so the surface stays level; the glass's own clip still
+    // cuts it to the inside of the glass.
+    const liquid = sRefs.liquidBase;
+    const surfaceIn = sGeo.surfaceY(source.volumeMl) ?? sGeo.floorY;
+    Object.assign(liquid.style, {
+      top: `${surfaceIn}px`, bottom: `${-sGeo.h}px`, left: `${-sGeo.w}px`, right: `${-sGeo.w}px`,
+      height: 'auto', transformOrigin: '50% 0',
+    });
+
+    const tilt = { duration: POUR.tiltMs, easing: 'ease-out', fill: 'forwards' };
+    sRefs.el.animate([place(from), place(at)], tilt);
+    sRefs.vessel.animate([{ transform: 'rotate(0deg)' }, { transform: `rotate(${p.angle}deg)` }], tilt);
+    liquid.animate([{ transform: 'rotate(0deg)' }, { transform: `rotate(${-p.angle}deg)` }], tilt);
+
+    setTimeout(() => {
+      const targetBefore = getState().containers.find((c) => c.id === toId);
+      const result = dispatch.pour(fromId, toId, amountMl);
+      const stateAfter = getState();
+      const sourceAfter = stateAfter.containers.find((c) => c.id === fromId);
+      const targetAfter = stateAfter.containers.find((c) => c.id === toId);
+      playContainerEffects(toId, targetBefore, targetAfter, result && result.engineResult, { entering: true });
+
+      // The source's level falls along its axis as the liquid leaves.
+      const fractionAfter = sourceAfter ? liquidFraction(sourceAfter.type, sourceAfter.capacityMl, sourceAfter.volumeMl) : 0;
+      const drop = Math.max(0, (fractionBefore - fractionAfter) * sGeo.h);
+      liquid.animate(
+        [{ transform: `translateY(0) rotate(${-p.angle}deg)` }, { transform: `translateY(${drop}px) rotate(${-p.angle}deg)` }],
+        { duration: POUR.pourMs, easing: 'ease-in-out', fill: 'forwards' }
+      );
+
+      playPourArc(p, source.appearance.colorHex);
+      if (p.splash) setTimeout(() => playSplash(p.landing, source.appearance.colorHex), 200);
+
+      setTimeout(() => {
+        playDrip(p, source.appearance.colorHex);
+        setTimeout(() => {
+          const back = { duration: POUR.returnMs, easing: 'ease-in', fill: 'forwards' };
+          sRefs.el.animate([place(at), place(home)], back);
+          sRefs.vessel.animate([{ transform: `rotate(${p.angle}deg)` }, { transform: 'rotate(0deg)' }], back);
+          const settle = liquid.animate(
+            [{ transform: `translateY(${drop}px) rotate(${-p.angle}deg)` }, { transform: `translateY(${drop}px) rotate(0deg)` }],
+            back
+          );
+          settle.onfinish = () => {
+            for (const el of [sRefs.el, sRefs.vessel, liquid]) el.getAnimations().forEach((a) => a.cancel());
+            Object.assign(liquid.style, { top: '', bottom: '', left: '', right: '', transform: '', transformOrigin: '' });
+            for (const el of [sRefs.liquidIncoming, sRefs.layerBox, sRefs.plume]) if (el) el.style.opacity = '';
+            sRefs.vessel.style.transition = '';
+            sRefs.vessel.style.transformOrigin = '';
+            sRefs.el.style.zIndex = '';
+            sRefs.pouring = false;
+            render();
+          };
+        }, POUR.dripMs * 0.6);
+      }, POUR.pourMs);
+    }, POUR.tiltMs);
+    return true;
+  }
+
+  /** The stream: an arc from the lip onto the liquid below, in the liquid's colour. */
+  function playPourArc(p, colorHex) {
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('class', 'fx-pour-arc');
+    svg.setAttribute('width', String(canvas.clientWidth));
+    svg.setAttribute('height', String(canvas.clientHeight));
+    const path = document.createElementNS(NS, 'path');
+    path.setAttribute('d', p.path);
+    path.setAttribute('stroke', colorHex || '#EEF3F5');
+    svg.appendChild(path);
+    canvas.appendChild(svg);
+    const length = Math.max(1, path.getTotalLength());
+    path.style.strokeDasharray = `${length}`;
+    path.animate([{ strokeDashoffset: length }, { strokeDashoffset: 0 }], { duration: 180, easing: 'ease-in', fill: 'forwards' });
+    const fade = svg.animate([{ opacity: 1 }, { opacity: 1, offset: 0.85 }, { opacity: 0 }], { duration: POUR.pourMs, fill: 'forwards' });
+    fade.onfinish = () => svg.remove();
+  }
+
+  /** The last drip, falling from the lip as the glass comes back. */
+  function playDrip(p, colorHex) {
+    const drip = document.createElement('span');
+    drip.className = 'fx-drip';
+    drip.style.left = `${p.lip.x - 2}px`;
+    drip.style.top = `${p.lip.y}px`;
+    drip.style.background = colorHex || '#EEF3F5';
+    canvas.appendChild(drip);
+    const fall = Math.max(4, p.landing.y - p.lip.y);
+    const anim = drip.animate(
+      [{ transform: 'translateY(0) scale(0.6)', opacity: 0.95 }, { transform: `translateY(${fall}px) scale(1)`, opacity: 0.6 }],
+      { duration: POUR.dripMs, easing: 'ease-in', fill: 'forwards' }
+    );
+    anim.onfinish = () => drip.remove();
+  }
+
+  /** From too high: droplets thrown up and out where the stream lands. */
+  function playSplash(landing, colorHex) {
+    for (let k = 0; k < 6; k += 1) {
+      const drop = document.createElement('span');
+      drop.className = 'fx-splash';
+      drop.style.left = `${landing.x - 2}px`;
+      drop.style.top = `${landing.y - 2}px`;
+      drop.style.background = colorHex || '#EEF3F5';
+      canvas.appendChild(drop);
+      const dx = (k - 2.5) * 6;
+      const up = 8 + (k % 3) * 5;
+      const anim = drop.animate(
+        [
+          { transform: 'translate(0, 0)', opacity: 0.9 },
+          { transform: `translate(${dx * 0.6}px, ${-up}px)`, opacity: 0.9, offset: 0.45 },
+          { transform: `translate(${dx}px, 4px)`, opacity: 0 },
+        ],
+        { duration: 480, easing: 'ease-out', fill: 'forwards' }
+      );
+      anim.onfinish = () => drop.remove();
+    }
   }
 
   function playContainerEffects(containerId, before, after, engineResult, how = {}) {
@@ -2172,7 +2362,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     document.addEventListener('keydown', onFloatKeyDown, true);
   }
 
-  function openPourPanel(fromId, toId) {
+  function openPourPanel(fromId, toId, release = null) {
     const state = getState();
     const source = state.containers.find((c) => c.id === fromId);
     const target = state.containers.find((c) => c.id === toId);
@@ -2200,7 +2390,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       headroom,
       withPresets: false,
       confirmLabel: 'Pour',
-      onConfirm: (amount) => executePour(fromId, toId, amount),
+      onConfirm: (amount) => executePour(fromId, toId, amount, release),
     });
     panel.appendChild(form);
     floatHost.appendChild(panel);

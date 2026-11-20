@@ -728,6 +728,36 @@ addition and instrument precision are BUILD_PHASE_2.md Stage 2.5; this stage is 
 > in one and rises in the other; a last drip follows. Pouring from too high splashes (shown, not
 > rewarded).
 
+> **Done (2026-11-20).** The geometry is in `src/ui/pour-path.js`, with no DOM, and is tested in
+> `tests/pour-path.test.js`. The choreography is `pourWithHands` in `bench.js`.
+> - **The glass goes to the other vessel.** It travels from where it was let go and holds its lip
+>   just inside the near edge of the target's mouth, from whichever side it came from.
+> - **It tips at its lip:** about 30° when full, nearly on its side when almost empty, because
+>   the emptier a glass is, the further it has to tip before liquid reaches the lip.
+> - **The liquid stays level.** The liquid layer turns against the glass about the point where
+>   its surface meets the vessel's axis, and the glass's own clip still cuts it to the inside. For
+>   straight-sided glass that keeps the volume right.
+> - **The stream arcs** from the lip onto the target's liquid, or its floor if it is empty, in
+>   the liquid's colour.
+> - **The levels move together:** the level falls in the source while it rises in the target.
+> - **A last drip falls,** then the glass tips back and goes home.
+> - **Pouring from a height.** Holding the glass above a vessel's mouth now pours into it - up to
+>   160 px above, wherever no furniture is under the pointer.
+>   - From more than 70 px above the rim, the stream splashes: droplets thrown up where it lands.
+>   - It is shown, never rewarded or punished: the amount poured is exactly what the engine poured.
+> - **Unchanged:**
+>   - a burette still delivers from its tap;
+>   - with reduced motion the plain pour is used;
+>   - only transform and opacity move, plus the stream's dash.
+> - **Checked in the running app:**
+>   - 40 mL of copper sulfate solution poured 10 mL into an empty beaker;
+>   - the glass tipped 65°, the blue surface stayed level, and the stream arced in;
+>   - afterwards the glass was back exactly where it started;
+>   - let go well above the beaker, the long stream splashed 6 droplets.
+>   - Screenshots: `docs/ui-progress/UI.6/pour.png`, `pour-high.png`.
+> - **The tube at an angle (UI.6.1).** Keeping a liquid level in tilted glass now works, so a tube
+>   held at an angle in a clamp can use it. It is still to do.
+
 **UI.6.3 — Sonnet — Dropwise, swirling and stirring**
 > A dropping pipette and a burette stopcock release single visible drops; a conical flask can be
 > swirled; a glass rod stirs. Each matches what the engine already does when it is used.
