@@ -56,6 +56,8 @@ import { pourPath, POUR } from './pour-path.js';
 import { DROP_ML, mixVerbFor } from './dropwise.js';
 // Reading the meniscus at eye level, and parallax (BUILD_UI.md UI.7.2).
 import { readingFor, readingNote, lensSvg } from './meniscus.js';
+// The lab's sounds, when they are switched on (UI.9).
+import { playSound, setBoiling } from './sound.js';
 // A solid from the shelf drawn as what it is - ribbon, granules, chips -
 // from its curated form (BUILD_UI.md UI.3.3).
 import { solidSvg, solidBox, shelfSolidLabel } from './solid-shapes.js';
@@ -213,6 +215,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     renderControlStrip(state);
     renderReadings(state);
+    // The boil sounds while anything on the bench is boiling (UI.9).
+    setBoiling(state.containers.some((c) => c.appearance?.heat?.stage === 'boiling'));
     traceStrip.hidden = !state.traceEnabled;
     traceValue.textContent = state.traceLine;
 
@@ -470,6 +474,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // A burette dropped over a vessel is clamped above it, not poured.
     if (pourTarget && finished.type === 'burette') {
       dispatch.clampOver(finished.id, pourTarget);
+      playSound('clink');
       return;
     }
 
@@ -497,6 +502,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     if (standTarget) {
       dispatch.standOn(finished.id, standTarget);
+      playSound('clink');
       return;
     }
 
@@ -1882,6 +1888,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.lastStreamSignature = signature;
     refs.streamLayer.innerHTML = '';
     if (!signature) return;
+    if (!refs.closeLook) playSound('fizz', { gasRate: bubbles.gasRate, seconds: 1.4 });
 
     const pace = paceFor(bubbles.gasRate);
     for (const stream of bubbles.streams) {
@@ -1937,6 +1944,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       count: pace.count, burstMs: pace.burstMs, riseMs: pace.riseMs, sizePx: pace.sizePx,
       xPx, bottomPx, risePx: liquidHeight - 2,
     });
+    if (!refs.closeLook) playSound('fizz', { gasRate: reaction.effects?.gasRate, seconds: pace.burstMs / 1000 });
   }
 
   /* ------------------------------------------------------------------ *
@@ -2208,6 +2216,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     setTimeout(() => {
       const targetBefore = getState().containers.find((c) => c.id === toId);
       const result = dispatch.pour(fromId, toId, amountMl);
+      playSound('pour', { amountMl });
       const stateAfter = getState();
       const sourceAfter = stateAfter.containers.find((c) => c.id === fromId);
       const targetAfter = stateAfter.containers.find((c) => c.id === toId);

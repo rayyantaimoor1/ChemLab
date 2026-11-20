@@ -1002,7 +1002,41 @@ someone seeing it for the first time.
 > in the top bar, OFF by default on school machines. Every file's licence checked and recorded;
 > the size added to the installer stated.
 
+> **Done (2026-11-21).** The owner decided: sound yes, synthesised in the app. The sounds are in
+> `src/ui/sound.js`, and the choices are tested in `tests/sound.test.js`.
+> - **Made, not recorded.** Every sound is generated with the browser's own Web Audio engine. There
+>   are no sound files, so nothing is downloaded, there are no licences to check, and **0 bytes**
+>   are added to the installer.
+> - **The sounds:**
+>   - **Pour:** shaped noise as long as the pour, rising in pitch as the vessel fills.
+>   - **Fizz:** a crackle of tiny pops where a reaction's bubbles start. It is louder and busier
+>     the faster its curated `gasRate`: about 10, 24 or 55 pops a second for slow, steady or
+>     vigorous. A rule with no rate on record is steady. A cell's electrodes fizz too when their
+>     streams start.
+>   - **Boil:** a low rumble with bubbles bursting, for as long as anything on the bench is boiling.
+>   - **Clink:** glass set down on furniture, or a burette clamped.
+>   - **Hazard:** a soft two-tone alert as the hazard alert opens. It is three short pairs, not a
+>     siren.
+> - **Off by default.** A "Sound" switch in the top bar, beside "Reduce animation", starts unticked
+>   at every launch. Until it is ticked, not even an audio context is made, so a school machine
+>   stays silent.
+> - **Checked in the running app,** by counting what the app asks of the audio engine:
+>   - with Sound off, magnesium fizzing in acid and its hazard alert made no audio at all;
+>   - ticked, the same made one audio context and the fizz's pops plus the hazard tone;
+>   - setting a beaker on a burner rang a clink;
+>   - water boiling at 100 °C started the boil.
+>   - No errors.
+
 ✅ **Check:** with sound off, nothing is lost: every sound has a visible equivalent.
+
+> **Checked (2026-11-21).** Each sound accompanies something already drawn:
+> - the pour, the stream arcing (UI.6.2);
+> - the fizz, the bubbles at the same rate (UI.5.2);
+> - the boil, the rolling boil (UI.4.2);
+> - the clink, the vessel snapping into place (UI.6.1);
+> - the hazard tone, the hazard alert itself.
+>
+> Sound only ever adds to what is on screen.
 
 ---
 
@@ -1047,4 +1081,4 @@ finds nothing that would teach a student something wrong.
 | UI.5 | Curated `effects.gasRate` (slow / steady / vigorous) on every rule with bubbles of a gas, sourced, in batches; missing fails the build once done | Yes (owner) | 2026-11-20 |
 | UI.8.2 | Curated `storage: "amber"` on reagents kept from light, sourced | Yes (owner) | 2026-11-21 |
 | UI.8 | A fume cupboard on the bench: a vessel can stand inside it; fumes and toxic gas made there are drawn away; the hazard warning is unchanged | Yes (owner) | 2026-11-21 |
-| UI.9 | Sound in the app | | |
+| UI.9 | Sound in the app: yes, synthesised in the app with Web Audio (no files, no downloads, nothing added to the installer), with a top-bar switch OFF by default | Yes (owner) | 2026-11-21 |

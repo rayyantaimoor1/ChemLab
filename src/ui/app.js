@@ -47,6 +47,8 @@ import { mountMolecularView } from './molecular.js';
 import { mountMolecular3DView } from './molecular3d.js';
 import { mountGuidedBar, mountGuidedStepCard, mountGuidedSummary } from './guided.js';
 import { setReduceAnimation } from './effects.js';
+// The lab's sounds, off by default (BUILD_UI.md UI.9).
+import { setSoundEnabled } from './sound.js';
 
 /* ------------------------------------------------------------------ *
  * The bench. It starts empty in both modes: in Free Lab the student takes
@@ -844,6 +846,9 @@ let selectedToolId = null;
 // preference, not lab state.
 let reduceAnimationEnabled = false;
 
+// Sound (BUILD_UI.md UI.9): off until the student or teacher switches it on.
+let soundOn = false;
+
 // The shelf's DISPENSE strip: 'ask' opens the amount panel every time (the
 // long-standing default, and the only way to add a solid's exact grams);
 // 'quick' skips straight to adding quickAmount mL of whatever was dropped,
@@ -1426,6 +1431,7 @@ function getState() {
     tools: tools.listTools(),
     selectedToolId,
     reduceAnimationEnabled,
+    soundOn,
     viewingChemicalId,
     viewingReactionId,
     viewing3DChemicalId,
@@ -1542,6 +1548,12 @@ const dispatch = {
     reduceAnimationEnabled = Boolean(enabled);
     setReduceAnimation(reduceAnimationEnabled);
   }, null, 'setReduceAnimation'),
+
+  // The top bar's Sound switch (UI.9) - interface only, like the one above.
+  setSound: wrap((on) => {
+    soundOn = Boolean(on);
+    setSoundEnabled(soundOn);
+  }, null, 'setSound'),
 
   // The DISPENSE strip and the "Contract trace" checkbox - both purely
   // interface state, following the same pattern as setReduceAnimation
@@ -1964,6 +1976,14 @@ subscribe(() => {
   if (!notebookChanged) return;
   notebookChanged = false;
   notebookSaver.save();
+});
+
+const soundCheckbox = document.getElementById('sound-on');
+soundCheckbox.addEventListener('change', (event) => {
+  dispatch.setSound(event.target.checked);
+});
+subscribe(() => {
+  soundCheckbox.checked = getState().soundOn;
 });
 
 const reduceAnimationCheckbox = document.getElementById('reduce-animation');

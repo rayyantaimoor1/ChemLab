@@ -26,6 +26,8 @@ import { engine } from '../core/engine.js';
 // Only used to check whether a 3D model exists, so the "View in 3D" button
 // can be left out honestly rather than opening a viewer with nothing in it.
 import { getMolecule3D } from './molecular3d.js';
+// The hazard alert's tone, when sound is on (UI.9).
+import { playSound } from './sound.js';
 // The reagent's bottle with its printed label and GHS pictograms (UI.8.2).
 import { bottleSvg } from './bottles.js';
 
@@ -593,6 +595,7 @@ export function mountHazardAlert({ root, getState, dispatch, subscribe, edgeEl =
   function open(hazard) {
     shownHazard = hazard;
     returnFocusTo = document.activeElement;
+    playSound('hazard');
 
     root.innerHTML = '';
     root.appendChild(buildOverlay(hazard));

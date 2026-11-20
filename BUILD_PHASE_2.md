@@ -360,6 +360,10 @@ still applies.
 > in the top bar that defaults to OFF on school machines. Check every file's licence before
 > bundling. State the size added to the installer.
 
+> **Done as BUILD_UI.md UI.9 (2026-11-21).** The sounds are synthesised in the app rather than
+> bundled as files, so there are no files to licence and nothing is added to the installer. The
+> switch is off by default.
+
 **2.7.5 — Sonnet — Liquid feel**
 > A visible meniscus on every vessel, a gentle slosh when a vessel is dragged, and drips that
 > follow the pour stream. All transform/opacity.
@@ -472,7 +476,7 @@ Fill this in as each decision is made, then copy it into `CLAUDE.md` §8.
 | 2.4 | "Separate" action family | | |
 | 2.5 | Seeded variation in instrument readings | | |
 | 2.6 | Technique hazards | | |
-| 2.7 | Sound in the app | | |
+| 2.7 | Sound in the app: yes, synthesised with Web Audio rather than bundled files, off by default (decided with BUILD_UI.md UI.9) | Yes (owner) | 2026-11-21 |
 
 ---
 

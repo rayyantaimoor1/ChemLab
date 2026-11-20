@@ -116,6 +116,7 @@ chemlab/
 │   │   ├── dropwise.js       ← one drop (0.05 mL), and which vessels are swirled rather than stirred
 │   │   ├── meniscus.js       ← reading a scale at eye level, parallax, and the reading lens
 │   │   ├── bottles.js        ← reagents as bottles, jars and cylinders with printed labels and GHS pictograms
+│   │   ├── sound.js          ← the lab's sounds, synthesised in the app, off until switched on
 │   │   ├── molecular.js      ← 2D reaction animations
 │   │   ├── molecular3d.js    ← 3D ball-and-stick viewer
 │   │   ├── notebook-storage.js ← the page's side of the save/load/report bridge
