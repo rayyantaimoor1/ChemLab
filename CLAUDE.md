@@ -121,11 +121,12 @@ chemlab/
 │   │   ├── notebook-export.js  ← the notebook as plain text for Export
 │   │   └── problem-report.js   ← builds a "This looks wrong" report
 │   ├── styles/
-│   └── assets/               ← bundled fonts, icons, sounds
+│   └── assets/               ← bundled fonts, icons, sounds; room/ holds the drawn wall and bench textures
 ├── scripts/
 │   ├── validate-content.mjs  ← `npm run validate`: schema, equation balance, colour names, GHS, pH, levels
 │   ├── update-golden.mjs     ← `npm run golden:update`: re-approves the golden notebook sentences
 │   ├── capture-ui.mjs        ← screenshots of the reference benches at 1366×768 (BUILD_UI.md)
+│   ├── make-room-images.mjs  ← draws the wall-tile and bench-resin textures into src/assets/room/
 │   └── lib/                  ← the checkers these use, and the golden-sentence builder
 ├── tests/
 │   └── golden/               ← notebook-sentences.json: the approved sentence for every reaction

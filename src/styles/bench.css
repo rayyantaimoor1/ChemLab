@@ -772,10 +772,22 @@ select:focus-visible,
   min-height: 420px;
   margin: 0;
   overflow: hidden;
-  /* A darker strip along the foot, so the bench reads as a surface with a
-     front edge rather than a flat panel. */
+  /* The room (BUILD_UI.md UI.8.1), front to back:
+     - the darker strip along the foot, so the bench has a front edge;
+     - the light, falling from the left across bench and wall alike;
+     - the line where the bench top meets the wall;
+     - the bench top, dark phenolic resin, a 48 px band just above the
+       control strip - where everything stands;
+     - the tiled wall behind, glazed tiles 100 mm square.
+     Both images are drawn by scripts/make-room-images.mjs (2.6 KB and
+     1.5 KB); the light is a gradient, so the tiles repeat seamlessly. */
   background:
-    linear-gradient(180deg, transparent calc(100% - 58px), rgba(0, 0, 0, 0.34) 100%);
+    linear-gradient(180deg, transparent calc(100% - 58px), rgba(0, 0, 0, 0.34) 100%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.24)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(255, 255, 255, 0.05)) left 0 bottom 108px / 100% 2px no-repeat,
+    url('../assets/room/bench-resin.jpg') left 0 bottom 62px / auto 48px repeat-x,
+    url('../assets/room/wall-tiles.jpg') left 0 bottom 110px / 220px 220px repeat,
+    #2B3431;
 }
 
 .bench-object {

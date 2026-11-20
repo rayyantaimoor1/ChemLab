@@ -879,6 +879,25 @@ stands, with the hazard text unchanged.
 > A dark phenolic resin bench with a faint static texture, a tiled wall behind, consistent light
 > from one side. Static images, compressed, size reported.
 
+> **Done (2026-11-21).**
+> - **The wall:** glazed tiles 100 mm square at the bench's scale, in a dark slate green. The
+>   glassware is drawn pale for a dark room, and pale glass vanishes on white tiles, so the tiles
+>   are dark. Each tile varies slightly, with a soft glaze sheen and a bevelled edge.
+> - **The bench top:** dark phenolic resin with a faint speckle, a 48 px band just above the
+>   control strip, where everything stands. A line marks where it meets the wall.
+> - **Light from one side:** one gradient falls from the left across bench and wall alike. It is
+>   not baked into the images, so the tiles repeat seamlessly and the light stays consistent.
+> - **The images** are drawn by `scripts/make-room-images.mjs`
+>   (`npx electron scripts/make-room-images.mjs`) with seeded randomness, so they remake exactly.
+>   They are saved as JPEG in `src/assets/room/`:
+>   - `wall-tiles.jpg`, 220 × 220 px: **2,650 bytes**;
+>   - `bench-resin.jpg`, 256 × 48 px: **1,523 bytes**.
+>
+>   Nothing is downloaded, and they cost nothing at runtime: static backgrounds, no animation.
+> - **Checked in the running app at 1366×768,** with the titration set-up standing on the resin:
+>   the glass, labels and scales all stay legible. Screenshot:
+>   `docs/ui-progress/UI.8/bench-and-wall.png`.
+
 **UI.8.2 — Sonnet — Real reagent bottles**
 > Amber and clear bottles, dropper bottles, solid jars and gas cylinders, each with a printed
 > label: name, formula, concentration and the GHS pictograms from `ghs-hazards.json`.
@@ -948,5 +967,5 @@ finds nothing that would teach a student something wrong.
 | UI.4 | Curated `boilingPointC` / `meltingPointC` | | |
 | UI.5.3 | Curated `fumes` ("mist" or "vapour") on chemicals that fume in moist air, sourced | Yes (owner) | 2026-11-20 |
 | UI.5 | Curated `effects.gasRate` (slow / steady / vigorous) on every rule with bubbles of a gas, sourced, in batches; missing fails the build once done | Yes (owner) | 2026-11-20 |
-| UI.8 | A fume cupboard on the bench | | |
+| UI.8 | A fume cupboard on the bench: a vessel can stand inside it; fumes and toxic gas made there are drawn away; the hazard warning is unchanged | Yes (owner) | 2026-11-21 |
 | UI.9 | Sound in the app | | |
