@@ -35,3 +35,18 @@ acid standing inside the fume cupboard, on its worktop behind the sash:
   cupboard".
 - **The airflow light** is green.
 - **The hazard alert** (dismissed before the screenshot) appeared in full.
+
+## UI.8.4 — The notebook as paper
+
+`full-screen.png` is the whole window at 1366×768:
+
+- **Left:** the shelf of reagent bottles.
+- **Middle:** a titration set-up - a burette clamped over a conical flask of
+  blue copper sulfate solution on a white tile - on the resin bench against the
+  tiled wall.
+- **Right:** the notebook as 5 mm grid paper. The app's entries are in print,
+  and the student's observation, "Clear blue solution in the flask, burette
+  ready", is in their own hand in blue-black pen.
+
+This is also the screenshot for UI.8's check. It still has to be shown to
+someone seeing the app for the first time.

@@ -962,8 +962,34 @@ stands, with the hazard text unchanged.
 > The 5 mm grid paper of UI.md §4, with the student's own entries in a hand-written face (bundled,
 > licence checked) and the app's entries in print.
 
+> **Done (2026-11-21).**
+> - **Grid paper:** the notebook is a faint 5 mm graph rule, about 19 px on screen, over its
+>   paper stock.
+> - **The student's own hand.** What the student wrote themselves is in Patrick Hand, in
+>   blue-black pen, on the grid's 19 px line:
+>   - their observations and estimates;
+>   - their answer in a comparison;
+>   - the box they type an observation into.
+> - **The app's entries** stay in print.
+> - **The font.** Patrick Hand Regular, Latin subset, 23,944 bytes, SIL Open Font License 1.1.
+>   The owner approved the download. Its source, licence text and provenance are in
+>   `src/assets/fonts/README.md`. Nothing is fetched at runtime.
+> - **Checked in the running app:**
+>   - an observation recorded in the notebook is drawn in Patrick Hand, and the font has loaded;
+>   - the app's own entries stay in IBM Plex Sans Condensed on the grid.
+>   - Screenshot: `docs/ui-progress/UI.8/full-screen.png`.
+
 ✅ **Check:** a screenshot of the full screen at 1366×768 reads as a school chemistry lab to
 someone seeing it for the first time.
+
+> **Ready for that check (2026-11-21).** `docs/ui-progress/UI.8/full-screen.png` is the whole
+> window at 1366×768:
+> - the reagent bottles on the shelf;
+> - a titration set-up on the resin bench against the tiled wall;
+> - the notebook as grid paper with a hand-written observation.
+>
+> Whether it reads as a school lab to a first-time viewer is for a person who has not seen the app
+> to say; it has not been shown to one yet.
 
 ---
 

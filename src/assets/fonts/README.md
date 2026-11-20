@@ -10,6 +10,7 @@ requested over the network at runtime.
 | IBM Plex Sans Condensed | Labels and apparatus names | 400, 500, 600, 700 |
 | IBM Plex Mono | Readouts and measurements (tabular figures) | 400, 500, 600 |
 | Source Serif 4 | Notebook body text | 400 (regular), 400 (italic) |
+| Patrick Hand | The student's own notebook entries, in their "hand" (BUILD_UI.md UI.8.4) | 400 |
 
 Only the `latin` Unicode subset was kept (not `latin-ext`, `cyrillic`, `vietnamese`, `greek`, …),
 since the app's own text is English. This keeps the bundle small: ~296 KB total across all nine
@@ -26,6 +27,17 @@ file as `400` — the family ships as a variable font and Google's static-CSS en
 same file for both static weight requests; declaring it twice is harmless (worst case, the "600"
 role renders at the file's own default weight rather than true bold) and was left in the CSS as a
 future@font-face slot rather than dropped.
+
+## Patrick Hand (added 2026-11-21, owner approved the download)
+
+- **File:** `patrick-hand-400.woff2`, the Latin subset, 23,944 bytes.
+- **Source:** fetched once from
+  `https://fonts.gstatic.com/s/patrickhand/v25/LDI1apSQOAYtSuYWp8ZhfYe8XsLL.woff2`, the
+  file Google Fonts' CSS API names for its `latin` subset.
+- **Licence:** SIL Open Font License 1.1, copyright (c) 2010-2012 Patrick Wagesreiter. The
+  licence text is bundled as `OFL-patrick-hand.txt` (4,376 bytes), from
+  `github.com/google/fonts/blob/main/ofl/patrickhand/OFL.txt`.
+- **Runtime:** nothing is fetched at runtime.
 
 ## Provenance
 

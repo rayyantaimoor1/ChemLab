@@ -84,6 +84,16 @@
   src: url('../assets/fonts/source-serif-4-italic-400.woff2') format('woff2');
 }
 
+/* The student's own hand in the notebook (BUILD_UI.md UI.8.4): Patrick
+   Hand, SIL Open Font License 1.1 - see src/assets/fonts/README.md. */
+@font-face {
+  font-family: 'Patrick Hand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/patrick-hand-400.woff2') format('woff2');
+}
+
 /* ------------------------------------------------------------------ *
  * Design tokens - UI.md section 5's palette, unmodified, plus the
  * opacities the design work layered on top of it for hierarchy on light
@@ -122,6 +132,7 @@
 
   --font-label: 'IBM Plex Sans Condensed', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-hand: 'Patrick Hand', 'Segoe Print', cursive;
   --font-notebook: 'Source Serif 4', Georgia, serif;
 
   --radius: 3px;
@@ -419,7 +430,12 @@ select:focus-visible,
 .zone--notebook {
   width: 340px;
   flex: none;
-  background: var(--notebook);
+  /* Real grid paper (UI.md §4, BUILD_UI.md UI.8.4): a faint 5 mm graph
+     rule - about 19 px on screen - over the notebook's paper stock. */
+  background:
+    linear-gradient(90deg, rgba(86, 128, 160, 0.13) 1px, transparent 1px) 0 0 / 19px 19px,
+    linear-gradient(180deg, rgba(86, 128, 160, 0.13) 1px, transparent 1px) 0 0 / 19px 19px,
+    var(--notebook);
   color: var(--ink);
   border-left: 3px solid var(--bench);
 }
@@ -3126,6 +3142,23 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   font-size: 14.5px;
   line-height: 1.45;
   color: var(--ink);
+}
+
+/* What the student wrote themselves - an observation, an estimate - is in
+   their own hand, in blue-black pen, on the grid's 19 px rule; what the
+   app logs stays in print (UI.8.4). */
+.notebook-entry--observation .notebook-entry__text,
+.notebook-entry__yours,
+.observation-form input {
+  font-family: var(--font-hand);
+  color: #1F3566;
+}
+.notebook-entry--observation .notebook-entry__text {
+  font-size: 18px;
+  line-height: 19px;
+}
+.observation-form input {
+  font-size: 17px;
 }
 
 .notebook-empty {
