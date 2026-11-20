@@ -111,6 +111,7 @@ chemlab/
 │   │   ├── thermometer.js    ← a thermometer standing in a vessel, read against its scale
 │   │   ├── gas-bubbles.js    ← where a gas's bubbles start, and how fast, from curated data
 │   │   ├── gas-look.js       ← coloured gases above the liquid, and where smoke forms
+│   │   ├── stand.js          ← the retort stand: where the clamped vessel and the one on its base go
 │   │   ├── molecular.js      ← 2D reaction animations
 │   │   ├── molecular3d.js    ← 3D ball-and-stick viewer
 │   │   ├── notebook-storage.js ← the page's side of the save/load/report bridge

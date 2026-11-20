@@ -1092,6 +1092,8 @@ select:focus-visible,
 .equipment--ice_bath .equipment__art { width: 136px; height: 54px; }
 .equipment--water_bath .equipment__art { width: 136px; height: 58px; }
 .equipment--rack .equipment__art { width: 122px; height: 66px; }
+.equipment--stand .equipment__art { width: 120px; height: 340px; }
+.equipment--tile .equipment__art { width: 96px; height: 6px; }
 
 .equipment__part {
   position: absolute;
@@ -1468,6 +1470,89 @@ html.reduce-motion .equipment-front.is-hot .equipment-front__steam > span {
 .equipment__part--ice-cube-1 { left: 12px; top: 8px; width: 16px; height: 11px; background: rgba(255, 255, 255, 0.66); transform: rotate(-12deg); }
 .equipment__part--ice-cube-2 { left: 38px; top: 14px; width: 19px; height: 12px; background: rgba(255, 255, 255, 0.5); transform: rotate(8deg); }
 .equipment__part--ice-cube-3 { right: 16px; top: 9px; width: 15px; height: 12px; background: rgba(255, 255, 255, 0.6); transform: rotate(18deg); }
+
+/* The gauze on the tripod ring, seen edge-on: a thin wire mesh, a little
+   wider than the ring, with its ceramic centre (UI.6.1). */
+.equipment__part--burner-gauze {
+  left: -4px;
+  right: -4px;
+  top: 1px;
+  height: 3px;
+  background:
+    linear-gradient(90deg, transparent 30%, #D9D4C7 30%, #D9D4C7 70%, transparent 70%),
+    repeating-linear-gradient(90deg, #9AA19D 0 1px, #5E6461 1px 3px);
+  border-radius: 1px;
+}
+
+/* Retort stand (UI.6.1): a heavy base, a steel rod, a boss on the rod and
+   a clamp reaching out to grip at --grip-y, its jaws either side of what
+   it holds (--jaw-gap). */
+.equipment__part--stand-base {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 10px;
+  background: linear-gradient(180deg, #5A605C, #2E3331);
+  border: 1px solid #141716;
+  border-radius: 2px;
+}
+.equipment__part--stand-tile {
+  left: calc(var(--clamp-x, 72px) - 48px);
+  width: 96px;
+  bottom: 10px;
+  height: 6px;
+  background: #F4F4F0;
+  border: 1px solid #B9BBB4;
+  border-radius: 1px;
+  display: none;
+}
+.equipment__art--tiled .equipment__part--stand-tile {
+  display: block;
+}
+.equipment__part--stand-rod {
+  left: 11px;
+  width: 6px;
+  top: 0;
+  bottom: 10px;
+  background: linear-gradient(90deg, #8C9390, #D7DCD9 45%, #6E7572);
+  border-radius: 3px 3px 0 0;
+}
+.equipment__part--stand-boss {
+  left: 6px;
+  width: 16px;
+  height: 14px;
+  top: calc(var(--grip-y, 150px) - 7px);
+  background: linear-gradient(180deg, #6A706C, #3A3F3C);
+  border: 1px solid #141716;
+  border-radius: 2px;
+}
+.equipment__part--stand-arm {
+  left: 22px;
+  width: calc(var(--clamp-x, 72px) - 22px - var(--jaw-gap, 10px));
+  height: 4px;
+  top: calc(var(--grip-y, 150px) - 2px);
+  background: #7E8582;
+  border: 1px solid #2A2E2C;
+}
+.equipment__part--stand-jaw {
+  width: 6px;
+  height: 16px;
+  top: calc(var(--grip-y, 150px) - 8px);
+  background: #A86A3A;
+  border: 1px solid #3A2414;
+  border-radius: 2px;
+  z-index: 1;
+}
+.equipment__part--stand-jaw-near { left: calc(var(--clamp-x, 72px) - var(--jaw-gap, 10px) - 6px); }
+.equipment__part--stand-jaw-far { left: calc(var(--clamp-x, 72px) + var(--jaw-gap, 10px)); }
+
+/* A white tile on its own. */
+.equipment__part--tile {
+  inset: 0;
+  background: #F4F4F0;
+  border: 1px solid #B9BBB4;
+  border-radius: 1px;
+}
 
 /* Rack: top and bottom rails, two legs, three tube-slot markers. */
 .equipment__part--rack-rail {
@@ -2031,6 +2116,43 @@ html.reduce-motion .thermometer__column { transition: none; }
 
 .vessel__smoke.is-visible {
   opacity: 1;
+}
+
+/* A wooden test-tube holder gripping a tube near its top, its handle
+   reaching out to the side - how a tube is held in a flame (UI.6.1). */
+.vessel__holder {
+  position: absolute;
+  left: 50%;
+  top: 14%;
+  width: 0;
+  height: 0;
+  z-index: 3;
+  display: none;
+  pointer-events: none;
+}
+.vessel__holder.is-visible {
+  display: block;
+}
+.vessel__holder-clip {
+  position: absolute;
+  left: -14px;
+  top: -4px;
+  width: 28px;
+  height: 8px;
+  border: 2px solid #4A4F4C;
+  border-radius: 3px;
+}
+.vessel__holder-handle {
+  position: absolute;
+  left: 12px;
+  top: -3px;
+  width: 64px;
+  height: 6px;
+  background: linear-gradient(180deg, #C38B55, #8A5A2E);
+  border: 1px solid #3A2414;
+  border-radius: 1px 3px 3px 1px;
+  transform: rotate(-12deg);
+  transform-origin: left center;
 }
 
 /* Coloured gas gathered above the liquid, in its curated colour, densest

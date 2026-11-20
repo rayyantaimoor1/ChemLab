@@ -62,6 +62,8 @@ import { solidLabel } from './appearance.js';
 import { paceFor, bubbleSourceFor } from './gas-bubbles.js';
 // Coloured gases above the liquid, and where smoke forms (BUILD_UI.md UI.5.3).
 import { gasNoteText, fumesNoteText, smokeFormsInside, GAS_TINT } from './gas-look.js';
+// The retort stand's clamp and base (BUILD_UI.md UI.6.1).
+import { STAND } from './stand.js';
 // The shape of each vessel, its printed scale, and how high a volume of
 // liquid comes inside it (BUILD_UI.md UI.2) - all in glassware.js.
 import { glassGeometry, frontSvg, backSvg, liquidFraction, liquidPathPx } from './glassware.js';
@@ -331,8 +333,9 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
   }
 
   /** Which piece of furniture the pointer is over, generously padded. */
-  function hitEquipment(event) {
+  function hitEquipment(event, excludeId = null) {
     for (const [id, refs] of equipmentEls) {
+      if (id === excludeId) continue;
       const rect = refs.art.getBoundingClientRect();
       if (
         event.clientX >= rect.left - EQUIPMENT_HIT_PAD.x &&
@@ -424,6 +427,14 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     for (const [, refs] of equipmentEls) refs.el.classList.remove('is-drop-target');
 
     if (finished.kind === 'equip') {
+      // A white tile dropped on a retort stand lies on its base (UI.6.1).
+      const item = getState().equipment.find((q) => q.id === finished.id);
+      const onto = item?.kind === 'tile' ? hitEquipment(event, finished.id) : null;
+      const stand = onto ? getState().equipment.find((q) => q.id === onto && q.kind === 'stand') : null;
+      if (stand) {
+        dispatch.placeTileOnStand(finished.id, stand.id);
+        return;
+      }
       if (finished.moved) dispatch.moveEquipment(finished.id, finished.x, finished.y);
       else render();
       return;
@@ -486,6 +497,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     if (kind === 'burner') {
       part('burner-ring');
+      // The gauze on the tripod, which spreads the flame under a beaker.
+      part('burner-gauze');
       part('burner-leg', {}).classList.add('equipment__part--burner-leg-left');
       part('burner-leg', {}).classList.add('equipment__part--burner-leg-right');
       part('burner-foot');
@@ -520,6 +533,18 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       part('hotplate-knob');
       part('bath-trough');
       part('bath-water-back');
+    } else if (kind === 'stand') {
+      // A retort stand: base plate, rod, and a boss carrying the clamp,
+      // whose height follows whatever it grips (--grip-y, stand.js).
+      part('stand-base');
+      part('stand-tile');
+      part('stand-rod');
+      part('stand-boss');
+      part('stand-arm');
+      part('stand-jaw').classList.add('equipment__part--stand-jaw-near');
+      part('stand-jaw').classList.add('equipment__part--stand-jaw-far');
+    } else if (kind === 'tile') {
+      part('tile');
     } else if (kind === 'rack') {
       part('rack-rail').classList.add('equipment__part--rack-rail-top');
       part('rack-rail').classList.add('equipment__part--rack-rail-bottom');
@@ -577,6 +602,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       return item.level === 0 ? `gas off · ${air}` : `level ${item.level} · ${air}`;
     }
     if (item.kind === 'ice_bath') return 'melting ice, about 2 °C';
+    if (item.kind === 'stand') return item.tile ? 'clamp · white tile on the base' : 'clamp · drop a white tile on the base';
+    if (item.kind === 'tile') return 'drop it on a retort stand, or stand a flask on it';
     if (item.kind === 'water_bath') {
       if (item.level === 0) return 'off · water at room temperature';
       return item.bathC >= 100 ? 'boiling water, 100 °C' : `water at ${item.bathC} °C`;
@@ -623,6 +650,16 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.status.textContent = equipmentLevelText(item);
     refs.art.classList.toggle('equipment__art--lit', item.kind === 'burner' && item.level > 0);
     if (refs.front) refs.front.style.transform = refs.el.style.transform;
+    if (item.kind === 'stand') {
+      // The clamp grips at the height stand.js chose, with its jaws either
+      // side of what it holds; with nothing in it, it waits at mid-height.
+      const held = state.containers.find((c) => c.standOn === item.id && c.standRole === 'clamp');
+      const heldW = held ? (glassGeometry(held.type, held.capacityMl)?.w ?? 20) : 20;
+      refs.art.style.setProperty('--grip-y', `${item.gripY ?? 150}px`);
+      refs.art.style.setProperty('--jaw-gap', `${Math.round(heldW / 2)}px`);
+      refs.art.style.setProperty('--clamp-x', `${STAND.clampX}px`);
+      refs.art.classList.toggle('equipment__art--tiled', !!item.tile);
+    }
     if (item.kind === 'water_bath') {
       refs.art.classList.toggle('equipment__art--on', item.level > 0);
       refs.front.classList.toggle('is-hot', item.bathC >= 60);
@@ -724,6 +761,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // A fine precipitate still hanging in the liquid it formed in.
     const haze = document.createElement('div');
     haze.className = 'vessel__haze';
+    // A wooden test-tube holder, gripping a tube held over a flame (UI.6.1).
+    const holder = document.createElement('div');
+    holder.className = 'vessel__holder';
+    holder.innerHTML = '<span class="vessel__holder-clip"></span><span class="vessel__holder-handle"></span>';
     // Smoke hangs in the air above the mouth, outside the glass.
     const smoke = document.createElement('div');
     smoke.className = 'vessel__smoke';
@@ -783,6 +824,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     vessel.appendChild(glass);
     vessel.insertAdjacentHTML('beforeend', frontSvg(container.type, container.capacityMl));
     vessel.appendChild(smoke);
+    vessel.appendChild(holder);
     vessel.appendChild(fumes);
     vessel.appendChild(fuming);
     vessel.appendChild(steam);
@@ -883,7 +925,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       volumeEl, tempEl, phEl, colorSwatch, colorText, colourRow, precipitateLabel, capacityChip,
       standNote, vesselShadow, flame, electrodeLayer, ionLayer, streamLayer,
       readingRow, readingSwatch, readingText, powerNote,
-      solidLayer, shelfSolidNote, solidEls: new Map(), haze, smoke, headspace, fumes, fuming, gasNote, cathodeRod,
+      solidLayer, shelfSolidNote, solidEls: new Map(), haze, smoke, headspace, fumes, fuming, gasNote, holder, cathodeRod,
       plume, mixing: null, layerBox, emulsion, shaking: false, soot,
       convection, boil, condensation, steam, heatNote, glow,
       thermometer: null, thermometerColumn: null,
@@ -1339,6 +1381,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.el.classList.toggle('is-selected', state.selectedVesselId === container.id);
     const under = container.standOn ? state.equipment.find((q) => q.id === container.standOn) : null;
     refs.el.classList.toggle('is-in-bath', !!under && (under.kind === 'ice_bath' || under.kind === 'water_bath'));
+    // A tube over a burner is held in a test-tube holder, not stood on the
+    // gauze (UI.6.1).
+    const tube = container.type === 'test_tube' || container.type === 'boiling_tube';
+    refs.holder.classList.toggle('is-visible', tube && under?.kind === 'burner');
 
     refs.volumeEl.textContent = container.volumeMl;
     refs.tempEl.textContent = container.temperatureC.toFixed(1);
@@ -1387,7 +1433,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       refs.standNote.textContent = `clamped above the ${clampedTarget.name.toLowerCase()}`;
     } else if (standingItem) {
       refs.standNote.hidden = false;
-      refs.standNote.textContent = `${isBath(standingItem) ? 'in' : 'on'} the ${standingItem.label.toLowerCase()}`;
+      refs.standNote.textContent = standingText(container, standingItem).replace(/^standing /, '');
     } else {
       refs.standNote.hidden = true;
     }
@@ -1499,6 +1545,14 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
   const isBath = (item) => item.kind === 'ice_bath' || item.kind === 'water_bath';
 
+  /** "standing in the ice bath", "held in the retort stand's clamp"... */
+  function standingText(vessel, item) {
+    if (item.kind === 'stand') {
+      return vessel.standRole === 'clamp' ? "held in the retort stand's clamp" : 'standing on the base of the retort stand';
+    }
+    return `standing ${isBath(item) ? 'in' : 'on'} the ${item.label.toLowerCase()}`;
+  }
+
   /** The water bath's dial: off, 40, 60, 80 °C and boiling (UI.4.5). */
   function bathDialButtons(bath) {
     bath.dial.forEach((tempC, setting) => {
@@ -1557,7 +1611,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       controlSub.textContent = clamped
         ? `clamped above the ${clamped.name.toLowerCase()}`
         : standing
-          ? `standing ${isBath(standing) ? 'in' : 'on'} the ${standing.label.toLowerCase()}`
+          ? standingText(vessel, standing)
           : 'on the bench — drag it onto a burner to heat it';
 
       // Heat exists only when something under the vessel supplies it.

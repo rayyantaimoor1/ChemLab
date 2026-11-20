@@ -688,6 +688,41 @@ addition and instrument precision are BUILD_PHASE_2.md Stage 2.5; this stage is 
 > Retort stand with boss and clamp holding a burette or a tube at an angle; test-tube holder and
 > rack; tripod with gauze; tongs for a crucible. Vessels snap into place when dropped on them.
 
+> **Done (2026-11-20), except a tube at an angle and the crucible tongs** (below).
+> - **Retort stand + clamp** (new on the tray): a heavy base, a steel rod, and a boss carrying a
+>   clamp.
+>   - A burette or a tube dropped on the stand goes into the clamp. Anything else stands on the
+>     base, centred under it.
+>   - A burette in the clamp over a flask on the base is clamped over it, with its tip just
+>     inside the mouth, so its tap delivers into the flask.
+>   - A burette dropped straight onto a flask that stands on a stand goes into that stand's clamp.
+>   - The boss slides to the height the clamp grips at, and the jaws close either side of what
+>     they hold.
+>   - Moving the stand carries everything on it. Taking the flask away lifts the burette clear
+>     again.
+>   - The geometry is `src/ui/stand.js`, tested in `tests/stand.test.js`.
+> - **White tile** (new on the tray): dropped on a retort stand it lies on the base, under the
+>   flask, so a colour change shows against white. On its own, a vessel can stand on it.
+> - **Gauze** on the burner's tripod: a wire mesh with its ceramic centre.
+> - **Test-tube holder:** a test tube or boiling tube standing over a burner is drawn gripped by
+>   a wooden holder, its handle reaching out to the side, as a tube is held in a flame.
+> - **The stand's height.** At 1366×768 the bench is only 438 px tall, so the stand is 340 px with
+>   its foot in view. A burette over the 250 mL flask reaches above the top of the rod, as a real
+>   one often does. Where the bench is too short even for that, the burette sits a few px lower,
+>   tip deeper in the neck, rather than leaving the bench.
+> - **Checked in the running app,** assembling a titration from the tray by dragging alone:
+>   - a retort stand, a white tile, a conical flask and a burette;
+>   - the tile snapped onto the base, the flask onto the tile, and the burette into the clamp
+>     over the flask, centred and with its tip in the neck;
+>   - one drop delivered 0.05 mL into the flask;
+>   - a test tube on a burner wore its holder, and both tripods their gauze.
+>   - Screenshots: `docs/ui-progress/UI.6/titration.png`, `holder-gauze.png`.
+> - **Not done: a tube held at an angle.** Tilting a tube tilts the liquid drawn inside it, and a
+>   liquid's surface stays level. Doing it properly needs the level worked out for a tilted tube,
+>   which belongs with UI.6.2, where pouring tilts the vessel too. Tubes are clamped upright for now.
+> - **Not done: tongs for a crucible.** There is no crucible in the app; it would be a new vessel,
+>   and it has nothing to do until something needs heating strongly in one.
+
 **UI.6.2 — Sonnet — Pouring that looks like pouring**
 > The source vessel tilts at its lip, the stream falls in an arc onto the target, the level falls
 > in one and rises in the other; a last drip follows. Pouring from too high splashes (shown, not

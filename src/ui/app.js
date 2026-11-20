@@ -42,6 +42,7 @@ import { appearanceFor, rememberReaction } from './appearance.js';
 import { GLASSWARE } from './glassware.js';
 import { heatLookFor, waterBathTarget } from './heat-look.js';
 import { electrodeStreams } from './gas-bubbles.js';
+import { STAND, CLAMPED_TYPES, basePosition, clampPosition } from './stand.js';
 import { mountMolecularView } from './molecular.js';
 import { mountMolecular3DView } from './molecular3d.js';
 import { mountGuidedBar, mountGuidedStepCard, mountGuidedSummary } from './guided.js';
@@ -102,7 +103,17 @@ const EQUIPMENT_TYPES = {
   ice_bath: { label: 'Ice bath', name: 'Ice bath', heats: -1, w: 136, h: 54, topY: 49 },
   water_bath: { label: 'Water bath', name: 'Water bath', heats: 'bath', w: 136, h: 58, topY: 44 },
   rack: { label: 'Test-tube rack', name: 'Test-tube rack', heats: 0, w: 122, h: 66, topY: 14 },
+  // A retort stand with boss and clamp (BUILD_UI.md UI.6.1): its clamp grips
+  // a burette or a tube, its base holds the flask beneath. Where each goes
+  // is stand.js; standOnStand below keeps who is where.
+  stand: { label: 'Retort stand + clamp', name: 'Retort stand', heats: 0, w: STAND.w, h: STAND.h, topY: 0 },
+  // A white tile, so a colour change shows against white. On its own a
+  // vessel can stand on it; dropped on a retort stand it lies on the base.
+  tile: { label: 'White tile', name: 'White tile', heats: 0, w: 96, h: 6, topY: 0 },
 };
+
+// Which part of a retort stand a vessel is in: 'clamp' or 'base' (UI.6.1).
+const standRoleByContainer = new Map();
 
 // The water bath's dial (BUILD_UI.md UI.4.5, owner's choice 2026-11-20):
 // off - water at room temperature - then 40, 60 and 80 °C, and a boiling
@@ -341,6 +352,10 @@ function addEquipment(kind) {
     // A Bunsen burner's air hole (BUILD_UI.md UI.4.1). Open is the hot blue
     // heating flame; closed is the cooler, sooty, luminous yellow one.
     airHole: kind === 'burner' ? 'open' : null,
+    // A retort stand: whether a white tile lies on its base, and the height
+    // its clamp grips at (stand.js), once something is in it.
+    tile: false,
+    gripY: null,
     x: placeNewObject(def.w, containers.length + equipment.length),
     y: benchFloorY(def.h),
   });
@@ -372,7 +387,7 @@ function standOn(containerId, equipmentId) {
   if (!equipmentId) {
     if (!standOnByContainer.has(containerId)) return;
     const was = equipment.find((eq) => eq.id === standOnByContainer.get(containerId));
-    standOnByContainer.delete(containerId);
+    leaveFurniture(containerId);
     heatOff(containerId, was);
     // A bath's own line already says the vessel was taken out of it.
     if (!heatFrom(was)?.how) {
@@ -390,6 +405,12 @@ function standOn(containerId, equipmentId) {
   const def = item && EQUIPMENT_TYPES[item.kind];
   const vesselDef = VESSEL_TYPES[container.type];
   if (!item || !def || !vesselDef) return;
+
+  if (item.kind === 'stand') {
+    standOnStand(container, item);
+    return;
+  }
+  if (standOnByContainer.has(containerId)) leaveFurniture(containerId);
 
   standOnByContainer.set(containerId, equipmentId);
   positionByContainer.set(containerId, {
@@ -424,10 +445,117 @@ function moveVessel(containerId, x, y) {
   positionByContainer.set(containerId, { x, y });
   if (standOnByContainer.has(containerId)) {
     const was = equipment.find((eq) => eq.id === standOnByContainer.get(containerId));
-    standOnByContainer.delete(containerId);
+    leaveFurniture(containerId);
     heatOff(containerId, was);
   }
   clampedOverByContainer.delete(containerId);
+  notify();
+}
+
+/**
+ * A vessel dropped on a retort stand (BUILD_UI.md UI.6.1). A burette or a
+ * tube goes into the clamp; anything else stands on the base, under the
+ * clamp. A burette in the clamp with a flask on the base is clamped over
+ * it, so its tap delivers into the flask. One of each: a part already in
+ * use leaves the vessel where it was.
+ */
+function standOnStand(container, item) {
+  const role = CLAMPED_TYPES.has(container.type) ? 'clamp' : 'base';
+  const taken = [...standRoleByContainer].some(([id, r]) => r === role && id !== container.id
+    && standOnByContainer.get(id) === item.id);
+  if (taken) {
+    notify();
+    return;
+  }
+  if (standOnByContainer.has(container.id)) {
+    const was = equipment.find((eq) => eq.id === standOnByContainer.get(container.id));
+    leaveFurniture(container.id);
+    heatOff(container.id, was);
+  }
+  clampedOverByContainer.delete(container.id);
+  standOnByContainer.set(container.id, item.id);
+  standRoleByContainer.set(container.id, role);
+  selectedVesselId = container.id;
+  selectedEquipmentId = null;
+  layoutStand(item);
+
+  const name = container.name.toLowerCase();
+  const under = [...standRoleByContainer].find(([id, r]) => r === 'base' && standOnByContainer.get(id) === item.id);
+  const over = [...standRoleByContainer].find(([id, r]) => r === 'clamp' && standOnByContainer.get(id) === item.id);
+  const text = role === 'clamp'
+    ? `The ${name} was clamped in the retort stand${under && container.type === 'burette' ? `, over the ${containersById.get(under[0]).name.toLowerCase()}` : ''}.`
+    : `The ${name} was stood on the base of the retort stand${item.tile ? ', on the white tile' : ''}${over && containersById.get(over[0]).type === 'burette' ? ', under the burette' : ''}.`;
+  notebook.logAction({ text, containerId: container.id, action: 'standOn' });
+  notify();
+}
+
+/** Puts each vessel on a retort stand where stand.js says it goes. */
+function layoutStand(item) {
+  const on = (role) => [...standRoleByContainer].find(([id, r]) => r === role && standOnByContainer.get(id) === item.id)?.[0];
+  const dims = (id) => {
+    const c = containersById.get(id);
+    const d = c && VESSEL_TYPES[c.type];
+    return d ? { type: c.type, w: d.w, h: d.h } : null;
+  };
+  const baseId = on('base');
+  const heldId = on('clamp');
+  if (baseId) {
+    const at = basePosition(dims(baseId), item.tile);
+    positionByContainer.set(baseId, { x: item.x + at.x, y: item.y + at.y });
+  }
+  item.gripY = null;
+  if (heldId) {
+    const at = clampPosition(dims(heldId), baseId ? dims(baseId) : null, item.tile);
+    // Kept on the bench: on a short bench a burette over a big flask sits a
+    // little lower, its tip a little deeper in the neck, rather than off the top.
+    const y = Math.max(4, item.y + at.y);
+    positionByContainer.set(heldId, { x: item.x + at.x, y });
+    item.gripY = at.gripY + (y - (item.y + at.y));
+    if (dims(heldId).type === 'burette' && baseId) clampedOverByContainer.set(heldId, baseId);
+    else clampedOverByContainer.delete(heldId);
+  }
+}
+
+/**
+ * Takes a vessel off whatever furniture it stood on, as far as position and
+ * links go (heat is heatOff's job). Leaving a retort stand re-lays the
+ * stand: a burette whose flask has gone rises clear of the base again, and
+ * no longer delivers anywhere.
+ */
+function leaveFurniture(containerId) {
+  const wasOn = equipment.find((eq) => eq.id === standOnByContainer.get(containerId));
+  standOnByContainer.delete(containerId);
+  if (!standRoleByContainer.has(containerId)) return;
+  standRoleByContainer.delete(containerId);
+  for (const [buretteId, over] of [...clampedOverByContainer]) {
+    if (over === containerId) clampedOverByContainer.delete(buretteId);
+  }
+  if (wasOn?.kind === 'stand') layoutStand(wasOn);
+}
+
+/**
+ * A white tile dropped on a retort stand lies on its base, under whatever
+ * stands there, so a colour change shows against white (UI.6.1). The tile
+ * becomes part of the stand and moves with it.
+ */
+function placeTileOnStand(tileId, standId) {
+  const tile = equipment.find((eq) => eq.id === tileId && eq.kind === 'tile');
+  const stand = equipment.find((eq) => eq.id === standId && eq.kind === 'stand');
+  if (!tile || !stand || stand.tile) {
+    notify();
+    return;
+  }
+  for (const [containerId, on] of [...standOnByContainer]) {
+    if (on === tileId) standOn(containerId, null);
+  }
+  equipment.splice(equipment.indexOf(tile), 1);
+  stand.tile = true;
+  layoutStand(stand);
+  notebook.logAction({
+    text: 'A white tile was put on the base of the retort stand, so a colour change shows against white.',
+    containerId: null,
+    action: 'placeTile',
+  });
   notify();
 }
 
@@ -457,6 +585,16 @@ function clampOver(buretteId, targetId) {
   const targetAt = positionByContainer.get(targetId);
   if (!burette || !target || !targetAt) return;
 
+  // A flask standing on a retort stand: the burette goes into that stand's
+  // clamp, over it, rather than hanging in the air (UI.6.1).
+  if (standRoleByContainer.get(targetId) === 'base') {
+    const stand = equipment.find((eq) => eq.id === standOnByContainer.get(targetId));
+    if (stand) {
+      standOnStand(burette, stand);
+      return;
+    }
+  }
+
   positionByContainer.set(buretteId, {
     x: Math.round(targetAt.x + (targetDef.w - buretteDef.w) / 2),
     // The tip goes just inside the mouth, as in a real titration, so no
@@ -464,7 +602,7 @@ function clampOver(buretteId, targetId) {
     y: Math.max(4, Math.round(targetAt.y - buretteDef.h + 8)),
   });
   clampedOverByContainer.set(buretteId, targetId);
-  standOnByContainer.delete(buretteId);
+  leaveFurniture(buretteId);
   selectedVesselId = buretteId;
   selectedEquipmentId = null;
   notebook.logAction({
@@ -578,7 +716,7 @@ function removeVessel(containerId) {
   containers.splice(index, 1);
   containersById.delete(containerId);
   positionByContainer.delete(containerId);
-  standOnByContainer.delete(containerId);
+  leaveFurniture(containerId);
   clampedOverByContainer.delete(containerId);
   for (const [buretteId, over] of [...clampedOverByContainer]) {
     if (over === containerId) clampedOverByContainer.delete(buretteId);
@@ -1207,6 +1345,8 @@ function getState() {
         thermometerIn: thermometerIn.has(snapshot.id),
         // Which vessel a burette is clamped above, if it is.
         clampedOver: clampedOverByContainer.get(snapshot.id) || null,
+        // 'clamp' or 'base' when on a retort stand (UI.6.1).
+        standRole: standRoleByContainer.get(snapshot.id) || null,
         // Which tool is in the liquid right now, mid-gesture, and the last
         // reading this vessel gave - both drawn on the bench by bench.js.
         dipping: dippingByContainer.get(snapshot.id) || null,
@@ -1227,6 +1367,9 @@ function getState() {
       canSetLevel: EQUIPMENT_TYPES[item.kind].heats === 1,
       // A water bath's dial: the temperature at each setting, and now (UI.4.5).
       dial: item.kind === 'water_bath' ? WATER_BATH_C : null,
+      // A retort stand: its tile, and where its clamp grips (UI.6.1).
+      tile: !!item.tile,
+      gripY: item.gripY ?? null,
       bathC: item.kind === 'water_bath' ? WATER_BATH_C[item.level] : null,
       position: { x: item.x, y: item.y },
       width: EQUIPMENT_TYPES[item.kind].w,
@@ -1317,6 +1460,7 @@ function resetBenchState() {
   for (const container of containers) containersById.set(container.id, container);
   equipment.length = 0;
   standOnByContainer.clear();
+  standRoleByContainer.clear();
   positionByContainer.clear();
   clampedOverByContainer.clear();
   dippingByContainer.clear();
@@ -1601,6 +1745,7 @@ const dispatch = {
   selectEquipment,
   clampOver,
   unclamp,
+  placeTileOnStand,
   setBenchSize: (width, height) => {
     benchSize = { width, height };
   },

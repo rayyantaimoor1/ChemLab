@@ -32,6 +32,8 @@ The UI may **read** engine state and **dispatch** actions. It may not contain ch
       // (and on the container: electrolysisBubbles - { gasRate, streams:
       // [{ side, gasId, gasName, share }] } while the current is on and
       // there is liquid, from src/ui/gas-bubbles.js; UI.5.2)
+      // (and on the container: standRole - 'clamp' or 'base' on a retort
+      // stand; on equipment: tile and gripY for a stand; UI.6.1)
       // (and on equipment: dial and bathC - a water bath's settings and its
       // temperature now; UI.4.5)
       gases: [{ id, name, colorHex, colorName }],  // coloured gases above the liquid (UI.5.3)
