@@ -3207,6 +3207,7 @@
       "solidKind": "solid",
       "gas": "ethyne",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 18,
       "resultPH": 12.4
@@ -3388,6 +3389,7 @@
       "precipitate": null,
       "gas": "hydrogen bromide",
       "bubbles": true,
+      "gasRate": null,
       "smoke": true,
       "tempDeltaC": 6,
       "resultPH": null
@@ -3573,6 +3575,7 @@
       "precipitate": null,
       "gas": "ethene",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 5,
       "resultPH": 12
@@ -3642,6 +3645,7 @@
       "precipitate": null,
       "gas": "ethene",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": 1
@@ -3923,6 +3927,7 @@
       "precipitate": null,
       "gas": "hydrogen chloride",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": true,
       "tempDeltaC": 25,
       "resultPH": 1
@@ -3938,7 +3943,10 @@
     "molecularAnimation": null,
     "explanation": "It hisses on contact with cold water — no heating, no catalyst, no waiting. Compare that with the ester made in the last batch, which needs boiling with alkali before it will break apart at all, and with an amide, which needs prolonged boiling. Same underlying reaction, wildly different speeds, and the reason is the chlorine: it drags electrons away from the carbonyl carbon and leaves it exposed. This is why an acid chloride cannot be stored in a damp bottle, and why it fumes when you simply take the stopper out — it is reacting with the water vapour in the room.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, hydrolysis of acid chlorides"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, hydrolysis of acid chlorides",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Acyl chlorides and water, alcohols or phenol (with water usually extremely vigorous at room temperature; phenol is not quite as vigorous as alcohols)", "url": "https://www.chemguide.co.uk/organicprops/acylchlorides/oxygen.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_acyl_chloride_ethanol",
@@ -3952,6 +3960,7 @@
       "precipitate": null,
       "gas": "hydrogen chloride",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": true,
       "tempDeltaC": 20,
       "resultPH": 1
@@ -3967,7 +3976,10 @@
     "molecularAnimation": null,
     "explanation": "Put this side by side with the esterification from the last batch and the lesson is unmistakable. That one needed an acid catalyst, needed heating, and still stopped at an equilibrium that never went to completion. This one needs neither catalyst nor heat, is over in seconds, and goes the whole way — because the hydrogen chloride escapes as a gas and can never come back to reverse it. The same ester, by two routes: one slow and reversible, one fast and complete. When yield matters, this is the route chemists take.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, reaction of acid chlorides with alcohols"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic acid derivatives, reaction of acid chlorides with alcohols",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Acyl chlorides and water, alcohols or phenol (with water usually extremely vigorous at room temperature; phenol is not quite as vigorous as alcohols)", "url": "https://www.chemguide.co.uk/organicprops/acylchlorides/oxygen.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_acyl_chloride_ammonia",
@@ -4064,6 +4076,7 @@
       "precipitate": null,
       "gas": "ammonia",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 3,
       "resultPH": 12
@@ -4362,6 +4375,7 @@
       "precipitate": null,
       "gas": "ammonia",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 3,
       "resultPH": 12
@@ -4623,6 +4637,7 @@
       "precipitate": null,
       "gas": "ammonia",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 3,
       "resultPH": 12
@@ -5181,6 +5196,7 @@
       "precipitate": null,
       "gas": "ethane",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": false,
       "tempDeltaC": 18,
       "resultPH": 9
@@ -5196,7 +5212,10 @@
     "molecularAnimation": null,
     "explanation": "The most expensive mistake in a preparative organic laboratory, watched happening. All that careful work and the reagent is gone in seconds, giving nothing but ethane bubbling away — the bromoethane you started from, minus its bromine, and no use to anybody. The reason follows directly from the last entry: the carbon is now negatively charged, and a negatively charged carbon will take a hydrogen ion from ANY source it can reach. Water is the obvious one, but ethanol, an acid, even the moisture on undried glassware will do it. This is why the whole procedure insists on oven-dried apparatus and a drying tube.",
     "levels": ["bs"],
-    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — why Grignard reagents require anhydrous conditions"
+    "source": "Clayden, Greeves & Warren, Organic Chemistry 2nd ed. — why Grignard reagents require anhydrous conditions",
+    "sources": [
+      { "ref": "Wikipedia — Grignard reagent (water and air rapidly destroy the reagent)", "url": "https://en.wikipedia.org/wiki/Grignard_reagent", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_grignard_methanal",
@@ -5320,6 +5339,7 @@
       "precipitate": null,
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 3,
       "resultPH": 5
@@ -6189,6 +6209,7 @@
       "precipitate": null,
       "gas": "nitrogen",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 4,
       "resultPH": 2
@@ -6280,6 +6301,7 @@
       "precipitate": null,
       "gas": "nitrogen",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 3,
       "resultPH": 5
@@ -7428,6 +7450,7 @@
       "dissolves": null,
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 60,
       "resultPH": null
@@ -8491,6 +8514,7 @@
       "dissolves": null,
       "gas": "oxygen",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": false,
       "tempDeltaC": 6,
       "resultPH": 7.0
@@ -8498,7 +8522,10 @@
     "hazard": null,
     "explanation": "Violent frothing, immediately. This is the same decomposition that manganese(IV) oxide catalyses elsewhere in this lab, and catalase does it far faster — one enzyme molecule handles millions of peroxide molecules a second. Every living cell carries it, because respiration keeps producing peroxide and peroxide would otherwise wreck the cell. Note the enzyme is not in the products: like any catalyst it comes through unchanged, and the same liver sample will froth again with fresh peroxide.",
     "levels": ["fsc", "bs"],
-    "source": "Boyer, Concepts in Biochemistry 3rd ed. — enzyme catalysis"
+    "source": "Boyer, Concepts in Biochemistry 3rd ed. — enzyme catalysis",
+    "sources": [
+      { "ref": "Wikipedia — Catalase (one of the highest turnover numbers of any enzyme: millions of peroxide molecules a second)", "url": "https://en.wikipedia.org/wiki/Catalase", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_none_catalase_denatured",
@@ -8544,6 +8571,7 @@
       "dissolves": null,
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": null,
       "smoke": false,
       "tempDeltaC": 3,
       "resultPH": 5.0

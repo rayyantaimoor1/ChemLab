@@ -36,6 +36,12 @@ test('every gasRate is backed by a reference that covers it', () => {
   }
 });
 
+test('every rule with bubbles of a gas has a gasRate (null when none is on record)', () => {
+  for (const r of reactions.filter((x) => x.effects?.bubbles === true && x.effects?.gas)) {
+    assert.ok('gasRate' in r.effects, `${r.id}: no gasRate`);
+  }
+});
+
 test('the reactivity series shows in the bubbles: magnesium, zinc, iron in the same acid', () => {
   assert.equal(byId.get('rxn_displacement_mg_hcl').effects.gasRate, 'vigorous');
   assert.equal(byId.get('rxn_displacement_zn_hcl').effects.gasRate, 'steady');

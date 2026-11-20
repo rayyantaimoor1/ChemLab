@@ -579,6 +579,21 @@ does. No engine change. Gas collection and testing at the mouth are BUILD_PHASE_
 > For every rule with a gas: slow, steady or vigorous, with a source. Magnesium in 1 M acid is
 > vigorous; zinc is steady; iron is slow.
 
+> **Done (2026-11-20),** in 4 batches the owner approved. The record is in `batch.md` §17.
+> - **Where it goes:** `effects.gasRate` is on all 60 rules with bubbles of a gas, and on no
+>   other rule.
+> - **The counts:**
+>   - 20 steady, 14 vigorous, 4 slow;
+>   - 22 `null`, meaning no rate is on record, because no page that could be opened gave one.
+>     The bench draws these at the middle pace, and the validator lists them by name.
+> - **Two general rules,** both owner approved:
+>   - in electrolysis the rate is set by the current, so steady (pure water slow);
+>   - a solid broken down by heat gives gas only while heated, so steady.
+> - **Checks:** the validator and `tests/gas-rates.test.js` reject any other word, a rate on a
+>   rule with nothing bubbling, and a rated value with no opened page behind it. A missing rate
+>   fails the build.
+> - **The lesson holds:** magnesium, zinc and iron in 1 M HCl are vigorous, steady and slow.
+
 **UI.5.2 — Sonnet — Bubbles where the gas forms**
 > On the surface of the metal for a metal in acid; on each electrode in electrolysis, with
 > hydrogen's stream twice oxygen's where the electrodes block says so; from the chips themselves

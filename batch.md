@@ -1618,8 +1618,13 @@ the bench never draws it boiling. It is used cold, in the nylon rope trick.
 
 ## 17. Gas rates (BUILD_UI.md stage UI.5.1)
 
-**Status: batch 3 of 4 done (2026-11-20).** 60 rules have bubbles of a gas;
-34 are rated, 10 have no rate on record (`null`), and 16 are still to do.
+**Status: complete (2026-11-20), in 4 batches.** All 60 rules with bubbles of a
+gas have an `effects.gasRate`, and a missing one fails the build:
+- **20 steady, 14 vigorous, 4 slow**, each from a page that was opened, or
+  under one of the two general rules (electrolysis; solids broken down by
+  heat);
+- **22 `null`**: no page that could be opened gives a rate. The validator
+  lists them by name, so a source can upgrade any of them.
 
 **What the owner approved (2026-11-20):**
 - **`effects.gasRate`**: `slow`, `steady` or `vigorous`, on every rule with
@@ -1722,3 +1727,25 @@ any of them later:
 - bleach with acid, and bleach with ammonia;
 - sulfite with dilute acid, and nitrite with dilute acid;
 - alum in hard water (water treatment).
+
+### Batch 4 — the last 16, the organic rules and two ammonia preparations
+
+Approved by the owner on 2026-11-20.
+
+**Rated from a page:**
+
+| Rule | Rate | What the page says |
+|---|---|---|
+| Ethanoyl chloride + water | vigorous | chemguide, acyl chlorides: usually extremely vigorous at room temperature |
+| Ethanoyl chloride + ethanol | vigorous | the same page: phenol is not quite as vigorous as alcohols |
+| Grignard reagent + water | vigorous | Wikipedia, Grignard reagent: water rapidly destroys it |
+| Catalase + hydrogen peroxide | vigorous | Wikipedia, Catalase: millions of peroxide molecules a second |
+
+**No rate on record (`gasRate: null`):**
+- calcium carbide with water (Wikipedia says only that it reacts);
+- bromination of benzene; elimination from bromoethane; dehydration of ethanol;
+- alkaline hydrolysis of ethanamide; ammonia from ammonium chloride with limewater, and in the
+  Solvay recovery;
+- sodium borohydride with acid (Wikipedia gives a rate only for water and alcohols: fairly slow);
+- the diazonium salt warmed, and with potassium iodide (chemguide: nitrogen gas is evolved);
+- the basic oxygen converter; ninhydrin with glycine.

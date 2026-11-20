@@ -222,8 +222,8 @@ and not a guessed one.
 - Two general rules stand in for per-rule pages, both owner approved: in
   electrolysis the rate is set by the current, so steady (pure water slow);
   a solid broken down by heat gives gas only while heated, so steady.
-- Progress is in `batch.md` §17. A missing one is a warning until the
-  batches are done, then it fails the build.
+- Every rule with bubbles of a gas has one, and a missing one fails the
+  build. The record is in `batch.md` §17.
 
 ### `reactions.json`
 

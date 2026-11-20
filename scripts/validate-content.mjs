@@ -98,10 +98,6 @@ const SOURCE_COVERS = new Set([
 // owner approved 2026-11-20). Curated, never inferred - a formula says
 // nothing about whether a metal fizzes or barely bubbles.
 const GAS_RATES = new Set(['slow', 'steady', 'vigorous']);
-// Rules with bubbles and a gas still waiting for a gasRate (UI.5.1). Each
-// is counted into one warning until the batches are done; then a missing
-// one becomes an error, as boilingPointC did.
-const missingGasRate = [];
 // Rules whose gasRate is null: no rate on record. Listed so they stay in
 // sight until a source can be found (batch.md §17).
 const nullGasRate = [];
@@ -276,7 +272,10 @@ const reactions = readJson('reactions.json') ?? [];
         problems.push(`${id}: effects.gasRate is only for rules with bubbles of a gas (effects.bubbles and effects.gas)`);
       }
     } else if (bubblesOfGas) {
-      missingGasRate.push(id);
+      // Every rule with bubbles of a gas has one since the batches finished
+      // (batch.md §17), so a missing one fails the build - null if no
+      // source gives a rate.
+      problems.push(`${id}: rules with bubbles of a gas need an effects.gasRate (slow, steady, vigorous, or null if no rate is on record)`);
     }
 
     // colourFades is written into the notebook after "The colour faded:",
@@ -763,9 +762,6 @@ console.log('#'.repeat(60));
 
 if (nullGasRate.length) {
   warnings.push(`${nullGasRate.length} rule(s) have no gas rate on record (gasRate: null) - a source would let them be rated: ${nullGasRate.join(', ')}`);
-}
-if (missingGasRate.length) {
-  warnings.push(`${missingGasRate.length} rule(s) with bubbles of a gas have no effects.gasRate yet (BUILD_UI.md UI.5.1, batch.md §17)`);
 }
 
 const errorSections = [
