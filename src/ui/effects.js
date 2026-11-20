@@ -292,27 +292,41 @@ export function riseLiquidLevel(liquidEl, fromFraction, toFraction, { duration =
  * unbounded particle system.
  * ------------------------------------------------------------------ */
 
-export function playBubbles(layerEl, { count = 6, burstMs = 2200 } = {}) {
+/**
+ * Where and how fast come from gas-bubbles.js (BUILD_UI.md UI.5.2): xPx and
+ * bottomPx are the ranges a bubble starts in - the surface of a metal, the
+ * chips, the floor - and risePx is how far it rises before reaching the
+ * surface. Without them it rises from anywhere across the floor, as before.
+ */
+export function playBubbles(layerEl, {
+  count = 6, burstMs = 2200, riseMs = [700, 1200], sizePx = [3, 7],
+  xPx = null, bottomPx = null, risePx = null,
+} = {}) {
   if (!layerEl) return;
+  const between = ([low, high]) => low + Math.random() * (high - low);
 
   for (let i = 0; i < count; i += 1) {
     const bubble = document.createElement('span');
     bubble.className = 'fx-bubble';
-    bubble.style.left = `${10 + Math.random() * 80}%`;
-    const size = 3 + Math.random() * 4;
+    if (xPx) bubble.style.left = `${Math.round(between(xPx))}px`;
+    else bubble.style.left = `${10 + Math.random() * 80}%`;
+    const start = bottomPx ? between(bottomPx) : null;
+    if (start !== null) bubble.style.bottom = `${Math.round(start)}px`;
+    const size = between(sizePx);
     bubble.style.width = `${size}px`;
     bubble.style.height = `${size}px`;
     layerEl.appendChild(bubble);
 
     const delay = Math.random() * burstMs * 0.6;
-    const rise = 700 + Math.random() * 500;
+    const rise = between(riseMs);
+    const travel = risePx !== null ? Math.max(6, risePx - (start !== null && bottomPx ? start - bottomPx[0] : 0)) : 36 + Math.random() * 18;
 
     const animation = animate(
       bubble,
       [
         { transform: 'translateY(0) scale(0.6)', opacity: 0 },
-        { transform: 'translateY(-8px) scale(1)', opacity: 0.9, offset: 0.2 },
-        { transform: `translateY(-${36 + Math.random() * 18}px) scale(0.7)`, opacity: 0 },
+        { transform: `translateY(-${Math.min(8, travel / 4)}px) scale(1)`, opacity: 0.9, offset: 0.2 },
+        { transform: `translateY(-${travel}px) scale(0.8)`, opacity: 0 },
       ],
       { duration: rise, delay }
     );

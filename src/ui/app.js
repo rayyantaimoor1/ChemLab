@@ -41,6 +41,7 @@ import { buildReportContext, withNote } from './problem-report.js';
 import { appearanceFor, rememberReaction } from './appearance.js';
 import { GLASSWARE } from './glassware.js';
 import { heatLookFor, waterBathTarget } from './heat-look.js';
+import { electrodeStreams } from './gas-bubbles.js';
 import { mountMolecularView } from './molecular.js';
 import { mountMolecular3DView } from './molecular3d.js';
 import { mountGuidedBar, mountGuidedStepCard, mountGuidedSummary } from './guided.js';
@@ -1116,7 +1117,36 @@ function guidedStateFor() {
  * a cell full of a non-electrolyte correctly ends up showing no movement.
  */
 function electrolysisIonsFor(snapshot) {
-  if (!snapshot.electrified) return [];
+  const electrodes = electrolysisRuleFor(snapshot)?.electrodes;
+  if (!electrodes) return [];
+
+  const ions = [];
+  for (const side of ['cathode', 'anode']) {
+    const label = electrodes[side]?.attracts;
+    if (!label) continue;
+    // Two of each, so the drift reads as a crowd of ions rather than one
+    // token particle heading each way.
+    ions.push({ label, toward: side }, { label, toward: side });
+  }
+  return ions;
+}
+
+/**
+ * The gas bubbling off each electrode while the current is on (BUILD_UI.md
+ * UI.5.2): which rod, how big a share of the stream, and the rule's curated
+ * gasRate. Read from the same electrolysis rule as the ions, and only while
+ * there is liquid for bubbles to rise through.
+ */
+function electrolysisBubblesFor(snapshot) {
+  if (!(snapshot.volumeMl > 0)) return null;
+  const reaction = electrolysisRuleFor(snapshot);
+  const streams = reaction ? electrodeStreams(reaction, engine) : [];
+  return streams.length ? { gasRate: reaction.effects?.gasRate ?? null, streams } : null;
+}
+
+/** The electrolysis rule a switched-on vessel is running, or null. */
+function electrolysisRuleFor(snapshot) {
+  if (!snapshot.electrified) return null;
 
   // What is in the vessel right now, if it matches an electrolysis rule...
   const match = engine.resolve(snapshot.speciesIds, {
@@ -1130,19 +1160,7 @@ function electrolysisIonsFor(snapshot) {
   // usual case: the reactant is consumed the instant the power goes on.
   const ran = lastElectrolysisByContainer.get(snapshot.id);
   const reaction = match.reaction?.electrodes ? match.reaction : (ran ? engine.getReaction(ran) : null);
-
-  const electrodes = reaction?.electrodes;
-  if (!electrodes) return [];
-
-  const ions = [];
-  for (const side of ['cathode', 'anode']) {
-    const label = electrodes[side]?.attracts;
-    if (!label) continue;
-    // Two of each, so the drift reads as a crowd of ions rather than one
-    // token particle heading each way.
-    ions.push({ label, toward: side }, { label, toward: side });
-  }
-  return ions;
+  return reaction?.electrodes ? reaction : null;
 }
 
 function getState() {
@@ -1174,6 +1192,7 @@ function getState() {
         // Read straight out of the reaction's curated `electrodes` block -
         // app.js does not decide any of this, it only looks it up.
         electrolysisIons: electrolysisIonsFor(snapshot),
+        electrolysisBubbles: electrolysisBubblesFor(snapshot),
         // The most recent reaction in THIS vessel that has a molecular
         // animation, so bench.js can offer to replay it right there. Null
         // until something animatable has actually happened in it.

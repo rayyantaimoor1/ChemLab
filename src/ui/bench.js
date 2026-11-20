@@ -57,6 +57,8 @@ import { settledSvg, settledBox, smokeSvg, hazeOpacity, formingStyle, textureOf 
 // A thermometer standing in the liquid, read against its scale (UI.4.3).
 import { thermometerSvg, thermometerGeometry, columnFraction, offScale, SCALE_MAX_C, SCALE_MIN_C } from './thermometer.js';
 import { solidLabel } from './appearance.js';
+// Where gas bubbles form, and how fast (BUILD_UI.md UI.5.2).
+import { paceFor, bubbleSourceFor } from './gas-bubbles.js';
 // The shape of each vessel, its printed scale, and how high a volume of
 // liquid comes inside it (BUILD_UI.md UI.2) - all in glassware.js.
 import { glassGeometry, frontSvg, backSvg, liquidFraction, liquidPathPx } from './glassware.js';
@@ -743,7 +745,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     anodeRod.innerHTML = '<span class="electrode__sign">+</span>';
     const ionLayer = document.createElement('div');
     ionLayer.className = 'vessel__layer vessel__ions';
-    electrodeLayer.append(cathodeRod, anodeRod, ionLayer);
+    // Gas streaming off each rod while the current is on (UI.5.2).
+    const streamLayer = document.createElement('div');
+    streamLayer.className = 'vessel__layer vessel__streams';
+    electrodeLayer.append(cathodeRod, anodeRod, streamLayer, ionLayer);
 
     const glass = document.createElement('div');
     glass.className = 'vessel__glass';
@@ -851,7 +856,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const refs = {
       el, vessel, glass, liquidBase, liquidIncoming, sediment, precipitateLayer, bubbleLayer, gasLayer, pourMouth,
       volumeEl, tempEl, phEl, colorSwatch, colorText, colourRow, precipitateLabel, capacityChip,
-      standNote, vesselShadow, flame, electrodeLayer, ionLayer,
+      standNote, vesselShadow, flame, electrodeLayer, ionLayer, streamLayer,
       readingRow, readingSwatch, readingText, powerNote,
       solidLayer, shelfSolidNote, solidEls: new Map(), haze, smoke, cathodeRod,
       plume, mixing: null, layerBox, emulsion, shaking: false, soot,
@@ -1615,6 +1620,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
   function updateElectrolysis(refs, container) {
     const on = container.electrified === true;
     refs.electrodeLayer.hidden = !on;
+    updateElectrodeStreams(refs, container, on);
 
     const signature = on ? (container.electrolysisIons || []).map((ion) => ion.label + ion.toward).join('|') : '';
     if (refs.lastIonSignature === signature) return;
@@ -1634,6 +1640,87 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       span.style.animationDelay = `${(ion.toward === 'anode' ? 350 : 0) + Math.floor(index / 2) * 700}ms`;
       refs.ionLayer.appendChild(span);
     }
+  }
+
+  /**
+   * Gas rising off each electrode while the current is on - from the rod
+   * where the gas forms, in the share its half-equation fixes, at the
+   * rule's curated pace (BUILD_UI.md UI.5.2). Hydrogen's stream is twice
+   * oxygen's when water is split. Rebuilt only when something changes.
+   */
+  function updateElectrodeStreams(refs, container, on) {
+    const bubbles = on ? container.electrolysisBubbles : null;
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    const surface = geometry ? geometry.surfaceY(container.volumeMl) : null;
+    // The rods reach down to just above the floor, so they dip into
+    // whatever liquid there is - as real electrodes do - and the gas starts
+    // from the part of the rod under the surface.
+    const footFromBottom = geometry ? Math.round(geometry.h - geometry.floorY + 6) : 0;
+    if (geometry) refs.electrodeLayer.style.setProperty('--rod-foot', `${footFromBottom}px`);
+    const rodFoot = geometry ? geometry.h - footFromBottom : 0;
+    const rise = surface === null ? 0 : Math.max(6, Math.round(rodFoot - surface - 4));
+    const signature = bubbles && geometry
+      ? `${bubbles.gasRate}:${rise}:${bubbles.streams.map((s) => s.side + s.share).join('|')}`
+      : '';
+    if (refs.lastStreamSignature === signature) return;
+    refs.lastStreamSignature = signature;
+    refs.streamLayer.innerHTML = '';
+    if (!signature) return;
+
+    const pace = paceFor(bubbles.gasRate);
+    for (const stream of bubbles.streams) {
+      const n = Math.max(1, Math.round(pace.stream * stream.share));
+      for (let k = 0; k < n; k += 1) {
+        const span = document.createElement('span');
+        span.className = `electrode-bubble electrode-bubble--${stream.side}`;
+        // Either side of the rod, a little way up it.
+        span.style.setProperty('--offset', `${k % 2 ? 11 : -4}px`);
+        span.style.setProperty('--lift', `${(k * 7) % 18}px`);
+        span.style.setProperty('--rise', `${Math.max(4, rise - ((k * 7) % 18))}px`);
+        const duration = pace.riseMs[0] + ((k * 137) % (pace.riseMs[1] - pace.riseMs[0] + 1));
+        span.style.animationDuration = `${duration}ms`;
+        span.style.animationDelay = `${Math.round((k * duration) / n)}ms`;
+        span.title = `${stream.gasName} at the ${stream.side}`;
+        refs.streamLayer.appendChild(span);
+      }
+    }
+  }
+
+  /**
+   * One reaction's burst of bubbles, from where its gas forms - the metal,
+   * the chips, the catalyst, or the liquid itself - at its curated pace
+   * (UI.5.2). Only where there is liquid to rise through; electrolysis
+   * streams from its rods instead (updateElectrodeStreams).
+   */
+  function playReactionBubbles(refs, reaction, before, after) {
+    if (reaction.electrodes) return;
+    const volumeMl = Math.max(after.volumeMl || 0, before.volumeMl || 0);
+    const geometry = glassGeometry(after.type, after.capacityMl);
+    if (!(volumeMl > 0) || !geometry) return;
+
+    const pace = paceFor(reaction.effects?.gasRate);
+    const floorBottom = geometry.h - geometry.floorY;
+    const surface = geometry.surfaceY(after.volumeMl > 0 ? after.volumeMl : volumeMl);
+    const liquidHeight = surface === null ? 30 : Math.max(8, geometry.floorY - surface);
+
+    const solids = (before.appearance.shelfSolids || []).map((s) => s.id);
+    const source = bubbleSourceFor(reaction, solids);
+    const el = source.at === 'solid' ? refs.solidEls.get(source.solidId) : null;
+    let xPx;
+    let bottomPx;
+    if (el) {
+      const left = parseFloat(el.style.left) || 0;
+      xPx = [left + 1, left + Math.max(2, el.offsetWidth - 3)];
+      bottomPx = [floorBottom + 1, floorBottom + Math.max(2, Math.min(el.offsetHeight, liquidHeight) * 0.8)];
+    } else {
+      const half = Math.max(5, geometry.innerHalfAt(geometry.floorY - 5) - 4);
+      xPx = [geometry.cx - half, geometry.cx + half];
+      bottomPx = [floorBottom + 1, floorBottom + 4];
+    }
+    playBubbles(refs.bubbleLayer, {
+      count: pace.count, burstMs: pace.burstMs, riseMs: pace.riseMs, sizePx: pace.sizePx,
+      xPx, bottomPx, risePx: liquidHeight - 2,
+    });
   }
 
   /* ------------------------------------------------------------------ *
@@ -1727,7 +1814,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     for (const step of (engineResult && engineResult.steps) || []) {
       const effects = step.reaction && step.reaction.effects;
       if (!effects) continue;
-      if (effects.bubbles) playBubbles(refs.bubbleLayer);
+      if (effects.bubbles) playReactionBubbles(refs, step.reaction, before, after);
       if (effects.gas) playGasEvolution(refs.gasLayer);
       if (effects.precipitate) {
         const solid = after.appearance.precipitate;

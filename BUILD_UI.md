@@ -599,6 +599,40 @@ does. No engine change. Gas collection and testing at the mouth are BUILD_PHASE_
 > hydrogen's stream twice oxygen's where the electrodes block says so; from the chips themselves
 > for a carbonate. Bubble count and speed follow `gasRate`.
 
+> **Done (2026-11-20).** The rules are in `src/ui/gas-bubbles.js`, with no DOM, and are tested in
+> `tests/gas-bubbles.test.js`.
+> - **Where the gas forms.**
+>   - A reaction's bubbles start from a solid reactant or solid catalyst lying in the vessel:
+>     the magnesium ribbon, the zinc granules, the marble chips, the manganese(IV) oxide.
+>   - With no solid, they start across the floor of the liquid (two solutions meeting).
+>   - With no liquid, there are no bubbles: a dry solid giving off gas shows the gas, not bubbles.
+> - **How fast.**
+>   - `gasRate` sets the count, the size and the speed: slow 4 bubbles, steady 9, vigorous 18,
+>     rising faster as the rate rises.
+>   - `null` (no rate on record) is drawn at the steady pace.
+>   - Bubbles rise only as far as the surface.
+> - **Electrolysis.**
+>   - While the current is on, bubbles keep streaming off each rod that makes a gas.
+>   - Which rod makes a gas is read from the curated `electrodes` block: one of the rule's
+>     gaseous products on the right of that rod's half-equation.
+>   - The share comes from the same half-equations, as gas per electron. Splitting water gives
+>     hydrogen twice oxygen's stream, and brine gives equal streams. Copper sulfate bubbles only
+>     at the anode, while copper plates the cathode.
+>   - The rods now reach down near the floor, so they dip into the liquid however little there is.
+>     Before, a 20 mL beaker's rods ended above the surface.
+> - **Checked in the running app:**
+>   - magnesium, zinc and iron in 1 M HCl side by side had 16, 9 and 4 bubbles rising at once;
+>   - magnesium's bubbles started across the ribbon;
+>   - brine streamed equally from both rods.
+>   - Screenshot: `docs/ui-progress/UI.5/bubbles.png`.
+> - **Not visible yet: water's 2:1.** It is computed and tested, but in the app the vessel empties
+>   the moment the current goes on, because the engine has no amounts yet (BUILD_PHASE_2.md stage
+>   2.2) and turns all the water into gas at once. With no liquid left, no stream is drawn rather
+>   than one rising through nothing. It will show once the engine keeps water in the cell.
+> - **A data gap found: electropolishing.** Its cathode half-equation makes H₂ and its gas is
+>   hydrogen, but `h2_g` is not in its products, so no rod is drawn bubbling. Left for the owner
+>   to decide; nothing was changed in the data.
+
 **UI.5.3 — Sonnet — Coloured gases, fumes and smoke**
 > Coloured gases gather visibly above the liquid — brown nitrogen dioxide, yellow-green chlorine,
 > violet iodine vapour, brown bromine vapour — always with their names. White ammonium chloride

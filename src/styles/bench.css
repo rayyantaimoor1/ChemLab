@@ -2163,7 +2163,9 @@ html.reduce-motion .fx-flame--3 {
 .electrode {
   position: absolute;
   top: 6px;
-  bottom: 24%;
+  /* Down to just above the floor, so the rods dip into the liquid however
+     little there is (bench.js sets --rod-foot from the glass; UI.5.2). */
+  bottom: var(--rod-foot, 24%);
   width: 9px;
   /* Both rods the same grey on purpose - the sign says which is which,
      not the colour (UI.md section 5). */
@@ -2177,6 +2179,40 @@ html.reduce-motion .fx-flame--3 {
 
 .electrode--cathode { left: 22%; }
 .electrode--anode { right: 22%; }
+
+/* Gas streaming off a rod while the current is on (UI.5.2): small bubbles
+   rising from the foot of the rod to the surface, on a loop. Their number
+   and speed come from the rule's gasRate, their share from its
+   half-equations - set in bench.js. Transform and opacity only. */
+.electrode-bubble {
+  position: absolute;
+  bottom: calc(var(--rod-foot, 24%) + var(--lift, 0px));
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.35);
+  opacity: 0;
+  animation: electrode-bubble-rise 1200ms linear infinite;
+  pointer-events: auto;
+}
+.electrode-bubble--cathode { left: calc(22% + var(--offset, 0px)); }
+.electrode-bubble--anode { right: calc(22% + var(--offset, 0px)); }
+@keyframes electrode-bubble-rise {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  15% { opacity: 0.9; }
+  100% { transform: translateY(calc(-1 * var(--rise, 30px))) scale(1); opacity: 0; }
+}
+html.reduce-motion .electrode-bubble {
+  animation: none;
+  opacity: 0.7;
+}
+@media (prefers-reduced-motion: reduce) {
+  .electrode-bubble {
+    animation: none;
+    opacity: 0.7;
+  }
+}
 
 .electrode__sign {
   color: #FFFFFF;

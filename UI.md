@@ -29,6 +29,9 @@ The UI may **read** engine state and **dispatch** actions. It may not contain ch
       layers: [{ liquid, name, density, volumeMl, colorHex, colorName, clarity }] | null,
       // liquids that do not mix, lightest first, only from a rule's curated
       // layers (CLAUDE.md §5); null for an ordinary single liquid
+      // (and on the container: electrolysisBubbles - { gasRate, streams:
+      // [{ side, gasId, gasName, share }] } while the current is on and
+      // there is liquid, from src/ui/gas-bubbles.js; UI.5.2)
       // (and on equipment: dial and bathC - a water bath's settings and its
       // temperature now; UI.4.5)
       heat: { stage, boilingPointC, steam, condensation,
