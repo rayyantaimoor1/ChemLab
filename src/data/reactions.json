@@ -1048,6 +1048,7 @@
       "precipitate": null,
       "gas": "hydrogen and oxygen",
       "bubbles": true,
+      "gasRate": "slow",
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": 7
@@ -1081,7 +1082,10 @@
     "molecularAnimation": "anim_electrolysis_water",
     "explanation": "Water is split into its two elements by an electric current. Positive hydrogen ions drift to the negative electrode (the cathode) where they collect electrons and leave as hydrogen gas; negative hydroxide ions drift to the positive electrode (the anode) where they give electrons up and leave as oxygen. Exactly twice as much hydrogen is produced as oxygen, which matches the formula H₂O and is the easiest way to see that formula being confirmed by experiment. In practice a few drops of dilute sulfuric acid are added first, because pure water conducts far too poorly on its own — the acid is not used up.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of water"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of water",
+    "sources": [
+      { "ref": "Wikipedia — Electrolysis of water (the gases are proportional to the total electrical charge passed; electrolysis of pure water proceeds slowly, limited by its conductivity)", "url": "https://en.wikipedia.org/wiki/Electrolysis_of_water", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_electrolysis_brine",
@@ -1095,6 +1099,7 @@
       "precipitate": null,
       "gas": "hydrogen and chlorine",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 2,
       "resultPH": 14
@@ -1128,7 +1133,10 @@
     "molecularAnimation": "anim_electrolysis_brine",
     "explanation": "Electrolysing concentrated salt solution — brine — gives three useful products at once, which is why it is one of the biggest chemical industries in the world. Chloride ions go to the anode and leave as chlorine gas. At the cathode it is NOT sodium that appears, even though sodium ions are drifting there: sodium is too reactive to be discharged out of water, so hydrogen ions from the water take the electrons instead and hydrogen bubbles off. That leaves sodium and hydroxide ions behind in the cell, so the solution turns strongly alkaline.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of brine and the Nelson cell"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of brine and the Nelson cell",
+    "sources": [
+      { "ref": "Wikipedia — Electrolysis of water (the gases are proportional to the total electrical charge passed; electrolysis of pure water proceeds slowly, limited by its conductivity)", "url": "https://en.wikipedia.org/wiki/Electrolysis_of_water", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_electrolysis_molten_nacl",
@@ -1143,6 +1151,7 @@
       "solidKind": "liquid",
       "gas": "chlorine",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": null
@@ -1178,7 +1187,8 @@
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of molten sodium chloride and the Down's cell",
     "sources": [
-      { "ref": "Wikipedia — Downs cell (named after James Cloyd Downs; calcium chloride added so the melt stays liquid at about 600 °C; sodium floats on the melt)", "url": "https://en.wikipedia.org/wiki/Downs_cell", "checked": "2026-11-02", "covers": ["conditions", "hazard", "explanation"] }
+      { "ref": "Wikipedia — Downs cell (named after James Cloyd Downs; calcium chloride added so the melt stays liquid at about 600 °C; sodium floats on the melt)", "url": "https://en.wikipedia.org/wiki/Downs_cell", "checked": "2026-11-02", "covers": ["conditions", "hazard", "explanation"] },
+      { "ref": "Wikipedia — Electrolysis of water (the gases are proportional to the total electrical charge passed; electrolysis of pure water proceeds slowly, limited by its conductivity)", "url": "https://en.wikipedia.org/wiki/Electrolysis_of_water", "checked": "2026-11-20", "covers": ["gasRate"] }
     ]
   },
   {
@@ -1195,6 +1205,7 @@
       "solidKind": "deposit",
       "gas": "oxygen",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 1,
       "resultPH": 1
@@ -1223,7 +1234,8 @@
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Electrochemistry, electrolysis of copper(II) sulfate, electroplating and refining",
     "sources": [
-      { "ref": "Cognito, GCSE Chemistry (Edexcel) 10.7 — Electrolysis of aqueous solutions (copper(II) sulfate with inert and with copper electrodes)", "url": "https://cognito.org/courses/gcse/chemistry-triple/edexcel/higher/notes/TUFoWE1DeWM/10.7-electrolysis-of-aqueous-solutions", "checked": "2026-11-02", "covers": ["products", "gas", "colour", "explanation"] }
+      { "ref": "Cognito, GCSE Chemistry (Edexcel) 10.7 — Electrolysis of aqueous solutions (copper(II) sulfate with inert and with copper electrodes)", "url": "https://cognito.org/courses/gcse/chemistry-triple/edexcel/higher/notes/TUFoWE1DeWM/10.7-electrolysis-of-aqueous-solutions", "checked": "2026-11-02", "covers": ["products", "gas", "colour", "explanation"] },
+      { "ref": "Wikipedia — Electrolysis of water (the gases are proportional to the total electrical charge passed; electrolysis of pure water proceeds slowly, limited by its conductivity)", "url": "https://en.wikipedia.org/wiki/Electrolysis_of_water", "checked": "2026-11-20", "covers": ["gasRate"] }
     ]
   },
   {
@@ -2173,6 +2185,7 @@
       "solidKind": "deposit",
       "gas": "oxygen",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 1,
       "resultPH": 2
@@ -2201,7 +2214,8 @@
     "levels": ["fsc", "bs"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electroplating",
     "sources": [
-      { "ref": "Wikipedia — Electroplating (potassium cyanide as the electrolyte for silver and gold plating)", "url": "https://en.wikipedia.org/wiki/Electroplating", "checked": "2026-11-03", "covers": ["explanation"] }
+      { "ref": "Wikipedia — Electroplating (potassium cyanide as the electrolyte for silver and gold plating)", "url": "https://en.wikipedia.org/wiki/Electroplating", "checked": "2026-11-03", "covers": ["explanation"] },
+      { "ref": "Wikipedia — Electrolysis of water (the gases are proportional to the total electrical charge passed; electrolysis of pure water proceeds slowly, limited by its conductivity)", "url": "https://en.wikipedia.org/wiki/Electrolysis_of_water", "checked": "2026-11-20", "covers": ["gasRate"] }
     ]
   },
   {
@@ -2218,6 +2232,7 @@
       "solidKind": "deposit",
       "gas": "chlorine",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 1,
       "resultPH": 4
@@ -2251,7 +2266,10 @@
     "molecularAnimation": "anim_electrolysis_cucl2",
     "explanation": "The tidiest electrolysis of a solution there is, and the one to learn the rules from: BOTH products come from the dissolved salt itself rather than from the water. Copper is below hydrogen in the series so the copper ion is discharged in preference to the water at the cathode, and the chloride is discharged in preference to the water at the anode. Compare it with brine, where the sodium is too reactive to be discharged and hydrogen appears instead — same setup, different answer, and the electrochemical series is what tells the two apart.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrolysis of solutions and preferential discharge"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, electrolysis of solutions and preferential discharge",
+    "sources": [
+      { "ref": "Wikipedia — Electrolysis of water (the gases are proportional to the total electrical charge passed; electrolysis of pure water proceeds slowly, limited by its conductivity)", "url": "https://en.wikipedia.org/wiki/Electrolysis_of_water", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_electrolysis_al2o3",
@@ -2266,6 +2284,7 @@
       "solidKind": "liquid",
       "gas": "oxygen",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 0,
       "resultPH": null
@@ -2299,7 +2318,10 @@
     "molecularAnimation": "anim_electrolysis_al2o3",
     "explanation": "How aluminium is actually made. It is far too reactive to be extracted by heating its ore with carbon the way iron is, so the only route is electrolysis — and that is why aluminium was once more precious than gold, and stayed a curiosity until electricity became cheap. Aluminium oxide melts above 2000 °C, which would be impossible to run; dissolving it in molten cryolite brings that down to about 950 °C. Even so the process consumes so much electricity that smelters are built next to power stations, and recycling aluminium takes about a twentieth of the energy of making it new.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, extraction of aluminium by electrolysis"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Electrochemistry, extraction of aluminium by electrolysis",
+    "sources": [
+      { "ref": "Wikipedia — Electrolysis of water (the gases are proportional to the total electrical charge passed; electrolysis of pure water proceeds slowly, limited by its conductivity)", "url": "https://en.wikipedia.org/wiki/Electrolysis_of_water", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_group1_li_water",
@@ -7484,6 +7506,7 @@
       "dissolves": null,
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 3,
       "resultPH": 1
@@ -7494,7 +7517,8 @@
     "levels": ["bs"],
     "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — anodising of aluminium",
     "sources": [
-      { "ref": "Wikipedia — Anodizing (sulfuric acid is the most common anodizing electrolyte; the current releases hydrogen at the cathode and builds aluminium oxide on the anode)", "url": "https://en.wikipedia.org/wiki/Anodizing", "checked": "2026-11-07", "covers": ["conditions", "products", "gas", "explanation"] }
+      { "ref": "Wikipedia — Anodizing (sulfuric acid is the most common anodizing electrolyte; the current releases hydrogen at the cathode and builds aluminium oxide on the anode)", "url": "https://en.wikipedia.org/wiki/Anodizing", "checked": "2026-11-07", "covers": ["conditions", "products", "gas", "explanation"] },
+      { "ref": "Wikipedia — Electrolysis of water (the gases are proportional to the total electrical charge passed; electrolysis of pure water proceeds slowly, limited by its conductivity)", "url": "https://en.wikipedia.org/wiki/Electrolysis_of_water", "checked": "2026-11-20", "covers": ["gasRate"] }
     ]
   },
   {
@@ -7772,6 +7796,7 @@
       "dissolves": null,
       "gas": "oxygen",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 4,
       "resultPH": null
@@ -7780,7 +7805,10 @@
     "molecularAnimation": "anim_electroplating_chromium",
     "explanation": "The exception that proves the rule. Every other bath in this batch uses an anode of the metal being plated, so the bath replenishes itself; chromium uses insoluble anodes, oxygen comes off instead, and the bath is steadily consumed. Notice the electron count too — six per chromium atom against one for silver, so the same current lays down chromium six times more slowly. That is why the chromium layer is measured in fractions of a micron and does almost no protecting: the nickel underneath is doing that work.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hard and decorative chromium plating"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — hard and decorative chromium plating",
+    "sources": [
+      { "ref": "Wikipedia — Electrolysis of water (the gases are proportional to the total electrical charge passed; electrolysis of pure water proceeds slowly, limited by its conductivity)", "url": "https://en.wikipedia.org/wiki/Electrolysis_of_water", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_electrogalvanising_zinc",
@@ -7854,6 +7882,7 @@
       "dissolves": null,
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 3,
       "resultPH": null
@@ -7862,7 +7891,10 @@
     "molecularAnimation": "anim_electropolishing_steel",
     "explanation": "Plating run backwards: connect the workpiece as the anode and metal comes OFF. It smooths rather than roughens because the high points of the surface stick furthest into the solution and dissolve fastest, so the process removes exactly what needs removing and slows as the surface flattens — a self-limiting attack. It gets a finish no abrasive can match, which is why surgical instruments and dairy pipework are finished this way: a scratch is somewhere for bacteria to live.",
     "levels": ["bs"],
-    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — anodic dissolution and electropolishing"
+    "source": "Housecroft & Sharpe, Inorganic Chemistry 4th ed. — anodic dissolution and electropolishing",
+    "sources": [
+      { "ref": "Wikipedia — Electrolysis of water (the gases are proportional to the total electrical charge passed; electrolysis of pure water proceeds slowly, limited by its conductivity)", "url": "https://en.wikipedia.org/wiki/Electrolysis_of_water", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_none_plating_plastic",

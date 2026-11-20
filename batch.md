@@ -1618,8 +1618,8 @@ the bench never draws it boiling. It is used cold, in the nylon rope trick.
 
 ## 17. Gas rates (BUILD_UI.md stage UI.5.1)
 
-**Status: batch 1 of 4 done (2026-11-20).** 60 rules have bubbles of a gas;
-14 are rated and 46 are still to do.
+**Status: batch 2 of 4 done (2026-11-20).** 60 rules have bubbles of a gas;
+24 are rated and 36 are still to do.
 
 **What the owner approved (2026-11-20):**
 - **`effects.gasRate`**: `slow`, `steady` or `vigorous`, on every rule with
@@ -1666,3 +1666,26 @@ Approved by the owner on 2026-11-20. Every page below was opened that day.
 
 **Not used:** two RSC practicals (the acidic reactions of ethanoic acid; hydrogen peroxide with
 different catalysts) need a sign-in, so they could not be read and are not cited.
+
+### Batch 2 — the 10 electrolysis rules, under one general rule
+
+Approved by the owner on 2026-11-20.
+
+**The general rule.** In electrolysis the gas comes off at a rate set by the current, not by the
+chemistry: Wikipedia, *Electrolysis of water* (opened 2026-11-20), says the gases are
+"proportional to the total electrical charge conducted". The app does not model current, and
+every cell runs off the same school power pack, so every electrolysis of a conducting
+electrolyte is **steady**:
+- brine, copper(II) sulfate, silver nitrate and copper(II) chloride solutions;
+- molten sodium chloride and molten aluminium oxide;
+- anodising, chromium plating and electropolishing.
+
+**The one exception: distilled water is slow.** The same page: pure water "proceeds slowly,
+limited by the overall conductivity". The rule's own explanation already says so.
+
+**Not part of the rate:** hydrogen coming off at twice the rate of oxygen. UI.5.2 draws that
+from each rule's `electrodes` block.
+
+**Looked for and not found:** evidence that a chromium plating bath gasses vigorously. Wikipedia
+mentions only its low cathode efficiency, and the plating-industry page would not open. It
+stays steady under the general rule.
