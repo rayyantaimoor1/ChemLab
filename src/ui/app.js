@@ -40,7 +40,7 @@ import { formatNotebookForExport } from './notebook-export.js';
 import { buildReportContext, withNote } from './problem-report.js';
 import { appearanceFor, rememberReaction } from './appearance.js';
 import { GLASSWARE } from './glassware.js';
-import { heatLookFor } from './heat-look.js';
+import { heatLookFor, waterBathTarget } from './heat-look.js';
 import { mountMolecularView } from './molecular.js';
 import { mountMolecular3DView } from './molecular3d.js';
 import { mountGuidedBar, mountGuidedStepCard, mountGuidedSummary } from './guided.js';
@@ -92,14 +92,45 @@ const VESSEL_TYPES = {
 };
 
 // topY is how far below the furniture's own top edge a vessel's BASE sits
-// when it is stood on it - a burner's tripod ring is near its top, an ice
-// bath's rim is 16px down, and so on. Standing a vessel is pure geometry
-// from these three numbers; see standOn below.
+// when it is stood on it - a burner's tripod ring is near its top, and so
+// on. Standing a vessel is pure geometry from these three numbers; see
+// standOn below. A bath's vessel sits down IN it, near the floor, so the
+// water and ice come up round the glass (BUILD_UI.md UI.4.5).
 const EQUIPMENT_TYPES = {
   burner: { label: 'Bunsen burner + tripod', name: 'Bunsen burner', heats: 1, w: 78, h: 104, topY: 6 },
-  ice_bath: { label: 'Ice bath', name: 'Ice bath', heats: -1, w: 136, h: 54, topY: 16 },
+  ice_bath: { label: 'Ice bath', name: 'Ice bath', heats: -1, w: 136, h: 54, topY: 49 },
+  water_bath: { label: 'Water bath', name: 'Water bath', heats: 'bath', w: 136, h: 58, topY: 44 },
   rack: { label: 'Test-tube rack', name: 'Test-tube rack', heats: 0, w: 122, h: 66, topY: 14 },
 };
+
+// The water bath's dial (BUILD_UI.md UI.4.5, owner's choice 2026-11-20):
+// off - water at room temperature - then 40, 60 and 80 °C, and a boiling
+// water bath at 100 °C, which textbooks ask for by name.
+const WATER_BATH_C = [ROOM_TEMPERATURE_C, 40, 60, 80, 100];
+
+/**
+ * What a vessel standing on this furniture gets: the heat level the engine
+ * sees, and what to call it in the notebook. A water bath at any setting
+ * above off counts as heating - Fehling's and Tollens' are warmed in one -
+ * and the clock below holds the vessel at the bath's temperature. null for
+ * a rack, which does nothing to temperature.
+ */
+function heatFrom(item) {
+  if (!item) return null;
+  if (item.kind === 'burner') return { level: item.level };
+  if (item.kind === 'ice_bath') return { level: -1, how: { heater: 'ice bath' } };
+  if (item.kind === 'water_bath') {
+    return { level: item.level > 0 ? 1 : 0, how: { heater: 'water bath', atC: WATER_BATH_C[item.level] } };
+  }
+  return null;
+}
+
+/** Takes a vessel off whatever it stood on, as far as heat goes. */
+function heatOff(containerId, item) {
+  const from = heatFrom(item);
+  if (from?.how) dispatch.setHeat(containerId, 0, { ...from.how, out: true });
+  else if (from || containersById.get(containerId)?.getHeatLevel() !== 0) dispatch.setHeat(containerId, 0);
+}
 
 const MAX_VESSELS = 7;
 const MAX_EQUIPMENT = 4;
@@ -339,13 +370,18 @@ function standOn(containerId, equipmentId) {
 
   if (!equipmentId) {
     if (!standOnByContainer.has(containerId)) return;
+    const was = equipment.find((eq) => eq.id === standOnByContainer.get(containerId));
     standOnByContainer.delete(containerId);
-    dispatch.setHeat(containerId, 0);
-    notebook.logAction({
-      text: `${container.name} was lifted off the bench furniture.`,
-      containerId,
-      action: 'standOn',
-    });
+    heatOff(containerId, was);
+    // A bath's own line already says the vessel was taken out of it.
+    if (!heatFrom(was)?.how) {
+      notebook.logAction({
+        text: `${container.name} was lifted off the bench furniture.`,
+        containerId,
+        action: 'standOn',
+      });
+    }
+    notify();
     return;
   }
 
@@ -363,13 +399,20 @@ function standOn(containerId, equipmentId) {
   selectedVesselId = containerId;
   selectedEquipmentId = null;
 
-  const level = def.heats === 1 ? item.level : def.heats;
-  dispatch.setHeat(containerId, level);
-  notebook.logAction({
-    text: `${container.name} was stood on the ${def.name.toLowerCase()}.`,
-    containerId,
-    action: 'standOn',
-  });
+  const from = heatFrom(item);
+  if (from) dispatch.setHeat(containerId, from.level, from.how);
+  else if (container.getHeatLevel() !== 0) dispatch.setHeat(containerId, 0);
+  // A bath's own line says the vessel is now in it; a burner's and a
+  // rack's say nothing about standing, so this one does.
+  if (!from?.how) {
+    notebook.logAction({
+      text: `${container.name} was stood on the ${def.name.toLowerCase()}.`,
+      containerId,
+      action: 'standOn',
+    });
+  }
+  // A rack changes no heat, so no setHeat has redrawn the bench.
+  notify();
 }
 
 /** Moves a vessel to a new spot, which by definition lifts it off whatever
@@ -379,8 +422,9 @@ function moveVessel(containerId, x, y) {
   if (!containersById.has(containerId)) return;
   positionByContainer.set(containerId, { x, y });
   if (standOnByContainer.has(containerId)) {
+    const was = equipment.find((eq) => eq.id === standOnByContainer.get(containerId));
     standOnByContainer.delete(containerId);
-    dispatch.setHeat(containerId, 0);
+    heatOff(containerId, was);
   }
   clampedOverByContainer.delete(containerId);
   notify();
@@ -454,10 +498,15 @@ function selectEquipment(equipmentId) {
  */
 function setEquipmentLevel(equipmentId, level) {
   const item = equipment.find((eq) => eq.id === equipmentId);
-  if (!item || EQUIPMENT_TYPES[item.kind].heats !== 1) return;
+  if (!item) return;
+  // A burner's knob runs 0-3; a water bath's dial is a position in
+  // WATER_BATH_C (UI.4.5). Nothing else has a setting.
+  const top = item.kind === 'burner' ? 3 : item.kind === 'water_bath' ? WATER_BATH_C.length - 1 : -1;
+  if (!Number.isInteger(level) || level < 0 || level > top) return;
   item.level = level;
+  const from = heatFrom(item);
   for (const [containerId, standingOn] of standOnByContainer) {
-    if (standingOn === equipmentId) dispatch.setHeat(containerId, level);
+    if (standingOn === equipmentId) dispatch.setHeat(containerId, from.level, from.how);
   }
   notify();
 }
@@ -572,10 +621,8 @@ function emptyVessel(containerId) {
   // Still standing on whatever it was standing on, so put the heat back.
   const standingOn = standOnByContainer.get(containerId);
   const item = standingOn ? equipment.find((eq) => eq.id === standingOn) : null;
-  if (item) {
-    const equipDef = EQUIPMENT_TYPES[item.kind];
-    dispatch.setHeat(containerId, equipDef.heats === 1 ? item.level : equipDef.heats);
-  }
+  const from = heatFrom(item);
+  if (from) dispatch.setHeat(containerId, from.level, from.how);
   notebook.logAction({
     text: `The ${old.name.toLowerCase()} was emptied and rinsed.`,
     containerId,
@@ -1159,6 +1206,9 @@ function getState() {
       level: item.level,
       airHole: item.airHole,
       canSetLevel: EQUIPMENT_TYPES[item.kind].heats === 1,
+      // A water bath's dial: the temperature at each setting, and now (UI.4.5).
+      dial: item.kind === 'water_bath' ? WATER_BATH_C : null,
+      bathC: item.kind === 'water_bath' ? WATER_BATH_C[item.level] : null,
       position: { x: item.x, y: item.y },
       width: EQUIPMENT_TYPES[item.kind].w,
       height: EQUIPMENT_TYPES[item.kind].h,
@@ -1639,6 +1689,11 @@ const BURNER_TICK_MS = 400;
 const ICE_BATH_C = 2;
 const ICE_RATE_C = 2.5;
 
+// A water bath warms by conduction through the glass, at the same gentle
+// rate the ice cools - no flame driving it (UI.4.5).
+const WATER_BATH_RATE_C = 2.5;
+
+
 // A luminous flame - air hole closed - is cooler and spends much of its
 // heat as light and soot, so it warms a vessel more slowly (BUILD_UI.md
 // UI.4.1). Half the rate, the same eventual temperature.
@@ -1658,21 +1713,27 @@ function burnerTick() {
     // Ice bath: driven down towards the bath. Off: the glass simply gives its
     // heat back to the room. Burner: driven up, capped at boiling if there is
     // liquid in the way.
+    const under = equipment.find((eq) => eq.id === standOnByContainer.get(container.id));
+    const inWaterBath = level > 0 && under?.kind === 'water_bath';
     let target;
     if (level < 0) target = ICE_BATH_C;
     else if (level === 0) target = ROOM_TEMPERATURE_C;
-    else if (holdsLiquid) {
+    else if (inWaterBath) {
+      const boilingPoint = holdsLiquid
+        ? heatLookFor(container.snapshot(), engine).boilingPointC ?? FALLBACK_BOILING_POINT_C
+        : null;
+      target = waterBathTarget(WATER_BATH_C[under.level], boilingPoint);
+    } else if (holdsLiquid) {
       const boilingPoint = heatLookFor(container.snapshot(), engine).boilingPointC ?? FALLBACK_BOILING_POINT_C;
       target = Math.min(BURNER_TARGET_C[level], boilingPoint);
     } else target = BURNER_TARGET_C[level];
 
-    const under = equipment.find((eq) => eq.id === standOnByContainer.get(container.id));
     const luminous = level > 0 && under?.kind === 'burner' && under.airHole === 'closed';
     if (luminous && !sootyContainers.has(container.id)) {
       sootyContainers.add(container.id);
       stillBusy = true;
     }
-    let rate = level < 0 ? ICE_RATE_C : level === 0 ? COOLING_RATE_C : BURNER_RATE_C[level];
+    let rate = level < 0 ? ICE_RATE_C : level === 0 ? COOLING_RATE_C : inWaterBath ? WATER_BATH_RATE_C : BURNER_RATE_C[level];
     if (luminous) rate *= LUMINOUS_RATE_FACTOR;
     if (Math.abs(target - now) < 0.5) continue;
 

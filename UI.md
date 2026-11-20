@@ -29,6 +29,8 @@ The UI may **read** engine state and **dispatch** actions. It may not contain ch
       layers: [{ liquid, name, density, volumeMl, colorHex, colorName, clarity }] | null,
       // liquids that do not mix, lightest first, only from a rule's curated
       // layers (CLAUDE.md §5); null for an ordinary single liquid
+      // (and on equipment: dial and bathC - a water bath's settings and its
+      // temperature now; UI.4.5)
       heat: { stage, boilingPointC, steam, condensation,
               glow,        // { name, colorHex, strength } | null - a dry solid above 525 °C (UI.4.4)
               hotGlass } | null,  // true from 60 °C: the label warns hot glass looks cold

@@ -425,7 +425,7 @@ export function mountShelf({ root, getState, dispatch, subscribe }) {
       button.disabled = state.equipmentLimitReached;
       button.title = state.equipmentLimitReached
         ? 'The bench already holds as much furniture as it can.'
-        : `Set up a ${label.toLowerCase()} on the bench`;
+        : `Set up ${/^[aeiou]/i.test(label) ? 'an' : 'a'} ${label.toLowerCase()} on the bench`;
       button.addEventListener('click', () => dispatch.addEquipment(kind));
       apparatusGrid.appendChild(button);
     }

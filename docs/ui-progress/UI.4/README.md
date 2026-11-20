@@ -48,3 +48,15 @@ stays while the vessel is that hot.
 There is no screenshot of the glow, because nothing in the app reaches it yet.
 The burner's dry maximum is 500 °C, and a solid only starts to glow at 525 °C.
 The rule is in `src/ui/heat-look.js` and is covered by the tests.
+
+## UI.4.5 — Ice bath and water bath
+
+`baths.png` shows a small beaker in each bath:
+
+- **The water bath, set to "Boiling":** water in the beaker has stopped at
+  99 °C and does not boil, because the beaker is in water at the same
+  temperature. The trough is glass, so the beaker's contents stay in sight.
+  The hotplate's red light is on.
+- **The ice bath:** copper sulfate solution at 2 °C. The beaker sits down in
+  the water, with ice floating in front of it and behind it. The solution
+  stays plainly blue through the bath water.

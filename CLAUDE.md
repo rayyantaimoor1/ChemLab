@@ -599,7 +599,7 @@ owner has confirmed it. Each phase must leave the app in a working state.
 >
 > Each is a one-time capability addition. Content written after each one is
 > pure JSON again.
-| **9** | Real UI — built by Claude Code as the UI realism track in `BUILD_UI.md` (owner's decision, 2026-11-10; replaces the Claude Design plan) | Visual redesign required no changes inside `src/core/`; the bench never disagrees with the notebook |
+| **9** | Real UI — built by Claude Code as the UI realism track in `BUILD_UI.md` (owner's decision, 2026-11-10; replaces the Claude Design plan) | Visual redesign required no changes inside `src/core/`; the bench never disagrees with the notebook. One owner-approved exception (2026-11-20, BUILD_UI.md UI.4.5): `setHeat` can be told what is under the vessel - a burner, an ice bath, a water bath - for the notebook sentence only; nothing about the chemistry changed |
 | **10** | Packaging, installer polish, testing on target hardware | Installs and runs on a real 8 GB / i5 5th gen lab PC |
 
 ---

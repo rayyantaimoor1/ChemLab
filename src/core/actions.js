@@ -25,7 +25,7 @@
  *
  *   addChemical(containerId, chemicalId, amountMl)
  *   pour(fromId, toId, amountMl)
- *   setHeat(containerId, level)      // 0-3
+ *   setHeat(containerId, level, how) // -1 (ice bath) to 3; how = what is under it
  *   stir(containerId)
  *
  * setPower(containerId, on) is the one addition to that list, for
@@ -180,7 +180,7 @@ export function createActions({
   }
 
   /* ------------------------------------------------------------------ *
-   * setHeat(containerId, level)   level 0-3
+   * setHeat(containerId, level, how)   level -1 (ice bath) to 3
    * ------------------------------------------------------------------ */
 
   // Plain words for the four knob positions. This labelling is not specified
@@ -189,15 +189,36 @@ export function createActions({
   // wording (or a different number of positions).
   const HEAT_LEVEL_WORDS = ['off', 'low', 'medium', 'high'];
 
-  function setHeat(containerId, level) {
+  // A burner's knob, or a bath the vessel stands in. Level -1 is always an
+  // ice bath, so it is named as one even when nothing says what is under the
+  // vessel - it used to come out as "set to undefined heat".
+  function heatSentence(name, level, { heater, atC, out } = {}) {
+    const bath = heater || (level === -1 ? 'ice bath' : null);
+    if (bath) {
+      if (out) return `${name} was taken out of the ${bath}.`;
+      return typeof atC === 'number'
+        ? `${name} is now in the ${bath}, at ${atC} °C.`
+        : `${name} is now in the ${bath}.`;
+    }
+    return level === 0
+      ? `The burner under ${name} was turned off.`
+      : `The burner under ${name} was set to ${HEAT_LEVEL_WORDS[level]} heat.`;
+  }
+
+  /**
+   * @param {object} [how]  What is under the vessel, for the notebook
+   *   sentence only - it changes nothing about the chemistry (BUILD_UI.md
+   *   UI.4.5, owner approved 2026-11-20). Left out, it is a burner.
+   *   heater  'ice bath' or 'water bath'
+   *   atC     the bath's temperature, said when given
+   *   out     true when the vessel has been taken out of it
+   */
+  function setHeat(containerId, level, how = {}) {
     const container = findContainer(containerId, 'setHeat');
 
     container.setHeatLevel(level);
 
-    const sentence =
-      level === 0
-        ? `The burner under ${container.name} was turned off.`
-        : `The burner under ${container.name} was set to ${HEAT_LEVEL_WORDS[level]} heat.`;
+    const sentence = heatSentence(container.name, level, how);
 
     // Turning the burner on or off can unlock (or, at level 0, no longer
     // satisfy) a rule that requires heat, so the contents need rechecking -

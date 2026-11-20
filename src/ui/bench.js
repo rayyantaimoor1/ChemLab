@@ -175,6 +175,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     for (const [id, refs] of equipmentEls) {
       if (!seenEquipment.has(id)) {
         refs.el.remove();
+        refs.front?.remove();
         equipmentEls.delete(id);
       }
     }
@@ -499,10 +500,21 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       cone.appendChild(inner);
       art.appendChild(cone);
     } else if (kind === 'ice_bath') {
+      // The back of the basin, and the water and ice behind the vessel. The
+      // water and ice in FRONT of it are the bath's front (bathFront below).
       part('ice-basin');
+      part('bath-water-back');
       part('ice-cube').classList.add('equipment__part--ice-cube-1');
       part('ice-cube').classList.add('equipment__part--ice-cube-2');
       part('ice-cube').classList.add('equipment__part--ice-cube-3');
+    } else if (kind === 'water_bath') {
+      // A glass trough of water on an electric hotplate (UI.4.5). Glass, so
+      // what happens in the vessel stays in sight.
+      part('hotplate');
+      part('hotplate-light');
+      part('hotplate-knob');
+      part('bath-trough');
+      part('bath-water-back');
     } else if (kind === 'rack') {
       part('rack-rail').classList.add('equipment__part--rack-rail-top');
       part('rack-rail').classList.add('equipment__part--rack-rail-bottom');
@@ -514,12 +526,56 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     return art;
   }
 
+  /**
+   * The front of a bath: the water and ice standing in front of the vessel,
+   * so a vessel stood in a bath is IN it - water round its lower half, ice
+   * floating in front (BUILD_UI.md UI.4.5). Its own element on the canvas,
+   * stacked above the vessel, and never in the way of a click.
+   */
+  function bathFront(kind) {
+    const front = document.createElement('div');
+    front.className = `equipment-front equipment-front--${kind}`;
+    const span = (className) => {
+      const s = document.createElement('span');
+      s.className = className;
+      front.appendChild(s);
+      return s;
+    };
+    span('equipment-front__water');
+    span('equipment-front__surface');
+    if (kind === 'ice_bath') {
+      for (let k = 1; k <= 4; k += 1) span(`equipment-front__ice equipment-front__ice--${k}`);
+    } else {
+      // Bubbles for a boiling water bath, wisps of steam for a hot one.
+      const bubbles = span('equipment-front__bubbles');
+      for (let k = 0; k < 6; k += 1) {
+        const b = document.createElement('span');
+        b.style.left = `${8 + k * 16}%`;
+        b.style.animationDelay = `${(k * 230) % 900}ms`;
+        bubbles.appendChild(b);
+      }
+      const steam = span('equipment-front__steam');
+      for (let k = 0; k < 3; k += 1) {
+        const w = document.createElement('span');
+        w.style.left = `${18 + k * 28}%`;
+        w.style.animationDelay = `${k * 700}ms`;
+        steam.appendChild(w);
+      }
+    }
+    span('equipment-front__wall');
+    return front;
+  }
+
   function equipmentLevelText(item) {
     if (item.kind === 'burner') {
       const air = item.airHole === 'closed' ? 'air hole closed' : 'air hole open';
       return item.level === 0 ? `gas off · ${air}` : `level ${item.level} · ${air}`;
     }
     if (item.kind === 'ice_bath') return 'melting ice, about 2 °C';
+    if (item.kind === 'water_bath') {
+      if (item.level === 0) return 'off · water at room temperature';
+      return item.bathC >= 100 ? 'boiling water, 100 °C' : `water at ${item.bathC} °C`;
+    }
     return 'holds tubes upright';
   }
 
@@ -548,6 +604,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     canvas.appendChild(el);
     const refs = { el, art, status };
+    if (item.kind === 'ice_bath' || item.kind === 'water_bath') {
+      refs.front = bathFront(item.kind);
+      canvas.appendChild(refs.front);
+    }
     equipmentEls.set(item.id, refs);
     return refs;
   }
@@ -557,6 +617,12 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.el.classList.toggle('is-selected', state.selectedEquipmentId === item.id);
     refs.status.textContent = equipmentLevelText(item);
     refs.art.classList.toggle('equipment__art--lit', item.kind === 'burner' && item.level > 0);
+    if (refs.front) refs.front.style.transform = refs.el.style.transform;
+    if (item.kind === 'water_bath') {
+      refs.art.classList.toggle('equipment__art--on', item.level > 0);
+      refs.front.classList.toggle('is-hot', item.bathC >= 60);
+      refs.front.classList.toggle('is-boiling', item.bathC >= 100);
+    }
     if (item.kind === 'burner') {
       refs.art.style.setProperty('--burner-level', String(item.level));
       refs.art.classList.toggle('equipment__art--luminous', item.airHole === 'closed');
@@ -1201,6 +1267,8 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       refs.el.style.transform = `translate3d(${container.position.x}px, ${container.position.y}px, 0)`;
     }
     refs.el.classList.toggle('is-selected', state.selectedVesselId === container.id);
+    const under = container.standOn ? state.equipment.find((q) => q.id === container.standOn) : null;
+    refs.el.classList.toggle('is-in-bath', !!under && (under.kind === 'ice_bath' || under.kind === 'water_bath'));
 
     refs.volumeEl.textContent = container.volumeMl;
     refs.tempEl.textContent = container.temperatureC.toFixed(1);
@@ -1249,7 +1317,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       refs.standNote.textContent = `clamped above the ${clampedTarget.name.toLowerCase()}`;
     } else if (standingItem) {
       refs.standNote.hidden = false;
-      refs.standNote.textContent = `on the ${standingItem.label.toLowerCase()}`;
+      refs.standNote.textContent = `${isBath(standingItem) ? 'in' : 'on'} the ${standingItem.label.toLowerCase()}`;
     } else {
       refs.standNote.hidden = true;
     }
@@ -1359,6 +1427,20 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     return button;
   }
 
+  const isBath = (item) => item.kind === 'ice_bath' || item.kind === 'water_bath';
+
+  /** The water bath's dial: off, 40, 60, 80 °C and boiling (UI.4.5). */
+  function bathDialButtons(bath) {
+    bath.dial.forEach((tempC, setting) => {
+      const label = setting === 0 ? 'Bath off' : tempC >= 100 ? 'Boiling' : `${tempC} °C`;
+      controlButton(label, () => dispatch.setEquipmentLevel(bath.id, setting), {
+        active: bath.level === setting,
+        className: 'bench-control--heat',
+        title: setting === 0 ? 'Switch the hotplate off' : `Hold the water at ${tempC} °C`,
+      });
+    });
+  }
+
   /** The burner's collar: one button that opens or closes the air hole. */
   function airHoleButton(burner) {
     const open = burner.airHole !== 'closed';
@@ -1405,7 +1487,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       controlSub.textContent = clamped
         ? `clamped above the ${clamped.name.toLowerCase()}`
         : standing
-          ? `standing on the ${standing.label.toLowerCase()}`
+          ? `standing ${isBath(standing) ? 'in' : 'on'} the ${standing.label.toLowerCase()}`
           : 'on the bench — drag it onto a burner to heat it';
 
       // Heat exists only when something under the vessel supplies it.
@@ -1417,6 +1499,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
         }
         airHoleButton(standing);
       }
+      if (standing && standing.kind === 'water_bath') bathDialButtons(standing);
 
       if (vessel.type === 'burette') {
         const armed = !!vessel.clampedOver && vessel.volumeMl > 0;
@@ -1488,6 +1571,13 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       }
       airHoleButton(equip);
       controlSub.textContent = airHoleNote(equip);
+    }
+    if (equip.kind === 'water_bath') {
+      bathDialButtons(equip);
+      controlSub.textContent = 'Warms gently and evenly, and never past its own temperature - the safe way to heat anything that catches fire.';
+    }
+    if (equip.kind === 'ice_bath') {
+      controlSub.textContent = 'Melting ice holds a vessel a little above 0 °C - for reactions that warmth would spoil.';
     }
     controlButton('Put away', () => dispatch.removeEquipment(equip.id));
   }

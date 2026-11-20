@@ -135,3 +135,16 @@ export function heatLookFor(snapshot, engine) {
       : null,
   };
 }
+
+/**
+ * Where a vessel in a water bath settles. The bath's temperature, and no
+ * further - which is the whole point of one. A liquid that boils below the
+ * bath's temperature does boil, and holds at its boiling point: ether in a
+ * 60 °C bath, ethanol in an 80 °C one. A liquid that boils AT the bath's
+ * temperature never quite does - with no difference in temperature left,
+ * no more heat goes in - so water in a boiling water bath sits a degree short.
+ */
+export function waterBathTarget(bathC, boilingPointC) {
+  if (boilingPointC === null || bathC < boilingPointC) return bathC;
+  return bathC > boilingPointC ? boilingPointC : boilingPointC - 1;
+}

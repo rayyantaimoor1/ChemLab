@@ -77,3 +77,21 @@ test('hot glass is flagged from the temperature it becomes too hot to hold', () 
   assert.equal(look(water, HOT_GLASS_C - 1, 0).hotGlass, false);
   assert.equal(look(water, HOT_GLASS_C, 0).hotGlass, true);
 });
+
+// ---- Water bath (BUILD_UI.md UI.4.5) ----
+
+import { waterBathTarget } from '../src/ui/heat-look.js';
+
+test('a vessel in a water bath comes to the bath temperature and no further', () => {
+  assert.equal(waterBathTarget(60, 100), 60, 'water in a 60 °C bath');
+  assert.equal(waterBathTarget(80, null), 80, 'a dry tube takes the bath temperature');
+});
+
+test('a liquid boiling below the bath temperature boils, and holds at its boiling point', () => {
+  assert.equal(waterBathTarget(60, 35), 35, 'ether in a 60 °C bath');
+  assert.equal(waterBathTarget(80, 78), 78, 'ethanol in an 80 °C bath');
+});
+
+test('water in a boiling water bath never quite boils', () => {
+  assert.equal(waterBathTarget(100, 100), 99);
+});

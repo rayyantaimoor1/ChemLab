@@ -559,3 +559,32 @@ test('a real bench: an unknown combination is reported honestly, not guessed', a
   assert.equal(result.engineResult.outcome, OUTCOME.UNKNOWN);
   assert.match(result.notebookText, /isn't available in this version/);
 });
+
+/* ------------------------------------------------------------------ *
+ * What is under the vessel, in the notebook (BUILD_UI.md UI.4.5)
+ * ------------------------------------------------------------------ */
+
+test('an ice bath is named in the notebook, never "undefined heat"', () => {
+  const { register, actions } = makeWorld();
+  register(beaker('b1'));
+  const into = actions.setHeat('b1', -1).notebookText;
+  assert.match(into, /^Beaker b1 is now in the ice bath\./);
+  assert.doesNotMatch(into, /undefined/);
+  assert.match(actions.setHeat('b1', 0, { heater: 'ice bath', out: true }).notebookText,
+    /^Beaker b1 was taken out of the ice bath\./);
+});
+
+test('a water bath says its temperature, and still counts as heating', () => {
+  const { register, actions } = makeWorld();
+  const b1 = register(beaker('b1'));
+  const result = actions.setHeat('b1', 1, { heater: 'water bath', atC: 60 });
+  assert.match(result.notebookText, /^Beaker b1 is now in the water bath, at 60 °C\./);
+  assert.equal(b1.isHeating(), true);
+});
+
+test('burner sentences are unchanged', () => {
+  const { register, actions } = makeWorld();
+  register(beaker('b1'));
+  assert.match(actions.setHeat('b1', 2).notebookText, /^The burner under Beaker b1 was set to medium heat\./);
+  assert.match(actions.setHeat('b1', 0).notebookText, /^The burner under Beaker b1 was turned off\./);
+});

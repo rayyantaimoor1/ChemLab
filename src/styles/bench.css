@@ -1090,6 +1090,7 @@ select:focus-visible,
 
 .equipment--burner .equipment__art { width: 78px; height: 104px; }
 .equipment--ice_bath .equipment__art { width: 136px; height: 54px; }
+.equipment--water_bath .equipment__art { width: 136px; height: 58px; }
 .equipment--rack .equipment__art { width: 122px; height: 66px; }
 
 .equipment__part {
@@ -1285,13 +1286,180 @@ html.reduce-motion .equipment__art--lit .equipment__part--flame-inner {
   opacity: 1;
 }
 
-/* Ice bath: a blue-tinted basin and three tumbled ice cubes. */
+/* Ice bath: the back of a basin, the water and three ice cubes behind the
+   vessel. The front - water and ice before the vessel - is
+   .equipment-front below (UI.4.5). */
 .equipment__part--ice-basin {
   inset: 0;
   border: 2px solid rgba(201, 214, 218, 0.55);
-  border-radius: 4px 4px 8px 8px;
-  background: linear-gradient(180deg, rgba(151, 201, 219, 0.4), rgba(151, 201, 219, 0.66));
-  box-shadow: inset 0 4px 0 rgba(255, 255, 255, 0.26);
+  border-radius: 4px 4px 10px 10px;
+  background: rgba(151, 201, 219, 0.14);
+  box-shadow: inset 0 4px 0 rgba(255, 255, 255, 0.18);
+}
+.equipment__part--bath-water-back {
+  left: 2px;
+  right: 2px;
+  top: 12px;
+  bottom: 2px;
+  border-radius: 0 0 8px 8px;
+  background: rgba(176, 214, 228, 0.24);
+}
+
+/* Water bath: a glass trough of water on an electric hotplate. */
+.equipment__part--hotplate {
+  left: 2px;
+  right: 2px;
+  bottom: 0;
+  height: 12px;
+  border: 1px solid #1D2023;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #4A5056, #33383D);
+}
+.equipment__part--hotplate-light {
+  left: 12px;
+  bottom: 4px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #4A2420;
+}
+.equipment__art--on .equipment__part--hotplate-light {
+  background: #E8482C;
+}
+.equipment__part--hotplate-knob {
+  right: 12px;
+  bottom: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid #1D2023;
+  background: #C9CED2;
+}
+.equipment__part--bath-trough {
+  left: 6px;
+  right: 6px;
+  top: 4px;
+  bottom: 12px;
+  border: 2px solid rgba(201, 214, 218, 0.5);
+  border-radius: 3px 3px 6px 6px;
+  background: rgba(190, 220, 232, 0.08);
+}
+.equipment--water_bath .equipment__part--bath-water-back {
+  left: 8px;
+  right: 8px;
+  top: 12px;
+  bottom: 14px;
+  border-radius: 0 0 5px 5px;
+}
+
+/* A vessel in a bath sits between the bath's back and its front, even when
+   either is selected. */
+.vessel-object.is-in-bath,
+.vessel-object.is-in-bath.is-selected { z-index: 2; }
+.equipment--ice_bath.is-selected,
+.equipment--water_bath.is-selected { z-index: 1; }
+
+/* The front of a bath: clear water round the vessel's lower part - only
+   faintly tinted, so a precipitate in it keeps its own colour - its
+   surface, floating ice, and the near wall. */
+.equipment-front {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 136px;
+  z-index: 3;
+  pointer-events: none;
+}
+.equipment-front--ice_bath { height: 54px; }
+.equipment-front--water_bath { height: 58px; }
+.equipment-front > span { position: absolute; }
+.equipment-front__water {
+  left: 2px;
+  right: 2px;
+  top: 12px;
+  bottom: 2px;
+  border-radius: 0 0 8px 8px;
+  background: linear-gradient(180deg, rgba(190, 222, 234, 0.2), rgba(170, 210, 226, 0.3));
+}
+.equipment-front__surface {
+  left: 2px;
+  right: 2px;
+  top: 11px;
+  height: 2px;
+  background: rgba(236, 246, 250, 0.45);
+}
+.equipment-front__wall {
+  inset: 0;
+  border: 2px solid rgba(201, 214, 218, 0.6);
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+}
+.equipment-front--water_bath .equipment-front__water { left: 8px; right: 8px; bottom: 14px; border-radius: 0 0 5px 5px; }
+.equipment-front--water_bath .equipment-front__surface { left: 8px; right: 8px; }
+.equipment-front--water_bath .equipment-front__wall {
+  left: 6px;
+  right: 6px;
+  top: 4px;
+  bottom: 12px;
+  border-radius: 0 0 6px 6px;
+}
+.equipment-front__ice {
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 2px;
+  background: rgba(236, 246, 250, 0.72);
+}
+.equipment-front__ice--1 { left: 8px; top: 7px; width: 18px; height: 12px; transform: rotate(-10deg); }
+.equipment-front__ice--2 { left: 30px; top: 10px; width: 14px; height: 10px; transform: rotate(14deg); }
+.equipment-front__ice--3 { right: 30px; top: 8px; width: 17px; height: 12px; transform: rotate(-6deg); }
+.equipment-front__ice--4 { right: 8px; top: 10px; width: 14px; height: 11px; transform: rotate(20deg); }
+
+/* A boiling water bath bubbles; a hot one gives off faint wisps. */
+.equipment-front__bubbles { left: 8px; right: 8px; top: 12px; bottom: 14px; overflow: hidden; }
+.equipment-front__bubbles > span,
+.equipment-front__steam > span {
+  position: absolute;
+  opacity: 0;
+}
+.equipment-front__bubbles > span {
+  bottom: 2px;
+  width: 4px;
+  height: 4px;
+  border: 1px solid rgba(236, 246, 250, 0.8);
+  border-radius: 50%;
+}
+.equipment-front.is-boiling .equipment-front__bubbles > span {
+  animation: bath-bubble 900ms linear infinite;
+}
+@keyframes bath-bubble {
+  0% { transform: translateY(0); opacity: 0.9; }
+  100% { transform: translateY(-26px); opacity: 0; }
+}
+.equipment-front__steam { left: 8px; right: 8px; top: -14px; height: 18px; }
+.equipment-front__steam > span {
+  bottom: 0;
+  width: 20px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(236, 240, 242, 0.16);
+}
+.equipment-front.is-hot .equipment-front__steam > span {
+  animation: bath-steam 2100ms ease-out infinite;
+}
+@keyframes bath-steam {
+  0% { transform: translateY(0) scale(0.6); opacity: 0.5; }
+  100% { transform: translateY(-14px) scale(1.4); opacity: 0; }
+}
+html.reduce-motion .equipment-front.is-boiling .equipment-front__bubbles > span,
+html.reduce-motion .equipment-front.is-hot .equipment-front__steam > span {
+  animation: none;
+  opacity: 0.5;
+}
+@media (prefers-reduced-motion: reduce) {
+  .equipment-front.is-boiling .equipment-front__bubbles > span,
+  .equipment-front.is-hot .equipment-front__steam > span {
+    animation: none;
+    opacity: 0.5;
+  }
 }
 .equipment__part--ice-cube {
   border-radius: 2px;

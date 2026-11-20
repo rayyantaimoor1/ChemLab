@@ -523,6 +523,46 @@ a guessed one. No engine change.
 > An ice bath with visible ice and water, and a water bath for gentle warming, each holding the
 > vessel at its temperature.
 
+> **Done (2026-11-20).**
+> - **In the bath, not on it.** A vessel stood in either bath sits down near its floor. The bath
+>   is drawn in two parts, a back behind the vessel and a front of water and ice in front of it,
+>   so the water comes up round the glass. The water is only faintly tinted, so a solution or
+>   precipitate inside keeps its own colour: blue copper sulfate stays plainly blue in the ice.
+> - **The ice bath** has ice floating at the surface, before and behind the vessel. It holds the
+>   vessel at about 2 °C, as it already did.
+> - **The water bath** is a glass trough of water on an electric hotplate, with a red light when
+>   it is on. Its dial is off (room temperature), 40, 60 and 80 °C, and "Boiling" at 100 °C (owner's
+>   choice, 2026-11-20).
+>   - Any setting above off counts as heating, so reactions that need warming, such as Fehling's
+>     and Tollens', work in it.
+>   - The vessel comes to the bath's temperature and no further, at the gentle rate the ice cools.
+>   - A liquid that boils below the bath's temperature boils and holds there: ether in a 60 °C
+>     bath, ethanol in an 80 °C one.
+>   - Water in a boiling water bath stops at 99 °C and does not boil, because no heat is driven in
+>     once the temperatures are equal.
+>   - The rule is `waterBathTarget` in `src/ui/heat-look.js`. Nothing becomes reachable that the
+>     burner could not already reach.
+>   - A hot bath gives off faint wisps, and a boiling one bubbles.
+> - **The notebook names the bath** (an engine change, owner approved 2026-11-20).
+>   - Before, an ice bath wrote "The burner under Small beaker was set to undefined heat." Level −1
+>     had no words in `src/core/actions.js`.
+>   - `setHeat` now takes an optional third argument saying what is under the vessel, used only
+>     for the sentence. It writes:
+>     - "Small beaker is now in the ice bath."
+>     - "… is now in the water bath, at 60 °C."
+>     - "… was taken out of the ice bath."
+>   - Burner sentences are word for word the same.
+>   - A rack no longer writes "The burner under … was turned off."
+> - **Small wording fixes:** the vessel's label and the control strip say "in the ice bath", not
+>   "on" it. The tray's tooltip says "Set up an ice bath", not "a ice bath".
+> - **Checked in the running app:**
+>   - water in the bath held at 60 °C, then 99 °C at "Boiling";
+>   - copper sulfate in the ice bath went to 2 °C;
+>   - the notebook named each bath.
+> - **Tests:** `tests/actions.test.js` (the sentences) and `tests/heat-look.test.js` (the bath's
+>   target).
+> - **Screenshot:** `docs/ui-progress/UI.4/baths.png`.
+
 ✅ **Check:** heating water shows bubbles forming, then a rolling boil at 100 °C with steam;
 heating blue copper sulfate shows droplets on the cool glass above it.
 
@@ -668,6 +708,8 @@ finds nothing that would teach a student something wrong.
 | UI.2 | Real tube capacities (test tube 20 mL, boiling tube 55 mL) and guided test-tube amounts scaled to 1–8 mL | Yes (owner) | 2026-11-17 |
 | UI.3.6 | A curated `layers` field on rules for liquids that do not mix | Yes (owner) | 2026-11-19 |
 | UI.4.2 | The burner stops each liquid at its own curated boiling point instead of always at 100 °C | Yes (owner) | 2026-11-19 |
+| UI.4.5 | Engine change: `setHeat` can be told what is under the vessel, for the notebook sentence only | Yes (owner) | 2026-11-20 |
+| UI.4.5 | Water bath settings: off, 40, 60, 80 °C and boiling | Yes (owner) | 2026-11-20 |
 | UI.4 | Curated `boilingPointC` (all liquids and solutions) and `meltingPointC` (solids the app melts); one general reference for dilute aqueous solutions | Yes (owner) | 2026-11-19 |
 | UI.3 | Curated `clarity`, `form` and `texture` in chemicals.json (plus `filings`, `turnings`, `foil` as forms; one general reference for clear solutions) | Yes (owner) | 2026-11-17 |
 | UI.4 | Curated `boilingPointC` / `meltingPointC` | | |
