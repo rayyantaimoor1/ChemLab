@@ -74,6 +74,7 @@ chemlab/
 ├── BUILD_PROMPTS.md          ← build sequence (v1)
 ├── BUILD_PHASE_2.md          ← v2 plan: accuracy, amounts, gases, separation, technique
 ├── BUILD_UI.md               ← UI realism track (Phase 9)
+├── PERFORMANCE.md            ← the busy-bench frame-time baseline per machine (`npm run perf`)
 ├── package.json
 ├── main.js                   ← Electron main process (window, menu, file paths)
 ├── main/                     ← main-process helpers: IPC switchboard, argument checks, file writing
@@ -130,7 +131,8 @@ chemlab/
 │   ├── update-golden.mjs     ← `npm run golden:update`: re-approves the golden notebook sentences
 │   ├── capture-ui.mjs        ← screenshots of the reference benches at 1366×768 (BUILD_UI.md)
 │   ├── make-room-images.mjs  ← draws the wall-tile and bench-resin textures into src/assets/room/
-│   └── lib/                  ← the checkers these use, and the golden-sentence builder
+│   ├── perf-bench.mjs        ← `npm run perf`: times a busy bench, fails if 20% slower than PERFORMANCE.md
+│   └── lib/                  ← the checkers these use, the golden-sentence builder, and bench-helpers.mjs (a student's mouse, for the capture and perf scripts)
 ├── tests/
 │   └── golden/               ← notebook-sentences.json: the approved sentence for every reaction
 ├── docs/ui-progress/         ← before-and-after screenshots for each UI stage

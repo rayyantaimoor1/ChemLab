@@ -1074,6 +1074,32 @@ someone seeing it for the first time.
 > A scripted busy bench — four vessels boiling, bubbling and precipitating at once — that fails if
 > average frame time is more than 20% worse than the number recorded in `PERFORMANCE.md`.
 
+> **Done (2026-11-21).** `npm run perf` (`scripts/perf-bench.mjs`); the baselines and how to
+> record one are in `PERFORMANCE.md`.
+> - **The busy bench:**
+>   - water boiling with a thermometer in it;
+>   - brine with the current on, bubbling off both electrodes the whole time;
+>   - a tube of magnesium and acid;
+>   - a flask of lead nitrate and potassium iodide.
+>
+>   Every 2.5 s of the timed ten seconds, the tube and the flask are emptied and their reaction
+>   repeated. The test checks the bench really was busy: the water boiled, and bubbles and falling
+>   grains were seen.
+> - **Frame time is measured with the 60 fps screen cap lifted**, so it is the real cost of a
+>   frame and a slowdown shows long before it would drop below 60.
+> - **It fails** when the average is more than 20% slower than this machine's baseline, when it is
+>   under 30 fps, or when the machine has no baseline. Baselines are per machine (processor and
+>   graphics); `--record` adds one, and only from a run that passes its own checks.
+> - **Checked on the development PC (i7-1355U, Intel UHD Graphics):**
+>   - Full averages 3.06 ms (326 fps) and Low 2.88 ms; repeat runs vary by about 8%.
+>   - `--add-work 1` (one wasted ms a frame) reads 36% slower and fails, with exit code 1.
+> - **Found while building it:** adding more acid to a tube where magnesium has already reacted
+>   says "isn't available in this version of the lab". The engine removes both reactants when a
+>   rule runs, even one in excess. This waits for amounts (stage 2.2); the test repeats trials in
+>   emptied vessels instead.
+> - **Also fixed:** `capture-ui.mjs` ended with exit code 0 even when a capture failed.
+> - **Not yet measured:** the lab PC itself (Phase 10).
+
 **UI.10.3 — Sonnet — Accessibility floor**
 > Every new control reachable by keyboard with a visible focus ring; text scales to 125%; Reduce
 > animation turns off every looping effect; contrast 4.5:1 on all text (UI.md §8).
