@@ -110,6 +110,11 @@ const EQUIPMENT_TYPES = {
   // A white tile, so a colour change shows against white. On its own a
   // vessel can stand on it; dropped on a retort stand it lies on the base.
   tile: { label: 'White tile', name: 'White tile', heats: 0, w: 96, h: 6, topY: 0 },
+  // A fume cupboard (BUILD_UI.md UI.8.3, owner approved 2026-11-21): a
+  // vessel stands inside on its worktop, behind the sash, and gas, fumes
+  // and smoke made there are drawn up and away. Nothing about the
+  // chemistry or the hazard warning changes - it is where the work is done.
+  fume_cupboard: { label: 'Fume cupboard', name: 'Fume cupboard', heats: 0, w: 200, h: 250, topY: 236 },
 };
 
 // Which part of a retort stand a vessel is in: 'clamp' or 'base' (UI.6.1).
@@ -428,7 +433,7 @@ function standOn(containerId, equipmentId) {
   // rack's say nothing about standing, so this one does.
   if (!from?.how) {
     notebook.logAction({
-      text: `${container.name} was stood on the ${def.name.toLowerCase()}.`,
+      text: `${container.name} was stood ${item.kind === 'fume_cupboard' ? 'in' : 'on'} the ${def.name.toLowerCase()}.`,
       containerId,
       action: 'standOn',
     });

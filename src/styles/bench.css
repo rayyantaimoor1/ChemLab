@@ -874,6 +874,22 @@ select:focus-visible,
   bottom: 0;
 }
 
+/* A vessel's label stands beside it out of the flow, growing upwards from
+   its foot, so a tall label never pushes the glass down off whatever it
+   stands on (found in UI.8.3: a beaker in the fume cupboard sank through
+   the worktop when its label grew a gas line). */
+.vessel-object > .object-chip {
+  position: absolute;
+  left: calc(100% + 9px);
+  bottom: 0;
+  /* Out of the flow a box shrinks to its narrowest; keep its natural width
+     (a compact card still wraps at its own max-width). */
+  width: max-content;
+}
+.vessel-object.label-left > .object-chip {
+  left: auto;
+}
+
 /* The floating label beside each object - name, live readout and whatever
    else is true of it right now. */
 .object-chip {
@@ -1115,6 +1131,7 @@ select:focus-visible,
 .equipment--rack .equipment__art { width: 122px; height: 66px; }
 .equipment--stand .equipment__art { width: 120px; height: 340px; }
 .equipment--tile .equipment__art { width: 96px; height: 6px; }
+.equipment--fume_cupboard .equipment__art { width: 200px; height: 250px; }
 
 .equipment__part {
   position: absolute;
@@ -1378,9 +1395,18 @@ html.reduce-motion .equipment__art--lit .equipment__part--flame-inner {
 /* A vessel in a bath sits between the bath's back and its front, even when
    either is selected. */
 .vessel-object.is-in-bath,
-.vessel-object.is-in-bath.is-selected { z-index: 2; }
+.vessel-object.is-in-bath.is-selected,
+.vessel-object.is-in-fume-cupboard,
+.vessel-object.is-in-fume-cupboard.is-selected { z-index: 2; }
 .equipment--ice_bath.is-selected,
-.equipment--water_bath.is-selected { z-index: 1; }
+.equipment--water_bath.is-selected,
+.equipment--fume_cupboard.is-selected { z-index: 1; }
+
+/* In a fume cupboard, a coloured gas above the liquid is thinner: it is
+   being drawn away (UI.8.3). */
+.vessel-object.is-in-fume-cupboard .vessel__headspace.is-visible {
+  opacity: 0.4;
+}
 
 /* The front of a bath: clear water round the vessel's lower part - only
    faintly tinted, so a precipitate in it keeps its own colour - its
@@ -1394,6 +1420,57 @@ html.reduce-motion .equipment__art--lit .equipment__part--flame-inner {
   pointer-events: none;
 }
 .equipment-front--ice_bath { height: 54px; }
+.equipment-front--fume_cupboard { width: 200px; height: 250px; }
+
+/* The fume cupboard's glass sash, raised to leave a working opening below
+   it, in front of the vessel (UI.8.3). */
+.equipment-front__sash {
+  left: 10px;
+  right: 10px;
+  top: 26px;
+  height: 92px;
+  background: linear-gradient(180deg, rgba(210, 225, 230, 0.16), rgba(210, 225, 230, 0.26));
+  border: 2px solid #3A403D;
+  border-bottom-width: 5px;
+  border-radius: 2px;
+}
+
+/* Gas, fumes or smoke from the vessel inside, drawn up into the duct. */
+.equipment-front__extract {
+  left: 12px;
+  right: 12px;
+  top: 0;
+  bottom: 30px;
+  overflow: hidden;
+}
+.equipment-front__extract > span {
+  position: absolute;
+  bottom: 0;
+  width: 22px;
+  height: 14px;
+  margin-left: -11px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--extract-colour, #E6EBEC), rgba(230, 235, 236, 0));
+  opacity: 0;
+}
+.equipment-front.is-extracting .equipment-front__extract > span {
+  animation: hood-draw 2100ms ease-in infinite;
+}
+@keyframes hood-draw {
+  0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+  20% { opacity: 0.75; }
+  100% { transform: translate(var(--drift, 8px), -200px) scale(1.4); opacity: 0; }
+}
+html.reduce-motion .equipment__part--hood-air > span,
+html.reduce-motion .equipment-front.is-extracting .equipment-front__extract > span {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .equipment__part--hood-air > span,
+  .equipment-front.is-extracting .equipment-front__extract > span {
+    animation: none;
+  }
+}
 .equipment-front--water_bath { height: 58px; }
 .equipment-front > span { position: absolute; }
 .equipment-front__water {
@@ -1566,6 +1643,72 @@ html.reduce-motion .equipment-front.is-hot .equipment-front__steam > span {
 }
 .equipment__part--stand-jaw-near { left: calc(var(--clamp-x, 72px) - var(--jaw-gap, 10px) - 6px); }
 .equipment__part--stand-jaw-far { left: calc(var(--clamp-x, 72px) + var(--jaw-gap, 10px)); }
+
+/* Fume cupboard (UI.8.3): a cabinet with a lit back panel, a white
+   worktop, a duct on top and a green airflow light. Faint streaks rise
+   inside it while the fan runs. */
+.equipment__part--hood-duct {
+  left: 82px;
+  width: 36px;
+  top: 0;
+  height: 16px;
+  background: linear-gradient(90deg, #6E7572, #A9B0AD 45%, #5F6663);
+  border: 1px solid #2A2E2C;
+}
+.equipment__part--hood-cabinet {
+  left: 0;
+  right: 0;
+  top: 14px;
+  bottom: 0;
+  background: #4A504D;
+  border: 2px solid #232826;
+  border-radius: 3px;
+}
+.equipment__part--hood-back {
+  left: 12px;
+  right: 12px;
+  top: 28px;
+  bottom: 14px;
+  background: linear-gradient(180deg, #C9CFCB, #A7AEAA);
+}
+.equipment__part--hood-worktop {
+  left: 8px;
+  right: 8px;
+  bottom: 6px;
+  height: 9px;
+  background: #EDEEE9;
+  border-top: 1px solid #FFFFFF;
+}
+.equipment__part--hood-light {
+  right: 18px;
+  top: 19px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3DCB6A;
+}
+.equipment__part--hood-air {
+  left: 12px;
+  right: 12px;
+  top: 28px;
+  bottom: 14px;
+  overflow: hidden;
+}
+.equipment__part--hood-air > span {
+  position: absolute;
+  bottom: 0;
+  width: 2px;
+  height: 26px;
+  border-radius: 1px;
+  background: rgba(255, 255, 255, 0.35);
+  opacity: 0;
+  animation: hood-air 2400ms linear infinite;
+}
+@keyframes hood-air {
+  0% { transform: translateY(0); opacity: 0; }
+  30% { opacity: 0.6; }
+  100% { transform: translateY(-190px); opacity: 0; }
+}
 
 /* A white tile on its own. */
 .equipment__part--tile {

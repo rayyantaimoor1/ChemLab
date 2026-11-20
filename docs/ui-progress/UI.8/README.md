@@ -23,3 +23,15 @@ The two textures are drawn by `scripts/make-room-images.mjs`:
 - **Silver nitrate's properties card:** its amber bottle, with a label
   printed with its name, AgNO3, 0.1 M, and the oxidising, corrosive and
   environment pictograms.
+
+## UI.8.3 — Fume cupboard
+
+`fume-cupboard.png` shows a small beaker of bleach and dilute hydrochloric
+acid standing inside the fume cupboard, on its worktop behind the sash:
+
+- **The gas:** its chlorine is thin and pale yellow-green, and yellow-green
+  wisps rise toward the duct.
+- **The label:** "pale yellow-green chlorine gas above the liquid · in the fume
+  cupboard".
+- **The airflow light** is green.
+- **The hazard alert** (dismissed before the screenshot) appeared in full.

@@ -571,6 +571,22 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       part('stand-jaw').classList.add('equipment__part--stand-jaw-far');
     } else if (kind === 'tile') {
       part('tile');
+    } else if (kind === 'fume_cupboard') {
+      // A fume cupboard (UI.8.3): the cabinet, its lit back panel and white
+      // worktop, the extraction duct on top and its airflow light. The
+      // sash in front of the vessel is the cupboard's front (below).
+      part('hood-duct');
+      part('hood-cabinet');
+      part('hood-back');
+      part('hood-worktop');
+      part('hood-light');
+      const air = part('hood-air');
+      for (let k = 0; k < 3; k += 1) {
+        const streak = document.createElement('span');
+        streak.style.left = `${22 + k * 28}%`;
+        streak.style.animationDelay = `${k * 700}ms`;
+        air.appendChild(streak);
+      }
     } else if (kind === 'rack') {
       part('rack-rail').classList.add('equipment__part--rack-rail-top');
       part('rack-rail').classList.add('equipment__part--rack-rail-bottom');
@@ -591,6 +607,22 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
   function bathFront(kind) {
     const front = document.createElement('div');
     front.className = `equipment-front equipment-front--${kind}`;
+    if (kind === 'fume_cupboard') {
+      // The glass sash, raised to leave a working opening below it, and the
+      // gas, fumes or smoke from the vessel inside rising into the duct.
+      const sash = document.createElement('span');
+      sash.className = 'equipment-front__sash';
+      const draw = document.createElement('span');
+      draw.className = 'equipment-front__extract';
+      for (let k = 0; k < 5; k += 1) {
+        const wisp = document.createElement('span');
+        wisp.style.left = `${38 + (k % 3) * 9}%`;
+        wisp.style.animationDelay = `${k * 420}ms`;
+        draw.appendChild(wisp);
+      }
+      front.append(draw, sash);
+      return front;
+    }
     const span = (className) => {
       const s = document.createElement('span');
       s.className = className;
@@ -630,6 +662,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     if (item.kind === 'ice_bath') return 'melting ice, about 2 °C';
     if (item.kind === 'stand') return item.tile ? 'clamp · white tile on the base' : 'clamp · drop a white tile on the base';
     if (item.kind === 'tile') return 'drop it on a retort stand, or stand a flask on it';
+    if (item.kind === 'fume_cupboard') return 'airflow on · stand a vessel inside';
     if (item.kind === 'water_bath') {
       if (item.level === 0) return 'off · water at room temperature';
       return item.bathC >= 100 ? 'boiling water, 100 °C' : `water at ${item.bathC} °C`;
@@ -662,7 +695,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     canvas.appendChild(el);
     const refs = { el, art, status };
-    if (item.kind === 'ice_bath' || item.kind === 'water_bath') {
+    if (item.kind === 'ice_bath' || item.kind === 'water_bath' || item.kind === 'fume_cupboard') {
       refs.front = bathFront(item.kind);
       canvas.appendChild(refs.front);
     }
@@ -676,6 +709,18 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.status.textContent = equipmentLevelText(item);
     refs.art.classList.toggle('equipment__art--lit', item.kind === 'burner' && item.level > 0);
     if (refs.front) refs.front.style.transform = refs.el.style.transform;
+    if (item.kind === 'fume_cupboard') {
+      // Drawn away (UI.8.3): while the vessel inside holds a gas, fumes or
+      // smoke, wisps rise from it into the duct - in the gas's own colour
+      // when it has one.
+      const inside = state.containers.find((c) => c.standOn === item.id);
+      const a = inside?.appearance;
+      const hasGas = !!inside && (inside.contents || []).some((c) => engine.getChemical(c.id)?.state === 'gas');
+      const extracting = !!a && (hasGas || (a.fumes || []).length > 0 || a.precipitate?.kind === 'smoke' || (a.gases || []).length > 0);
+      const colour = a?.gases?.[0]?.colorHex || a?.fumes?.[0]?.colorHex || (a?.precipitate?.kind === 'smoke' ? a.precipitate.colorHex : null) || '#E6EBEC';
+      refs.front.classList.toggle('is-extracting', extracting);
+      refs.front.style.setProperty('--extract-colour', colour);
+    }
     if (item.kind === 'stand') {
       // The clamp grips at the height stand.js chose, with its jaws either
       // side of what it holds; with nothing in it, it waits at mid-height.
@@ -1421,6 +1466,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.el.classList.toggle('is-selected', state.selectedVesselId === container.id);
     const under = container.standOn ? state.equipment.find((q) => q.id === container.standOn) : null;
     refs.el.classList.toggle('is-in-bath', !!under && (under.kind === 'ice_bath' || under.kind === 'water_bath'));
+    refs.el.classList.toggle('is-in-fume-cupboard', under?.kind === 'fume_cupboard');
     // A tube over a burner is held in a test-tube holder, not stood on the
     // gauze (UI.6.1).
     const tube = container.type === 'test_tube' || container.type === 'boiling_tube';
@@ -1588,6 +1634,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
   /** "standing in the ice bath", "held in the retort stand's clamp"... */
   function standingText(vessel, item) {
+    if (item.kind === 'fume_cupboard') return 'standing in the fume cupboard';
     if (item.kind === 'stand') {
       return vessel.standRole === 'clamp' ? "held in the retort stand's clamp" : 'standing on the base of the retort stand';
     }

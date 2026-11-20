@@ -931,6 +931,33 @@ stands, with the hazard text unchanged.
 > If the decision above is yes: a fume cupboard area on the bench; a hazardous reaction done inside
 > it shows the fumes drawn away, and the hazard warning still appears in full.
 
+> **Done (2026-11-21).** The owner decided yes (2026-11-21).
+> - **A fume cupboard on the tray.** It is bench furniture: a cabinet with a lit back panel, a
+>   white worktop, an extraction duct on top, a green airflow light, and a glass sash raised to
+>   leave a working opening.
+>   - A vessel dropped on it stands inside on the worktop, behind the sash.
+>   - The notebook says it was "stood in the fume cupboard", and its label says "in the fume
+>     cupboard".
+>   - Faint streaks rise inside while the fan runs.
+> - **Drawn away.** While the vessel inside holds any gas, fumes or smoke, wisps rise from it up
+>   into the duct, in the gas's own colour when it has one. A coloured gas above the liquid is
+>   thinner, because it is being drawn off.
+> - **The hazard warning is untouched.** The alert appears in full, word for word, wherever the
+>   reaction is done. The cupboard changes only where the work happens, never what the student is
+>   told.
+> - **A label fix found here.** A vessel's label used to sit in the same row as its glass. When
+>   the label grew taller than the glass (an extra gas line, say), it pushed the glass down: a
+>   beaker in the cupboard sank through the worktop, and the ammonium chloride beaker in UI.5.3's
+>   screenshot was cut off by the control strip. Labels now stand beside the glass out of the
+>   flow, growing upwards from its foot, so a vessel always stands exactly where it was put.
+> - **Checked in the running app,** with bleach and dilute HCl in a small beaker inside the
+>   cupboard:
+>   - the hazard alert read in full ("Mixing bleach with acid releases chlorine", and the rest);
+>   - the label named "pale yellow-green chlorine gas above the liquid";
+>   - yellow-green wisps rose into the duct;
+>   - the beaker's foot sat on the worktop, 436 px against the worktop's 435.
+>   - Screenshot: `docs/ui-progress/UI.8/fume-cupboard.png`.
+
 **UI.8.4 — Sonnet — The notebook as paper**
 > The 5 mm grid paper of UI.md §4, with the student's own entries in a hand-written face (bundled,
 > licence checked) and the app's entries in print.
