@@ -206,6 +206,18 @@ and not a guessed one.
   never draws it boiling.
 - A missing boiling point fails the build. Progress is in `batch.md` §16.
 
+**`effects.gasRate`** on a reaction (BUILD_UI.md stage UI.5, owner approved
+2026-11-20): how fast its gas comes off - `slow`, `steady` or
+`vigorous` - so magnesium in acid fizzes harder than iron.
+- It goes on every rule with `bubbles: true` and a `gas`, and only
+  those. A gas-only reaction with nothing bubbling gets none.
+- It is judged for the reagents as labelled, at room temperature or heated
+  as the rule requires.
+- Curated with sources, `covers` set to `gasRate`. Never inferred: a
+  formula says nothing about how hard something fizzes.
+- Progress is in `batch.md` §17. A missing one is a warning until the
+  batches are done, then it fails the build.
+
 ### `reactions.json`
 
 ```json

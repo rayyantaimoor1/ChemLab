@@ -713,6 +713,6 @@ finds nothing that would teach a student something wrong.
 | UI.4 | Curated `boilingPointC` (all liquids and solutions) and `meltingPointC` (solids the app melts); one general reference for dilute aqueous solutions | Yes (owner) | 2026-11-19 |
 | UI.3 | Curated `clarity`, `form` and `texture` in chemicals.json (plus `filings`, `turnings`, `foil` as forms; one general reference for clear solutions) | Yes (owner) | 2026-11-17 |
 | UI.4 | Curated `boilingPointC` / `meltingPointC` | | |
-| UI.5 | Curated `effects.gasRate` | | |
+| UI.5 | Curated `effects.gasRate` (slow / steady / vigorous) on every rule with bubbles of a gas, sourced, in batches; missing fails the build once done | Yes (owner) | 2026-11-20 |
 | UI.8 | A fume cupboard on the bench | | |
 | UI.9 | Sound in the app | | |

@@ -1615,3 +1615,54 @@ the bench never draws it boiling. It is used cold, in the nylon rope trick.
 - **47** confirmed by a page that was opened, and cited in the
   chemical's `sources`;
 - **11** not confirmed: Phosphoric acid (158 °C); Methanal solution (formalin) (98 °C); Hexanedioyl dichloride (none on record); Rubber solution (80 °C); Chromium plating bath (100 °C); Concentrated ammonia solution (32 °C); Sudan-stained fat (299 °C); Brominated oil (299 °C); Ninhydrin solution (78 °C); Diphenylamine reagent (118 °C); Molisch purple ring (100 °C).
+
+## 17. Gas rates (BUILD_UI.md stage UI.5.1)
+
+**Status: batch 1 of 4 done (2026-11-20).** 60 rules have bubbles of a gas;
+14 are rated and 46 are still to do.
+
+**What the owner approved (2026-11-20):**
+- **`effects.gasRate`**: `slow`, `steady` or `vigorous`, on every rule with
+  `bubbles: true` and a `gas`, and on no other rule.
+- **Basis:** the reagents as labelled, at room temperature, or heated as
+  the rule requires.
+- **Sources:** web pages actually opened, with `covers: ["gasRate"]`. A page
+  already cited for something else gains `gasRate` in its `covers`.
+- **Checks:** the validator rejects any other word, and a rate on a rule
+  with no bubbles of a gas. A missing one is counted in one warning until
+  the batches are done, then it becomes an error.
+
+### Batch 1 — 14 rules a student compares side by side
+
+Approved by the owner on 2026-11-20. Every page below was opened that day.
+
+| Rule | Rate | What the page says |
+|---|---|---|
+| Magnesium + 1 M HCl | vigorous | RSC microscale practical: reacts vigorously; Save My Exams: dissolves quickly |
+| Zinc + 1 M HCl | steady | Save My Exams: bubbles given off, metal slowly dissolves; RSC/Nuffield: moderately brisk |
+| Iron + 1 M HCl | slow | Save My Exams: very slow bubbling |
+| Zinc + 1 M H₂SO₄ | slow | Save My Exams: gas given off slowly |
+| Lithium + water | steady | chemguide: gently fizzing |
+| Sodium + water | vigorous | chemguide: melts and dashes about the surface |
+| Potassium + water | vigorous | chemguide: faster than sodium; the hydrogen catches fire |
+| Calcium + water | steady | chemguide (see below) |
+| Sodium + ethanol | steady | chemguide: reacts steadily, more gently than with water |
+| Sodium carbonate + HCl | vigorous | chemguide: immediate fizzing |
+| Sodium hydrogencarbonate + HCl | vigorous | chemguide: immediate fizzing |
+| Marble chips + HCl | steady | chemguide: a slower reaction than the sodium salts |
+| Ethanoic acid + sodium carbonate | steady | chemguide 14–16: like hydrochloric acid, just slower |
+| Hydrogen peroxide + manganese(IV) oxide | vigorous | chemguide: rapid fizzing; University of Washington demo: bubbles at once |
+
+**Judgements the owner approved:**
+- **Zinc in sulfuric acid is slow, like iron.** That is what the page says, and it is real: pure
+  zinc reacts sluggishly with dilute sulfuric acid, which is why hydrogen preparations add a
+  little copper sulfate.
+- **Calcium in water is steady.** chemguide calls it "fairly vigorous", but puts calcium below
+  strontium and barium, which it compares to lithium, and lithium only gently fizzes. Steady also
+  matches the rule's own explanation.
+- **Ethanoic acid with sodium carbonate is steady.** chemguide's two pages differ. The A-level page
+  sees little difference from hydrochloric acid with the solid; the 14–16 page says just slower.
+  The reagent here is a solution, and slower keeps the weak-acid lesson visible.
+
+**Not used:** two RSC practicals (the acidic reactions of ethanoic acid; hydrogen peroxide with
+different catalysts) need a sign-in, so they could not be read and are not cited.

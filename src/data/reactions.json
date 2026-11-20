@@ -90,6 +90,7 @@
       "precipitate": null,
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 9,
       "resultPH": 5
@@ -105,7 +106,11 @@
     "molecularAnimation": "anim_gas_evolution_h2",
     "explanation": "Zinc sits above hydrogen in the reactivity series, so it can push hydrogen out of the acid. Each zinc atom gives up two electrons and enters the solution as a Zn²⁺ ion, while H⁺ ions from the acid pick up those electrons and pair off as hydrogen gas. You see a steady stream of bubbles on the surface of the metal and the tube warms up. The zinc slowly gets smaller as it dissolves. The pH shown assumes the acid is fully used up, leaving a zinc chloride solution that is still mildly acidic.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — reactivity series and reactions of metals with acids; CRC Handbook of Chemistry and Physics, 97th ed. (standard enthalpy of formation data)"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — reactivity series and reactions of metals with acids; CRC Handbook of Chemistry and Physics, 97th ed. (standard enthalpy of formation data)",
+    "sources": [
+      { "ref": "Save My Exams — Practical: Investigate Metals Reacting with Acids, Edexcel IGCSE (Mg dissolves quickly; Zn bubbles, slowly dissolves; Fe very slow bubbling; Zn in H2SO4 gives gas slowly)", "url": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-4-reactivity-series/2-4-6-practical-investigate-metals-reacting-with-acids/", "checked": "2026-11-20", "covers": ["gasRate"] },
+      { "ref": "RSC Education / Nuffield — Exothermic metal–acid reactions (Mg vigorous, Zn moderately brisk, Fe slow to start)", "url": "https://edu.rsc.org/experiments/exothermic-metal-acid-reactions/1731.article", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_none_nacl_ki",
@@ -198,6 +203,7 @@
       "precipitate": null,
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": false,
       "tempDeltaC": 20,
       "resultPH": 6
@@ -213,7 +219,11 @@
     "molecularAnimation": null,
     "explanation": "Magnesium is high in the reactivity series, so it displaces hydrogen from the acid quickly. The metal gives up two electrons to become Mg²⁺, and the H⁺ ions from the acid take those electrons and pair up as hydrogen gas. You see a fast stream of bubbles, the ribbon shrinks and disappears, and the tube gets hot. Compare this with iron, which does the same thing far more slowly, and with copper, which cannot do it at all.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with dilute acids"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with dilute acids",
+    "sources": [
+      { "ref": "RSC Education — Microscale reactions of metals with acids (1 M HCl and H2SO4; Mg ribbon reacts vigorously, Zn and Fe less vigorously)", "url": "https://edu.rsc.org/experiments/microscale-reactions-of-metals-with-acids/509.article", "checked": "2026-11-20", "covers": ["gasRate"] },
+      { "ref": "Save My Exams — Practical: Investigate Metals Reacting with Acids, Edexcel IGCSE (Mg dissolves quickly; Zn bubbles, slowly dissolves; Fe very slow bubbling; Zn in H2SO4 gives gas slowly)", "url": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-4-reactivity-series/2-4-6-practical-investigate-metals-reacting-with-acids/", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_displacement_fe_hcl",
@@ -227,6 +237,7 @@
       "precipitate": null,
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": "slow",
       "smoke": false,
       "tempDeltaC": 6,
       "resultPH": 4
@@ -242,7 +253,11 @@
     "molecularAnimation": null,
     "explanation": "Iron is above hydrogen in the reactivity series, so it displaces hydrogen from dilute acid — but it sits much lower than magnesium, so the bubbling is slow and steady rather than vigorous. The solution turns pale green as iron(II) chloride forms. The difference in speed between magnesium, zinc and iron in the same acid is one of the clearest ways to see the reactivity series in action.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with dilute acids"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with dilute acids",
+    "sources": [
+      { "ref": "Save My Exams — Practical: Investigate Metals Reacting with Acids, Edexcel IGCSE (Mg dissolves quickly; Zn bubbles, slowly dissolves; Fe very slow bubbling; Zn in H2SO4 gives gas slowly)", "url": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-4-reactivity-series/2-4-6-practical-investigate-metals-reacting-with-acids/", "checked": "2026-11-20", "covers": ["gasRate"] },
+      { "ref": "RSC Education — Microscale reactions of metals with acids (1 M HCl and H2SO4; Mg ribbon reacts vigorously, Zn and Fe less vigorously)", "url": "https://edu.rsc.org/experiments/microscale-reactions-of-metals-with-acids/509.article", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_reaction_ca_water",
@@ -256,6 +271,7 @@
       "precipitate": "white calcium hydroxide that does not all dissolve, so the water turns cloudy",
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 15,
       "resultPH": 12.4
@@ -273,7 +289,7 @@
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 9 — Chemical Reactivity, reactions of metals with water",
     "sources": [
-      { "ref": "Jim Clark, chemguide — Reactions of the Group 2 elements with water", "url": "https://www.chemguide.co.uk/inorganic/group2/reacth2o.html", "checked": "2026-11-02", "covers": ["products", "precipitate", "gas"] }
+      { "ref": "Jim Clark, chemguide — Reactions of the Group 2 elements with water", "url": "https://www.chemguide.co.uk/inorganic/group2/reacth2o.html", "checked": "2026-11-02", "covers": ["products", "precipitate", "gas", "gasRate"] }
     ]
   },
   {
@@ -345,6 +361,7 @@
       "precipitate": null,
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": false,
       "tempDeltaC": 1,
       "resultPH": 7
@@ -355,7 +372,8 @@
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with carbonates",
     "sources": [
-      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-02", "covers": ["temperature"] }
+      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-02", "covers": ["temperature"] },
+      { "ref": "Jim Clark, chemguide — Carboxylic acids as acids (immediate fizzing with sodium carbonate and hydrogencarbonate; marble chips are a slower reaction)", "url": "https://www.chemguide.co.uk/organicprops/acids/acidity.html", "checked": "2026-11-20", "covers": ["gasRate"] }
     ]
   },
   {
@@ -370,6 +388,7 @@
       "precipitate": null,
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 1,
       "resultPH": 7
@@ -380,7 +399,9 @@
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with carbonates",
     "sources": [
-      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-02", "covers": ["temperature"] }
+      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-02", "covers": ["temperature"] },
+      { "ref": "Jim Clark, chemguide — Carboxylic acids as acids (immediate fizzing with sodium carbonate and hydrogencarbonate; marble chips are a slower reaction)", "url": "https://www.chemguide.co.uk/organicprops/acids/acidity.html", "checked": "2026-11-20", "covers": ["gasRate"] },
+      { "ref": "Jim Clark, chemguide 14–16 — Effect of surface area on rates of reaction (marble chips and dilute hydrochloric acid)", "url": "https://www.chemguide.co.uk/14to16/rates/surface.html", "checked": "2026-11-20", "covers": ["gasRate"] }
     ]
   },
   {
@@ -395,6 +416,7 @@
       "precipitate": null,
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": false,
       "tempDeltaC": -4,
       "resultPH": 7
@@ -405,7 +427,8 @@
     "levels": ["matric", "fsc"],
     "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with hydrogencarbonates; Chemistry 9 — exothermic and endothermic changes",
     "sources": [
-      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-02", "covers": ["temperature"] }
+      { "ref": "OpenStax Chemistry 2e, Appendix G — Standard Thermodynamic Properties for Selected Substances (ΔfH° values used to check the temperature change)", "url": "https://chem.libretexts.org/Bookshelves/General_Chemistry/Chemistry_2e_(OpenStax)/22%3A_Appendices/Appendix_G%3A_Standard_Thermodynamic_Properties_for_Selected_Substances", "checked": "2026-11-02", "covers": ["temperature"] },
+      { "ref": "Jim Clark, chemguide — Carboxylic acids as acids (immediate fizzing with sodium carbonate and hydrogencarbonate; marble chips are a slower reaction)", "url": "https://www.chemguide.co.uk/organicprops/acids/acidity.html", "checked": "2026-11-20", "covers": ["gasRate"] }
     ]
   },
   {
@@ -540,6 +563,7 @@
       "precipitate": null,
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": "slow",
       "smoke": false,
       "tempDeltaC": 9,
       "resultPH": 5.5
@@ -555,7 +579,11 @@
     "molecularAnimation": null,
     "explanation": "Acid plus a metal above hydrogen in the reactivity series always gives a salt and hydrogen, whichever acid it is — only the salt changes. With hydrochloric acid zinc gives zinc chloride; with sulfuric acid the same metal gives zinc sulfate. This is the usual laboratory way of preparing hydrogen, and the gas is identified by the squeaky pop it makes with a lighted splint.",
     "levels": ["matric", "fsc"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with metals; Chemistry 9 — preparation of hydrogen"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry 10 — Acids, Bases and Salts, reactions of acids with metals; Chemistry 9 — preparation of hydrogen",
+    "sources": [
+      { "ref": "Save My Exams — Practical: Investigate Metals Reacting with Acids, Edexcel IGCSE (Mg dissolves quickly; Zn bubbles, slowly dissolves; Fe very slow bubbling; Zn in H2SO4 gives gas slowly)", "url": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-4-reactivity-series/2-4-6-practical-investigate-metals-reacting-with-acids/", "checked": "2026-11-20", "covers": ["gasRate"] },
+      { "ref": "RSC Education — Microscale reactions of metals with acids (1 M HCl and H2SO4; Mg ribbon reacts vigorously, Zn and Fe less vigorously)", "url": "https://edu.rsc.org/experiments/microscale-reactions-of-metals-with-acids/509.article", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_gastest_nh4cl_naoh",
@@ -1445,6 +1473,7 @@
       "precipitate": null,
       "gas": "oxygen",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": false,
       "tempDeltaC": 12,
       "resultPH": 7
@@ -1453,7 +1482,11 @@
     "molecularAnimation": null,
     "explanation": "The clearest demonstration there is of what a catalyst does. Hydrogen peroxide decomposes on its own, but so slowly that a bottle keeps for months. Drop in a little black manganese(IV) oxide and it foams vigorously at once. The catalyst provides an easier route for the same reaction — a lower activation energy — so far more collisions succeed. It is not used up: filter it out at the end, dry it, weigh it, and you have exactly what you started with, ready to do it again. Note it is the reaction that warms the flask, not the catalyst.",
     "levels": ["matric", "fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Reaction Kinetics, catalysis and activation energy; Chemistry 9 — preparation of oxygen"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XI — Reaction Kinetics, catalysis and activation energy; Chemistry 9 — preparation of oxygen",
+    "sources": [
+      { "ref": "Jim Clark, chemguide 14–16 — Making oxygen in the lab (hydrogen peroxide with manganese(IV) oxide: rapid fizzing)", "url": "https://www.chemguide.co.uk/14to16/air/making.html", "checked": "2026-11-20", "covers": ["gasRate"] },
+      { "ref": "University of Washington, Department of Chemistry lecture demo — Decomposition of H2O2 with MnO2 (bubbles of O2 form immediately)", "url": "https://chem.washington.edu/lecture-demos/decomposition-h2o2-mno2", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_decomposition_kclo3",
@@ -2280,6 +2313,7 @@
       "precipitate": null,
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 10,
       "resultPH": 13.5
@@ -2295,7 +2329,10 @@
     "molecularAnimation": null,
     "explanation": "The first of three to be done side by side, because the comparison is the whole lesson. Lithium floats — it is the least dense solid element known, at about half the density of water — and fizzes steadily without melting. It stays a recognisable piece of metal throughout. Keep this picture in mind for what sodium and potassium do next.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements, reaction with water"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements, reaction with water",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Reactions of the Group 1 elements with water (Li gently fizzing; Na and K faster, vigorous)", "url": "https://www.chemguide.co.uk/inorganic/group1/reacth2o.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_group1_na_water",
@@ -2309,6 +2346,7 @@
       "precipitate": null,
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": false,
       "tempDeltaC": 25,
       "resultPH": 14
@@ -2324,7 +2362,10 @@
     "molecularAnimation": null,
     "explanation": "The middle of the three, and the change from lithium is unmistakable. Enough heat comes out that the sodium MELTS into a silver ball and skates about the surface, fizzing hard. The reason is that sodium's outer electron sits further from the nucleus than lithium's and is more loosely held, so it is given up more easily. That is why reactivity increases going DOWN Group I — the opposite direction to Group VII, and one of the most commonly muddled points in the syllabus.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements, reaction with water and the trend in reactivity"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements, reaction with water and the trend in reactivity",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Reactions of the Group 1 elements with water (Li gently fizzing; Na and K faster, vigorous)", "url": "https://www.chemguide.co.uk/inorganic/group1/reacth2o.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_group1_k_water",
@@ -2338,6 +2379,7 @@
       "precipitate": null,
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": "vigorous",
       "smoke": true,
       "tempDeltaC": 40,
       "resultPH": 14
@@ -2353,7 +2395,10 @@
     "molecularAnimation": null,
     "explanation": "The third of the three, and it completes the trend beyond doubt. Potassium reacts so fast that the hydrogen catches fire as it is produced, burning with the lilac flame that identifies potassium — so this reaction gives you the flame test for free. Lithium fizzes, sodium melts and darts, potassium ignites: three metals in one group, one clear direction, and the explanation is simply how far the outer electron sits from the nucleus.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements, reaction with water and the trend in reactivity"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Group IA elements, reaction with water and the trend in reactivity",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Reactions of the Group 1 elements with water (Li gently fizzing; Na and K faster, vigorous)", "url": "https://www.chemguide.co.uk/inorganic/group1/reacth2o.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_group1_li_o2",
@@ -3568,6 +3613,7 @@
       "precipitate": null,
       "gas": "hydrogen",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 12,
       "resultPH": 13
@@ -3583,7 +3629,10 @@
     "molecularAnimation": null,
     "explanation": "Sodium fizzes steadily in ethanol and gives off hydrogen — noticeably calmer than the same sodium in water, which is the first hint that the OH here holds its hydrogen more tightly than water does. That makes ethanol an acid, but an extremely weak one. The proof is what is left behind: sodium ethoxide is a stronger base than sodium hydroxide, and the weaker the acid, the stronger the base it leaves. Compare this with the next entry, where sodium hydroxide cannot touch ethanol at all.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alcohols, reaction with sodium"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Alcohols, reaction with sodium",
+    "sources": [
+      { "ref": "Jim Clark, chemguide — Reacting alcohols with sodium (reacts steadily; more gentle than with water)", "url": "https://www.chemguide.co.uk/organicprops/alcohols/sodium.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_none_ethanol_naoh",
@@ -3738,6 +3787,7 @@
       "precipitate": null,
       "gas": "carbon dioxide",
       "bubbles": true,
+      "gasRate": "steady",
       "smoke": false,
       "tempDeltaC": 3,
       "resultPH": 8.5
@@ -3746,7 +3796,11 @@
     "molecularAnimation": null,
     "explanation": "Ethanoic acid fizzes with a carbonate exactly as hydrochloric acid does, which settles the question of whether a carboxylic acid is a real acid: it is, weak or not. This is also the test that completes the acidity ladder. Phenol, put with sodium carbonate, does nothing — it is acidic enough for sodium hydroxide but not enough to drive carbon dioxide out of a carbonate. So: ethanol reacts with neither, phenol reacts with hydroxide only, and the carboxylic acid reacts with both. Three compounds, all with an O–H, in a clear order.",
     "levels": ["fsc", "bs"],
-    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids, reaction with carbonates and comparative acidity"
+    "source": "Punjab Curriculum and Textbook Board, Chemistry XII — Carboxylic Acids, reaction with carbonates and comparative acidity",
+    "sources": [
+      { "ref": "Jim Clark, chemguide 14–16 — Carboxylic acids (dilute ethanoic acid reacts like hydrochloric acid, just slower)", "url": "https://www.chemguide.co.uk/14to16/organic/acids.html", "checked": "2026-11-20", "covers": ["gasRate"] },
+      { "ref": "Jim Clark, chemguide — Carboxylic acids as acids (immediate fizzing with sodium carbonate and hydrogencarbonate; marble chips are a slower reaction)", "url": "https://www.chemguide.co.uk/organicprops/acids/acidity.html", "checked": "2026-11-20", "covers": ["gasRate"] }
+    ]
   },
   {
     "id": "rxn_esterification",

@@ -91,8 +91,17 @@ const MIN_SOURCE_LENGTH = 10; // "textbook, ch. 3" is about this long; "x" is no
 // What a `sources` entry on a reaction may say it confirms - see checkSources.
 const SOURCE_COVERS = new Set([
   'products', 'equation', 'conditions', 'colour', 'precipitate', 'gas',
-  'temperature', 'pH', 'hazard', 'explanation', 'noReaction',
+  'temperature', 'pH', 'hazard', 'explanation', 'noReaction', 'gasRate',
 ]);
+
+// How fast a gas comes off, for the bench's bubbles (BUILD_UI.md UI.5,
+// owner approved 2026-11-20). Curated, never inferred - a formula says
+// nothing about whether a metal fizzes or barely bubbles.
+const GAS_RATES = new Set(['slow', 'steady', 'vigorous']);
+// Rules with bubbles and a gas still waiting for a gasRate (UI.5.1). Each
+// is counted into one warning until the batches are done; then a missing
+// one becomes an error, as boilingPointC did.
+const missingGasRate = [];
 
 // What a `sources` entry on a CHEMICAL may say it confirms: so far, the
 // three appearance fields of BUILD_UI.md stage UI.3.
@@ -246,6 +255,20 @@ const reactions = readJson('reactions.json') ?? [];
       if (!reaction.effects.precipitate) {
         problems.push(`${id}: effects.solidKind is set but there is no effects.precipitate for it to describe`);
       }
+    }
+
+    // gasRate: slow, steady or vigorous, only where bubbles of a gas are
+    // drawn (BUILD_UI.md UI.5.1).
+    const gasRate = reaction.effects?.gasRate;
+    const bubblesOfGas = reaction.effects?.bubbles === true && nonEmptyString(reaction.effects?.gas);
+    if (gasRate !== undefined) {
+      if (!GAS_RATES.has(gasRate)) {
+        problems.push(`${id}: effects.gasRate "${gasRate}" is not one of ${[...GAS_RATES].join(', ')}`);
+      } else if (!bubblesOfGas) {
+        problems.push(`${id}: effects.gasRate is only for rules with bubbles of a gas (effects.bubbles and effects.gas)`);
+      }
+    } else if (bubblesOfGas) {
+      missingGasRate.push(id);
     }
 
     // colourFades is written into the notebook after "The colour faded:",
@@ -729,6 +752,10 @@ console.log(`molecules3d.json: ${Object.keys(molecules3d).length} entries`);
 console.log('\n' + '#'.repeat(60));
 console.log('ERRORS — these fail the build');
 console.log('#'.repeat(60));
+
+if (missingGasRate.length) {
+  warnings.push(`${missingGasRate.length} rule(s) with bubbles of a gas have no effects.gasRate yet (BUILD_UI.md UI.5.1, batch.md §17)`);
+}
 
 const errorSections = [
   ['entries missing a source', missingSource],
