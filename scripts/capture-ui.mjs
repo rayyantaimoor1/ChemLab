@@ -287,6 +287,24 @@ const SETUPS = {
     await __cap.standOn('beaker_small_2', 'burner', 2);
     __cap.press('heat 1'); await __cap.wait(200);
     await __cap.wait(16000);`,
+  // Stage UI.4.3: a thermometer that reads. Water on a medium flame with a
+  // thermometer standing in it; a dry tube heated far past the
+  // thermometer's 110 °C, which it shows as off the scale.
+  'thermometer': `
+    __cap.press('auto-pour'); await __cap.wait(100);
+    __cap.press('take a beaker 250'); await __cap.wait(300);
+    __cap.press('bunsen burner'); await __cap.wait(300);
+    __cap.press('take a boiling tube'); await __cap.wait(300);
+    __cap.press('bunsen burner'); await __cap.wait(300);
+    await __cap.fill('beaker_1', 'water_distilled', 8);
+    await __cap.dispense('boiling_tube_1', 'cuso4_5h2o_s'); await __cap.wait(300);
+    await __cap.standOn('beaker_1', 'burner', 0);
+    __cap.press('stand a thermometer in'); await __cap.wait(200);
+    __cap.press('heat 2'); await __cap.wait(200);
+    await __cap.standOn('boiling_tube_1', 'burner', 1);
+    __cap.press('stand a thermometer in'); await __cap.wait(200);
+    __cap.press('heat 3'); await __cap.wait(200);
+    await __cap.wait(16000);`,
   'titration': `
     __cap.press('auto-pour'); await __cap.wait(100);
     __cap.press('take a conical flask'); await __cap.wait(300);

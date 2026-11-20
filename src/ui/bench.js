@@ -54,6 +54,8 @@ import { solidSvg, solidBox, shelfSolidLabel } from './solid-shapes.js';
 // A reaction's solid drawn by its curated texture, where its kind puts it
 // (BUILD_UI.md UI.3.4).
 import { settledSvg, settledBox, smokeSvg, hazeOpacity, formingStyle, textureOf } from './precipitate-shapes.js';
+// A thermometer standing in the liquid, read against its scale (UI.4.3).
+import { thermometerSvg, thermometerGeometry, columnFraction, offScale, SCALE_MAX_C, SCALE_MIN_C } from './thermometer.js';
 import { solidLabel } from './appearance.js';
 // The shape of each vessel, its printed scale, and how high a volume of
 // liquid comes inside it (BUILD_UI.md UI.2) - all in glassware.js.
@@ -785,6 +787,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       solidLayer, shelfSolidNote, solidEls: new Map(), haze, smoke, cathodeRod,
       plume, mixing: null, layerBox, emulsion, shaking: false, soot,
       convection, boil, condensation, steam, heatNote,
+      thermometer: null, thermometerColumn: null,
       dipEl: null, dipTool: null,
     };
     vesselEls.set(container.id, refs);
@@ -1035,6 +1038,59 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.plume.style.height = `${Math.round(geometry.floorY - surface)}px`;
   }
 
+  /**
+   * A thermometer standing in the vessel near its right wall, bulb in the
+   * liquid, stem rising above the rim. The red column rises by transform
+   * (scaleY from the bulb), so a changing temperature never re-lays out.
+   */
+  function updateThermometer(refs, container) {
+    if (!container.thermometerIn) {
+      if (refs.thermometer) {
+        refs.thermometer.remove();
+        refs.thermometer = null;
+        refs.thermometerColumn = null;
+      }
+      return;
+    }
+    const geometry = glassGeometry(container.type, container.capacityMl);
+    if (!geometry) return;
+    if (!refs.thermometer) {
+      const height = geometry.h + 34;
+      const t = thermometerGeometry(height);
+      const el = document.createElement('div');
+      el.className = 'vessel__thermometer';
+      el.innerHTML = thermometerSvg(height);
+      const column = document.createElement('span');
+      column.className = 'thermometer__column';
+      // The column runs from the bulb up to the 110 mark; it is scaled
+      // down from that full height to the temperature.
+      column.style.left = `${t.stemX + t.stemW / 2 - 1.5}px`;
+      column.style.top = `${t.scaleTop}px`;
+      column.style.height = `${t.bulbCy - t.scaleTop}px`;
+      el.appendChild(column);
+      // Bulb near the floor, beside the wall; stem out above the rim.
+      const inner = geometry.innerHalfAt(geometry.floorY - 8);
+      el.style.left = `${Math.round(geometry.cx + Math.max(0, inner - 12))}px`;
+      el.style.top = `${Math.round(geometry.floorY - 4 - (height - 2))}px`;
+      refs.vessel.appendChild(el);
+      refs.thermometer = el;
+      refs.thermometerColumn = column;
+      refs.thermometerGeometry = t;
+    }
+    const t = refs.thermometerGeometry;
+    // Fraction of the column (bulb to the 110 mark) that is filled.
+    const scaleSpan = t.scaleBottom - t.scaleTop;
+    const full = t.bulbCy - t.scaleTop;
+    const filled = (t.bulbCy - t.scaleBottom) + columnFraction(container.temperatureC) * scaleSpan;
+    refs.thermometerColumn.style.transform = `scaleY(${(filled / full).toFixed(3)})`;
+    refs.thermometer.classList.toggle('is-off-scale', offScale(container.temperatureC));
+    refs.thermometer.title = offScale(container.temperatureC)
+      ? (container.temperatureC > SCALE_MAX_C
+        ? `Above ${SCALE_MAX_C} °C - beyond this thermometer. A real glass thermometer would break.`
+        : `Below ${SCALE_MIN_C} °C - beyond this thermometer.`)
+      : `Thermometer: ${container.temperatureC.toFixed(1)} °C`;
+  }
+
   /** The words for what heat is doing, beside the glass. */
   function heatNoteText(heat) {
     const lines = [];
@@ -1094,7 +1150,13 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     }
     refs.condensation.classList.toggle('is-visible', showDroplets);
 
-    const note = heatNoteText(heat);
+    let note = heatNoteText(heat);
+    if (container.thermometerIn && offScale(container.temperatureC)) {
+      const beyond = container.temperatureC > SCALE_MAX_C
+        ? `above ${SCALE_MAX_C} °C: off the thermometer's scale`
+        : `below ${SCALE_MIN_C} °C: off the thermometer's scale`;
+      note = note ? `${note}; ${beyond}` : beyond;
+    }
     refs.heatNote.hidden = !note;
     refs.heatNote.textContent = note;
   }
@@ -1258,6 +1320,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     updateShelfSolids(refs, container);
     updateLayers(refs, container);
     updateHeat(refs, container);
+    updateThermometer(refs, container);
     refs.soot.classList.toggle('is-visible', container.sooty === true);
     updateDip(refs, container);
     setFlameLevel(refs.flame, container.heatLevel);
@@ -1358,6 +1421,9 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       }
 
       controlButton('Stir', () => withEffects(vessel.id, () => dispatch.stir(vessel.id), { stirring: true }));
+      controlButton(vessel.thermometerIn ? 'Take thermometer out' : 'Stand a thermometer in', () => {
+        dispatch.setThermometer(vessel.id, !vessel.thermometerIn);
+      }, { active: !!vessel.thermometerIn });
 
       const heldTool = state.selectedToolId
         ? state.tools.find((t) => t.id === state.selectedToolId)

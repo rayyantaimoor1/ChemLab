@@ -28,3 +28,13 @@ The burner's control strip carries the note on which flame to heat with.
   currents.
 
 Each label says what heat is doing in words as well.
+
+## UI.4.3 — A thermometer that reads
+
+`thermometer.png` shows two thermometers standing in vessels on burners.
+
+- **The beaker of water, at heat 2:** the red column stands on the 80 mark,
+  matching the 80.0 °C beside it.
+- **The boiling tube of copper sulfate, heated dry:** the tube is far above
+  110 °C, so the column has run to the top of the scale. The label says the
+  temperature is off the thermometer's scale.

@@ -108,6 +108,7 @@ chemlab/
 │   │   ├── solid-shapes.js   ← shelf solids drawn as what they are: ribbon, granules, chips…
 │   │   ├── precipitate-shapes.js ← a reaction's solid drawn by texture, placed by kind
 │   │   ├── heat-look.js      ← what heat visibly does: convection, bubbles, boil, steam, droplets
+│   │   ├── thermometer.js    ← a thermometer standing in a vessel, read against its scale
 │   │   ├── molecular.js      ← 2D reaction animations
 │   │   ├── molecular3d.js    ← 3D ball-and-stick viewer
 │   │   ├── notebook-storage.js ← the page's side of the save/load/report bridge

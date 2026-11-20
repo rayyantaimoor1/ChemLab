@@ -115,6 +115,9 @@ const BASE_CONTAINER_DEFS = [];
 /** Vessels blackened by a luminous flame, until they are put away (UI.4.1). */
 const sootyContainers = new Set();
 
+/** Vessels with a thermometer left standing in them (UI.4.3). */
+const thermometerIn = new Set();
+
 /** "a beaker", "an evaporating dish", "an ice bath" - capitalised to start a sentence. */
 function withArticle(noun, capital = false) {
   const article = /^[aeiou]/i.test(noun) ? 'an' : 'a';
@@ -465,6 +468,27 @@ function setEquipmentLevel(equipmentId, level) {
  * and leaves soot on the glass; opening it gives the hot blue flame used
  * for heating. Interface state only - the burner clock reads it.
  */
+/**
+ * Stands a thermometer in a vessel, or takes it out. It only reads the
+ * temperature (CLAUDE.md §7) - but putting it in and taking it out are
+ * things the student did, so each writes a notebook line.
+ */
+function setThermometer(containerId, standing) {
+  const container = containersById.get(containerId);
+  if (!container) return;
+  if (standing === thermometerIn.has(containerId)) return;
+  if (standing) thermometerIn.add(containerId);
+  else thermometerIn.delete(containerId);
+  notebook.logAction({
+    text: standing
+      ? `A thermometer was stood in the ${container.name.toLowerCase()} to watch its temperature.`
+      : `The thermometer was taken out of the ${container.name.toLowerCase()}.`,
+    containerId,
+    action: 'setThermometer',
+  });
+  notify();
+}
+
 function setAirHole(equipmentId, open) {
   const item = equipment.find((eq) => eq.id === equipmentId);
   if (!item || item.kind !== 'burner') return;
@@ -496,6 +520,7 @@ function removeEquipment(equipmentId) {
 
 /** Puts a vessel back in the tray, with whatever was in it. */
 function removeVessel(containerId) {
+  thermometerIn.delete(containerId);
   sootyContainers.delete(containerId);
   const index = containers.findIndex((c) => c.id === containerId);
   if (index === -1) return;
@@ -1113,6 +1138,7 @@ function getState() {
         // Soot left on the outside of the glass by a luminous flame. It stays
         // until the vessel is put away - soot does not wipe itself off.
         sooty: sootyContainers.has(snapshot.id),
+        thermometerIn: thermometerIn.has(snapshot.id),
         // Which vessel a burette is clamped above, if it is.
         clampedOver: clampedOverByContainer.get(snapshot.id) || null,
         // Which tool is in the liquid right now, mid-gesture, and the last
@@ -1207,6 +1233,7 @@ function currentReadingFor(containerId, toolId) {
  * for a single student action).
  */
 function resetBenchState() {
+  thermometerIn.clear();
   sootyContainers.clear();
   // Rebuilt from scratch rather than emptied in place: a freshly created
   // container is already empty, at room temperature, unheated and
@@ -1487,6 +1514,7 @@ const dispatch = {
   standOn,
   setEquipmentLevel,
   setAirHole,
+  setThermometer,
   removeEquipment,
 
   // The bench canvas: moving things about, picking one to work with, and

@@ -1762,6 +1762,30 @@ html.reduce-motion .vessel__steam.is-on span {
   .vessel__boil.is-boiling span, .vessel__steam.is-on span { opacity: 0.7; }
 }
 
+/* A thermometer standing in the vessel (BUILD_UI.md UI.4.3): glass and
+   scale drawn once by thermometer.js; the red column rises by transform. */
+.vessel__thermometer {
+  position: absolute;
+  z-index: 3;
+  line-height: 0;
+  pointer-events: none;
+}
+.vessel__thermometer svg { display: block; overflow: visible; }
+.thermometer__figures {
+  font-family: 'IBM Plex Sans Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 600;
+}
+.thermometer__column {
+  position: absolute;
+  width: 3px;
+  border-radius: 1.5px;
+  background: #C8332B;
+  transform-origin: 50% 100%;
+  transition: transform 450ms ease-out;
+}
+html.reduce-motion .thermometer__column { transition: none; }
+@media (prefers-reduced-motion: reduce) { .thermometer__column { transition: none; } }
+
 /* The cloudy emulsion a shake makes, over the whole liquid. */
 .vessel__emulsion {
   position: absolute;

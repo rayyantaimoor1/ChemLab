@@ -472,6 +472,24 @@ a guessed one. No engine change.
 > A thermometer stood in the liquid, its column rising with the vessel's temperature and readable
 > against its scale, beside the existing number.
 
+> **Done (2026-11-19).**
+> - **The control.** A "Stand a thermometer in / Take thermometer out" button sits in a vessel's
+>   control strip. Each writes a notebook line. It only reads, never changes anything (CLAUDE.md
+>   §7).
+> - **The instrument.** It stands near the vessel's right wall with its bulb in the liquid and its
+>   stem above the rim. It's the ordinary school thermometer from `src/ui/thermometer.js`: a
+>   glass stem with a red alcohol column and a printed scale from −10 to 110 °C, a line every
+>   10 °C and a figure every 20 °C.
+> - **The column** rises by transform alone, so a changing temperature never re-lays out the
+>   page.
+> - **Beyond its range,** for example a dry tube over a roaring flame at several hundred degrees,
+>   the column stops at the top. The label then says "above 110 °C: off the thermometer's
+>   scale", and the hover text says a real glass thermometer would break. The exact number stays
+>   in the label beside it.
+> - **Checked in the running app:** the column rose from 49 to 100 °C with the water.
+> - **Tests** in `tests/thermometer.test.js`. Screenshot: `docs/ui-progress/UI.4/thermometer.png`
+>   (water at 80 °C, column on the 80 mark; a dry tube off the scale).
+
 **UI.4.4 — Sonnet — Very hot solids**
 > A dry solid above about 500 °C glows dull red, then orange — a static overlay, faded in. Hot
 > glass looks exactly like cold glass, and the label says so.

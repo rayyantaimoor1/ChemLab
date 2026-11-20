@@ -30,6 +30,8 @@ The UI may **read** engine state and **dispatch** actions. It may not contain ch
       // liquids that do not mix, lightest first, only from a rule's curated
       // layers (CLAUDE.md §5); null for an ordinary single liquid
       heat: { stage, boilingPointC, steam, condensation } | null,
+      // (and on the container: thermometerIn - a thermometer the student
+      // left standing in it, drawn by src/ui/thermometer.js; UI.4.3)
       // stage: still | warming | nucleating | boiling | evaporating, from
       // the curated boiling points (src/ui/heat-look.js); condensation is the
       // liquid settling as droplets on the cool glass above, or null
