@@ -175,9 +175,17 @@ function blockingCondition(reaction, state, nameOf = (id) => id) {
  *
  * Everything here is read straight from the data file. The engine is only
  * arranging curated facts into a sentence, never inventing an observation.
+ *
+ * `tempDeltaC`, when given, is the rule's curated temperature change scaled
+ * to how much actually reacted (stage 2.2, amounts.js), so the notebook
+ * says what the thermometer shows. A change too small to see on a
+ * thermometer (under 0.5 °C) is not reported as an observation.
  */
-function describeEffects(reaction, colourNameOf = () => null) {
+function describeEffects(reaction, colourNameOf = () => null, tempDeltaC = undefined) {
   const effects = reaction.effects || {};
+  const delta = typeof tempDeltaC === 'number'
+    ? (Math.abs(tempDeltaC) < 0.5 ? 0 : Math.round(tempDeltaC))
+    : effects.tempDeltaC;
   const observations = [];
 
   // A colour change is an observation like any other, and for some reactions it
@@ -268,11 +276,11 @@ function describeEffects(reaction, colourNameOf = () => null) {
 
   if (effects.smoke) observations.push('A cloud of smoke or vapour appeared.');
 
-  if (typeof effects.tempDeltaC === 'number' && effects.tempDeltaC !== 0) {
+  if (typeof delta === 'number' && delta !== 0) {
     observations.push(
-      effects.tempDeltaC > 0
-        ? `The mixture warmed by about ${effects.tempDeltaC} °C.`
-        : `The mixture cooled by about ${Math.abs(effects.tempDeltaC)} °C.`
+      delta > 0
+        ? `The mixture warmed by about ${delta} °C.`
+        : `The mixture cooled by about ${Math.abs(delta)} °C.`
     );
   }
 
@@ -636,19 +644,20 @@ export function createEngine({
       for (const id of products) molesAfter[id] = null;
     }
 
+    const tempDeltaC = amounts
+      ? scaledTempDelta(rule.reaction, amounts.extent, options.volumeMl, (id) => chemicalsById.get(id) || null)
+      : undefined;
+
     return {
       outcome: OUTCOME.REACTION,
-      message: describeEffects(rule.reaction, colourNameFor),
+      // With amounts the notebook reports the scaled warming, so it never
+      // disagrees with the thermometer.
+      message: describeEffects(rule.reaction, colourNameFor, tempDeltaC),
       reaction: rule.reaction,
       effects: rule.reaction.effects || null,
       species: normaliseSpecies([...leftovers, ...products]),
       blockedBy: null,
-      amounts: amounts
-        ? {
-          ...amounts,
-          tempDeltaC: scaledTempDelta(rule.reaction, amounts.extent, options.volumeMl, (id) => chemicalsById.get(id) || null),
-        }
-        : null,
+      amounts: amounts ? { ...amounts, tempDeltaC } : null,
       moles: molesAfter,
     };
   }

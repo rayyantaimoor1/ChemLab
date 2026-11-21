@@ -164,10 +164,20 @@ test('pouring carries the moles across, so a product made in one vessel is still
   near(vessels.a.getMolesOf('naoh_1m') * 1000, 5);
 });
 
-test('the shipped data has no coefficients yet, so the app works exactly as before', () => {
-  assert.equal(reactionData.some((r) => r.coefficients), false);
+test('a rule the shipped data has not converted yet still works the old way', () => {
+  // Iron rusting is left without coefficients on purpose (batch.md §20):
+  // its oxygen is a gas bubbled in, so it stays the old, everything-used way.
+  assert.equal('coefficients' in reactionData.find((r) => r.id === 'rxn_corrosion_iron_rusting'), false);
+  const { beaker, add } = bench(shippedEngine);
+  add('fe_metal', 1.0);
+  add('water_distilled', 10);
+  add('o2_g', 1);
+  assert.equal(beaker.has('fe_metal'), false, 'the old way: all the iron is used at once');
+});
+
+test('the shipped data now counts amounts for its converted rules (stage 2.2.3 batch 1)', () => {
   const { beaker, add } = bench(shippedEngine);
   add('caco3_s', 1.0);
   add('hcl_1m', 10);
-  assert.equal(beaker.has('caco3_s'), false, 'the old way: the whole gram reacts at once');
+  assert.ok(beaker.has('caco3_s'), 'half the marble is left after the first 10 mL of acid');
 });

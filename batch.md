@@ -1807,3 +1807,80 @@ Each page was already cited for the chemical's boiling point; that entry now cov
 - dilute nitric acid: the page is about the acid generally, and the concentrated acid is the
   one kept in brown bottles;
 - bromine water: no storage page was found.
+
+## 20. Amounts: coefficients, concentrations, strong acids and bases (BUILD_PHASE_2.md stage 2.2.3)
+
+**Status: batch 1 done (2026-11-22).** 30 of the rules have `coefficients`; 35 solutions have a
+`concentrationM`; 4 reagents have `acidBase`. The schema is `docs/STAGE_2_2_SCHEMA.md`.
+
+**What a converted rule now does:** only the reactant that runs out first is used up. The rest
+stays, and can react with the next portion. Precipitates are weighed, and warming is scaled to
+how much reacted. Rules not yet converted work exactly as before.
+
+### Batch 1 — 30 rules
+
+**`concentrationM`:** on the 35 solutions whose label is a plain molarity ("0.1 M", "1 M"). The
+number is the label's own number, and the validator fails any that disagree. Nothing else got
+one: "dilute", "saturated", "%" and the concentrated acids need a source first, and until then
+they count as plenty.
+
+**`acidBase`**, every page opened 2026-11-22:
+
+| Reagent | Page | What it says |
+|---|---|---|
+| Hydrochloric acid, 1 M | Jim Clark, chemguide, Strong and weak acids | hydrogen chloride is a strong acid, virtually 100% ionised |
+| Nitric acid, 1 M, and the dilute nitric acid reactions make | the same page | lists nitric acid among the common strong acids |
+| Sodium hydroxide, 1 M | Jim Clark, chemguide, Strong and weak bases | a strong base, fully ionic, a mole of hydroxide ions per mole |
+
+**Sulfuric acid gets no `acidBase` yet.** The page lists it as strong, but says nothing about
+its second proton, which is the decision the schema left open. Its pH stays curated.
+
+**Coefficients:**
+- **The 8 rules guided experiments use**, apart from the titration (below): lead iodide; zinc
+  with acid; zinc with copper sulfate; washing soda; the ammonium test; the Group I silver and
+  Group III iron tests; iodoform.
+- **22 common Matric reactions:**
+  - precipitations: the silver halides, barium sulfate, the hydroxides of copper and iron(III),
+    lead chloride, calcium carbonate;
+  - the Group I lead test;
+  - metals displacing copper, and metals with acid;
+  - carbonates with acid;
+  - the oxides CuO and MgO with acid;
+  - NaOH with nitric and sulfuric acid.
+- **Where they come from:** every number is the curated equation's own. For 27 rules the
+  validator matches each chemical's formula in the equation and checks it.
+- **Checked by hand:** three rules' equations are ionic, written as Ag⁺ + Cl⁻, so their numbers
+  were checked by hand against the full equations. They stay listed as warnings:
+  - AgNO₃ + HCl → AgCl + HNO₃;
+  - Pb(NO₃)₂ + 2HCl → PbCl₂ + 2HNO₃;
+  - FeCl₃ + 3NH₄OH → Fe(OH)₃ + 3NH₄Cl.
+
+**What curating these asserts** (CLAUDE.md §5): what is left of either reactant does nothing
+further with the products, unless another rule says so. Each was checked. Where an excess does
+do something, as ammonia with silver chloride, that rule already exists and is found first.
+
+**Left out on purpose:**
+- **HCl + NaOH**, the guided titration's rule. Its steps take "about 25 mL" of each (15–40 mL
+  allowed). With amounts, 24 mL against 26 mL reads pH 12.6, while the experiment expects 7. It
+  is converted in stage 2.2.5, together with the rebuilt titration.
+- **Equilibria (⇌):** iron(III) thiocyanate, and cobalt chloride both ways. Using up the limiting
+  reagent would remove the lesson, which is that adding more of either shifts the colour.
+- **A gas bubbled in:** iron rusting (oxygen) and ethene with bromine water. A gas from the
+  shelf counts as plenty and would stay in the vessel. Limewater shows the risk: plenty of CO₂
+  would turn it milky and clear it again in one step. They are left until gases are designed in
+  stage 2.3.
+- **Equations written in words:** starch with iodine, and biuret with protein. There is nothing
+  to count.
+- **Mixtures with no single strength:** Fehling's solution, and soap in hard water.
+- **Aluminium hydroxide with sodium hydroxide.** Its product list includes water that its
+  equation, Al(OH)₃ + OH⁻ → [Al(OH)₄]⁻, does not make. The two need to be made to agree first.
+
+**Checks:**
+- The validator finds no errors. Its only new warnings are the three ionic equations above.
+- 912 tests pass, including the golden sentences.
+- All 18 guided experiments give identical notebook text before and after this batch, at both
+  the smallest and the largest amounts their steps allow.
+
+**Found on the way, already there before this batch:** in the iodoform experiment, step 2 adds
+iodine to the propanone before the alkali, and the notebook says "not available yet". No rule
+covers propanone with iodine alone. A sourced "nothing happens" rule would fix it.

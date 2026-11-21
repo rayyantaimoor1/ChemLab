@@ -29,6 +29,7 @@
     "reactants": ["ki_0_1m", "pbno3_0_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["pbi2_s", "kno3_aq"],
+    "coefficients": { "pbno3_0_1m": 1, "ki_0_1m": 2, "pbi2_s": 1, "kno3_aq": 2 },
     "equation": "Pb(NO₃)₂ + 2KI → PbI₂ + 2KNO₃",
     "type": "precipitation",
     "effects": {
@@ -61,6 +62,7 @@
     "reactants": ["agno3_0_1m", "nacl_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["agcl_s", "nano3_aq"],
+    "coefficients": { "agno3_0_1m": 1, "nacl_1m": 1, "agcl_s": 1, "nano3_aq": 1 },
     "equation": "AgNO₃ + NaCl → AgCl + NaNO₃",
     "type": "precipitation",
     "effects": {
@@ -83,6 +85,7 @@
     "reactants": ["hcl_1m", "zn_metal"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["zncl2_aq", "h2_g"],
+    "coefficients": { "zn_metal": 1, "hcl_1m": 2, "zncl2_aq": 1, "h2_g": 1 },
     "equation": "Zn + 2HCl → ZnCl₂ + H₂",
     "type": "displacement",
     "effects": {
@@ -125,6 +128,7 @@
     "reactants": ["cuso4_0_5m", "zn_metal"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["znso4_aq", "cu_metal"],
+    "coefficients": { "zn_metal": 1, "cuso4_0_5m": 1, "znso4_aq": 1, "cu_metal": 1 },
     "equation": "Zn + CuSO₄ → ZnSO₄ + Cu",
     "type": "displacement",
     "effects": {
@@ -149,6 +153,7 @@
     "reactants": ["cuso4_0_5m", "fe_metal"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["feso4_aq", "cu_metal"],
+    "coefficients": { "fe_metal": 1, "cuso4_0_5m": 1, "feso4_aq": 1, "cu_metal": 1 },
     "equation": "Fe + CuSO₄ → FeSO₄ + Cu",
     "type": "displacement",
     "effects": {
@@ -172,6 +177,7 @@
     "reactants": ["cuso4_0_5m", "mg_metal"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["mgso4_aq", "cu_metal"],
+    "coefficients": { "mg_metal": 1, "cuso4_0_5m": 1, "mgso4_aq": 1, "cu_metal": 1 },
     "equation": "Mg + CuSO₄ → MgSO₄ + Cu",
     "type": "displacement",
     "effects": {
@@ -196,6 +202,7 @@
     "reactants": ["hcl_1m", "mg_metal"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["mgcl2_aq", "h2_g"],
+    "coefficients": { "mg_metal": 1, "hcl_1m": 2, "mgcl2_aq": 1, "h2_g": 1 },
     "equation": "Mg + 2HCl → MgCl₂ + H₂",
     "type": "displacement",
     "effects": {
@@ -230,6 +237,7 @@
     "reactants": ["fe_metal", "hcl_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["fecl2_aq", "h2_g"],
+    "coefficients": { "fe_metal": 1, "hcl_1m": 2, "fecl2_aq": 1, "h2_g": 1 },
     "equation": "Fe + 2HCl → FeCl₂ + H₂",
     "type": "displacement",
     "effects": {
@@ -355,6 +363,7 @@
     "reactants": ["hcl_1m", "na2co3_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nacl_aq", "co2_g", "water"],
+    "coefficients": { "na2co3_1m": 1, "hcl_1m": 2, "nacl_aq": 2, "co2_g": 1, "water": 1 },
     "equation": "Na₂CO₃ + 2HCl → 2NaCl + CO₂ + H₂O",
     "type": "acid_carbonate",
     "effects": {
@@ -382,6 +391,7 @@
     "reactants": ["caco3_s", "hcl_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["cacl2_aq", "co2_g", "water"],
+    "coefficients": { "caco3_s": 1, "hcl_1m": 2, "cacl2_aq": 1, "co2_g": 1, "water": 1 },
     "equation": "CaCO₃ + 2HCl → CaCl₂ + CO₂ + H₂O",
     "type": "acid_carbonate",
     "effects": {
@@ -410,6 +420,7 @@
     "reactants": ["hcl_1m", "nahco3_s"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nacl_aq", "co2_g", "water"],
+    "coefficients": { "nahco3_s": 1, "hcl_1m": 1, "nacl_aq": 1, "co2_g": 1, "water": 1 },
     "equation": "NaHCO₃ + HCl → NaCl + CO₂ + H₂O",
     "type": "acid_carbonate",
     "effects": {
@@ -463,6 +474,7 @@
     "reactants": ["cuo_s", "hcl_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["cucl2_aq", "water"],
+    "coefficients": { "cuo_s": 1, "hcl_1m": 2, "cucl2_aq": 1, "water": 1 },
     "equation": "CuO + 2HCl → CuCl₂ + H₂O",
     "type": "neutralisation",
     "effects": {
@@ -488,6 +500,7 @@
     "reactants": ["hcl_1m", "mgo_s"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["mgcl2_aq", "water"],
+    "coefficients": { "mgo_s": 1, "hcl_1m": 2, "mgcl2_aq": 1, "water": 1 },
     "equation": "MgO + 2HCl → MgCl₂ + H₂O",
     "type": "neutralisation",
     "effects": {
@@ -510,6 +523,7 @@
     "reactants": ["h2so4_1m", "naoh_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["na2so4_aq", "water"],
+    "coefficients": { "naoh_1m": 2, "h2so4_1m": 1, "na2so4_aq": 1, "water": 2 },
     "equation": "2NaOH + H₂SO₄ → Na₂SO₄ + 2H₂O",
     "type": "neutralisation",
     "effects": {
@@ -535,6 +549,7 @@
     "reactants": ["hno3_1m", "naoh_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nano3_aq", "water"],
+    "coefficients": { "naoh_1m": 1, "hno3_1m": 1, "nano3_aq": 1, "water": 1 },
     "equation": "NaOH + HNO₃ → NaNO₃ + H₂O",
     "type": "neutralisation",
     "effects": {
@@ -557,6 +572,7 @@
     "reactants": ["h2so4_1m", "zn_metal"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["znso4_aq", "h2_g"],
+    "coefficients": { "zn_metal": 1, "h2so4_1m": 1, "znso4_aq": 1, "h2_g": 1 },
     "equation": "Zn + H₂SO₄ → ZnSO₄ + H₂",
     "type": "displacement",
     "effects": {
@@ -591,6 +607,7 @@
     "reactants": ["naoh_1m", "nh4cl_1m"],
     "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
     "products": ["nacl_aq", "nh3_g", "water"],
+    "coefficients": { "nh4cl_1m": 1, "naoh_1m": 1, "nacl_aq": 1, "nh3_g": 1, "water": 1 },
     "equation": "NH₄Cl + NaOH → NaCl + NH₃ + H₂O",
     "type": "gas_test",
     "effects": {
@@ -621,6 +638,7 @@
     "reactants": ["bacl2_0_1m", "na2so4_aq"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["baso4_s", "nacl_aq"],
+    "coefficients": { "bacl2_0_1m": 1, "na2so4_aq": 1, "baso4_s": 1, "nacl_aq": 2 },
     "equation": "BaCl₂ + Na₂SO₄ → BaSO₄ + 2NaCl",
     "type": "precipitation",
     "effects": {
@@ -650,6 +668,7 @@
     "reactants": ["agno3_0_1m", "ki_0_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["agi_s", "kno3_aq"],
+    "coefficients": { "agno3_0_1m": 1, "ki_0_1m": 1, "agi_s": 1, "kno3_aq": 1 },
     "equation": "AgNO₃ + KI → AgI + KNO₃",
     "type": "precipitation",
     "effects": {
@@ -672,6 +691,7 @@
     "reactants": ["agno3_0_1m", "kbr_0_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["agbr_s", "kno3_aq"],
+    "coefficients": { "agno3_0_1m": 1, "kbr_0_1m": 1, "agbr_s": 1, "kno3_aq": 1 },
     "equation": "AgNO₃ + KBr → AgBr + KNO₃",
     "type": "precipitation",
     "effects": {
@@ -694,6 +714,7 @@
     "reactants": ["cuso4_0_5m", "naoh_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["cuoh2_s", "na2so4_aq"],
+    "coefficients": { "cuso4_0_5m": 1, "naoh_1m": 2, "cuoh2_s": 1, "na2so4_aq": 1 },
     "equation": "CuSO₄ + 2NaOH → Cu(OH)₂ + Na₂SO₄",
     "type": "precipitation",
     "effects": {
@@ -738,6 +759,7 @@
     "reactants": ["fecl3_0_1m", "naoh_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["feoh3_s", "nacl_aq"],
+    "coefficients": { "fecl3_0_1m": 1, "naoh_1m": 3, "feoh3_s": 1, "nacl_aq": 3 },
     "equation": "FeCl₃ + 3NaOH → Fe(OH)₃ + 3NaCl",
     "type": "precipitation",
     "effects": {
@@ -782,6 +804,7 @@
     "reactants": ["cacl2_aq", "na2co3_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["caco3_s", "nacl_aq"],
+    "coefficients": { "cacl2_aq": 1, "na2co3_1m": 1, "caco3_s": 1, "nacl_aq": 2 },
     "equation": "CaCl₂ + Na₂CO₃ → CaCO₃ + 2NaCl",
     "type": "precipitation",
     "effects": {
@@ -807,6 +830,7 @@
     "reactants": ["nacl_1m", "pbno3_0_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["pbcl2_s", "nano3_aq"],
+    "coefficients": { "pbno3_0_1m": 1, "nacl_1m": 2, "pbcl2_s": 1, "nano3_aq": 2 },
     "equation": "Pb(NO₃)₂ + 2NaCl → PbCl₂ + 2NaNO₃",
     "type": "precipitation",
     "effects": {
@@ -1459,6 +1483,7 @@
     "reactants": ["caso4_aq", "na2co3_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["caco3_s", "na2so4_aq"],
+    "coefficients": { "caso4_aq": 1, "na2co3_1m": 1, "caco3_s": 1, "na2so4_aq": 1 },
     "equation": "CaSO₄ + Na₂CO₃ → CaCO₃ + Na₂SO₄",
     "type": "precipitation",
     "effects": {
@@ -4952,6 +4977,7 @@
     "reactants": ["agno3_0_1m", "hcl_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["agcl_s", "hno3_aq"],
+    "coefficients": { "agno3_0_1m": 1, "hcl_1m": 1, "agcl_s": 1, "hno3_aq": 1 },
     "equation": "Ag⁺ + Cl⁻ → AgCl↓",
     "type": "precipitation",
     "effects": {
@@ -4974,6 +5000,7 @@
     "reactants": ["hcl_1m", "pbno3_0_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["pbcl2_s", "hno3_aq"],
+    "coefficients": { "pbno3_0_1m": 1, "hcl_1m": 2, "pbcl2_s": 1, "hno3_aq": 2 },
     "equation": "Pb²⁺ + 2Cl⁻ → PbCl₂↓",
     "type": "precipitation",
     "effects": {
@@ -5071,6 +5098,7 @@
     "reactants": ["fecl3_0_1m", "nh4oh_aq"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["feoh3_s", "nh4cl_aq"],
+    "coefficients": { "fecl3_0_1m": 1, "nh4oh_aq": 3, "feoh3_s": 1, "nh4cl_aq": 3 },
     "equation": "Fe³⁺ + 3NH₃ + 3H₂O → Fe(OH)₃↓ + 3NH₄⁺",
     "type": "precipitation",
     "effects": {
@@ -5397,6 +5425,7 @@
     "reactants": ["ch3coch3_l", "i2_aq", "naoh_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["chi3_s", "ch3coona_aq", "nai_aq"],
+    "coefficients": { "ch3coch3_l": 1, "i2_aq": 3, "naoh_1m": 4, "chi3_s": 1, "ch3coona_aq": 1, "nai_aq": 3 },
     "equation": "CH₃COCH₃ + 3I₂ + 4NaOH → CHI₃↓ + CH₃COONa + 3NaI + 3H₂O",
     "type": "haloform",
     "effects": {
@@ -8042,6 +8071,7 @@
     "reactants": ["na2co3_s", "hcl_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nacl_aq", "water", "co2_g"],
+    "coefficients": { "na2co3_s": 1, "hcl_1m": 2, "nacl_aq": 2, "water": 1, "co2_g": 1 },
     "equation": "Na₂CO₃ + 2HCl → 2NaCl + H₂O + CO₂",
     "type": "acid_base",
     "effects": {

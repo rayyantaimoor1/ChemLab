@@ -241,6 +241,16 @@ concentration. Real labs are all about *how much*.
 > Add coefficients to the existing reactions in batches of 30, starting with the ones guided
 > experiments use. Each batch: tests green, validator green, commit, push.
 
+> **Batch 1 done (2026-11-22).** The record is in `batch.md` §20.
+> - **Coefficients:** 30 rules, the guided experiments' ones first.
+> - **`concentrationM`:** the 35 solutions labelled with a plain molarity.
+> - **`acidBase`:** HCl, HNO₃ and NaOH, from opened chemguide pages.
+> - **Left out on purpose, each with its reason:** the titration's HCl + NaOH (it goes in with
+>   2.2.5), equilibria, bubbled-in gases, and equations written in words.
+> - **The notebook now reports the scaled warming,** so it agrees with the thermometer.
+> - **Checked:** guided experiments give identical notebook text before and after; 912 tests
+>   pass.
+
 **2.2.4 — Sonnet — Show amounts in the UI**
 > In the properties card, show what a vessel contains in mL and mmol, and say which reagent was
 > limiting when a reaction stops. In the notebook, record "excess HCl remains" type observations.
