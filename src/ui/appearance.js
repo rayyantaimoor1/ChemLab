@@ -130,7 +130,7 @@ export function rememberReaction(previous, engineResult, speciesAfter, engine) {
 
     // The solid is a product the data records as a solid...
     const solidProducts = products.filter((c) => c.state === 'solid');
-    for (const c of solidProducts) add(solidEntry(c, effects.precipitate ? kind : 'solid'));
+    for (const c of solidProducts) add(solidEntry(c, effects.precipitate ? kind : 'solid', effects.precipitate));
     if (!effects.precipitate || solidProducts.length) continue;
 
     // ...or, for a molten metal or condensing mercury, the liquid product
@@ -163,14 +163,20 @@ export function rememberReaction(previous, engineResult, speciesAfter, engine) {
   };
 }
 
-function solidEntry(chemical, kind) {
+function solidEntry(chemical, kind, description = null) {
   return {
     id: chemical.id,
     kind,
     colorHex: chemical.colorHex,
     colorName: chemical.colorName,
     name: chemical.name,
-    description: null,
+    // The reaction's own curated words for the solid - what the notebook
+    // writes. Used for the label when the shelf name would mislead (below).
+    description: description || null,
+    // A shelf reagent's curated form (turnings, chips, filings...): its name
+    // is how it is SOLD - "Copper turnings", "Calcium carbonate (marble
+    // chips)" - not what a reaction makes (BUILD_UI.md UI.10.4).
+    shelfForm: chemical.form || null,
     density: chemical.density,
     // How it looks - fine, gelatinous, curdy... - curated (UI.3.4).
     texture: chemical.texture || null,
@@ -187,10 +193,24 @@ const KIND_WORDS = {
   solid: 'solid',
 };
 
-/** One line for the vessel's label: "bright yellow precipitate: Lead(II) iodide". */
+/**
+ * One line for the vessel's label: "bright yellow precipitate: Lead(II) iodide".
+ *
+ * A solid a reaction makes that is also a shelf reagent is NOT labelled by
+ * its shelf name (BUILD_UI.md UI.10.4, the realism review). Zinc lays down
+ * copper as a reddish-brown powdery coat, not "Copper turnings"; limewater
+ * turns milky with a fine white precipitate, not "marble chips". Those
+ * labels used the shelf name while the notebook used the reaction's own
+ * curated words, so the bench disagreed with the notebook - and taught the
+ * wrong thing. The label now uses the same words: "deposit: reddish brown
+ * copper".
+ */
 export function solidLabel(solid) {
   if (!solid) return null;
   const word = KIND_WORDS[solid.kind] || 'solid';
+  if (solid.shelfForm && solid.description) {
+    return solid.description.includes(word) ? solid.description : `${word}: ${solid.description}`;
+  }
   const what = solid.colorName ? `${solid.colorName} ${word}` : word;
   return solid.name ? `${what}: ${solid.name}` : what;
 }

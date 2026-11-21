@@ -21,7 +21,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 import { createEngine, ROOM_TEMPERATURE_C } from '../src/core/engine.js';
-import { appearanceFor, rememberReaction } from '../src/ui/appearance.js';
+import { appearanceFor, rememberReaction, solidLabel } from '../src/ui/appearance.js';
 
 const golden = JSON.parse(readFileSync(new URL('./golden/notebook-sentences.json', import.meta.url), 'utf8'));
 const engine = createEngine();
@@ -112,6 +112,40 @@ test('adding something new after a reaction drops the remembered colour', () => 
   const memory = rememberReaction(undefined, result, result.species, engine);
   const look = appearanceFor({ speciesIds: [...result.species, 'phenolphthalein_1pct'], temperatureC: 25, heatLevel: 0, electrified: false }, memory, engine);
   assert.equal(look.colorName, null);
+});
+
+// ---- A made solid is not labelled by its shelf name (BUILD_UI.md UI.10.4) ----
+
+test('copper laid down by zinc is labelled as the notebook says, not as "Copper turnings"', () => {
+  const { look } = runRule(engine.getReaction('rxn_displacement_zn_cuso4'));
+  assert.equal(solidLabel(look.precipitate), 'deposit: reddish brown copper');
+});
+
+test('limewater turning milky is a white precipitate, not "marble chips"', () => {
+  const { look } = runRule(engine.getReaction('rxn_gastest_co2_limewater'));
+  assert.equal(solidLabel(look.precipitate), 'precipitate: white calcium carbonate');
+});
+
+test('no reaction-made solid is labelled by a shelf name when the notebook describes it', () => {
+  const shelfNamed = [];
+  for (const reaction of reacting) {
+    const description = reaction.effects?.precipitate;
+    if (!description) continue;
+    const { look, result } = runRule(reaction);
+    const solid = look.precipitate;
+    if (!solid?.shelfForm) continue;
+    const label = solidLabel(solid);
+    // A cascade labels the solid its last step made, as the notebook ends.
+    const said = (result.steps || []).map((st) => st.reaction?.effects?.precipitate).filter(Boolean);
+    if (label.includes(solid.name)) shelfNamed.push(`${reaction.id}: "${label}"`);
+    if (!said.some((d) => label.includes(d))) shelfNamed.push(`${reaction.id}: label "${label}" leaves out the notebook's "${description}"`);
+  }
+  assert.deepEqual(shelfNamed, []);
+});
+
+test('a solid that is not a shelf reagent keeps its own name', () => {
+  const { look } = runRule(engine.getReaction('rxn_precipitation_pbno3_ki'));
+  assert.equal(solidLabel(look.precipitate), 'bright yellow precipitate: Lead(II) iodide');
 });
 
 // ---- Clarity (BUILD_UI.md UI.3.2) ----

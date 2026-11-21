@@ -43,3 +43,10 @@ Result: PASS.
 - 54 loops before Reduce animation, none after.
 - The keyboard path passed 8 of 8 steps.
 - 125% passed, both when opened that way and when zoomed mid-session.
+
+## UI.10.4 — The realism review
+
+See `realism-review.md` in this folder. One fix was made: the label of a solid a reaction makes
+is no longer its shelf name ("Copper turnings", "marble chips"); it uses the reaction's own words,
+as the notebook does. `textures-after.png` shows "deposit: reddish brown copper" on the small
+beaker where zinc took copper out of copper(II) sulfate.

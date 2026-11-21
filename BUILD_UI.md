@@ -1152,6 +1152,27 @@ someone seeing it for the first time.
 > Compare the reference set-ups with open-licensed photographs of the same practicals, and list
 > every difference a student would notice. Fix the ones that teach something wrong; record the rest.
 
+> **Done (2026-11-21).** The full review is `docs/ui-progress/UI.10/realism-review.md`.
+> - **Compared:** the reference benches against five open-licensed photographs, each opened and
+>   only viewed, with its licence recorded: lead(II) iodide, Bunsen flames from closed to open, a
+>   beaker on a gauze and tripod, a burette over a flask, and zinc in acid.
+> - **Fixed (taught something wrong):** a solid a reaction makes was labelled by its shelf name.
+>   Copper laid down by zinc read "Copper turnings", limewater's milky precipitate read "Calcium
+>   carbonate (marble chips)", displaced iron read "Iron filings", and alumina read "(bauxite)".
+>   The notebook already used the reaction's own words, so the bench disagreed with it. The label
+>   now uses those words ("deposit: reddish brown copper"). The change is in
+>   `src/ui/appearance.js` only, with a test over every rule.
+> - **Teaches something wrong, but not a drawing; needs a decision:**
+>   - distilled water alone is told it "needs an electric current" (pure water barely conducts);
+>   - a reaction is a two-second burst and the metal in excess vanishes (stage 2.2, amounts);
+>   - a test tube is heated standing upright on the tripod (the angled tube deferred in UI.6.1).
+> - **Recorded:**
+>   - flame sizes;
+>   - the gauze has no ceramic centre;
+>   - the titration set-up has no stand or white tile;
+>   - lead(II) iodide forms as falling grains rather than swirling clouds;
+>   - label cards can cover glass on a crowded bench.
+
 ✅ **Check:** on Intel HD integrated graphics the busy bench holds 30 fps; the realism review
 finds nothing that would teach a student something wrong.
 
