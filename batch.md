@@ -1932,3 +1932,62 @@ is the same as before stage 2.2.
 - The guided experiments' notebook text is identical to after batch 1, at both the smallest and
   largest amounts.
 - The packaged-app smoke test passes on the rebuilt installer.
+
+### Batch 3 — 30 more rules (2026-11-22)
+
+Coefficients now cover **90 rules**. As in batch 2, every number was read straight from its
+curated equation by the validator's own reader.
+
+**The 30:**
+- magnesium with steam;
+- making chlorine from manganese(IV) oxide;
+- the three halides with concentrated sulfuric acid;
+- heating potassium permanganate;
+- ethyne from calcium carbide;
+- organic reactions:
+  - brominating and sulfonating benzene;
+  - bromoethane with NaOH, and the halogenoalkane test with silver nitrate;
+  - sodium with ethanol, and phenol with NaOH;
+  - ethanoyl chloride with water, with ethanol, and with sodium ethanoate;
+  - alkaline hydrolysis of an ester and an amide;
+- materials:
+  - cement clinker, glass, and calcining aluminium hydroxide;
+  - gypsum to plaster, and plaster setting;
+  - thermite;
+- acid rain on marble, and liming acid water;
+- the ammonium test with limewater;
+- the Group V strontium and Group VI magnesium tests;
+- aluminium oxide with acid.
+
+**Checked for the excess claim:** no rule takes any of these rules' products with one of its own
+reactants.
+
+**A bug found and fixed** (`container.js`): a pure liquid a reaction makes is now given the
+volume its moles take up.
+- **The problem:** an ester, bromobenzene or water made by a counted reaction used to take a
+  share of the freed volume, and its moles were then worked out from that volume. Ethanoyl
+  chloride with ethanol came out with 18.6 mmol of ester against 14.1 mmol of HCl, when the
+  equation makes them equal.
+- **The fix:** the pure liquid now takes the volume of what was made, and only the rest of the
+  freed volume goes to the dissolved products.
+- **The guard:** a test now holds the ester and HCl equal.
+
+**Known approximation:** concentrated sulfuric acid is curated as a liquid, so its moles come from
+its density, as if it were pure. At 98% that overstates it by about 2%.
+
+**Left out on purpose:**
+- **Ethanoic acid with phosphorus(V) chloride.** The rule's ethanoic acid is the 1 M *aqueous*
+  solution, and the water in it would destroy the PCl₅ first. The rule needs pure ethanoic acid.
+  That is a content fix to make before converting it.
+- **Both Grignard rules.** The reagent is curated as a liquid but is a solution in ether, so its
+  density gives the wrong moles. It needs a `concentrationM` instead.
+- **Concentrated nitric acid** (phenol nitration). As a liquid at about 70%, its density would
+  overstate its moles by about 40%.
+- **Sulfite precipitate with acid.** The barium chloride it gives back would react again with any
+  leftover sulfite, round and round. It needs thinking through, not a coefficient.
+
+**Checks:**
+- The validator finds no errors and no new warnings.
+- 913 tests pass.
+- The guided experiments' notebook text is identical to before.
+- The packaged-app smoke test passes on the rebuilt installer.

@@ -175,6 +175,17 @@ test('a rule the shipped data has not converted yet still works the old way', ()
   assert.equal(beaker.has('fe_metal'), false, 'the old way: all the iron is used at once');
 });
 
+test('a pure liquid a reaction makes is counted as made, not by a share of the volume', () => {
+  // CH₃COCl + C₂H₅OH → CH₃COOC₂H₅ + HCl: as much ester as hydrogen chloride.
+  const { beaker, add } = bench(shippedEngine);
+  add('c2h5oh_aq', 5);
+  add('ch3cocl_l', 1);
+  near(beaker.getMolesOf('ester_l'), beaker.getMolesOf('hcl_g'), 1e-9);
+  // And its volume is what those moles take up.
+  const ester = shippedEngine.getChemical('ester_l');
+  near(beaker.getAmountOf('ester_l'), (beaker.getMolesOf('ester_l') * ester.molarMass) / ester.density, 1e-3);
+});
+
 test('the shipped data now counts amounts for its converted rules (stage 2.2.3 batch 1)', () => {
   const { beaker, add } = bench(shippedEngine);
   add('caco3_s', 1.0);

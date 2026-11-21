@@ -262,6 +262,15 @@ concentration. Real labs are all about *how much*.
 > - **Still open:** a solid's warming does not scale with how much is added. It needs a sourced
 >   enthalpy per rule.
 
+> **Batch 3 done (2026-11-22).** **90 rules now have coefficients.**
+> - **Covered:** halides with concentrated sulfuric acid, organic reactions (benzene, halogenoalkanes,
+>   acyl chlorides, hydrolysis), materials (cement, glass, plaster, thermite), two analysis
+>   tests.
+> - **Fixed:** a pure liquid a reaction makes, such as an ester, now has the moles it was made
+>   with. Before, it was 30% too many.
+> - **Left out, with reasons in `batch.md` §20:** the Grignard rules and concentrated nitric acid,
+>   which have the wrong moles as liquids, and PCl₅ with aqueous ethanoic acid.
+
 **2.2.4 — Sonnet — Show amounts in the UI**
 > In the properties card, show what a vessel contains in mL and mmol, and say which reagent was
 > limiting when a reaction stops. In the notebook, record "excess HCl remains" type observations.

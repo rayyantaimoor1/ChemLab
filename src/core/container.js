@@ -515,13 +515,35 @@ export function createContainer({
       const solidProducts = products.filter((productId) => !isLiquid(productId));
       const madeMol = (productId) => (amounts ? amounts.made?.[productId] ?? null : null);
 
-      // Liquid that was used up reappears as the liquid products, shared evenly.
-      const volumeAfterReactants = getVolumeMl();
-      const freedVolume = Math.max(0, volumeBefore - volumeAfterReactants);
-      const sharePerProduct =
-        liquidProducts.length > 0 ? Math.round((freedVolume / liquidProducts.length) * 1000) / 1000 : 0;
-
+      // A pure liquid made in a counted amount - an ester, bromobenzene,
+      // water - takes up the volume its moles do (moles × molar mass ÷
+      // density), so its moles stay what the reaction made. Without this it
+      // took a share of the freed volume, and an ester came out 30% more
+      // than the hydrogen chloride made beside it.
+      const pureLiquidMade = (productId) => {
+        const made = madeMol(productId);
+        return typeof made === 'number' && molesFollowAmount(lookup(productId)) ? made : null;
+      };
+      let pureLiquidVolume = 0;
       for (const productId of liquidProducts) {
+        const made = pureLiquidMade(productId);
+        if (made === null) continue;
+        const volume = amountForMoles(lookup(productId), made, UNIT.ML);
+        const existing = contents.get(productId);
+        const amount = existing && typeof existing.amount === 'number' ? existing.amount + volume : volume;
+        contents.set(productId, { amount, unit: UNIT.ML, mol: null });
+        pureLiquidVolume += volume;
+      }
+      const sharedProducts = liquidProducts.filter((productId) => pureLiquidMade(productId) === null);
+
+      // The rest of the liquid that was used up reappears as the dissolved
+      // products, shared evenly.
+      const volumeAfterReactants = getVolumeMl() - pureLiquidVolume;
+      const freedVolume = Math.max(0, volumeBefore - volumeAfterReactants - pureLiquidVolume);
+      const sharePerProduct =
+        sharedProducts.length > 0 ? Math.round((freedVolume / sharedProducts.length) * 1000) / 1000 : 0;
+
+      for (const productId of sharedProducts) {
         const existing = contents.get(productId);
         const amount =
           existing && typeof existing.amount === 'number'
