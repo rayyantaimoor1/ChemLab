@@ -2,6 +2,7 @@
   "name": "chemlab",
   "version": "1.0.0",
   "description": "Offline virtual chemistry lab for Pakistani school and college students",
+  "author": "Rayyan Taimoor",
   "main": "main.js",
   "type": "module",
   "private": true,
@@ -12,7 +13,8 @@
     "validate": "node scripts/validate-content.mjs",
     "golden:update": "node scripts/update-golden.mjs",
     "perf": "electron scripts/perf-bench.mjs",
-    "access": "electron scripts/check-access.mjs"
+    "access": "electron scripts/check-access.mjs",
+    "smoke": "node scripts/smoke-packaged.mjs"
   },
   "devDependencies": {
     "electron": "^45.2.1",
@@ -21,6 +23,7 @@
   "build": {
     "appId": "com.chemlab.app",
     "productName": "Virtual Chemistry Lab",
+    "copyright": "© 2026 Rayyan Taimoor",
     "directories": {
       "output": "build"
     },

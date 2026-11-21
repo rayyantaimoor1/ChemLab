@@ -43,6 +43,12 @@ export function installMenu({ getDataFolder, log = console.error }) {
     { role: 'editMenu' },
     { role: 'viewMenu' },
     { role: 'windowMenu' },
+    // Help > About: the name, version and copyright (Phase 10.2), so a
+    // teacher can tell which version a lab PC has installed.
+    {
+      role: 'help',
+      submenu: [{ role: 'about', label: 'About Virtual Chemistry Lab' }],
+    },
   ]);
   Menu.setApplicationMenu(menu);
 }

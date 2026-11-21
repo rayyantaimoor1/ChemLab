@@ -16,6 +16,7 @@ import chemicals from './src/data/chemicals.json' with { type: 'json' };
 import reactions from './src/data/reactions.json' with { type: 'json' };
 import { registerBridge } from './main/ipc.js';
 import { installMenu } from './main/menu.js';
+import { ABOUT } from './main/about.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const indexPath = path.join(__dirname, 'src', 'index.html');
@@ -62,6 +63,13 @@ app.whenReady().then(() => {
     knownChemicalIds: new Set(chemicals.map((chemical) => chemical.id)),
     knownReactionIds: new Set(reactions.map((reaction) => reaction.id)),
     getAppVersion: () => app.getVersion(),
+  });
+  // What Help > About shows (main/about.js; the version is the installer's).
+  app.setAboutPanelOptions({
+    applicationName: ABOUT.name,
+    applicationVersion: app.getVersion(),
+    copyright: ABOUT.copyright,
+    credits: ABOUT.credits,
   });
   installMenu({ getDataFolder: () => app.getPath('userData') });
 

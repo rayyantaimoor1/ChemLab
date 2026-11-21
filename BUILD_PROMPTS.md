@@ -420,6 +420,36 @@ everything else.
 **10.2 — Sonnet**
 > Build the final installer with a proper app name, icon, and version number.
 
+> **Done (2026-11-21).** The installer is `build/Virtual Chemistry Lab Setup 1.0.0.exe`, 122 MB.
+> Installed, the app takes 361 MB.
+> - **Name, icon, version:** already set in August (`41e733c`): "Virtual Chemistry Lab", the
+>   conical-flask icon, 1.0.0.
+> - **Publisher:** Rayyan Taimoor, the owner's choice, with no email address. It shows in Windows'
+>   installed-apps list, and the copyright line reads "© 2026 Rayyan Taimoor".
+> - **Help > About** (new): the name, version, copyright, and that it works fully offline, so a
+>   teacher can see which version a lab PC has. The words are in `main/about.js`;
+>   `tests/about.test.js` keeps them in step with package.json.
+> - **`npm run smoke`** (new, `scripts/smoke-packaged.mjs`) checks the BUILT app, not the
+>   development copy. It starts `build/win-unpacked`, exactly what the installer installs, with a
+>   throwaway data folder, and checks five things:
+>   - the window is titled "Virtual Chemistry Lab";
+>   - it runs from the packed archive;
+>   - the shelf holds all 180 reagents;
+>   - lead(II) nitrate and potassium iodide write their yellow precipitate into the notebook;
+>   - nothing is fetched from the network: 52 requests, all the app's own files.
+>
+>   Its first run caught a bug every other check missed. The About box first read its words from
+>   package.json's "build" section, which electron-builder strips out of the packed app, so the
+>   installed app crashed before opening its window. Passes now.
+> - **Not signed:** there is no code-signing certificate. Windows SmartScreen will warn "Windows
+>   protected your PC" on a lab PC; choose "More info" > "Run anyway". A certificate is a paid,
+>   yearly purchase, and the owner's decision.
+> - **The installer itself** was built but not run on this PC; the unpacked app it installs was
+>   tested instead. Installing and uninstalling on a lab PC is the final check below.
+> - **Building needs the internet once:** electron-builder downloaded the Electron 45.2.1 runtime
+>   from Electron's official releases, because its local copy had been cleared. The app it builds
+>   needs none.
+
 **10.3 — Opus**
 > Review the whole project against CLAUDE.md and give me an honest list of what doesn't meet the
 > spec, what's fragile, and what will break first as content grows.

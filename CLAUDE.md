@@ -77,7 +77,7 @@ chemlab/
 ├── PERFORMANCE.md            ← the busy-bench frame-time baseline per machine (`npm run perf`)
 ├── package.json
 ├── main.js                   ← Electron main process (window, menu, file paths)
-├── main/                     ← main-process helpers: IPC switchboard, argument checks, file writing
+├── main/                     ← main-process helpers: IPC switchboard, argument checks, file writing, the menu and Help > About (about.js)
 ├── preload.cjs               ← contextBridge (5 functions on window.chemlab); sandboxed renderer
 ├── src/
 │   ├── index.html
@@ -134,7 +134,8 @@ chemlab/
 │   ├── capture-ui.mjs        ← screenshots of the reference benches at 1366×768 (BUILD_UI.md)
 │   ├── make-room-images.mjs  ← draws the wall-tile and bench-resin textures into src/assets/room/
 │   ├── perf-bench.mjs        ← `npm run perf`: times a busy bench, fails if 20% slower than PERFORMANCE.md
-│   ├── check-access.mjs      ← `npm run access`: keyboard, focus rings, contrast, 125% text, Reduce animation
+│   ├── check-access.mjs      ← `npm run access`: keyboard, focus rings, contrast, 125% text, Reduce animation, 40×40 click targets
+│   ├── smoke-packaged.mjs    ← `npm run smoke`: runs the BUILT app (after `npm run dist`) and checks it opens, reacts, and stays offline
 │   └── lib/                  ← the checkers these use, the golden-sentence builder, and bench-helpers.mjs (a student's mouse, for the capture and perf scripts)
 ├── tests/
 │   └── golden/               ← notebook-sentences.json: the approved sentence for every reaction
