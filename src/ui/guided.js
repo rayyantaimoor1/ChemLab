@@ -32,6 +32,8 @@
  */
 
 import { engine } from '../core/engine.js';
+// The bar and step card keep the keyboard's place when redrawn (UI.10.3).
+import { keepFocus } from './keep-focus.js';
 
 /** "temperatureRiseC" -> "Temperature rise c", "endpointPH" -> "Endpoint pH".
  *  Purely cosmetic, data-driven - "pH" keeps the capital H used everywhere
@@ -130,7 +132,7 @@ export function mountGuidedBar({ root, getState, dispatch, subscribe }) {
     }
   }
 
-  subscribe(render);
+  subscribe(() => keepFocus(root, render));
   render();
 
   return { render };
@@ -278,7 +280,7 @@ export function mountGuidedStepCard({ root, getState, dispatch, subscribe }) {
     root.appendChild(card);
   }
 
-  subscribe(render);
+  subscribe(() => keepFocus(root, render));
   render();
 
   return { render };

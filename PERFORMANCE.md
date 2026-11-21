@@ -75,6 +75,18 @@ On the development PC (a laptop) five runs of the Full tier ranged from 2.97 to 
 of about 8%, well inside the 20% allowance. A laptop on battery or running hot can be slower.
 Plug it in and close other programs before checking or recording.
 
+## When a run fails
+
+Check whether the machine has changed before blaming the change. Run the committed code the same way:
+`git stash -u`, then `npm run perf`, then `git stash pop`.
+
+- If the old code is just as slow, the PC is slower today, and the change is not the cause.
+  Heat after many runs in a row can do it. Let it cool and run again.
+- If only the new code is slow, the change is.
+
+On 2026-11-21, after dozens of test runs, the development laptop read about 6.5 ms for UI.10.3's
+code and 7.09 ms for UI.10.2's. That is the same, so the baseline was left alone.
+
 ## Not yet measured
 
 **The lab PC itself** (i5 5th gen, Intel HD integrated graphics) has no row yet. That measurement

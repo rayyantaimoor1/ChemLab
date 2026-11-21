@@ -1104,6 +1104,50 @@ someone seeing it for the first time.
 > Every new control reachable by keyboard with a visible focus ring; text scales to 125%; Reduce
 > animation turns off every looping effect; contrast 4.5:1 on all text (UI.md §8).
 
+> **Done (2026-11-21).** `npm run access` (`scripts/check-access.mjs`) checks all four in the
+> running app and fails on any miss. It first found 16 controls with no visible ring, 17 pieces of
+> text under 4.5:1, a top bar that ran into itself at 125%, and the whole bench mouse-only.
+> - **The keyboard (full path, owner approved).**
+>   - Every vessel and piece of apparatus is a Tab stop; Enter or Space selects it.
+>   - Enter on a reagent on the shelf adds it to the selected vessel, exactly as dropping it does
+>     (with nothing selected, the strip says to choose a vessel first).
+>   - "Pour into…" and "Put on…" in the control strip list what is on the bench (a burette's is
+>     "Clamp above…"; a tile can go "On the retort stand"); Esc closes the list. The mouse can use
+>     them too, and they run the same actions as dragging.
+>   - **Focus survives redraws** (`src/ui/keep-focus.js`). The control strip, tool tray, readings,
+>     notebook and guided bar are rebuilt on every change, many times a second while anything
+>     heats, which threw the keyboard's place away after every key.
+> - **Focus rings:** one `--focus-ring` colour, ink on light surfaces and wall-tile white on the dark
+>   bench, where the ink ring was invisible (1.02:1). 3 px everywhere.
+> - **Contrast:**
+>   - the grey hierarchy ink (`--ink-60`) from 0.6 to 0.66, 5:1 on the darkest light surface;
+>   - the search placeholder up to the same;
+>   - a disabled strip button to 5:1, still dimmer than a live one;
+>   - the electrolysis ion labels on a small dark backing: on the close look's white tile, white
+>     text alone was 1.1:1.
+> - **125% text** (Windows' default on many 1366×768 screens leaves a 1093 px window):
+>   - the top bar wraps its switches onto a second row instead of overlapping the mode picker;
+>   - the shelf and notebook narrow to 300 px below 1250 px;
+>   - long formulas, reagent names, apparatus buttons and the strip's title wrap instead of being
+>     cut off;
+>   - a label card that would run off the bench slides back inside it;
+>   - text made larger mid-session (View > Zoom In) redraws the bench and slides anything past its
+>     edge back on.
+>
+>   Also fixed: the shelf's Dispense row overflowed sideways at 100% since the Dropper button
+>   joined it.
+> - **Reduce animation** already stopped every loop: 54 looping animations before, none after.
+> - **Checked:** `npm run access` passes:
+>   - 442 Tab stops, all with a ring;
+>   - nothing mouse-only;
+>   - 0 of 146 pieces of text under 4.5:1, with the properties card, close look and amount panel
+>     also open;
+>   - the keyboard path 8 of 8;
+>   - 125% both opened that way and zoomed mid-session.
+> - **Left as it is:** on a 485 px bench (125%) with seven objects, some label cards overlap
+>   each other. The overlap resolver has run out of room; no words are cut off. SVG text (printed
+>   glass scales, bottle labels) is drawing, not checked as text.
+
 **UI.10.4 — Opus — The realism review**
 > Compare the reference set-ups with open-licensed photographs of the same practicals, and list
 > every difference a student would notice. Fix the ones that teach something wrong; record the rest.
@@ -1130,4 +1174,5 @@ finds nothing that would teach a student something wrong.
 | UI.5 | Curated `effects.gasRate` (slow / steady / vigorous) on every rule with bubbles of a gas, sourced, in batches; missing fails the build once done | Yes (owner) | 2026-11-20 |
 | UI.8.2 | Curated `storage: "amber"` on reagents kept from light, sourced | Yes (owner) | 2026-11-21 |
 | UI.8 | A fume cupboard on the bench: a vessel can stand inside it; fumes and toxic gas made there are drawn away; the hazard warning is unchanged | Yes (owner) | 2026-11-21 |
+| UI.10.3 | Full keyboard path on the bench: vessels and apparatus as Tab stops, Enter on a shelf reagent adds it to the selected vessel, "Pour into…" and "Put on…" in the control strip | Yes (owner) | 2026-11-21 |
 | UI.9 | Sound in the app: yes, synthesised in the app with Web Audio (no files, no downloads, nothing added to the installer), with a top-bar switch OFF by default | Yes (owner) | 2026-11-21 |

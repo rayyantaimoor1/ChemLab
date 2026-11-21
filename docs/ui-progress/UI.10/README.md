@@ -23,3 +23,23 @@ between trials.
 | `--record --tier low` | 2.88 ms (347 fps) | baseline |
 | `npm run perf` | 3.22 ms, 5% slower | PASS, exit 0 |
 | `npm run perf -- --add-work 1` | 4.17 ms, 36% slower | FAIL, exit 1 |
+
+## UI.10.3 — Accessibility floor
+
+`npm run access -- --shots docs/ui-progress/UI.10` made these pictures:
+
+| Picture | Shows |
+|---|---|
+| `access-bench.png` | the audit's bench at 100%: boiling, electrolysis, the fume cupboard, the water bath |
+| `access-keyboard.png` | after the keyboard-only path: the light focus ring on "Heat 2", and the notebook lines it wrote |
+| `access-reduce.png` | the same bench with Reduce animation on: nothing moving |
+| `access-125.png` | opened at 125%: the top bar on two rows, narrower side columns, formulas wrapped |
+| `access-125-midsession.png` | zoomed to 125% mid-session |
+
+Result: PASS.
+- 442 Tab stops, every one with a ring.
+- Nothing is mouse-only.
+- 0 of 146 pieces of text under 4.5:1.
+- 54 loops before Reduce animation, none after.
+- The keyboard path passed 8 of 8 steps.
+- 125% passed, both when opened that way and when zoomed mid-session.

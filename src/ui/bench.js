@@ -52,6 +52,8 @@ import {
   particlesFor,
   getEffectsTier,
 } from './effects.js';
+// Keyboard focus that survives the strip and tray being redrawn (UI.10.3).
+import { keepFocus } from './keep-focus.js';
 // How a pour looks: lip, tilt, stream, splash (BUILD_UI.md UI.6.2).
 import { pourPath, POUR } from './pour-path.js';
 // One drop, and swirl or stir (BUILD_UI.md UI.6.3).
@@ -173,6 +175,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
   // spans many pointermove events and several renders.
   let drag = null;
   let tapTimer = null;
+  // A list of choices open in the strip - where to pour, what to put the
+  // vessel on - and a hint for a reagent chosen with nothing selected (UI.10.3).
+  let stripChoice = null;
+  let stripHint = null;
 
   /* ------------------------------------------------------------------ *
    * Render
@@ -215,15 +221,18 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     resolveLabelOverlaps();
     renderCloseLook(state);
 
-    renderControlStrip(state);
-    renderReadings(state);
+    // Redrawn on every change; keepFocus keeps the keyboard's place (UI.10.3).
+    keepFocus(controlButtons, () => renderControlStrip(state));
+    keepFocus(readingsHost, () => renderReadings(state));
     // The boil sounds while anything on the bench is boiling (UI.9).
     setBoiling(state.containers.some((c) => c.appearance?.heat?.stage === 'boiling'));
     traceStrip.hidden = !state.traceEnabled;
     traceValue.textContent = state.traceLine;
 
-    toolTrayHost.innerHTML = '';
-    toolTrayHost.appendChild(renderToolTray(state));
+    keepFocus(toolTrayHost, () => {
+      toolTrayHost.innerHTML = '';
+      toolTrayHost.appendChild(renderToolTray(state));
+    });
   }
 
   /* ------------------------------------------------------------------ *
@@ -292,6 +301,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
         if (cost === 0) break;
       }
       applyLabelTry(o, best.attempt);
+      keepCardOnBench(o, bounds);
       placed.push(o.chip.getBoundingClientRect());
     }
   }
@@ -316,6 +326,19 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     o.chip.style.transform = attempt.lift
       ? `translateY(-${Math.round(o.body.getBoundingClientRect().height + 6)}px)`
       : '';
+  }
+
+  /**
+   * The last resort: a card that would still run off the side of the bench
+   * - on a narrow bench, such as 125% text leaves (UI.10.3) - slides back
+   * inside it, so its words are never cut off by the bench's edge.
+   */
+  function keepCardOnBench(o, bounds) {
+    const rect = o.chip.getBoundingClientRect();
+    let dx = 0;
+    if (rect.right > bounds.right - 4) dx = bounds.right - 4 - rect.right;
+    if (rect.left + dx < bounds.left + 4) dx = bounds.left + 4 - rect.left;
+    if (Math.abs(dx) >= 1) o.chip.style.transform = `${o.chip.style.transform} translateX(${Math.round(dx)}px)`.trim();
   }
 
   function overlaps(a, b) {
@@ -700,6 +723,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     el.appendChild(chip);
 
     el.addEventListener('pointerdown', (event) => beginDrag('equip', item.id, event, el));
+    makeKeyboardSelectable(el, item.label, () => dispatch.selectEquipment(item.id));
 
     canvas.appendChild(el);
     const refs = { el, art, status };
@@ -1010,6 +1034,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
     if (interactive) {
       el.addEventListener('pointerdown', (event) => beginDrag('vessel', container.id, event, el));
+      makeKeyboardSelectable(el, `${container.name} ${container.id}`, () => dispatch.selectVessel(container.id));
       // Lift it up and look closely (UI.7.1).
       el.addEventListener('dblclick', () => openCloseLook(container.id));
     }
@@ -1633,10 +1658,147 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     button.title = options.title || label;
     button.disabled = !!options.disabled;
     if (options.active) button.classList.add('is-active');
+    // A control whose words change (Current off / Current on) keeps its
+    // keyboard focus across a redraw by this key (UI.10.3).
+    if (options.key) button.dataset.focusKey = options.key;
     button.addEventListener('click', onClick);
     controlButtons.appendChild(button);
     return button;
   }
+
+  /* ------------------------------------------------------------------ *
+   * The keyboard on the bench (BUILD_UI.md UI.10.3, owner approved
+   * 2026-11-21). Every vessel and piece of apparatus is a Tab stop, and
+   * Enter or Space picks it up to work with, as a click does. Pouring and
+   * putting a vessel on something - drags for the mouse - are "Pour
+   * into…" and "Put on…" in the control strip, which list what is on the
+   * bench. The mouse can use them too, and they run exactly what dragging
+   * runs, so the chemistry and the notebook are the same either way.
+   * ------------------------------------------------------------------ */
+
+  function makeKeyboardSelectable(el, name, select) {
+    el.tabIndex = 0;
+    el.setAttribute('role', 'button');
+    el.setAttribute('aria-label', `${name}: press Enter to work with it`);
+    el.addEventListener('keydown', (event) => {
+      if (event.target !== el) return;
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        select();
+      }
+    });
+  }
+
+  /** Puts the keyboard back on a vessel after acting on it from the strip. */
+  function focusVessel(id) {
+    vesselEls.get(id)?.el.focus({ preventScroll: true });
+  }
+
+  /** "Bunsen burner + tripod", or "Bunsen burner + tripod 2" when there are two. */
+  function equipmentNames(items) {
+    const names = new Map();
+    const counts = new Map();
+    for (const item of items) counts.set(item.kind, (counts.get(item.kind) || 0) + 1);
+    const seen = new Map();
+    for (const item of items) {
+      const n = (seen.get(item.kind) || 0) + 1;
+      seen.set(item.kind, n);
+      names.set(item.id, counts.get(item.kind) > 1 ? `${item.label} ${n}` : item.label);
+    }
+    return names;
+  }
+
+  /** Opens a list of choices in the strip: 'pour' (where to) or 'place' (on what). */
+  function chooseIn(kind, vesselId) {
+    stripChoice = { kind, vesselId };
+    render();
+    controlButtons.querySelector('button:not([disabled])')?.focus();
+  }
+
+  function cancelChoice() {
+    const kind = stripChoice?.kind;
+    stripChoice = null;
+    render();
+    controlButtons.querySelector(`[data-focus-key="${kind === 'place' ? 'put-on' : 'pour-into'}"]`)?.focus();
+  }
+
+  /** What letting go of one vessel over another does, chosen from a list. */
+  function pourByChoice(fromId, toId) {
+    const state = getState();
+    const source = state.containers.find((c) => c.id === fromId);
+    if (!source) return;
+    // A burette over a vessel is clamped above it, not poured.
+    if (source.type === 'burette') {
+      dispatch.clampOver(fromId, toId);
+      playSound('clink');
+      focusVessel(fromId);
+      return;
+    }
+    if (source.contents.length === 0) return;
+    if (state.dispenseMode === 'quick') {
+      executePour(fromId, toId, Math.min(state.quickAmount, source.volumeMl));
+      focusVessel(fromId);
+    } else {
+      openPourPanel(fromId, toId);
+    }
+  }
+
+  function renderStripChoice(vessel, state) {
+    if (stripChoice.kind === 'pour') {
+      controlSub.textContent = vessel.type === 'burette'
+        ? 'Clamp it above which vessel?'
+        : `Pour the ${vessel.name.toLowerCase()} into which vessel?`;
+      for (const target of state.containers.filter((c) => c.id !== vessel.id)) {
+        controlButton(`${target.name} · ${target.id}`, () => {
+          stripChoice = null;
+          pourByChoice(vessel.id, target.id);
+        }, { key: `to-${target.id}` });
+      }
+    } else {
+      controlSub.textContent = `Put the ${vessel.name.toLowerCase()} where?`;
+      const names = equipmentNames(state.equipment);
+      for (const item of state.equipment) {
+        if (item.id === vessel.standOn) continue;
+        const word = item.kind === 'fume_cupboard' || isBath(item) ? 'In' : 'On';
+        controlButton(`${word} the ${names.get(item.id).toLowerCase()}`, () => {
+          stripChoice = null;
+          dispatch.standOn(vessel.id, item.id);
+          playSound('clink');
+          focusVessel(vessel.id);
+        }, { key: `on-${item.id}` });
+      }
+      if (vessel.standOn) {
+        controlButton('Back on the bench', () => {
+          stripChoice = null;
+          dispatch.setDownOnBench(vessel.id);
+          focusVessel(vessel.id);
+        }, { key: 'lift-off', title: 'Lift it off and set it down on the bench' });
+      }
+    }
+    controlButton('Cancel', cancelChoice, { key: 'cancel', title: 'Cancel (Esc)' });
+  }
+
+  // Esc closes a list of choices.
+  controlButtons.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && stripChoice) {
+      event.preventDefault();
+      cancelChoice();
+    }
+  });
+
+  // Enter on a reagent on the shelf (shelf.js) adds it to the selected
+  // vessel, exactly as dropping it there does.
+  document.addEventListener('chemlab:reagent-chosen', (event) => {
+    const chemicalId = event.detail?.chemicalId;
+    const containerId = getState().selectedVesselId;
+    if (!chemicalId) return;
+    if (!containerId) {
+      stripHint = 'Choose a vessel first: Tab to it on the bench and press Enter. Then choose the reagent again.';
+      render();
+      return;
+    }
+    addReagent(containerId, chemicalId);
+  });
 
   const isBath = (item) => item.kind === 'ice_bath' || item.kind === 'water_bath';
 
@@ -1666,6 +1828,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const open = burner.airHole !== 'closed';
     controlButton(open ? 'Air hole open' : 'Air hole closed', () => dispatch.setAirHole(burner.id, !open), {
       active: !open,
+      key: 'air-hole',
       title: open
         ? 'Close the air hole: a cooler, luminous yellow flame'
         : 'Open the air hole: the hot blue flame for heating',
@@ -1690,11 +1853,14 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       ? state.equipment.find((q) => q.id === state.selectedEquipmentId)
       : null;
 
+    if (stripChoice && stripChoice.vesselId !== state.selectedVesselId) stripChoice = null;
+    if (vessel || equip) stripHint = null;
+
     if (!vessel && !equip) {
       controlTitle.textContent = 'Nothing selected';
-      controlSub.textContent = state.containers.length || state.equipment.length
+      controlSub.textContent = stripHint || ((state.containers.length || state.equipment.length)
         ? 'Click a vessel or a piece of apparatus to work with it.'
-        : 'Take apparatus from the tray on the left to set the bench up.';
+        : 'Take apparatus from the tray on the left to set the bench up.');
       return;
     }
 
@@ -1709,6 +1875,12 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
         : standing
           ? standingText(vessel, standing)
           : 'on the bench — drag it onto a burner to heat it';
+
+      // Choosing where to pour it, or what to put it on (UI.10.3).
+      if (stripChoice) {
+        renderStripChoice(vessel, state);
+        return;
+      }
 
       // Heat exists only when something under the vessel supplies it.
       if (standing && standing.kind === 'burner') {
@@ -1732,7 +1904,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
         controlButton(tapOpen ? 'Close tap' : 'Open tap', () => {
           if (tapOpen) closeTap();
           else openTap(vessel.id);
-        }, { disabled: !armed, active: tapOpen, className: tapOpen ? 'bench-control--tap-open' : '' });
+        }, { disabled: !armed, active: tapOpen, key: 'tap', className: tapOpen ? 'bench-control--tap-open' : '' });
         if (vessel.clampedOver) {
           controlButton('Unclamp', () => dispatch.unclamp(vessel.id));
         }
@@ -1746,7 +1918,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       }), { title: mixVerb === 'Swirl' ? 'Swirl the flask to mix it' : 'Stir with a glass rod' });
       controlButton(vessel.thermometerIn ? 'Take thermometer out' : 'Stand a thermometer in', () => {
         dispatch.setThermometer(vessel.id, !vessel.thermometerIn);
-      }, { active: !!vessel.thermometerIn });
+      }, { active: !!vessel.thermometerIn, key: 'thermometer' });
 
       const heldTool = state.selectedToolId
         ? state.tools.find((t) => t.id === state.selectedToolId)
@@ -1756,13 +1928,33 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
         dispatch.beginDip(state.selectedToolId, vessel.id);
       }, {
         disabled: !state.selectedToolId || dipping,
+        key: 'dip',
         title: state.selectedToolId ? 'Dip the tool you are holding' : 'Pick up a tool from the tray first',
         className: state.selectedToolId && !dipping ? 'bench-control--accent' : '',
       });
 
       controlButton(vessel.electrified ? 'Current on' : 'Current off', () => {
         withEffects(vessel.id, () => dispatch.setPower(vessel.id, !vessel.electrified));
-      }, { active: vessel.electrified, className: 'bench-control--power' });
+      }, { active: vessel.electrified, key: 'current', className: 'bench-control--power' });
+
+      // Pouring and placing without dragging (UI.10.3).
+      const others = state.containers.filter((c) => c.id !== vessel.id);
+      const isBurette = vessel.type === 'burette';
+      const noFurniture = state.equipment.length === 0 && !vessel.standOn;
+      controlButton(isBurette ? 'Clamp above…' : 'Pour into…', () => chooseIn('pour', vessel.id), {
+        key: 'pour-into',
+        disabled: others.length === 0 || (!isBurette && !(vessel.volumeMl > 0)),
+        title: others.length === 0
+          ? 'There is no other vessel on the bench'
+          : isBurette ? 'Clamp the burette above another vessel' : 'Pour some of it into another vessel',
+      });
+      controlButton('Put on…', () => chooseIn('place', vessel.id), {
+        key: 'put-on',
+        disabled: noFurniture,
+        title: noFurniture
+          ? 'Take a burner, bath or stand from the tray first'
+          : 'Stand it on a burner, in a bath, on a stand or in the fume cupboard',
+      });
 
       // Through withEffects so the level actually falls and the colour
       // fades out, rather than the glass simply being redrawn empty.
@@ -1807,6 +1999,15 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     }
     if (equip.kind === 'ice_bath') {
       controlSub.textContent = 'Melting ice holds a vessel a little above 0 °C - for reactions that warmth would spoil.';
+    }
+    // A tile goes on a retort stand's base - a drag for the mouse (UI.10.3).
+    if (equip.kind === 'tile') {
+      const names = equipmentNames(state.equipment);
+      for (const stand of state.equipment.filter((q) => q.kind === 'stand' && !q.tile)) {
+        controlButton(`On the ${names.get(stand.id).toLowerCase()}`, () => dispatch.placeTileOnStand(equip.id, stand.id), {
+          key: `on-${stand.id}`, title: 'Lay the tile on the base of the retort stand',
+        });
+      }
     }
     controlButton('Put away', () => dispatch.removeEquipment(equip.id));
   }
@@ -2553,18 +2754,22 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
       const chemicalId = event.dataTransfer.getData('text/plain');
       if (!chemicalId) return;
-
-      dispatch.selectVessel(containerId);
-      const chemical = engine.getChemical(chemicalId);
-      const isSolid = chemical && chemical.state === 'solid';
-      if (getState().dispenseMode === 'quick' && !isSolid) {
-        withEffects(containerId, () => dispatch.addChemical(containerId, chemicalId, getState().quickAmount), { entering: true });
-      } else if (getState().dispenseMode === 'drop' && !isSolid) {
-        addOneDrop(containerId, chemicalId);
-      } else {
-        openAmountPanel(containerId, chemicalId);
-      }
+      addReagent(containerId, chemicalId);
     });
+  }
+
+  /** A reagent from the shelf into a vessel: dropped there, or Enter on the shelf. */
+  function addReagent(containerId, chemicalId) {
+    dispatch.selectVessel(containerId);
+    const chemical = engine.getChemical(chemicalId);
+    const isSolid = chemical && chemical.state === 'solid';
+    if (getState().dispenseMode === 'quick' && !isSolid) {
+      withEffects(containerId, () => dispatch.addChemical(containerId, chemicalId, getState().quickAmount), { entering: true });
+    } else if (getState().dispenseMode === 'drop' && !isSolid) {
+      addOneDrop(containerId, chemicalId);
+    } else {
+      openAmountPanel(containerId, chemicalId);
+    }
   }
 
   /* ------------------------------------------------------------------ *
@@ -2876,6 +3081,15 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
 
   subscribe(render);
   render();
+
+  // The window resized, or the text made larger (View > Zoom In): redraw,
+  // so app.js learns the bench's new size and slides back anything now past
+  // its edge, and the label cards are placed again (UI.10.3).
+  let resizeFrame = 0;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(render);
+  });
 
   return { render };
 }

@@ -30,6 +30,7 @@ import { getMolecule3D } from './molecular3d.js';
 import { playSound } from './sound.js';
 // The reagent's bottle with its printed label and GHS pictograms (UI.8.2).
 import { bottleSvg } from './bottles.js';
+import { keepFocus } from './keep-focus.js';
 
 // The mockup's own seven-way accent, one colour per tag - never the
 // hazard red used decoratively (that stays reserved for the hazard
@@ -478,7 +479,8 @@ export function mountPanels({ root, getState, dispatch, subscribe }) {
     return form;
   }
 
-  subscribe(render);
+  // Redrawn on every change; keepFocus keeps the keyboard's place (UI.10.3).
+  subscribe(() => keepFocus(root, render));
   render();
 
   return { render };

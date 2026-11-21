@@ -92,7 +92,10 @@ Design decisions follow from the room, not from taste:
   low-contrast grey-on-grey, no text below 14px.
 - **Cheap TN monitors with poor colour fidelity are common.** A subtle colour distinction that
   reads clearly on a good laptop screen may vanish on a lab monitor.
-- **Mouse only.** No touch, no trackpad gestures. Click targets ≥ 40×40px.
+- **Mouse first.** No touch, no trackpad gestures. Click targets ≥ 40×40px. Everything a mouse
+  does can also be done from the keyboard (§8, BUILD_UI.md UI.10.3): every vessel and piece of
+  apparatus is a Tab stop, Enter on a shelf reagent adds it to the selected vessel, and pouring
+  and placing have "Pour into…" and "Put on…" in the control strip. `npm run access` checks it.
 - **Shared machines, short sessions.** A student sits down mid-period and must understand the
   screen in seconds. No onboarding tour, no hidden menus.
 

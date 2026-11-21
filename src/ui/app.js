@@ -462,6 +462,53 @@ function moveVessel(containerId, x, y) {
 }
 
 /**
+ * Slides back anything the bench has become too narrow to show - when the
+ * text is made larger mid-session, the bench loses width (UI.10.3).
+ * Furniture moves with whatever stands on it (moveEquipment), and a burette
+ * clamped over a free-standing vessel moves with that vessel. Positions
+ * only; nothing about the chemistry changes.
+ */
+function keepEverythingOnBench() {
+  const limit = benchSize.width - 8;
+  let moved = false;
+  for (const item of equipment) {
+    const w = EQUIPMENT_TYPES[item.kind]?.w ?? 0;
+    if (item.x + w <= limit) continue;
+    moveEquipment(item.id, Math.max(8, limit - w), item.y);
+    moved = true;
+  }
+  for (const container of containers) {
+    if (standOnByContainer.has(container.id) || clampedOverByContainer.has(container.id)) continue;
+    const at = positionByContainer.get(container.id);
+    const w = VESSEL_TYPES[container.type]?.w ?? 0;
+    if (!at || at.x + w <= limit) continue;
+    const dx = Math.max(8, limit - w) - at.x;
+    positionByContainer.set(container.id, { x: at.x + dx, y: at.y });
+    for (const [buretteId, over] of clampedOverByContainer) {
+      const b = positionByContainer.get(buretteId);
+      if (over === container.id && b && !standOnByContainer.has(buretteId)) {
+        positionByContainer.set(buretteId, { x: b.x + dx, y: b.y });
+      }
+    }
+    moved = true;
+  }
+  if (moved) notify();
+}
+
+/**
+ * Lifts a vessel off what it stands on and sets it down in a clear spot on
+ * the bench - the keyboard's version of dragging it away (UI.10.3). Exactly
+ * moveVessel, which is what the drag calls; only the spot is chosen here.
+ */
+function setDownOnBench(containerId) {
+  const container = containersById.get(containerId);
+  const def = container && VESSEL_TYPES[container.type];
+  if (!def) return;
+  const index = containers.indexOf(container);
+  moveVessel(containerId, placeNewObject(def.w, index), benchFloorY(def.h));
+}
+
+/**
  * A vessel dropped on a retort stand (BUILD_UI.md UI.6.1). A burette or a
  * tube goes into the clamp; anything else stands on the base, under the
  * clamp. A burette in the clamp with a flask on the base is clamped over
@@ -1773,6 +1820,7 @@ const dispatch = {
   beginDip,
 
   moveVessel,
+  setDownOnBench,
   moveEquipment,
   removeVessel,
   emptyVessel,
@@ -1782,7 +1830,12 @@ const dispatch = {
   unclamp,
   placeTileOnStand,
   setBenchSize: (width, height) => {
+    const narrower = width < benchSize.width;
     benchSize = { width, height };
+    // Text made larger mid-session (View > Zoom In) narrows the bench;
+    // nothing may be left off its right-hand edge (UI.10.3). After this
+    // render, not inside it.
+    if (narrower) setTimeout(keepEverythingOnBench, 0);
   },
 };
 

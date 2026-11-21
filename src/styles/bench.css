@@ -117,7 +117,10 @@
   /* Ink at reduced opacity, for hierarchy on the light surfaces (shelf,
      notebook, panels) without inventing a second colour. */
   --ink-70: rgba(22, 26, 25, 0.7);
-  --ink-60: rgba(22, 26, 25, 0.6);
+  /* Named for its place in the hierarchy. 0.66 rather than 0.6 since
+     UI.10.3: at 0.6 it fell just under 4.5:1 on the wall tile and the
+     notebook paper; at 0.66 it is 5:1 on the darkest light surface. */
+  --ink-60: rgba(22, 26, 25, 0.66);
   --ink-45: rgba(22, 26, 25, 0.45);
   --ink-32: rgba(22, 26, 25, 0.32);
   --ink-18: rgba(22, 26, 25, 0.18);
@@ -134,6 +137,10 @@
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   --font-hand: 'Patrick Hand', 'Segoe Print', cursive;
   --font-notebook: 'Source Serif 4', Georgia, serif;
+
+  /* The keyboard focus ring (BUILD_UI.md UI.10.3): ink on the light
+     surfaces, wall-tile white on the dark bench, so it always shows. */
+  --focus-ring: var(--ink);
 
   --radius: 3px;
   --radius-sm: 2px;
@@ -174,7 +181,7 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
 }
 
@@ -182,15 +189,23 @@ select:focus-visible,
  * Topbar
  * ------------------------------------------------------------------ */
 
+/* The top bar wraps its switches onto a second row when the window is too
+   narrow for one - at 125% text on a 1366×768 screen it is 1093 px wide -
+   rather than letting them run into the mode picker (UI.10.3). */
 .topbar {
   display: flex;
+  flex-wrap: wrap;
   align-items: stretch;
   gap: 0;
-  height: 50px;
+  min-height: 50px;
   background: var(--panel);
   color: var(--ink);
   border-bottom: 3px solid var(--bench);
   flex: none;
+}
+
+.topbar > * {
+  min-height: 47px;
 }
 
 .topbar__brand {
@@ -223,7 +238,9 @@ select:focus-visible,
   align-items: center;
   gap: 10px;
   padding: 0 0 0 14px;
-  flex: 1;
+  /* 440 px: the mode caption and the picker. When less than that is left
+     beside the switches, the switches wrap to a second row (UI.10.3). */
+  flex: 1 1 440px;
   min-width: 0;
   border-right: 1px solid var(--ink-18);
 }
@@ -407,6 +424,15 @@ select:focus-visible,
   white-space: nowrap;
 }
 
+/* On the dark bench the focus ring is light; light panels over it switch
+   it back to ink (UI.10.3). */
+.zone--bench {
+  --focus-ring: var(--panel);
+}
+.amount-panel {
+  --focus-ring: var(--ink);
+}
+
 .zone--bench {
   width: auto;
   flex: 1;
@@ -523,7 +549,8 @@ select:focus-visible,
 }
 
 .shelf-search::placeholder {
-  color: var(--ink-45);
+  /* A hint a student must read: 4.5:1 like all text (UI.10.3). */
+  color: var(--ink-60);
 }
 
 .shelf-filter {
@@ -546,6 +573,9 @@ select:focus-visible,
   top: 79px;
   z-index: 1;
   display: flex;
+  /* Four buttons and the amount: on a narrow shelf the amount goes to a
+     second line instead of being cut off at the edge (UI.10.3). */
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
   padding: 8px 13px;
@@ -654,7 +684,7 @@ select:focus-visible,
   font-size: 14px;
   font-weight: 600;
   line-height: 1.2;
-  max-height: 2.4em;
+  max-height: 3.6em; /* three lines: no reagent name is cut short (UI.10.3) */
   overflow: hidden;
   overflow-wrap: anywhere;
 }
@@ -668,13 +698,16 @@ select:focus-visible,
   font-family: var(--font-mono);
   font-size: 14px;
   color: var(--ink-74, var(--ink-70));
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* A long formula wraps rather than being cut off - "K2[PtCl4] · 0.05 M"
+     must be read whole (UI.10.3). The swatch stays beside the first line. */
+  align-items: flex-start;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .reagent-bottle__swatch {
   flex: none;
+  margin-top: 4px; /* level with the first line of words (UI.10.3) */
   width: 11px;
   height: 11px;
   border-radius: 2px;
@@ -746,14 +779,16 @@ select:focus-visible,
 }
 
 .apparatus-item {
-  height: 30px;
   padding: 0 7px;
   font-size: 12.5px;
   font-weight: 600;
   text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* Wraps rather than cutting "+ Bunsen burner + tripod" short on a
+     narrow shelf (UI.10.3). */
+  height: auto;
+  min-height: 30px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
   background: #FFFFFF;
   color: var(--ink);
   border: 1.5px solid rgba(22, 26, 25, 0.28);
@@ -1058,9 +1093,9 @@ select:focus-visible,
   font-size: 13.5px;
   font-weight: 700;
   color: rgba(237, 234, 227, 0.94);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* Wraps rather than being cut off: the id is how a student tells two
+     beakers apart (UI.10.3). */
+  overflow-wrap: anywhere;
 }
 
 .bench-controls__sub {
@@ -1094,7 +1129,9 @@ select:focus-visible,
 }
 
 .bench-control:disabled {
-  color: rgba(237, 234, 227, 0.42);
+  /* Dimmer than a live button, but still readable at 5:1 (UI.10.3):
+     "Dip a tool" says what the button is for even before it can work. */
+  color: rgba(237, 234, 227, 0.6);
   cursor: not-allowed;
 }
 
@@ -2788,8 +2825,10 @@ html.reduce-motion .fx-flame--3 {
   bottom: var(--rod-foot, 24%);
   width: 9px;
   /* Both rods the same grey on purpose - the sign says which is which,
-     not the colour (UI.md section 5). */
-  background: linear-gradient(90deg, #4E5350, #2A2E2C);
+     not the colour (UI.md section 5). The solid colour under the
+     gradient is what the + and - signs are read against (UI.10.3). */
+  background-color: #2A2E2C;
+  background-image: linear-gradient(90deg, #4E5350, #2A2E2C);
   border: 1px solid #141716;
   border-radius: 2px;
   display: flex;
@@ -2850,7 +2889,12 @@ html.reduce-motion .electrode-bubble {
   font-size: 12px;
   font-weight: 600;
   color: #FFFFFF;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  /* A small dark backing, so the ion reads at 4.5:1 over any liquid -
+     including clear brine against the close look's white tile, where
+     white text alone vanished (UI.10.3). */
+  padding: 0 3px;
+  border-radius: 2px;
+  background: rgba(20, 26, 25, 0.78);
 }
 
 /* The drift. Negative ions travel right to the anode, positive ones left
@@ -2911,7 +2955,7 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
 .molecular-panel__replay:focus-visible,
 .molecular3d-panel__close:focus-visible,
 .guided-summary-panel__close:focus-visible {
-  outline: 3px solid var(--ink);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
 }
 
@@ -4542,4 +4586,14 @@ html.effects-low .vessel__fuming > span:nth-child(2) {
   border: 1px solid rgba(221, 239, 217, 0.35);
   border-radius: 3px;
   pointer-events: none;
+}
+
+/* ------------------------------------------------------------------ *
+ * A narrower window (BUILD_UI.md UI.10.3). 125% text on a 1366×768
+ * screen - Windows' own default on many such screens - leaves 1093 px.
+ * Each side column gives up a little, so the bench keeps room to work.
+ * ------------------------------------------------------------------ */
+@media (max-width: 1250px) {
+  .zone--shelf { width: 300px; }
+  .zone--notebook { width: 300px; }
 }

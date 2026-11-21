@@ -47,6 +47,8 @@
 import { engine } from '../core/engine.js';
 // Each reagent drawn as the bottle, jar or cylinder it comes in (UI.8.2).
 import { bottleSvg } from './bottles.js';
+// The apparatus buttons keep the keyboard's place when redrawn (UI.10.3).
+import { keepFocus } from './keep-focus.js';
 
 /** The levels a chemical can be tagged with, coarsest first. */
 const LEVELS = [
@@ -280,6 +282,19 @@ export function mountShelf({ root, getState, dispatch, subscribe }) {
     meta.append([chemical.colorName, chemical.formula, chemical.concentration].filter(Boolean).join(' · '));
     item.appendChild(meta);
 
+    // The keyboard's way to add a reagent (BUILD_UI.md UI.10.3): Tab to it
+    // and press Enter, and it goes into the vessel selected on the bench -
+    // the same as dropping it there. bench.js listens for this.
+    item.tabIndex = 0;
+    item.setAttribute('aria-label', `${chemical.name}, ${[chemical.colorName, chemical.formula, chemical.concentration].filter(Boolean).join(', ')}: press Enter to add it to the selected vessel`);
+    item.addEventListener('keydown', (event) => {
+      if (event.target !== item) return;
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        document.dispatchEvent(new CustomEvent('chemlab:reagent-chosen', { detail: { chemicalId: chemical.id } }));
+      }
+    });
+
     item.addEventListener('dragstart', (event) => {
       event.dataTransfer.setData('text/plain', chemical.id);
       event.dataTransfer.effectAllowed = 'copy';
@@ -450,7 +465,7 @@ export function mountShelf({ root, getState, dispatch, subscribe }) {
     }
   }
 
-  subscribe(renderApparatus);
+  subscribe(() => keepFocus(apparatusGrid, renderApparatus));
   renderApparatus();
   subscribe(renderDispenseRow);
   renderDispenseRow();

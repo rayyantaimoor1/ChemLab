@@ -123,7 +123,8 @@ chemlab/
 │   │   ├── molecular3d.js    ← 3D ball-and-stick viewer
 │   │   ├── notebook-storage.js ← the page's side of the save/load/report bridge
 │   │   ├── notebook-export.js  ← the notebook as plain text for Export
-│   │   └── problem-report.js   ← builds a "This looks wrong" report
+│   │   ├── problem-report.js   ← builds a "This looks wrong" report
+│   │   └── keep-focus.js       ← keyboard focus that survives a part of the screen being redrawn
 │   ├── styles/
 │   └── assets/               ← bundled fonts, icons, sounds; room/ holds the drawn wall and bench textures
 ├── scripts/
@@ -132,6 +133,7 @@ chemlab/
 │   ├── capture-ui.mjs        ← screenshots of the reference benches at 1366×768 (BUILD_UI.md)
 │   ├── make-room-images.mjs  ← draws the wall-tile and bench-resin textures into src/assets/room/
 │   ├── perf-bench.mjs        ← `npm run perf`: times a busy bench, fails if 20% slower than PERFORMANCE.md
+│   ├── check-access.mjs      ← `npm run access`: keyboard, focus rings, contrast, 125% text, Reduce animation
 │   └── lib/                  ← the checkers these use, the golden-sentence builder, and bench-helpers.mjs (a student's mouse, for the capture and perf scripts)
 ├── tests/
 │   └── golden/               ← notebook-sentences.json: the approved sentence for every reaction
