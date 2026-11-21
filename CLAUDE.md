@@ -140,6 +140,8 @@ chemlab/
 ├── tests/
 │   └── golden/               ← notebook-sentences.json: the approved sentence for every reaction
 ├── docs/ui-progress/         ← before-and-after screenshots for each UI stage
+├── docs/PROJECT_REVIEW.md    ← the Phase 10.3 review: what falls short of this spec
+├── docs/STAGE_2_2_SCHEMA.md  ← the approved schema for amounts (stage 2.2)
 └── build/                    ← electron-builder output (gitignored)
 ```
 
@@ -258,6 +260,18 @@ Progress is in `batch.md` §19.
   a solid broken down by heat gives gas only while heated, so steady.
 - Every rule with bubbles of a gas has one, and a missing one fails the
   build. The record is in `batch.md` §17.
+
+**Amounts: `concentrationM`, `acidBase`, and `coefficients` on a reaction** (BUILD_PHASE_2.md
+stage 2.2, owner approved 2026-11-22). The full schema is `docs/STAGE_2_2_SCHEMA.md`.
+- **`concentrationM`** is the label's molarity as a number. It is curated: concentrated
+  reagents carry a source, and it is never read off the `concentration` words.
+- **`acidBase`** marks a curated strong acid or strong base:
+  `{ "kind": "strong_acid" | "strong_base", "perFormula": n }`. When one is left in excess, its
+  pH is worked out from its moles. Every other pH stays curated (§6.6).
+- **A reaction's `coefficients`** map each reactant and product id to its number in the
+  equation. The validator checks them against the equation.
+- **Anything whose amount is not known counts as plenty.** A rule with no `coefficients` behaves
+  exactly as before.
 
 ### `reactions.json`
 

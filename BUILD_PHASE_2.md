@@ -170,11 +170,30 @@ concentration. Real labs are all about *how much*.
 > H⁺/OH⁻ for strong acid/strong base only, curated for everything else. Option (a) is closest to
 > §6.6.
 
+> **Both decided (owner, 2026-11-22).**
+> - **Amounts:** approved, using the schema in `docs/STAGE_2_2_SCHEMA.md`.
+> - **pH:** option **(b+), "strong excess"**. When what a reaction leaves over is a curated
+>   strong acid or strong base, the pH comes from its moles in the volume. Every other pH stays
+>   curated.
+
 **2.2.1 — Opus — Schema**
 > Propose a schema change, without writing code yet: numeric `concentrationM` on chemicals,
 > stoichiometric coefficients on reaction reactants and products, and how solids (grams) and gases
 > fit in. It must be backwards-compatible — existing rules with no coefficients keep working
 > exactly as they do now. Show me three real reactions converted as examples.
+
+> **Done (2026-11-22), approved.** The proposal is `docs/STAGE_2_2_SCHEMA.md`. It adds three
+> fields:
+> - **`concentrationM` on chemicals:** curated, never read off the label's words.
+> - **`acidBase` on chemicals:** strong acids and bases, for decision 2.
+> - **`coefficients` on reactions:** a map by chemical id, checked against the equation.
+>
+> **Anything without an amount counts as "plenty"**, so old rules behave exactly as they do now.
+>
+> **Three reactions are worked through with numbers:**
+> - marble chips with acid added in portions;
+> - lead iodide, with iodide limiting (0.115 g);
+> - NaOH left in excess: pH 13.4, where today's lab reads 7.
 
 **2.2.2 — Opus — Engine**
 > Implement amounts in container.js and engine.js per the approved schema: limiting reagent, the
