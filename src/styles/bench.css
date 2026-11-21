@@ -4645,3 +4645,52 @@ html.effects-low .vessel__fuming > span:nth-child(2) {
 .vessel-object.is-held-tilted.held-dry .vessel__holder-handle {
   transform: rotate(-90deg);
 }
+
+/* ------------------------------------------------------------------ *
+ * Click targets at least 40×40 px (Phase 10.1; UI.md §2 and §8). The lab
+ * is driven with a mouse, often by a teacher at a projector, so nothing a
+ * student clicks may be smaller. `npm run access` measures every control.
+ * ------------------------------------------------------------------ */
+.shelf-level,
+.shelf-search,
+.shelf-filter,
+.shelf-dispense__mode,
+.apparatus-item,
+.guided-bar__picker,
+.guided-bar__leave,
+.observation-form input,
+.observation-form button,
+.estimate-form select,
+.estimate-form input,
+.estimate-form button,
+.bench-control {
+  min-height: 40px;
+}
+.shelf-level,
+.shelf-search,
+.shelf-filter,
+.shelf-dispense__mode,
+.guided-bar__picker,
+.guided-bar__leave,
+.observation-form input,
+.observation-form button,
+.estimate-form select,
+.estimate-form input,
+.estimate-form button,
+.bench-control {
+  height: 40px;
+}
+.shelf-dispense__stepper button {
+  width: 40px;
+  height: 40px;
+  font-size: 15px;
+}
+/* "This looks wrong" stays a quiet underlined link in the notebook's text,
+   but the space that takes its click is 40 px tall: the padding reaches
+   10 px above and below, and the matching negative margin keeps the
+   entries exactly as close together as before. */
+.problem-report__link {
+  min-height: 40px;
+  padding: 10px 0;
+  margin: -10px 0;
+}

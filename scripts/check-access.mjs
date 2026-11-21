@@ -21,6 +21,11 @@
  *                  display setting does: the page must not scroll sideways
  *                  and no text may be cut off.
  *   5. REDUCE ANIMATION - with the switch on, nothing may loop.
+ *   7. CLICK TARGETS - every control at least 40×40 px (UI.md §2 and §8:
+ *                  mouse-driven, often on a projector). A checkbox counts as
+ *                  its whole label, which is what a click lands on.
+ *
+ * (6 is the keyboard path, which is not named for a check above.)
  *
  * Run it with:  npm run access
  *               npm run access -- --shots <folder>   (also save pictures)
@@ -179,6 +184,30 @@ const PAGE_LIB = `
         if (n.getAnimations().some((a) => a.playState === 'running')) return true;
       }
       return false;
+    },
+
+    // 7. Controls smaller than 40×40 px. A checkbox or select inside a label
+    // is measured as the label, the whole of which takes the click.
+    smallTargets() {
+      const out = new Map();
+      const controls = document.querySelectorAll('button, select, input, a[href], [tabindex]:not([tabindex="-1"]), summary');
+      for (const el of controls) {
+        if (!this.visible(el) || el.disabled) continue;
+        const target = el.closest('label') || el;
+        let r = target.getBoundingClientRect();
+        // A vessel or piece of apparatus takes the click on its label card
+        // too, so the target is the two together.
+        const card = target.classList.contains('bench-object') ? target.querySelector(':scope > .object-chip') : null;
+        if (card) {
+          const c = card.getBoundingClientRect();
+          r = { width: Math.max(r.right, c.right) - Math.min(r.left, c.left), height: Math.max(r.bottom, c.bottom) - Math.min(r.top, c.top) };
+        }
+        if (r.width >= 40 && r.height >= 40) continue;
+        const key = this.name(target).replace(/ ".*$/, '');
+        if (!out.has(key)) out.set(key, { name: this.name(target), w: Math.round(r.width), h: Math.round(r.height), count: 0 });
+        out.get(key).count += 1;
+      }
+      return [...out.values()].sort((a, b) => a.h - b.h);
     },
 
     // 2. Things that look clickable but that the keyboard cannot reach.
@@ -428,6 +457,12 @@ app.whenReady().then(async () => {
     console.log(`2. MOUSE-ONLY: ${pointerOnly.length} kinds of thing the keyboard cannot reach`);
     for (const p of pointerOnly) console.log(`   ${p.name} (${p.cursor} cursor, ${p.count} on screen)`);
     if (pointerOnly.length) problems.push(`${pointerOnly.length} kinds of control only a mouse can use`);
+
+    // 7. Click targets.
+    const small = await page(win, `return __a11y.smallTargets();`);
+    console.log(`7. CLICK TARGETS: ${small.length} kinds of control smaller than 40×40 px`);
+    for (const s of small) console.log(`   ${s.w}×${s.h}  ${s.name}${s.count > 1 ? ` (+${s.count - 1} like it)` : ''}`);
+    if (small.length) problems.push(`${small.length} kinds of control smaller than 40×40 px`);
 
     // 3. Contrast.
     const contrast = await page(win, `return __a11y.contrast();`);

@@ -404,6 +404,19 @@ everything else.
 
 > Stage and commit the accessibility fixes. Push to origin main.
 
+> **Done (2026-11-21).** Keyboard, focus rings, contrast, 125% text and Reduce animation were
+> already done and checked in BUILD_UI.md UI.10.3. 10.1 added the last part of UI.md §8:
+> - **Click targets:** `npm run access` now measures every control, and fails on any under
+>   40×40 px. It counts a checkbox as its label, and a vessel as its glass plus its label card.
+> - **Thirteen kinds were too small,** 20 to 34 px tall: the shelf's level, search, filter, Dispense
+>   and stepper controls, the apparatus buttons, the mode picker, the notebook's forms, the
+>   bench's control strip, and "This looks wrong".
+> - **All are now 40 px or more.** "This looks wrong" keeps its look as a quiet link; its 40 px
+>   click area reaches into the space around it, so the notebook takes up no more room.
+> - **The cost:** the shelf's controls stand taller, so at 1366×768 the reagent list shows about
+>   two and a half reagents before it scrolls, down from about four.
+> - **Checked:** `npm run access` passes everything, now including the 40×40 check.
+
 **10.2 — Sonnet**
 > Build the final installer with a proper app name, icon, and version number.
 
