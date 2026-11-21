@@ -50,3 +50,10 @@ See `realism-review.md` in this folder. One fix was made: the label of a solid a
 is no longer its shelf name ("Copper turnings", "marble chips"); it uses the reaction's own words,
 as the notebook does. `textures-after.png` shows "deposit: reddish brown copper" on the small
 beaker where zinc took copper out of copper(II) sulfate.
+
+## A tube heated in the flame (after the review)
+
+`held-tube.png` shows a test tube of copper sulfate solution on a medium flame and a boiling tube
+of water boiling on a full one. Both are held in their holders at 45°, with no tripod under them,
+and the liquid surfaces are level. Both lean right, because the boiling tube's burner is at the
+bench's left edge.

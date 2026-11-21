@@ -717,9 +717,35 @@ addition and instrument precision are BUILD_PHASE_2.md Stage 2.5; this stage is 
 >   - one drop delivered 0.05 mL into the flask;
 >   - a test tube on a burner wore its holder, and both tripods their gauze.
 >   - Screenshots: `docs/ui-progress/UI.6/titration.png`, `holder-gauze.png`.
-> - **Not done: a tube held at an angle.** Tilting a tube tilts the liquid drawn inside it, and a
->   liquid's surface stays level. Doing it properly needs the level worked out for a tilted tube,
->   which belongs with UI.6.2, where pouring tilts the vessel too. Tubes are clamped upright for now.
+> - **Not done at first: a tube held at an angle.** Tilting a tube tilts the liquid drawn inside
+>   it, and a liquid's surface stays level. Doing it properly needed the level worked out for a
+>   tilted tube, which came with UI.6.2.
+> - **Done later (2026-11-21), after the UI.10.4 realism review: a tube heated in the flame.**
+>   The geometry is `src/ui/held-tube.js`, tested in `tests/held-tube.test.js`.
+>   - A test tube or boiling tube put on a burner is held in its wooden holder at 45°. Its bottom
+>     sits in the flame just above the inner cone, and its mouth points away from the hand.
+>   - No tripod or gauze is drawn under it: a tube is heated straight in the flame. Beakers and
+>     flasks still stand on the gauze.
+>   - **The liquid stays level.** The liquid layer turns back by the tube's tilt about the point
+>     where its surface meets the axis, as in the pour. The meniscus is drawn as wide as a level
+>     line across the tilted tube. Steam and fumes still rise straight up from the mouth. While the
+>     tube is held, a change of level moves at once instead of scaling upright.
+>   - **It leans into clear space.** A tube leans left unless the bench's edge or a neighbour is in
+>     the way, then right, with the holder mirrored so the handle stays away from the mouth. Two
+>     tubes on neighbouring burners lean the same way instead of crossing.
+>   - **Turning with the tube:** the selection outline, and the tube's own label card, which now
+>     keeps off its tilted glass.
+>   - **Unchanged:**
+>     - the close look shows the tube upright, lifted out of the flame;
+>     - taking the tube off the burner stands it upright again;
+>     - nothing new moves: the tilt is a still transform.
+>   - **Checked** with the new `held-tube` reference set-up (`capture-ui.mjs --only held-tube`):
+>     copper sulfate in a test tube and boiling water in a boiling tube, both level. The `heat`
+>     set-up heats crystals in a tilted boiling tube, with water on the cool glass.
+>     Screenshot: `docs/ui-progress/UI.10/held-tube.png`.
+>   - **A question for the owner, not changed:** a tube heating crystals that give off water is
+>     often held mouth slightly down, so the water does not run back onto the hot glass. The bench
+>     holds every tube mouth up at 45°, the usual way for a liquid.
 > - **Not done: tongs for a crucible.** There is no crucible in the app; it would be a new vessel,
 >   and it has nothing to do until something needs heating strongly in one.
 
@@ -1166,6 +1192,7 @@ someone seeing it for the first time.
 >   - distilled water alone is told it "needs an electric current" (pure water barely conducts);
 >   - a reaction is a two-second burst and the metal in excess vanishes (stage 2.2, amounts);
 >   - a test tube is heated standing upright on the tripod (the angled tube deferred in UI.6.1).
+>     **Since done:** a tube on a burner is held at 45° in the flame (see UI.6.1).
 > - **Recorded:**
 >   - flame sizes;
 >   - the gauze has no ceramic centre;

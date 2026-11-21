@@ -54,6 +54,8 @@ import {
 } from './effects.js';
 // Keyboard focus that survives the strip and tray being redrawn (UI.10.3).
 import { keepFocus } from './keep-focus.js';
+// A tube heated in the flame is held at an angle, its liquid level (UI.10.4).
+import { heldInFlame, levelLiquid, leanFor, HELD_TUBE } from './held-tube.js';
 // How a pour looks: lip, tilt, stream, splash (BUILD_UI.md UI.6.2).
 import { pourPath, POUR } from './pour-path.js';
 // One drop, and swirl or stir (BUILD_UI.md UI.6.3).
@@ -295,7 +297,9 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
         applyLabelTry(o, attempt);
         const rect = o.chip.getBoundingClientRect();
         const cost = 4 * placed.reduce((sum, p) => sum + overlapArea(rect, p), 0)
-          + bodies.reduce((sum, b) => sum + (b.id === o.id ? 0 : overlapArea(rect, b.rect)), 0)
+          // An object's own glass never meets its own card - unless it is a tube
+          // held at an angle, which leans into the card's usual place (UI.10.4).
+          + bodies.reduce((sum, b) => sum + (b.id === o.id && !o.el.classList.contains('is-held-tilted') ? 0 : overlapArea(rect, b.rect)), 0)
           + outsideArea(rect, bounds);
         if (!best || cost < best.cost) best = { attempt, cost };
         if (cost === 0) break;
@@ -774,6 +778,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
       // A vessel on the tripod stops the flame: it spreads under the base
       // rather than reaching up through the glass.
       refs.el.classList.toggle('has-vessel', !!item.standingVesselId);
+      // A tube is held in the flame, so no tripod or gauze is drawn under
+      // it (UI.10.4): a tube is never heated standing on a gauze.
+      const standing = item.standingVesselId ? state.containers.find((c) => c.id === item.standingVesselId) : null;
+      refs.el.classList.toggle('holds-tube', !!standing && heldInFlame(standing.type, 'burner'));
     }
   }
 
@@ -1131,6 +1139,64 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const width = `${(2 * geometry.innerHalfAt(y)).toFixed(1)}px`;
     refs.liquidBase.style.setProperty('--surface-w', width);
     refs.liquidIncoming.style.setProperty('--surface-w', width);
+  }
+
+  /**
+   * A tube held at an angle keeps its liquid level (UI.10.4): the layer is
+   * turned back by the tube's tilt about the point where its surface meets
+   * the axis, and reaches past the glass so the glass's own clip trims it.
+   */
+  function levelHeldLiquid(refs, container) {
+    const level = levelLiquid(glassGeometry(container.type, container.capacityMl), container.volumeMl, refs.heldAngle ?? HELD_TUBE.angleDeg);
+    if (!level) return;
+    for (const el of [refs.liquidBase, refs.liquidIncoming]) {
+      Object.assign(el.style, {
+        top: `${level.top}px`,
+        bottom: `${level.bottom}px`,
+        left: `${level.left}px`,
+        right: `${level.right}px`,
+        height: 'auto',
+        transformOrigin: '50% 0',
+        transform: `rotate(${level.rotateDeg}deg)`,
+      });
+      el.style.setProperty('--surface-w', `${level.surfaceWidth.toFixed(1)}px`);
+    }
+    refs.heldLevel = true;
+  }
+
+  /**
+   * The nearest things either side of a held tube - another object's body
+   * or the bench's edge - so it leans into clear space (held-tube.js).
+   * Measured upright, from where everything stands; the tube's own burner
+   * is not in the way.
+   */
+  function sideLimits(container, burner, state) {
+    const centre = container.position.x + (vesselEls.get(container.id)?.vessel.offsetWidth ?? 0) / 2;
+    let left = 0;
+    let right = canvas.clientWidth;
+    const consider = (x, w) => {
+      if (x + w <= centre) left = Math.max(left, x + w);
+      else if (x >= centre) right = Math.min(right, x);
+    };
+    for (const other of state.containers) {
+      if (other.id === container.id) continue;
+      const refs = vesselEls.get(other.id);
+      if (refs) consider(other.position.x, refs.vessel.offsetWidth);
+    }
+    for (const item of state.equipment) {
+      if (item.id === burner?.id) continue;
+      const refs = equipmentEls.get(item.id);
+      if (refs) consider(item.position.x, refs.art.offsetWidth);
+    }
+    return { left, right };
+  }
+
+  /** Back to an upright liquid, when the tube is taken out of the flame. */
+  function unlevelHeldLiquid(refs) {
+    for (const el of [refs.liquidBase, refs.liquidIncoming]) {
+      Object.assign(el.style, { top: '', bottom: '', left: '', right: '', transformOrigin: '', transform: '' });
+    }
+    refs.heldLevel = false;
   }
 
   /** The paint for a vessel's liquid: its curated colour and clarity, seen
@@ -1504,6 +1570,24 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     // gauze (UI.6.1).
     const tube = container.type === 'test_tube' || container.type === 'boiling_tube';
     refs.holder.classList.toggle('is-visible', tube && under?.kind === 'burner');
+    // ...and held at about 45° in the flame, mouth pointing away, its bottom
+    // just above the inner cone (UI.10.4; held-tube.js). The close look
+    // shows it upright, lifted out of the flame to be looked at.
+    const held = heldInFlame(container.type, under?.kind) && !refs.closeLook;
+    refs.el.classList.toggle('is-held-tilted', held);
+    // It leans left, unless its mouth would leave the bench - then right,
+    // with the holder mirrored so the handle is still away from the mouth.
+    if (held) {
+      const limits = sideLimits(container, under, state);
+      refs.heldAngle = leanFor(container.position.x, refs.vessel.offsetWidth, refs.vessel.offsetHeight, limits.left, limits.right);
+    } else {
+      refs.heldAngle = null;
+    }
+    refs.el.classList.toggle('held-lean-right', held && refs.heldAngle > 0);
+    if (held) {
+      refs.el.style.setProperty('--held-angle', `${refs.heldAngle}deg`);
+      refs.el.style.setProperty('--held-drop', `${HELD_TUBE.dropPx}px`);
+    }
 
     refs.volumeEl.textContent = container.volumeMl;
     refs.tempEl.textContent = container.temperatureC.toFixed(1);
@@ -1585,9 +1669,14 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
         refs.liquidIncoming.style.background = targetFill;
         refs.liquidIncoming.style.opacity = '0';
       }
-      if (refs.liquidBase.style.height !== targetHeight) {
-        refs.liquidBase.style.height = targetHeight;
-        refs.liquidIncoming.style.height = targetHeight;
+      if (held) {
+        levelHeldLiquid(refs, container);
+      } else {
+        if (refs.heldLevel) unlevelHeldLiquid(refs);
+        if (refs.liquidBase.style.height !== targetHeight) {
+          refs.liquidBase.style.height = targetHeight;
+          refs.liquidIncoming.style.height = targetHeight;
+        }
       }
       // riseLiquidLevel fades the layer out when a vessel empties; refilling
       // it later has to bring it back.
@@ -2672,7 +2761,9 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const beforeFraction = liquidFraction(before.type, before.capacityMl, before.volumeMl);
     const afterFraction = liquidFraction(after.type, after.capacityMl, after.volumeMl);
     setSurfaceWidth(refs, after);
-    if (beforeFraction !== afterFraction) {
+    // In a tube held at an angle the upright scaling would fight the level
+    // turn (UI.10.4), so there the level simply moves to where it belongs.
+    if (beforeFraction !== afterFraction && !refs.heldLevel) {
       riseLiquidLevel(refs.liquidBase, beforeFraction, afterFraction);
       refs.liquidIncoming.style.height = refs.liquidBase.style.height;
     }

@@ -113,6 +113,7 @@ chemlab/
 │   │   ├── gas-bubbles.js    ← where a gas's bubbles start, and how fast, from curated data
 │   │   ├── gas-look.js       ← coloured gases above the liquid, and where smoke forms
 │   │   ├── stand.js          ← the retort stand: where the clamped vessel and the one on its base go
+│   │   ├── held-tube.js      ← a tube heated in the flame: held at 45°, which way it leans, its liquid kept level
 │   │   ├── pour-path.js      ← how a pour looks: lip, tilt, stream arc, splash
 │   │   ├── dropwise.js       ← one drop (0.05 mL), and which vessels are swirled rather than stirred
 │   │   ├── meniscus.js       ← reading a scale at eye level, parallax, and the reading lens

@@ -24,6 +24,8 @@ import { HELPERS } from './lib/bench-helpers.mjs';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const stage = process.argv.find((arg) => /^UI\.\d+$/.test(arg)) || 'current';
+// --only <name>: capture just that set-up, e.g. --only held-tube.
+const only = process.argv.includes('--only') ? process.argv[process.argv.indexOf('--only') + 1] : null;
 const OUT = path.join(ROOT, 'docs', 'ui-progress', stage);
 
 // Its own data folder. Without one, Electron uses the shared default, and
@@ -228,6 +230,26 @@ const SETUPS = {
     __cap.press('stand a thermometer in'); await __cap.wait(200);
     __cap.press('heat 3'); await __cap.wait(200);
     await __cap.wait(16000);`,
+  // A tube heated in the flame (UI.10.4): held in its holder at about 45°,
+  // no tripod under it, the liquid level. A test tube of copper sulfate
+  // solution on a medium flame; a boiling tube of water on a full one.
+  'held-tube': `
+    __cap.press('auto-pour'); await __cap.wait(100);
+    __cap.press('take a test tube'); await __cap.wait(300);
+    __cap.press('bunsen burner'); await __cap.wait(300);
+    __cap.press('take a boiling tube'); await __cap.wait(300);
+    __cap.press('bunsen burner'); await __cap.wait(300);
+    await __cap.setQuick(5);
+    await __cap.fill('tube_1', 'cuso4_0_5m', 1);
+    await __cap.setQuick(10);
+    await __cap.fill('boiling_tube_1', 'water_distilled', 2);
+    __cap.select('tube_1'); await __cap.wait(100);
+    __cap.press('stand it on'); await __cap.wait(150); [...document.querySelectorAll('.bench-controls__buttons button')].filter((b) => /^On the bunsen/i.test(b.textContent))[0].click(); await __cap.wait(250);
+    __cap.press('heat 2'); await __cap.wait(200);
+    __cap.select('boiling_tube_1'); await __cap.wait(100);
+    __cap.press('stand it on'); await __cap.wait(150); [...document.querySelectorAll('.bench-controls__buttons button')].filter((b) => /^On the bunsen/i.test(b.textContent))[1].click(); await __cap.wait(250);
+    __cap.press('heat 3'); await __cap.wait(200);
+    await __cap.wait(14000);`,
   'titration': `
     __cap.press('auto-pour'); await __cap.wait(100);
     __cap.press('take a conical flask'); await __cap.wait(300);
@@ -291,7 +313,10 @@ app.whenReady().then(async () => {
   });
   win.setContentSize(1366, 768);
   try {
-    for (const [name, script] of Object.entries(SETUPS)) await capture(win, name, script);
+    for (const [name, script] of Object.entries(SETUPS)) {
+      if (only && name !== only) continue;
+      await capture(win, name, script);
+    }
   } catch (error) {
     console.error('capture failed:', error);
     process.exitCode = 1;

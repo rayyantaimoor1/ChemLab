@@ -67,6 +67,8 @@ curated words, the same words the notebook uses. For example, "deposit: reddish 
    - A test tube or boiling tube is heated held in a holder, at an angle, in the flame, with its
      mouth pointing away. Standing it on a gauze is not how it is done.
    - The angled tube was deferred in UI.6.1; it is the drawing change most worth doing next.
+   - **Since done (2026-11-21):** a tube on a burner is now held in its holder at 45°, in the flame,
+     with no tripod under it and its liquid level. See `held-tube.png` and BUILD_UI.md UI.6.1.
 
 ## Recorded: a student would notice it, but it teaches nothing wrong
 

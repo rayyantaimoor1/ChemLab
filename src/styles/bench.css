@@ -4597,3 +4597,46 @@ html.effects-low .vessel__fuming > span:nth-child(2) {
   .zone--shelf { width: 300px; }
   .zone--notebook { width: 300px; }
 }
+
+/* ------------------------------------------------------------------ *
+ * A tube heated in the flame (BUILD_UI.md UI.10.4; held-tube.js). It is
+ * held in its holder at about 45°, mouth pointing away, bottom just above
+ * the inner cone - not stood on a tripod and gauze. The liquid inside stays
+ * level (bench.js turns it back); steam and fumes still rise straight up
+ * from the mouth. Static transforms only.
+ * ------------------------------------------------------------------ */
+.vessel-object.is-held-tilted > .vessel {
+  transform: translateY(var(--held-drop, 18px)) rotate(var(--held-angle, -45deg));
+  transform-origin: 50% 100%;
+}
+.vessel-object.is-held-tilted .vessel__steam,
+.vessel-object.is-held-tilted .vessel__fuming {
+  transform: rotate(calc(-1 * var(--held-angle, -45deg)));
+  transform-origin: 50% 100%;
+}
+/* The holder's handle reaches out to the right, roughly level, where the
+   hand holding it is - well away from the flame. */
+.vessel-object.is-held-tilted .vessel__holder-handle {
+  transform: rotate(35deg);
+}
+/* No tripod under a tube held in the flame. */
+.equipment--burner.holds-tube .equipment__part--burner-ring,
+.equipment--burner.holds-tube .equipment__part--burner-gauze,
+.equipment--burner.holds-tube .equipment__part--burner-leg {
+  display: none;
+}
+/* The selection outline turns with the held tube, about its base (the
+   outline reaches 7 px past the tube, the drop-target one 9 px). */
+.vessel-object.is-held-tilted.is-selected::after {
+  transform: translateY(var(--held-drop, 18px)) rotate(var(--held-angle, -45deg));
+  transform-origin: 50% calc(100% - 7px);
+}
+.vessel-object.is-held-tilted.is-drop-target::before {
+  transform: translateY(var(--held-drop, 18px)) rotate(var(--held-angle, -45deg));
+  transform-origin: 50% calc(100% - 9px);
+}
+/* Leaning right (by the bench's left edge): the holder mirrored, so its
+   handle reaches out on the side away from the mouth. */
+.vessel-object.is-held-tilted.held-lean-right .vessel__holder {
+  transform: scaleX(-1);
+}
