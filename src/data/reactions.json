@@ -272,6 +272,7 @@
     "reactants": ["ca_metal", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["caoh2_aq", "h2_g"],
+    "coefficients": { "ca_metal": 1, "water_distilled": 2, "caoh2_aq": 1, "h2_g": 1 },
     "equation": "Ca + 2H₂O → Ca(OH)₂ + H₂",
     "type": "displacement",
     "effects": {
@@ -737,6 +738,7 @@
     "reactants": ["feso4_aq", "naoh_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["feoh2_s", "na2so4_aq"],
+    "coefficients": { "feso4_aq": 1, "naoh_1m": 2, "feoh2_s": 1, "na2so4_aq": 1 },
     "equation": "FeSO₄ + 2NaOH → Fe(OH)₂ + Na₂SO₄",
     "type": "precipitation",
     "effects": {
@@ -782,6 +784,7 @@
     "reactants": ["mgcl2_aq", "naoh_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["mgoh2_s", "nacl_aq"],
+    "coefficients": { "mgcl2_aq": 1, "naoh_1m": 2, "mgoh2_s": 1, "nacl_aq": 2 },
     "equation": "MgCl₂ + 2NaOH → Mg(OH)₂ + 2NaCl",
     "type": "precipitation",
     "effects": {
@@ -954,6 +957,7 @@
     "reactants": ["cl2_aq", "kbr_0_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["kcl_aq", "br2_aq"],
+    "coefficients": { "cl2_aq": 1, "kbr_0_1m": 2, "kcl_aq": 2, "br2_aq": 1 },
     "equation": "Cl₂ + 2KBr → 2KCl + Br₂",
     "type": "displacement",
     "effects": {
@@ -998,6 +1002,7 @@
     "reactants": ["br2_aq", "ki_0_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["kbr_aq", "i2_aq"],
+    "coefficients": { "br2_aq": 1, "ki_0_1m": 2, "kbr_aq": 2, "i2_aq": 1 },
     "equation": "Br₂ + 2KI → 2KBr + I₂",
     "type": "displacement",
     "effects": {
@@ -1438,6 +1443,7 @@
     "reactants": ["cahco3_aq"],
     "conditions": { "requiresHeat": true, "minTempC": 100, "catalyst": null },
     "products": ["caco3_s", "water", "co2_g"],
+    "coefficients": { "cahco3_aq": 1, "caco3_s": 1, "water": 1, "co2_g": 1 },
     "equation": "Ca(HCO₃)₂ → CaCO₃ + H₂O + CO₂",
     "type": "decomposition",
     "effects": {
@@ -1533,6 +1539,7 @@
     "reactants": ["kclo3_s"],
     "conditions": { "requiresHeat": true, "minTempC": 200, "catalyst": "mno2_s" },
     "products": ["kcl_s", "o2_g"],
+    "coefficients": { "kclo3_s": 2, "kcl_s": 2, "o2_g": 3 },
     "equation": "2KClO₃ → 2KCl + 3O₂",
     "type": "decomposition",
     "effects": {
@@ -1761,6 +1768,7 @@
     "reactants": ["nahco3_s"],
     "conditions": { "requiresHeat": true, "minTempC": 100, "catalyst": null },
     "products": ["na2co3_s", "water", "co2_g"],
+    "coefficients": { "nahco3_s": 2, "na2co3_s": 1, "water": 1, "co2_g": 1 },
     "equation": "2NaHCO₃ → Na₂CO₃ + H₂O + CO₂",
     "type": "decomposition",
     "effects": {
@@ -1926,6 +1934,7 @@
     "reactants": ["cao_s", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["caoh2_aq"],
+    "coefficients": { "cao_s": 1, "water_distilled": 1, "caoh2_aq": 1 },
     "equation": "CaO + H₂O → Ca(OH)₂",
     "type": "combination",
     "effects": {
@@ -1982,6 +1991,7 @@
     "reactants": ["cuso4_5h2o_s"],
     "conditions": { "requiresHeat": true, "minTempC": 200, "catalyst": null },
     "products": ["cuso4_anhydrous_s", "water"],
+    "coefficients": { "cuso4_5h2o_s": 1, "cuso4_anhydrous_s": 1, "water": 5 },
     "equation": "CuSO₄·5H₂O → CuSO₄ + 5H₂O",
     "type": "dehydration",
     "effects": {
@@ -2034,6 +2044,7 @@
     "reactants": ["cocl2_6h2o_s"],
     "conditions": { "requiresHeat": true, "minTempC": 100, "catalyst": null },
     "products": ["cocl2_s", "water"],
+    "coefficients": { "cocl2_6h2o_s": 1, "cocl2_s": 1, "water": 6 },
     "equation": "CoCl₂·6H₂O → CoCl₂ + 6H₂O",
     "type": "dehydration",
     "effects": {
@@ -2060,6 +2071,7 @@
     "reactants": ["agno3_0_1m", "cu_metal"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["cuno3_aq", "ag_metal"],
+    "coefficients": { "agno3_0_1m": 2, "cu_metal": 1, "cuno3_aq": 1, "ag_metal": 2 },
     "equation": "Cu + 2AgNO₃ → Cu(NO₃)₂ + 2Ag",
     "type": "displacement",
     "effects": {
@@ -2083,6 +2095,7 @@
     "reactants": ["agno3_0_1m", "zn_metal"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["znno3_aq", "ag_metal"],
+    "coefficients": { "agno3_0_1m": 2, "zn_metal": 1, "znno3_aq": 1, "ag_metal": 2 },
     "equation": "Zn + 2AgNO₃ → Zn(NO₃)₂ + 2Ag",
     "type": "displacement",
     "effects": {
@@ -2117,6 +2130,7 @@
     "reactants": ["pbno3_0_1m", "zn_metal"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["znno3_aq", "pb_metal"],
+    "coefficients": { "pbno3_0_1m": 1, "zn_metal": 1, "znno3_aq": 1, "pb_metal": 1 },
     "equation": "Zn + Pb(NO₃)₂ → Zn(NO₃)₂ + Pb",
     "type": "displacement",
     "effects": {
@@ -2158,6 +2172,7 @@
     "reactants": ["feso4_aq", "zn_metal"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["znso4_aq", "fe_metal"],
+    "coefficients": { "feso4_aq": 1, "zn_metal": 1, "znso4_aq": 1, "fe_metal": 1 },
     "equation": "Zn + FeSO₄ → ZnSO₄ + Fe",
     "type": "displacement",
     "effects": {
@@ -2185,6 +2200,7 @@
     "reactants": ["feso4_aq", "mg_metal"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["mgso4_aq", "fe_metal"],
+    "coefficients": { "feso4_aq": 1, "mg_metal": 1, "mgso4_aq": 1, "fe_metal": 1 },
     "equation": "Mg + FeSO₄ → MgSO₄ + Fe",
     "type": "displacement",
     "effects": {
@@ -2364,6 +2380,7 @@
     "reactants": ["li_metal", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["lioh_aq", "h2_g"],
+    "coefficients": { "li_metal": 2, "water_distilled": 2, "lioh_aq": 2, "h2_g": 1 },
     "equation": "2Li + 2H₂O → 2LiOH + H₂",
     "type": "displacement",
     "effects": {
@@ -2397,6 +2414,7 @@
     "reactants": ["na_metal", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["naoh_aq", "h2_g"],
+    "coefficients": { "na_metal": 2, "water_distilled": 2, "naoh_aq": 2, "h2_g": 1 },
     "equation": "2Na + 2H₂O → 2NaOH + H₂",
     "type": "displacement",
     "effects": {
@@ -2430,6 +2448,7 @@
     "reactants": ["k_metal", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["koh_aq", "h2_g"],
+    "coefficients": { "k_metal": 2, "water_distilled": 2, "koh_aq": 2, "h2_g": 1 },
     "equation": "2K + 2H₂O → 2KOH + H₂",
     "type": "displacement",
     "effects": {
@@ -2509,6 +2528,7 @@
     "reactants": ["mgco3_s"],
     "conditions": { "requiresHeat": true, "minTempC": 350, "catalyst": null },
     "products": ["mgo_s", "co2_g"],
+    "coefficients": { "mgco3_s": 1, "mgo_s": 1, "co2_g": 1 },
     "equation": "MgCO₃ → MgO + CO₂",
     "type": "decomposition",
     "effects": {
@@ -2536,6 +2556,7 @@
     "reactants": ["caco3_s"],
     "conditions": { "requiresHeat": true, "minTempC": 900, "catalyst": null },
     "products": ["cao_s", "co2_g"],
+    "coefficients": { "caco3_s": 1, "cao_s": 1, "co2_g": 1 },
     "equation": "CaCO₃ → CaO + CO₂",
     "type": "decomposition",
     "effects": {
@@ -2563,6 +2584,7 @@
     "reactants": ["mgoh2_s"],
     "conditions": { "requiresHeat": true, "minTempC": 350, "catalyst": null },
     "products": ["mgo_s", "water"],
+    "coefficients": { "mgoh2_s": 1, "mgo_s": 1, "water": 1 },
     "equation": "Mg(OH)₂ → MgO + H₂O",
     "type": "decomposition",
     "effects": {
@@ -2586,6 +2608,7 @@
     "reactants": ["mgcl2_aq", "na2co3_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["mgco3_s", "nacl_aq"],
+    "coefficients": { "mgcl2_aq": 1, "na2co3_1m": 1, "mgco3_s": 1, "nacl_aq": 2 },
     "equation": "MgCl₂ + Na₂CO₃ → MgCO₃ + 2NaCl",
     "type": "precipitation",
     "effects": {
@@ -2608,6 +2631,7 @@
     "reactants": ["bacl2_0_1m", "na2co3_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["baco3_s", "nacl_aq"],
+    "coefficients": { "bacl2_0_1m": 1, "na2co3_1m": 1, "baco3_s": 1, "nacl_aq": 2 },
     "equation": "BaCl₂ + Na₂CO₃ → BaCO₃ + 2NaCl",
     "type": "precipitation",
     "effects": {
@@ -2961,6 +2985,7 @@
     "reactants": ["fecl3_0_1m", "ki_0_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["fecl2_aq", "i2_aq", "kcl_aq"],
+    "coefficients": { "fecl3_0_1m": 2, "ki_0_1m": 2, "fecl2_aq": 2, "i2_aq": 1, "kcl_aq": 2 },
     "equation": "2FeCl₃ + 2KI → 2FeCl₂ + I₂ + 2KCl",
     "type": "redox",
     "effects": {
@@ -3005,6 +3030,7 @@
     "reactants": ["cuoh2_s"],
     "conditions": { "requiresHeat": true, "minTempC": 100, "catalyst": null },
     "products": ["cuo_s", "water"],
+    "coefficients": { "cuoh2_s": 1, "cuo_s": 1, "water": 1 },
     "equation": "Cu(OH)₂ → CuO + H₂O",
     "type": "decomposition",
     "effects": {
@@ -3867,6 +3893,7 @@
     "reactants": ["ch3cooh_aq", "na2co3_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["ch3coona_aq", "co2_g", "water"],
+    "coefficients": { "ch3cooh_aq": 2, "na2co3_1m": 1, "ch3coona_aq": 2, "co2_g": 1, "water": 1 },
     "equation": "2CH₃COOH + Na₂CO₃ → 2CH₃COONa + CO₂ + H₂O",
     "type": "acid_carbonate",
     "effects": {
@@ -8106,6 +8133,7 @@
     "reactants": ["na2so3_aq", "bacl2_0_1m"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["baso3_s", "nacl_aq"],
+    "coefficients": { "na2so3_aq": 1, "bacl2_0_1m": 1, "baso3_s": 1, "nacl_aq": 2 },
     "equation": "Na₂SO₃ + BaCl₂ → BaSO₃↓ + 2NaCl",
     "type": "precipitation",
     "effects": {
@@ -8229,6 +8257,7 @@
     "reactants": ["alcl3_aq", "nh4oh_aq"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["aloh3_s", "nh4cl_1m"],
+    "coefficients": { "alcl3_aq": 1, "nh4oh_aq": 3, "aloh3_s": 1, "nh4cl_1m": 3 },
     "equation": "AlCl₃ + 3NH₄OH → Al(OH)₃↓ + 3NH₄Cl",
     "type": "precipitation",
     "effects": {
@@ -8363,6 +8392,7 @@
     "reactants": ["cacl2_aq", "nh42co3_aq"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["caco3_s", "nh4cl_1m"],
+    "coefficients": { "cacl2_aq": 1, "nh42co3_aq": 1, "caco3_s": 1, "nh4cl_1m": 2 },
     "equation": "CaCl₂ + (NH₄)₂CO₃ → CaCO₃↓ + 2NH₄Cl",
     "type": "precipitation",
     "effects": {

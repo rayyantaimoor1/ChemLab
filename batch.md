@@ -1884,3 +1884,51 @@ do something, as ammonia with silver chloride, that rule already exists and is f
 **Found on the way, already there before this batch:** in the iodoform experiment, step 2 adds
 iodine to the propanone before the alkali, and the notebook says "not available yet". No rule
 covers propanone with iodine alone. A sourced "nothing happens" rule would fix it.
+
+### Batch 2 — 30 more rules (2026-11-22)
+
+Coefficients now cover **60 rules**. This batch's numbers were read straight from each curated
+equation by the validator's own reader, and every one matched a formula, so none is hand-typed.
+
+**The 30:**
+- calcium, lithium, sodium and potassium with water;
+- the hydroxides of iron(II) and magnesium;
+- chlorine with bromide, and bromine with iodide;
+- boiling temporary hard water;
+- heating potassium chlorate, sodium hydrogencarbonate, the Group 2 carbonates, magnesium
+  hydroxide, copper(II) hydroxide, and the two blue and pink hydrates;
+- slaking quicklime;
+- copper and zinc displacing silver; zinc displacing lead; zinc and magnesium displacing iron;
+- the magnesium and barium carbonate precipitations;
+- iron(III) oxidising iodide;
+- ethanoic acid with sodium carbonate;
+- three analysis tests: sulfite with barium chloride, Group III aluminium, and Group V calcium.
+
+**`acidBase`** is also on sodium and potassium hydroxide solution as reactions make them, from the
+chemguide bases page, which names both. A sodium in water reaction now reads its pH from the
+NaOH made: 0.1 g of sodium in 50 mL reads pH 12.9.
+
+**Checked for the excess claim:** no rule in the data takes any of these rules' products with
+one of its own reactants, so a leftover can set nothing off.
+
+**Left out on purpose:**
+- **Chlorine water with potassium iodide.** Excess chlorine goes on to bleach the iodine, so
+  "the excess does nothing further" would be false.
+- **Water on anhydrous copper sulfate and cobalt chloride.** Excess water dissolves the hydrated
+  crystals that form. It needs a rule first.
+- **Chromium(III) and nickel hydroxides.** Both dissolve in excess of their reagent.
+- **Rules where nothing has a known amount** (Clark's method, hydrogen peroxide, the soaps):
+  coefficients would change nothing until a concentration is sourced.
+
+**Still open: warming from a solid.** A solid reacting with water or a solution keeps its curated
+temperature change, whatever the amount: 0.1 g of sodium still "warmed by about 25 °C".
+CLAUDE.md §5 deliberately left that basis open. The fix is a sourced enthalpy per rule (the
+optional `deltaHkJPerMol` in the schema), which is content work for a later batch. Until then it
+is the same as before stage 2.2.
+
+**Checks:**
+- The validator finds no errors, with no new warnings.
+- 912 tests pass.
+- The guided experiments' notebook text is identical to after batch 1, at both the smallest and
+  largest amounts.
+- The packaged-app smoke test passes on the rebuilt installer.

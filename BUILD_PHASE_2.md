@@ -251,6 +251,17 @@ concentration. Real labs are all about *how much*.
 > - **Checked:** guided experiments give identical notebook text before and after; 912 tests
 >   pass.
 
+> **Batch 2 done (2026-11-22).** 30 more rules, so **60 rules now have coefficients.** Each number
+> was read straight from its equation by the validator's own reader.
+> - **Covered:** metals with water; more precipitations; halogen displacements; metals
+>   displacing silver, lead and iron; heat decompositions; iron(III) with iodide; three analysis
+>   tests.
+> - **`acidBase`** is now also on NaOH and KOH solution as reactions make them.
+> - **Left out, with reasons in `batch.md` §20:** chlorine with iodide, water on the anhydrous
+>   salts, and the amphoteric hydroxides.
+> - **Still open:** a solid's warming does not scale with how much is added. It needs a sourced
+>   enthalpy per rule.
+
 **2.2.4 — Sonnet — Show amounts in the UI**
 > In the properties card, show what a vessel contains in mL and mmol, and say which reagent was
 > limiting when a reaction stops. In the notebook, record "excess HCl remains" type observations.
