@@ -83,6 +83,7 @@ chemlab/
 │   ├── index.html
 │   ├── core/                 ← PURE LOGIC. No DOM access anywhere in this folder.
 │   │   ├── engine.js         ← reaction resolution
+│   │   ├── amounts.js        ← moles, the limiting reagent, the pH of a strong excess (stage 2.2)
 │   │   ├── container.js      ← vessel state (contents, volume, temp, pH)
 │   │   ├── actions.js        ← add / pour / heat / stir / dip
 │   │   ├── tools.js          ← pH paper, thermometer, litmus, conductivity
@@ -266,8 +267,12 @@ stage 2.2, owner approved 2026-11-22). The full schema is `docs/STAGE_2_2_SCHEMA
 - **`concentrationM`** is the label's molarity as a number. It is curated: concentrated
   reagents carry a source, and it is never read off the `concentration` words.
 - **`acidBase`** marks a curated strong acid or strong base:
-  `{ "kind": "strong_acid" | "strong_base", "perFormula": n }`. When one is left in excess, its
-  pH is worked out from its moles. Every other pH stays curated (§6.6).
+  `{ "kind": "strong_acid" | "strong_base", "perFormula": n }`. When strong acids, or strong
+  bases, are left in excess, the pH is worked out from their moles together. Every other pH stays
+  curated (§6.6).
+- **Curating a rule's `coefficients` also asserts something:** whatever is left of either
+  reactant does nothing further with the products, unless another rule says it does. The engine
+  then calls such a vessel "settled", not "not available yet".
 - **A reaction's `coefficients`** map each reactant and product id to its number in the
   equation. The validator checks them against the equation.
 - **Anything whose amount is not known counts as plenty.** A rule with no `coefficients` behaves

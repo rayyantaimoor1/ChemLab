@@ -28,10 +28,22 @@
  * better than one that confidently reads 6.42 because the code averaged two
  * numbers that cannot be averaged.
  *
+ * The one exception is decision 2 of stage 2.2 (owner approved 2026-11-22):
+ * when a reaction leaves a curated strong acid or strong base in excess, its
+ * pH is worked out from the moles left (amounts.js). That is the definition
+ * of pH applied to curated numbers, not an average, and its source says so.
+ *
+ * AMOUNTS (stage 2.2)
+ * Each substance carries its moles as well as its mL or grams. For a pure
+ * liquid or a weighed solid the moles follow from the measurement itself;
+ * for a solution or a gas they are kept alongside. null moles means "not
+ * known", which counts as plenty - see amounts.js.
+ *
  * NO DOM AND NO FILES. This folder is pure logic.
  */
 
 import { ROOM_TEMPERATURE_C } from './engine.js';
+import { GONE_MOL, amountForMoles, molesFollowAmount, molesFor, strongExcessPH } from './amounts.js';
 
 /** How an amount is measured. Liquids are counted in millilitres, solids in grams. */
 export const UNIT = {
@@ -46,6 +58,8 @@ const LIQUID_STATES = new Set(['aqueous', 'liquid']);
 export const PH_SOURCE = {
   CHEMICAL: 'chemical',
   REACTION: 'reaction',
+  // Worked out from a strong acid or base left in excess (amounts.js).
+  CALCULATED: 'calculated',
   NONE: null,
 };
 
@@ -78,7 +92,7 @@ export function createContainer({
   tempC = ROOM_TEMPERATURE_C,
   getChemical = null,
 } = {}) {
-  /** @type {Map<string, {amount: number|null, unit: string}>} */
+  /** @type {Map<string, {amount: number|null, unit: string, mol: number|null}>} */
   const contents = new Map();
 
   let temperature = tempC;
@@ -114,6 +128,47 @@ export function createContainer({
 
   function defaultUnitFor(speciesId) {
     return isLiquid(speciesId) ? UNIT.ML : UNIT.GRAM;
+  }
+
+  /**
+   * Moles of one substance present, or null for "not known" (plenty).
+   * A pure liquid's or weighed solid's moles follow from its measurement;
+   * anything else keeps its own count.
+   */
+  function molOf(speciesId) {
+    const entry = contents.get(speciesId);
+    if (!entry) return 0;
+    const chemical = lookup(speciesId);
+    if (molesFollowAmount(chemical)) return molesFor(chemical, entry.amount, entry.unit);
+    return typeof entry.mol === 'number' ? entry.mol : null;
+  }
+
+  /** Adds two counts of moles; "not known" plus anything stays "not known". */
+  const addMol = (a, b) => (typeof a === 'number' && typeof b === 'number' ? a + b : null);
+
+  /**
+   * Takes some moles of a substance away, the way a reaction uses it up.
+   * A solution loses the same share of its millilitres, so what is left is
+   * still that solution at its labelled strength; a pure liquid or a
+   * weighed solid loses the volume or mass those moles take up.
+   */
+  function useUp(speciesId, mol) {
+    const entry = contents.get(speciesId);
+    if (!entry) return;
+    const before = molOf(speciesId);
+    if (typeof before !== 'number') return;
+    const after = before - mol;
+    if (after < GONE_MOL) {
+      contents.delete(speciesId);
+      return;
+    }
+    const chemical = lookup(speciesId);
+    if (molesFollowAmount(chemical)) {
+      entry.amount = amountForMoles(chemical, after, entry.unit);
+    } else {
+      if (typeof entry.amount === 'number' && before > 0) entry.amount = (entry.amount * after) / before;
+      entry.mol = after;
+    }
   }
 
   /** Total liquid in the vessel, in millilitres. Solids do not count. */
@@ -171,9 +226,17 @@ export function createContainer({
     /** Everything present, with amounts. */
     getContents() {
       return [...contents.entries()]
-        .map(([speciesId, entry]) => ({ id: speciesId, amount: entry.amount, unit: entry.unit }))
+        .map(([speciesId, entry]) => ({ id: speciesId, amount: entry.amount, unit: entry.unit, mol: molOf(speciesId) }))
         .sort((a, b) => a.id.localeCompare(b.id));
     },
+
+    /** Moles of everything present, by id; null means "not known" (plenty). */
+    getMolesById() {
+      return Object.fromEntries([...contents.keys()].map((speciesId) => [speciesId, molOf(speciesId)]));
+    },
+
+    /** Moles of one substance: 0 if absent, null if not known. */
+    getMolesOf: (speciesId) => molOf(speciesId),
 
     /** How much of one substance is present, or 0 if none. */
     getAmountOf(speciesId) {
@@ -235,9 +298,13 @@ export function createContainer({
      * Returns a small report rather than throwing, because overflowing a beaker
      * is a normal thing for a student to do and the app should be able to say so.
      *
+     * `mol` is for moving a substance whose moles are already known - pouring
+     * from another vessel. Left out, the moles are worked out from the
+     * chemical's curated fields (amounts.js), or null if they cannot be.
+     *
      * @returns {{added: number, spilled: number, overflowed: boolean, unit: string}}
      */
-    add(speciesId, amount = 0, unit = null) {
+    add(speciesId, amount = 0, unit = null, mol = undefined) {
       if (typeof speciesId !== 'string' || speciesId.length === 0) {
         throw new TypeError('add() needs the id of a substance');
       }
@@ -258,14 +325,21 @@ export function createContainer({
         }
       }
 
+      // The moles that actually went in: a spill takes its share with it.
+      let addedMol;
+      if (mol === undefined) addedMol = molesFor(lookup(speciesId), added, useUnit);
+      else addedMol = typeof mol === 'number' && amount > 0 ? (mol * added) / amount : null;
+
       const existing = contents.get(speciesId);
       if (existing && existing.unit === useUnit && typeof existing.amount === 'number') {
         existing.amount = Math.round((existing.amount + added) * 1000) / 1000;
+        existing.mol = addMol(existing.mol, addedMol);
       } else if (existing && existing.amount === null) {
         // It was present in an unmeasured way; now we have a number for it.
-        contents.set(speciesId, { amount: added, unit: useUnit });
+        // How many moles were already there is still not known.
+        contents.set(speciesId, { amount: added, unit: useUnit, mol: null });
       } else {
-        contents.set(speciesId, { amount: added, unit: useUnit });
+        contents.set(speciesId, { amount: added, unit: useUnit, mol: addedMol });
       }
 
       recalculatePH();
@@ -287,7 +361,10 @@ export function createContainer({
         return removed;
       }
 
+      const before = entry.amount;
       entry.amount = Math.round((entry.amount - amount) * 1000) / 1000;
+      // The moles go in the same proportion as the amount.
+      if (typeof entry.mol === 'number') entry.mol = (entry.mol * entry.amount) / before;
       if (entry.amount <= 0) contents.delete(speciesId);
       recalculatePH();
       return amount;
@@ -358,13 +435,16 @@ export function createContainer({
       const fraction = requested / available;
       let spilled = 0;
 
-      for (const { id: speciesId, amount, unit } of api.getContents()) {
+      for (const { id: speciesId, amount, unit, mol } of api.getContents()) {
         if (unit !== UNIT.ML || !isLiquid(speciesId) || typeof amount !== 'number') continue;
 
         const share = Math.round(amount * fraction * 1000) / 1000;
         if (share <= 0) continue;
 
-        const result = target.add(speciesId, share, UNIT.ML);
+        // The moles travel with the liquid, so salt made by a reaction is
+        // still counted in the vessel it is poured into.
+        const molShare = typeof mol === 'number' ? (mol * share) / amount : null;
+        const result = target.add(speciesId, share, UNIT.ML, molShare);
         spilled += result.spilled;
         api.remove(speciesId, share);
       }
@@ -387,9 +467,32 @@ export function createContainer({
      *
      * Temperature and pH come straight from the rule's curated effects.
      *
+     * AMOUNTS (stage 2.2). When engine.js worked out how far the reaction
+     * went (`amounts`, from amounts.js), only that much is used up: the
+     * limiting reagent goes, the excess stays, and the products are counted.
+     * Without `amounts` - a rule with no coefficients, or nothing of known
+     * amount - every reactant is used up, exactly as before stage 2.2.
+     *
      * @param {object} reaction a rule from reactions.json
+     * @param {object|null} [amounts] the step's amounts from engine.react():
+     *   { consumed, made, tempDeltaC }
      */
-    applyReaction(reaction) {
+    /**
+     * The pH of a finished reaction's mixture that more of a reagent was
+     * just added to - acid run in past a titration's end point, say. The
+     * engine found no new reaction ("settled"), so nothing set the pH; if a
+     * curated strong acid or base is now in excess, its pH follows from its
+     * moles exactly as it does when a reaction leaves it (option b+).
+     */
+    recheckExcessPH() {
+      const excessPH = strongExcessPH(api.getContents(), getVolumeMl(), lookup);
+      if (typeof excessPH === 'number') {
+        pH = excessPH;
+        pHSource = PH_SOURCE.CALCULATED;
+      }
+    },
+
+    applyReaction(reaction, amounts = null) {
       if (!reaction || !Array.isArray(reaction.reactants)) {
         throw new TypeError('applyReaction() needs a reaction rule');
       }
@@ -397,11 +500,20 @@ export function createContainer({
 
       const volumeBefore = getVolumeMl();
 
-      for (const reactantId of reaction.reactants) contents.delete(reactantId);
+      if (amounts) {
+        for (const reactantId of reaction.reactants) {
+          const consumed = amounts.consumed?.[reactantId];
+          // Not in `consumed` means its amount is not known: plenty, so it stays.
+          if (typeof consumed === 'number') useUp(reactantId, consumed);
+        }
+      } else {
+        for (const reactantId of reaction.reactants) contents.delete(reactantId);
+      }
 
       const products = Array.isArray(reaction.products) ? reaction.products : [];
       const liquidProducts = products.filter((productId) => isLiquid(productId));
       const solidProducts = products.filter((productId) => !isLiquid(productId));
+      const madeMol = (productId) => (amounts ? amounts.made?.[productId] ?? null : null);
 
       // Liquid that was used up reappears as the liquid products, shared evenly.
       const volumeAfterReactants = getVolumeMl();
@@ -415,20 +527,34 @@ export function createContainer({
           existing && typeof existing.amount === 'number'
             ? Math.round((existing.amount + sharePerProduct) * 1000) / 1000
             : sharePerProduct;
-        contents.set(productId, { amount, unit: UNIT.ML });
+        // A pure liquid's moles follow from its volume (water made by a
+        // neutralisation is lost in the water already there); a dissolved
+        // product is counted.
+        const mol = existing ? addMol(existing.mol, madeMol(productId)) : madeMol(productId);
+        contents.set(productId, { amount, unit: UNIT.ML, mol });
       }
 
-      // A precipitate is recorded as present but not weighed. How much solid
-      // forms depends on amounts we do not model, and guessing a mass would be
-      // exactly the kind of invented number section 6 rules out.
+      // A precipitate (or gas) whose moles are known is weighed: moles ×
+      // molar mass, arithmetic on curated numbers. Without amounts it is
+      // recorded as present but not weighed, because guessing a mass would
+      // be exactly the kind of invented number section 6 rules out.
       for (const productId of solidProducts) {
-        contents.set(productId, { amount: null, unit: UNIT.GRAM });
+        const existing = contents.get(productId);
+        const made = madeMol(productId);
+        const mol = existing ? addMol(molOf(productId), made) : made;
+        const grams = amountForMoles(lookup(productId), mol, UNIT.GRAM);
+        contents.set(productId, {
+          amount: typeof grams === 'number' && molesFollowAmount(lookup(productId)) ? grams : null,
+          unit: UNIT.GRAM,
+          mol,
+        });
       }
 
       const effects = reaction.effects || {};
+      const tempDelta = amounts && typeof amounts.tempDeltaC === 'number' ? amounts.tempDeltaC : effects.tempDeltaC;
 
-      if (typeof effects.tempDeltaC === 'number' && effects.tempDeltaC !== 0) {
-        api.changeTemperatureC(effects.tempDeltaC);
+      if (typeof tempDelta === 'number' && tempDelta !== 0) {
+        api.changeTemperatureC(tempDelta);
       }
 
       // Work out pH from what is now present, then let the rule's curated value
@@ -437,6 +563,18 @@ export function createContainer({
       if (typeof effects.resultPH === 'number') {
         pH = effects.resultPH;
         pHSource = PH_SOURCE.REACTION;
+      }
+
+      // ...except when the reaction left a curated strong acid or base in
+      // excess, whose pH follows from its moles (decision 2, option b+). The
+      // rule's resultPH assumes the reactants ran out together; the excess
+      // is the truth when they did not.
+      if (amounts) {
+        const excessPH = strongExcessPH(api.getContents(), getVolumeMl(), lookup);
+        if (typeof excessPH === 'number') {
+          pH = excessPH;
+          pHSource = PH_SOURCE.CALCULATED;
+        }
       }
     },
   };

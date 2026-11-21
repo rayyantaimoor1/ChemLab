@@ -29,11 +29,15 @@
  *
  * A NOTE ON "SPECIES" VS "AMOUNTS"
  * This engine works with a plain list of what is present, e.g. ["hcl_1m",
- * "zn_metal"]. It does not track how much of each. Volumes and amounts belong
- * to container.js. This file answers "what happens", the container answers
- * "how much of it".
+ * "zn_metal"], and answers "what happens". Since stage 2.2 the caller may
+ * also pass the moles of each (options.moles, from container.js): then a
+ * rule with `coefficients` uses up only its limiting reagent, the excess
+ * stays for the cascade, and each step says how much was used and made
+ * (amounts.js does the arithmetic). The container still holds the amounts;
+ * this file never decides WHAT reacts from them.
  */
 
+import { GONE_MOL, reactionAmounts, scaledTempDelta } from './amounts.js';
 import chemicalData from '../data/chemicals.json' with { type: 'json' };
 import reactionData from '../data/reactions.json' with { type: 'json' };
 import flameTestData from '../data/flame-tests.json' with { type: 'json' };
@@ -383,6 +387,39 @@ export function createEngine({
     if (catalyst) settledOutcomes.add(speciesKey([...products, catalyst]));
   }
 
+  /*
+   * A finished reaction with its own excess (stage 2.2). Once amounts are
+   * counted, a reaction can leave some of a reactant behind: acid left over
+   * after the marble has gone. A vessel holding a rule's products plus some
+   * of that rule's own reactants is the same finished outcome, and stirring
+   * it must not be called "not available yet".
+   *
+   * Only rules with `coefficients` count, because only they can leave an
+   * excess. Curating a rule's coefficients therefore also says: what is
+   * left of either reactant does nothing further with the products, unless
+   * another rule says it does - and any rule that does is found first.
+   * Several finished reactions in one vessel (silver and lead both
+   * precipitated by excess acid) settle together.
+   */
+  const excessSettlers = reactions
+    .filter((reaction) => !reaction.noReaction && reaction.coefficients && (reaction.products || []).length > 0)
+    .map((reaction) => ({
+      products: reaction.products,
+      allowed: new Set([
+        ...reaction.products,
+        ...reaction.reactants,
+        ...(reaction.conditions?.catalyst ? [reaction.conditions.catalyst] : []),
+      ]),
+    }));
+
+  function isSettled(species) {
+    if (settledOutcomes.has(speciesKey(species))) return true;
+    const present = new Set(species);
+    const finished = excessSettlers.filter(({ products }) => products.every((id) => present.has(id)));
+    if (finished.length === 0) return false;
+    return species.every((id) => finished.some(({ allowed }) => allowed.has(id)));
+  }
+
   // Combinations students tried that we have no data for. This is the content
   // roadmap described in CLAUDE.md section 6.3.
   const unknownCombinations = new Map();
@@ -541,7 +578,7 @@ export function createEngine({
       // What is left in the vessel after one of our own reactions finished.
       // We already said what that reaction does; there is nothing missing
       // here to report. See settledOutcomes above.
-      if (settledOutcomes.has(speciesKey(species))) {
+      if (isSettled(species)) {
         return { ...base, outcome: OUTCOME.NO_REACTION, message: MESSAGES.NO_REACTION, settled: true };
       }
 
@@ -561,8 +598,43 @@ export function createEngine({
     }
 
     // A real reaction. Remove what was used up, add what was made.
-    const leftovers = species.filter((id) => !rule.reactants.includes(id));
     const products = Array.isArray(rule.reaction.products) ? rule.reaction.products : [];
+
+    // With amounts (stage 2.2): only the limiting reagent runs out, and the
+    // excess stays for the cascade to look at again. Without - no
+    // coefficients, or nothing of known amount - everything is used up, as
+    // it always was.
+    const moles = options.moles && typeof options.moles === 'object' ? options.moles : {};
+    const molesOf = (id) => (typeof moles[id] === 'number' ? moles[id] : null);
+    const amounts = reactionAmounts(rule.reaction, molesOf);
+
+    let leftovers;
+    let molesAfter;
+    if (amounts) {
+      molesAfter = { ...moles };
+      leftovers = species.filter((id) => {
+        if (!rule.reactants.includes(id)) return true;
+        const used = amounts.consumed[id];
+        if (typeof used !== 'number') return true; // plenty: never used up
+        molesAfter[id] = molesOf(id) - used;
+        if (molesAfter[id] < GONE_MOL) {
+          delete molesAfter[id];
+          return false;
+        }
+        return true;
+      });
+      for (const id of products) {
+        const made = amounts.made[id];
+        const before = molesAfter[id];
+        if (before === undefined) molesAfter[id] = made;
+        else molesAfter[id] = typeof before === 'number' && typeof made === 'number' ? before + made : null;
+      }
+    } else {
+      leftovers = species.filter((id) => !rule.reactants.includes(id));
+      molesAfter = { ...moles };
+      for (const id of rule.reactants) delete molesAfter[id];
+      for (const id of products) molesAfter[id] = null;
+    }
 
     return {
       outcome: OUTCOME.REACTION,
@@ -571,6 +643,13 @@ export function createEngine({
       effects: rule.reaction.effects || null,
       species: normaliseSpecies([...leftovers, ...products]),
       blockedBy: null,
+      amounts: amounts
+        ? {
+          ...amounts,
+          tempDeltaC: scaledTempDelta(rule.reaction, amounts.extent, options.volumeMl, (id) => chemicalsById.get(id) || null),
+        }
+        : null,
+      moles: molesAfter,
     };
   }
 
@@ -587,6 +666,7 @@ export function createEngine({
     const cap = Number.isInteger(options.maxCascade) ? options.maxCascade : maxCascade;
 
     let species = startingSpecies;
+    let moles = options.moles && typeof options.moles === 'object' ? options.moles : {};
     let tempC = typeof options.tempC === 'number' ? options.tempC : ROOM_TEMPERATURE_C;
     const steps = [];
     let capReached = false;
@@ -600,19 +680,23 @@ export function createEngine({
 
       // Only the very first look-up counts towards the unknown-combination log.
       // Later ones are just the cascade running out of things to do.
-      const step = resolve(species, { ...options, tempC, log: iteration === 0 });
+      const step = resolve(species, { ...options, tempC, moles, log: iteration === 0 });
       last = step;
 
       if (step.outcome !== OUTCOME.REACTION) break;
 
       steps.push(step);
       species = step.species;
+      // What is left, for the next look-up: an excess can react again.
+      moles = step.moles;
 
       // Apply the curated temperature change so that any follow-on rule with a
-      // temperature condition is judged against the new, hotter mixture.
-      const delta = step.effects && typeof step.effects.tempDeltaC === 'number'
+      // temperature condition is judged against the new, hotter mixture -
+      // scaled to how much reacted, where amounts are known (amounts.js).
+      let delta = step.effects && typeof step.effects.tempDeltaC === 'number'
         ? step.effects.tempDeltaC
         : 0;
+      if (step.amounts && typeof step.amounts.tempDeltaC === 'number') delta = step.amounts.tempDeltaC;
       tempC += delta;
     }
 

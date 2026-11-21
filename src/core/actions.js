@@ -83,13 +83,25 @@ export function createActions({
       tempC: container.getTemperatureC(),
       heating: container.isHeating(),
       electrified: container.isElectrified(),
+      // How much of each is present (stage 2.2), so only the limiting
+      // reagent runs out. Containers made without the amount methods - test
+      // doubles - simply work the old way.
+      moles: typeof container.getMolesById === 'function' ? container.getMolesById() : undefined,
+      volumeMl: container.getVolumeMl(),
     });
 
     // engine.react() only works out what WOULD happen; applying it to the real
     // vessel is this file's job, one cascade step at a time so container.js's
     // own bookkeeping (temperature, pH, volume) stays in step with the engine.
     for (const step of result.steps) {
-      container.applyReaction(step.reaction);
+      container.applyReaction(step.reaction, step.amounts || null);
+    }
+
+    // Nothing new reacted, but the vessel is a finished reaction plus its own
+    // excess: acid run in past the end point. Its pH may still follow from a
+    // strong excess (stage 2.2, decision 2).
+    if (result.steps.length === 0 && result.finalStep?.settled && typeof container.recheckExcessPH === 'function') {
+      container.recheckExcessPH();
     }
 
     return result;

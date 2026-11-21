@@ -261,3 +261,33 @@ export function checkEquation(equation) {
   }
   return { status: 'balanced' };
 }
+
+/**
+ * The number in front of each formula in an equation's first step, for
+ * checking a rule's `coefficients` against it (stage 2.2). Returns
+ * { left: [{ coefficient, formula }], right: [...] } with formulas in plain
+ * characters (H₂O → H2O) and state labels removed, or null if the
+ * equation cannot be split into two sides.
+ */
+export function equationTerms(equation) {
+  if (typeof equation !== 'string' || !equation.trim()) return null;
+  const text = stripArrowNotes(normalise(equation));
+  const step = text.split(/,?\s+then\s+|;\s*/).map((s) => s.split(/\s{2,}/)[0]).find((s) => /→|⇌/.test(s));
+  if (!step) return null;
+  const sides = step.split(ARROWS);
+  if (sides.length < 2) return null;
+  const readTerms = (side) => side.split(/\s+\+\s+/).map((raw) => raw.trim()).filter(Boolean).map((raw) => {
+    const match = raw.match(/^(\d+(?:\.\d+)?)\s*(.*)$/);
+    const coefficient = match ? Number(match[1]) : 1;
+    const formula = plainFormula(match ? match[2] : raw);
+    return { coefficient, formula };
+  });
+  return { left: readTerms(sides[0]), right: readTerms(sides[sides.length - 1]) };
+}
+
+/** A formula in plain characters with state labels and spaces removed. */
+export function plainFormula(text) {
+  return normalise(String(text))
+    .replace(/\((?:aq|s|l|g|[a-z][a-z ]*)\)\s*$/, '')
+    .replace(/\s+/g, '');
+}

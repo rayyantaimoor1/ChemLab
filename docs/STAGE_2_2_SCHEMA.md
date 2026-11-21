@@ -51,12 +51,22 @@ Nothing is predicted.
 - **Sulfuric acid** needs its own sourced decision when its field is written, because its second
   proton is only partly given up.
 
-**How it is used:** when a reaction leaves one of these in excess, and nothing else in the vessel
-has an `acidBase`, the pH is worked out from that leftover:
-- strong acid: pH = −log(mol H⁺ ÷ litres);
-- strong base: pH = 14 + log(mol OH⁻ ÷ litres).
+**How it is used:** when a reaction leaves strong acids or strong bases in excess, the pH is worked
+out from their moles. All of them must be the same kind, all acids or all bases, and their H⁺ or
+OH⁻ adds up: excess HCl beside the nitric acid a precipitation made counts as both.
+- Strong acid: pH = −log[H⁺].
+- Strong base: pH = 14 + log[OH⁻].
+- In both, the concentration includes water's own ions: [H⁺] = c/2 + √(c²/4 + Kw).
 
-In every other case the rule's curated `resultPH` stands, as today.
+**When it also applies:** adding more reagent to a finished reaction's mixture, such as acid run
+in past a titration's end point. The engine calls the vessel "settled" and no reaction runs, but
+the pH still follows from the strong excess.
+
+In every other case the rule's curated `resultPH` stands, as today. That includes a strong acid
+beside a strong base that has no rule, or any of them with an amount not known.
+
+*(Refined while building 2.2.2, within decision 2: the first draft allowed only one strong
+substance, which got the silver/lead case wrong because its rules make nitric acid.)*
 
 ### How an amount is worked out, from fields that already exist
 

@@ -201,6 +201,42 @@ concentration. Real labs are all about *how much*.
 > with what remains. Add tests for the silver/lead excess-HCl case from batch.md §7, and for adding
 > acid in small portions to a carbonate until it stops fizzing.
 
+> **Done (2026-11-22).** Built as the approved schema says, in five places:
+> - **`src/core/amounts.js` (new):** all the arithmetic in one small file:
+>   - moles from curated fields;
+>   - how far a reaction goes, and its limiting reagent;
+>   - the temperature change scaled from the rule's stated basis;
+>   - the pH of a strong excess.
+> - **`container.js`:** each substance keeps its moles alongside its mL or grams, and pouring
+>   carries them across. A reaction uses up only what reacted. A precipitate is weighed.
+> - **`engine.js`:**
+>   - only the limiting reagent runs out, and the cascade re-checks with what is left;
+>   - a finished reaction plus its own excess is "settled", not "not available yet";
+>   - rules with no coefficients work exactly as before.
+> - **`actions.js`:** passes the moles to the engine. When acid is added past an end point, the pH
+>   still follows from the strong excess.
+> - **Validator:**
+>   - `concentrationM` must match a plain "0.1 M" label, or else carry a source;
+>   - `acidBase` must be sourced;
+>   - `coefficients` must cover every reactant and product, and agree with the equation wherever
+>     a formula can be found in it.
+>   - Checked by planting five errors in a copy of the data: all five caught.
+>
+> **Tests** (`tests/amounts.test.js` 8 and `tests/engine-amounts.test.js` 8, with the fields added
+> inside the tests):
+> - excess HCl precipitates **both** silver and lead chloride;
+> - acid added to marble in 10 mL portions fizzes twice and then stops;
+> - lead iodide is weighed, and the excess reacts again;
+> - uneven acid and alkali reads pH 13.4, the end point reads 7, and past it reads 1.0;
+> - the warming scales with how much reacted;
+> - pouring carries the moles across.
+>
+> **Results:** 911 tests pass, and the validator finds no errors. The packaged-app smoke test
+> passes on the rebuilt installer.
+>
+> **The shipped data has no coefficients yet, so the app behaves exactly as before.** Stage 2.2.3
+> adds them in batches of 30.
+
 **2.2.3 — Opus — Convert content**
 > Add coefficients to the existing reactions in batches of 30, starting with the ones guided
 > experiments use. Each batch: tests green, validator green, commit, push.

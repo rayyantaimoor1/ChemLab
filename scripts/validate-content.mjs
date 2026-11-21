@@ -38,7 +38,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { checkEquation } from './lib/equation-balance.mjs';
+import { checkEquation, equationTerms, plainFormula } from './lib/equation-balance.mjs';
 import { checkColourName } from './lib/colour-check.mjs';
 import { SOLID_KIND_OPENINGS } from '../src/core/engine.js';
 
@@ -104,7 +104,11 @@ const nullGasRate = [];
 
 // What a `sources` entry on a CHEMICAL may say it confirms: so far, the
 // three appearance fields of BUILD_UI.md stage UI.3.
-const CHEMICAL_SOURCE_COVERS = new Set(['clarity', 'form', 'texture', 'boilingPoint', 'meltingPoint', 'fumes', 'storage']);
+const CHEMICAL_SOURCE_COVERS = new Set([
+  'clarity', 'form', 'texture', 'boilingPoint', 'meltingPoint', 'fumes', 'storage',
+  // Stage 2.2's amounts (docs/STAGE_2_2_SCHEMA.md).
+  'concentration', 'acidBase',
+]);
 
 function nonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
@@ -590,6 +594,92 @@ for (const chemical of chemicals) {
     }
     if (!(chemical.sources || []).some((s) => (s.covers || []).includes('storage'))) {
       problems.push(`${chemical.id}: storage needs a source that covers it`);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Amounts (BUILD_PHASE_2.md stage 2.2, owner approved 2026-11-22;
+ * docs/STAGE_2_2_SCHEMA.md).
+ *
+ * concentrationM — the label's molarity as a number. Where the label is a
+ *   plain "0.1 M" the two must agree; anything else (concentrated acids)
+ *   needs a source, because the number is not on the label.
+ * acidBase — a curated strong acid or strong base, so the pH of an excess
+ *   can be worked out. Always sourced.
+ * coefficients — the equation's numbers by chemical id, one for every
+ *   reactant and product and nothing else, and the same as the equation
+ *   wherever a chemical's formula can be found in it.
+ * ------------------------------------------------------------------ */
+{
+  const byId = new Map(chemicals.map((c) => [c.id, c]));
+  const hasSource = (chemical, cover) => (chemical.sources || []).some((s) => (s.covers || []).includes(cover));
+
+  for (const chemical of chemicals) {
+    if ('concentrationM' in chemical) {
+      const value = chemical.concentrationM;
+      if (chemical.state !== 'aqueous') {
+        problems.push(`${chemical.id}: concentrationM is only for solutions`);
+      } else if (typeof value !== 'number' || !(value > 0) || value > 25) {
+        problems.push(`${chemical.id}: concentrationM must be a number of mol/L above 0 and at most 25`);
+      } else {
+        const label = String(chemical.concentration ?? '').match(/^\s*(\d+(?:\.\d+)?)\s*M\s*$/);
+        if (label && Number(label[1]) !== value) {
+          problems.push(`${chemical.id}: concentrationM ${value} disagrees with its label "${chemical.concentration}"`);
+        } else if (!label && !hasSource(chemical, 'concentration')) {
+          problems.push(`${chemical.id}: concentrationM is not on its label ("${chemical.concentration}"), so it needs a source that covers concentration`);
+        }
+      }
+    }
+
+    if ('acidBase' in chemical) {
+      const ab = chemical.acidBase;
+      if (!ab || !['strong_acid', 'strong_base'].includes(ab.kind)) {
+        problems.push(`${chemical.id}: acidBase.kind must be strong_acid or strong_base`);
+      } else if (!Number.isInteger(ab.perFormula) || ab.perFormula < 1 || ab.perFormula > 3) {
+        problems.push(`${chemical.id}: acidBase.perFormula must be 1, 2 or 3 (the H⁺ or OH⁻ each formula unit gives)`);
+      }
+      if (!hasSource(chemical, 'acidBase')) problems.push(`${chemical.id}: acidBase needs a source that covers it`);
+    }
+  }
+
+  for (const reaction of reactions) {
+    if (!('coefficients' in reaction)) continue;
+    const id = reaction.id;
+    const c = reaction.coefficients;
+    if (reaction.noReaction) {
+      problems.push(`${id}: a noReaction rule has nothing to count, so it takes no coefficients`);
+      continue;
+    }
+    if (!c || typeof c !== 'object' || Array.isArray(c)) {
+      problems.push(`${id}: coefficients must be a map of chemical id to number`);
+      continue;
+    }
+    const expected = new Set([...(reaction.reactants || []), ...(reaction.products || [])]);
+    for (const key of expected) {
+      if (!(key in c)) problems.push(`${id}: coefficients has no number for ${key}`);
+    }
+    for (const [key, value] of Object.entries(c)) {
+      if (!expected.has(key)) problems.push(`${id}: coefficients names ${key}, which is not one of its reactants or products`);
+      else if (!Number.isInteger(value) || value < 1) problems.push(`${id}: coefficient for ${key} must be a whole number of at least 1`);
+    }
+
+    // The same as the equation, wherever the chemical's formula is in it.
+    const terms = equationTerms(reaction.equation);
+    const unchecked = [];
+    for (const [side, ids] of [['left', reaction.reactants || []], ['right', reaction.products || []]]) {
+      for (const key of ids) {
+        const formula = byId.get(key)?.formula;
+        const matches = terms && formula ? terms[side].filter((t) => t.formula === plainFormula(formula)) : [];
+        if (matches.length !== 1) {
+          unchecked.push(key);
+        } else if (matches[0].coefficient !== c[key]) {
+          problems.push(`${id}: coefficient ${c[key]} for ${key} disagrees with the equation's ${matches[0].coefficient}${matches[0].formula}`);
+        }
+      }
+    }
+    if (unchecked.length) {
+      warnings.push(`${id}: coefficients for ${unchecked.join(', ')} could not be matched to a formula in the equation - check by hand: "${reaction.equation}"`);
     }
   }
 }
