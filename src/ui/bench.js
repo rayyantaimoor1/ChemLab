@@ -55,7 +55,7 @@ import {
 // Keyboard focus that survives the strip and tray being redrawn (UI.10.3).
 import { keepFocus } from './keep-focus.js';
 // A tube heated in the flame is held at an angle, its liquid level (UI.10.4).
-import { heldInFlame, levelLiquid, leanFor, HELD_TUBE } from './held-tube.js';
+import { heldInFlame, levelLiquid, leanFor, heldPoseFor, tiltForPose, HELD_TUBE } from './held-tube.js';
 // How a pour looks: lip, tilt, stream, splash (BUILD_UI.md UI.6.2).
 import { pourPath, POUR } from './pour-path.js';
 // One drop, and swirl or stir (BUILD_UI.md UI.6.3).
@@ -1577,13 +1577,20 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     refs.el.classList.toggle('is-held-tilted', held);
     // It leans left, unless its mouth would leave the bench - then right,
     // with the holder mirrored so the handle is still away from the mouth.
+    // A dry solid is held mouth slightly down instead, so the water it gives
+    // off drains to the cool mouth. The pose is chosen as the tube goes into
+    // the flame and kept while it is held (held-tube.js).
     if (held) {
+      if (!refs.heldPose) refs.heldPose = heldPoseFor(container);
       const limits = sideLimits(container, under, state);
-      refs.heldAngle = leanFor(container.position.x, refs.vessel.offsetWidth, refs.vessel.offsetHeight, limits.left, limits.right);
+      refs.heldAngle = leanFor(container.position.x, refs.vessel.offsetWidth, refs.vessel.offsetHeight,
+        limits.left, limits.right, tiltForPose(refs.heldPose), canvas.clientWidth);
     } else {
       refs.heldAngle = null;
+      refs.heldPose = null;
     }
     refs.el.classList.toggle('held-lean-right', held && refs.heldAngle > 0);
+    refs.el.classList.toggle('held-dry', held && refs.heldPose === 'solid');
     if (held) {
       refs.el.style.setProperty('--held-angle', `${refs.heldAngle}deg`);
       refs.el.style.setProperty('--held-drop', `${HELD_TUBE.dropPx}px`);
@@ -1669,9 +1676,9 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
         refs.liquidIncoming.style.background = targetFill;
         refs.liquidIncoming.style.opacity = '0';
       }
-      if (held) {
+      if (held && refs.heldPose === 'liquid') {
         levelHeldLiquid(refs, container);
-      } else {
+      } else if (!held) {
         if (refs.heldLevel) unlevelHeldLiquid(refs);
         if (refs.liquidBase.style.height !== targetHeight) {
           refs.liquidBase.style.height = targetHeight;
@@ -1679,8 +1686,10 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
         }
       }
       // riseLiquidLevel fades the layer out when a vessel empties; refilling
-      // it later has to bring it back.
-      refs.liquidBase.style.opacity = fraction > 0 ? '1' : '0';
+      // it later has to bring it back. A dry solid held mouth down shows no
+      // pool: its water condenses as droplets at the cool mouth (UI.10.4).
+      const pooled = fraction > 0 && !(held && refs.heldPose === 'solid');
+      refs.liquidBase.style.opacity = pooled ? '1' : '0';
     }
 
     // The last reading, on the bench beside the glass. Colour and its name
@@ -2763,7 +2772,7 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     setSurfaceWidth(refs, after);
     // In a tube held at an angle the upright scaling would fight the level
     // turn (UI.10.4), so there the level simply moves to where it belongs.
-    if (beforeFraction !== afterFraction && !refs.heldLevel) {
+    if (beforeFraction !== afterFraction && !refs.heldLevel && !refs.heldPose) {
       riseLiquidLevel(refs.liquidBase, beforeFraction, afterFraction);
       refs.liquidIncoming.style.height = refs.liquidBase.style.height;
     }

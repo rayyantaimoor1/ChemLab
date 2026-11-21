@@ -743,9 +743,22 @@ addition and instrument precision are BUILD_PHASE_2.md Stage 2.5; this stage is 
 >     copper sulfate in a test tube and boiling water in a boiling tube, both level. The `heat`
 >     set-up heats crystals in a tilted boiling tube, with water on the cool glass.
 >     Screenshot: `docs/ui-progress/UI.10/held-tube.png`.
->   - **A question for the owner, not changed:** a tube heating crystals that give off water is
->     often held mouth slightly down, so the water does not run back onto the hot glass. The bench
->     holds every tube mouth up at 45°, the usual way for a liquid.
+>   - **A dry solid is held mouth slightly down** (the owner left the call to Claude's
+>     recommendation, 2026-11-21).
+>     - A tube that goes into the flame holding only a solid is held about 15° below the
+>       horizontal, its mouth lower than its bottom. Water the solid gives off then drains to the
+>       cool mouth instead of running back onto the hot glass and cracking it.
+>     - Source, opened: Moorpark College, Chemistry M12 Laboratory Manual, Experiment 4
+>       "Hydrates and Anhydrous Salts", procedure A, step 2.
+>     - The pose is chosen as the tube goes in and kept while it is held, so the water the
+>       crystals give off does not tip it upright.
+>     - No pool of liquid is drawn at the hot bottom. The same procedure (step 4) has the water
+>       collect at the cooler mouth, and the bench already draws it as droplets on the cool glass.
+>     - The holder's handle runs on past the mouth, so the hand is at the cool end.
+>     - **It needs room.** Near horizontal, a boiling tube reaches about 145 px sideways. When
+>       neither side is clear it leans away from the bench's edge, so it is never cut off, but on
+>       a crowded bench it reaches over its neighbour. In the `heat` reference set-up its mouth
+>       comes near the next burner. A real one would need the burners moved apart too.
 > - **Not done: tongs for a crucible.** There is no crucible in the app; it would be a new vessel,
 >   and it has nothing to do until something needs heating strongly in one.
 

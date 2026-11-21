@@ -4640,3 +4640,8 @@ html.effects-low .vessel__fuming > span:nth-child(2) {
 .vessel-object.is-held-tilted.held-lean-right .vessel__holder {
   transform: scaleX(-1);
 }
+/* A dry solid held mouth down: the holder's handle runs on past the mouth,
+   along the tube, so the hand is at the cool end, well clear of the flame. */
+.vessel-object.is-held-tilted.held-dry .vessel__holder-handle {
+  transform: rotate(-90deg);
+}
