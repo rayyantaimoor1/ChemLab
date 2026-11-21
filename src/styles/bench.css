@@ -3566,7 +3566,7 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   background: var(--panel);
   border: 2px solid var(--hazard);
   border-radius: var(--radius);
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45); /* small, CLAUDE.md §9 */
   color: var(--ink);
 }
 
@@ -3673,7 +3673,7 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   background: var(--notebook);
   border: 1.5px solid var(--ink);
   border-radius: var(--radius);
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45); /* small, CLAUDE.md §9 */
   color: var(--ink);
 }
 
@@ -3918,7 +3918,7 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   background: var(--bench-deep);
   border: 1.5px solid var(--glass-34);
   border-radius: var(--radius);
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45); /* small, CLAUDE.md §9 */
   color: var(--panel-90);
 }
 
@@ -4063,7 +4063,7 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   background: var(--notebook);
   border: 1.5px solid var(--ink);
   border-radius: var(--radius);
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45); /* small, CLAUDE.md §9 */
   color: var(--ink);
 }
 
@@ -4346,7 +4346,7 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   background: var(--notebook);
   border: 1.5px solid var(--ink);
   border-radius: var(--radius);
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45); /* small, CLAUDE.md §9 */
   color: var(--ink);
 }
 
@@ -4448,7 +4448,7 @@ html.reduce-motion .ion--anode { transform: translateX(46px); }
   background: var(--panel);
   border: 1.5px solid var(--ink);
   border-radius: var(--radius);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45); /* small, CLAUDE.md §9 */
   color: var(--ink);
 }
 

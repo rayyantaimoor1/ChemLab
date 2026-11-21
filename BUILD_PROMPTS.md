@@ -454,6 +454,24 @@ everything else.
 > Review the whole project against CLAUDE.md and give me an honest list of what doesn't meet the
 > spec, what's fragile, and what will break first as content grows.
 
+> **Done (2026-11-21).** The review is `docs/PROJECT_REVIEW.md`.
+> - **Most serious:** a bug the review found. In Free Lab, three substances in one vessel can
+>   read "No observable change" when a reaction should happen: NaCl + KI + Pb(NO₃)₂, and 206
+>   mixtures in all. A "nothing happens" rule wins over a real reaction because of the
+>   alphabetical order of rule ids. Guided mode is not affected.
+> - **Fixed (2026-11-22, owner approved):** a "nothing happens" rule now decides only when it
+>   accounts for everything in the vessel (CLAUDE.md §7).
+>   - `tests/engine-three-substances.test.js` sweeps every case: 0 of the 206 are still hidden.
+>   - `npm run smoke` now adds the reagents in the order that failed, on the rebuilt installer.
+>   - The six large panel shadows are small now too.
+> - **Also found:**
+>   - uneven acid and alkali still read pH 7, and the guided titration allows it (stage 2.2);
+>   - 28% of reactions have a source somebody opened;
+>   - `equipment.json` is empty;
+>   - six panels have large shadows;
+>   - four very large UI files;
+>   - the hardware floor is unproven.
+
 **Final save of this build cycle:**
 > Stage and commit the final installer config. Tag this commit as v1.0 with
 > `git tag -a v1.0 -m "First installable release"` and push the tag with `git push origin v1.0`.

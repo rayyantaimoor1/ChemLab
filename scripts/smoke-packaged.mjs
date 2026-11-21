@@ -14,8 +14,8 @@
  * Chromium's debugging port checks that:
  *   1. the window opens on the app, titled "Virtual Chemistry Lab";
  *   2. the shelf has every reagent the engine says belongs on it;
- *   3. a reaction runs end to end: lead(II) nitrate and potassium iodide
- *      in a beaker write the yellow precipitate into the notebook;
+ *   3. a reaction runs end to end: salt and potassium iodide, then lead(II)
+ *      nitrate, in a beaker write the yellow precipitate into the notebook;
  *   4. nothing at all is fetched from the network (CLAUDE.md §2: offline).
  *
  * Run it after building:  npm run dist   then   npm run smoke
@@ -119,11 +119,15 @@ try {
     [...document.querySelectorAll('.shelf-dispense__mode')].find((b) => b.textContent === 'Auto-pour').click();
     await wait(100);
     press('take a beaker 250'); await wait(400);
-    drop('beaker_1', 'pbno3_0_1m'); await wait(400);
-    drop('beaker_1', 'ki_0_1m'); await wait(800);
+    // Salt and potassium iodide first, which do nothing together, then the
+    // lead(II) nitrate: the order that once hid the precipitate behind the
+    // "nothing happens" rule (docs/PROJECT_REVIEW.md 1.1).
+    drop('beaker_1', 'nacl_1m'); await wait(400);
+    drop('beaker_1', 'ki_0_1m'); await wait(400);
+    drop('beaker_1', 'pbno3_0_1m'); await wait(800);
     return [...document.querySelectorAll('.notebook-entry__text')].map((p) => p.textContent).join(' | ');
   })()`);
-  check(/A precipitate formed: bright yellow lead\(II\) iodide/.test(notebook), 'lead(II) nitrate and potassium iodide wrote the yellow precipitate into the notebook');
+  check(/A precipitate formed: bright yellow lead\(II\) iodide/.test(notebook), 'lead(II) nitrate, added to salt and potassium iodide, wrote the yellow precipitate into the notebook');
 
   // 4. Offline: nothing but the app's own files.
   const outside = fetched.filter((url) => !/^(file|data|blob|devtools|chrome-extension):/.test(url));

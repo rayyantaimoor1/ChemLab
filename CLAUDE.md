@@ -585,6 +585,11 @@ This app will be used to teach. A confidently wrong result is worse than no resu
   reactions. Hard-cap the loop (e.g. 10 iterations) to prevent infinite cycles.
 - **Containers hold a set of species with amounts**, not a single "current liquid". Volume,
   temperature, and pH are properties of the container.
+- **A `noReaction` rule only decides when it accounts for everything in the vessel**
+  (owner approved 2026-11-22, Phase 10.3). "NaCl and KI do nothing" says nothing about lead(II)
+  nitrate in the same beaker. Otherwise a real reaction among the substances runs, and if
+  nothing explains the rest it is the third outcome, "not available yet", and is logged.
+  `tests/engine-three-substances.test.js` sweeps every three-substance case.
 - **Conditions gate reactions.** A rule requiring heat must not fire at room temperature.
 - **Tools read state, never modify it.** Dipping pH paper is a read operation.
 - **Every action produces a notebook entry** in plain English, automatically.

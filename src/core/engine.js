@@ -426,9 +426,31 @@ export function createEngine({
 
     if (candidates.length === 0) return { rule: null, blocked: null };
 
+    // A rule "accounts for" the vessel when every substance in it is one the
+    // rule names - its reactants, or its catalyst, which is meant to sit in
+    // the vessel without being used up.
+    const accountsForAll = ({ reactants, reaction }) => {
+      const accounted = new Set(reactants);
+      if (reaction.conditions?.catalyst) accounted.add(reaction.conditions.catalyst);
+      return [...present].every((id) => accounted.has(id));
+    };
+
     // Prefer a rule that can actually run.
+    //
+    // A "nothing happens" rule only settles the matter when it accounts for
+    // EVERYTHING in the vessel (Phase 10.3 review). "Sodium chloride and
+    // potassium iodide do nothing" says nothing about lead(II) nitrate added
+    // to the same beaker. Before this, that rule won - its id sorts first
+    // alphabetically - and the lab wrote "No observable change" while yellow
+    // lead(II) iodide should have been precipitating: a confidently wrong
+    // result, which section 6 ranks worse than none. So a partial "nothing
+    // happens" rule is passed over, any real reaction among the substances
+    // runs, and if nothing explains the rest it is an honest gap (6.2).
     for (const candidate of candidates) {
-      if (candidate.reaction.noReaction === true) return { rule: candidate, blocked: null };
+      if (candidate.reaction.noReaction === true) {
+        if (accountsForAll(candidate)) return { rule: candidate, blocked: null };
+        continue;
+      }
       if (!blockingCondition(candidate.reaction, state, catalystName)) return { rule: candidate, blocked: null };
     }
 
@@ -448,11 +470,9 @@ export function createEngine({
     // not an unexplained extra. Without this, potassium chlorate with its
     // manganese(IV) oxide already added would be called an unknown
     // combination instead of being told it still needs heating.
-    const explains = candidates.find(({ reactants, reaction }) => {
-      const accounted = new Set(reactants);
-      if (reaction.conditions?.catalyst) accounted.add(reaction.conditions.catalyst);
-      return [...present].every((id) => accounted.has(id));
-    });
+    const explains = candidates.find(
+      (candidate) => candidate.reaction.noReaction !== true && accountsForAll(candidate)
+    );
     if (!explains) return { rule: null, blocked: null };
 
     return {
