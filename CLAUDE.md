@@ -84,6 +84,7 @@ chemlab/
 │   ├── core/                 ← PURE LOGIC. No DOM access anywhere in this folder.
 │   │   ├── engine.js         ← reaction resolution
 │   │   ├── amounts.js        ← moles, the limiting reagent, the pH of a strong excess (stage 2.2)
+│   │   ├── amounts-notebook.js ← the notebook's words for what ran out and what was left over (2.2.4)
 │   │   ├── container.js      ← vessel state (contents, volume, temp, pH)
 │   │   ├── actions.js        ← add / pour / heat / stir / dip
 │   │   ├── tools.js          ← pH paper, thermometer, litmus, conductivity
@@ -105,6 +106,7 @@ chemlab/
 │   │   ├── guided.js         ← guided-mode bar, step card and summary
 │   │   ├── effects.js        ← animations (transform and opacity only)
 │   │   ├── appearance.js     ← what a vessel looks like; never disagrees with the notebook
+│   │   ├── amounts-look.js   ← the close look's mL, g and mmol, and which reagent ran out (2.2.4)
 │   │   ├── glassware.js      ← each vessel's real shape, printed scale, and liquid height
 │   │   ├── liquid-colour.js  ← how a liquid is painted: clarity, and depth through the glass
 │   │   ├── solid-shapes.js   ← shelf solids drawn as what they are: ribbon, granules, chips…

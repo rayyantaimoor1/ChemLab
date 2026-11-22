@@ -38,6 +38,7 @@
  */
 
 import { GONE_MOL, reactionAmounts, scaledTempDelta } from './amounts.js';
+import { amountsSummary, describeAmounts } from './amounts-notebook.js';
 import chemicalData from '../data/chemicals.json' with { type: 'json' };
 import reactionData from '../data/reactions.json' with { type: 'json' };
 import flameTestData from '../data/flame-tests.json' with { type: 'json' };
@@ -712,9 +713,14 @@ export function createEngine({
     // The overall outcome is "a reaction happened" if anything at all happened.
     // Otherwise it is whatever the single look-up concluded.
     const outcome = steps.length > 0 ? OUTCOME.REACTION : last ? last.outcome : OUTCOME.NO_REACTION;
+    // What ran out and what was left over (stage 2.2.4), said once for the
+    // whole cascade, after what was seen.
+    const amounts = amountsSummary(steps, species, moles);
+    const amountsSentence = describeAmounts(amounts, (id) => chemicalsById.get(id) || null);
+
     const message =
       steps.length > 0
-        ? steps.map((step) => step.message).join(' ')
+        ? [...steps.map((step) => step.message), amountsSentence].filter(Boolean).join(' ')
         : last
           ? last.message
           : MESSAGES.NO_REACTION;
@@ -728,6 +734,8 @@ export function createEngine({
       tempC,
       capReached,
       finalStep: last,
+      // { usedUp, leftOver } when any step counted amounts, else null.
+      amounts,
     };
   }
 

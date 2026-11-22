@@ -73,6 +73,8 @@ import { settledSvg, settledBox, smokeSvg, hazeOpacity, formingStyle, textureOf 
 // A thermometer standing in the liquid, read against its scale (UI.4.3).
 import { thermometerSvg, thermometerGeometry, columnFraction, offScale, SCALE_MAX_C, SCALE_MIN_C } from './thermometer.js';
 import { solidLabel } from './appearance.js';
+// How much of each substance, and what ran out (stage 2.2.4).
+import { amountRows, limitingText } from './amounts-look.js';
 // Where gas bubbles form, and how fast (BUILD_UI.md UI.5.2).
 import { paceFor, bubbleSourceFor } from './gas-bubbles.js';
 // Coloured gases above the liquid, and where smoke forms (BUILD_UI.md UI.5.3).
@@ -2363,6 +2365,11 @@ export function mountBench({ root, getState, dispatch, subscribe }) {
     const heatLine = closeLook.refs.heatNote.hidden ? '' : closeLook.refs.heatNote.textContent;
     if (heatLine) rows.push(['Heat', heatLine]);
     rows.push(['Contents', `${container.volumeMl} mL · ${container.temperatureC.toFixed(1)} °C · pH ${container.pH === null ? '—' : container.pH}`]);
+    // Each substance with its amount and moles, then what the last
+    // reaction used up - read from the engine, never worked out here.
+    rows.push(...amountRows(container.contents, engine.getChemical));
+    const limiting = limitingText(container.lastAmounts, engine.getChemical);
+    if (limiting) rows.push(['Last reaction', limiting]);
     renderReadingLens(container);
     const html = rows.map(([k, v]) => `<dt>${k}</dt><dd>${escapeText(v)}</dd>`).join('');
     if (closeLook.details.dataset.html !== html) {

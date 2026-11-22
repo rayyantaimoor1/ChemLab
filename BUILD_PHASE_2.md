@@ -282,6 +282,25 @@ concentration. Real labs are all about *how much*.
 > In the properties card, show what a vessel contains in mL and mmol, and say which reagent was
 > limiting when a reaction stops. In the notebook, record "excess HCl remains" type observations.
 
+> **Done (2026-11-22).**
+> - **The vessel's card is its "Look closely" panel.** The properties card describes one chemical,
+>   not a vessel. The close look now lists every substance with its mL or grams and its
+>   millimoles. Under it, "Last reaction" says which reagent ran out first and what was left over.
+> - **The notebook** adds one sentence after a reaction that left something over, for example:
+>   "Potassium iodide solution was used up (the limiting reagent); lead(II) nitrate solution was in
+>   excess, and 0.25 mmol of it is left."
+>   - A solid left over is given in grams, a pure liquid in mL, and anything else in mmol, to three
+>     significant figures.
+>   - It is said once for a whole cascade.
+>   - Nothing is said when everything reacted exactly, or when the rule counts no amounts.
+> - **Where it lives:** the wording is `src/core/amounts-notebook.js`, and the close look's rows
+>   are `src/ui/amounts-look.js`. Both read the engine's own summary (`react().amounts`), so the
+>   panel and the notebook never disagree.
+> - **Golden sentences are unchanged.** They are built without amounts. Guided experiments gain
+>   the new sentence in five places (lead iodide, zinc with acid, zinc with copper sulfate, silver
+>   chloride, iodoform); nothing else in their text moved.
+> - **Tests:** `tests/amounts-notebook.test.js` (9).
+
 **2.2.5 — Opus — A real quantitative titration**
 > Rebuild exp_acid_base_titration so the student titrates a genuinely unknown NaOH (concentration
 > chosen per session from a curated list), reads the titre, and calculates the concentration. The

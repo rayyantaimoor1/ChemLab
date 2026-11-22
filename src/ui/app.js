@@ -809,6 +809,7 @@ function emptyVessel(containerId) {
   containersById.set(containerId, fresh);
   lastAnimatedReactionByContainer.delete(containerId);
   lastElectrolysisByContainer.delete(containerId);
+  lastAmountsByContainer.delete(containerId);
   // A rinsed vessel's old reading no longer describes what is in it, and
   // a fresh container is not electrified, so its power note goes too.
   stripByContainer.delete(containerId);
@@ -947,6 +948,12 @@ function trackHazard(engineResult) {
 // the "Molecular view" button appears on the vessel where it actually
 // happened rather than somewhere general. Keyed by container id.
 const lastAnimatedReactionByContainer = new Map();
+
+// What the most recent reaction in each vessel used up and left over
+// (stage 2.2.4), exactly as the engine summarised it, for the close look.
+// A reaction that counted no amounts clears it, so it never describes an
+// older reaction than the one the student just saw.
+const lastAmountsByContainer = new Map();
 
 // The most recent electrolysis in each vessel, so the bench can keep showing
 // ions drifting to the electrodes while the current is still flowing.
@@ -1113,6 +1120,12 @@ function trackAnimatedReaction(result) {
 
   const electrolysis = [...steps].reverse().find((step) => step.reaction?.electrodes);
   if (electrolysis) lastElectrolysisByContainer.set(containerId, electrolysis.reaction.id);
+
+  if (steps.length > 0) {
+    const amounts = result.engineResult.amounts;
+    if (amounts) lastAmountsByContainer.set(containerId, amounts);
+    else lastAmountsByContainer.delete(containerId);
+  }
 }
 
 /* ------------------------------------------------------------------ *
@@ -1382,7 +1395,10 @@ function getState() {
         position: positionByContainer.get(snapshot.id) || { x: 16, y: 16 },
         width: VESSEL_TYPES[container.type]?.w ?? 110,
         height: VESSEL_TYPES[container.type]?.h ?? 118,
-        contents: snapshot.contents.map((item) => ({ chemicalId: item.id, amount: item.amount })),
+        // unit and mol (stage 2.2.4) are for the close look's amounts.
+        contents: snapshot.contents.map((item) => ({ chemicalId: item.id, amount: item.amount, unit: item.unit, mol: item.mol })),
+        // What the last reaction here used up and left over, or null.
+        lastAmounts: lastAmountsByContainer.get(snapshot.id) || null,
         volumeMl: snapshot.volumeMl,
         // Not in UI.md section 1's example, but needed to draw a liquid
         // level: volumeMl alone cannot say how full a vessel looks without
@@ -1555,6 +1571,7 @@ function resetBenchState() {
   // offering to replay one from the last session.
   lastAnimatedReactionByContainer.clear();
   lastElectrolysisByContainer.clear();
+  lastAmountsByContainer.clear();
   vesselLookByContainer.clear();
 }
 
