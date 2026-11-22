@@ -1991,3 +1991,51 @@ its density, as if it were pure. At 98% that overstates it by about 2%.
 - 913 tests pass.
 - The guided experiments' notebook text is identical to before.
 - The packaged-app smoke test passes on the rebuilt installer.
+
+### Batch 4 — the last 23 that read straight from their equations (2026-11-22)
+
+Coefficients now cover **113 rules**. This was every remaining rule whose numbers can be read from
+its own equation, apart from the ones left out below.
+
+**The 23, all BS-level apart from bleach with acid:**
+- the Period 3 oxides and chlorides with water, and silica with NaOH;
+- the three methylchlorosilane hydrolyses;
+- refractories attacked by slag; zinc oxide with carbon; cementite; dephosphorisation;
+- heating mercury(II) oxide, and strontium and barium carbonate;
+- bromine water with phenol and with aniline;
+- Friedel–Crafts acylation;
+- borohydride destroyed by acid;
+- nitrous acid from nitrite;
+- lead(IV) oxide with acid;
+- bleach with acid.
+
+**Checked by hand on the bench:**
+- 0.31 g of sodium oxide in 20 mL makes 10.0 mmol of NaOH and reads pH 13.7.
+- 1 mL of silicon tetrachloride gives 0.524 g of silica and 34.9 mmol of hydrogen chloride.
+
+**Left out:** Group III chromium. Nothing in it has a known amount, and chromium(III) hydroxide
+dissolves in excess reagent, as in batch 2.
+
+**Checks:**
+- The validator finds no errors and no new warnings.
+- 913 tests pass.
+- The guided experiments' notebook text is unchanged.
+- The packaged-app smoke test passes on the rebuilt installer.
+
+### What is left of stage 2.2.3
+
+Every rule whose numbers can be read straight from its equation is now done or left out with a
+reason. Each that remains needs something fixed or decided first:
+
+| Rule(s) | What it needs |
+|---|---|
+| HCl + NaOH (guided titration) | goes in with the titration rebuild, stage 2.2.5 |
+| Grignard formation and hydrolysis | a `concentrationM` for the reagent in ether, instead of a density |
+| Phenol nitration | a `concentrationM` for concentrated nitric acid, about 16 M, from a source |
+| Ethanoic acid with PCl₅ | the rule rewritten to use pure (glacial) ethanoic acid |
+| Al(OH)₃ + NaOH | its product list and equation made to agree about water |
+| Chlorine water with iodide; water on the anhydrous salts; Cr(OH)₃ and Ni(OH)₂ in excess | a rule for what the excess does |
+| Sulfite precipitate with acid | thinking through the barium chloride it gives back |
+| Equilibria (⇌), gases bubbled in, equations in words, mixtures | stage 2.3 for gases; the rest stay the old way by design |
+| Rules where nothing has a known amount | a sourced concentration first |
+| A solid's warming (any amount gives the curated number) | a sourced enthalpy per rule |

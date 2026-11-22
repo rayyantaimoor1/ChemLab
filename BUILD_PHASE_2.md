@@ -271,6 +271,13 @@ concentration. Real labs are all about *how much*.
 > - **Left out, with reasons in `batch.md` §20:** the Grignard rules and concentrated nitric acid,
 >   which have the wrong moles as liquids, and PCl₅ with aqueous ethanoic acid.
 
+> **Batch 4 done (2026-11-22).** **113 rules now have coefficients.** That is every rule whose
+> numbers read straight from its equation.
+> - **What remains:** each needs a content fix or a decision first, listed in `batch.md` §20,
+>   "What is left of stage 2.2.3".
+> - **The titration's HCl + NaOH** goes in with 2.2.5.
+> - **The bulk conversion is finished,** so 2.2.4 can start.
+
 **2.2.4 — Sonnet — Show amounts in the UI**
 > In the properties card, show what a vessel contains in mL and mmol, and say which reagent was
 > limiting when a reaction stops. In the notebook, record "excess HCl remains" type observations.

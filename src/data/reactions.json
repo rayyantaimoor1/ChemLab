@@ -2886,6 +2886,7 @@
     "reactants": ["hcl_1m", "naclo_aq"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["nacl_aq", "cl2_g", "water"],
+    "coefficients": { "hcl_1m": 2, "naclo_aq": 1, "nacl_aq": 1, "cl2_g": 1, "water": 1 },
     "equation": "NaOCl + 2HCl → NaCl + Cl₂ + H₂O",
     "type": "redox",
     "effects": {
@@ -5409,6 +5410,7 @@
     "reactants": ["ch3cooh_aq", "nabh4_aq"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["ch3coona_aq", "h3bo3_aq", "h2_g"],
+    "coefficients": { "ch3cooh_aq": 1, "nabh4_aq": 1, "ch3coona_aq": 1, "h3bo3_aq": 1, "h2_g": 4 },
     "equation": "NaBH₄ + CH₃COOH + 3H₂O → CH₃COONa + H₃BO₃ + 4H₂",
     "type": "decomposition",
     "effects": {
@@ -5526,6 +5528,7 @@
     "reactants": ["c6h6_l", "ch3cocl_l"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": "alcl3_s" },
     "products": ["acetophenone_l", "hcl_g"],
+    "coefficients": { "c6h6_l": 1, "ch3cocl_l": 1, "acetophenone_l": 1, "hcl_g": 1 },
     "equation": "C₆H₆ + CH₃COCl →(AlCl₃) C₆H₅COCH₃ + HCl",
     "type": "electrophilic_substitution",
     "effects": {
@@ -5613,6 +5616,7 @@
     "reactants": ["br2_aq", "phenol_s"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["tribromophenol_s", "hbr_g"],
+    "coefficients": { "br2_aq": 3, "phenol_s": 1, "tribromophenol_s": 1, "hbr_g": 3 },
     "equation": "C₆H₅OH + 3Br₂ → C₆H₂Br₃OH↓ + 3HBr",
     "type": "electrophilic_substitution",
     "effects": {
@@ -5738,6 +5742,7 @@
     "reactants": ["aniline_l", "br2_aq"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["tribromoaniline_s", "hbr_g"],
+    "coefficients": { "aniline_l": 1, "br2_aq": 3, "tribromoaniline_s": 1, "hbr_g": 3 },
     "equation": "C₆H₅NH₂ + 3Br₂ → C₆H₂Br₃NH₂↓ + 3HBr",
     "type": "electrophilic_substitution",
     "effects": {
@@ -5992,6 +5997,7 @@
     "reactants": ["na2o_s", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["naoh_aq"],
+    "coefficients": { "na2o_s": 1, "water_distilled": 1, "naoh_aq": 2 },
     "equation": "Na₂O + H₂O → 2NaOH",
     "type": "acid_base",
     "effects": {
@@ -6022,6 +6028,7 @@
     "reactants": ["mgo_s", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["mgoh2_s"],
+    "coefficients": { "mgo_s": 1, "water_distilled": 1, "mgoh2_s": 1 },
     "equation": "MgO + H₂O → Mg(OH)₂",
     "type": "acid_base",
     "effects": {
@@ -6108,6 +6115,7 @@
     "reactants": ["naoh_1m", "sio2_s"],
     "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
     "products": ["na2sio3_aq", "water"],
+    "coefficients": { "naoh_1m": 2, "sio2_s": 1, "na2sio3_aq": 1, "water": 1 },
     "equation": "SiO₂ + 2NaOH → Na₂SiO₃ + H₂O",
     "type": "acid_base",
     "effects": {
@@ -6141,6 +6149,7 @@
     "reactants": ["p4o10_s", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["h3po4_aq"],
+    "coefficients": { "p4o10_s": 1, "water_distilled": 6, "h3po4_aq": 4 },
     "equation": "P₄O₁₀ + 6H₂O → 4H₃PO₄",
     "type": "acid_base",
     "effects": {
@@ -6194,6 +6203,7 @@
     "reactants": ["sicl4_l", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["sio2_s", "hcl_g"],
+    "coefficients": { "sicl4_l": 1, "water_distilled": 2, "sio2_s": 1, "hcl_g": 4 },
     "equation": "SiCl₄ + 2H₂O → SiO₂ + 4HCl",
     "type": "hydrolysis",
     "effects": {
@@ -6223,6 +6233,7 @@
     "reactants": ["hcl_1m", "nano2_aq"],
     "conditions": { "requiresHeat": false, "minTempC": null, "maxTempC": 10, "catalyst": null },
     "products": ["hno2_aq", "nacl_aq"],
+    "coefficients": { "hcl_1m": 1, "nano2_aq": 1, "hno2_aq": 1, "nacl_aq": 1 },
     "equation": "NaNO₂ + HCl → HNO₂ + NaCl",
     "type": "acid_base",
     "effects": {
@@ -6876,6 +6887,7 @@
     "reactants": ["me2sicl2_l", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["me2sioh2_aq", "hcl_g"],
+    "coefficients": { "me2sicl2_l": 1, "water_distilled": 2, "me2sioh2_aq": 1, "hcl_g": 2 },
     "equation": "(CH₃)₂SiCl₂ + 2H₂O → (CH₃)₂Si(OH)₂ + 2HCl",
     "type": "hydrolysis",
     "effects": {
@@ -6928,6 +6940,7 @@
     "reactants": ["me3sicl_l", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["me3sioh_l", "hcl_g"],
+    "coefficients": { "me3sicl_l": 1, "water_distilled": 1, "me3sioh_l": 1, "hcl_g": 1 },
     "equation": "(CH₃)₃SiCl + H₂O → (CH₃)₃SiOH + HCl",
     "type": "hydrolysis",
     "effects": {
@@ -6965,6 +6978,7 @@
     "reactants": ["mesicl3_l", "water_distilled"],
     "conditions": { "requiresHeat": false, "minTempC": null, "catalyst": null },
     "products": ["mesioh3_aq", "hcl_g"],
+    "coefficients": { "mesicl3_l": 1, "water_distilled": 3, "mesioh3_aq": 1, "hcl_g": 3 },
     "equation": "CH₃SiCl₃ + 3H₂O → CH₃Si(OH)₃ + 3HCl",
     "type": "hydrolysis",
     "effects": {
@@ -7191,6 +7205,7 @@
     "reactants": ["cao_s", "sio2_s"],
     "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
     "products": ["ca_silicate_slag_s"],
+    "coefficients": { "cao_s": 1, "sio2_s": 1, "ca_silicate_slag_s": 1 },
     "equation": "CaO + SiO₂ →(furnace heat) CaSiO₃",
     "type": "acid_base",
     "effects": {
@@ -7222,6 +7237,7 @@
     "reactants": ["mgo_s", "sio2_s"],
     "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
     "products": ["mg_silicate_s"],
+    "coefficients": { "mgo_s": 2, "sio2_s": 1, "mg_silicate_s": 1 },
     "equation": "2MgO + SiO₂ →(furnace heat) Mg₂SiO₄",
     "type": "acid_base",
     "effects": {
@@ -7331,6 +7347,7 @@
     "reactants": ["c_s", "zno_s"],
     "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
     "products": ["zn_metal", "co_g"],
+    "coefficients": { "c_s": 1, "zno_s": 1, "zn_metal": 1, "co_g": 1 },
     "equation": "ZnO + C →(1200 °C) Zn + CO",
     "type": "reduction",
     "effects": {
@@ -7485,6 +7502,7 @@
     "reactants": ["hgo_s"],
     "conditions": { "requiresHeat": true, "minTempC": 500, "catalyst": null },
     "products": ["hg_l", "o2_g"],
+    "coefficients": { "hgo_s": 2, "hg_l": 2, "o2_g": 1 },
     "equation": "2HgO →(heat) 2Hg + O₂",
     "type": "decomposition",
     "effects": {
@@ -7549,6 +7567,7 @@
     "reactants": ["fe_metal", "c_s"],
     "conditions": { "requiresHeat": true, "minTempC": 700, "catalyst": null },
     "products": ["cementite_s"],
+    "coefficients": { "fe_metal": 3, "c_s": 1, "cementite_s": 1 },
     "equation": "3Fe + C → Fe₃C",
     "type": "combination",
     "effects": {
@@ -7572,6 +7591,7 @@
     "reactants": ["p4o10_s", "cao_s"],
     "conditions": { "requiresHeat": true, "minTempC": 1000, "catalyst": null },
     "products": ["ca3po42_s"],
+    "coefficients": { "p4o10_s": 1, "cao_s": 6, "ca3po42_s": 2 },
     "equation": "P₄O₁₀ + 6CaO → 2Ca₃(PO₄)₂",
     "type": "acid_base",
     "effects": {
@@ -9182,6 +9202,7 @@
     "reactants": ["pbo2_s", "hcl_1m"],
     "conditions": { "requiresHeat": true, "minTempC": null, "catalyst": null },
     "products": ["pbcl2_s", "cl2_g", "water"],
+    "coefficients": { "pbo2_s": 1, "hcl_1m": 4, "pbcl2_s": 1, "cl2_g": 1, "water": 2 },
     "equation": "PbO₂ + 4HCl → PbCl₂ + Cl₂ + 2H₂O",
     "type": "redox",
     "effects": {
@@ -9216,6 +9237,7 @@
     "reactants": ["srco3_s"],
     "conditions": { "requiresHeat": true, "minTempC": 1290, "catalyst": null },
     "products": ["sro_s", "co2_g"],
+    "coefficients": { "srco3_s": 1, "sro_s": 1, "co2_g": 1 },
     "equation": "SrCO₃ →(1290 °C) SrO + CO₂",
     "type": "decomposition",
     "effects": {
@@ -9242,6 +9264,7 @@
     "reactants": ["baco3_s"],
     "conditions": { "requiresHeat": true, "minTempC": 1360, "catalyst": null },
     "products": ["bao_s", "co2_g"],
+    "coefficients": { "baco3_s": 1, "bao_s": 1, "co2_g": 1 },
     "equation": "BaCO₃ →(1360 °C) BaO + CO₂",
     "type": "decomposition",
     "effects": {
